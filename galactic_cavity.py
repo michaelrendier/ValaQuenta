@@ -21,7 +21,7 @@ The four-way identity:
 
 SMMIP constants:
   d*       = 0.24600  — transition fraction (P1: r_t = d* × r_max_baryonic)
-  OMEGA_ZS = 0.56714  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
+  OMEGA_ZS = 0.5671432904097838  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
 
 Both confirmed against SPARC 97-galaxy high-quality sample (2026-05-30).
 """
@@ -35,7 +35,7 @@ from typing import Callable
 # ── Constants ────────────────────────────────────────────────────────────────
 
 D_STAR   = 0.24600    # spectral ground state of Universal Native Space
-OMEGA_ZS = 0.56714    # Lambert W fixed point W(1) — VEV
+OMEGA_ZS = 0.5671432904097838    # Lambert W fixed point W(1) — VEV
 G_SI     = 6.674e-11  # m³ kg⁻¹ s⁻²
 PC_M     = 3.086e16   # metres per parsec
 KPC_M    = 3.086e19   # metres per kiloparsec
