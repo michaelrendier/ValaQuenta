@@ -41,29 +41,16 @@ The code now needs to be updated to reflect the ValaQuenta module structure.
 
 ## PRIORITY 2 — Code Migration from Ainulindale
 
-The following code directories in Ainulindale belong in ValaQuenta:
+*Migration completed 2026-06-28. All engine code is now in ValaQuenta.*
 
-- [ ] `Ainulindale/code/noether_engine/` → `ValaQuenta/noether_engine/`
-      Full Noether engine with algebra/, core/, quantum/, spacetime/, theorems/
-      Well-organised. Ready to move.
-
-- [ ] `Ainulindale/code/sonification/` → `ValaQuenta/sonification/`
-      ainulindale_sonification_mv1.py + visualisations
+- [x] `Ainulindale/code/noether_engine/` → `ValaQuenta/code/noether_engine/`  COMPLETE
+- [x] `Ainulindale/code/sonification/` → `ValaQuenta/code/sonification/`  COMPLETE
       Note: UniversalSynth repo will eventually own the standalone synthesizer.
+- [x] `Ainulindale/AddPapers/DM_GalacticCavity/dark_matter_cavity.py`
+      Superseded by `ValaQuenta/galactic_cavity.py`. COMPLETE.
 
-- [ ] `Ainulindale/AddPapers/DM_GalacticCavity/dark_matter_cavity.py`
-      Already superseded by ValaQuenta/galactic_cavity.py
-      Check for any unique content before removing from Ainulindale.
-
-- [ ] `Ainulindale/animations/witches_hat_triptych.py`
-      Belongs with ArdaQuenta modes or ValaQuenta visualisations.
-
-- [ ] `Ainulindale/outreach/CRC_engine.py`
-      Chladni Resonance of Creation engine — belongs in ValaQuenta/crc/
-      or ArdaQuenta/modes/crc_engine.py
-
-After migration: Ainulindale repo contains documentation only (wiki, conjecture, addenda).
-No Python files. Links to ValaQuenta for all engine code.
+Ainulindale repo now contains documentation only (wiki, conjecture, addenda).
+All Python engine code is in ValaQuenta.
 
 ---
 
@@ -86,10 +73,9 @@ No Python files. Links to ValaQuenta for all engine code.
 
 ## PRIORITY 4 — Module Integration
 
-The full derivation system lives in `Ainulindale/ValaQuenta/modules/`.
-After migration (Priority 2), these modules should be at `ValaQuenta/modules/`.
+The full derivation system lives in `ValaQuenta/modules/`.
 
-Current module list (from Ainulindale/ValaQuenta/modules/):
+Current module list (in ValaQuenta/modules/):
   berry_keating, clay_millennium, constants, derivation_chain, h_rb_hat,
   hyperwebster, inversion, jwst, lagrangian, noether, noether_information,
   sonification, spherical, tier6_physics, tier7_cosmos, tier8_sedenion, tier9_chem
@@ -97,6 +83,48 @@ Current module list (from Ainulindale/ValaQuenta/modules/):
 - [ ] Verify all modules import cleanly from ValaQuenta root
 - [ ] Add integration tests: `python3 -m pytest ValaQuenta/tests/`
 - [ ] Confirm no circular imports between standalone engines and modules
+
+---
+
+## WIKI TODO
+
+These wiki entries were identified in Ainulindale sessions and belong in ValaQuenta/wiki/.
+
+- [ ] wiki/69 — Add Wankel wobble = H_hat_BR section (arctan(d*) ≈ 13.82°, 3-face geometry, su(2) circle)
+- [ ] wiki/69 — Add Extrapolator = Caustic Focuser (sc(i,j) = ∇²f/⟨|f|⟩ = 1 at conformal boundary)
+- [ ] wiki/70 — Circle vs Square: gravity on continuous circle; Bang/GR on circle; 3 forces at corners
+- [ ] wiki/70 — The Tower IS The Standard Model: σ=1−k/4 geodesic; three algebraic losses = three forces
+- [ ] wiki/70 — Yang-Mills and M-Theory: 𝕊(16)+𝕆(8)=24=Leech; I+O=2; 24+2=26; GAP>0=mass gap answer
+- [ ] wiki/70 — Geodesic = Tower; d* < 1/4 PROVEN (GAP goes negative if d*=1/4); σ=¾=ℂ=U(1)=EM NAMED
+
+---
+
+## CODE INFRASTRUCTURE (D-Series Papers)
+
+Shared infrastructure needed across the D-series data papers. Each item unlocks multiple papers.
+
+- [ ] LMFDB zero downloader and cache
+      `ValaQuenta/tools/lmfdb_zeros.py` — download first 100K zeros, cache locally.
+      Needed by: D1, D6, D9, D12, NoetherWiles.
+
+- [ ] mpmath zetazero() wrapper with precision control
+      `ValaQuenta/tools/zeta_zeros.py` — configurable dp precision. Fallback when LMFDB unavailable.
+
+- [ ] Standard normalisation functions (GUE scaling, prime log normalisation)
+      `ValaQuenta/tools/normalization.py`. Needed by: D1, D9, D12.
+
+- [ ] Leipzig / Wikimedia corpus downloader
+      `ValaQuenta/tools/corpus_download.py`. Needed by: D3 (Zipf), D4 (cross-language).
+
+- [ ] Planck FITS reader
+      `ValaQuenta/tools/planck_fits.py` (astropy-based). Needed by: D2, D5.
+      Note: l_min=50 mask required for D5 acoustic peaks (see PTorrent TODO §9.1).
+
+- [ ] pyJHTDB API wrapper
+      Install pyJHTDB; `ValaQuenta/tools/jhtdb_client.py`. Needed by: D8 (NS Cauchy-Riemann residual).
+
+- [ ] mne-python EEG pipeline
+      Install mne-python; `ValaQuenta/tools/eeg_pipeline.py`. Needed by: D11 (neural oscillation ratios).
 
 ---
 
@@ -151,6 +179,29 @@ These engines are designed to back up or numerically test theoretical results fr
 
 **File:** `ValaQuenta/modules/tier7_cosmos/condensation_threshold.py`  
 **Status:** TODO — wiki/32 first capture 2026-06-03
+
+---
+
+---
+
+### Engine T256 — `hardness_transformer()` (T256 Cayley-Dickson hardness layers)
+
+**Theory:** The T256 Cayley-Dickson algebra (256D, 2^8) has spectral resolution to
+decompose the computational complexity hierarchy into distinct σ-face layers.
+Each complexity class occupies a specific σ-face band in the T256 spectrum:
+P(σ<½) → NP-complete(σ=½) → PH/NP(½<σ<1) → PSPACE(σ=1) → EXPTIME(σ<2) →
+EXPSPACE(σ=2) → Undecidable(σ→∞). T256 zero divisors coincide exactly with ζ pole
+locus at the equatorial great circle — hardness boundaries ARE the modular break points.
+
+**TODO items:**
+
+- [ ] Build T256 hardness transformer notebook: `ValaQuenta/notebooks/h_rb_hat/04_t256_hardness_transformer.ipynb`
+- [ ] Derive exact σ values for each complexity boundary from T256 zero divisor / ζ pole intersection
+- [ ] Show Baker-Gill-Solovay oracle separations correspond to σ-face layer shifts in T256 space
+- [ ] Add to D-M paper — P vs NP chapter — T256 hardness table as geometric complexity proof
+
+**File:** `ValaQuenta/notebooks/h_rb_hat/04_t256_hardness_transformer.ipynb`
+**Status:** TODO — wiki/40 first capture 2026-06-03
 
 ---
 
