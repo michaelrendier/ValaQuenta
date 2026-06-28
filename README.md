@@ -3,7 +3,7 @@
 **The derivation engine.** Pure mathematics. Runnable code. No physical substrate required.
 
 ```
-Ainulindale (the Music) → ValaQuenta (the engines) → PtolemyHolcus (the world)
+Ainulindale (the Music) → ValaQuenta (the engines) → VAPMIP (the world)
 ```
 
 ---
@@ -14,16 +14,42 @@ ValaQuenta is a Python package. All engines import cleanly as `from ValaQuenta.X
 
 ```
 ValaQuenta/
-├── bao_mass_gap.py      Yang-Mills mass gap
+├── bao_mass_gap.py      Yang-Mills mass gap (ESTABLISHED)
 ├── hamiltonian.py       H=xp, Fermat elliptic, RedBlue
 ├── noether.py           Ascending/descending Noether currents
-├── galactic_cavity.py   Dark matter = pilot wave
+├── galactic_cavity.py   Dark matter = pilot wave (SPARC confirmed)
+├── telperion.py         Galactic bell geometry — 10/10 predictions confirmed
+├── fixed_point.py       The Unit + T_256 (Bang as inside-out horizon)
 ├── capacitor.py         Semantic low-pass filter
-├── semantic_word.py     A word is a prime in semantic space
-├── semantic_domain.py   The description creates the domain
 ├── understand.py        Read → Ponder → Calculate → Understand
-├── corpus.py            Feed text archives to ValaQuenta
-├── lexicon.py           Records primes from corpus
+│
+├── modules/             Domain engines (one module per Millennium problem / tier)
+│   ├── berry_keating/   Riemann zeros, d*, Witches Hat, prime gaps
+│   ├── clay_millennium/ Yang-Mills, Navier-Stokes, P vs NP
+│   ├── constants/       OMEGA_ZS, d*, GAP, φ, π
+│   ├── derivation_chain/ Tier 0 → Tier 9 derivation registry
+│   ├── h_rb_hat/        SIGMA_RB baseline engine (general)
+│   ├── hyperwebster/    Zipf = Prime Number Theorem
+│   ├── inversion/       Circle inversion / L_(I|O) geometry
+│   ├── jwst/            BAO, CMB, cosmological engines
+│   ├── lagrangian/      VAPMIP Lagrangian — L_NN (rename pending)
+│   ├── noether/         Noether currents, conservation proofs
+│   ├── noether_information/ Information current, distillation
+│   ├── sigma_cavitation/ Bang = phase transition, BEC medium
+│   ├── singularity_null/ ZD lattice, 42/84/168 exact counts
+│   ├── sonification/    Schumann resonances, sound from primes
+│   ├── spherical/       N-ball transformer V(n), n* peak
+│   ├── tier6_physics/   Pilot wave, Bohmian mechanics
+│   ├── tier7_cosmos/    Galactic cavity, dark energy, BEC
+│   ├── tier8_sedenion/  16 operators, ZD structure
+│   ├── tier9_chem/      Cancer = ZD, drug = adjoint
+│   └── turing_diagonal/ Halting problem geometry
+│
+├── notebooks/           Derivation notebooks (per engine)
+├── code/                Standalone implementations
+│   ├── noether_engine/
+│   ├── sonification/
+│   └── wiles_modularity/
 └── wiki/                One page per engine — results
 ```
 
@@ -141,4 +167,4 @@ python3 -c "from ValaQuenta.understand import Understand; u=Understand(); print(
 |------|------|
 | `Ainulindale/` | The Music — theory, wikis, derivation notebooks, addenda |
 | `ValaQuenta/` | The Engines — runnable mathematics, this repo |
-| `PtolemyHolcus/` | The World — LSHS system, Ptolemy corpus engine, SVG outputs |
+| `VAPMIP/` | The World — LSHS system, Ptolemy corpus engine, SVG outputs |
