@@ -45,12 +45,23 @@ ValaQuenta/
 │   ├── tier9_chem/      Cancer = ZD, drug = adjoint
 │   └── turing_diagonal/ Halting problem geometry
 │
-├── notebooks/           Derivation notebooks (per engine)
+├── notebooks/           Derivation notebooks (70, all executing)
+│   ├── engines/         One per top-level engine (13)
+│   ├── core/            One per foundational module (14)
+│   ├── tier7/ tier8/ tier9/   Cosmology, sedenion, chemistry (29)
+│   └── translator/ h_rb_hat/ singularity_null/ turing_diagonal/
+├── ZeroLattice/         Telperion paper notebooks (4)
 ├── code/                Standalone implementations
 │   ├── noether_engine/
 │   ├── sonification/
 │   └── wiles_modularity/
-└── wiki/                One page per engine — results
+├── wiki/                One page per engine — results (37)
+│
+├── requirements.txt     Dependencies, derived from actual imports
+├── install.sh           Linux installer
+├── install-macos.sh     macOS installer
+├── install.ps1          Windows installer
+└── verify_install.py    Checks the arithmetic, not just the imports
 ```
 
 ---
@@ -93,7 +104,12 @@ See [wiki/hamiltonian.md](wiki/hamiltonian.md)
 ### noether.py — Ascending/Descending Noether Currents
 
 ```
-forced_sigma(E, σ₀=any) → 0.500000000000  (12 decimal places, always)
+forced_sigma(E, σ₀=any) → 0.500000000000  (12 decimal places, for E ≲ 10)
+
+CAVEAT (2026-07-28): the iteration converges to σ=½ only at low energy.
+For E ≳ 15 it returns σ₀ essentially unchanged, and it raises OverflowError
+for σ₀<0 with large E. The analytic derivation (F=B ⟹ σ=½) holds for all
+E>0; the numerical demonstration does not. See wiki/noether.md.
 
 The boundary is ORIENTED: up (toward next CD shadow) / down (toward ZD).
 σ=½ is the shadow of the world above — projection of the next CD level.
@@ -151,13 +167,55 @@ The 1/√2 factor is explained (σ=½ symmetry, first CD doubling). The 10³ fac
 
 ---
 
+## Install
+
+```bash
+git clone <this repo>            # into a directory on your PATH-able parent
+cd ValaQuenta
+
+bash install.sh                  # Linux   — creates .venv, installs, verifies
+bash install-macos.sh            # macOS   — same, prefers Homebrew python
+powershell -ExecutionPolicy Bypass -File .\install.ps1   # Windows
+```
+
+Flags: `--user` (no venv), `--system` (use distro packages), `--no-jupyter`.
+Run the scripts with `bash install.sh`, not `./install.sh` — the executable bit
+does not survive every filesystem.
+
+Then, any time:
+
+```bash
+python3 verify_install.py
+```
+
+This does not merely check that imports succeed. It recomputes GAP from its two
+inputs, confirms OMEGA_ZS satisfies `W·e^W = 1`, counts the zero-divisor pairs
+(84), and checks that `H=xp` conserves energy. If the arithmetic is broken it
+will say so.
+
+Dependencies are in `requirements.txt`: numpy, scipy and matplotlib are
+required; JupyterLab is needed only to open the notebooks.
+
 ## Run
 
 ```bash
-cd /media/rendier/0123-4567
 python3 -c "from ValaQuenta.bao_mass_gap import validate; validate()"
 python3 -c "from ValaQuenta.understand import Understand; u=Understand(); print(u.process('the prime'))"
+python3 -m ValaQuenta --info        # registry summary
+python3 -m ValaQuenta --curses      # console viewer, no Qt needed
 ```
+
+## Where to start
+
+| If you want | Go to |
+|---|---|
+| Results without running anything | [wiki/00_index.md](wiki/00_index.md) |
+| The order the derivation goes in | [wiki/derivation_chain.md](wiki/derivation_chain.md) |
+| The top-level engines, worked | [notebooks/engines/](notebooks/engines/) |
+| One module per Millennium problem / tier | [notebooks/core/](notebooks/core/) |
+| What is known to be broken | [wiki/00_index.md](wiki/00_index.md) § Known defects |
+
+All 70 notebooks execute clean — 393/393 code cells, verified 2026-07-28.
 
 ---
 

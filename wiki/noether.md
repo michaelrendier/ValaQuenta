@@ -6,17 +6,61 @@
 
 ---
 
-## Results (run 2026-06-13)
+## Results (re-run 2026-07-28)
 
 ```python
 forced_sigma(E=0.5,  σ₀=0.0) → 0.500000000000  ✓
 forced_sigma(E=1.0,  σ₀=0.0) → 0.500000000000  ✓
 forced_sigma(E=2.0,  σ₀=0.0) → 0.500000000000  ✓
-forced_sigma(E=10.0, σ₀=0.0) → 0.500000000000  ✓
-forced_sigma(E=100.0,σ₀=0.0) → 0.500000000000  ✓
+forced_sigma(E=10.0, σ₀=0.0) → 0.499999999999  ✓
+forced_sigma(E=100.0,σ₀=0.0) → 0.0             ✗  DOES NOT REPRODUCE
 ```
 
-From ANY starting position, from ANY energy, the mathematics forces σ=½.
+From any starting position, at **low energy**, the mathematics forces σ=½. The
+earlier figure of `0.500000000000` for E=100 recorded here on 2026-06-13 does
+not reproduce and has been corrected.
+
+### The limit, measured
+
+| E | `forced_sigma(E, σ₀=0)` | converges to ½? |
+|---|---|---|
+| ≤ 10 | 0.4999999999999997 | ✓ |
+| 15 | 6.320e-04 | ✗ |
+| 20 | 4.222e-06 | ✗ |
+| ≥ 30 | 0.0 | ✗ |
+| ≥ 1000, σ₀ < 0 | **OverflowError: math range error** | ✗ |
+
+### Why
+
+`forced_sigma` is a fixed-point iteration, not a root solve:
+
+```python
+F = exp(-σ·E)
+B = exp(-(1-σ)·E)
+σ_new = (F·σ + B·(1-σ)) / (F + B)
+```
+
+That is a softmax-weighted average of σ and 1−σ.
+
+- **Small E** — F and B are both near 1, the weights are nearly equal, and the
+  average collapses to `(σ + (1−σ))/2 = ½` on the first step.
+- **Large E** — the exponentials differ by orders of magnitude. For σ<½, F≫B,
+  so σ_new → σ. The step falls below the `1e-12` tolerance immediately and the
+  loop breaks, **returning σ₀ unchanged**. The guard `if F + B < 1e-30: break`
+  does the same once both underflow.
+
+The loop does not fail loudly. It exits early and returns its own input.
+
+**The analytic derivation below is not in question** — F=B forces σ=½ for every
+E>0. What fails is the numerical demonstration of it, and the trailing comment
+`return sigma   # always 0.5` is wrong as written.
+
+σ=½ is derived independently elsewhere — by the RedBlue balance in
+`hamiltonian.py`, and empirically per-word by `understand.py`, neither of which
+routes through this iteration. Those are unaffected.
+
+Worked through in
+[notebooks/engines/03_noether.ipynb](../notebooks/engines/03_noether.ipynb).
 
 ## Two Currents, One Symmetry — Oriented UP/DOWN, Not Forward/Backward
 

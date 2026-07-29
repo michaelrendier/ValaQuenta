@@ -121,3 +121,11 @@ class Tier7CosmosModule(EquationModule):
         if eq is None:
             raise KeyError(f"'{equation_name}' not in tier7_cosmos")
         return eq.compute()
+
+    def viewer_data(self, equation_name: str, params: Dict[str, Any],
+                    display_mode: str) -> Dict[str, Any]:
+        import json
+        result = self.run(equation_name, params)
+        return {'mode': display_mode, 'module': self.name,
+                'equation': equation_name, 'data': result,
+                'text': json.dumps(result, indent=2, default=str)[:4000]}

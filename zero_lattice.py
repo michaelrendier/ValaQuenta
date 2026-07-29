@@ -732,11 +732,19 @@ def critical_line_samples(
     Compares with known Riemann zeros to check alignment.
     """
     gammas = np.linspace(gamma_min, gamma_max, n_points)
+
+    # Find the ZD pairs ONCE and pass them down. zeta_geometric() falls back to
+    # find_zd_pairs() whenever pairs is None, so leaving this out re-ran the
+    # full 84-pair search on every sample point -- about 0.9s each, which made
+    # the default n_points=1000 take roughly a quarter of an hour. The pair set
+    # is deterministic, so hoisting it changes no value in the output.
+    pairs = find_zd_pairs()
+
     values = []
     for g in gammas:
         s = complex(SIGMA_HALF, g)
         try:
-            z = zeta_geometric(s)
+            z = zeta_geometric(s, pairs=pairs)
             values.append(abs(z))
         except Exception:
             values.append(float('nan'))

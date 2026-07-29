@@ -1,0 +1,45 @@
+# ValaQuenta — runtime requirements
+#
+# This is the set needed to import every engine and run every notebook in the
+# repository. It was derived by walking the AST of every .py and .ipynb file in
+# the repo and keeping the imports that are neither stdlib nor local, so it is
+# what the code actually reaches for -- not a wish list.
+#
+#   pip3 install -r requirements.txt
+#
+# Lower bounds are the oldest releases with the APIs used here. Verified
+# working on the development machine at numpy 2.3.5 / scipy 1.16.3 /
+# matplotlib 3.10.7 with Python 3.14.
+
+# ── Core: required to import ValaQuenta at all ───────────────────────────────
+numpy>=1.24
+scipy>=1.10            # fixed_point.v_nball_peak -> scipy.special.digamma
+matplotlib>=3.7        # every notebook plots
+
+# ── Notebooks ────────────────────────────────────────────────────────────────
+# Needed only to open the .ipynb files. The engines themselves import fine
+# without these.
+jupyterlab>=4.0
+ipykernel>=6.20
+
+# ── Extras used by code/ ─────────────────────────────────────────────────────
+# code/noether_engine (symbolic Cayley-Dickson, Clifford and Lie algebra) and
+# code/io_polar.py. Not needed for the engines under ValaQuenta/ or modules/.
+sympy>=1.12
+mpmath>=1.3
+
+# ── Tests ────────────────────────────────────────────────────────────────────
+pytest>=7.0
+
+# ── Optional: the Qt viewer (python3 -m ValaQuenta --qt) ─────────────────────
+# The curses console (--curses) and headless mode (--headless) need none of
+# these. Uncomment if you want the Qt/VisPy viewer.
+#
+# PyQt5>=5.15
+# vispy>=0.14
+# sounddevice>=0.4      # also needs a system PortAudio library
+#
+# NOTE: engine/console_qt.py also imports `qtermwidget`, which has no PyPI
+# package. It ships with the QTermWidget system library (Debian/Ubuntu:
+# libqtermwidget5-0; Arch: qtermwidget). Without it, --qt falls back and
+# --curses still works. This is a known limitation, not a missing pin.
