@@ -121,7 +121,7 @@ Engines where this convention is load-bearing:
 |--------|----------|--------|
 | `forced_sigma` converges to σ=½ only for E≲10; returns σ₀ unchanged above that, and raises OverflowError for σ₀<0 with large E. The wiki/README figure for E=100 does not reproduce. | `noether.py` | **OPEN — recorded 2026-07-28** |
 | `tier7_cosmos` and `tier9_chem` did not implement the abstract `viewer_data`, so neither could be instantiated or registered. | `modules/tier7_cosmos/tools.py`, `modules/tier9_chem/tools.py` | FIXED 2026-07-28 |
-| Four notebooks hard-coded `/media/rendier/0123-4567/Ainulindale` on `sys.path`; they could not run on any other machine. | `notebooks/singularity_null/`, `notebooks/turing_diagonal/` | FIXED 2026-07-28 |
+| Four notebooks had **only** `/media/rendier/0123-4567/Ainulindale` on `sys.path`, so they could not run on the phone. A portable entry was added **alongside** it — the laptop path is deliberate and stays. | `notebooks/singularity_null/`, `notebooks/turing_diagonal/` | FIXED 2026-07-29 |
 | `notebooks/core/` was written against an older `maths.py` schema — renamed keys and removed functions. | `notebooks/core/` | FIXED 2026-07-28 |
 | `notebooks/leech_divergence/` is an empty directory. The Leech material is in `notebooks/tier8/leech_divergence_inversion.ipynb`. | `notebooks/leech_divergence/` | open |
 | `critical_line_samples()` re-ran the full 84-pair search on every sample point (`zeta_geometric` defaults `pairs=None`), making the n=2000 sweep take ~30 minutes. Pairs are now hoisted out of the loop — results bit-identical, ~11,000× faster. | `zero_lattice.py` | FIXED 2026-07-28 |
