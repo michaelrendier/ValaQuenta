@@ -12,7 +12,15 @@ Version: 0.111
 import math
 
 # ── Transcendental ──────────────────────────────────────────────────────────
-PI    = math.pi                          # boundary geometry of (I|O) inversion
+PI    = math.pi                          # Python's own value. The (I|O)
+                                          # horizon's pi/2 rotation is DERIVED
+                                          # from this (Basel pi / Hurwitz-4),
+                                          # not the other way around -- see
+                                          # modules/inversion/maths.py's
+                                          # derive_horizon_rotation(). This
+                                          # line does not itself derive
+                                          # anything; corrected 2026-07-22,
+                                          # previously implied it did.
 E     = math.e                           # natural base
 PHI   = (1.0 + math.sqrt(5.0)) / 2.0    # golden ratio — bias coupling, fixed point
 TAU   = 2.0 * math.pi                   # full circle — radian-primary form

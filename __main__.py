@@ -34,9 +34,15 @@ from .modules.hyperwebster import HyperWebsterModule
 from .modules.jwst import JWSTModule
 from .modules.turing_diagonal import TuringDiagonalModule
 from .modules.singularity_null import SingularityNullModule
+from .modules.sigma_expansion import SigmaExpansionModule
+from .modules.t32_nilpotency import T32NilpotencyModule
+from .modules.hypergon_constructibility import HypergonConstructibilityModule
+from .modules.l_io_photon_path import LIOPhotonPathModule
+from .modules.bao_mass_gap import BaoMassGapModule
 
 def _register_all():
     registry = get_registry()
+    register(BaoMassGapModule())   # headline result — first in the module list
     register(InversionModule())
     register(LagrangianModule())
     register(NoetherModule())
@@ -47,6 +53,10 @@ def _register_all():
     register(JWSTModule())
     register(TuringDiagonalModule())
     register(SingularityNullModule())
+    register(SigmaExpansionModule())
+    register(T32NilpotencyModule())
+    register(HypergonConstructibilityModule())
+    register(LIOPhotonPathModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

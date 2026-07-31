@@ -19,7 +19,10 @@ from typing import Dict, List, Any
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
 from ...engine import constants as C
-from .maths import InversionMap, RecursionAttractor, GradientFlow, get_observer
+from .maths import (
+    InversionMap, RecursionAttractor, GradientFlow, get_observer,
+    derive_horizon_rotation,
+)
 
 
 class InversionModule(EquationModule):
@@ -74,6 +77,17 @@ class InversionModule(EquationModule):
                 params=['r', 'theta_rad'],
                 compute=lambda r, theta_rad: InversionMap().apply(r, theta_rad),
                 display_options=['complex_plane', '3d_cartesian', 'text'],
+            ),
+            Equation(
+                name='derive_horizon_rotation',
+                display='Horizon rotation pi/2, derived not assumed',
+                latex=r'\phi = \frac{2\pi_{\mathrm{Basel}}}{4} = \frac{\pi}{2}',
+                radian_form='phi = (2 * pi_basel) / n_division_algebras(=4, Hurwitz)',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=[],
+                compute=lambda: derive_horizon_rotation(),
+                display_options=['text'],
             ),
             Equation(
                 name='involution_check',

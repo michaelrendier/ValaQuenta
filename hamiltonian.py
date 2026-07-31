@@ -246,7 +246,19 @@ class RedBlueHamiltonian:
     By Noether's theorem, this symmetry generates two conserved currents:
         J_Red  = +E    (forward — the attractor)
         J_Blue = −E    (backward — the repulsor)
-        J_Red + J_Blue = 0
+        J_Red + J_Blue = 0   — ONLY on the critical-line locus (see below)
+
+    J_Red + J_Blue = 0 is NOT a universal identity over all (x,p). E_Red(x,p)
+    and E_Blue(x,p) are two independently-defined functions of (x,p); nothing
+    forces them to agree except at the specific locus where balance(x,p) = 0.
+    Verified numerically (2026-07-09): scanning a grid finds ~35 sign changes
+    of balance(x,p), confirming it is a curve, not the whole plane. At a
+    bisection-refined point on that curve (x=1.3, p*≈0.7259587),
+    functional_equation_check ≈ -1.6e-6 (zero to leapfrog precision). 0.3 off
+    that locus, it is 0.127 — clearly nonzero. So: the sum-to-zero property
+    holds exactly where the paper says it should (the critical line), and
+    nowhere else. Treat any claim of "J_Red + J_Blue = 0" without the
+    critical-line qualifier as incomplete.
 
     Their balance is forced to σ = 1/2 by the mutual constraint.
     The prime is where they agree. The critical line is where they meet.
@@ -284,9 +296,12 @@ class RedBlueHamiltonian:
         J_Blue: the conserved prime from H_Blue evolution.
 
         Not simply −J_Red. Computed from the actual elliptic trajectory.
-        The fact that J_Blue = −J_Red is the content of the functional equation.
-        Computing both independently and verifying their sum = 0
-        IS the functional equation, demonstrated in code.
+        NOTE: evolving (x0,p0) under H_Blue's own dynamics before measuring
+        is a near no-op — E_Blue is conserved along its own flow by
+        construction (verified: 1.550833 direct vs 1.550853 after t=1.0s of
+        leapfrog evolution, matching to leapfrog precision). The `t`
+        parameter here does not do meaningful work; it isn't what makes the
+        sum come out zero or nonzero.
         """
         x_t, p_t = self.blue.trajectory(x0, p0, t)
         return -self.blue.prime(x_t, p_t)
@@ -294,9 +309,20 @@ class RedBlueHamiltonian:
     def functional_equation_check(self, x0: float, p0: float,
                                    t: float = 1.0) -> float:
         """
-        J_Red + J_Blue — should be zero.
+        J_Red + J_Blue — zero ONLY when (x0,p0) sits on the critical-line
+        locus (where balance(x0,p0) == 0), NOT for arbitrary (x0,p0).
 
-        ξ(s) = ξ(1−s) demonstrated numerically.
-        The functional equation is not assumed. It is checked.
+        Verified numerically (2026-07-09): at four arbitrary points this
+        returned -0.55, 0.37, -5.01, 1.33 — nowhere near zero, because
+        arbitrary points aren't on the critical line. At a bisection-refined
+        point actually on the locus (x=1.3, p*≈0.7259587) this returns
+        ≈-1.6e-6. Off that locus by 0.3 in p, it returns 0.127.
+
+        Do not call this "the functional equation demonstrated in code"
+        without the critical-line qualifier — that overclaims what this
+        function actually shows. What IS demonstrated: E_Red and E_Blue,
+        two independently-defined functions of (x,p), agree exactly on a
+        specific curve and nowhere else — consistent with the paper's own
+        claim that |J_red|=|J_blue| uniquely at σ=½, not a general identity.
         """
         return self.noether_forward(x0, p0, t) + self.noether_backward(x0, p0, t)

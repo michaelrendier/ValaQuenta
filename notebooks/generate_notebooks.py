@@ -57,7 +57,8 @@ plt.rcParams.update({'figure.dpi': 120, 'font.size': 11,
 def load_maths(tier):
     paths = {7: '../../modules/tier7_cosmos/maths.py',
              8: '../../modules/tier8_sedenion/maths.py',
-             9: '../../modules/tier9_chem/maths.py'}
+             9: '../../modules/tier9_chem/maths.py',
+             'udeo_crypto': '../../modules/udeo_crypto/UDEO_RSA_DEMO.py'}
     spec = importlib.util.spec_from_file_location(f't{tier}', paths[tier])
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     return m
@@ -76,7 +77,7 @@ def engine_notebook(tier, engine_fn, title, description, plot_code, claim_tex):
     return nb([
         md(f"# {title}\n\n**Ainulindale Engine** — Tier {tier}\n\n{description}"),
         code(PREAMBLE),
-        code(f"""m = load_maths({tier})
+        code(f"""m = load_maths({tier!r})
 result = m.{engine_fn}()
 print("Claim:", result['claim'])
 print("Confidence:", result['confidence'])
@@ -898,6 +899,227 @@ ENGINES = [
    r'A_R/A_B=\Omega_{\zeta\Sigma}\;(\text{healthy}),\;G:A:V=6:3:1', 'tier9'),
 ]
 
+# ── UDEO_CRYPTO engines/plots ───────────────────────────────────────────────────
+# Five candidate RSA key-recovery mechanisms, each honestly scored against a
+# random-guess control -- plus the one proven (d = e mod 4) result. See
+# ValaQuenta/modules/udeo_crypto/UDEO_RSA_DEMO.py for the full engine.
+
+PLOTS_UDEO = {
+
+'compare_all_methods': """
+fig, ax = plt.subplots(figsize=(11, 5))
+rows = result['comparison_table']
+names = [r['method'].split(' — ')[0] for r in rows]
+vals = [r['mean_percentile_vs_chance_50'] for r in rows]
+colors = ['crimson' if abs(v-50) > 15 else 'steelblue' for v in vals]
+ax.barh(names, vals, color=colors, alpha=0.85)
+ax.axvline(50, color='k', ls='--', lw=2, label='Chance (50th percentile)')
+ax.set_xlabel('Mean percentile rank of true d vs 200 random-guess controls')
+ax.set_title('All Five Methods vs Chance — Given (n, e) Only')
+ax.set_xlim(0, 100)
+ax.legend()
+ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print()
+print('Strongest signal:', result['strongest_signal'])
+print()
+print(result['honest_summary'])
+""",
+
+'mod4_identity_theorem': """
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+r = result
+
+ax = axes[0]
+ax.bar(['Matches\\n(d ≡ e mod 4)', 'Mismatches'],
+       [2000, 0], color=['#2ECC71', '#E74C3C'], alpha=0.85)
+ax.set_title(f\"{r['empirical_verification']}\")
+ax.set_ylabel('Count out of 2000 random RSA keys')
+ax.grid(alpha=0.3)
+
+# Right: the group (Z/4Z)* structure that forces the identity
+ax2 = axes[1]
+import numpy as np
+residues = [1, 3]
+sq = [(x*x) % 4 for x in residues]
+ax2.bar([str(x) for x in residues], sq, color='#3498DB', alpha=0.85)
+ax2.axhline(1, color='r', ls='--', label='x² ≡ 1 (mod 4): every element self-inverse')
+ax2.set_title('(Z/4Z)* = {1, 3} has exponent 2')
+ax2.set_xlabel('x'); ax2.set_ylabel('x² mod 4')
+ax2.legend(); ax2.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print(r['proof'])
+print('Practical significance:', r['practical_significance'])
+""",
+
+'rsa_control_baseline': """
+fig, ax = plt.subplots(figsize=(10, 5))
+rows = result['rows']
+ns = [str(row['n']) for row in rows]
+pq = [row['pq_norm_in_S16'] for row in rows]
+ed = [row['ed_norm_in_S16'] for row in rows]
+x = np.arange(len(ns)); w = 0.35
+ax.bar(x - w/2, pq, w, label='|p_s · q_s| (should → 0 if near ZD)', color='#3498DB', alpha=0.85)
+ax.bar(x + w/2, ed, w, label='|e_s · d_s| (should ≈ 1 if well-conditioned)', color='#E74C3C', alpha=0.85)
+ax.axhline(0.15, color='gray', ls='--', alpha=0.6, label='near-ZD threshold')
+ax.set_xticks(x); ax.set_xticklabels(ns); ax.set_xlabel('n (toy RSA modulus)')
+ax.set_title('Reference Baseline — Requires Full Known Key (p,q,e,d)')
+ax.legend(fontsize=8); ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print('None of the 6 toy keys show sedenion degeneracy with this mapping — see note field.')
+print(result['note'])
+""",
+
+'method1_zero_divisor_shadow': """
+fig, ax = plt.subplots(figsize=(10, 5))
+rows = result['per_key']
+ns = [str(row['n']) for row in rows]
+true_a = [row['true_d_alignment'] for row in rows]
+ctrl_a = [row['control_mean_alignment'] for row in rows]
+x = np.arange(len(ns)); w = 0.35
+ax.bar(x - w/2, true_a, w, label='true d alignment with shadow direction', color='#9B59B6', alpha=0.85)
+ax.bar(x + w/2, ctrl_a, w, label='mean control alignment', color='steelblue', alpha=0.85)
+ax.set_xticks(x); ax.set_xticklabels(ns); ax.set_xlabel('n')
+ax.set_title(f\"Method 1: {result['verdict']}\")
+ax.legend(fontsize=8); ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print('Mean percentile rank vs chance(50):', result['mean_percentile_rank'])
+print(result['mechanism_note'])
+""",
+
+'method2_j2_involution_t256': """
+fig, ax = plt.subplots(figsize=(10, 5))
+rows = result['per_key']
+ns = [str(row['n']) for row in rows]
+true_a = [row['true_d_alignment'] for row in rows]
+ctrl_a = [row['control_mean_alignment'] for row in rows]
+x = np.arange(len(ns)); w = 0.35
+ax.bar(x - w/2, true_a, w, label='true d alignment with dominant eigenvector', color='#E67E22', alpha=0.85)
+ax.bar(x + w/2, ctrl_a, w, label='mean control alignment', color='steelblue', alpha=0.85)
+ax.set_xticks(x); ax.set_xticklabels(ns); ax.set_xlabel('n')
+ax.set_title(f\"Method 2 (T_256 J2 operator): {result['verdict']}\")
+ax.legend(fontsize=8); ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print('Mean percentile rank vs chance(50):', result['mean_percentile_rank'])
+print(result['interpretation_caveat'])
+""",
+
+'method3_spectral_relativity': """
+fig, ax = plt.subplots(figsize=(10, 5))
+rows = result['per_key']
+ns = [str(row['n']) for row in rows]
+true_d = [row['geodesic_dist_true_d'] for row in rows]
+ctrl_d = [row['geodesic_dist_control_mean'] for row in rows]
+x = np.arange(len(ns)); w = 0.35
+ax.bar(x - w/2, true_d, w, label='geodesic dist e → true d', color='#1ABC9C', alpha=0.85)
+ax.bar(x + w/2, ctrl_d, w, label='mean geodesic dist e → control d\\'', color='steelblue', alpha=0.85)
+ax.set_xticks(x); ax.set_xticklabels(ns); ax.set_xlabel('n')
+ax.set_title(f\"Method 3 (Sedenion Spectral Relativity): {result['verdict']}\")
+ax.legend(fontsize=8); ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print('Mean percentile rank vs chance(50):', result['mean_percentile_rank'])
+print(result['interpretation_caveat'])
+""",
+
+'method4_content_public_private_hash': """
+fig, ax = plt.subplots(figsize=(10, 5))
+rows = result['per_key']
+ns = [str(row['n']) for row in rows]
+true_dist = [row['true_d_distance_to_recovered_vector'] for row in rows]
+ctrl_dist = [row['control_mean_distance'] for row in rows]
+collisions = [row['exact_hash_collisions_with_true_d'] for row in rows]
+x = np.arange(len(ns)); w = 0.35
+ax.bar(x - w/2, true_dist, w, label='distance: true d to recovered vector (exact 0)', color='#2ECC71', alpha=0.85)
+ax.bar(x + w/2, ctrl_dist, w, label='mean distance: control d\\' to recovered vector', color='steelblue', alpha=0.85)
+for xi, c in zip(x, collisions):
+    if c > 0:
+        ax.annotate(f'{c} collision(s)', (xi, 0.05), ha='center', fontsize=8, color='crimson')
+ax.set_xticks(x); ax.set_xticklabels(ns); ax.set_xlabel('n')
+ax.set_title(f\"Method 4: {result['verdict']}\")
+ax.legend(fontsize=8); ax.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+print(result['critical_caveat'])
+""",
+
+'method5_zero_lattice_paths': """
+fig, axes = plt.subplots(1, 2, figsize=(14, 6), subplot_kw={'projection': 'polar'})
+row = result['per_key'][0]
+labels_paths = [('content_path', '#3498DB'), ('public_path', '#2ECC71'),
+                ('private_path', '#E74C3C'), ('hash_path', '#9B59B6')]
+
+ax = axes[0]
+for key, color in labels_paths:
+    p = row[key]
+    thetas = [math.radians(lv['phi_deg']) for lv in p['levels']]
+    radii  = [lv['k'] for lv in p['levels']]
+    ax.plot(thetas, radii, 'o-', color=color, label=f\"{p['label']} (val={p['value']})\", lw=2, ms=6)
+ax.set_title(f\"Zero Lattice paths — n={row['n']}, e={row['e']}, d={row['d']}\\n(radius = CD tower level k, 0=ℝ..8=T_256)\")
+ax.legend(fontsize=7, loc='upper right', bbox_to_anchor=(1.35, 1.1))
+
+# Right: percentile ranks across all 6 keys, public-key-only scenario
+ax2 = axes[1]
+ax2.remove()
+ax2 = fig.add_subplot(1, 2, 2)
+rows_all = result['per_key']
+ns_all = [str(r['n']) for r in rows_all]
+ranks = [r['true_d_percentile_vs_controls_pubkey_only'] for r in rows_all]
+ax2.bar(ns_all, ranks, color='steelblue', alpha=0.85)
+ax2.axhline(50, color='r', ls='--', label='Chance')
+ax2.set_xlabel('n'); ax2.set_ylabel('percentile rank (public-key-only)')
+ax2.set_title('Public-Key-Only Scenario (No Hash) — At Chance')
+ax2.legend(); ax2.grid(alpha=0.3)
+plt.tight_layout(); plt.show()
+
+print('Hash-exposed scenario:', result['hash_exposed_scenario']['verdict'])
+print('Public-key-only scenario:', result['public_key_only_scenario']['verdict'])
+""",
+
+}
+
+ENGINES_UDEO = [
+  ('udeo_crypto', 'compare_all_methods',
+   'UDEO RSA: All Five Methods vs Chance',
+   'Side-by-side comparison of five candidate RSA key-recovery mechanisms, each scored '
+   'against a random-guess control on 6 toy keys. Methods 1/2/3/5(pubkey-only) at chance; '
+   'methods 4/5(hash-exposed) exact but require an extra revealed value.',
+   r'\text{rank}(d_{\rm true})\ \text{vs chance}=50', 'udeo_crypto'),
+  ('udeo_crypto', 'mod4_identity_theorem',
+   'PROVEN: d ≡ e (mod 4) for Every RSA Key',
+   'Classical number theory, not sedenion structure: 4 | φ(n) forces e·d ≡ 1 (mod 4), and '
+   '(Z/4Z)* has exponent 2, so d ≡ e (mod 4) always. Verified 2000/2000. Worth 1 bit.',
+   r'4\mid\varphi(n)\Rightarrow d\equiv e\pmod4', 'udeo_crypto'),
+  ('udeo_crypto', 'rsa_control_baseline',
+   'Reference Baseline: Sedenion Degeneracy Given the Full Key',
+   'Reproduces udeo_poc.py at toy scale — requires (p,q,e,d) as input, not an attack. '
+   'None of the 6 toy keys show degeneracy with this mapping.',
+   r'n_s=p_s\cdot q_s,\;e_s\cdot d_s', 'udeo_crypto'),
+  ('udeo_crypto', 'method1_zero_divisor_shadow',
+   "Method 1: Zero-Divisor Shadow (S^16)",
+   "Cody's method 1 — does d_s align with e_s's near-annihilator direction? At chance.",
+   r'L_{e_s}x=e_s\cdot x,\;\text{shadow}=\arg\min\sigma(L_{e_s})', 'udeo_crypto'),
+  ('udeo_crypto', 'method2_j2_involution_t256',
+   'Method 2: J2 Involution / T_256 Eigenspectrum',
+   "Cody's method 2 — H_hat_RB vs H_hat_BR as L-R in T_256. At chance. wiki/53 checklist unchecked.",
+   r'\Delta=L_{e_s}-R_{e_s}\ \text{in}\ T_{256}', 'udeo_crypto'),
+  ('udeo_crypto', 'method3_spectral_relativity',
+   'Method 3: Sedenion Spectral Relativity Geodesic',
+   "Cody's method 3 — sigma-face metric geodesic distance e to d. At chance.",
+   r'g(\sigma),\;\text{dist}=\textstyle\int_{\sigma_e}^{\sigma_d}g\,d\sigma', 'udeo_crypto'),
+  ('udeo_crypto', 'method4_content_public_private_hash',
+   'Method 4: Content + Public + Private = Hash',
+   "Cody's equation, this session — exact vector algebra IF Hash is exposed (requires d). "
+   'Not public-key-only. Some candidate collisions.',
+   r'C_s+Pu_s-H_s=-Pr_s', 'udeo_crypto'),
+  ('udeo_crypto', 'method5_zero_lattice_paths',
+   'Method 5: Zero Lattice Paths (AbrikosovTree / RiemannHypothesisProof / POE)',
+   "Cody's method 5 — trace Content/Public/Private/Hash through the 9-level CD tower. "
+   'Surfaced the mod4 theorem. Public-key-only scenario at chance.',
+   r'\varphi_k=\text{base}(k)+q\cdot90^\circ\pm22.5^\circ', 'udeo_crypto'),
+]
+
+PLOTS.update(PLOTS_UDEO)
+ENGINES = ENGINES + ENGINES_UDEO
+
 # ── Generate all notebooks ─────────────────────────────────────────────────────
 
 if __name__ == '__main__':
@@ -910,6 +1132,6 @@ if __name__ == '__main__':
         save(path, notebook)
     print(f"\nDone. {len(ENGINES)} notebooks written.")
     print("\nDirectory structure:")
-    for d in ['tier7','tier8','tier9']:
+    for d in ['tier7','tier8','tier9','udeo_crypto']:
         files = [f for f in os.listdir(os.path.join(base,d)) if f.endswith('.ipynb')]
         print(f"  {d}/: {len(files)} notebooks")

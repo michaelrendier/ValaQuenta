@@ -27,5 +27,11 @@ Planned modules:
     hyperwebster       — HyperWebster hypergalley, monad
     jwst               — JWST spectral pixel module
 
-Version: 0.120 — Second Age: Σ_RB + Clay derivations
+Current modules (Phase 4):
+    sigma_expansion    — Closed-form Taylor expansion of P_red(sigma) around
+                         sigma=1/2 (c1, c3 derived, not fitted). Raw
+                         |J_red|^2+|J_blue|^2 is NOT constant across sigma —
+                         minimum at 1/2, not flat quantum-style conservation.
+
+Version: 0.130 — Phase 4: sigma_expansion
 """
