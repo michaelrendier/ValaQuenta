@@ -17,6 +17,7 @@ from .maths import (
     mean_gap, total_spaces, gap_at_zero_scale,
     von_mangoldt, chebyshev_psi_exact, chebyshev_psi_explicit,
     leaf_drops, tone, tone_sum, interference_profile,
+    clean_path_L, zero_sum, l_io_decomposition,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,

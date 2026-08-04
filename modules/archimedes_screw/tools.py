@@ -27,6 +27,7 @@ from .maths import (
     mean_gap, total_spaces, gap_at_zero_scale,
     von_mangoldt, chebyshev_psi_exact, chebyshev_psi_explicit,
     leaf_drops, tone, tone_sum, interference_profile,
+    clean_path_L, zero_sum, l_io_decomposition,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
@@ -65,7 +66,11 @@ class ArchimedesScrewModule(EquationModule):
             "whose fixed point W(1) = OMEGA_ZS pins sigma = 1/2), the "
             "amplitude-envelope form of RH, and the N-specific "
             "ramification leg in Q(sqrt N) where the Euler factor "
-            "degenerates at exactly the factors of N."
+            "degenerates at exactly the factors of N. Also carries the "
+            "L_(I|O) slot decomposition: Chebyshev psi is the counterpart "
+            "of L_(I|O) (the actual bent path), the main term x is L (the "
+            "clean path of least primes), and the newly named zero_sum is "
+            "the counterpart of the Fermat/lensing potential -- the bend."
         )
 
     @property
@@ -110,6 +115,39 @@ class ArchimedesScrewModule(EquationModule):
                 code_verified=True,
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: chebyshev_psi_explicit(x, zeros),
+                display_options=['text'],
+            ),
+            Equation(
+                name='zero_sum',
+                display='THE PRIME-SIDE FERMAT POTENTIAL — the bend',
+                latex=r'\sum_\rho \frac{x^\rho}{\rho} = 2\sqrt{x}\sum_k \frac{\cos(\gamma_k u - \arg\rho_k)}{|\rho_k|}',
+                radian_form='zero_sum(x) = 2*sqrt(x)*SUM cos(gamma_k*ln x - arg rho_k)/|rho_k|',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['x', 'zeros'],
+                compute=lambda x, zeros=None: zero_sum(x, zeros),
+                display_options=['text'],
+            ),
+            Equation(
+                name='clean_path_L',
+                display='L — the clean path: "the path of least primes", computed',
+                latex=r'L(x) = x \quad \text{(the pole term; no zero contributes)}',
+                radian_form='L(x) = x  — what psi would be with no zeros at all',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['x'],
+                compute=lambda x: clean_path_L(x),
+                display_options=['text'],
+            ),
+            Equation(
+                name='l_io_decomposition',
+                display='The three L_(I|O) slots by role: L, psi_bend, L_IO',
+                latex=r'L_{(I|O)} = L - \psi_{\text{bend}} + \text{trivial}',
+                radian_form='psi_Cheb <-> L_(I|O);  x <-> L;  zero_sum <-> psi_Fermat',
+                confidence='THEORETICAL',
+                code_verified=True,
+                params=['x', 'zeros'],
+                compute=lambda x, zeros=None: l_io_decomposition(x, zeros),
                 display_options=['text'],
             ),
             Equation(
@@ -280,6 +318,9 @@ class ArchimedesScrewModule(EquationModule):
             'pitch':      lambda p: screw_pitch(p),
             'psi':        lambda x: chebyshev_psi_exact(x),
             'psi_tones':  lambda x, k=50: chebyshev_psi_explicit(x, zeros_upto(k)),
+            'zero_sum':   lambda x, k=50: zero_sum(x, zeros_upto(k)),
+            'L':          lambda x: clean_path_L(x),
+            'slots':      lambda x, k=50: l_io_decomposition(x, zeros_upto(k)),
             'shake':      lambda x, k=50: shake_order(x, zeros_upto(k)),
             'gamma':      lambda n: zero_height(n),
             'gamma_w':    lambda n: zero_height_lambert(n),

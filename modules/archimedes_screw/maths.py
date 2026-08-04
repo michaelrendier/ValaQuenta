@@ -52,10 +52,63 @@ Read it as a machine and three facts fall out:
      x^sigma and drown every other tone. See amplitude_envelope() and
      the paper's section 6.4.
 
-SYMBOL COLLISION WARNING. Two different psi are in play across these
-repos. Here psi(x) is CHEBYSHEV's function (a prime counter). In
-modules/l_io_photon_path it is the FERMAT/lensing potential. They are
-unrelated. This module always writes chebyshev_psi_* in full.
+SLOT CORRESPONDENCE (2026-08-04 -- supersedes the earlier "these two psi
+are unrelated, do not merge" note, which was true but undersold it).
+
+Two psi are in play across these repos, and they are NOT the same object:
+
+    psi_Cheb(x)     ChebyshevS function, SUM ln p over prime powers <= x.
+                    Domain R+, one-dimensional. A monotone STEP function.
+                    Source is a discrete measure Lambda(n) on prime
+                    powers; psi' = SUM Lambda(n) delta(x-n) -- ONE
+                    integration above its source. Unbounded, psi ~ x.
+
+    psi_Fermat(th)  the lensing/Fermat potential in
+                    modules/l_io_photon_path. A SMOOTH scalar field on a
+                    2D domain. Source is a continuous density kappa;
+                    nabla^2 psi = 2 kappa -- TWO integrations above it.
+                    Oscillatory, sign-changing, bounded on a frame.
+
+Different domain, different arity, different regularity. Code that
+treats them as one object is wrong: you cannot Poisson-solve a staircase
+and you cannot read a prime off a smooth field. Keep them itemised.
+
+BUT THE COLLISION IS NOT AN ACCIDENT. They sit ONE SLOT APART in the
+same equation. Line the two up:
+
+    lensing:   L_(I|O)  =  L   -  psi_Fermat
+    primes:    psi_Cheb =  x   -  SUM_rho x^rho/rho   (- ln2pi - ...)
+
+Signs and arrangement match term for term, so:
+
+    psi_Cheb        <->  L_(I|O)      the ACTUAL, bent path
+    x               <->  L            the CLEAN geodesic
+    SUM_rho x^rho/rho <->  psi_Fermat   the POTENTIAL -- the bend
+
+Chebyshev psi is therefore NOT the counterpart of the Fermat potential.
+It is the counterpart of L_(I|O). The object that genuinely corresponds
+to psi_Fermat is the ZERO SUM, which had no name in these repos at all
+until this revision -- it existed only inline inside
+chebyshev_psi_explicit, which is exactly why the collision read as a
+naming accident. It is now zero_sum().
+
+Two consequences, both load-bearing:
+
+  * The main term x IS L, "the path of least primes" -- the phrase the
+    2026-07-31 context primer s4 carries without a formula. It is the
+    pole term: what psi would be if no zero contributed. The vacuum
+    utterance, computed. See clean_path_L().
+
+  * The prime side already HAD an L_(I|O) and it was being called psi.
+    De-lensing on this side means recovering the source from the bent
+    path, and here the source is Lambda -- the primes themselves. That
+    is the fourth column of the primer's s4 dictionary, and it was the
+    missing one.
+
+l_io_decomposition() returns all three slots by role name so the
+correspondence is executable, not merely documented. This module still
+always writes chebyshev_psi_* in full -- the standard name is correct
+and any number theorist reading it expects it.
 
 THE N-SPECIFIC LEG (ramification). For the factoring thread the global
 formula above is twisted by the quadratic character chi_N, giving
@@ -473,6 +526,85 @@ def tone_sum(u: float, zeros: Optional[List[float]] = None,
     return sum(tone(u, g, sigma) for g in zs)
 
 
+def clean_path_L(x: float) -> float:
+    """
+    L -- THE CLEAN PATH. The main term of the explicit formula: x.
+
+    This is what chebyshev_psi would be if no zero contributed anything:
+    the pole term alone, the vacuum, the flat-space answer. In the
+    L_(I|O) dictionary (Ainulindale/wiki/52, wiki/83 s9, and the 2026-07-31
+    context primer s4) L is called "the path of least primes". This
+    function is that phrase, computed: L(x) = x.
+
+    Trivial as code. It is here because the correspondence is only
+    inspectable if every slot in it is addressable.
+    """
+    if x <= 0:
+        raise ValueError("clean_path_L: x must be positive")
+    return x
+
+
+def zero_sum(x: float, zeros: Optional[List[float]] = None,
+             sigma: float = 0.5) -> float:
+    """
+    THE PRIME-SIDE FERMAT POTENTIAL.
+
+        SUM_rho x^rho / rho  =  2 sqrt(x) SUM_k cos(gamma_k u - arg rho_k)/|rho_k|
+
+    summed over conjugate pairs, u = ln x.
+
+    This object had no name in these repos until 2026-08-04. It existed
+    only inline inside chebyshev_psi_explicit, which is precisely why the
+    psi symbol collision looked like a naming accident instead of what it
+    is -- see the SLOT CORRESPONDENCE block in this module's header.
+
+    THIS, not chebyshev_psi, is the counterpart of the lensing/Fermat
+    potential psi(theta) in modules/l_io_photon_path. It is the BEND: the
+    departure of the actual prime staircase from the clean path L(x) = x.
+
+    Sign convention matches the lensing side exactly:
+
+        L_(I|O) = L - psi_Fermat          (lensing)
+        psi_Cheb = x - zero_sum(x) - ...  (primes)
+
+    so zero_sum enters with a minus in both readings.
+    """
+    return tone_sum(u_axis(x), zeros, sigma)
+
+
+def l_io_decomposition(x: float, zeros: Optional[List[float]] = None
+                       ) -> Dict[str, float]:
+    """
+    The explicit formula, split into its L_(I|O) slots.
+
+    Returns the three terms by the NAME OF THE ROLE THEY PLAY, so the
+    correspondence with modules/l_io_photon_path is executable rather
+    than only documented:
+
+        L           the clean path, x            (= clean_path_L)
+        psi_bend    the Fermat potential term    (= zero_sum)
+        L_IO        the actual bent path         (= chebyshev_psi_explicit)
+        trivial     -ln(2pi) - 0.5 ln(1-x^-2)    (the trivial-zero tail)
+
+    Identity held by construction:  L_IO = L - psi_bend + trivial
+
+    Reading it: chebyshev_psi sits in the L_(I|O) slot -- the ACTUAL,
+    bent path. The main term x sits in the L slot -- the clean geodesic,
+    "the path of least primes". zero_sum sits in the psi slot -- the bend.
+    Chebyshev psi is NOT the counterpart of the lensing psi; it is the
+    counterpart of L_(I|O), one slot away.
+    """
+    L = clean_path_L(x)
+    bend = zero_sum(x, zeros)
+    trivial = -math.log(TWO_PI) - 0.5 * math.log(1.0 - x ** -2)
+    return {
+        'L':        L,
+        'psi_bend': bend,
+        'trivial':  trivial,
+        'L_IO':     L - bend + trivial,
+    }
+
+
 def chebyshev_psi_explicit(x: float, zeros: Optional[List[float]] = None,
                            sigma: float = 0.5) -> float:
     """
@@ -487,9 +619,8 @@ def chebyshev_psi_explicit(x: float, zeros: Optional[List[float]] = None,
     """
     if x <= 1.0:
         raise ValueError("chebyshev_psi_explicit: x must exceed 1")
-    u = math.log(x)
-    return (x
-            - tone_sum(u, zeros, sigma)
+    return (clean_path_L(x)
+            - zero_sum(x, zeros, sigma)
             - math.log(TWO_PI)
             - 0.5 * math.log(1.0 - x ** -2))
 

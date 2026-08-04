@@ -61,6 +61,38 @@ mean is not observable from shear alone), and say why. That is the
 reusable content of "L_(I|O) is how you get through the boundary" --
 independent of gravitational lensing specifically.
 
+SLOT CORRESPONDENCE WITH THE PRIME SIDE (2026-08-04 addendum; naming and
+bookkeeping only, changes no equation in this module).
+
+modules/archimedes_screw also carries a psi. It is CHEBYSHEV's function,
+SUM ln p over prime powers <= x -- a monotone step function on R+, one
+integration above a discrete measure. This module's psi(theta) is the
+Fermat/lensing potential, a smooth 2D field two integrations above a
+continuous density kappa. Different domain, arity and regularity: the
+two must be itemised separately, never merged.
+
+They are nevertheless ONE SLOT APART in the same equation:
+
+    here:      L_(I|O)  =  L   -  psi(theta)
+    primes:    psi_Cheb =  x   -  SUM_rho x^rho/rho   (- ln2pi - ...)
+
+    psi_Cheb          <->  L_(I|O)      the actual, bent path
+    x                 <->  L            the clean geodesic
+    SUM_rho x^rho/rho <->  psi(theta)   the potential -- the bend
+
+So the counterpart of THIS module's psi is the prime side's ZERO SUM
+(archimedes_screw.zero_sum), not its Chebyshev psi. Chebyshev psi is the
+counterpart of L_(I|O) itself -- i.e. the prime side already had an
+L_(I|O) and was calling it psi. Correspondingly the explicit formula's
+main term x is L, "the path of least primes"
+(archimedes_screw.clean_path_L).
+
+De-lensing (theta -> beta) on the prime side therefore means recovering
+the SOURCE from the bent path, and there the source is the von Mangoldt
+measure Lambda -- the primes themselves. See
+archimedes_screw.l_io_decomposition(), which returns the three slots by
+role name, and Ainulindale/wiki/83 s9.
+
 CONJECTURE, explicitly not established (flagged, not asserted -- see
 Ainulindale wiki companion page for the argument in full): the Riemann
 zeta function's simple pole at s=1 (zeta(s) ~ 1/(s-1) + gamma, gamma =

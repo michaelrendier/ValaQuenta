@@ -102,16 +102,39 @@ What is not yet written is the **dispersion relation on the zero-divisor surface
 
 **This is the next piece of work.** Everything above is the instrument built to look at it.
 
-## Symbol collision — read this before editing
+## The slot correspondence — read this before editing
 
-Two unrelated ψ are now in play across the repos:
+*(Revised 2026-08-04. Previously read "two unrelated ψ, do not merge" — true, but it undersold the situation.)*
 
-| Symbol | Meaning | Module |
+**They are different objects. Itemise them.**
+
+| | ψ_Cheb(x) — here | ψ_Fermat(θ) — `l_io_photon_path` |
 |---|---|---|
-| ψ(x) | **Chebyshev's function**, Σ ln p — a prime counter | `archimedes_screw` |
-| ψ(θ) | **Fermat / lensing potential**, ∇²ψ = 2κ | `l_io_photon_path` |
+| domain | ℝ⁺, 1-D | 2D field |
+| regularity | monotone **step** function | smooth scalar field |
+| source | discrete Λ(n) on prime powers | continuous density κ |
+| above source | ψ′ = Σ Λ(n)δ(x−n) — **one** integration | ∇²ψ = 2κ — **two** |
 
-This module always spells it `chebyshev_psi_*` in full. Do not merge the names.
+You cannot Poisson-solve a staircase; you cannot read a prime off a smooth field.
+
+**But they are one slot apart in the same equation.**
+
+```
+lensing:   L_(I|O)  =  L   −  ψ_Fermat
+primes:    ψ_Cheb   =  x   −  Σ_ρ x^ρ/ρ    (− ln2π − ½ln(1−x⁻²))
+
+    ψ_Cheb      ↔  L_(I|O)     the actual, bent path
+    x           ↔  L           the clean geodesic
+    Σ_ρ x^ρ/ρ   ↔  ψ_Fermat    the potential — the bend
+```
+
+Chebyshev ψ is the counterpart of **L_(I|O)**, not of the Fermat potential. The object that corresponds to ψ_Fermat is the **zero sum**, which had no name in these repos until this revision — it lived inline inside `chebyshev_psi_explicit`, which is exactly why the collision read as an accident. Now `zero_sum()`.
+
+Consequently the main term x **is** L — "the path of least primes", the phrase the 2026-07-31 primer carries without a formula, now `clean_path_L()`. And the prime side already had an L_(I|O); it was being called ψ.
+
+`l_io_decomposition(x)` returns all three slots by role name (`L`, `psi_bend`, `trivial`, `L_IO`), identity `L_IO = L − psi_bend + trivial` held by construction. Fourth dictionary column in `Ainulindale/wiki/83` §9.3 and the primer §4.
+
+`chebyshev_psi_*` keeps its name — it is standard and expected. What changed is that the object it was hiding now has one too.
 
 ## Confidence
 
