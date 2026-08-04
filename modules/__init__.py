@@ -33,5 +33,19 @@ Current modules (Phase 4):
                          |J_red|^2+|J_blue|^2 is NOT constant across sigma —
                          minimum at 1/2, not flat quantum-style conservation.
 
-Version: 0.130 — Phase 4: sigma_expansion
+Current modules (Phase 5):
+    archimedes_screw   — The machine, distinct from the medium it lifts.
+                         0_RB is the water; the screw is the logarithm.
+                         Four search terms (Ordinal, Zeta Index, Digits,
+                         Spaces Between) as four coordinates on one axis
+                         u = ln x, bound by the von Mangoldt explicit
+                         formula. psi jumps by exactly ln p at x = p —
+                         the leaf-drop magnitude IS the prime. Lambert-W
+                         inverse of the zero count (same W whose fixed
+                         point W(1)=Ω_ZS pins σ=½). RH as the shared
+                         amplitude envelope 2√x. Ramification leg:
+                         the Euler factor degenerates at exactly the
+                         factors of N in ℚ(√N).
+
+Version: 0.140 — Phase 5: archimedes_screw
 """

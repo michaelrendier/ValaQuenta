@@ -3,14 +3,45 @@ ainulindale_engine.engine.registry
 =====================================
 Module registry — the contract that all equation modules must satisfy.
 
-HOW TO ADD A NEW MODULE
-========================
+HOW TO ADD A NEW MODULE (the code half)
+========================================
 1. Create a directory under ainulindale_engine/modules/your_module/
 2. Add __init__.py, maths.py, tools.py
 3. In maths.py, define a class that inherits from EquationModule
 4. Implement all required methods (see EquationModule below)
 5. Register your module: registry.register(YourModule())
 6. Done. The engine and viewer pick it up automatically.
+
+FULL ENGINE PROTOCOL (amended 2026-08-04 by Cody — FIVE parts, was four)
+========================================================================
+Steps 1–6 above ship the code. They do not finish the engine. An engine is
+not "done" until all five artifacts exist, because code alone is
+undiscoverable from a cold context — which is the exact failure the
+.clauderc_* family exists to prevent.
+
+    1. ENGINE            modules/<name>/{__init__,maths,tools}.py, plus
+                         registration in __main__.py::_register_all() and a
+                         listing in modules/__init__.py.
+    2. NOTEBOOK          notebooks/engines/NN_<name>.ipynb (or the topic
+                         subdirectory) — exercises the formulary end to end
+                         and shows the open items honestly.
+    3. AINULINDALE WIKI  Ainulindale/wiki/NN_<name>.md — the narrative page:
+                         origin quote, what changed, honest boundaries,
+                         predecessor links.
+    4. VALAQUENTA WIKI   ValaQuenta/wiki/<name>.md — the engineering page:
+                         file, class, claim, mechanism, confidence table.
+                         Add the row to wiki/00_index.md.
+    5. .clauderc_ValaQuenta ENTRY   ← NEW, added 2026-08-04.
+                         export CTX_<NAME>="…" in ~/.clauderc_ValaQuenta AND
+                         the module name appended to VALAQUENTA_ENGINE_INDEX,
+                         so `ctxengine <name>` resolves without reading source.
+                         An engine missing from that index is invisible to a
+                         cold session no matter how complete its code is —
+                         l_io_photon_path sat unindexed in exactly that state.
+
+Canonical-maths changes that accompany an engine go in
+~/.clauderc_canonical_maths. All ~/.clauderc* files are copied into
+ContextPlease/claude/ before the push (github push protocol).
 
 The engine does not need to know your module's internals.
 Your module does not need to know the engine's internals.
