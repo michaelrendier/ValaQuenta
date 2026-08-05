@@ -20,7 +20,7 @@ from .maths import (
     clean_path_L, zero_sum, l_io_decomposition,
     lpf, gpf, fall_height, discovery_height, smoothness_u,
     dickman_rho, gpf_table, psi_smooth, harvest, harvest_curve,
-    semiprime_harvest, fall_split,
+    semiprime_harvest, fall_split, domain_ladder,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,

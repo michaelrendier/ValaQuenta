@@ -152,6 +152,36 @@ ln p₁ = ½ln N − δ,   ln p₂ = ½ln N + δ,   δ = ½ln(p₂/p₁)
 
 `lpf`/`gpf` are trial division, O(√n). `harvest_curve`/`psi_smooth` are O(X log log X) time, O(X) memory. Tracking the fall is cheap; reaching it for a 2048-bit modulus still means sieving to 2¹⁰²⁴. Naming the event correctly does not move that wall.
 
+## The projection ledger — what "the domain" actually is
+
+`domain_ladder(modulus_bits)`. Cody, 2026-08-05: *"is that everything from 2 through the RSA modulus? or is that only using the prime numbers that have enough digits?"* — **neither.**
+
+```
+RSA-2048                                    log₂(count)
+all integers 2 … N                             2048
+all integers 2 … √N          trial range       1024
+all PRIMES ≤ √N              only these test   1014.53
+primes with exactly 1024 bits                  1013.53
+GNFS pathway actually walked                    112
+
+√N bound saves      1024 bits   (free — Fermat: p ≤ q ⟹ p ≤ √N)
+primes-only saves      9.47 bits
+size restriction       1.00 bit
+GNFS saves further   901.53 bits
+```
+
+**THE ONE-BIT FACT.** Restricting to primes "with enough digits" prunes by a factor of exactly **2**, not by orders of magnitude. Primes are top-heavy: density 1/ln x barely moves across an octave (at 2¹⁰²⁴, ln x differs by 0.1% between x/2 and x), so
+
+```
+π(x) − π(x/2) ≈ x/(2 ln x) ≈ ½ π(x)
+```
+
+Half of all primes below any bound live in the top octave. The size restriction discards the other half and nothing else. Verified: the saving is 1.0028 at 1024 bits, 1.0014 at 2048, 1.0007 at 4096 — tightening to exactly 1 as the modulus grows.
+
+This joins the other cheap algebraic constraints, all worth single digits: mod 4 ≈ 1 bit, mod 16 = 3 bits, size = 1 bit.
+
+**The only row that is a target.** Everything above 2¹¹² is naive-domain accounting that was beaten in the 1990s. A new method must clear **2¹¹²**, not 2¹⁰²⁴.
+
 ## The slot correspondence — read this before editing
 
 *(Revised 2026-08-04. Previously read "two unrelated ψ, do not merge" — true, but it undersold the situation.)*

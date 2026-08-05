@@ -1142,3 +1142,66 @@ def fall_split(N: int) -> Dict[str, float]:
         'smoothness_u':      math.log(N) / f_h,
         'is_semiprime':      float(lo * hi == N),
     }
+
+
+def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
+                  ) -> Dict[str, float]:
+    """
+    THE PROJECTION LEDGER, baseline row.
+
+    "the domain to check ... is that everything from 2 through the RSA
+     modulus? or is that only using the prime numbers that have enough
+     digits to result in the RSA modulus?"   -- Cody, 2026-08-05
+
+    Neither. Answers both, in log2, for a balanced modulus of the given
+    bit length. Every value is a COUNT, returned as its base-2 logarithm.
+
+        all_integers        every integer 2..N
+        integers_to_sqrt    every integer 2..sqrt(N)  -- the trial-division
+                            range. Past sqrt(N) there is nothing to find,
+                            since N = p*q with p <= q forces p <= sqrt(N).
+        primes_to_sqrt      pi(sqrt N) -- only these ever need testing
+        primes_exact_size   primes of exactly modulus_bits/2 bits
+        gnfs                what is actually walked (primer s7)
+
+    THE ONE-BIT FACT: restricting to primes "with enough digits" prunes by
+    a factor of exactly 2, not by orders of magnitude. Primes are
+    top-heavy -- density 1/ln x barely moves across an octave (at 2^1024,
+    ln x changes by 0.1% between x/2 and x), so
+
+        pi(x) - pi(x/2) ~ x/(2 ln x) ~ 0.5 * pi(x)
+
+    HALF of all primes below any bound live in the top octave. The size
+    restriction throws away the other half and nothing more. See
+    'saving_size_restriction', which comes out at 1.00.
+
+    The only row that matters as a target is 'gnfs'. Everything above it
+    is naive-domain accounting that was beaten in the 1990s. A new method
+    has to clear 2^112, not 2^1024.
+    """
+    if modulus_bits < 4:
+        raise ValueError("domain_ladder: modulus_bits must be >= 4")
+    half = modulus_bits / 2.0
+
+    def _pi_log2(bits: float) -> float:
+        """log2 pi(2^bits), via the standard asymptotic, evaluated in log space."""
+        L = bits * math.log(2.0)
+        series = 1.0 + 1.0 / L + 2.0 / L ** 2 + 6.0 / L ** 3
+        return bits - math.log2(L) + math.log2(series)
+
+    hi = _pi_log2(half)
+    lo = _pi_log2(half - 1.0)
+    # count of exactly-`half`-bit primes = pi(2^half) - pi(2^(half-1))
+    exact = hi + math.log2(1.0 - 2.0 ** (lo - hi))
+
+    return {
+        'all_integers':              float(modulus_bits),
+        'integers_to_sqrt':          half,
+        'primes_to_sqrt':            hi,
+        'primes_exact_size':         exact,
+        'gnfs':                      float(gnfs_bits),
+        'saving_sqrt_bound':         modulus_bits - half,
+        'saving_primes_only':        half - hi,
+        'saving_size_restriction':   hi - exact,
+        'saving_gnfs':               exact - gnfs_bits,
+    }

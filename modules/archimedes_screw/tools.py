@@ -30,7 +30,7 @@ from .maths import (
     clean_path_L, zero_sum, l_io_decomposition,
     lpf, gpf, fall_height, discovery_height, smoothness_u,
     dickman_rho, gpf_table, psi_smooth, harvest, harvest_curve,
-    semiprime_harvest, fall_split,
+    semiprime_harvest, fall_split, domain_ladder,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
@@ -80,7 +80,11 @@ class ArchimedesScrewModule(EquationModule):
             "the harvest at step p is Psi(X/p, p) in closed form, and "
             "fall_split reports the imbalance delta that is a semiprime's "
             "entire hidden content -- collapsing to zero for balanced RSA, "
-            "which is why the two fall events coincide there."
+            "which is why the two fall events coincide there. domain_ladder """
+            "settles what 'the domain' means: not 2..N but 2..sqrt(N), only """
+            "the primes in it, and restricting to exactly-size primes buys """
+            "exactly ONE BIT because half of all primes below any bound live """
+            "in the top octave. The only target that matters is GNFS at 2^112."
         )
 
     @property
@@ -260,6 +264,18 @@ class ArchimedesScrewModule(EquationModule):
                 display_options=['text'],
             ),
             Equation(
+                name='domain_ladder',
+                display='THE PROJECTION LEDGER: what the domain actually is',
+                latex=r'2^{b} \to 2^{b/2} \to \pi(2^{b/2}) \to 2^{112}',
+                radian_form=('all ints 2^b; ints to sqrt 2^(b/2); primes to sqrt pi(2^(b/2)); '
+                             'exact-size primes (1 bit less); GNFS 2^112'),
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['modulus_bits', 'gnfs_bits'],
+                compute=lambda modulus_bits=2048, gnfs_bits=112.0: domain_ladder(modulus_bits, gnfs_bits),
+                display_options=['text'],
+            ),
+            Equation(
                 name='zero_height_lambert',
                 display='Lambert inverse of the zero count: gamma_n = 2*pi*n/W(n/e)',
                 latex=r'\gamma_n \sim \frac{2\pi n}{W(n/e)}',
@@ -418,6 +434,7 @@ class ArchimedesScrewModule(EquationModule):
             'crop':       lambda X: harvest_curve(X),
             'sp_harvest': lambda X, p: semiprime_harvest(X, p),
             'birth':      lambda N: fall_split(N),
+            'ladder':     lambda b=2048: domain_ladder(b),
             'shake':      lambda x, k=50: shake_order(x, zeros_upto(k)),
             'gamma':      lambda n: zero_height(n),
             'gamma_w':    lambda n: zero_height_lambert(n),
