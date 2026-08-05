@@ -47,5 +47,12 @@ Current modules (Phase 5):
                          the Euler factor degenerates at exactly the
                          factors of N in ℚ(√N).
 
-Version: 0.140 — Phase 5: archimedes_screw
+                         v0.2 (2026-08-05) adds the composite side: the
+                         leaf falls at gpf(N) not lpf(N) (14 falls at 7),
+                         Dickman ρ as the fall-time distribution in
+                         u = lnN/ln(gpf N), the harvest Ψ(X/p,p) in closed
+                         form, and δ = ½ln(q/p) — a semiprime's entire
+                         hidden content, collapsing to 0 for balanced RSA.
+
+Version: 0.141 — Phase 5: archimedes_screw v0.2 (fall events)
 """

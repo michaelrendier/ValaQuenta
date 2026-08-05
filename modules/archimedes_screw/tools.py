@@ -14,7 +14,7 @@ Four search terms (Ordinal Value, Zeta Index Value, Number of Digits,
 Total Spaces Between) are four coordinates on one axis u = ln x. The
 explicit formula binds them. See maths.py for the full statement.
 
-Version: 0.1
+Version: 0.2
 """
 
 from typing import Dict, List, Any
@@ -28,6 +28,9 @@ from .maths import (
     von_mangoldt, chebyshev_psi_exact, chebyshev_psi_explicit,
     leaf_drops, tone, tone_sum, interference_profile,
     clean_path_L, zero_sum, l_io_decomposition,
+    lpf, gpf, fall_height, discovery_height, smoothness_u,
+    dickman_rho, gpf_table, psi_smooth, harvest, harvest_curve,
+    semiprime_harvest, fall_split,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
@@ -49,7 +52,7 @@ class ArchimedesScrewModule(EquationModule):
 
     @property
     def version(self):
-        return "0.1"
+        return "0.2"
 
     @property
     def description(self):
@@ -70,7 +73,14 @@ class ArchimedesScrewModule(EquationModule):
             "L_(I|O) slot decomposition: Chebyshev psi is the counterpart "
             "of L_(I|O) (the actual bent path), the main term x is L (the "
             "clean path of least primes), and the newly named zero_sum is "
-            "the counterpart of the Fermat/lensing potential -- the bend."
+            "the counterpart of the Fermat/lensing potential -- the bend. "
+            "v0.2 adds the composite side the screw was blind to: the leaf "
+            "falls at gpf(N) (14 = 2*7 falls at 7, not at 2), the fall-time "
+            "distribution is Dickman rho in the coordinate u = lnN/ln(gpf N), "
+            "the harvest at step p is Psi(X/p, p) in closed form, and "
+            "fall_split reports the imbalance delta that is a semiprime's "
+            "entire hidden content -- collapsing to zero for balanced RSA, "
+            "which is why the two fall events coincide there."
         )
 
     @property
@@ -170,6 +180,83 @@ class ArchimedesScrewModule(EquationModule):
                 code_verified=True,
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: shake_order(x, zeros),
+                display_options=['text'],
+            ),
+            Equation(
+                name='fall_height',
+                display='WHEN THE LEAF FALLS: u_fall = ln(gpf N)',
+                latex=r'u_{\text{fall}}(N) = \ln\big(\mathrm{gpf}\,N\big)',
+                radian_form='fall_height(N) = ln(greatest prime factor of N); 14 falls at 7',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['n'],
+                compute=lambda n: fall_height(n),
+                display_options=['text'],
+            ),
+            Equation(
+                name='discovery_height',
+                display='Where the first strike lands: ln(lpf N)',
+                latex=r'u_{\text{disc}}(N) = \ln\big(\mathrm{lpf}\,N\big)',
+                radian_form='discovery_height(N) = ln(least prime factor); 14 is struck at 2',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['n'],
+                compute=lambda n: discovery_height(n),
+                display_options=['text'],
+            ),
+            Equation(
+                name='smoothness_u',
+                display='The Dickman coordinate: u = ln N / ln(gpf N)',
+                latex=r'u = \frac{\ln N}{\ln(\mathrm{gpf}\,N)}',
+                radian_form='u = 1 for a prime, u = 2 for a balanced semiprime (exponent 1/2)',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['n'],
+                compute=lambda n: smoothness_u(n),
+                display_options=['text'],
+            ),
+            Equation(
+                name='dickman_rho',
+                display='THE FALL-TIME DISTRIBUTION: Dickman rho(u)',
+                latex=r'u\rho\,\!\'(u) = -\rho(u-1),\quad \Psi(x,x^{1/u}) \sim x\,\rho(u)',
+                radian_form='rho(1)=1; rho(2)=1-ln2=0.3068528; rho(3)=0.0486083',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['u'],
+                compute=lambda u: dickman_rho(u),
+                display_options=['text'],
+            ),
+            Equation(
+                name='harvest',
+                display='THE HARVEST: leaves falling at sieve step p',
+                latex=r'\#\{n \le X : \mathrm{gpf}\,n = p\} = \Psi(X/p,\ p)',
+                radian_form='harvest(X,p) = psi_smooth(X//p, p) — closed form, no search',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['X', 'p'],
+                compute=lambda X, p: harvest(X, p),
+                display_options=['text'],
+            ),
+            Equation(
+                name='semiprime_harvest',
+                display='Two-parent leaves falling at step p',
+                latex=r'\#\{N = qp \le X,\ q \le p\ \text{prime}\} = \pi(\min(p, X/p))',
+                radian_form='semiprime_harvest(X,p) = pi(min(p, X//p)), exact sieve count',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['X', 'p'],
+                compute=lambda X, p: semiprime_harvest(X, p),
+                display_options=['text'],
+            ),
+            Equation(
+                name='fall_split',
+                display='The birth record: both falls, delta, and the collapse',
+                latex=r'\ln p_1 + \ln p_2 = \ln N;\quad \delta = \tfrac12\ln(p_2/p_1)',
+                radian_form='delta is the ENTIRE hidden content; collapse=2*delta -> 0 for balanced N',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['N'],
+                compute=lambda N: fall_split(N),
                 display_options=['text'],
             ),
             Equation(
@@ -321,6 +408,16 @@ class ArchimedesScrewModule(EquationModule):
             'zero_sum':   lambda x, k=50: zero_sum(x, zeros_upto(k)),
             'L':          lambda x: clean_path_L(x),
             'slots':      lambda x, k=50: l_io_decomposition(x, zeros_upto(k)),
+            'fall':       lambda n: fall_height(n),
+            'disc':       lambda n: discovery_height(n),
+            'gpf':        lambda n: gpf(n),
+            'lpf':        lambda n: lpf(n),
+            'u':          lambda n: smoothness_u(n),
+            'rho':        lambda u: dickman_rho(u),
+            'harvest':    lambda X, p: harvest(X, p),
+            'crop':       lambda X: harvest_curve(X),
+            'sp_harvest': lambda X, p: semiprime_harvest(X, p),
+            'birth':      lambda N: fall_split(N),
             'shake':      lambda x, k=50: shake_order(x, zeros_upto(k)),
             'gamma':      lambda n: zero_height(n),
             'gamma_w':    lambda n: zero_height_lambert(n),

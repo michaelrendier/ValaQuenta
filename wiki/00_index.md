@@ -31,7 +31,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [telperion.md](telperion.md) | `telperion.py` | 10/10 PREDICTIONS | bell swings d*↔π/8; never closes |
 | [corpus.md](corpus.md) | `corpus.py` | **UNTESTED** | no binary corpus loaded |
 | [lexicon.md](lexicon.md) | `lexicon.py` | **UNTESTED** | no binary corpus loaded |
-| [archimedes_screw.md](archimedes_screw.md) | `modules/archimedes_screw/` | THEORETICAL | screw = logarithm; ψ jumps by exactly ln p; γₙ=2πn/W(n/e) |
+| [archimedes_screw.md](archimedes_screw.md) | `modules/archimedes_screw/` | THEORETICAL | screw = logarithm; ψ jumps by exactly ln p; γₙ=2πn/W(n/e); **v0.2** leaf falls at gpf(N), Dickman ρ, harvest Ψ(X/p,p) |
 
 ## Foundations — Tiers 0 to 5
 

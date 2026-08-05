@@ -130,13 +130,22 @@ arithmetic. See splitting_type() and ramified_primes().
     resolution costs -- but that contour does not live in C, and its
     dispersion relation is not yet written.
 
+THE COMPOSITE SIDE (v0.2, 2026-08-05). psi counts only prime powers, so a
+composite contributes nothing to it -- as first built this engine could name
+every prime and say nothing about any child. The leaf falls at gpf(N), not
+lpf(N): 14 = 2*7 is struck at 2 but stays on the tree, and drops at 7. That
+is the smoothness criterion the whole factoring literature runs on, its
+distribution is Dickman rho in the coordinate u = ln N/ln(gpf N), and the
+harvest at sieve step p is Psi(X/p, p) in closed form. See the WHEN THE LEAF
+FALLS section at the foot of this file.
+
 NUMERICS NOTE. The registry contract asks for Fraction arithmetic with
 float only at the output boundary. This module is transcendental
 throughout (ln, Lambert W, cos) so it is float-native by nature; the
 only exactly rational quantities here are digit counts and integer
 indices, which are kept as int. Stated rather than silently ignored.
 
-Version: 0.1
+Version: 0.2
 """
 
 import math
@@ -832,4 +841,304 @@ def shake_order(x: float, zeros: Optional[List[float]] = None) -> Dict[str, obje
         'psi_tones': approx,
         'residual':  exact - approx,
         'n_tones':   len(zs),
+    }
+
+
+# --------------------------------------------------------------------------
+# WHEN THE LEAF FALLS -- the composite side of the screw
+# --------------------------------------------------------------------------
+#
+# Added 2026-08-05, correcting the engine's original blind spot. chebyshev_psi
+# counts ONLY prime powers, so a composite contributes nothing to it -- the
+# screw as first built could name every prime and say nothing about any child.
+# Composites live in the COMPLEMENT (x - pi(x), Cody's "Total Spaces Between").
+#
+# THE TWO FALLS (Cody, 2026-08-05, with 14 = 2 * 7):
+#
+#   "when the sieve removes all the even numbers, the 14 is still stationary
+#    on the tree as a leaf... but then when 7 is sieved, 14 drops off"
+#
+#   DISCOVERY  at lpf(N)   first strike; you learn N is composite and get the
+#                          cofactor free. 14 is struck at 2.
+#   COMPLETION at gpf(N)   the sieve is FINISHED with N; nothing about it is
+#                          open. 14 falls at 7.   <-- THE LEAF FALL
+#
+# The leaf is still hanging while any factor is unresolved, so the fall is at
+# gpf, not lpf. This is not a stylistic choice of ordering: SMOOTHNESS IS
+# DEFINED BY THE GREATEST PRIME FACTOR (N is y-smooth iff gpf(N) <= y), and
+# smooth relations are the engine of GNFS, the quadratic sieve, CFRAC and
+# index calculus. The tree's own criterion is the one the field already runs on.
+#
+# THE FALL-TIME DISTRIBUTION ALREADY EXISTS, in screw coordinates:
+#
+#     u = ln N / ln(gpf N)          the Dickman coordinate (a RATIO of lifts)
+#     u*rho'(u) = -rho(u-1),  rho(u) = 1 on [0,1]
+#     Psi(x, x^(1/u)) ~ x * rho(u)
+#
+# For a balanced semiprime gpf ~ sqrt(N), so u = 2 and the exponent 1/u = 1/2.
+# The 1/2 again, arriving through smoothness this time: the balanced semiprime
+# is exactly the leaf that falls at the square root. rho(2) = 1 - ln 2.
+#
+# WHY BALANCED RSA IS HARD, in these terms: for an unbalanced semiprime the
+# two falls are far apart and the early one hands you everything. Balanced,
+# delta = 0.5*ln(q/p) -> 0 and BOTH FALLS COLLAPSE ONTO ln N / 2. There is no
+# early event to catch. Not "the search space is big" -- the two observables
+# coincide.
+#
+# COST, stated not buried: lpf/gpf here are trial division, O(sqrt n). The
+# harvest is a sieve, O(X log log X) time and O(X) memory. Tracking the fall
+# is cheap; REACHING it for a 2048-bit modulus still means sieving to 2^1024.
+# Naming the event correctly does not move that wall.
+
+
+def lpf(n: int) -> int:
+    """
+    Least prime factor -- the DISCOVERY event. 14 -> 2.
+
+    Where the first strike lands: you learn N is composite here, and the
+    cofactor N/lpf(N) comes free. Trial division, O(sqrt n).
+    """
+    if n < 2:
+        raise ValueError("lpf: n must be >= 2")
+    if n % 2 == 0:
+        return 2
+    f = 3
+    while f * f <= n:
+        if n % f == 0:
+            return f
+        f += 2
+    return n
+
+
+def gpf(n: int) -> int:
+    """
+    Greatest prime factor -- THE LEAF FALL. 14 -> 7.
+
+    The leaf hangs while any factor is unresolved; it drops when the sieve
+    is finished with n. This is the smoothness criterion (n is y-smooth iff
+    gpf(n) <= y), i.e. the function every practical factoring method is
+    organised around. Trial division, O(sqrt n).
+    """
+    if n < 2:
+        raise ValueError("gpf: n must be >= 2")
+    m = n
+    best = 1
+    while m % 2 == 0:
+        best = 2
+        m //= 2
+    f = 3
+    while f * f <= m:
+        while m % f == 0:
+            best = f
+            m //= f
+        f += 2
+    return m if m > 1 else best
+
+
+def fall_height(n: int) -> float:
+    """
+    WHEN THE LEAF FALLS, on the screw axis: u_fall = ln(gpf n).
+
+    The completion event in lift coordinates. For a prime this equals
+    ln n -- a prime is its own leaf and falls at its own height.
+    """
+    return math.log(gpf(n))
+
+
+def discovery_height(n: int) -> float:
+    """Where the first strike lands, on the screw axis: ln(lpf n)."""
+    return math.log(lpf(n))
+
+
+def smoothness_u(n: int) -> float:
+    """
+    The Dickman coordinate u = ln n / ln(gpf n).
+
+    A RATIO of screw heights, which is why the fall-time distribution is
+    native to this axis. u = 1 for a prime (falls at its own height);
+    u = 2 for a balanced semiprime (falls at the square root); u grows as
+    the number gets smoother.
+    """
+    if n < 2:
+        raise ValueError("smoothness_u: n must be >= 2")
+    g = math.log(gpf(n))
+    if g == 0.0:
+        raise ValueError("smoothness_u: undefined")
+    return math.log(n) / g
+
+
+# Dickman rho, tabulated on a fixed grid and marched forward by the
+# integral recurrence  rho(u) = (1/u) * INT_{u-1}^{u} rho(t) dt,
+# which is equivalent to u*rho'(u) = -rho(u-1). Exact on [0,2]:
+# rho(u) = 1 on [0,1], rho(u) = 1 - ln u on [1,2].
+_RHO_H = 1.0 / 512.0
+_RHO_TABLE: List[float] = []
+
+
+def _build_rho(u_max: float) -> None:
+    """Extend the cached rho grid to at least u_max (step _RHO_H)."""
+    global _RHO_TABLE
+    need = int(math.ceil(u_max / _RHO_H)) + 2
+    if len(_RHO_TABLE) >= need:
+        return
+    per = int(round(1.0 / _RHO_H))          # samples per unit interval
+    tab = [1.0] * (per + 1)                 # rho = 1 on [0,1]
+    for i in range(per + 1, 2 * per + 1):   # exact on [1,2]
+        tab.append(1.0 - math.log(i * _RHO_H))
+    # march: rho(u) = (1/u) * INT_{u-1}^{u} rho, trapezoid on the grid
+    i = 2 * per + 1
+    while len(tab) < need:
+        u = i * _RHO_H
+        lo = i - per                        # index of u-1, always in table
+        seg = tab[lo:i]                     # rho on [u-1, u-h]
+        # trapezoid over [u-1, u] using rho(u) itself is implicit; use the
+        # explicit-in-history form: integrate [u-1, u-h] and add the last
+        # half-step with the previous value (h is small; error O(h^2)).
+        integral = (0.5 * seg[0] + sum(seg[1:]) + 0.5 * tab[i - 1]) * _RHO_H
+        tab.append(integral / u)
+        i += 1
+    _RHO_TABLE = tab
+
+
+def dickman_rho(u: float) -> float:
+    """
+    Dickman's function rho(u) -- THE FALL-TIME DISTRIBUTION.
+
+        Psi(x, x^(1/u)) ~ x * rho(u)
+
+    i.e. rho(u) is the density of integers whose leaf has already fallen by
+    height N^(1/u). Established (Dickman 1930), and native to this axis
+    because u is a ratio of screw lifts.
+
+    Checkpoints: rho(1) = 1, rho(2) = 1 - ln2 = 0.3068528,
+    rho(3) = 0.0486083, rho(4) = 0.0049109, rho(5) = 0.00035473.
+
+    The balanced-semiprime case is u = 2 exactly -- exponent 1/u = 1/2.
+    """
+    if u < 0:
+        raise ValueError("dickman_rho: u must be >= 0")
+    if u <= 1.0:
+        return 1.0
+    if u <= 2.0:
+        return 1.0 - math.log(u)
+    _build_rho(u)
+    pos = u / _RHO_H
+    i = int(math.floor(pos))
+    frac = pos - i
+    return _RHO_TABLE[i] * (1.0 - frac) + _RHO_TABLE[i + 1] * frac
+
+
+def gpf_table(X: int) -> List[int]:
+    """
+    gpf for every n <= X, by one ascending sieve pass.
+
+    Because primes are visited in increasing order, the LAST prime to write
+    into a slot is that slot's greatest prime factor. O(X log log X) time,
+    O(X) memory -- this is the whole harvest in a single sweep.
+
+    Index 0 and 1 are returned as 0 (no prime factor).
+    """
+    if X < 1:
+        raise ValueError("gpf_table: X must be >= 1")
+    tab = [0] * (X + 1)
+    for p in range(2, X + 1):
+        if tab[p] == 0:                     # p is prime
+            for m in range(p, X + 1, p):
+                tab[m] = p
+    return tab
+
+
+def psi_smooth(x: int, y: int) -> int:
+    """
+    Psi(x, y) = #{n <= x : gpf(n) <= y}  -- the count of y-smooth numbers.
+
+    Exact, by sieve. n = 1 counts as smooth (empty factorisation), matching
+    the standard convention.
+    """
+    if x < 1:
+        return 0
+    tab = gpf_table(x)
+    return 1 + sum(1 for n in range(2, x + 1) if tab[n] <= y)
+
+
+def harvest(X: int, p: int) -> int:
+    """
+    THE HARVEST: how many leaves fall at sieve step p.
+
+        #{n <= X : gpf(n) = p}  =  Psi(X/p, p)
+
+    Closed form -- one smooth count, no search. n = p*m with m <= X/p and m
+    itself p-smooth, so the crop at step p is exactly the p-smooth numbers
+    below X/p.
+
+    Cross-check against harvest_curve(), which counts the same thing directly
+    off the sieve table. They must agree; disagreement is a bug.
+    """
+    if p < 2:
+        raise ValueError("harvest: p must be >= 2")
+    return psi_smooth(X // p, p)
+
+
+def harvest_curve(X: int) -> Dict[int, int]:
+    """
+    The whole harvest in one sweep: {p: number of leaves falling at step p}
+    for every prime p <= X. Counted directly off gpf_table.
+    """
+    tab = gpf_table(X)
+    out: Dict[int, int] = {}
+    for n in range(2, X + 1):
+        g = tab[n]
+        out[g] = out.get(g, 0) + 1
+    return out
+
+
+def semiprime_harvest(X: int, p: int) -> int:
+    """
+    Leaves with exactly two parents falling at step p:
+
+        #{N = q*p <= X : q prime, q <= p}  =  pi(min(p, X/p))
+
+    Includes q = p (i.e. N = p^2, a prime square) by the standard semiprime
+    convention. Exact; pi() here is an exact sieve count, not Li.
+    """
+    if p < 2:
+        raise ValueError("semiprime_harvest: p must be >= 2")
+    bound = min(p, X // p)
+    if bound < 2:
+        return 0
+    return len(_sieve(bound))
+
+
+def fall_split(N: int) -> Dict[str, float]:
+    """
+    The full birth record of a semiprime, in screw coordinates.
+
+    Returns discovery (lpf) and fall (gpf) heights, their sum -- which is
+    ln N exactly, the gematria identity made exact -- and the imbalance
+
+        delta = 0.5 * ln(gpf/lpf)
+
+    delta is the ENTIRE hidden content of a semiprime: ln N is public, and
+    the pair is fixed by ln p = 0.5*ln N - delta, ln q = 0.5*ln N + delta.
+
+    'collapse' = ln(gpf/lpf) = 2*delta is the separation between the two
+    fall events. It vanishes for balanced N -- which is exactly why balanced
+    RSA is hard: the two observables coincide at ln(N)/2 and there is no
+    early event to catch.
+    """
+    if N < 4:
+        raise ValueError("fall_split: N must be >= 4")
+    lo, hi = lpf(N), gpf(N)
+    d_h, f_h = math.log(lo), math.log(hi)
+    return {
+        'lpf':               float(lo),
+        'gpf':               float(hi),
+        'discovery_height':  d_h,
+        'fall_height':       f_h,
+        'sum_check':         d_h + f_h,      # == ln N iff N is a semiprime
+        'ln_N':              math.log(N),
+        'delta':             0.5 * (f_h - d_h),
+        'collapse':          f_h - d_h,
+        'smoothness_u':      math.log(N) / f_h,
+        'is_semiprime':      float(lo * hi == N),
     }

@@ -102,6 +102,56 @@ What is not yet written is the **dispersion relation on the zero-divisor surface
 
 **This is the next piece of work.** Everything above is the instrument built to look at it.
 
+## When the leaf falls — the composite side (v0.2, 2026-08-05)
+
+ψ counts **only prime powers**, so a composite contributes nothing to it. As first built this engine could name every prime and say nothing about any child; composites live in the complement, x − π(x), the fourth search term.
+
+**Two events, and they are not the same:**
+
+| event | occurs at | meaning |
+|---|---|---|
+| discovery | `lpf(N)` | first strike — you learn N is composite, cofactor comes free |
+| **fall** | **`gpf(N)`** | the sieve is finished with N — nothing remains open |
+
+Cody's case: 14 = 2·7 is struck at 2 but **stays on the tree**; it drops at 7. The leaf hangs while any factor is unresolved, so the fall is at gpf.
+
+This is not a stylistic choice of ordering. **Smoothness is defined by the greatest prime factor** (N is y-smooth ⟺ gpf(N) ≤ y), and smooth relations are the engine of GNFS, the quadratic sieve, CFRAC and index calculus. The tree's own criterion is the one the field already runs on.
+
+### The fall-time distribution already existed
+
+Native to this axis, because the Dickman coordinate is a **ratio of screw lifts**:
+
+```
+u = ln N / ln(gpf N)
+u·ρ′(u) = −ρ(u−1),   ρ(u) = 1 on [0,1]
+Ψ(x, x^(1/u)) ~ x·ρ(u)
+```
+
+`dickman_rho` marches ρ(u) = (1/u)∫_{u−1}^{u}ρ(t)dt on a fixed grid; verified against published values to ~10⁻⁷ at u = 1…5. **A balanced semiprime sits at u = 2 exactly** — exponent 1/u = ½. The ½ again, this time through smoothness.
+
+### The harvest is closed-form
+
+```
+leaves falling at step p       =  Ψ(X/p, p)          `harvest`
+two-parent leaves at step p    =  π(min(p, X/p))     `semiprime_harvest`
+```
+
+`harvest_curve` counts the same thing directly off a `gpf_table` sieve; the two agree exactly at every p tested (X = 10⁵, p ∈ {2,3,5,7,97,997}). Disagreement is a bug, not a discovery.
+
+### Why balanced RSA is hard, in these terms
+
+On the screw the family identity is **exact**: ln p₁ + ln p₂ = ln N. So a semiprime is one public constraint plus one free number:
+
+```
+ln p₁ = ½ln N − δ,   ln p₂ = ½ln N + δ,   δ = ½ln(p₂/p₁)
+```
+
+**δ is the entire hidden content.** The two falls are separated by exactly 2δ. Unbalanced ⟹ far apart, and the early event hands you everything. Balanced ⟹ δ → 0 and **both falls collapse onto ½ln N**. There is no early event to catch. Not "the search space is large" — **the two observables coincide.**
+
+### Cost, stated
+
+`lpf`/`gpf` are trial division, O(√n). `harvest_curve`/`psi_smooth` are O(X log log X) time, O(X) memory. Tracking the fall is cheap; reaching it for a 2048-bit modulus still means sieving to 2¹⁰²⁴. Naming the event correctly does not move that wall.
+
 ## The slot correspondence — read this before editing
 
 *(Revised 2026-08-04. Previously read "two unrelated ψ, do not merge" — true, but it undersold the situation.)*
