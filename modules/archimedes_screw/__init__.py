@@ -6,7 +6,7 @@ The Archimedes Screw -- Prime Coordinate Engine
 0_RB is the water. The screw is the logarithm: the machine that turns
 rotation into lift, one pitch of ln p per prime.
 
-Version: 0.2
+Version: 0.3
 """
 
 from .tools import ArchimedesScrewModule
@@ -21,6 +21,7 @@ from .maths import (
     lpf, gpf, fall_height, discovery_height, smoothness_u,
     dickman_rho, gpf_table, psi_smooth, harvest, harvest_curve,
     semiprime_harvest, fall_split, domain_ladder,
+    mobius, mertens, mertens_envelope, sieve_extinction,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,

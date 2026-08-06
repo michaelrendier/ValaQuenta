@@ -145,7 +145,7 @@ throughout (ln, Lambert W, cos) so it is float-native by nature; the
 only exactly rational quantities here are digit counts and integer
 indices, which are kept as int. Stated rather than silently ignored.
 
-Version: 0.2
+Version: 0.3
 """
 
 import math
@@ -1204,4 +1204,146 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
         'saving_primes_only':        half - hi,
         'saving_size_restriction':   hi - exact,
         'saving_gnfs':               exact - gnfs_bits,
+    }
+
+
+# --------------------------------------------------------------------------
+# THE NEGATIVE SPACE -- the exclusion side of the screw
+# --------------------------------------------------------------------------
+#
+# Added 2026-08-05. Cody: "that is working on the bulk rather than the
+# negative space".
+#
+# psi counts the BULK -- what accumulates. It has no counterpart here for
+# what is EXCLUDED, and the sieve is an exclusion process: you never test
+# primality positively, you remove multiples and keep the residue. Fermat
+# carves the forbidden zone; what survives IS prime.
+#
+# The two motions are reciprocal Euler products:
+#
+#     GROWTH      zeta(s)   = SUM n^-s     = PROD (1 - p^-s)^-1
+#     EXTINCTION  1/zeta(s) = SUM mu(n)n^-s = PROD (1 - p^-s)
+#
+# Same product, inverted exponent. The Moebius function mu IS the
+# negative-space operator: the Dirichlet inverse of 1, defined by
+# SUM_{d|n} mu(d) = [n == 1], and the sieve is literally mu in action
+# (Legendre: pi(x) - pi(sqrt x) + 1 = SUM_d mu(d) floor(x/d)).
+#
+# And the negative space has its own counting function, mirroring psi:
+#
+#     psi(x) = SUM_{p^m <= x} ln p     the BULK        psi(x) ~ x
+#     M(x)   = SUM_{n <= x} mu(n)      the MERTENS     RH <=> M(x)=O(x^(1/2+eps))
+#
+# THE SAME 1/2, on the exclusion side. RH restated as a bound on how far
+# the sieve's signed cancellation can wander.
+#
+# THREE MOTIONS, not two (this resolves the lpf/gpf tangle):
+#
+#     GROWN       zeta orders the primes; the leaf is placed at ln N
+#     EXTINCT     mu excludes; struck, removed from the candidate set   at lpf
+#     IDENTIFIED  the N-shape names the factors; the leaf drops         at gpf
+#
+# Extinction and identification are NOT two definitions of one event.
+# They have opposite polarity: the sieve REMOVES WITHOUT NAMING (negative),
+# the N-shape NAMES (positive). Between them the leaf is dead but
+# unidentified, and that interval has length ln(gpf/lpf) = 2*delta -- the
+# same delta that collapses for balanced RSA. So for balanced RSA all
+# THREE observables coincide at ln(N)/2.
+
+
+def mobius(n: int) -> int:
+    """
+    THE NEGATIVE-SPACE OPERATOR. mu(n) = 1 if n is a squarefree product of
+    an even number of primes, -1 if odd, 0 if n has a squared factor.
+
+    The Dirichlet inverse of the constant function 1: SUM_{d|n} mu(d) is
+    1 at n=1 and 0 otherwise. This is the operator the sieve actually
+    runs on -- inclusion-exclusion, not positive testing.
+    """
+    if n < 1:
+        raise ValueError("mobius: n must be >= 1")
+    if n == 1:
+        return 1
+    m, count = n, 0
+    for p in _sieve(int(n ** 0.5) + 1):
+        if p * p > m:
+            break
+        if m % p == 0:
+            m //= p
+            if m % p == 0:
+                return 0            # squared factor
+            count += 1
+    if m > 1:
+        count += 1
+    return -1 if count % 2 else 1
+
+
+def mertens(x: int) -> int:
+    """
+    M(x) = SUM_{n <= x} mu(n) -- THE NEGATIVE-SPACE STAIRCASE.
+
+    psi's mirror. Where psi accumulates ln p on the bulk side, M
+    accumulates signed exclusion on the negative side. M(x) grows far more
+    slowly than x and changes sign endlessly.
+
+    Checkpoints: M(10) = -1, M(100) = 1, M(1000) = 2, M(10000) = -23.
+    """
+    if x < 1:
+        return 0
+    tab = [1] * (x + 1)
+    tab[0] = 0
+    for p in _sieve(x):
+        for m in range(p, x + 1, p):
+            tab[m] *= -1
+        for m in range(p * p, x + 1, p * p):
+            tab[m] = 0
+    return sum(tab[1:x + 1])
+
+
+def mertens_envelope(x: float, eps: float = 0.0) -> float:
+    """
+    The RH bound on the exclusion side: x^(1/2 + eps).
+
+    RH <=> M(x) = O(x^(1/2+eps)) for every eps > 0. Equivalently,
+    1/zeta(s) = SUM mu(n)n^-s extends to Re(s) > 1/2.
+
+    This is the SAME 1/2 as the critical line and the same 1/2 as the
+    shared tone envelope 2*sqrt(x) in amplitude_envelope() -- read on the
+    negative side instead of the bulk. Two counting functions, one bound.
+    """
+    if x <= 0:
+        raise ValueError("mertens_envelope: x must be positive")
+    return x ** (0.5 + eps)
+
+
+def sieve_extinction(N: int) -> Dict[str, object]:
+    """
+    THE THREE-MOTION RECORD for a composite N.
+
+        grown       positioned by zeta at u = ln N
+        extinct     struck by the sieve at u = ln(lpf N)   -- NEGATIVE space
+        identified  named by its factors at u = ln(gpf N)  -- BULK
+
+    'dead_but_unnamed' is the interval between extinction and
+    identification, ln(gpf/lpf) = 2*delta. It vanishes for balanced
+    semiprimes, which is why all three observables coincide at ln(N)/2
+    there and the tree gives up nothing early.
+
+    'mu' is N's own negative-space value; mu = 0 flags a squared factor,
+    i.e. a leaf that was never squarefree to begin with.
+    """
+    if N < 2:
+        raise ValueError("sieve_extinction: N must be >= 2")
+    lo, hi = lpf(N), gpf(N)
+    u_ext, u_id = math.log(lo), math.log(hi)
+    return {
+        'N':                float(N),
+        'grown_at':         math.log(N),
+        'extinct_at':       u_ext,
+        'identified_at':    u_id,
+        'dead_but_unnamed': u_id - u_ext,
+        'delta':            0.5 * (u_id - u_ext),
+        'is_prime':         float(lo == N),
+        'mu':               float(mobius(N)),
+        'squarefree':       float(mobius(N) != 0),
     }

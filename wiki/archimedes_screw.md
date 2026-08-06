@@ -152,6 +152,46 @@ ln p₁ = ½ln N − δ,   ln p₂ = ½ln N + δ,   δ = ½ln(p₂/p₁)
 
 `lpf`/`gpf` are trial division, O(√n). `harvest_curve`/`psi_smooth` are O(X log log X) time, O(X) memory. Tracking the fall is cheap; reaching it for a 2048-bit modulus still means sieving to 2¹⁰²⁴. Naming the event correctly does not move that wall.
 
+## The negative space — μ, Mertens, and the three motions (v0.3, 2026-08-05)
+
+Cody, 2026-08-05: *"that is working on the bulk rather than the negative space."*
+
+ψ counts what **accumulates**. It had no counterpart for what is **excluded** — and the sieve is an exclusion process: you never test primality positively, you remove multiples and keep the residue. Fermat carves the forbidden zone; what survives *is* prime.
+
+The two motions are reciprocal Euler products:
+
+```
+GROWTH      ζ(s)   = Σ n⁻ˢ      = ∏ (1 − p⁻ˢ)⁻¹
+EXTINCTION  1/ζ(s) = Σ μ(n)n⁻ˢ  = ∏ (1 − p⁻ˢ)
+```
+
+Same product, inverted exponent. **μ is the negative-space operator** — the Dirichlet inverse of 1, Σ_{d|n} μ(d) = [n=1] — and the sieve is literally μ in action (Legendre: π(x) − π(√x) + 1 = Σ_d μ(d)⌊x/d⌋).
+
+The negative space has its own counting function, ψ's mirror:
+
+```
+ψ(x) = Σ_{pᵐ≤x} ln p     the BULK       ψ(x) ~ x
+M(x) = Σ_{n≤x} μ(n)      the MERTENS    RH ⟺ M(x) = O(x^{½+ε})
+```
+
+**The same ½, on the exclusion side.** Verified against known values: M(10) = −1, M(100) = 1, M(1000) = 2, M(10000) = −23.
+
+### Three motions, not two
+
+This resolves the lpf/gpf tangle — they are not two definitions of one event but two events of opposite polarity:
+
+| motion | agent | event | at |
+|---|---|---|---|
+| **grown** | ζ orders the primes | the leaf is placed at ln N | — |
+| **extinct** | μ excludes | struck, removed — *without naming* | **lpf** |
+| **identified** | the N-shape names | the factors are resolved | **gpf** |
+
+Between extinction and identification the leaf is **dead but unnamed**, an interval of length ln(gpf/lpf) = **2δ**. For balanced RSA δ → 0 and all three observables coincide at ½ln N.
+
+A prime is the degenerate case: grown, extinct and identified at the same instant. It is its own leaf.
+
+Functions: `mobius`, `mertens`, `mertens_envelope`, `sieve_extinction`.
+
 ## The projection ledger — what "the domain" actually is
 
 `domain_ladder(modulus_bits)`. Cody, 2026-08-05: *"is that everything from 2 through the RSA modulus? or is that only using the prime numbers that have enough digits?"* — **neither.**

@@ -39,6 +39,7 @@ from .modules.t32_nilpotency import T32NilpotencyModule
 from .modules.hypergon_constructibility import HypergonConstructibilityModule
 from .modules.l_io_photon_path import LIOPhotonPathModule
 from .modules.archimedes_screw import ArchimedesScrewModule
+from .modules.box_kite import BoxKiteModule
 from .modules.bao_mass_gap import BaoMassGapModule
 
 def _register_all():
@@ -59,6 +60,7 @@ def _register_all():
     register(HypergonConstructibilityModule())
     register(LIOPhotonPathModule())
     register(ArchimedesScrewModule())
+    register(BoxKiteModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

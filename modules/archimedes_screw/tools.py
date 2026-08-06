@@ -14,7 +14,7 @@ Four search terms (Ordinal Value, Zeta Index Value, Number of Digits,
 Total Spaces Between) are four coordinates on one axis u = ln x. The
 explicit formula binds them. See maths.py for the full statement.
 
-Version: 0.2
+Version: 0.3
 """
 
 from typing import Dict, List, Any
@@ -31,6 +31,7 @@ from .maths import (
     lpf, gpf, fall_height, discovery_height, smoothness_u,
     dickman_rho, gpf_table, psi_smooth, harvest, harvest_curve,
     semiprime_harvest, fall_split, domain_ladder,
+    mobius, mertens, mertens_envelope, sieve_extinction,
     amplitude_envelope, envelope_ratio,
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
@@ -52,7 +53,7 @@ class ArchimedesScrewModule(EquationModule):
 
     @property
     def version(self):
-        return "0.2"
+        return "0.3"
 
     @property
     def description(self):
@@ -80,7 +81,12 @@ class ArchimedesScrewModule(EquationModule):
             "the harvest at step p is Psi(X/p, p) in closed form, and "
             "fall_split reports the imbalance delta that is a semiprime's "
             "entire hidden content -- collapsing to zero for balanced RSA, "
-            "which is why the two fall events coincide there. domain_ladder """
+            "which is why the two fall events coincide there. v0.3 adds the "
+            "NEGATIVE SPACE psi had no counterpart for: mu is the exclusion "
+            "operator, M(x)=SUM mu(n) is psi's mirror, RH on that side is "
+            "M(x)=O(x^(1/2+eps)) -- the same 1/2 -- and sieve_extinction gives "
+            "the THREE motions: grown (zeta), extinct at lpf (negative), "
+            "identified at gpf (bulk). domain_ladder """
             "settles what 'the domain' means: not 2..N but 2..sqrt(N), only """
             "the primes in it, and restricting to exactly-size primes buys """
             "exactly ONE BIT because half of all primes below any bound live """
@@ -264,6 +270,50 @@ class ArchimedesScrewModule(EquationModule):
                 display_options=['text'],
             ),
             Equation(
+                name='mertens',
+                display='THE NEGATIVE-SPACE STAIRCASE: M(x) = Σ μ(n)',
+                latex=r'M(x) = \sum_{n \le x} \mu(n),\quad 1/\zeta(s) = \sum \mu(n)n^{-s}',
+                radian_form='psi is the bulk; M is the exclusion. M(10)=-1, M(100)=1, M(1000)=2',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['x'],
+                compute=lambda x: mertens(x),
+                display_options=['text'],
+            ),
+            Equation(
+                name='mobius',
+                display='THE NEGATIVE-SPACE OPERATOR: μ, the Dirichlet inverse of 1',
+                latex=r'\sum_{d \mid n} \mu(d) = [n = 1]',
+                radian_form='the sieve is inclusion-exclusion; mu is what it runs on',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['n'],
+                compute=lambda n: mobius(n),
+                display_options=['text'],
+            ),
+            Equation(
+                name='mertens_envelope',
+                display='RH on the exclusion side: M(x) = O(x^(1/2+eps))',
+                latex=r'\mathrm{RH} \iff M(x) = O\!\left(x^{1/2+\epsilon}\right)',
+                radian_form='the SAME 1/2 as the critical line and as the 2*sqrt(x) tone envelope',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['x', 'eps'],
+                compute=lambda x, eps=0.0: mertens_envelope(x, eps),
+                display_options=['text'],
+            ),
+            Equation(
+                name='sieve_extinction',
+                display='THE THREE-MOTION RECORD: grown / extinct / identified',
+                latex=r'\ln N,\ \ln(\mathrm{lpf}\,N),\ \ln(\mathrm{gpf}\,N)',
+                radian_form='extinct at lpf (negative space), identified at gpf (bulk); gap = 2*delta',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['N'],
+                compute=lambda N: sieve_extinction(N),
+                display_options=['text'],
+            ),
+            Equation(
                 name='domain_ladder',
                 display='THE PROJECTION LEDGER: what the domain actually is',
                 latex=r'2^{b} \to 2^{b/2} \to \pi(2^{b/2}) \to 2^{112}',
@@ -435,6 +485,10 @@ class ArchimedesScrewModule(EquationModule):
             'sp_harvest': lambda X, p: semiprime_harvest(X, p),
             'birth':      lambda N: fall_split(N),
             'ladder':     lambda b=2048: domain_ladder(b),
+            'mu':         lambda n: mobius(n),
+            'M':          lambda x: mertens(x),
+            'M_bound':    lambda x: mertens_envelope(x),
+            'extinct':    lambda N: sieve_extinction(N),
             'shake':      lambda x, k=50: shake_order(x, zeros_upto(k)),
             'gamma':      lambda n: zero_height(n),
             'gamma_w':    lambda n: zero_height_lambert(n),

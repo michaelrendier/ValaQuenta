@@ -54,5 +54,15 @@ Current modules (Phase 5):
                          form, and δ = ½ln(q/p) — a semiprime's entire
                          hidden content, collapsing to 0 for balanced RSA.
 
-Version: 0.141 — Phase 5: archimedes_screw v0.2 (fall events)
+    box_kite           — The Box-Kite Debugger. The ZD geometry made
+                         visible and exactly enumerable. The object is
+                         PSL(2,7) (order 168, Aut Fano), NOT G₂ — Moreno's
+                         G₂ is the blow-up that forgets the labelling.
+                         42 Assessors, 84 diagonals, 168 unit points, 336
+                         annihilating pairs, 7 box-kites of 6 — all derived
+                         from the CD table. Each chart is an OCTAHEDRON
+                         with Laplacian spectrum {0,4,4,4,6,6}; the zero
+                         mode is e₀'s signature. Associator = curvature.
+
+Version: 0.150 — Phase 6: box_kite
 """
