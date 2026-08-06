@@ -7,7 +7,7 @@ The object is PSL(2,7), order 168, Aut(Fano plane) -- NOT G2. Moreno's
 G2 homeomorphism is the continuous blow-up that forgets the labelling.
 7 box-kites, each an octahedron, 6 Assessors apiece, 42 in all.
 
-Version: 0.1
+Version: 0.2
 """
 
 from .tools import BoxKiteModule
@@ -20,4 +20,8 @@ from .maths import (
     glued_graph, glued_spectrum, associator_field, eigenvalues_symmetric,
     pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts,
     e0_is_outside, SEDENION_DIM,
+    index_chart_membership, skeleton_overlap, fixed_point_gluing,
+    norm, fixed_point_weight, energy_split, diagonal_amplitudes,
+    assessor_coordinates, chart_projection, nearest_assessor,
+    local_curvature, chart_of, address_census,
 )

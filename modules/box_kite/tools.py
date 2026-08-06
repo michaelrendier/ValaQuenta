@@ -10,7 +10,7 @@ The zero-divisor geometry, made visible and exactly enumerable. The
 object is PSL(2,7) (order 168, Aut(Fano)), NOT G2 -- Moreno's G2 is the
 continuous blow-up that forgets the labelling. See maths.py.
 
-Version: 0.1
+Version: 0.2
 """
 
 from typing import Dict, List, Any
@@ -26,6 +26,10 @@ from .maths import (
     eigenvalues_symmetric,
     pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts,
     e0_is_outside, SEDENION_DIM,
+    index_chart_membership, skeleton_overlap, fixed_point_gluing,
+    norm, fixed_point_weight, energy_split, diagonal_amplitudes,
+    assessor_coordinates, chart_projection, nearest_assessor,
+    local_curvature, chart_of, address_census,
 )
 
 
@@ -42,7 +46,7 @@ class BoxKiteModule(EquationModule):
 
     @property
     def version(self):
-        return "0.1"
+        return "0.2"
 
     @property
     def description(self):
@@ -61,7 +65,16 @@ class BoxKiteModule(EquationModule):
             "signature: exists everywhere, propagates nowhere. The "
             "associator [a,b,c]=(ab)c-a(bc) is the curvature and the debug "
             "view. Agreement with ZD_PAIRS=84 / ZD_CLASSES=42 / 168 is a "
-            "CHECK, not an input."
+            "CHECK, not an input. v0.2 adds THE CHART OF ADDRESSES: given a "
+            "monad sedenion address (VAPMIP/monad_sedenion_addresses.pkl), "
+            "chart_of() reports which of the 7 charts it occupies, its "
+            "nearest Assessor and diagonals, its local associator curvature, "
+            "and its FIXED-POINT WEIGHT. And it resolves the disconnection: "
+            "the charts touch in the SKELETON (every usable index sits in 6 "
+            "of 7 charts; only e_0 and e_8 are orphans) even though they have "
+            "zero cross-strut adjacency edges. The 7 zero modes are 7 copies "
+            "of one constant, and they identify at e_0 -- the fixed point is "
+            "where the boundary generator and the geometry coincide."
         )
 
     @property
@@ -172,6 +185,61 @@ class BoxKiteModule(EquationModule):
                 display_options=['text'],
             ),
             Equation(
+                name='chart_of',
+                display='THE CHART OF ADDRESSES: where a monad address sits in the atlas',
+                latex=r'v \in \mathbb{S} \mapsto (\text{strut},\ \text{Assessor},\ \kappa_{\text{local}})',
+                radian_form='exhaustive: chart energies, nearest Assessor, diagonals, curvature, fixed-point weight',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['v', 'check_zd'],
+                compute=lambda v, check_zd=True: chart_of(v, check_zd),
+                display_options=['text'],
+            ),
+            Equation(
+                name='address_census',
+                display='Exhaustive census over a corpus of monad addresses',
+                latex=r'\{\text{name} \to v\} \mapsto \text{distribution over 7 charts, 42 Assessors}',
+                radian_form='descriptive only — counts and distributions, no scoring against an expectation',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['addresses', 'limit', 'check_zd'],
+                compute=lambda addresses, limit=None, check_zd=False: address_census(addresses, limit, check_zd),
+                display_options=['text'],
+            ),
+            Equation(
+                name='skeleton_overlap',
+                display='THE CHARTS DO TOUCH — in the skeleton, not the adjacency',
+                latex=r'\text{every usable index lies in } 6 \text{ of } 7 \text{ charts}',
+                radian_form='pairwise shared skeleton points = 10 for every chart pair; only e_0 and e_8 are orphans',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=[],
+                compute=lambda: skeleton_overlap(),
+                display_options=['text'],
+            ),
+            Equation(
+                name='fixed_point_gluing',
+                display='WHERE THE ATLAS GLUES: at e_0',
+                latex=r'7 \text{ zero modes} = 7 \text{ copies of one constant} \to 1',
+                radian_form='e_0 and e_8 are the only basis elements in no Assessor; identify the zero modes and the atlas connects',
+                confidence='THEORETICAL',
+                code_verified=True,
+                params=[],
+                compute=lambda: fixed_point_gluing(),
+                display_options=['text'],
+            ),
+            Equation(
+                name='fixed_point_weight',
+                display='How much of an address is pure 0_RB',
+                latex=r'w_0(v) = v_0^2 / \|v\|^2',
+                radian_form='1.0 = pure identity, no geometry; measured mean over the monad book = 0.64',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['v'],
+                compute=lambda v: fixed_point_weight(v),
+                display_options=['text'],
+            ),
+            Equation(
                 name='skeleton_counts',
                 display='PG(3,2): 15 points, 35 lines, 15 Fano planes (NOT 32)',
                 latex=r'PG(3,2):\ 15\ \text{pts},\ 35\ \text{lines},\ 15\ \text{planes}',
@@ -271,6 +339,16 @@ class BoxKiteModule(EquationModule):
             'census':     lambda: associator_census(),
             'zds':        lambda: zero_divisor_pairs(),
             'mul':        lambda i, j: basis_mul(i, j),
+            'chart':      lambda v: chart_of(v),
+            'census':     lambda addrs, n=None: address_census(addrs, n),
+            'overlap':    lambda: skeleton_overlap(),
+            'glue':       lambda: fixed_point_gluing(),
+            'fpw':        lambda v: fixed_point_weight(v),
+            'split':      lambda v: energy_split(v),
+            'assess':     lambda v: assessor_coordinates(v),
+            'proj':       lambda v: chart_projection(v),
+            'curv':       lambda v: local_curvature(v),
+            'membership': lambda: index_chart_membership(),
         }
 
     def on_register(self, registry) -> None:

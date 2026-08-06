@@ -92,7 +92,7 @@ assemble the naive 42-vertex union, which is a first model of the global
 medium and NOT a derivation of one -- the transition maps are not yet
 written. Stated here rather than implied.
 
-Version: 0.1
+Version: 0.2
 """
 
 import math
@@ -597,4 +597,358 @@ def e0_is_outside() -> Dict[str, bool]:
         'e0_in_any_assessor': in_assessor,
         'e0_associator_always_vanishes': assoc_free,
         'e0_is_outside_the_geometry': (not in_points) and (not in_assessor) and assoc_free,
+    }
+
+
+# --------------------------------------------------------------------------
+# DO THE CHARTS TOUCH?  -- yes, in the skeleton; no, in the adjacency
+# --------------------------------------------------------------------------
+#
+# Cody, 2026-08-05: "i'm pretty sure that those 'surfaces' do actually touch
+# somewhere... they are all from the fixed point anyway... it's all the same
+# maths... but now we have a clue that 0_RB only points to 'fixed point
+# space'... where the boundary and the geometries are the same thing"
+#
+# Correct, and the two statements are about DIFFERENT STRUCTURES on the same
+# object. glued_graph() reports zero cross-strut EDGES -- that is the
+# adjacency. It is not the whole story:
+#
+#   ADJACENCY (zero-divisor products):  the charts are DISCONNECTED.
+#                                       7 components, 7 zero modes.
+#   SKELETON  (shared basis indices):   the charts OVERLAP ALMOST TOTALLY.
+#                                       Every one of the 14 usable indices
+#                                       sits in 6 of the 7 charts.
+#
+# For strut s an Assessor has lower index a and upper index (a XOR s)+8, valid
+# whenever a != s. So index a appears in every chart EXCEPT s = a -- six of
+# seven, for all 14 indices. The charts touch everywhere in the skeleton and
+# nowhere in the products.
+#
+# AND THE FIXED POINT IS WHERE THEY GLUE. Exactly two of the sixteen basis
+# elements are in NO Assessor:
+#
+#   e_0   the identity -- 0_RB, the fixed point
+#   e_8   the Cayley-Dickson doubling generator
+#
+# Each chart's Laplacian carries one zero mode, and a zero mode is the
+# constant function -- i.e. the same object in all seven charts. Seven
+# components, seven copies of one thing. IDENTIFY THE ZERO MODES AND THE
+# ATLAS CONNECTS. That identification happens at e_0 and nowhere else, which
+# is the precise sense in which "0_RB points to fixed point space, where the
+# boundary and the geometries are the same thing": at the fixed point the
+# boundary generator and the geometry's own mode ARE the same vector.
+# Away from it they separate.
+
+
+def index_chart_membership() -> Dict[int, List[int]]:
+    """
+    Which box-kites each basis index belongs to.
+
+    Returns {basis index -> [struts]}. Every usable index lands in exactly
+    6 of the 7 charts, missing only the chart whose strut equals its own
+    (lower) or partner (upper) label. e_0 and e_8 belong to none.
+    """
+    out: Dict[int, List[int]] = {i: [] for i in range(16)}
+    for s, members in box_kites().items():
+        for a, b in members:
+            if s not in out[a]:
+                out[a].append(s)
+            if s not in out[b + 8]:
+                out[b + 8].append(s)
+    return {i: sorted(v) for i, v in out.items()}
+
+
+def skeleton_overlap() -> Dict[str, object]:
+    """
+    THE CHARTS DO TOUCH -- in the skeleton.
+
+    Reports, for every pair of struts, how many basis indices they share,
+    and confirms that each usable index sits in 6 of 7 charts. This is the
+    structure glued_graph() cannot see, because it measures adjacency
+    (vanishing products) and this measures support (shared basis).
+    """
+    mem = index_chart_membership()
+    used = [i for i, v in mem.items() if v]
+    unused = [i for i, v in mem.items() if not v]
+    counts = {i: len(mem[i]) for i in used}
+    kites = box_kites()
+    support = {s: {a for a, b in kites[s]} | {b + 8 for a, b in kites[s]}
+               for s in kites}
+    pair_share = {}
+    for s in range(1, 8):
+        for t in range(s + 1, 8):
+            pair_share[(s, t)] = len(support[s] & support[t])
+    return {
+        'indices_used':          sorted(used),
+        'indices_in_no_chart':   sorted(unused),
+        'charts_per_index':      counts,
+        'every_used_index_in_6': all(c == 6 for c in counts.values()),
+        'pairwise_shared':       pair_share,
+        'min_pair_share':        min(pair_share.values()),
+        'max_pair_share':        max(pair_share.values()),
+        'charts_touch_in_skeleton': min(pair_share.values()) > 0,
+    }
+
+
+def fixed_point_gluing() -> Dict[str, object]:
+    """
+    WHERE THE ATLAS GLUES: at e_0.
+
+    Exactly two basis elements sit in no Assessor -- e_0 (the identity,
+    0_RB, the fixed point) and e_8 (the CD doubling generator). Each chart
+    contributes exactly one zero mode, and a zero mode is the constant
+    function: seven copies of one object. Identifying them collapses the
+    seven components to one.
+
+    So the disconnection is real at the level of adjacency and is removed
+    at the fixed point. Both of Cody's statements hold; they are about
+    different structures.
+    """
+    mem = index_chart_membership()
+    orphans = sorted(i for i, v in mem.items() if not v)
+    zero_modes = sum(1 for s in range(1, 8)
+                     for x in chart_spectrum(s) if abs(x) < 1e-9)
+    return {
+        'indices_in_no_assessor': orphans,
+        'e0_is_orphan':           0 in orphans,
+        'e8_is_orphan':           8 in orphans,
+        'orphan_count':           len(orphans),
+        'zero_modes_total':       zero_modes,
+        'components':             zero_modes,
+        'after_identification':   1,
+        'reading': ('adjacency disconnects the 7 charts; the skeleton shares '
+                    '6 of 7 charts per index; the zero modes are 7 copies of '
+                    'one constant and identify at e_0 -- the fixed point is '
+                    'where the boundary generator and the geometry coincide'),
+    }
+
+
+# --------------------------------------------------------------------------
+# THE CHART OF ADDRESSES -- locating a sedenion address in the atlas
+# --------------------------------------------------------------------------
+#
+# The monad's hyperindexing addresses a surface form to a 16-vector
+# (VAPMIP/monad_sedenion_addresses.pkl: book[name]['sedenion']). This
+# section is the connector: given such an address, say WHERE IT IS in the
+# box-kite atlas and HOW CURVED the geometry is there.
+#
+# Exhaustive by design -- every quantity that can be read off an address
+# against the 42 Assessors, 7 charts and 15 skeleton points is reported,
+# because the point of a debugger is that nothing is hidden.
+
+_SQRT2 = math.sqrt(2.0)
+
+
+def norm(v: Sequence[float]) -> float:
+    """Euclidean norm of a 16-vector."""
+    return math.sqrt(sum(c * c for c in v))
+
+
+def fixed_point_weight(v: Sequence[float]) -> float:
+    """
+    Share of an address's energy sitting on e_0 -- its FIXED-POINT WEIGHT.
+
+    1.0 means the address is pure identity (pure 0_RB, no geometry at all);
+    0.0 means it carries none. This is the direct measure of Cody's "they
+    are all from the fixed point anyway".
+    """
+    n2 = sum(c * c for c in v)
+    return (v[0] * v[0] / n2) if n2 > 0 else 0.0
+
+
+def energy_split(v: Sequence[float]) -> Dict[str, float]:
+    """
+    How an address's energy divides across the four structural blocks:
+
+        e_0        the fixed point (0_RB) -- in no Assessor
+        e_8        the CD doubling generator -- in no Assessor
+        e_1..e_7   lower imaginaries  (Assessor lower indices)
+        e_9..e_15  upper imaginaries  (Assessor upper indices)
+
+    Shares sum to 1. The e_0 + e_8 share is the part of the address that
+    lives OUTSIDE the ZD geometry entirely.
+    """
+    n2 = sum(c * c for c in v)
+    if n2 <= 0:
+        return {'e0': 0.0, 'e8': 0.0, 'lower': 0.0, 'upper': 0.0, 'outside': 0.0}
+    e0 = v[0] * v[0] / n2
+    e8 = v[8] * v[8] / n2
+    lo = sum(v[i] * v[i] for i in range(1, 8)) / n2
+    up = sum(v[i] * v[i] for i in range(9, 16)) / n2
+    return {'e0': e0, 'e8': e8, 'lower': lo, 'upper': up, 'outside': e0 + e8}
+
+
+def diagonal_amplitudes(v: Sequence[float], a: int, b: int) -> Tuple[float, float]:
+    """
+    Projections of an address onto the two diagonals of Assessor (a, b):
+
+        d+ = (v_a + v_{b+8}) / sqrt(2)
+        d- = (v_a - v_{b+8}) / sqrt(2)
+
+    These are the actual zero-dividing directions, so this is the address's
+    overlap with the ZD structure in that plane.
+    """
+    return ((v[a] + v[b + 8]) / _SQRT2, (v[a] - v[b + 8]) / _SQRT2)
+
+
+def assessor_coordinates(v: Sequence[float]) -> Dict[Tuple[int, int], Dict[str, float]]:
+    """
+    The address decomposed against all 42 Assessors.
+
+    For each (a, b): the in-plane energy v_a^2 + v_{b+8}^2, both diagonal
+    amplitudes, and which diagonal dominates. This is the exhaustive
+    readout -- 42 rows, nothing summarised away.
+    """
+    out = {}
+    for (a, b) in assessors():
+        dp, dm = diagonal_amplitudes(v, a, b)
+        e = v[a] * v[a] + v[b + 8] * v[b + 8]
+        out[(a, b)] = {
+            'energy': e,
+            'd_plus': dp,
+            'd_minus': dm,
+            'dominant': 1.0 if abs(dp) >= abs(dm) else -1.0,
+            'imbalance': abs(abs(dp) - abs(dm)),
+        }
+    return out
+
+
+def chart_projection(v: Sequence[float]) -> Dict[int, float]:
+    """
+    Energy of an address in each of the 7 charts (sum over its 6 Assessors).
+
+    NOTE these do NOT partition the address's energy: each basis index sits
+    in 6 of the 7 charts, so the chart energies deliberately overlap. That
+    overlap IS the skeleton touching -- see skeleton_overlap().
+    """
+    coords = assessor_coordinates(v)
+    out = {s: 0.0 for s in range(1, 8)}
+    for (a, b), row in coords.items():
+        out[strut(a, b)] += row['energy']
+    return out
+
+
+def nearest_assessor(v: Sequence[float]) -> Tuple[Tuple[int, int], float]:
+    """The Assessor carrying the most of the address's energy, and how much."""
+    coords = assessor_coordinates(v)
+    best = max(coords.items(), key=lambda kv: kv[1]['energy'])
+    return best[0], best[1]['energy']
+
+
+def local_curvature(v: Sequence[float], top: int = 3) -> float:
+    """
+    Associator defect around an address's dominant directions.
+
+    Takes the `top` largest-magnitude basis components (ignoring e_0, whose
+    associator vanishes identically) and sums the defect over their triples.
+    Scalar curvature at the address, in the same units associator_field()
+    reports on the charts.
+    """
+    idx = sorted(range(1, 16), key=lambda i: -abs(v[i]))[:max(1, top)]
+    tot = 0.0
+    for i in idx:
+        for j in idx:
+            for k in idx:
+                tot += associator_defect(i, j, k)
+    return tot
+
+
+def chart_of(v: Sequence[float], check_zd: bool = True) -> Dict[str, object]:
+    """
+    THE CHART OF ADDRESSES -- where a monad address sits in the atlas.
+
+    Exhaustive report for one 16-vector:
+
+        norm, fixed_point_weight, energy_split
+        peak_dim                 argmax component (matches the pkl's field)
+        chart_energy             all 7 charts
+        dominant_chart / strut   where most of its ZD-facing energy is
+        chart_share              dominant / total chart energy
+        nearest_assessor         the (a, b) plane carrying the most energy
+        diagonals                d+ / d- there, and which dominates
+        local_curvature          associator defect at its dominant directions
+        is_zero_divisor          whether v itself annihilates any diagonal
+        outside_share            energy on e_0 + e_8, i.e. OUTSIDE the geometry
+
+    A high outside_share means the address is mostly fixed point -- it is
+    'from 0_RB' in Cody's sense and carries little geometry to debug.
+
+    check_zd=False skips the exact zero-divisor test (168 sedenion products,
+    ~9 ms) and reports None for it. Everything else is microseconds, so the
+    census defaults to skipping it; single lookups keep it on.
+    """
+    if len(v) != 16:
+        raise ValueError("chart_of: a sedenion address is a 16-vector")
+    ce = chart_projection(v)
+    tot = sum(ce.values())
+    dom = max(ce, key=lambda s: ce[s]) if tot > 0 else 0
+    (na, nb), ne = nearest_assessor(v)
+    dp, dm = diagonal_amplitudes(v, na, nb)
+    zd = (any(is_zero(multiply(list(v), d)) or is_zero(multiply(d, list(v)))
+              for (a, b) in assessors() for d in diagonals(a, b))
+          if check_zd else None)
+    split = energy_split(v)
+    return {
+        'norm':               norm(v),
+        'peak_dim':           max(range(16), key=lambda i: abs(v[i])),
+        'fixed_point_weight': fixed_point_weight(v),
+        'energy_split':       split,
+        'outside_share':      split['outside'],
+        'chart_energy':       ce,
+        'dominant_chart':     dom,
+        'chart_share':        (ce[dom] / tot) if tot > 0 else 0.0,
+        'nearest_assessor':   (na, nb),
+        'nearest_energy':     ne,
+        'd_plus':             dp,
+        'd_minus':            dm,
+        'dominant_diagonal':  '+' if abs(dp) >= abs(dm) else '-',
+        'local_curvature':    local_curvature(v),
+        'is_zero_divisor':    zd,
+    }
+
+
+def address_census(addresses: Dict[str, Sequence[float]],
+                   limit: Optional[int] = None,
+                   check_zd: bool = False) -> Dict[str, object]:
+    """
+    EXHAUSTIVE CENSUS over a corpus of monad addresses.
+
+    Pass {name -> 16-vector} (e.g. every book[k]['sedenion'] from
+    monad_sedenion_addresses.pkl). Returns the distribution across charts,
+    Assessors, peak dimensions and fixed-point weight -- the descriptive
+    picture, before any hypothesis is tested against it.
+
+    Deliberately descriptive: counts and distributions only, no scoring
+    against an expected outcome.
+    """
+    items = list(addresses.items())
+    if limit is not None:
+        items = items[:limit]
+    chart_hist = {s: 0 for s in range(1, 8)}
+    peak_hist: Dict[int, int] = {}
+    ass_hist: Dict[Tuple[int, int], int] = {}
+    fpw, outside, curv, zdc = [], [], [], 0
+    for _, v in items:
+        r = chart_of(v, check_zd=check_zd)
+        chart_hist[r['dominant_chart']] = chart_hist.get(r['dominant_chart'], 0) + 1
+        peak_hist[r['peak_dim']] = peak_hist.get(r['peak_dim'], 0) + 1
+        ass_hist[r['nearest_assessor']] = ass_hist.get(r['nearest_assessor'], 0) + 1
+        fpw.append(r['fixed_point_weight'])
+        outside.append(r['outside_share'])
+        curv.append(r['local_curvature'])
+        zdc += 1 if r['is_zero_divisor'] else 0  # None counts as 0
+    n = max(1, len(items))
+    return {
+        'n':                    len(items),
+        'chart_histogram':      chart_hist,
+        'peak_dim_histogram':   dict(sorted(peak_hist.items())),
+        'assessor_histogram':   ass_hist,
+        'assessors_occupied':   len(ass_hist),
+        'assessors_total':      42,
+        'mean_fixed_point_weight': sum(fpw) / n,
+        'max_fixed_point_weight':  max(fpw) if fpw else 0.0,
+        'min_fixed_point_weight':  min(fpw) if fpw else 0.0,
+        'mean_outside_share':   sum(outside) / n,
+        'mean_local_curvature': sum(curv) / n,
+        'exact_zero_divisors':  zdc if check_zd else None,
     }
