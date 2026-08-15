@@ -74,7 +74,7 @@ Current modules (Phase 5):
                          entry point refuses a live sequence: measuring a
                          span the measured process is growing is
                          iterate-while-modify and drifts silently.
-                         Mutation is dated by precession(), not forbidden.
+                         Mutation is dated by bearing(), not forbidden.
                          Isotropic null for kernel occupancy is exactly
                          4/16 — report the EXCESS, never the raw fraction.
 

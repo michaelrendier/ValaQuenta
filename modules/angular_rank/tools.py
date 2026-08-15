@@ -18,14 +18,14 @@ from typing import Any, Dict, List
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
 from .maths import (
-    SEDENION_DIM, CALIBRATION, Epoch,
-    snapshot, is_epoch,
+    SEDENION_DIM, CALIBRATION, Datum,
+    datum, is_datum, sight,
     embed_log_bands,
     occupancy, singular_spectrum, numerical_rank, orthonormal_span,
     common_direction, angular_residual, score_against_calibration,
     left_mul_matrix, null_space, verify_null_space,
     null_occupancy, null_occupancy_baseline,
-    external_component, principal_angles, precession,
+    external_component, principal_angles, bearing,
     angular_report,
 )
 
@@ -68,12 +68,12 @@ class AngularRankModule(EquationModule):
             "internal channel is a functional of its own state and cannot "
             "emit into the kernel of its own operator. The first is the "
             "language-agnostic stress test. THEY ARE ONE MEASUREMENT. "
-            "Every entry point takes an immutable content-stamped Epoch "
+            "Every entry point takes an immutable content-stamped Datum "
             "and refuses a live sequence -- measuring a span that the "
             "measured process is concurrently growing is "
             "iterate-while-modify, and it does not raise, it drifts until "
             "the instrument reports 'all quiet' forever. Mutation is not "
-            "forbidden; it is DATED, via precession() between two epochs. "
+            "forbidden; it is DATED, via bearing() between two datums. "
             "Two mandatory nulls are built in: the isotropic baseline for "
             "null occupancy is exactly nullity/dim = 4/16 = 0.25, so a raw "
             "fraction near 0.25 is evidence of NOTHING and only the excess "
@@ -121,8 +121,8 @@ class AngularRankModule(EquationModule):
                 radian_form='0 = a scalar wearing 16 coordinates; >0 = real direction',
                 confidence='ESTABLISHED',
                 code_verified=True,
-                params=['epoch'],
-                compute=lambda epoch: angular_residual(epoch),
+                params=['datum'],
+                compute=lambda datum: angular_residual(datum),
                 display_options=['text'],
             ),
             Equation(
@@ -143,15 +143,15 @@ class AngularRankModule(EquationModule):
                 radian_form='zero is AMBIGUOUS: no external signal OR ear wired through L_a',
                 confidence='THEORETICAL',
                 code_verified=True,
-                params=['epoch'],
-                compute=lambda epoch: null_occupancy(epoch, _demo_zd()),
+                params=['datum'],
+                compute=lambda datum: null_occupancy(datum, _demo_zd()),
                 display_options=['text'],
             ),
             Equation(
                 name='external_component',
                 display='Energy of a signal outside a FROZEN internal span',
                 latex=r'1 - \frac{\|P_{\mathrm{span}(I)}\, s\|^2}{\|s\|^2}',
-                radian_form='both arguments are epochs -- the span cannot move under the measurement',
+                radian_form='both arguments are datums -- the span cannot move under the measurement',
                 confidence='THEORETICAL',
                 code_verified=True,
                 params=['signal', 'internal'],
@@ -159,14 +159,14 @@ class AngularRankModule(EquationModule):
                 display_options=['text'],
             ),
             Equation(
-                name='precession',
-                display='THE DRIFT METER: how far the span moved between two epochs',
+                name='bearing',
+                display='THE DRIFT METER: how far the span moved between two datums',
                 latex=r'\theta_{\max}(\mathrm{span}_{t_0}, \mathrm{span}_{t_1}),\ \Delta\,\mathrm{rank}',
                 radian_form='mutation is permitted and DATED; bounded (Phase 27.3) vs accumulating = seizure',
                 confidence='ESTABLISHED',
                 code_verified=True,
                 params=['before', 'after'],
-                compute=lambda before, after: precession(before, after),
+                compute=lambda before, after: bearing(before, after),
                 display_options=['text'],
             ),
             Equation(
@@ -176,8 +176,8 @@ class AngularRankModule(EquationModule):
                 radian_form='a rank without its tolerance is not a measurement',
                 confidence='ESTABLISHED',
                 code_verified=True,
-                params=['epoch'],
-                compute=lambda epoch: numerical_rank(epoch),
+                params=['datum'],
+                compute=lambda datum: numerical_rank(datum),
                 display_options=['text'],
             ),
             Equation(
@@ -187,8 +187,8 @@ class AngularRankModule(EquationModule):
                 radian_form='PR = effective number of dimensions actually carrying the signal',
                 confidence='ESTABLISHED',
                 code_verified=True,
-                params=['epoch'],
-                compute=lambda epoch: occupancy(epoch),
+                params=['datum'],
+                compute=lambda datum: occupancy(datum),
                 display_options=['text'],
             ),
             Equation(
@@ -204,13 +204,13 @@ class AngularRankModule(EquationModule):
             ),
             Equation(
                 name='angular_report',
-                display='THE STRESS TEST, one card -- every entry stamped with its epoch',
+                display='THE STRESS TEST, one card -- every entry stamped with its datum',
                 latex=r'\{r,\ \mathrm{rank},\ \mathrm{PR},\ \ker\text{-excess}\}\ @\ \mathrm{stamp}',
-                radian_form='no measurement is reportable without its epoch',
+                radian_form='no measurement is reportable without its datum',
                 confidence='THEORETICAL',
                 code_verified=True,
-                params=['epoch'],
-                compute=lambda epoch: angular_report(epoch, a=_demo_zd()),
+                params=['datum'],
+                compute=lambda datum: angular_report(datum, a=_demo_zd()),
                 display_options=['text'],
             ),
             Equation(
@@ -265,7 +265,7 @@ class AngularRankModule(EquationModule):
         return {
             'verify':    lambda: verify_null_space(),
             'baseline':  lambda a=None: null_occupancy_baseline(a or _demo_zd()),
-            'snap':      lambda v, label='unlabelled': snapshot(v, label),
+            'snap':      lambda v, label='unlabelled': datum(v, label),
             'ang':       lambda e: angular_residual(e),
             'score':     lambda r: score_against_calibration(r),
             'calib':     lambda: CALIBRATION,
@@ -276,7 +276,8 @@ class AngularRankModule(EquationModule):
             'ker':       lambda a=None: null_space(a or _demo_zd()),
             'kerocc':    lambda e, a=None: null_occupancy(e, a or _demo_zd()),
             'ext':       lambda s, i: external_component(s, i),
-            'prec':      lambda b, a: precession(b, a),
+            'bear':      lambda b, a: bearing(b, a),
+            'sight':     lambda held, live: sight(held, live),
             'angles':    lambda P, Q: principal_angles(P, Q),
             'lmul':      lambda a: left_mul_matrix(a),
             'bands':     lambda p, sr=96000.0: embed_log_bands(p, sample_rate=sr),

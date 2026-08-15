@@ -2,7 +2,7 @@
 
 `modules/angular_rank/` · v0.1 · Status: **ESTABLISHED** (instrument) / **THEORETICAL** (provenance application)
 
-Angular content and subspace occupancy, measured on a **frozen epoch**.
+Angular content and subspace occupancy, measured on a **frozen datum**.
 
 ---
 
@@ -24,7 +24,7 @@ Phase 19).
 
 ---
 
-## The epoch discipline — the correction this module exists to enforce
+## The datum discipline — the correction this module exists to enforce
 
 > *"we don't remove items from a list while iterating over it… that's an amateur move…
 > that is definitely iterating over a field while modifying it. by the nature of code,
@@ -36,27 +36,28 @@ populates" — while the thinking threads were concurrently **growing that trace
 iterate-while-modify one level up. It does not raise. It **drifts**, silently, until the
 internal span covers `ker(L_a)` and the instrument reports *all quiet* forever.
 
-The fix is not a lock. It is an **epoch**:
+The fix is not a lock. It is a **datum**:
 
 ```python
-e = snapshot(field, 'ear_t0')     # immutable, sha256 content stamp
-angular_residual(e)               # returns the stamp it read
-precession(e_before, e_after)     # mutation is DATED, not forbidden
+d0 = datum(field, 'ear_t0')       # immutable, sha256 content stamp — DEFINITIONAL
+angular_residual(d0)              # returns the stamp it read
+sight(d0, field)                  # one guarded read: did it move? (binary)
+bearing(d_before, d_after)        # RELATIONAL: how far, bounded or accumulating
 ```
 
-- `snapshot()` is the **only** way into the module. Every other entry point raises
+- `datum()` is the **only** way into the module. Every other entry point raises
   `TypeError` on a live sequence, with the reason in the message.
-- Every result carries the stamp of the epoch it read.
-- `precession()` measures drift **between** two epochs, so a measurement never straddles
+- Every result carries the stamp of the datum it read.
+- `bearing()` measures drift **between** two datums, so a measurement never straddles
   a write.
 
-> ⚠ **No measurement is reportable without its epoch.** Same rule shape as *no result
+> ⚠ **No measurement is reportable without its datum.** Same rule shape as *no result
 > without its null* (`L_IO_SPECIFICATION.md` §3).
 
 **Mutation is not the bug. Mutation measured across an unbounded interval is the bug.**
 Phase 27.3 is the bounded reference — net winding +0.0000 turns, non-accumulating, held
-by the gearing rather than computed. `precession()` reports `stale_measurements: True`
-the moment the span moves, which is the signal to re-snapshot rather than keep reading.
+by the gearing rather than computed. `bearing()` reports `stale_measurements: True`
+the moment the span moves, which is the signal to re-datum rather than keep reading.
 
 ---
 
@@ -130,7 +131,7 @@ angular_residual (scalar field)     0.000000     — a scalar wearing 16 coordin
 angular_residual (isotropic n=200)  0.9646       — rank 16, participation ratio 15.89
 null_occupancy (built in kernel)    1.000000     — excess +0.75
 null_occupancy (isotropic)          0.2501       — excess +0.0001, reportable False
-precession (span 4 -> 16)           rank_delta +12, stale_measurements True
+bearing    (span 4 -> 16)           rank_delta +12, stale_measurements True
 ```
 
 ---
@@ -138,7 +139,7 @@ precession (span 4 -> 16)           rank_delta +12, stale_measurements True
 ## Formulary
 
 12 equations: `verify_null_space`, `null_occupancy_baseline`, `angular_residual`,
-`calibration`, `null_occupancy`, `external_component`, `precession`, `numerical_rank`,
+`calibration`, `null_occupancy`, `external_component`, `bearing`, `numerical_rank`,
 `occupancy`, `embed_log_bands`, `angular_report`, `null_space`.
 
 ---
@@ -161,4 +162,6 @@ precession (span 4 -> 16)           rank_delta +12, stale_measurements True
 - `VAPMIP/docs/wiki/Null-Space-of-the-Zero-Divisor.md` — the {4,8,4} split
 - `box_kite.md` — the CD table and ZD geometry this borrows
 - `Ainulindale/wiki/86_the_16d_oscilloscope.md` — narrative page
-- Phase 27.2 (angular residual), Phase 27.3 (bounded precession), Phase 19 (the organs)
+- Phase 27.2 (angular residual), Phase 27.3 (bounded precession — the *kinematic* sense;
+  see Operating-L_(I|O) Addendum A.2 on why `bearing()` does not reuse that word),
+  Phase 19 (the organs)

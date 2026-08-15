@@ -2,7 +2,7 @@
 ainulindale_engine.modules.angular_rank.maths
 ================================================
 THE 16D OSCILLOSCOPE -- angular content and subspace occupancy, measured
-on a FROZEN EPOCH.
+on a FROZEN DATUM.
 
 "we don't remove items from a list while iterating over it... that's an
  amateur move... that is definitely iterating over a field while modifying
@@ -34,9 +34,9 @@ cetacean stress test. THEY ARE THE SAME MEASUREMENT. One instrument, two
 applications -- as the Larynx is one operation with two applications
 (UDEO translation and the ECC crack, Phase 19).
 
-THE EPOCH DISCIPLINE -- why every entry point takes a snapshot
+THE DATUM DISCIPLINE -- why every entry point takes a datum
 --------------------------------------------------------------
-The rank test of Operating-L-IO 4.4 as first written was WRONG in exactly
+The rank test of Operating-L_(I|O) 4.4 as first written was WRONG in exactly
 the way Cody names above: it read "dimensions the internal trace never
 populates" while the thinking threads were concurrently GROWING that
 trace. Measuring a span that the measured process is mutating is
@@ -44,15 +44,52 @@ iterate-while-modify, one level up. It does not raise. It drifts, silently,
 until the internal span covers ker(L_a) and the instrument reports "all
 quiet" forever.
 
-The fix is not a lock. It is an EPOCH:
+The fix is not a lock. It is a DATUM.
 
-    - snapshot() freezes vectors into an immutable Epoch with a content
-      stamp. Nothing else in this module accepts a live sequence.
-    - every measurement returns the stamp of the epoch it read.
-    - precession() measures drift BETWEEN two epochs, so mutation is
-      permitted, dated, and bounded -- never straddled.
+WHY THESE NAMES (renamed 2026-08-15, from snapshot/Epoch/precession)
+-------------------------------------------------------------------
+Cody, on the struts of a box-kite:
 
-⚠ NO MEASUREMENT IS REPORTABLE WITHOUT ITS EPOCH. This is the same rule
+    "the ends of the struts are definitional not relational...
+     until after 'movement' then relation to 'last time' emerges"
+
+That is the whole structure, and the surveying vocabulary is the one that
+already formalises it:
+
+    DATUM    a declared reference point. DEFINITIONAL -- self-contained,
+             stamped, true by declaration, needing no other datum to mean
+             something. A strut end: partner(a) = a XOR s, no table
+             consulted.
+
+    BEARING  the reading BETWEEN two datums. RELATIONAL -- it does not
+             exist until something has moved, and what it measures is the
+             relation, not either state.
+
+A single datum cannot detect motion; that is what "definitional" costs you.
+Only a bearing can, and a bearing needs a "last time". This is why the pair
+is necessary and a single guarded read is not sufficient for MEASUREMENT.
+
+⚠ 'precession' was the original name for bearing() and it was a COLLISION.
+  Precession is already canonical in this repo with a kinematic meaning --
+  the ZD wobble's signature, "one L_(I|O) cycle = one precession revolution"
+  (Ainulindale wiki/68, h_rb_hat.precession_stroke, tier7_cosmos). It is a
+  property of the rotor, not a difference between two readings. Renamed to
+  free it. See Phase 27.8 on symbol collisions.
+
+THE TWO FACES -- and where a single guarded read DOES suffice
+-------------------------------------------------------------
+    sight()    ONE guarded read. Cheap, binary: "did it move under me?"
+               Re-stamps the live field and compares to a held datum. This
+               is the seqlock pattern, and for DETECTION it is enough.
+
+    bearing()  TWO datums retained. Quantitative: "how far, and is the
+               drift bounded or accumulating?" Needed for the Phase 27.3
+               question, which sight() cannot answer.
+
+Detection is one face, measurement is the other. Use sight() in a hot loop
+and bearing() when the answer has to be reportable.
+
+⚠ NO MEASUREMENT IS REPORTABLE WITHOUT ITS DATUM. This is the same rule
   shape as "no result without its null" (L_IO_SPECIFICATION 3).
 
 Mutation is not the bug. Mutation measured across an unbounded interval
@@ -81,13 +118,13 @@ import numpy as np
 from ..box_kite.maths import basis_mul, SEDENION_DIM
 
 __all__ = [
-    'SEDENION_DIM', 'CALIBRATION', 'Epoch',
-    'snapshot', 'is_epoch',
+    'SEDENION_DIM', 'CALIBRATION', 'Datum',
+    'datum', 'is_datum', 'sight',
     'embed_log_bands',
     'occupancy', 'singular_spectrum', 'numerical_rank', 'orthonormal_span',
     'common_direction', 'angular_residual', 'score_against_calibration',
     'left_mul_matrix', 'null_space', 'verify_null_space', 'null_occupancy',
-    'external_component', 'principal_angles', 'precession', 'null_occupancy_baseline',
+    'external_component', 'principal_angles', 'bearing', 'null_occupancy_baseline',
     'angular_report',
 ]
 
@@ -116,12 +153,12 @@ CALIBRATION: Dict[str, Dict[str, float]] = {
 }
 
 
-# ── The Epoch ─────────────────────────────────────────────────────────────────
+# ── The Datum ─────────────────────────────────────────────────────────────────
 
 @dataclass(frozen=True)
-class Epoch:
+class Datum:
     """
-    An immutable, content-stamped snapshot of a field.
+    An immutable, content-stamped datum of a field.
 
     Frozen dataclass over tuples-of-tuples: there is no supported way to
     mutate one after construction. That is the point -- a measurement
@@ -138,21 +175,21 @@ class Epoch:
         return np.array(self.vectors, dtype=float)
 
     def __repr__(self) -> str:
-        return f"<Epoch {self.label!r} n={self.n} dim={self.dim} stamp={self.stamp[:12]}>"
+        return f"<Datum {self.label!r} n={self.n} dim={self.dim} stamp={self.stamp[:12]}>"
 
 
-def snapshot(vectors: Sequence[Sequence[float]], label: str = 'unlabelled') -> Epoch:
+def datum(vectors: Sequence[Sequence[float]], label: str = 'unlabelled') -> Datum:
     """
-    Freeze a field into an Epoch. THE ONLY WAY INTO THIS MODULE.
+    Freeze a field into an Datum. THE ONLY WAY INTO THIS MODULE.
 
     Copies eagerly, so a later mutation of the caller's list cannot reach
-    the Epoch. The stamp is sha256 over the rounded contents, so two
-    snapshots of an unchanged field compare equal and a single changed
+    the Datum. The stamp is sha256 over the rounded contents, so two
+    datums of an unchanged field compare equal and a single changed
     element is visible.
     """
     rows = [tuple(float(x) for x in row) for row in vectors]
     if not rows:
-        raise ValueError("snapshot() of an empty field -- nothing to measure")
+        raise ValueError("datum() of an empty field -- nothing to measure")
     dim = len(rows[0])
     if any(len(r) != dim for r in rows):
         raise ValueError("ragged field: every vector must have the same dimension")
@@ -163,20 +200,49 @@ def snapshot(vectors: Sequence[Sequence[float]], label: str = 'unlabelled') -> E
         for x in r:
             h.update(f"{x:.12e}|".encode('ascii'))
 
-    return Epoch(vectors=tuple(rows), label=label, stamp=h.hexdigest(),
+    return Datum(vectors=tuple(rows), label=label, stamp=h.hexdigest(),
                  n=len(rows), dim=dim)
 
 
-def is_epoch(x: Any) -> bool:
-    return isinstance(x, Epoch)
+def is_datum(x: Any) -> bool:
+    return isinstance(x, Datum)
 
 
-def _require(e: Any, who: str) -> Epoch:
+def sight(held: Datum, live: Sequence[Sequence[float]]) -> Dict[str, Any]:
+    """
+    THE OTHER FACE -- one guarded read. "Did it move under me?"
+
+    Re-stamps the live field and compares to a datum you are already
+    holding. Binary, cheap, and it needs no second datum retained: this is
+    the seqlock pattern, and for DETECTION it is sufficient.
+
+    What it CANNOT do is say how far. A moved flag is not a drift meter --
+    for that you need both states, which is bearing(). Detection and
+    measurement are the two faces of the same object; this is the cheap one.
+
+    Returns `moved`, and on movement the new stamp so the caller can
+    re-datum without hashing twice.
+    """
+    h = _require(held, 'sight')
+    now = datum(live, h.label)
+    return {
+        'label':       h.label,
+        'held_stamp':  h.stamp,
+        'live_stamp':  now.stamp,
+        'moved':       now.stamp != h.stamp,
+        'shape_changed': (now.n, now.dim) != (h.n, h.dim),
+        'datum':       now,
+        'note': 'binary detection only -- use bearing() for how far, and '
+                'for whether the drift is bounded or accumulating',
+    }
+
+
+def _require(e: Any, who: str) -> Datum:
     """Refuse live sequences. This is the guard rail, not a convenience."""
-    if not isinstance(e, Epoch):
+    if not isinstance(e, Datum):
         raise TypeError(
-            f"{who}() requires an Epoch, got {type(e).__name__}. "
-            f"Call snapshot(field, label) first -- measuring a live field is "
+            f"{who}() requires an Datum, got {type(e).__name__}. "
+            f"Call datum(field, label) first -- measuring a live field is "
             f"iterate-while-modify and will drift silently."
         )
     return e
@@ -222,7 +288,7 @@ def embed_log_bands(power_spectrum: Sequence[float],
 
 # ── Occupancy and rank ────────────────────────────────────────────────────────
 
-def occupancy(epoch: Epoch) -> Dict[str, Any]:
+def occupancy(datum: Datum) -> Dict[str, Any]:
     """
     Per-dimension energy fraction, and the participation ratio.
 
@@ -230,7 +296,7 @@ def occupancy(epoch: Epoch) -> Dict[str, Any]:
     dimensions carrying the signal. 1.0 = one dimension does everything;
     dim = perfectly spread.
     """
-    e = _require(epoch, 'occupancy')
+    e = _require(datum, 'occupancy')
     A = e.array()
     energy = (A ** 2).sum(axis=0)
     total = float(energy.sum())
@@ -246,13 +312,13 @@ def occupancy(epoch: Epoch) -> Dict[str, Any]:
     }
 
 
-def singular_spectrum(epoch: Epoch) -> List[float]:
+def singular_spectrum(datum: Datum) -> List[float]:
     """Singular values of the (n x dim) field, descending."""
-    e = _require(epoch, 'singular_spectrum')
+    e = _require(datum, 'singular_spectrum')
     return [float(x) for x in np.linalg.svd(e.array(), compute_uv=False)]
 
 
-def numerical_rank(epoch: Epoch, tol: Optional[float] = None) -> Dict[str, Any]:
+def numerical_rank(datum: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
     """
     Numerical rank at a stated tolerance.
 
@@ -260,7 +326,7 @@ def numerical_rank(epoch: Epoch, tol: Optional[float] = None) -> Dict[str, Any]:
     The tolerance is returned, because a rank without its tolerance is not
     a measurement.
     """
-    e = _require(epoch, 'numerical_rank')
+    e = _require(datum, 'numerical_rank')
     s = np.linalg.svd(e.array(), compute_uv=False)
     smax = float(s[0]) if s.size else 0.0
     t = float(tol) if tol is not None else max(e.n, e.dim) * np.finfo(float).eps * smax
@@ -274,9 +340,9 @@ def numerical_rank(epoch: Epoch, tol: Optional[float] = None) -> Dict[str, Any]:
     }
 
 
-def orthonormal_span(epoch: Epoch, tol: Optional[float] = None) -> np.ndarray:
+def orthonormal_span(datum: Datum, tol: Optional[float] = None) -> np.ndarray:
     """Orthonormal basis (dim x rank) of the row space. Columns are basis vectors."""
-    e = _require(epoch, 'orthonormal_span')
+    e = _require(datum, 'orthonormal_span')
     A = e.array()
     U, s, Vt = np.linalg.svd(A, full_matrices=False)
     smax = float(s[0]) if s.size else 0.0
@@ -286,9 +352,9 @@ def orthonormal_span(epoch: Epoch, tol: Optional[float] = None) -> np.ndarray:
 
 # ── Angular content ───────────────────────────────────────────────────────────
 
-def common_direction(epoch: Epoch) -> List[float]:
+def common_direction(datum: Datum) -> List[float]:
     """The mean unit direction -- the common mode. Phase 23's `cbar`."""
-    e = _require(epoch, 'common_direction')
+    e = _require(datum, 'common_direction')
     A = e.array()
     nrm = np.linalg.norm(A, axis=1, keepdims=True)
     nrm[nrm == 0] = 1.0
@@ -297,7 +363,7 @@ def common_direction(epoch: Epoch) -> List[float]:
     return [float(x) for x in (m / mn if mn > 0 else m)]
 
 
-def angular_residual(epoch: Epoch) -> Dict[str, Any]:
+def angular_residual(datum: Datum) -> Dict[str, Any]:
     """
     THE PHASE 27.2 MEASURE. How much direction survives the common mode.
 
@@ -307,7 +373,7 @@ def angular_residual(epoch: Epoch) -> Dict[str, Any]:
     residual -> 0    the field is a scalar wearing 16 coordinates
     residual  > 0    there is real angular content
     """
-    e = _require(epoch, 'angular_residual')
+    e = _require(datum, 'angular_residual')
     A = e.array()
     nrm = np.linalg.norm(A, axis=1, keepdims=True)
     keep = (nrm.ravel() > 0)
@@ -425,7 +491,7 @@ def verify_null_space() -> Dict[str, Any]:
     }
 
 
-def null_occupancy(epoch: Epoch, a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
+def null_occupancy(datum: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
     """
     What fraction of the field's energy lies in ker(L_a)?
 
@@ -439,7 +505,7 @@ def null_occupancy(epoch: Epoch, a: Sequence[float], tol: float = 1e-10) -> Dict
       A zero here means EITHER nothing external OR a wiring fault. It does
       not distinguish them. Verify the wiring separately.
     """
-    e = _require(epoch, 'null_occupancy')
+    e = _require(datum, 'null_occupancy')
     if e.dim != SEDENION_DIM:
         raise ValueError(f"null occupancy needs {SEDENION_DIM}-D vectors, got {e.dim}")
     ns = null_space(a, tol=tol)
@@ -502,7 +568,7 @@ def principal_angles(P: np.ndarray, Q: np.ndarray) -> List[float]:
     return [float(math.acos(min(1.0, max(-1.0, x)))) for x in s]
 
 
-def external_component(signal: Epoch, internal: Epoch,
+def external_component(signal: Datum, internal: Datum,
                        tol: Optional[float] = None) -> Dict[str, Any]:
     """
     Energy of `signal` outside the span of `internal`.
@@ -514,7 +580,7 @@ def external_component(signal: Epoch, internal: Epoch,
     s_ = _require(signal, 'external_component')
     i_ = _require(internal, 'external_component')
     if s_.dim != i_.dim:
-        raise ValueError("signal and internal epochs must share a dimension")
+        raise ValueError("signal and internal datums must share a dimension")
     B = orthonormal_span(i_, tol=tol)
     A = s_.array()
     total = float((A ** 2).sum())
@@ -531,10 +597,10 @@ def external_component(signal: Epoch, internal: Epoch,
     }
 
 
-def precession(before: Epoch, after: Epoch,
+def bearing(before: Datum, after: Datum,
                tol: Optional[float] = None) -> Dict[str, Any]:
     """
-    Drift between two epochs of the same channel.
+    Drift between two datums of the same channel.
 
     Mutation is permitted. What is forbidden is measuring ACROSS it. This
     dates the mutation instead, and reports whether it is the bounded kind.
@@ -548,10 +614,10 @@ def precession(before: Epoch, after: Epoch,
     non-accumulating, held by the gearing rather than computed. Growth
     that does not level off is the seizure warning.
     """
-    b = _require(before, 'precession')
-    a = _require(after, 'precession')
+    b = _require(before, 'bearing')
+    a = _require(after, 'bearing')
     if b.dim != a.dim:
-        raise ValueError("epochs must share a dimension")
+        raise ValueError("datums must share a dimension")
     Pb, Pa = orthonormal_span(b, tol=tol), orthonormal_span(a, tol=tol)
     ang = principal_angles(Pb, Pa)
     rb = int(Pb.shape[1]) if Pb.size else 0
@@ -571,15 +637,15 @@ def precession(before: Epoch, after: Epoch,
 
 # ── The report card ───────────────────────────────────────────────────────────
 
-def angular_report(epoch: Epoch,
+def angular_report(datum: Datum,
                    a: Optional[Sequence[float]] = None,
-                   internal: Optional[Epoch] = None,
+                   internal: Optional[Datum] = None,
                    embedding: str = 'unstated') -> Dict[str, Any]:
     """
-    THE STRESS TEST, one card. Every entry carries the epoch stamp it was
+    THE STRESS TEST, one card. Every entry carries the datum stamp it was
     read from, and the embedding it is relative to.
     """
-    e = _require(epoch, 'angular_report')
+    e = _require(datum, 'angular_report')
     ang = angular_residual(e)
     card: Dict[str, Any] = {
         'label':       e.label,
