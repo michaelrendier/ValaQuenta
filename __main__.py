@@ -41,6 +41,7 @@ from .modules.l_io_photon_path import LIOPhotonPathModule
 from .modules.archimedes_screw import ArchimedesScrewModule
 from .modules.box_kite import BoxKiteModule
 from .modules.bao_mass_gap import BaoMassGapModule
+from .modules.angular_rank import AngularRankModule
 
 def _register_all():
     registry = get_registry()
@@ -61,6 +62,7 @@ def _register_all():
     register(LIOPhotonPathModule())
     register(ArchimedesScrewModule())
     register(BoxKiteModule())
+    register(AngularRankModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

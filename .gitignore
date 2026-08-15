@@ -40,3 +40,10 @@ resonance_cache/
 # OS
 .DS_Store
 Thumbs.db
+
+# venv (2026-08-14) — see env.sh / requirements.txt
+.venv/
+venv_install.log
+
+# venv sync runtime ledger (2026-08-15) — machine state, not source
+tools/venv_sync_ledger.jsonl

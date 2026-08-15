@@ -1,45 +1,100 @@
 # ValaQuenta — runtime requirements
 #
-# This is the set needed to import every engine and run every notebook in the
-# repository. It was derived by walking the AST of every .py and .ipynb file in
-# the repo and keeping the imports that are neither stdlib nor local, so it is
-# what the code actually reaches for -- not a wish list.
+# ⚠ THIS IS THE GENERAL-PURPOSE ENVIRONMENT. It is provisioned to run code in
+#   ANY repo in ThePlace — ValaQuenta, Ainulindale, VAPMIP, PtolC,
+#   RiemannHypothesisProof, FourthAgePapers, SedenionSpectralRelativity.
+#   BulletCluster keeps its own venv (telescope-specific pins).
 #
-#   pip3 install -r requirements.txt
+#   source env.sh          # activate
+#   ./env.sh check         # verify the stack imports
 #
-# Lower bounds are the oldest releases with the APIs used here. Verified
-# working on the development machine at numpy 2.3.5 / scipy 1.16.3 /
-# matplotlib 3.10.7 with Python 3.14.
+#   or:  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#
+# ⚠ USE THE VENV, NOT THE SYSTEM PYTHON. The system interpreter has numpy 2.4.6
+#   (pip, ~/.local) shadowing numpy 1.26.4 (apt); every apt-built C extension is
+#   still linked against 1.x. Confirmed broken system-wide: pandas,
+#   scikit-learn, NLTK, bottleneck, numcodecs, zarr, reproject, aplpy.
+#   pip cannot repair it in place (PEP 668, externally managed).
+#   All of those work inside this venv.
+#
+# Verified working 2026-08-14 on Python 3.12.3 — 35/35 imports clean.
+# Versions below are what was actually installed and tested, not aspirations.
 
 # ── Core: required to import ValaQuenta at all ───────────────────────────────
-numpy>=1.24
-scipy>=1.10            # fixed_point.v_nball_peak -> scipy.special.digamma
-matplotlib>=3.7        # every notebook plots
+numpy>=1.24            # tested 2.5.2
+scipy>=1.10            # tested 1.18.0   fixed_point.v_nball_peak -> scipy.special.digamma
+matplotlib>=3.7        # tested 3.11.1   every notebook plots
+
+# ── Symbolic (code/noether_engine, code/io_polar.py) ─────────────────────────
+sympy>=1.12            # tested 1.14.0
+mpmath>=1.3            # tested 1.3.0    also RiemannHypothesisProof high-precision zeta
 
 # ── Notebooks ────────────────────────────────────────────────────────────────
-# Needed only to open the .ipynb files. The engines themselves import fine
-# without these.
-jupyterlab>=4.0
+jupyterlab>=4.0        # tested 4.6.3
 ipykernel>=6.20
 
-# ── Extras used by code/ ─────────────────────────────────────────────────────
-# code/noether_engine (symbolic Cayley-Dickson, Clifford and Lie algebra) and
-# code/io_polar.py. Not needed for the engines under ValaQuenta/ or modules/.
-sympy>=1.12
-mpmath>=1.3
-
 # ── Tests ────────────────────────────────────────────────────────────────────
-pytest>=7.0
+pytest>=7.0            # tested 9.1.1
 
-# ── Optional: the Qt viewer (python3 -m ValaQuenta --qt) ─────────────────────
-# The curses console (--curses) and headless mode (--headless) need none of
-# these. Uncomment if you want the Qt/VisPy viewer.
+# ── Astronomy (BulletCluster, FourthAgePapers/CMB, SedenionSpectralRelativity)
+astropy>=6.0           # tested 8.0.1
+astroquery>=0.4.7      # tested 0.4.11   MAST / archive queries
+reproject>=0.13        # tested 0.21.0   WCS regridding
+photutils>=1.10        # tested 3.0.0    source detection / photometry
+regions>=0.8           # tested 0.12     DS9 region handling
+healpy>=1.16           # tested 1.20.0   CMB / all-sky pixelisation
+sep>=1.2               # tested 1.4.1    Source Extractor bindings
+scikit-image>=0.22     # tested 0.26.0
+
+# ── Data / analysis ──────────────────────────────────────────────────────────
+pandas>=2.0            # tested 3.0.5
+scikit-learn>=1.3      # tested 1.9.0
+numcodecs>=0.12        # tested 0.16.5   astropy compressed-FITS codecs
+networkx>=3.0          # tested 3.6.1    graph work (monad A-matrix, ZeroLattice)
+
+# ── Corpus ingestion (VAPMIP skills/, PtolC corpora) ─────────────────────────
+nltk>=3.8              # tested 3.10.3   ⚠ WORKS HERE. It is broken in the SYSTEM
+                       #                   python — that was never NLTK's fault,
+                       #                   it is the numpy ABI split above.
+                       #                   Corpora still need: python -m nltk.downloader wordnet
+pillow>=10.0           # tested 12.3.0
+pdfminer.six>=20221105 # tested 20260107
+pdf2image>=1.16        #   needs system poppler-utils
+pytesseract>=0.3.10    #   needs system tesseract-ocr
+openpyxl>=3.1          # tested 3.1.5    xlsx
+python-docx>=1.0       # tested 1.2.0    docx
+odfpy>=1.4             #   odt
+EbookLib>=0.18         # tested 0.20     epub
+striprtf>=0.0.26       # tested 0.0.32   rtf
+chardet>=5.0           # tested 7.6.0
+python-magic>=0.4.27   #   needs system libmagic1
+html2text>=2020.1.16
+beautifulsoup4>=4.12   # tested 4.15.0
+lxml>=5.0              # tested 6.1.1
+requests>=2.31         # tested 2.34.2
+qrcode>=7.4                             # TOTP enrolment (VAPMIP tools/)
+
+# ── Audio ────────────────────────────────────────────────────────────────────
+sounddevice>=0.4       # tested 0.5.5    needs system PortAudio (libportaudio2)
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  NOT INSTALLED HERE — deliberate. Each needs a system library, is very large,
+#  or has no usable PyPI package. Install per-project if actually required.
+# ══════════════════════════════════════════════════════════════════════════════
 #
-# PyQt5>=5.15
-# vispy>=0.14
-# sounddevice>=0.4      # also needs a system PortAudio library
+# openai-whisper       speech-to-text (VAPMIP listen.py, video-explore skill).
+#                      Pulls torch, ~2-3 GB. Install into a dedicated venv.
+# pyrtlsdr             SDR (VAPMIP lshs_sdr.py). Needs system librtlsdr.
+# pyaudio              needs system portaudio19-dev.
+# selenium             needs a webdriver binary.
+# RM-Tools             Faraday rotation (BulletCluster). Lives in that venv.
+# PyQt5 / PyQt6        Qt viewer (python3 -m ValaQuenta --qt). The curses
+# vispy                console (--curses) and --headless need none of these.
+# qtermwidget          NO PyPI PACKAGE. Ships with the QTermWidget system lib
+#                      (Debian/Ubuntu: libqtermwidget5-0; Arch: qtermwidget).
+#                      Without it --qt falls back; --curses still works.
+# bpy / mathutils      Blender's Python. Not pip-installable in a useful form.
+# espeak               system binary, not a Python package.
 #
-# NOTE: engine/console_qt.py also imports `qtermwidget`, which has no PyPI
-# package. It ships with the QTermWidget system library (Debian/Ubuntu:
-# libqtermwidget5-0; Arch: qtermwidget). Without it, --qt falls back and
-# --curses still works. This is a known limitation, not a missing pin.
+# System packages the above imply:
+#   sudo apt install poppler-utils tesseract-ocr libmagic1 libportaudio2

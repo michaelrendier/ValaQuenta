@@ -196,6 +196,35 @@ will say so.
 Dependencies are in `requirements.txt`: numpy, scipy and matplotlib are
 required; JupyterLab is needed only to open the notebooks.
 
+### ⚠ The venv is the general-purpose environment for every repo
+
+**`ValaQuenta/.venv` is provisioned to run code in ANY repo in ThePlace** —
+ValaQuenta, Ainulindale, VAPMIP, PtolC, RiemannHypothesisProof, FourthAgePapers,
+SedenionSpectralRelativity. Only **BulletCluster** keeps a separate venv, because
+its telescope pins are specific to that work.
+
+```bash
+source env.sh          # activate
+./env.sh check         # verify — prints every module and its version
+```
+
+**Do not use the system python for project code.** It has numpy 2.4.6 (pip,
+`~/.local`) shadowing numpy 1.26.4 (apt), and every apt-built C extension is
+still linked against 1.x. Confirmed broken system-wide: `pandas`,
+`scikit-learn`, **`nltk`**, `bottleneck`, `numcodecs`, `zarr`, `reproject`,
+`aplpy`. pip cannot repair it in place — PEP 668, externally managed.
+**All of them work inside the venv.**
+
+> The 2026-08-06 primer recorded "NLTK is broken in this environment — do not
+> spend time fixing it." That was never NLTK's fault. It is the numpy ABI split,
+> and the venv fixes it. WordNet corpora still need
+> `python -m nltk.downloader wordnet`.
+
+Verified 2026-08-14, Python 3.12.3, **35/35 imports clean**. `requirements.txt`
+records the version actually installed and tested beside each pin, plus the
+packages deliberately *excluded* (whisper, PyQt, rtlsdr, bpy, qtermwidget) and
+the system libraries some entries imply.
+
 ## Run
 
 ```bash

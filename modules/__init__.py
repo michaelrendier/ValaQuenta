@@ -64,5 +64,19 @@ Current modules (Phase 5):
                          with Laplacian spectrum {0,4,4,4,6,6}; the zero
                          mode is e₀'s signature. Associator = curvature.
 
-Version: 0.150 — Phase 6: box_kite
+    angular_rank       — The 16D Oscilloscope. Angular content and subspace
+                         occupancy, measured on a FROZEN EPOCH. Answers
+                         "does this signal carry direction?" (scalar
+                         address 0.0000, char encoder 0.0002, phonetic
+                         face 0.402 — Phase 27.2) and "did this come from
+                         outside?" (energy in ker(L_a), which the internal
+                         channel cannot reach) with ONE measurement. Every
+                         entry point refuses a live sequence: measuring a
+                         span the measured process is growing is
+                         iterate-while-modify and drifts silently.
+                         Mutation is dated by precession(), not forbidden.
+                         Isotropic null for kernel occupancy is exactly
+                         4/16 — report the EXCESS, never the raw fraction.
+
+Version: 0.151 — Phase 7: angular_rank
 """
