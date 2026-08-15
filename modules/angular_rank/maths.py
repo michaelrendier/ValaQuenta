@@ -143,12 +143,19 @@ CALIBRATION: Dict[str, Dict[str, float]] = {
 
 @dataclass(frozen=True)
 class Datum:
-    """
-    An immutable, content-stamped datum of a field.
+    """An immutable, content-stamped reference point for a field.
 
     Frozen dataclass over tuples-of-tuples: there is no supported way to
-    mutate one after construction. That is the point -- a measurement
-    cannot straddle a write.
+    mutate one after construction. That is the point -- a measurement cannot
+    straddle a write.
+
+    Build one with :func:`datum`; do not construct directly.
+
+    :ivar vectors: the frozen field.
+    :ivar label: name carried onto every measurement read from this Datum.
+    :ivar stamp: sha256 over label and contents.
+    :ivar n: number of vectors.
+    :ivar dim: dimension of each vector.
     """
     vectors: Tuple[Tuple[float, ...], ...]
     label:   str
@@ -157,7 +164,11 @@ class Datum:
     dim:     int
 
     def array(self) -> np.ndarray:
-        """A fresh mutable copy for numeric work. Never shared."""
+        """Return a fresh mutable copy for numeric work. Never shared.
+
+        :returns: a new array of the frozen vectors.
+        :rtype: numpy.ndarray
+        """
         return np.array(self.vectors, dtype=float)
 
     def __repr__(self) -> str:
@@ -165,13 +176,20 @@ class Datum:
 
 
 def datum(vectors: Sequence[Sequence[float]], label: str = 'unlabelled') -> Datum:
-    """
-    Freeze a field into an Datum. THE ONLY WAY INTO THIS MODULE.
+    """Freeze a field into a :class:`Datum`. The only way into this module.
 
-    Copies eagerly, so a later mutation of the caller's list cannot reach
-    the Datum. The stamp is sha256 over the rounded contents, so two
-    datums of an unchanged field compare equal and a single changed
-    element is visible.
+    Copies eagerly, so a later mutation of the caller's list cannot reach the
+    returned Datum. The stamp is a sha256 over the rounded contents, so two
+    datums of an unchanged field compare equal and a single changed element
+    is visible.
+
+    :param vectors: the field to freeze; rows must all share a dimension.
+    :type vectors: collections.abc.Sequence[collections.abc.Sequence[float]]
+    :param label: name carried on every measurement read from this Datum.
+    :type label: str
+    :returns: an immutable, content-stamped reference point.
+    :rtype: Datum
+    :raises ValueError: if ``vectors`` is empty or ragged.
     """
     rows = [tuple(float(x) for x in row) for row in vectors]
     if not rows:
@@ -191,23 +209,38 @@ def datum(vectors: Sequence[Sequence[float]], label: str = 'unlabelled') -> Datu
 
 
 def is_datum(x: Any) -> bool:
+    """Test whether an object is a :class:`Datum`.
+
+    :param x: any object.
+    :returns: True if ``x`` is a Datum.
+    :rtype: bool
+    """
     return isinstance(x, Datum)
 
 
 def sight(held: Datum, live: Sequence[Sequence[float]]) -> Dict[str, Any]:
-    """
-    THE OTHER FACE -- one guarded read. "Did it move under me?"
+    """Take one guarded read against a held datum: did the field move?
 
-    Re-stamps the live field and compares to a datum you are already
-    holding. Binary, cheap, and it needs no second datum retained: this is
-    the seqlock pattern, and for DETECTION it is sufficient.
+    Re-stamps ``live`` and compares it to ``held``. Cheap -- one hash, no
+    SVD, no second state retained. This is the seqlock pattern. Call it in a
+    loop; when it reports movement, re-datum from the Datum it returns
+    rather than hashing twice.
 
-    What it CANNOT do is say how far. A moved flag is not a drift meter --
-    for that you need both states, which is bearing(). Detection and
-    measurement are the two faces of the same object; this is the cheap one.
+    .. warning::
+       Do not substitute this for :func:`bearing`. A moved-flag is not a
+       drift meter: bounded and unbounded drift both set ``moved`` True, and
+       only a bearing separates them.
 
-    Returns `moved`, and on movement the new stamp so the caller can
-    re-datum without hashing twice.
+    :param held: the reference point you are already holding.
+    :type held: Datum
+    :param live: the field as it stands now.
+    :type live: collections.abc.Sequence[collections.abc.Sequence[float]]
+    :returns: keys ``moved``, ``shape_changed``, ``held_stamp``,
+              ``live_stamp``, ``datum`` (the fresh Datum), ``label``, ``note``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``held`` is not a :class:`Datum`.
+
+    .. seealso:: :func:`bearing` for how far it moved.
     """
     h = _require(held, 'sight')
     now = datum(live, h.label)
@@ -224,7 +257,15 @@ def sight(held: Datum, live: Sequence[Sequence[float]]) -> Dict[str, Any]:
 
 
 def _require(e: Any, who: str) -> Datum:
-    """Refuse live sequences. This is the guard rail, not a convenience."""
+    """Refuse a live sequence. The guard rail, not a convenience.
+
+    :param e: the object a public entry point was handed.
+    :param who: caller name, used in the error message.
+    :returns: ``e`` unchanged when it is a Datum.
+    :rtype: Datum
+    :raises TypeError: if ``e`` is not a Datum, explaining that measuring a
+        live field is iterate-while-modify and drifts silently.
+    """
     if not isinstance(e, Datum):
         raise TypeError(
             f"{who}() requires an Datum, got {type(e).__name__}. "
@@ -241,16 +282,35 @@ def embed_log_bands(power_spectrum: Sequence[float],
                     f_lo: float = 40.0,
                     f_hi: Optional[float] = None,
                     dim: int = SEDENION_DIM) -> List[float]:
-    """
-    Embed one power spectrum into `dim` log-spaced band energies.
+    """Embed one power spectrum into ``dim`` log-spaced band energies.
 
     Language-agnostic by construction: no phoneme inventory, no lexicon, no
-    assumption of human vocal-tract bandwidth. Suitable for cetacean
-    recordings, where energy runs well past 100 kHz and any English-derived
-    band layout would be a category error.
+    assumption of human vocal-tract bandwidth. Use for cetacean recordings,
+    where energy runs past 100 kHz and an English-derived band layout is a
+    category error.
 
-    Returns an L2-normalised vector. Normalising discards loudness on
-    purpose -- this instrument measures DIRECTION.
+    L2-normalises, discarding loudness on purpose -- this instrument measures
+    direction.
+
+    :param power_spectrum: one-dimensional power spectrum.
+    :param sample_rate: sample rate in Hz; sets the Nyquist edge.
+    :type sample_rate: float
+    :param f_lo: low edge of the lowest band, Hz.
+    :type f_lo: float
+    :param f_hi: high edge of the highest band, Hz. Defaults to Nyquist.
+    :type f_hi: float | None
+    :param dim: number of bands to produce.
+    :type dim: int
+    :returns: an L2-normalised vector of length ``dim``.
+    :rtype: list[float]
+    :raises ValueError: if the spectrum is not 1-D with at least ``dim``
+        bins, or the band range is invalid for the Nyquist frequency.
+
+    .. warning::
+       The embedding is an INPUT, not a property of the signal. The
+       :data:`CALIBRATION` constants were measured on the phonetic-face
+       embedding and do NOT transfer here. Report the embedding with the
+       number, always.
     """
     p = np.asarray(power_spectrum, dtype=float)
     if p.ndim != 1 or p.size < dim:
@@ -274,15 +334,21 @@ def embed_log_bands(power_spectrum: Sequence[float],
 
 # ── Occupancy and rank ────────────────────────────────────────────────────────
 
-def occupancy(datum: Datum) -> Dict[str, Any]:
-    """
-    Per-dimension energy fraction, and the participation ratio.
+def occupancy(ref: Datum) -> Dict[str, Any]:
+    """Report per-dimension energy fraction and participation ratio.
 
-    participation_ratio = 1 / sum(f_k^2), the effective number of
-    dimensions carrying the signal. 1.0 = one dimension does everything;
-    dim = perfectly spread.
+    ``participation_ratio`` is ``1 / sum(f_k**2)``: the effective number of
+    dimensions carrying the signal. 1.0 means one dimension does everything;
+    ``dim`` means perfectly spread.
+
+    :param ref: the frozen field to measure.
+    :type ref: Datum
+    :returns: keys ``per_dimension``, ``participation_ratio``,
+              ``dead_dimensions``, ``total_energy``, ``stamp``, ``label``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
     """
-    e = _require(datum, 'occupancy')
+    e = _require(ref, 'occupancy')
     A = e.array()
     energy = (A ** 2).sum(axis=0)
     total = float(energy.sum())
@@ -298,21 +364,36 @@ def occupancy(datum: Datum) -> Dict[str, Any]:
     }
 
 
-def singular_spectrum(datum: Datum) -> List[float]:
-    """Singular values of the (n x dim) field, descending."""
-    e = _require(datum, 'singular_spectrum')
+def singular_spectrum(ref: Datum) -> List[float]:
+    """Return the singular values of the field, descending.
+
+    :param ref: the frozen field.
+    :type ref: Datum
+    :returns: singular values, largest first.
+    :rtype: list[float]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
+    """
+    e = _require(ref, 'singular_spectrum')
     return [float(x) for x in np.linalg.svd(e.array(), compute_uv=False)]
 
 
-def numerical_rank(datum: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
-    """
-    Numerical rank at a stated tolerance.
+def numerical_rank(ref: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
+    """Compute numerical rank at a stated tolerance.
 
-    Default tol follows the standard convention: max(n,dim) * eps * s_max.
-    The tolerance is returned, because a rank without its tolerance is not
-    a measurement.
+    A rank without its tolerance is not a measurement, so the tolerance is
+    returned alongside. The default follows the standard convention:
+    ``max(n, dim) * eps * s_max``.
+
+    :param ref: the frozen field.
+    :type ref: Datum
+    :param tol: singular values above this count toward the rank.
+    :type tol: float | None
+    :returns: keys ``rank``, ``full_rank``, ``deficiency``, ``tolerance``,
+              ``singular_values``, ``stamp``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
     """
-    e = _require(datum, 'numerical_rank')
+    e = _require(ref, 'numerical_rank')
     s = np.linalg.svd(e.array(), compute_uv=False)
     smax = float(s[0]) if s.size else 0.0
     t = float(tol) if tol is not None else max(e.n, e.dim) * np.finfo(float).eps * smax
@@ -326,9 +407,18 @@ def numerical_rank(datum: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
     }
 
 
-def orthonormal_span(datum: Datum, tol: Optional[float] = None) -> np.ndarray:
-    """Orthonormal basis (dim x rank) of the row space. Columns are basis vectors."""
-    e = _require(datum, 'orthonormal_span')
+def orthonormal_span(ref: Datum, tol: Optional[float] = None) -> np.ndarray:
+    """Return an orthonormal basis of the field's row space.
+
+    :param ref: the frozen field.
+    :type ref: Datum
+    :param tol: rank tolerance; defaults to the standard SVD convention.
+    :type tol: float | None
+    :returns: a ``(dim, rank)`` array whose columns are basis vectors.
+    :rtype: numpy.ndarray
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
+    """
+    e = _require(ref, 'orthonormal_span')
     A = e.array()
     U, s, Vt = np.linalg.svd(A, full_matrices=False)
     smax = float(s[0]) if s.size else 0.0
@@ -338,9 +428,16 @@ def orthonormal_span(datum: Datum, tol: Optional[float] = None) -> np.ndarray:
 
 # ── Angular content ───────────────────────────────────────────────────────────
 
-def common_direction(datum: Datum) -> List[float]:
-    """The mean unit direction -- the common mode. Phase 23's `cbar`."""
-    e = _require(datum, 'common_direction')
+def common_direction(ref: Datum) -> List[float]:
+    """Return the mean unit direction -- the common mode, Phase 23's ``cbar``.
+
+    :param ref: the frozen field.
+    :type ref: Datum
+    :returns: a unit vector.
+    :rtype: list[float]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
+    """
+    e = _require(ref, 'common_direction')
     A = e.array()
     nrm = np.linalg.norm(A, axis=1, keepdims=True)
     nrm[nrm == 0] = 1.0
@@ -349,17 +446,28 @@ def common_direction(datum: Datum) -> List[float]:
     return [float(x) for x in (m / mn if mn > 0 else m)]
 
 
-def angular_residual(datum: Datum) -> Dict[str, Any]:
-    """
-    THE PHASE 27.2 MEASURE. How much direction survives the common mode.
+def angular_residual(ref: Datum) -> Dict[str, Any]:
+    """Measure how much direction survives the common mode. Phase 27.2.
 
-    For each unit vector u: cos = <u, c>, residual = sqrt(1 - cos^2) --
-    the sine of the angle to the common direction. Mean over the field.
+    For each unit vector ``u``: ``cos = <u, c>`` and
+    ``residual = sqrt(1 - cos**2)`` -- the sine of the angle to the common
+    direction. Averaged over the field.
 
-    residual -> 0    the field is a scalar wearing 16 coordinates
-    residual  > 0    there is real angular content
+    A residual near 0 means the field is a scalar wearing ``dim``
+    coordinates; above 0 means real angular content.
+
+    :param ref: the frozen field to measure.
+    :type ref: Datum
+    :returns: keys ``mean_angular_residual``, ``mean_collapse_cos``,
+              ``min_residual``, ``max_residual``, ``n_measured``,
+              ``n_zero_skipped``, ``stamp``, ``label``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
+    :raises ValueError: if the field is entirely zero.
+
+    .. seealso:: :func:`score_against_calibration`
     """
-    e = _require(datum, 'angular_residual')
+    e = _require(ref, 'angular_residual')
     A = e.array()
     nrm = np.linalg.norm(A, axis=1, keepdims=True)
     keep = (nrm.ravel() > 0)
@@ -382,11 +490,17 @@ def angular_residual(datum: Datum) -> Dict[str, Any]:
 
 
 def score_against_calibration(residual: float) -> Dict[str, Any]:
-    """
-    Place a measured residual against the published Phase 27.2 references.
+    """Place a measured residual against the published Phase 27.2 references.
 
-    ⚠ Valid ONLY for the phonetic-face embedding. Returns the caveat with
-      the answer so it cannot travel without it.
+    .. warning::
+       Valid ONLY for the phonetic-face embedding. The caveat is returned
+       with the answer so it cannot travel without it.
+
+    :param residual: a mean angular residual.
+    :type residual: float
+    :returns: keys ``residual``, ``nearest_reference``, ``references``,
+              ``verdict``, ``caveat``.
+    :rtype: dict[str, typing.Any]
     """
     r = float(residual)
     refs = {k: v['angular_residual'] for k, v in CALIBRATION.items()}
@@ -412,10 +526,16 @@ def score_against_calibration(residual: float) -> Dict[str, Any]:
 # ── The zero divisor, its null space, and provenance ──────────────────────────
 
 def left_mul_matrix(a: Sequence[float]) -> np.ndarray:
-    """
-    The 16x16 matrix L_a with L_a v = a * v, built from the CD table in
-    box_kite.maths. Not reimplemented here -- one multiplication table in
-    the repo, and this borrows it.
+    """Build the matrix ``L_a`` satisfying ``L_a v == a * v``.
+
+    Built from the Cayley-Dickson table in :mod:`box_kite.maths` -- one
+    multiplication table in the repo, borrowed rather than reimplemented.
+
+    :param a: a 16-vector.
+    :type a: collections.abc.Sequence[float]
+    :returns: the ``(16, 16)`` left-multiplication matrix.
+    :rtype: numpy.ndarray
+    :raises ValueError: if ``a`` is not a 16-vector.
     """
     a = np.asarray(a, dtype=float)
     if a.size != SEDENION_DIM:
@@ -431,11 +551,18 @@ def left_mul_matrix(a: Sequence[float]) -> np.ndarray:
 
 
 def null_space(a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
-    """
-    ker(L_a) -- the dimensions `a` annihilates.
+    """Compute ``ker(L_a)`` -- the dimensions ``a`` annihilates.
 
-    For a true Assessor diagonal this returns nullity 4 and the {4,8,4}
-    singular-value split. See Null-Space-of-the-Zero-Divisor.md.
+    For a true Assessor diagonal this returns nullity 4 and the {4, 8, 4}
+    singular-value split.
+
+    :param a: a 16-vector.
+    :type a: collections.abc.Sequence[float]
+    :param tol: singular values below this count as zero.
+    :type tol: float
+    :returns: keys ``nullity``, ``rank``, ``singular_values``, ``basis``,
+              ``is_zero_divisor``.
+    :rtype: dict[str, typing.Any]
     """
     L = left_mul_matrix(a)
     U, s, Vt = np.linalg.svd(L)
@@ -450,11 +577,15 @@ def null_space(a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
 
 
 def verify_null_space() -> Dict[str, Any]:
-    """
-    THE HONEST CHECK. a = (e_1 + e_10)/sqrt(2), Assessor (1,2), strut 3.
+    """Reproduce the published {4, 8, 4} split as a CHECK, not an input.
 
-    Agreement with Null-Space-of-the-Zero-Divisor.md is a CHECK, not an
-    input: nullity 4, rank 12, singular values {1.414 x4, 1.000 x8, 0 x4}.
+    Uses ``a = (e_1 + e_10)/sqrt(2)``, Assessor (1, 2), strut 3. Agreement
+    with ``Null-Space-of-the-Zero-Divisor.md`` is verified here rather than
+    assumed: nullity 4, rank 12, singular values sqrt2 x4 / 1 x8 / 0 x4.
+
+    :returns: keys ``assessor``, ``strut``, ``nullity``, ``rank``,
+              ``singular_counts``, ``expected_counts``, ``matches_published``.
+    :rtype: dict[str, typing.Any]
     """
     a = [0.0] * SEDENION_DIM
     a[1] = a[10] = 1.0 / math.sqrt(2.0)
@@ -477,21 +608,40 @@ def verify_null_space() -> Dict[str, Any]:
     }
 
 
-def null_occupancy(datum: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
-    """
-    What fraction of the field's energy lies in ker(L_a)?
+def null_occupancy(ref: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
+    """Measure what fraction of the field's energy lies in ``ker(L_a)``.
 
-    THE EXTERNAL-SIGNAL INDICATOR. The internal channel is a functional of
-    its own state and cannot emit into the four dimensions its own
-    operator annihilates. Energy there did not come from L_a.
+    The external-signal indicator. The internal channel is a functional of
+    its own state and cannot emit into the dimensions its own operator
+    annihilates, so energy there did not come from ``L_a``.
 
-    ⚠ SILENT FAILURE MODE (Operating-L-IO 4.4): if the ear is wired
-      THROUGH L_a rather than summed in downstream of it, the external
-      signal is annihilated identically and this returns ~0 with no error.
-      A zero here means EITHER nothing external OR a wiring fault. It does
-      not distinguish them. Verify the wiring separately.
+    .. warning::
+       Report ``excess``, never ``fraction``. An isotropic field already puts
+       ``nullity/dim`` of its energy in the kernel -- exactly 0.25 for a
+       sedenion Assessor diagonal. See :func:`null_occupancy_baseline`.
+
+    .. warning::
+       A result near zero is AMBIGUOUS: either there is no external signal,
+       or the ear is wired *through* ``L_a`` instead of summed in downstream
+       of it, in which case the external component is annihilated
+       identically and this returns ~0 with no error raised. Verify the
+       wiring separately.
+
+    :param ref: the frozen field to measure.
+    :type ref: Datum
+    :param a: the zero divisor whose kernel is tested.
+    :type a: collections.abc.Sequence[float]
+    :param tol: singular values below this count as zero.
+    :type tol: float
+    :returns: keys ``fraction``, ``excess``, ``reportable``,
+              ``isotropic_baseline``, ``nullity``, ``energy_in_kernel``,
+              ``energy_total``, ``stamp``, ``caveat``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
+    :raises ValueError: if the field is not 16-dimensional, or ``a`` is not a
+        zero divisor.
     """
-    e = _require(datum, 'null_occupancy')
+    e = _require(ref, 'null_occupancy')
     if e.dim != SEDENION_DIM:
         raise ValueError(f"null occupancy needs {SEDENION_DIM}-D vectors, got {e.dim}")
     ns = null_space(a, tol=tol)
@@ -517,17 +667,25 @@ def null_occupancy(datum: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict
 
 
 def null_occupancy_baseline(a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
-    """
-    THE MANDATORY NULL for null_occupancy().
+    """Compute the mandatory null for :func:`null_occupancy`.
 
-    An isotropic random field puts nullity/dim of its energy in ker(L_a) --
-    for a sedenion Assessor diagonal that is 4/16 = 0.25 exactly. Verified
-    numerically here rather than asserted.
+    An isotropic random field puts ``nullity/dim`` of its energy in
+    ``ker(L_a)`` -- exactly 4/16 = 0.25 for a sedenion Assessor diagonal.
+    Verified numerically here rather than asserted.
 
-    ⚠ A raw fraction near 0.25 is therefore EVIDENCE OF NOTHING. Only the
-      EXCESS over this baseline is a signal. Report the excess, never the
-      raw fraction -- the same rule as 'read the z-score, never the raw r'
-      (L_IO_SPECIFICATION 3).
+    .. warning::
+       A raw fraction near 0.25 is therefore EVIDENCE OF NOTHING. Report the
+       excess over this baseline, never the raw fraction -- the same rule as
+       "read the z-score, never the raw r".
+
+    :param a: the zero divisor whose kernel is baselined.
+    :type a: collections.abc.Sequence[float]
+    :param tol: singular values below this count as zero.
+    :type tol: float
+    :returns: keys ``nullity``, ``analytic_baseline``, ``measured_baseline``,
+              ``agreement``, ``rule``.
+    :rtype: dict[str, typing.Any]
+    :raises ValueError: if ``a`` is not a zero divisor.
     """
     ns = null_space(a, tol=tol)
     if not ns['is_zero_divisor']:
@@ -547,7 +705,15 @@ def null_occupancy_baseline(a: Sequence[float], tol: float = 1e-10) -> Dict[str,
 
 
 def principal_angles(P: np.ndarray, Q: np.ndarray) -> List[float]:
-    """Principal angles (radians, ascending) between two orthonormal column spans."""
+    """Return principal angles between two orthonormal column spans.
+
+    :param P: first span, columns orthonormal.
+    :type P: numpy.ndarray
+    :param Q: second span, columns orthonormal.
+    :type Q: numpy.ndarray
+    :returns: angles in radians, ascending.
+    :rtype: list[float]
+    """
     if P.size == 0 or Q.size == 0:
         return []
     s = np.linalg.svd(P.T @ Q, compute_uv=False)
@@ -556,12 +722,24 @@ def principal_angles(P: np.ndarray, Q: np.ndarray) -> List[float]:
 
 def external_component(signal: Datum, internal: Datum,
                        tol: Optional[float] = None) -> Dict[str, Any]:
-    """
-    Energy of `signal` outside the span of `internal`.
+    """Measure the energy of a signal outside a frozen internal span.
 
-    BOTH ARGUMENTS ARE EPOCHS. That is the whole correction: the internal
-    span is frozen at a stated stamp, so the measurement cannot be taken
-    across a concurrent write to the thinking threads.
+    Both arguments are datums. That is the correction: the internal span is
+    frozen at a stated stamp, so the measurement cannot be taken across a
+    concurrent write to the thinking threads.
+
+    :param signal: the field under test.
+    :type signal: Datum
+    :param internal: the internal span it is measured against.
+    :type internal: Datum
+    :param tol: rank tolerance; defaults to the standard SVD convention.
+    :type tol: float | None
+    :returns: keys ``fraction_outside``, ``energy_outside``,
+              ``energy_inside``, ``energy_total``, ``internal_rank``,
+              ``principal_angles``, ``signal_stamp``, ``internal_stamp``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if either argument is not a :class:`Datum`.
+    :raises ValueError: if the two datums have different dimensions.
     """
     s_ = _require(signal, 'external_component')
     i_ = _require(internal, 'external_component')
@@ -585,20 +763,35 @@ def external_component(signal: Datum, internal: Datum,
 
 def bearing(before: Datum, after: Datum,
                tol: Optional[float] = None) -> Dict[str, Any]:
-    """
-    Drift between two datums of the same channel.
+    """Measure how far a field's span moved between two datums.
 
-    Mutation is permitted. What is forbidden is measuring ACROSS it. This
-    dates the mutation instead, and reports whether it is the bounded kind.
+    RELATIONAL: this reading does not exist until something has moved, and
+    what it measures is the relation, not either state. Mutation is
+    permitted; what is forbidden is measuring across it, so this dates the
+    mutation instead.
 
-    largest_principal_angle -> 0     the span held
-    rank_delta > 0                   the internal span GREW; any earlier
-                                     external-occupancy result taken
-                                     against `before` is now stale
+    ``rank_delta`` above zero means the span GREW, and any earlier
+    external-occupancy result taken against ``before`` is now stale.
 
     Phase 27.3 is the bounded reference: net winding +0.0000 turns,
-    non-accumulating, held by the gearing rather than computed. Growth
-    that does not level off is the seizure warning.
+    non-accumulating, held by the gearing rather than computed. Growth that
+    does not level off is the seizure warning.
+
+    :param before: the earlier reference point.
+    :type before: Datum
+    :param after: the later reference point.
+    :type after: Datum
+    :param tol: rank tolerance; defaults to the standard SVD convention.
+    :type tol: float | None
+    :returns: keys ``rank_before``, ``rank_after``, ``rank_delta``,
+              ``principal_angles``, ``largest_principal_angle``,
+              ``stale_measurements``, ``unchanged``, ``before_stamp``,
+              ``after_stamp``.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if either argument is not a :class:`Datum`.
+    :raises ValueError: if the two datums have different dimensions.
+
+    .. seealso:: :func:`sight` for the cheap binary check.
     """
     b = _require(before, 'bearing')
     a = _require(after, 'bearing')
@@ -623,15 +816,31 @@ def bearing(before: Datum, after: Datum,
 
 # ── The report card ───────────────────────────────────────────────────────────
 
-def angular_report(datum: Datum,
+def angular_report(ref: Datum,
                    a: Optional[Sequence[float]] = None,
                    internal: Optional[Datum] = None,
                    embedding: str = 'unstated') -> Dict[str, Any]:
+    """Produce the full stress-test card for one field.
+
+    Every entry carries the stamp it was read from and the embedding it is
+    relative to.
+
+    .. warning::
+       No measurement is reportable without its datum.
+
+    :param ref: the frozen field to measure.
+    :type ref: Datum
+    :param a: optional zero divisor; adds ``null_occupancy`` to the card.
+    :type a: collections.abc.Sequence[float] | None
+    :param internal: optional internal span; adds ``external`` to the card.
+    :type internal: Datum | None
+    :param embedding: name of the embedding used, recorded on the card.
+    :type embedding: str
+    :returns: the report card.
+    :rtype: dict[str, typing.Any]
+    :raises TypeError: if ``ref`` is not a :class:`Datum`.
     """
-    THE STRESS TEST, one card. Every entry carries the datum stamp it was
-    read from, and the embedding it is relative to.
-    """
-    e = _require(datum, 'angular_report')
+    e = _require(ref, 'angular_report')
     ang = angular_residual(e)
     card: Dict[str, Any] = {
         'label':       e.label,

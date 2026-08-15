@@ -47,3 +47,6 @@ venv_install.log
 
 # venv sync runtime ledger (2026-08-15) — machine state, not source
 tools/venv_sync_ledger.jsonl
+
+# Sphinx build output (2026-08-15)
+docs/_build/
