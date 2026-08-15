@@ -46,48 +46,34 @@ quiet" forever.
 
 The fix is not a lock. It is a DATUM.
 
-WHY THESE NAMES (renamed 2026-08-15, from snapshot/Epoch/precession)
--------------------------------------------------------------------
-Cody, on the struts of a box-kite:
+WHICH CALL TO MAKE
+------------------
+    datum(field, label)   -> Datum
+        Freeze a field. DEFINITIONAL: self-contained, content-stamped,
+        meaningful with no other datum present. The only way in -- every
+        other entry point refuses a live sequence.
 
-    "the ends of the struts are definitional not relational...
-     until after 'movement' then relation to 'last time' emerges"
+    sight(held, live)     -> {'moved': bool, 'datum': Datum, ...}
+        ONE guarded read against a datum you already hold. Binary: did it
+        move under you? Cheap -- one re-stamp, no SVD, no second state
+        retained. USE THIS IN A LOOP. When it reports moved, re-datum from
+        the Datum it hands back rather than hashing twice.
 
-That is the whole structure, and the surveying vocabulary is the one that
-already formalises it:
+    bearing(before, after) -> principal angles, rank delta, stale flag
+        RELATIONAL: how FAR did it move, and is the drift bounded or
+        accumulating? Needs both states. USE THIS WHEN THE ANSWER HAS TO BE
+        REPORTABLE.
 
-    DATUM    a declared reference point. DEFINITIONAL -- self-contained,
-             stamped, true by declaration, needing no other datum to mean
-             something. A strut end: partner(a) = a XOR s, no table
-             consulted.
+⚠ DO NOT substitute sight() for bearing(). A moved-flag is not a drift
+  meter: bounded and unbounded drift both set moved=True, and only a bearing
+  separates them. That separation is the difference between a healthy engine
+  and a seizure.
 
-    BEARING  the reading BETWEEN two datums. RELATIONAL -- it does not
-             exist until something has moved, and what it measures is the
-             relation, not either state.
-
-A single datum cannot detect motion; that is what "definitional" costs you.
-Only a bearing can, and a bearing needs a "last time". This is why the pair
-is necessary and a single guarded read is not sufficient for MEASUREMENT.
-
-⚠ 'precession' was the original name for bearing() and it was a COLLISION.
-  Precession is already canonical in this repo with a kinematic meaning --
-  the ZD wobble's signature, "one L_(I|O) cycle = one precession revolution"
-  (Ainulindale wiki/68, h_rb_hat.precession_stroke, tier7_cosmos). It is a
-  property of the rotor, not a difference between two readings. Renamed to
-  free it. See Phase 27.8 on symbol collisions.
-
-THE TWO FACES -- and where a single guarded read DOES suffice
--------------------------------------------------------------
-    sight()    ONE guarded read. Cheap, binary: "did it move under me?"
-               Re-stamps the live field and compares to a held datum. This
-               is the seqlock pattern, and for DETECTION it is enough.
-
-    bearing()  TWO datums retained. Quantitative: "how far, and is the
-               drift bounded or accumulating?" Needed for the Phase 27.3
-               question, which sight() cannot answer.
-
-Detection is one face, measurement is the other. Use sight() in a hot loop
-and bearing() when the answer has to be reportable.
+⚠ DO NOT name anything here 'precession'. That word is taken, with a
+  kinematic meaning -- the ZD wobble's signature, "one L_(I|O) cycle = one
+  precession revolution" (Ainulindale wiki/68, h_rb_hat.precession_stroke,
+  tier7_cosmos, telperion). It is a property of the rotor, never a
+  difference between two readings.
 
 ⚠ NO MEASUREMENT IS REPORTABLE WITHOUT ITS DATUM. This is the same rule
   shape as "no result without its null" (L_IO_SPECIFICATION 3).
