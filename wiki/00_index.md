@@ -20,6 +20,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | Page | Engine | Status | Key Result |
 |------|--------|--------|-----------|
 | [hamiltonian.md](hamiltonian.md) | `hamiltonian.py` | ESTABLISHED | E=xp conserved; trajectory(1,1,t=1)→x=e |
+| [ring_theory.md](ring_theory.md) | `…/lineage.py` (SFR) | ESTABLISHED | falls ⟺ ℤ/(N) has zero divisors; gcd = the integer trace-Laplacian |
 | [noether.md](noether.md) | `noether.py` | ESTABLISHED **(see caveat)** | σ=½ derived; iteration converges only for E≲10 |
 | [galactic_cavity.md](galactic_cavity.md) | `galactic_cavity.py` | P1 CONFIRMED | r_t=0.738kpc; period=22.7Gyr (frozen) |
 | [capacitor.md](capacitor.md) | `capacitor.py` | ESTABLISHED | H(0)=1; prime passes through |
