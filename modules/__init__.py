@@ -78,5 +78,21 @@ Current modules (Phase 5):
                          Isotropic null for kernel occupancy is exactly
                          4/16 — report the EXCESS, never the raw fraction.
 
-Version: 0.151 — Phase 7: angular_rank
+    scale              — THE SCALE. Decompositional analysis, forwards
+                         and backwards — SCALE (tier-0, alongside ADD and
+                         SIGN) pulled out of a quantity and named as its
+                         own object. polar_decompose/recompose: the exact
+                         forward/backward pair for one point (r=scale,
+                         theta=scale-blind under self-rescaling, verified
+                         round-trip). The two-ring Mobius fold's OWN
+                         scale-blind object is a harder, different
+                         question: the raw angle does NOT survive the
+                         fold (tested, rejected, kept in the record); the
+                         cross-ratio of any four points IS exactly
+                         invariant under every anchor. pathway_decompose
+                         applies the same discipline to a real algorithm
+                         (RSA CRT-decrypt as the control case — a genuine
+                         dependency fan-out, not a forced linear chain).
+
+Version: 0.152 — Phase 8: scale
 """
