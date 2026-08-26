@@ -94,5 +94,22 @@ Current modules (Phase 5):
                          (RSA CRT-decrypt as the control case — a genuine
                          dependency fan-out, not a forced linear chain).
 
-Version: 0.152 — Phase 8: scale
+    units              — UNITS. Dimensional exponent vectors as a fourth
+                         domain for this project's factoral-decomposition
+                         discipline (numbers: factor_lineage; processes:
+                         pathway_decompose; now units: the 7 SI base
+                         dimensions as leaves). Every named compound (N, J,
+                         W, Pa, C, V, ohm, F, Wb, T, H) has an exact,
+                         computable lineage back to the 7 leaves;
+                         cancellation (mol/L * L -> mol) is exact vector
+                         arithmetic. A unit carries no numeric content and
+                         does no work itself -- a geometry -- but it
+                         determines which permutations of content are
+                         legal. EQUATION_INDEX: a dimension signature
+                         narrows the candidate physical laws, the same
+                         move context_vector makes for a word narrowing to
+                         its candidate synsets -- units as "word
+                         possibilities" for equations.
+
+Version: 0.153 — Phase 9: units
 """

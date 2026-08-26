@@ -36,6 +36,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [archimedes_screw.md](archimedes_screw.md) | `modules/archimedes_screw/` | THEORETICAL | screw = logarithm; ψ jumps by exactly ln p; γₙ=2πn/W(n/e); **v0.2** leaf falls at gpf(N), Dickman ρ, harvest Ψ(X/p,p) |
 | [angular_rank.md](angular_rank.md) | `modules/angular_rank/` | ESTABLISHED | 16D oscilloscope; {4,8,4} reproduced as a CHECK; **isotropic kernel null = 4/16 exactly**; epoch discipline — no measurement without its stamp |
 | [scale.md](scale.md) | `modules/scale/` | ESTABLISHED | polar decompose/recompose exact round-trip; **cross-ratio survives every anchor, the raw angle does not** (rejected candidate kept); no true caustic (one isolated pole only); RSA CRT-decrypt as the process-decomposition control case |
+| [units.md](units.md) | `modules/units/` | ESTABLISHED | 11 named compounds (N,J,W,Pa,C,V,Ω,F,Wb,T,H) trace exactly to the 7 SI leaves; **cancellation is exact vector arithmetic** (mol/L*L=mol); EQUATION_INDEX narrows a dimension signature to its candidate physical laws — "word possibilities" for equations |
 
 ## Foundations — Tiers 0 to 5
 
