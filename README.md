@@ -24,6 +24,7 @@ ValaQuenta/
 ├── understand.py        Read → Ponder → Calculate → Understand
 │
 ├── modules/             Domain engines (one module per Millennium problem / tier)
+│   ├── add_scale_sign/  THE TIER-0 DATATYPE — Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN)
 │   ├── berry_keating/   Riemann zeros, d*, Witches Hat, prime gaps
 │   ├── clay_millennium/ Yang-Mills, Navier-Stokes, P vs NP
 │   ├── constants/       OMEGA_ZS, d*, GAP, φ, π
@@ -55,7 +56,7 @@ ValaQuenta/
 │   ├── noether_engine/
 │   ├── sonification/
 │   └── wiles_modularity/
-├── wiki/                One page per engine — results (37)
+├── wiki/                One page per engine — results (51)
 │
 ├── requirements.txt     Dependencies, derived from actual imports
 ├── install.sh           Linux installer
@@ -67,6 +68,31 @@ ValaQuenta/
 ---
 
 ## Engines and Results
+
+### modules/add_scale_sign/ — the tier-0 datatype
+
+```
+ASS(add, scale, sign)  =  x ↦ sign·scale·x + add   —  an element of
+  Aff(1,ℝ) = ℝ ⋊ (ℝ_{>0} × ℤ/2) = ADD ⋊ (SCALE × SIGN)
+
+compose  A @ B        invert  ~A        residual  A.residual('SIGN')  (str.strip-style)
+decompose  A.lineage(order='chrono' | 'zeta')  →  ASSWord
+
+each generator's equation part:   ADD → a      SCALE → ln s      SIGN → g
+the generalized equation:         u = Σₖ [ gₖ·ln sₖ + aₖ ]      Γ = tanh(u/2)
+ground state a=0, s=1, g=+1  ⇒  u=0  ⇒  Γ=0  ⇒  the now
+
+firing order (the 3-phase camshaft):  SIGN → SCALE → ADD,  x ↦ ADD(SCALE(SIGN(x)))
+firing defect  u − (a + ln s) = (g−1)·ln s   (non-zero ⇔ SIGN flipped a non-trivial SCALE)
+orthogonal Smith charts:  Γ_SCALE = tanh(½·ln s)  ⟂  Γ_ADD = tanh(½·a),  parity g
+```
+
+Registered as `AddScaleSignModule` (6 code-verified equations; `python3 -m
+ValaQuenta --info`). The decomposition maths (the four-question test, roll-down)
+stays in `VAPMIP/add_scale_sign.py` — not duplicated. Also an engine + tool in
+the SFR decomposer suite (with the fast inverse square root as the worked
+example). Formal spec: [wiki/add_scale_sign.md](wiki/add_scale_sign.md) ·
+`Ainulindale/wiki/107_add_scale_sign_datatype.md`.
 
 ### bao_mass_gap.py — Yang-Mills Mass Gap
 
