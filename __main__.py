@@ -44,6 +44,7 @@ from .modules.bao_mass_gap import BaoMassGapModule
 from .modules.angular_rank import AngularRankModule
 from .modules.scale import ScaleModule
 from .modules.units import UnitsModule
+from .modules.add_scale_sign import AddScaleSignModule
 
 def _register_all():
     registry = get_registry()
@@ -67,6 +68,7 @@ def _register_all():
     register(AngularRankModule())
     register(ScaleModule())
     register(UnitsModule())
+    register(AddScaleSignModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

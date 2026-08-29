@@ -70,3 +70,16 @@ Left in place per Prime Directive #2. Not patched, not centred, not rescaled.
 
 - Whether removing the common mode is legitimate here, or whether it counts as tuning the encoder to produce a result. **Cody's call, not Claude's.**
 - Verb tensors are built from the token's own harmonics, so the engine has no notion of a verb's *argument structure* beyond what the string itself encodes.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| pregroup → tensor compositional translation | pregroup contraction → tensor; word-order cos = 0.9913 | 3 · SCALE | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: the prime-channel encoder carries ~85% common mode with 2–3% content — concepts do not separate |
+
+
+Calibration: this verdict agrees with the page's stated status (**OPEN**).

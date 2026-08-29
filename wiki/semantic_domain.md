@@ -58,3 +58,16 @@ def tune(self, domain):
 ```
 
 The domain controls the thermal properties of the entire understanding pipeline.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| a domain's context signature; τ·T_H = const | conserved-product measure over the domain | 3 · SCALE | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

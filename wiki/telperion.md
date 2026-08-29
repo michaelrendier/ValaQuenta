@@ -83,3 +83,16 @@ failed to produce a result.
 
 - The README records 10/10 predictions confirmed. Those predictions and their confirmations are recorded in the engine's own `predictions()`; each should be read with its own source.
 - The jellyfish / swimming reading is a physical picture laid over the resonance coupling, not an additional result.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the bell trajectory swinging d* ↔ π/8 (never closes) | the bell iteration | 1 · SCALE | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**PREDICTIONS**).

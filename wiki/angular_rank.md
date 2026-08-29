@@ -156,6 +156,19 @@ bearing    (span 4 -> 16)           rank_delta +12, stale_measurements True
 
 ---
 
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the 16D angular-rank read; {4,8,4} reproduced as a CHECK | the rank test (reads which coordinates lit, decides nothing) | 3 · ADD | LAURELIN | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).
+
 ## Related
 
 - `VAPMIP/docs/wiki/Operating-L-IO.md` §4 — the provenance argument and its retraction

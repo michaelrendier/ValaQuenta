@@ -198,3 +198,51 @@ Every `compute()` returns a `derivation` key — an ordered list of the operatio
 performed. The console renders that list as the proof chain.
 
 Shell commands: `gap`, `identity`, `residue`, `validate`.
+
+---
+
+## Claim audit — "the spectral residue of the BAO was measured as the mass gap exactly" (2026-08-28)
+
+**Disproven as stated; the weaker form stands.**
+
+- The `residue` returned by `spectral_residue()` is **not measured from any
+  decomposition** — line for line it is `BAO_CEILING − BAO_FLOOR`, the same
+  `Ω_ζΣ − D*·ln10` subtraction as `GAP`. So `residue_equals_gap` is `True`
+  **by construction** (`x == x`), not by measurement. The explicit-formula sum
+  over zeros is a genuine convergence demonstration but — as the module
+  docstring already says — *"not an input to Δ."* `residue_is_n_independent`
+  was a hardcoded literal `True`; it is now actually computed at n ∈ {1, n, 5n}
+  (still true, because n never enters the residue).
+- **What is real:** `Δ = Ω_ζΣ − D*_spec·ln10 = 0.000707357533`, a
+  zero-free-parameter subtraction — though `D*_spec` is carried to 5 sig figs,
+  so `Δ` is really `≈ 7.07×10⁻⁴ ± ~2×10⁻⁶`. It is positive (⇒ a gap exists) and
+  ≈ 0.4σ of the Planck 2018 BAO precision (⇒ resolvable in principle).
+- **The identity `Δ = 1/(1000√2)` is approximate, not exact:**
+  `1/(1000√2) = 0.000707106781`, residual `2.51×10⁻⁷` = **0.0354%** (3 sig
+  figs). It is *consistent with* `D*`'s carried precision (the `D*` that makes
+  it exact is `0.24600010890`, inside the last carried digit) — a consistency
+  statement, not a measurement. The `10³` factor is **not derived** from
+  framework constants (the open question the page already lists).
+- **Undocumented lead (not a derivation):** `Δ ≈ 1/(100·|ρ₁|)` where
+  `|ρ₁| = √(¼+γ₁²) = 14.1436 ≈ 10√2` (because `γ₁ = 14.1347 ≈ 10√2`) — agrees
+  to 0.05%. This would read the `√2` as the first Riemann zero's height rather
+  than only `sin 45°`, and the `1000` as `100·|ρ₁|`. Still a numerical
+  coincidence at the ~0.05% level; the module does not use it.
+
+**Bottom line:** `Δ > 0` is solid; `Δ = Ω_ζΣ − D*·ln10 ≈ 7.07×10⁻⁴` is solid
+arithmetic at 3 sig figs; `Δ = 1/(1000√2)` and "measured as the residue exactly"
+are **not** — the identity is a 3-sig-fig coincidence and the "residue" is the
+same subtraction renamed. The generational-lineage FLAG (below) is correct; the
+page's **ESTABLISHED** label overstates the identity and should read
+ESTABLISHED on `Δ > 0` / THEORETICAL on the closed form.
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the mass gap Δ = 0.0007073575 = 1/(1000√2) | the residue of the BAO spectral decomposition | 3 · ADD | MINGLING | DEFINITIONAL | **FLAGGED** — deficit: why 10³ in 1/(1000√2)? (the 1/√2 is the σ=½ symmetry; the 10³ is the doubling count / d*_RG — not derived) |
+
+
+Calibration: this verdict **disagrees with** the page's stated status (**ESTABLISHED**).

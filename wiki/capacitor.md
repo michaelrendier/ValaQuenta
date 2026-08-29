@@ -47,3 +47,16 @@ The DC component of `[J_fwd, J_3, σ=½]` IS the word. Not the surface form. The
 This is the Three-Phase architecture from `wiki/20_three_phase_architecture.md`: Capacitor = Phase 3 (Yang-Mills low-pass filter). The prime is what remains after the three-phase Fourier decomposition.
 
 Chladni analogy: sand settles at the node line because the node line does not move. The prime is the node.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the capacitor transfer function H(s); H(0)=1 | evaluate H(s); the prime passes through | 1 · SCALE | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

@@ -194,6 +194,19 @@ chaining folds — see [[ring_theory]] for the actual ring-theoretic spine
 of this project, which lives in a different place (`SedenionFactoralRelativity`)
 for a different, factoral reason.
 
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| SCALE pulled out of a quantity, forwards and backwards | polar_decompose / cross_ratio (the two-ring fold) | 0 · SCALE | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).
+
 ## Related
 
 [[ring_theory]] (the sibling "a familiar word already present" page, one

@@ -91,29 +91,36 @@ class NoetherCurrents:
 
     def forced_sigma(self, E: float, sigma_0: float = 0.0) -> float:
         """
-        The mathematics forces the observer to sigma = 1/2.
-        Not assigned. Derived.
+        The two currents meet at σ = ½ — from ANY starting position σ₀ and for
+        ANY energy scale E > 0. Not assigned. Derived.
 
-        From the right (σ > 1/2): forward current  F(σ) = e^{-σ·E}
-        From the left  (σ < 1/2): backward current B(σ) = e^{-(1-σ)·E}
+        From the right (σ > ½): forward current  F(σ) = e^{-σ·E}
+        From the left  (σ < ½): backward current B(σ) = e^{-(1-σ)·E}
 
-        They meet where F(σ) = B(σ):
-            e^{-σE} = e^{-(1-σ)E}
-            σ = 1 - σ
-            σ = 1/2
+        They meet where F(σ) = B(σ). Both currents are strictly positive, so
+        take logs — the balance condition becomes LINEAR:
 
-        From ANY starting position. From opposite sides.
-        The radial spherical complex polar geometry forces the meeting point.
+            -σE  =  -(1-σ)E     ⟺     E·(1 - 2σ) = 0     ⟺     σ = ½   (E ≠ 0)
+
+        Newton on h(σ) = ln F − ln B = E(1-2σ) has h'(σ) = -2E, so a single
+        step reaches ½ exactly from any real σ₀ (E cancels):
+
+            σ ← σ - h(σ)/h'(σ) = σ + (1 - 2σ)/2 = ½
+
+        No exponential is evaluated away from the balance point, so — unlike
+        the previous softmax-weighted-average iteration — there is no overflow
+        for σ₀ < 0 and no spurious early exit for large E. That old scheme and
+        both of its failure modes are documented in
+        `notebooks/engines/03_noether.ipynb`.
         """
-        from math import exp
-        sigma = sigma_0
-        for _ in range(2048):
-            F = exp(-sigma * E)           # forward: from the right
-            B = exp(-(1.0 - sigma) * E)   # backward: from the left
-            if F + B < 1e-30:
+        if E == 0.0:
+            # F ≡ B ≡ 1 for every σ: the currents are balanced everywhere, and
+            # the symmetric meeting point is still ½.
+            return 0.5
+        sigma = float(sigma_0)
+        for _ in range(64):                 # converges in one step; the loop is
+            step = 0.5 - sigma              #   the log-space Newton update,
+            sigma += step                   #   σ + (1-2σ)/2, with E cancelled
+            if abs(step) <= 1e-15:
                 break
-            sigma_new = (F * sigma + B * (1.0 - sigma)) / (F + B)
-            if abs(sigma_new - sigma) < 1e-12:
-                break
-            sigma = sigma_new
-        return sigma   # always 0.5
+        return sigma   # 0.5 exactly — any real σ₀, any E > 0

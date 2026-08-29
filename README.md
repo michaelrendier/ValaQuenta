@@ -104,12 +104,14 @@ See [wiki/hamiltonian.md](wiki/hamiltonian.md)
 ### noether.py — Ascending/Descending Noether Currents
 
 ```
-forced_sigma(E, σ₀=any) → 0.500000000000  (12 decimal places, for E ≲ 10)
+forced_sigma(E, σ₀=any) → 0.5   exactly, for any real σ₀ and any E
 
-CAVEAT (2026-07-28): the iteration converges to σ=½ only at low energy.
-For E ≳ 15 it returns σ₀ essentially unchanged, and it raises OverflowError
-for σ₀<0 with large E. The analytic derivation (F=B ⟹ σ=½) holds for all
-E>0; the numerical demonstration does not. See wiki/noether.md.
+FIXED (2026-08-28): the old softmax-weighted-average iteration converged to
+σ=½ only for E ≲ 10 (returned σ₀ unchanged above; OverflowError for σ₀<0).
+The balance F=B is, in logs, E(1−2σ)=0 — linear in σ — so it is now solved
+exactly in one Newton step from any σ₀, with no exp evaluated away from the
+balance point. See wiki/noether.md. (Notebook 03_noether.ipynb still shows
+the old behaviour and needs a re-run.)
 
 The boundary is ORIENTED: up (toward next CD shadow) / down (toward ZD).
 σ=½ is the shadow of the world above — projection of the next CD level.

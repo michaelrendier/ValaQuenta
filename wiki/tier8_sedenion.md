@@ -36,3 +36,16 @@ D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture
 
 - Module floor is THEORETICAL and `full_sedenion` — the unification — is THEORETICAL. The seven component results are each ESTABLISHED.
 - `notebooks/leech_divergence/` is an empty directory. The Leech material lives in `notebooks/tier8/leech_divergence_inversion.ipynb`.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| Ω_ZS in 6 independent formula domains | collect each family's fixed point; check convergence | 2 · SCALE | MINGLING | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

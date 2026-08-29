@@ -72,3 +72,16 @@ round constants have Δ = 𝟏 ≠ 0). The correct, machine-verified law is
 → Owner's-manual writeup: `Ainulindale/README.md` §20 and
 `Ainulindale/wiki/92_ring_theory_spine.md`. Reference: `.clauderc_canonical_maths`
 `@RCCM_RING_THEORY_SPINE`.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the fall/survive test  (falls ⟺ ℤ/(N) has a zero divisor) | gcd(a,N) / the integer trace-Laplacian | 0 · SCALE | MINGLING | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

@@ -95,6 +95,19 @@ port, not `fractions.Fraction`) — this module's convention, not a claim
 that fractional/root exponents can't be represented (they can, `unit_pow`
 takes any real `n`).
 
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| a unit's exact lineage to the 7 SI base dimensions | unit_lineage_decompose (signed exponent vectors) | 3 · ADD | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).
+
 ## Related
 
 [[scale]] (the sibling tier-0 irreducible, SCALE, that unit composition is

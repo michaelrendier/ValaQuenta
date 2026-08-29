@@ -41,3 +41,16 @@ This is the module to read first. It is the index to every other engine.
 
 - `d_star_tower_ln10` — the claim that d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 = ln(10) — is tagged OPEN in its own result dict, with the text '[OPEN — high]'. This is the same ln(10) that appears in the mass gap. It is not derived.
 - `geometric_observer` and `planck_ln_connection` are THEORETICAL.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the chain from raw constants to the master equation (tiers 1–5) | compose the tier maps; the dropouts | 3 · ADD | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: is d*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 = ln(10) derivable, or coincidence? (d_star_tower_ln10, OPEN) |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

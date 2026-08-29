@@ -80,3 +80,16 @@ distinguished class and the reason it is exempt needs saying. Not resolved here.
 
 - The Monster gap appears at e[1, 11, 15]. Its significance is asserted, not derived.
 - P2 above: one odd-sector class misses the Monster gap.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the 84 directed / 42 unordered sedenion ZD pairs | exhaustive search on S¹⁵ for a·b = 0 | 3 · SIGN | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

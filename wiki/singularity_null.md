@@ -46,3 +46,16 @@ failed to produce a result.
 ## Open
 
 - Module floor is THEORETICAL. The four component engines are individually ESTABLISHED; the unification `full_singularity_null` is not.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the singularity IS the identity e₀ (0_RB) | read the all-empty scope as one object | -1 · — | MINGLING | DEFINITIONAL | **FLAGGED** — deficit: the flat circle "says NULL one way" — one direction underdetermined (a flattening artifact) |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

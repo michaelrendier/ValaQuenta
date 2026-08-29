@@ -70,3 +70,16 @@ VALUE   T(p_n)   -- spiral addressed by magnitude (PNT growth n*ln n)
 ## Aside — not the engine's purpose, kept on record
 
 A side investigation happened while building this: does prime-gap curvature look like a true Euler spiral (clothoid)? `curvature_spiral` (heading from κ_n=ln(p_n), correcting an earlier `cumsum(gap_n)` attempt that telescoped trivially back to p_n−p_0) and `is_true_euler_spiral` answer **no** — ln(p_n) never reverses sign, so the curve only ever tightens into one inward spiral, never the clothoid's two-eye structure. True, and on record, but a tangent from the alarm — not what this engine is for.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the prime gate / alarm at a prime address | a gate test at a prime (open / closed) | 1 · SIGN | TELPERION | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

@@ -37,3 +37,16 @@ Six of the eight equations require parameters (field component vectors, coupling
 
 - The module is THEORETICAL at floor. Only `L_kinetic` and `L_bias` are ESTABLISHED, and both are parameterised.
 - The README notes a rename is pending: L_NN → the VAPMIP Lagrangian.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the L_NN Lagrangian (four field terms, running coupling) | assemble L_kin + L_mat + L_bias + L_coup | 3 · ADD | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: 2 of 8 equations not yet parameterised (6/8) |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

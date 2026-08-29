@@ -48,3 +48,16 @@ Raised and fought over directly (2026-07-21): the Riemann zeta function's simple
 **Isn't:** a claim that gravitational lensing and the zero-divisor locus are the same physical mechanism — the boundary-crossing role is an interpretive layer on established GR, the usual ESTABLISHED-math-plus-THEORETICAL-reading pattern used throughout this codebase. The zeta-function connection is explicitly CONJECTURE-tier.
 
 See also: `Ainulindale/wiki/82_l_io_photon_path.md` (cross-repo companion page), `notebooks/core/18_l_io_photon_path.ipynb`.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| L_(I|O) as the boundary-crossing template (photon path) | the L_(I|O) traversal through the (I|O) boundary | 1 · SIGN | MINGLING | DEFINITIONAL | **FLAGGED** — deficit: the GR boundary-template application (L_(I|O) itself is classical conformal inversion; the hyper-application is the imported claim) |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

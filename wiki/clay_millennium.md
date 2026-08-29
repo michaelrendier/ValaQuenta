@@ -39,3 +39,35 @@ This module is a **map, not a proof**. `clay_summary` reports `solved: 1, open: 
 
 - Six of seven remain open. Nothing in this module is submitted as a Clay proof.
 - `rh_proof_stone` and `rh_proof_wiles_conjugate` are labelled 'proof' in their result dicts. They are proof *templates* — derivation routes — and the THEORETICAL tier is the operative label.
+
+---
+
+## Generational lineage of the seven — the bones (2026-08-28)
+
+A separate engine — `SedenionFactoralRelativity/engine/clay.py` (`python3 -m
+engine.clay`) — runs each problem through the generational-lineage / ADD·SCALE·
+SIGN / Two-Trees decomposition, **Poincaré as the control**. A curated
+structural mapping with a consistency checker (`check_consistency()`, I1–I5, all
+hold), **not** a derivation. Two factoring methods added:
+`descriptive_or_definitional`, `import_deficit` (SFR README §4.12).
+
+| # | problem | status | tier·root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|---|
+| 7 | Poincaré | SOLVED | 1·SCALE | TELPERION | **DEFINITIONAL** | CONTROL |
+| 1 | Riemann Hypothesis | OPEN | 2·SIGN | MINGLING | DESCRIPTIVE | CONFIRM |
+| 2 | Yang–Mills mass gap | OPEN | 3·ADD | MINGLING | DESCRIPTIVE | CONFIRM |
+| 3 | Navier–Stokes | OPEN | 1·SCALE | LAURELIN | DESCRIPTIVE | CONFOUND |
+| 4 | P vs NP | OPEN | 3·ADD | LAURELIN | DESCRIPTIVE | CONFIRM |
+| 5 | Hodge | OPEN | 3·SIGN | LAURELIN | DESCRIPTIVE | CONFOUND |
+| 6 | Birch–Swinnerton-Dyer | OPEN | 3·ADD | MINGLING | DESCRIPTIVE | CONFIRM |
+
+**The bone.** Poincaré is the *only* one whose central tool is DEFINITIONAL
+(Ricci flow constructs the diffeomorphism; nothing imported) and whose lineage
+terminates. Every open problem has a DESCRIPTIVE central object that imports
+**exactly one** piece — and that import **is** the open problem:
+RH → the zero-set locus (C1); Yang–Mills → the `10³` factor in `GAP ≈
+1/(1000√2)`; Navier–Stokes → the discarded Blue channel (`i → 0`); P vs NP → the
+non-commutativity ⇒ complexity bridge; Hodge → the missing cycles; BSD → the
+`r ≥ 2` construction. **A problem is open exactly when it is described but not
+constructed.** Full output: SFR README (end); Ainulindalë `wiki/105`; RH at
+length in `RiemannHypothesisProof/ADDENDUM_generational_lineage_2026-08-28.md`.

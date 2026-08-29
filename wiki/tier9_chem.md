@@ -34,3 +34,16 @@ Attribution: the module names Erika Schafer.
 
 - **No clinical or experimental data is loaded by this module.** Every result is a derivation from the algebra. The predicted A_R/A_B = OMEGA_ZS signature is untested against any assay.
 - Nothing here is medical advice or a treatment protocol, and the module should not be read as one.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the structural analogy cancer ↔ zero-divisor  (STRUCTURAL ONLY) | map the ZD condition onto a bond-network description | 2 · SIGN | TELPERION | DESCRIPTIVE | **FLAGGED** — deficit: no clinical or assay data loaded — structural mapping only, no medical inference made or intended |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

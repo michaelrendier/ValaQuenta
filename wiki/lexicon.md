@@ -19,3 +19,16 @@ It persists to disk, so experience accumulates across runs.
 ## Open
 
 - **Untested at scale for the same reason as `corpus.py`** — no binary corpus loaded. Paired open item in the wiki index.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| lexicon statistics over an ingested binary corpus | ingest + index | 3 · ADD | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: no binary corpus loaded — defined, never run |
+
+
+Calibration: this verdict agrees with the page's stated status (**UNTESTED**).

@@ -35,3 +35,16 @@ J_N generates Z₄: four applications of a π/2 rotation is 2π, one full turn.
 
 - `d_star_gap` is tagged OPEN here as it is in berry_keating. Same open question.
 - Of the four horizons, Case 2 (cosmological) is THEORETICAL; the other three are ESTABLISHED.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the (I|O) map J_N: (r,θ) → (1/r, θ+π/2); r=1 = four horizons | the J_N involution (Z₄) | 1 · SIGN | MINGLING | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

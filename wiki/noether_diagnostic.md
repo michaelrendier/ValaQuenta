@@ -35,3 +35,16 @@ The blockchain here is a tamper-evident log of conservation checks, not a distri
 
 - A single run produces a chain of length 1. The audit property only has force once many runs have been appended over time.
 - `resonance_artifacts` reports an oscillation of period 40.0 and amplitude 5.3e-3 which the module labels an artifact. Whether it is a numerical artifact or a signal is not settled.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the Noether-current violation measure (0.0 across ℝℂℍ𝕆) | compute ∂_μJ^μ; hash-chain the ledger | 3 · ADD | LAURELIN | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

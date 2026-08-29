@@ -14,3 +14,16 @@ It matters because it is the common cause of both translators' central failure: 
 ## Open
 
 - Whether to strip the common mode. It would likely fix both translators, and it would be an encoder change made because the result was disappointing — which is tuning. **Cody's call.** Recorded, not acted on.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the shared prime-channel encoder (no PRNG anywhere) | deterministic encode into the 16 prime channels | 0 · ADD | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**substrate**).

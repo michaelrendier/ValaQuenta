@@ -12,3 +12,16 @@ Because it is not registered it has no formulary and no confidence tiers. It is 
 ## Open
 
 - The physical claim behind σ-cavitation (Bang as phase transition, BEC medium) lives in tier7_cosmos and Ainulindale, not here. This module draws the picture; it does not argue the case.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the σ-cavitation SVG render (not a registered engine) | render σ-cavitation to SVG | 1 · SCALE | LAURELIN | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**renderer**).

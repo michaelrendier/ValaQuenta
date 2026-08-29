@@ -67,3 +67,16 @@ U.tune(domain)  →  τ = coherence_time(domain)
 ```
 
 τ · T_Hawking = constant. The Capacitor IS the thermal bath. Cold domain (many instruments) = long memory = stable meaning. Hot domain (few instruments) = fast evaporation = polysemous.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the full derivation pipeline output; σ=½ for all inputs | compose every engine end to end | 3 · ADD | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

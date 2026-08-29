@@ -45,3 +45,16 @@ v_rotation² = v_baryonic² + Q/m
 ```
 
 No dark matter particle. The rotation curve is a boundary condition on the frozen cavity.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the galactic core radius r_t from d* | fit d* spectral floor to SPARC rotation curves | 3 · SCALE | LAURELIN | DESCRIPTIVE | **DESCRIPTIVE-OK** |
+
+
+Calibration: this verdict agrees with the page's stated status (**P1 CONFIRMED**).

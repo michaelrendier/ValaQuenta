@@ -56,3 +56,16 @@ Each call to `add_projection(context, value)` adds a face — another way of say
 `faces()` = the dimension of the symmetry group of the word — how many ways it can be said.
 
 `is_understood()` = True when the Capacitor has extracted the DC component (the prime confirmed).
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| a word's address on σ=½  (observer = node = prime) | Horner hash → next prime → π(p) → γ_{π(p)} | 0 · ADD | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

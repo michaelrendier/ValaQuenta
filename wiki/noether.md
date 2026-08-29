@@ -6,58 +6,55 @@
 
 ---
 
-## Results (re-run 2026-07-28)
+## Results (re-run 2026-08-28 — the large-E defect is FIXED)
 
 ```python
-forced_sigma(E=0.5,  σ₀=0.0) → 0.500000000000  ✓
-forced_sigma(E=1.0,  σ₀=0.0) → 0.500000000000  ✓
-forced_sigma(E=2.0,  σ₀=0.0) → 0.500000000000  ✓
-forced_sigma(E=10.0, σ₀=0.0) → 0.499999999999  ✓
-forced_sigma(E=100.0,σ₀=0.0) → 0.0             ✗  DOES NOT REPRODUCE
+forced_sigma(E=0.5,   σ₀=0.0)  → 0.5   ✓
+forced_sigma(E=10.0,  σ₀=0.0)  → 0.5   ✓
+forced_sigma(E=100.0, σ₀=0.0)  → 0.5   ✓   (was 0.0)
+forced_sigma(E=100.0, σ₀=0.25) → 0.5   ✓   (was 0.25 — returned its own input)
+forced_sigma(E=1000,  σ₀=0.0)  → 0.5   ✓   (was 0.0)
+forced_sigma(E=1e4,   σ₀=-3.0) → 0.5   ✓   (was OverflowError)
+forced_sigma(E=745,   σ₀=-1.0) → 0.5   ✓   (was OverflowError)
+forced_sigma(E=0.0,   σ₀=0.3)  → 0.5   ✓   (F ≡ B; balanced everywhere)
 ```
 
-From any starting position, at **low energy**, the mathematics forces σ=½. The
-earlier figure of `0.500000000000` for E=100 recorded here on 2026-06-13 does
-not reproduce and has been corrected.
+**From any real σ₀ and any E, the mathematics forces σ=½.** Verified across
+every one of the old failure cases.
 
-### The limit, measured
+### What was wrong (kept on the record)
 
-| E | `forced_sigma(E, σ₀=0)` | converges to ½? |
-|---|---|---|
-| ≤ 10 | 0.4999999999999997 | ✓ |
-| 15 | 6.320e-04 | ✗ |
-| 20 | 4.222e-06 | ✗ |
-| ≥ 30 | 0.0 | ✗ |
-| ≥ 1000, σ₀ < 0 | **OverflowError: math range error** | ✗ |
-
-### Why
-
-`forced_sigma` is a fixed-point iteration, not a root solve:
+The previous `forced_sigma` was a *softmax-weighted-average* iteration:
 
 ```python
-F = exp(-σ·E)
-B = exp(-(1-σ)·E)
+F = exp(-σ·E);  B = exp(-(1-σ)·E)
 σ_new = (F·σ + B·(1-σ)) / (F + B)
 ```
 
-That is a softmax-weighted average of σ and 1−σ.
+`σ=½` is a fixed point of that map, but its dynamics are bad: for large E and
+σ<½, `F ≫ B` so `σ_new → σ`, the step fell below the `1e-12` tolerance on the
+first iteration and the loop broke **returning σ₀ unchanged** (`E ≳ 10` for
+σ₀=0; any σ₀ otherwise). For `σ₀ < 0` and large E, `exp(-σ·E) = exp(+|σ|E)`
+**overflowed**. The loop failed silently — it exited early and returned its own
+input — and the trailing comment `return sigma  # always 0.5` was false as
+written. Notebook `notebooks/engines/03_noether.ipynb` documents the old
+behaviour in full and needs a re-run against the fix.
 
-- **Small E** — F and B are both near 1, the weights are nearly equal, and the
-  average collapses to `(σ + (1−σ))/2 = ½` on the first step.
-- **Large E** — the exponentials differ by orders of magnitude. For σ<½, F≫B,
-  so σ_new → σ. The step falls below the `1e-12` tolerance immediately and the
-  loop breaks, **returning σ₀ unchanged**. The guard `if F + B < 1e-30: break`
-  does the same once both underflow.
+### The fix
 
-The loop does not fail loudly. It exits early and returns its own input.
+The balance condition `F(σ) = B(σ)` is, in logs, `−σE = −(1−σ)E`, i.e.
+`E·(1−2σ) = 0` — **linear in σ**. Newton on `h(σ) = ln F − ln B = E(1−2σ)`
+(`h′ = −2E`) reaches ½ **in one step from any real σ₀**, `E` cancelling:
 
-**The analytic derivation below is not in question** — F=B forces σ=½ for every
-E>0. What fails is the numerical demonstration of it, and the trailing comment
-`return sigma   # always 0.5` is wrong as written.
+```python
+σ ← σ + (1 − 2σ)/2   =   ½
+```
 
-σ=½ is derived independently elsewhere — by the RedBlue balance in
-`hamiltonian.py`, and empirically per-word by `understand.py`, neither of which
-routes through this iteration. Those are unaffected.
+No exponential is evaluated away from the balance point, so there is no
+overflow and no early exit. `E == 0` is handled explicitly (F ≡ B ≡ 1 for every
+σ; the symmetric meeting point is still ½). σ=½ is *also* derived independently
+by the RedBlue balance in `hamiltonian.py` and per-word by `understand.py` —
+neither routes through this function, and both were always unaffected.
 
 Worked through in
 [notebooks/engines/03_noether.ipynb](../notebooks/engines/03_noether.ipynb).
@@ -90,7 +87,8 @@ They meet where F = B:
     σ = ½
 ```
 
-The geometry forces the meeting point. 2048 iterations converge to 12 decimal places.
+The balance condition is linear in σ, so it is solved **exactly in one step**
+from any real σ₀ and any E (Newton on `h(σ) = ln F − ln B = E(1−2σ)`; E cancels).
 
 ## Architecture
 
@@ -101,3 +99,17 @@ The geometry forces the meeting point. 2048 iterations converge to 12 decimal pl
 - `forced_sigma(E)` → derive σ from opposite-side approach (always ½)
 
 The NoetherCurrents does not compute σ. It derives it.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the σ=½ meeting point of the forward/backward currents | forced_sigma — Newton on the linear balance E(1−2σ)=0 | 2 · SIGN | MINGLING | DEFINITIONAL | **CLEAN** |
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).
+*(Was FLAGGED against the recorded `forced_sigma` defect until it was fixed
+2026-08-28 — the flag did its job, and clears now that the deficit is gone.)*

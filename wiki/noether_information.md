@@ -34,3 +34,16 @@ The floor here is CONJECTURE — the lowest of any module in the repo, and corre
 ## Open
 
 - The identification of J_info with a physical information current is unshown. CONJECTURE means: named direction, no formal derivation yet.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the information current J_info; the entropic arrow | J_info = β·exp(−λ·age); ΔJ_info measure | 3 · ADD | LAURELIN | DESCRIPTIVE | **FLAGGED** — deficit: ΔJ_info ≈ machine-eps is consistent with an arrow, does not establish one |
+
+
+Calibration: this verdict agrees with the page's stated status (**CONJECTURE**).

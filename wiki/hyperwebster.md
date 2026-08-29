@@ -45,3 +45,16 @@ failed to produce a result.
 ## Open
 
 - `semantic_word`, `monad_address` and `fano_path` are THEORETICAL. The encoding is exact; the claim that the address is *semantic* is not shown.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the Horner address bijection (exact); Zipf = PNT | Horner base-95 → integer; the bijection | 0 · ADD | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: the Zipf = PNT identification (the bijection itself is exact; this reading is imported) |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

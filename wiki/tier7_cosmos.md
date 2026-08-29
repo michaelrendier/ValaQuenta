@@ -43,3 +43,16 @@ This module could not be instantiated before 2026-07-28: it inherits `EquationMo
 
 - Module floor is THEORETICAL. Several equations carry the compound tag 'ESTABLISHED+THEORETICAL', which is not one of the four registry tiers — read it as: the computation is established, the physical identification is not.
 - The most-cited notebook, `lambda_cdm_cmb_gold_standard.ipynb`, compares against published ΛCDM parameters. Those are external measurements.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| ΛCDM parameters, dark matter, Balmer Hα 656.3 nm from d*/Ω | map d*/Ω to observed cosmology | 3 · SCALE | LAURELIN | DESCRIPTIVE | **FLAGGED** — deficit: imports the ΛCDM parameter set; maps to it rather than deriving it |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

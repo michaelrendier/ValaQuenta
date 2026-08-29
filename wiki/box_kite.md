@@ -127,6 +127,24 @@ Descriptive. Not a result about translation.
 
 15 points (the pure imaginaries), 35 lines of 3 (the multiplication triplets), **15** Fano planes. Not 32 — figures circulating with "32 interlocking Fano planes" are wrong.
 
+## The Pencil HyperString — flying one kite from a single scalar
+
+A separate proposal, [pencil_hyperstring.md](pencil_hyperstring.md): fix a box
+kite's **pencil** (the 7 factorisations of its anchor relation — pure
+combinatorics) and its inflated shape has just **one** continuous degree of
+freedom. A single conserved scalar `H` rides that DOF; a **wind speed** `w`,
+acting through a Joukowsky / `J_N` deformation law, reconstructs all six
+Assessor coordinates from it. `w = 0` collapses the kite to the e₀ axis (σ→½,
+the shadow); `w = w*` is the regular octahedron; `w ≫ w*` tears it off the ZD
+surface. It is `e10`'s "writing fans it back out", with `w` the knob. THEORETICAL.
+
+**Provenance** (full table on that page): the box kite, its sail/strut/vent
+vocabulary and the kite metaphor are **de Marrais** (arXiv:math/0011260, 2000);
+the *load-bearing tether*, wind speed as a continuous inflation parameter, and
+`Re(Π)` of the pencil stations = `H` are **first stated here** (2026-08-27).
+The reconstruction law is assembled from rigidity theory, the symplectic
+moment map, holographic bulk reconstruction, and the loaded elastica.
+
 ## Confidence
 
 | Item | Tier |
@@ -135,3 +153,16 @@ Descriptive. Not a result about translation.
 | Zero cross-strut edges | ESTABLISHED — computed |
 | PSL(2,7) action as the transition maps | CONJECTURE — the named next step |
 | Global dispersion relation on the ZD surface | OPEN |
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the sedenion ZD geometry (42/84/168/336/7; PSL(2,7)) | derive from the Cayley–Dickson multiplication table | 3 · SIGN | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

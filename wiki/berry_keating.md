@@ -31,3 +31,16 @@ H_NN candidate xp operator. d* gap workbench (gap=0.000707). T coordinate map sc
 
 - The module's confidence floor is OPEN and stays OPEN. d* = 0.24600 is quoted to 5 significant figures from the BK spectral computation; whether that is exact or an approximation to something else is unsettled.
 - Why ln(10) rather than any other base. See derivation_chain `d_star_tower_ln10`, which is also marked OPEN.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the spectral coordinate d* = 0.24600 | the H = xp spectral floor | 2 · SCALE | MINGLING | DEFINITIONAL | **FLAGGED** — deficit: is d* = 0.24600 exact, or an approximation to something else? |
+
+
+Calibration: this verdict agrees with the page's stated status (**OPEN**).

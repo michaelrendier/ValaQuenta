@@ -60,3 +60,16 @@ H_RB   = H_Red + H_Blue      (the word: where both agree)
 ```
 
 The prime is the invariant E = xp that persists under H = xp evolution. The word is the fixed point of both currents simultaneously.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the Berry–Keating trajectory E = xp | xp evolution (Hamilton flow) | 1 · SCALE | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

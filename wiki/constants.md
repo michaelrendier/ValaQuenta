@@ -38,3 +38,16 @@ Each `derive_*` equation returns the constant together with the σ facet it corr
 
 - `derive_alpha_fermat` (fine structure constant) is the one equation here at THEORETICAL rather than ESTABLISHED. It is the weakest link in the Tier 0 chain and is marked as such.
 - `derive_lambda` carries the σ=∞ tier label, which is not one of the four registry tiers. That is a labelling inconsistency in the module, not a result.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| π φ e √ i Λ as σ-facets; Ω_ZS = W(1) | derive each constant from the framework | 0 · SCALE | MINGLING | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

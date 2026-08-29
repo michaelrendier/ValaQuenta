@@ -31,3 +31,16 @@ JWST NIRCam spectral pixel module. 8 filter intensities (900–4440nm) → 8 oct
 ## Open
 
 - The two equations that carry the actual claim — `spectral_to_octonion` and `cd_spectral_address` — are THEORETICAL. No real JWST data is loaded by this module.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the spectral pixel → sedenion channel map (synthetic only) | e_k = ⌊16·(λ−λ_min)/(λ_max−λ_min)⌋ | 1 · SCALE | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: synthetic spectra only — never run on real JWST data |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

@@ -52,3 +52,16 @@ non_gap_primes_nilpotent_pct (n=10)     = 70.0%
 **NOT validated:** any specific use of these primitives as a signal for anything (factoring, Niemeier-gap membership, or otherwise). Two uses exist now (`hypergon_constructibility`, `fermat_monster_engine.t32_nilpotency_check`); one has already failed a proper control, the other hasn't been tested that way yet.
 
 See also: `Ainulindale/wiki/78_t32_nilpotency.md`, `notebooks/core/17_t32_nilpotency.ipynb`.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the nilpotent elements of T₃₂ (the radical) | the trace-Laplacian test  w·𝟏 = 0 ⟺ w² = 0 | 2 · SIGN | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict **disagrees with** the page's stated status (**THEORETICAL**).

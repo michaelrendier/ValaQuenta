@@ -241,6 +241,20 @@ def spectral_residue(n_zeros: int = N_ZEROS_DEFAULT) -> Dict[str, Any]:
     first_mode_amplitude = 1.0 / math.sqrt(0.25 + zeros[0] ** 2)
     residue = BAO_CEILING - BAO_FLOOR
 
+    # Actually exercise the n-independence claim rather than asserting it:
+    # recompute the residue with 1, n, and 5n zeros summed. n enters the
+    # convergence demonstration (psi_spectral) but NEVER the residue, which is
+    # the constant difference BAO_CEILING − BAO_FLOOR. So the three agree.
+    residue_by_n = {}
+    for _n in (1, len(zeros), max(1, len(zeros) * 5)):
+        _partial = 0.0
+        for _g in RIEMANN_ZEROS[:_n]:
+            _rm = 0.25 + _g * _g
+            _partial += x_half * (math.cos(_g * ln_x) * 0.5
+                                  + math.sin(_g * ln_x) * _g) / _rm
+        residue_by_n[_n] = BAO_CEILING - BAO_FLOOR      # <- no _partial, no _n
+    residue_n_independent = len(set(residue_by_n.values())) == 1
+
     return {
         'explicit_formula' : 'ψ(x) = x − Σ_ρ x^ρ/ρ − ln(2π) − ½ln(1−x⁻²)',
         'derivation'       : [
@@ -272,7 +286,15 @@ def spectral_residue(n_zeros: int = N_ZEROS_DEFAULT) -> Dict[str, Any]:
         'bao_ceiling'             : BAO_CEILING,
         'residue'                 : residue,
         'residue_equals_gap'      : residue == GAP,
-        'residue_is_n_independent': True,
+        'residue_is_n_independent': residue_n_independent,   # computed at n∈{1,n,5n}
+        'residue_by_n'            : residue_by_n,
+        'residue_note'            : ('the residue is the constant difference '
+                                     'Ω_ζΣ − D*·ln10; the explicit-formula sum '
+                                     'is a convergence demonstration, not an '
+                                     'input to it — so residue_equals_gap is '
+                                     'true by construction, and the identity '
+                                     'Δ = 1/(1000√2) holds only to ~0.035% / '
+                                     '3 sig figs (see gap_identity)'),
         'structure'               : {
             'x_term'   : 'de Sitter expansion — BAO ground state — Hubble flow',
             'sum_zeros': 'acoustic oscillations — one standing wave per Riemann zero',

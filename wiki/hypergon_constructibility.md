@@ -61,3 +61,16 @@ Final fix: the real `_HW_CHARS` was pulled via `repr()` and pasted verbatim, the
 **Unification status: open.** Part 2 shows the one candidate bridge between geometric/algebraic structure and actual factoring (the nilpotent-split conjecture) does not survive a fair test. The arithmetic and geometric definitions are both real; a working mechanism connecting either to factoring a composite N remains genuinely unsolved.
 
 See also: `Ainulindale/wiki/77_hypergon_constructibility.md`, `notebooks/core/16_hypergon_constructibility.ipynb`.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| which regular n-gons are compass-and-straightedge constructible | n = 2^k · ∏(distinct Fermat primes)  (Gauss–Wantzel) | 3 · SIGN | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

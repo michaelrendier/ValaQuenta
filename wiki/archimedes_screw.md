@@ -264,3 +264,16 @@ Consequently the main term x **is** L — "the path of least primes", the phrase
 | Screw = logarithm as the Monad's working machine; primes-as-antinodes reading | THEORETICAL |
 | Amplitude-envelope form of RH (restatement, not a new proof) | THEORETICAL |
 | ZD-surface contour beating the resolution wall | OPEN |
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the screw = the logarithm; ψ jumps by exactly ln p | log-space advance; γₙ = 2πn/W(n/e) | 0 · ADD | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: the dispersion relation ω(k) on the ZD surface — without it the contour still pays ℂ's √N price |
+
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

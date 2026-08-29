@@ -72,3 +72,17 @@ Recorded as a distinct failure mode, not as a confirmation of Phase 22.
 
 - Whether to strip the common mode. That is an encoder change and could be read as tuning to produce a result — **Cody's call.**
 - Whether bipolar/sign-quantised vectors (Kanerva's usual regime) would restore quasi-orthogonality without introducing a seed.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| bind / bundle / permute hypervector translation | VSA bind/bundle/permute; then unbind | 1 · SCALE | LAURELIN | DEFINITIONAL | **FLAGGED** — deficit: unbind performs AT CHANCE (0.333) — the construction does not recover the bound value |
+
+Emergence signature: a graded failure at chance, not a one-bit break.
+
+Calibration: this verdict agrees with the page's stated status (**OPEN**).

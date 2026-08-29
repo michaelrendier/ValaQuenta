@@ -39,3 +39,17 @@ The e₀…e₁₅ table assigns each sedenion basis element a Standard Model pa
 
 - `particle_spectrum` is THEORETICAL and is where the strain shows: **17 SM particles are mapped onto 16 sedenion strata.** The count does not match, and the module does not conceal it. e₁₅ carries the gluon ×8.
 - The masses in the table are experimental values from the particle data tables. They are inputs to the mapping, not outputs of it.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the SM gauge group SU(3)×SU(2)×U(1) from ℂ×ℍ×𝕆 (Dixon) | read gauge groups off the CD doublings | 2 · SIGN | LAURELIN | DESCRIPTIVE | **FLAGGED** — deficit: 17 Standard-Model particles onto 16 sedenion strata — the count does not match (particle_spectrum) |
+
+Emergence signature: a fixed set of the wrong dimension (17 into 16).
+
+Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).

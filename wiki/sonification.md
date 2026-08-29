@@ -47,3 +47,16 @@ The strata: ℝ 110.0, ℂ 275.0, ℍ 330.0, 𝕆 880.0 Hz.
 ## Open
 
 - That the mapping is *audible* is established. That it is *meaningful* — that hearing the tower tells you something the numbers do not — is not a claim this module tests.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| the zero → audible frequency map (ω = γ/2π) | scale γₙ into the audible band | 1 · SCALE | LAURELIN | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

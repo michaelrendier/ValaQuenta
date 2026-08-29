@@ -35,3 +35,16 @@ All five equations are ESTABLISHED and all five run. This is the cleanest module
 ## Open
 
 - That these are all the *same* diagonal is a structural identification. The individual results (D_n/n!→1/e, e_k²=-1, Cantor, Gödel) are textbook.
+
+---
+
+## Generational Lineage — calibration (2026-08-28)
+
+Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
+
+| object | central operation | tier · root | Two Trees | kind | verdict |
+|---|---|---|---|---|---|
+| i² = −1 ≡ Cantor ≡ Gödel ≡ Enigma; D_n/n! → 1/e | the diagonal argument as an involution | 0 · SIGN | TELPERION | DEFINITIONAL | **CLEAN** |
+
+
+Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

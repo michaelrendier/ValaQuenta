@@ -21,7 +21,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 |------|--------|--------|-----------|
 | [hamiltonian.md](hamiltonian.md) | `hamiltonian.py` | ESTABLISHED | E=xp conserved; trajectory(1,1,t=1)→x=e |
 | [ring_theory.md](ring_theory.md) | `…/lineage.py` (SFR) | ESTABLISHED | falls ⟺ ℤ/(N) has zero divisors; gcd = the integer trace-Laplacian |
-| [noether.md](noether.md) | `noether.py` | ESTABLISHED **(see caveat)** | σ=½ derived; iteration converges only for E≲10 |
+| [noether.md](noether.md) | `noether.py` | ESTABLISHED | σ=½ derived from any σ₀, any E (large-E iteration defect **fixed 2026-08-28**) |
 | [galactic_cavity.md](galactic_cavity.md) | `galactic_cavity.py` | P1 CONFIRMED | r_t=0.738kpc; period=22.7Gyr (frozen) |
 | [capacitor.md](capacitor.md) | `capacitor.py` | ESTABLISHED | H(0)=1; prime passes through |
 | [understand.md](understand.md) | `understand.py` | ESTABLISHED | full pipeline; σ=½ derived for all inputs |
@@ -33,6 +33,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [corpus.md](corpus.md) | `corpus.py` | **UNTESTED** | no binary corpus loaded |
 | [lexicon.md](lexicon.md) | `lexicon.py` | **UNTESTED** | no binary corpus loaded |
 | [box_kite.md](box_kite.md) | `modules/box_kite/` | ESTABLISHED | 42/84/168/336/7 all derived; 7 octahedral charts; spectrum {0,4,4,4,6,6}; **zero cross-strut edges** |
+| [pencil_hyperstring.md](pencil_hyperstring.md) | (proposal, box-kite-adjacent) | THEORETICAL | one conserved scalar + wind speed `w` reconstructs a whole box kite via a Joukowsky/`J_N` deformation; the 7 pencil stations as imaginary processes, `Re(Π)` the output; de Marrais owns the kite vocabulary, the tether looks new |
 | [archimedes_screw.md](archimedes_screw.md) | `modules/archimedes_screw/` | THEORETICAL | screw = logarithm; ψ jumps by exactly ln p; γₙ=2πn/W(n/e); **v0.2** leaf falls at gpf(N), Dickman ρ, harvest Ψ(X/p,p) |
 | [angular_rank.md](angular_rank.md) | `modules/angular_rank/` | ESTABLISHED | 16D oscilloscope; {4,8,4} reproduced as a CHECK; **isotropic kernel null = 4/16 exactly**; epoch discipline — no measurement without its stamp |
 | [scale.md](scale.md) | `modules/scale/` | ESTABLISHED | polar decompose/recompose exact round-trip; **cross-ratio survives every anchor, the raw angle does not** (rejected candidate kept); no true caustic (one isolated pole only); RSA CRT-decrypt as the process-decomposition control case |
@@ -42,11 +43,13 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 
 | Page | Engine | Floor | Key Result |
 |------|--------|-------|-----------|
+| [add_scale_sign.md](add_scale_sign.md) | `add_scale_sign.py` (VAPMIP) + `…/lineage.py` (SFR) | ESTABLISHED | tier-0 floor = ADD ⋊ (SCALE × SIGN); ZD spectrum {0,1,√2} measured; roll-down of any named op to its root |
 | [constants.md](constants.md) | `modules/constants/` | ESTABLISHED | π φ e √ i Λ as σ-facets; OMEGA_ZS=W(1) |
 | [derivation_chain.md](derivation_chain.md) | `modules/derivation_chain/` | THEORETICAL | Tiers 1–5; the dropouts; **read this first** |
 | [h_rb_hat.md](h_rb_hat.md) | `modules/h_rb_hat/` | THEORETICAL | GR σ=2, YM σ=1, QM σ=½, Riemann σ=½ |
 | [berry_keating.md](berry_keating.md) | `modules/berry_keating/` | OPEN | d*=0.24600; gap candidates enumerated |
 | [inversion.md](inversion.md) | `modules/inversion/` | ESTABLISHED | J_N involution; r=1 is four horizons; Z₄ |
+| [three_ring_scale.md](three_ring_scale.md) | (proposal, `modules/scale/three_ring_chart`) | THEORETICAL | The Scale = a 3-ring Smith chart = the `(T,R)` section of a Penrose diagram; matched load `Γ=0` = the Cauchy "now"; `z→1/z` = `J_N` = time reversal; `{4:8:4}` sedenion grading as a spectral refinement of conformal infinity — **can't land at 4 (past/future), can land at 8 (now), for opposite reasons**: past = gain-0 = full but write-once (Hands / long-term memory), future = gain-√2 = empty & forward-divergent (Mind's Eye / working memory; geostrophic chaos), now = gain-1 = `𝕆 = CD(ℍ_past, ℍ_future)`, the merge into action; academic, offered to the conformal-infinity literature |
 | [spherical.md](spherical.md) | `modules/spherical/` | maths-only | J_N period 2π → l=1 → Y₁⁰ → Re(s)=½ |
 | [lagrangian.md](lagrangian.md) | `modules/lagrangian/` | THEORETICAL | L_NN; 6/8 equations parameterised |
 
@@ -129,7 +132,7 @@ Engines where this convention is load-bearing:
 
 | Defect | Location | Status |
 |--------|----------|--------|
-| `forced_sigma` converges to σ=½ only for E≲10; returns σ₀ unchanged above that, and raises OverflowError for σ₀<0 with large E. The wiki/README figure for E=100 does not reproduce. | `noether.py` | **OPEN — recorded 2026-07-28** |
+| `forced_sigma` converged to σ=½ only for E≲10; returned σ₀ unchanged above that, and raised OverflowError for σ₀<0 with large E. | `noether.py` | **FIXED 2026-08-28** — the balance `F=B` is `E(1−2σ)=0`, linear in σ; now solved exactly in one Newton step from any real σ₀ and any E, no exp away from the balance point. `notebooks/engines/03_noether.ipynb` still shows the old behaviour — re-run pending. |
 | `tier7_cosmos` and `tier9_chem` did not implement the abstract `viewer_data`, so neither could be instantiated or registered. | `modules/tier7_cosmos/tools.py`, `modules/tier9_chem/tools.py` | FIXED 2026-07-28 |
 | Four notebooks had **only** `/media/rendier/0123-4567/Ainulindale` on `sys.path`, so they could not run on the phone. A portable entry was added **alongside** it — the laptop path is deliberate and stays. | `notebooks/singularity_null/`, `notebooks/turing_diagonal/` | FIXED 2026-07-29 |
 | `notebooks/core/` was written against an older `maths.py` schema — renamed keys and removed functions. | `notebooks/core/` | FIXED 2026-07-28 |
