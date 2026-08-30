@@ -80,6 +80,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [tier9_chem.md](tier9_chem.md) | `modules/tier9_chem/` | THEORETICAL | cancer = ZD; **no clinical data loaded** |
 | [jwst.md](jwst.md) | `modules/jwst/` | THEORETICAL | pixel → octonion; **synthetic spectra only** |
 | [sigma_cavitation.md](sigma_cavitation.md) | `modules/sigma_cavitation/` | renderer | σ-cavitation → SVG; not a registered engine |
+| [desitter_cavitation.md](desitter_cavitation.md) | `modules/desitter_cavitation/` | THEORETICAL | **No singularity.** HOLCUS: K_core(M)=(3/2)c⁸/(G⁴M⁴)=24/r_s⁴ — M⁻⁴, sub-Planckian for M>1.107 m_Pl; no_singularity_check PASS; echo delay ~ r_s/c. Calculation not simulation. Fourth Age engine. |
 
 ## Sound and language
 

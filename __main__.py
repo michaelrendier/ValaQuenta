@@ -45,6 +45,7 @@ from .modules.angular_rank import AngularRankModule
 from .modules.scale import ScaleModule
 from .modules.units import UnitsModule
 from .modules.add_scale_sign import AddScaleSignModule
+from .modules.desitter_cavitation import DeSitterCavitationModule
 
 def _register_all():
     registry = get_registry()
@@ -69,6 +70,7 @@ def _register_all():
     register(ScaleModule())
     register(UnitsModule())
     register(AddScaleSignModule())
+    register(DeSitterCavitationModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

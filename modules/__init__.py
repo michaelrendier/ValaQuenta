@@ -111,5 +111,25 @@ Current modules (Phase 5):
                          its candidate synsets -- units as "word
                          possibilities" for equations.
 
-Version: 0.153 — Phase 9: units
+    desitter_cavitation
+                       — NO SINGULARITY. Calculation, not simulation. The
+                         black-hole interior is a finite, sub-Planckian de
+                         Sitter core — the Abrikosov vortex core made
+                         gravitational: the condensate goes to zero (a
+                         Riemann zero, winding 1) while density, pressure
+                         and curvature stay finite. HOLCUS: the maximum
+                         curvature is the de Sitter Kretschmann scalar at
+                         L_dS = r_s, K_core(M) = (3/2) c^8 / (G^4 M^4) —
+                         M^-4, sub-Planckian for every M > (3/2)^(1/4)
+                         m_Pl, with a ringdown-echo delay ~ r_s/c as its
+                         observational shadow. The core releases stiff
+                         space (Lambda-signed) and stiff matter
+                         (radiative) over the hole's life and unwraps at
+                         evaporation — the De Sitter Cavitation. Falsifier:
+                         a divergent core curvature, or one pinned to
+                         K_Planck independent of M. Engine for
+                         FourthAgePapers/DeSitterCavitation. confidence
+                         floor THEORETICAL.
+
+Version: 0.154 — Phase 10: desitter_cavitation (Fourth Age: No Singularity)
 """
