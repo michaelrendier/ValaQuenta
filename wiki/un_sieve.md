@@ -35,6 +35,26 @@ histogram difference is a large negative front at the small primes (`p=2:
 mid-sized primes (`p=47: +593`, `p=61: +591`). Negative spike, positive fine
 structure.
 
+## Clocked by zeta
+
+The same reads, run with the ordinal prime rank replaced by zeta-derived
+orders — `ln p/√p` (the σ=½ amplitude, peaks at p=7), Riemann–Siegel `θ`, the
+sign of the RS `Z`-function, the spiral phase. **`H(C) − H(A) = +7.19355`
+bits is invariant to five decimals under every one of them** — it is a
+combinatorial invariant of ℕ, not an artefact of counting the primes in
+order. Zeta order only moves the *schedule*: an oscillatory clock (`Z`-sign,
+spiral phase) smears the compact extinction front across 25–50× more
+generations without changing its entropy, and forces you past thousands of
+primes that strike nothing before the boundary prime 313 — where the ordinal
+order wastes not a single pass.
+
+One thing *does* move the gap: clocking birth by the **real Riemann zeros**
+`γ_k` rather than the integers drops `H(C) − H(A)` by ≈ 15 % (`+4.30 → +3.66`
+bits, `N = 8 000`). The zeros are a better-matched clock for the construction
+than the integers are — Laurelin's book, read on ζ's own timeline, costs
+less. See `RiemannHypothesisProof/ADDENDUM_recursive_unsieve_2026-08-30.md`
+§B.1–D.1.
+
 ## The two boundaries
 
 - **Extinction** completes at the largest prime with `p² ≤ N` — **313** for
