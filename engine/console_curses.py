@@ -249,20 +249,35 @@ class DerivationBrowser:
         self.focus_right = True
 
     def _proof_inputs(self):
-        """Stub seam for the proof-on-the-fly engine: show the DECLARATION data
-        a sympy guided derivation would consume."""
+        """Proof-on-the-fly seam. Shows the DECLARATION data plus, when a
+        proof_locale catalog exists for this engine, the GUIDED ordered
+        operator steps (the English puzzle pieces the sympy derivation fills).
+        Toggle guided / academic rendering with `p` again."""
         eq = self._current_equation()
-        if eq is None:
+        if eq is None or not self.path:
             return
+        engine = self.path[0]
         d = eq.declaration()
-        lines = [f'▸ PROOF-ON-THE-FLY INPUTS  ({self.path[0]}.{eq.name})', '',
-                 '[proof engine: sympy step-by-step guided tour — TODO]', '',
+        self._proof_academic = not getattr(self, '_proof_academic', True)  # first p = guided
+        try:
+            from .proof_locale import render_guided, render_academic, proof_catalog
+        except Exception:                          # noqa: BLE001
+            render_guided = render_academic = proof_catalog = None
+
+        lines = [f'▸ PROOF-ON-THE-FLY  ({engine}.{eq.name})', '',
                  f"process    : {d['process']}",
-                 f"process_set: {d['process_set']}",
                  f"latex      : {d['latex']}",
                  f"radian_form: {d['radian_form']}",
                  f"params     : {', '.join(d['params']) or '(none)'}",
-                 f"confidence : {d['confidence']}   code_verified: {d['code_verified']}"]
+                 f"confidence : {d['confidence']}   code_verified: {d['code_verified']}",
+                 '']
+        if proof_catalog and proof_catalog(engine):
+            body = (render_academic if self._proof_academic else render_guided)(engine, eq.name)
+            lines += [f"── proof_locale  [{'academic' if self._proof_academic else 'guided'}]"
+                      f"  (p toggles) ──", '', body]
+        else:
+            lines += ['[proof engine: sympy step-by-step — TODO]',
+                      f'[no proof_locale catalog for {engine!r} yet]']
         self.result = self._wrap('\n'.join(lines))
         self.result_scroll = 0
         self.focus_right = True

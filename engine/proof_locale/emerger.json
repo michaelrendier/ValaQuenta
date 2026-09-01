@@ -1,0 +1,52 @@
+{
+  "engine": "emerger",
+  "display": "The Emerger — Sedenion Bracketing & Firing Order",
+  "descriptive": "Brackets a Cayley-Dickson 16-vector five ways with e0 held as the fixed anchor, classifies each imaginary group as C/H/O/FRAGMENT by closure, and walks the brackets in a sigma_RB-phased firing order, reporting what each grouping lets emerge and in what order -- the ascent dual of Generational Lineage.",
+
+  "operators": [
+    {"symbol": "e0", "english": "the real basis unit, the anchor",
+     "role": "never bracketed; the fixed reference every imaginary group is paired against -- the tilt to the i axis", "tier": "ESTABLISHED"},
+    {"symbol": "cd_mul", "english": "the recursive Cayley-Dickson product",
+     "role": "defines closure: a group of imaginary units + e0 spans a subalgebra iff it is closed under cd_mul up to sign", "tier": "ESTABLISHED"},
+    {"symbol": "L_x", "english": "left-multiplication by x, the 16x16 matrix over Fraction",
+     "role": "rank(L_x) < 16 iff x is a zero divisor; exact by Gaussian elimination", "tier": "ESTABLISHED"},
+    {"symbol": "domain_of(G)", "english": "closure test on span({e0} u G)",
+     "role": "|G|=1 closed -> C ; 3 -> H ; 7 -> O ; else FRAGMENT (a subspace, not a subalgebra -- where zero divisors live)", "tier": "ESTABLISHED"},
+    {"symbol": "sigma_RB", "english": "the RedBlue product s[k] = psi[k] * conj(psi[k XOR 4]), psi[k] = x[k] + i x[k+8]",
+     "role": "tilt = Re s (Scale channel), axis = Im s (Flow channel); Sigma_axis = 0 identically (Oblique-Gear T1); Sigma_tilt = 0 iff sigma = 1/2", "tier": "DERIVED"},
+    {"symbol": "firing_phase", "english": "rational squash of Sigma_tilt into the 12-step precession, then mod 5",
+     "role": "gcd(12,5)=1, so the 12-phase clock cycles all five brackets; 12 = lcm(4 d* faces, 3 Lambert-W faces)", "tier": "THEORETICAL"},
+    {"symbol": "on_zd_equator(x)", "english": "purely imaginary AND norm-balanced across the CD-double boundary",
+     "role": "the fixed set of the J_red <-> J_blue hemisphere swap -- the balance equator the zero divisors sit on; sufficient basis-pair condition (exact locus = box_kite's 42 assessors)", "tier": "DERIVED"}
+  ],
+
+  "ordering": [
+    {"n": 1, "op": "{1:15} -- the CD grading", "english": "grade x into the scalar e0 and the 15 imaginary units; this is what makes Re, the norm N = |x|^2, conjugation and the inverse well-defined. Everything after this step needs it."},
+    {"n": 2, "op": "{2:14} -- the (e0,e8) pointer plane", "english": "split off z = x0 + i x8, the doubling-ladder pointer, from the 14-dim G_2 side. |z| is the CD-scale; |z| - Omega_ZS is the residual to the fixed point of z -> e^{-z}. Requires step 1 (needs Re)."},
+    {"n": 3, "op": "{8:8} -- the CD double O (+) O.e8", "english": "split x into a = x[0:8] and b = x[8:16] -- J_red / J_blue, the two trees. Report |a| - |b| (signed distance from the ZD equator), the sheet, and the J_2 asymmetry ||L_x - R_x||. Requires step 1 (needs conj / norm)."},
+    {"n": 4, "op": "{4:4:4:4} -- four quaternion blocks", "english": "extract four SU(2) phases (the four d* faces) and compute sigma_RB: tilt, axis, Sigma_tilt (= net work around the 0->p->q->N loop), Sigma_axis (= 0). Sigma_tilt = 0 marks sigma = 1/2. Refines the halves of step 3."},
+    {"n": 5, "op": "{4:8:4} -- the gain spectrum", "english": "project x onto the annihilator block (gain 0), the unit/NOW block (gain 1) and the amplifier block (gain sqrt2); the dominant block is x's multiplicative role. Needs the norms of step 1 and the gain split; the {4:8:4} index assignment is a reading, not derived here."}
+  ],
+
+  "equations": {
+    "verify": {
+      "descriptive": "Runs 14 exact self-checks of the bracketing algebra straight from the CD table; a mismatch is a code fault, not a result.",
+      "ordering": [
+        {"n": 1, "op": "sigma_RB on e1+e10", "english": "confirm Sigma_axis = 0 and the T1 conjugate symmetry s[k^4] = conj s[k]."},
+        {"n": 2, "op": "L_x rank on e1+e10", "english": "confirm rank(L_{e1+e10}) < 16 -- an exact zero divisor -- and on_zd_equator = True."},
+        {"n": 3, "op": "L_x rank on e1+e2", "english": "confirm rank = 16 -- not a zero divisor -- and on_zd_equator = False."},
+        {"n": 4, "op": "domain_of", "english": "confirm {1}=C, {1,2,3}=H, {1..7}=O, {1,5,9}=FRAGMENT by cd_mul closure."},
+        {"n": 5, "op": "legal_orders", "english": "enumerate the 120 firing-order permutations; confirm exactly 4 respect the dependency lattice and the canonical order is one of them."}
+      ]
+    },
+    "sigma_rb": {
+      "descriptive": "Forms psi[k] = x[k] + i x[k+8], multiplies each by the conjugate of its XOR-4 partner, and splits the result into tilt (Scale) and axis (Flow).",
+      "ordering": [
+        {"n": 1, "op": "psi", "english": "lift the real 16-vector to psi in C^16 by pairing halves: psi[k] = x[k] + i x[(k+8) mod 16]."},
+        {"n": 2, "op": "s[k] = psi[k] * conj(psi[k XOR 4])", "english": "the RedBlue product over the XOR-4 partner pairs."},
+        {"n": 3, "op": "tilt = Re s, axis = Im s", "english": "tilt is XOR-4-symmetric (the Scale / Perfect-Perturbation channel); axis is XOR-4-antisymmetric (the Flow channel)."},
+        {"n": 4, "op": "Sigma_tilt, Sigma_axis", "english": "sum each. Sigma_axis = 0 by the T1 pairing; Sigma_tilt = 0 iff sigma = 1/2 (Oblique-Gear T4)."}
+      ]
+    }
+  }
+}

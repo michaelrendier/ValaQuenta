@@ -25,6 +25,14 @@ undiscoverable from a cold context — which is the exact failure the
     2. NOTEBOOK          notebooks/engines/NN_<name>.ipynb (or the topic
                          subdirectory) — exercises the formulary end to end
                          and shows the open items honestly.
+    2b. PROOF_LOCALE     engine/proof_locale/<name>.json — the English
+                         "puzzle pieces" for the on-the-fly proofs:
+                         descriptive (process-only), operators
+                         (symbol/english/role/tier), ordering (the
+                         derivation steps, IN ORDER, no narrative),
+                         and per-equation overrides. render_guided /
+                         render_academic consume it; the derivation
+                         browser attaches it under key `p`.
     3. AINULINDALE WIKI  Ainulindale/wiki/NN_<name>.md — the narrative page:
                          origin quote, what changed, honest boundaries,
                          predecessor links.
