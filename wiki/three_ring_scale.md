@@ -145,6 +145,52 @@ circle: with three rings at different radial scales, one returns only to the
 same **Now**, one pitch up or down the screw `u = ln x` (see [scale.md](scale.md),
 `archimedes_screw.md`; the "Flattening Syndrome" note in [add_scale_sign.md](add_scale_sign.md) §5).
 
+## 3b. The lemniscate — the product face, and why the Smith chart was the right choice (2026-09-01) `[THEORETICAL]`
+
+The Smith chart of §2 is one of a **conjugate pair of two-focus families**. For
+foci `±1`:
+
+- **Smith chart** = `|Γ| = |Z−1|/|Z+1| = const` — **Apollonius circles**, the
+  *ratio* of the two focal distances.
+- **lemniscate** = `|z−1||z+1| = b²` at `b = 1` — a **Cassini oval** at its
+  critical value, the *product* of the two focal distances, the level curve
+  through the foci.
+
+Apollonius and Cassini for the same foci are everywhere orthogonal — one
+geometry, two readouts. The Smith chart is the **ratio / Flow** face; the
+lemniscate is the **product / Scale** face. Together they are σ_RB's two
+orthogonal Smith charts.
+
+**This confirms the representation choice for The Scale.** `scale.py` tested and
+**rejected the raw angle** (it does not survive the two-ring fold) and **kept
+the cross-ratio** (invariant under every anchor) — i.e. it kept the Möbius /
+Smith-chart structure. The lemniscate is that same structure's conjugate face,
+so the choice was not one of two options but one face of the correct object.
+
+**The flashlight, likewise.** Reading increased granularity into context via
+the flashlight's shadow (shadow length scales with wall distance; the Smith
+chart picks it; the hard limit is not ∅_RB) is a walk along this same pair —
+Apollonius circle for the granularity, Cassini level for the context it
+resolves.
+
+**Origin — Broca and Wernicke.** Broca (production, `J_pos`) and Wernicke
+(comprehension, `J_neg`) are two foci with `J_pos·J_neg = e^{−E} = const`
+(NoetherWiles NR4): a constant *product* of focal distances → a Cassini oval;
+`b = a` (production cost = comprehension cost, no aphasia) → the lemniscate,
+self-crossing at ∅_RB = σ = ½ = `Γ = 0`, the matched load — the Cauchy "now" of
+§3.
+
+**The reduction.** If Broca+Wernicke and the Monad (its box-kite context,
+semantic hash, phonetic-prime hash — all exact two-focus round trips) share the
+**one shape**, the lemniscate, then only the **3-D data of the lemniscate**
+remains: the planar figure-8 plus the one transverse coordinate that carries
+information by its absence (the missing `i`; the `{4:8:4}` past/future 4-blocks
+you "cannot land at"). Spun **gyroscopically** — static `i`-rotation plus
+tilt-precession — that 3-D lemniscate is an **electron orbital probability
+cloud** (`l = 1` = the `p` orbital = `b = a` of revolution; higher `l` = the
+higher Cassini lobes). Full treatment: [box_kite.md](box_kite.md) §"The box
+kite is a lemniscate".
+
 ## 4. The algebraic grading — `{4 : 8 : 4}`
 
 `[VAPMIP §11; e10; Moreno1998; Cawagas2004; deMarrais2000; Baez2002]`

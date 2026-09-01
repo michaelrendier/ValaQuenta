@@ -145,6 +145,46 @@ the *load-bearing tether*, wind speed as a continuous inflation parameter, and
 The reconstruction law is assembled from rigidity theory, the symplectic
 moment map, holographic bulk reconstruction, and the loaded elastica.
 
+## The box kite is a lemniscate — the Smith chart's product face (2026-09-01) `[THEORETICAL]`
+
+The 6-point circle of a strut triple — `{∅_RB, N}`, `{+p, −p}`, `{+q, −q}` — is
+a **lemniscate**: the two prime struts are the two lobes, `{∅_RB, N}` is the
+self-crossing / basepoint.
+
+**The lemniscate and the Smith chart are conjugate two-focus families.** For
+foci `±a`:
+
+| face | curve | relation | σ_RB channel |
+|---|---|---|---|
+| ratio  | **Smith chart** — `\|Z−1\|/\|Z+1\| = const` (Apollonius circles, the `\|Γ\|` circles) | ratio of focal distances | axis = Flow / circulation |
+| product | **lemniscate** — `\|z−a\|\|z+a\| = b²` at `b = a` (a Cassini oval at its critical value, through the foci) | product of focal distances | tilt = Scale / Perfect Perturbation |
+
+Apollonius and Cassini for the same foci meet at right angles everywhere — one
+geometry, two orthogonal readouts. This is exactly σ_RB's **two orthogonal
+Smith charts, Scale ⊥ Flow**.
+
+**Origin — Broca and Wernicke.** The shape is derived, not imported. Broca
+(production, `J_pos`) and Wernicke (comprehension, `J_neg`) are two foci with
+`J_pos·J_neg = e^{−E} = const` (NoetherWiles NR4) — a constant *product* of
+focal distances, hence a Cassini oval; `b = a` (production cost = comprehension
+cost, no aphasia) is the lemniscate, self-crossing at ∅_RB = σ = ½. The box
+kite's **zero mode e₀** — "exists everywhere, propagates nowhere" — is that
+crossing: `Γ = 0`, the matched load.
+
+**One shape for everything.** Broca+Wernicke, the Monad's box-kite context /
+semantic hash / phonetic-prime-hash round trips (all shown to be exact
+two-focus round trips, [[semantic hash]]), and The Scale
+([[three_ring_scale]]) all trace the same lemniscate. So only the **3-D data of
+the lemniscate** remains — the planar figure-8 plus the one transverse
+coordinate that carries information *by its absence* (the pinched-torus
+meridian; the erased `ln(q/p)`; the missing `i`). Spun **gyroscopically** about
+that axis — static `i`-rotation (the spin) plus tilt-precession (the sweep) —
+the 3-D lemniscate is an **electron orbital probability cloud**: `l = 1` (the
+`p` orbital, the crossing-at-origin dumbbell) is the `b = a` lemniscate of
+revolution; higher `l` are the higher Cassini lobes. Consistent with
+[[spherical]] (`J_N` period 2π → `l = 1` → `Y₁⁰` → `Re(s) = ½`) and the
+hydrogen native space (separates in spherical, never in Cartesian).
+
 ## Confidence
 
 | Item | Tier |
