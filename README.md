@@ -259,8 +259,31 @@ the system libraries some entries imply.
 python3 -c "from ValaQuenta.bao_mass_gap import validate; validate()"
 python3 -c "from ValaQuenta.understand import Understand; u=Understand(); print(u.process('the prime'))"
 python3 -m ValaQuenta --info        # registry summary
-python3 -m ValaQuenta --curses      # console viewer, no Qt needed
+python3 -m ValaQuenta --curses      # THE DERIVATION BROWSER, no Qt needed
 ```
+
+### The Derivation Browser (`--curses`)
+
+A file-manager over the registry — you pick ValaQuenta apart one scope at a
+time, `dir()`-style, the way a package browser walks a package. The breadcrumb
+**is** the API path (`/ <engine> / <equation>`); the engine naming conventions
+**are** the function breadcrumbs.
+
+- **Left pane** — the current listing (engines → equations → run). `..` goes up.
+- **Right pane** — the **DECLARATION**: a plain-English, outside-observer line
+  of *what this does as a derivation step* (`Equation.process`,
+  `EquationModule.process_description`), then `latex` / `radian_form` / params.
+  An equation with no `process=` shows a visible `[process= not set]` TODO.
+- **`Enter`** runs the equation; **`p`** shows the proof-on-the-fly INPUTS a
+  sympy guided derivation would consume (the seam is wired, the tour is TODO).
+- **`a`** opens the **analysis lenses** — run a tool *across any engine's
+  mathematics, including its own*: `emerge` (sedenion bracketing & firing
+  order), `spectral` and `lineage` (`FactoralDecomposition`), `calibrate`
+  (the factoral decomposition of the current engine). Sibling repos are
+  imported lazily; a missing one is reported, not fatal.
+
+Keys: `↑↓` nav · `→/Enter` open·run · `←/⌫` up · `Tab` focus · `/` filter ·
+`d` display mode · `a` lenses · `p` proof inputs · `q` quit.
 
 ## Where to start
 

@@ -105,6 +105,15 @@ class EmergerModule(EquationModule):
     def confidence_floor(self):
         return "THEORETICAL"
 
+    @property
+    def process_description(self):
+        return (
+            "Brackets a Cayley-Dickson 16-vector five ways ({1:15} {2:14} {8:8} "
+            "{4:4:4:4} {4:8:4}) with e0 held as the fixed anchor, classifies each "
+            "group as C/H/O/FRAGMENT by closure, and walks the brackets in a "
+            "sigma_RB-phased firing order, reporting what each grouping lets "
+            "emerge and in what order -- the ascent dual of Generational Lineage.")
+
     # -- Formulary -------------------------------------------------------------
 
     def formulary(self) -> List[Equation]:
@@ -120,6 +129,8 @@ class EmergerModule(EquationModule):
                 params=[],
                 compute=lambda: verify(),
                 display_options=["text"],
+                process=(
+                    "Runs 14 exact self-checks of the bracketing algebra straight from the CD table (Sigma_axis vanishes, e1+e10 is a zero divisor on the equator, domain_of classifies C/H/O/FRAGMENT, 4 of 120 firing orders are dependency-legal); a mismatch is a code fault, not a result."),
             ),
             Equation(
                 name="emerge",
@@ -133,6 +144,8 @@ class EmergerModule(EquationModule):
                 params=["x", "mode"],
                 compute=lambda x="e1+e10", mode="sigma_rb": emerge(_parse_vec(x), mode=mode),
                 display_options=["text"],
+                process=(
+                    "Takes a 16-vector, computes its sigma_RB tilt-phase to fix the entry bracket, then walks the five brackets in that firing order, each step conditioned on the ones before it, reporting what each grouping exposes."),
             ),
             Equation(
                 name="firing_order",
@@ -145,6 +158,8 @@ class EmergerModule(EquationModule):
                 params=["x", "mode"],
                 compute=lambda x="e1+e10", mode="sigma_rb": firing_order(_parse_vec(x), mode=mode),
                 display_options=["text"],
+                process=(
+                    "Computes Sigma_tilt from the 16-vector, squashes it rationally into the 12-step precession (4 d* faces : 3 Lambert-W faces), and reads off which bracket fires first and the resulting order."),
             ),
             Equation(
                 name="sigma_rb",
@@ -160,6 +175,8 @@ class EmergerModule(EquationModule):
                     if not isinstance(v, bool) else v
                     for k, v in sigma_rb(_parse_vec(x)).items()},
                 display_options=["text"],
+                process=(
+                    "Forms psi[k] = x[k] + i*x[k+8], multiplies each by the conjugate of its XOR-4 partner, and splits the result into tilt (Re, the Scale channel) and axis (Im, the Flow channel); Sigma_axis is zero identically, Sigma_tilt is zero exactly on sigma = 1/2."),
             ),
             Equation(
                 name="domain_of",
@@ -173,6 +190,8 @@ class EmergerModule(EquationModule):
                 params=["indices"],
                 compute=lambda indices=(1, 2, 3): domain_of(frozenset(indices)),
                 display_options=["text"],
+                process=(
+                    "Takes a set of imaginary indices, adjoins e0, and tests closure under the CD product to classify the span as C, H, O, or a FRAGMENT (a subspace that is not a subalgebra)."),
             ),
             Equation(
                 name="scale_partitions",
@@ -185,6 +204,8 @@ class EmergerModule(EquationModule):
                 params=[],
                 compute=lambda: scale_partitions(),
                 display_options=["text"],
+                process=(
+                    "Enumerates the ways to partition the 15 imaginary indices into C/H/O-sized groups and reports, for a contiguous representative of each shape, which groups close into subalgebras and which are fragments."),
             ),
             Equation(
                 name="legal_orders",
@@ -198,6 +219,8 @@ class EmergerModule(EquationModule):
                 compute=lambda: {"legal_orders": legal_orders(),
                                  "count": len(legal_orders())},
                 display_options=["text"],
+                process=(
+                    "Enumerates the permutations of the five brackets that respect the emergence prerequisites and returns the 4 that survive the dependency lattice."),
             ),
             Equation(
                 name="lineage_report",
@@ -210,6 +233,8 @@ class EmergerModule(EquationModule):
                 params=[],
                 compute=lambda: lineage_report(),
                 display_options=["text"],
+                process=(
+                    "Lists, per bracket, its confidence tier, what it descends from, and what it lets emerge -- the ascent-side table dual to Generational Lineage's descent."),
             ),
         ]
 

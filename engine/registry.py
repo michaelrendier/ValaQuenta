@@ -53,8 +53,15 @@ Module requirements:
     - Float only at output boundary.
     - Every equation has a confidence tier label.
     - Every equation has a radian-primary form.
+    - Every equation carries `process=` — a plain-English, OUTSIDE-OBSERVER
+      description of what it does AS A DERIVATION STEP ("Given X, computes Y
+      by Z"), not a run narration and not a SHOUTY headline. It feeds the
+      derivation engine's proof-on-the-fly (console_curses.py, the sympy
+      guided tour). A missing `process=` renders as a visible TODO.
+    - Every module defines `process_description` (a property; default is the
+      first sentence of `description`, override for a crisper line).
 
-Version: 0.111
+Version: 0.112 — process= on every Equation; process_description on every module
 """
 
 from abc import ABC, abstractmethod
@@ -92,7 +99,7 @@ class Equation:
 
     def __init__(self, name, display, latex, radian_form,
                  confidence, code_verified, params,
-                 compute=None, display_options=None):
+                 compute=None, display_options=None, process=None):
         self.name           = name
         self.display        = display
         self.latex          = latex
@@ -102,11 +109,43 @@ class Equation:
         self.params         = params
         self.compute        = compute
         self.display_options = display_options or []
+        # process: outside-observer, one-line "what this does as a derivation
+        # step" — for the proof-on-the-fly engine and the derivation browser.
+        self.process        = process
 
     def __repr__(self):
         tier = CONFIDENCE.get(self.confidence, '?')
         verified = '✓' if self.code_verified else '○'
         return f"[{tier}][{verified}] {self.name}: {self.display}"
+
+    def __str__(self):
+        """The DECLARATION line: a plain-English, non-involved process
+        description. Falls back to a de-shouted `display`, flagged as a TODO
+        when `process=` was not supplied."""
+        if self.process:
+            return self.process
+        d = self.display
+        if ':' in d:
+            head, _, tail = d.partition(':')
+            if head.strip().upper() == head.strip() and tail.strip():
+                d = tail.strip()
+        return f"{d}  [process= not set]"
+
+    def declaration(self) -> Dict[str, Any]:
+        """Everything the derivation browser / proof-on-the-fly needs about
+        this step, as data."""
+        return {
+            'name': self.name,
+            'process': str(self),
+            'process_set': self.process is not None,
+            'display': self.display,
+            'latex': self.latex,
+            'radian_form': self.radian_form,
+            'confidence': self.confidence,
+            'code_verified': self.code_verified,
+            'params': list(self.params or []),
+            'display_options': list(self.display_options),
+        }
 
 
 # ── Module base class ─────────────────────────────────────────────────────────
@@ -140,6 +179,17 @@ class EquationModule(ABC):
     @abstractmethod
     def description(self) -> str:
         """One-paragraph description of what this module computes."""
+
+    @property
+    def process_description(self) -> str:
+        """One-line, OUTSIDE-OBSERVER description of what this engine does as a
+        process — for the derivation browser and the proof-on-the-fly engine.
+        Default: the first sentence of `description`. Override for a crisper
+        line."""
+        import re
+        s = ' '.join((self.description or '').split())
+        parts = re.split(r'(?<=[.!?])\s+', s, maxsplit=1)
+        return parts[0] if parts and parts[0] else s
 
     @property
     @abstractmethod
