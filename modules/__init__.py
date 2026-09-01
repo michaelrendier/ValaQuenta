@@ -131,5 +131,36 @@ Current modules (Phase 5):
                          FourthAgePapers/DeSitterCavitation. confidence
                          floor THEORETICAL.
 
-Version: 0.154 — Phase 10: desitter_cavitation (Fourth Age: No Singularity)
+
+    emerger            — THE EMERGER. Sedenion Bracketing & Firing Order. A
+                         dynamic permutative bracketer over the imaginary
+                         part of a Cayley-Dickson algebra; e_0 (real) is the
+                         fixed anchor -- the tilt to the i axis -- never
+                         bracketed. A bracketing is an ordered partition of
+                         {1..15}; each group + anchor spans span({e_0} u G),
+                         classified C / H / O / FRAGMENT by closure (the
+                         fragment is where zero divisors live). Five
+                         canonical brackets: {1:15} grades the algebra;
+                         {2:14} is the (e_0,e_8) pointer plane carrying
+                         Omega_ZS; {8:8} is the CD double (J_red/J_blue, the
+                         ZD equator, J_2 = L vs R); {4:4:4:4} is four SU(2)
+                         phases + sigma_RB tilt/axis (Sigma_tilt = net work,
+                         = 0 iff sigma=1/2); {4:8:4} is the gain spectrum
+                         0/1/sqrt2. The FIRING ORDER is load-bearing: each
+                         bracket is conditioned on the ones before it.
+                         Canonical (dependency), sigma_RB-phased (Sigma_tilt
+                         rotates the entry point into the 12-step precession,
+                         4 d* faces : 3 Lambert-W faces), or any permutation
+                         (legality reported -- FINDING: some sigma_RB phases
+                         select a non-dependency-legal order). ZD tests are
+                         exact (rank-deficiency of L_x; equator = purely
+                         imaginary + norm-balanced across the CD-double
+                         boundary). Exact ZD geometry is box_kite's PSL(2,7);
+                         G_2 is the continuous blow-up. The ascent-dual of
+                         Generational Lineage: descent = what built this
+                         (writing); ascent = what emerges, in what order
+                         (reading -- spectroscopy, factoral decomposition).
+                         confidence floor THEORETICAL.
+
+Version: 0.155 — Phase 11: emerger (Sedenion Bracketing & Firing Order)
 """

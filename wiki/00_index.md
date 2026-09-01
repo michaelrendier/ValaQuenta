@@ -82,6 +82,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [jwst.md](jwst.md) | `modules/jwst/` | THEORETICAL | pixel → octonion; **synthetic spectra only** |
 | [sigma_cavitation.md](sigma_cavitation.md) | `modules/sigma_cavitation/` | renderer | σ-cavitation → SVG; not a registered engine |
 | [desitter_cavitation.md](desitter_cavitation.md) | `modules/desitter_cavitation/` | THEORETICAL | **No singularity.** HOLCUS: K_core(M)=(3/2)c⁸/(G⁴M⁴)=24/r_s⁴ — M⁻⁴, sub-Planckian for M>1.107 m_Pl; no_singularity_check PASS; echo delay ~ r_s/c. Calculation not simulation. Fourth Age engine. |
+| [emerger.md](emerger.md) | `modules/emerger/` | THEORETICAL | Sedenion Bracketing & Firing Order. e₀ (real) is the fixed anchor — the tilt to the i axis, never bracketed. A bracketing = an ordered partition of {1..15}; each group + anchor spans ℂ/ℍ/𝕆/FRAGMENT by closure (fragment = where ZDs live). 5 canonical brackets ({1:15} grades; {2:14} the pointer plane carrying Ω_ZS; {8:8} the CD double + ZD equator + J₂; {4:4:4:4} four SU(2) phases + σ_RB tilt/axis, Σtilt=net work, =0⇔σ=½; {4:8:4} gain spectrum 0/1/√2). FIRING ORDER is load-bearing — canonical (dependency, 4 of 120 legal), σ_RB-phased (Σtilt rotates the entry into the 12-step precession, 4 d* : 3 Lambert-W), or any permutation. ZD tests exact (rank-deficiency of Lₓ). Ascent-dual of Generational Lineage. **FINDING:** a σ_RB phase can select a non-dependency-legal order. |
 
 ## Sound and language
 

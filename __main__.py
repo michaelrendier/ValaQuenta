@@ -46,6 +46,7 @@ from .modules.scale import ScaleModule
 from .modules.units import UnitsModule
 from .modules.add_scale_sign import AddScaleSignModule
 from .modules.desitter_cavitation import DeSitterCavitationModule
+from .modules.emerger import EmergerModule
 
 def _register_all():
     registry = get_registry()
@@ -71,6 +72,7 @@ def _register_all():
     register(UnitsModule())
     register(AddScaleSignModule())
     register(DeSitterCavitationModule())
+    register(EmergerModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────
