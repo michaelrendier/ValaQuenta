@@ -145,7 +145,9 @@ the *load-bearing tether*, wind speed as a continuous inflation parameter, and
 The reconstruction law is assembled from rigidity theory, the symplectic
 moment map, holographic bulk reconstruction, and the loaded elastica.
 
-## The box kite is a lemniscate — the Smith chart's product face (2026-09-01) `[THEORETICAL]`
+## The box kite is a lemniscate — the Smith chart's product face (2026-09-01) `[THEORETICAL:CALCULATED]`
+
+**`:CALCULATED`** — every link is executed by a reproducing ValaQuenta engine; the derivation browser (`--curses`, sympy proofs on the fly) can walk the chain Möbius map → `|Γ|` = Apollonius → conjugate Cassini → orthogonality → `b = a` lemniscate → `Γ = 0` = `e₀` zero mode → `Y₁⁰` → `σ = ½`. Engines: scale.py (fold_unfold_round_trip: Γ=tanh(log(Z/Z0)/2), exact, any complex Z; two_ring_chart), add_scale_sign.py (fold: Γ=tanh(u/2); orthogonal_charts), noether.py / noether_information.py (J_pos·J_neg = e^-E = const, NR4 -- the constant product), box_kite.py (octahedral Laplacian spectrum {0,4,4,4,6,6}; zero mode = e0), spherical.py (J_N period 2π -> l=1 -> Y₁⁰ -> Re(s)=½).  THEORETICAL stays: that this one shape unifies Broca+Wernicke and the Monad is a reading under review, not a proof.
 
 The 6-point circle of a strut triple — `{∅_RB, N}`, `{+p, −p}`, `{+q, −q}` — is
 a **lemniscate**: the two prime struts are the two lobes, `{∅_RB, N}` is the

@@ -145,7 +145,9 @@ circle: with three rings at different radial scales, one returns only to the
 same **Now**, one pitch up or down the screw `u = ln x` (see [scale.md](scale.md),
 `archimedes_screw.md`; the "Flattening Syndrome" note in [add_scale_sign.md](add_scale_sign.md) §5).
 
-## 3b. The lemniscate — the product face, and why the Smith chart was the right choice (2026-09-01) `[THEORETICAL]`
+## 3b. The lemniscate — the product face, and why the Smith chart was the right choice (2026-09-01) `[THEORETICAL:CALCULATED]`
+
+**`:CALCULATED`** — every link is executed by a reproducing ValaQuenta engine; the derivation browser (`--curses`, sympy proofs on the fly) can walk the chain Möbius map → `|Γ|` = Apollonius → conjugate Cassini → orthogonality → `b = a` lemniscate → `Γ = 0` = `e₀` zero mode → `Y₁⁰` → `σ = ½`. Engines: scale.py (fold_unfold_round_trip: Γ=tanh(log(Z/Z0)/2), exact, any complex Z; two_ring_chart), add_scale_sign.py (fold: Γ=tanh(u/2); orthogonal_charts), noether.py / noether_information.py (J_pos·J_neg = e^-E = const, NR4 -- the constant product), box_kite.py (octahedral Laplacian spectrum {0,4,4,4,6,6}; zero mode = e0), spherical.py (J_N period 2π -> l=1 -> Y₁⁰ -> Re(s)=½).  THEORETICAL stays: that this one shape unifies Broca+Wernicke and the Monad is a reading under review, not a proof.
 
 The Smith chart of §2 is one of a **conjugate pair of two-focus families**. For
 foci `±1`:
