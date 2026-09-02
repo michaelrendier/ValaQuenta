@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "noether",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.noether",
+  "type": "engine",
+  "name": "noether",
   "display": "Noether Currents  ∂_μJ^μ = 0",
   "version": "0.111",
   "summary": "Emmy Noether theorem applied to L_NN.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.noether",
+    "class": "NoetherModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -116,5 +126,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "noether",
   "_scaffolded": true
 }

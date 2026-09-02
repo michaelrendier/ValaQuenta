@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "l_io_photon_path",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.l_io_photon_path",
+  "type": "engine",
+  "name": "l_io_photon_path",
   "display": "L_(I|O) Photon Path Engine (GR)",
   "version": "0.2",
   "summary": "GR version of L_(I|O): Kaiser-Squires shear->convergence, Poisson solve for the lensing potential, deflection field, and the lens equation b",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.l_io_photon_path",
+    "class": "LIOPhotonPathModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -120,5 +130,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "l_io_photon_path",
   "_scaffolded": true
 }

@@ -17,6 +17,12 @@ Where proof_locale/<engine>.json answers "how do I narrate the proof", the
 manifest answers "how do I appear in the tool, what do I depend on, and
 where did I come from".
 
+This file loads and scaffolds the per-engine manifest and builds the Tab's
+menu_tree.  The manifest IS the `type: engine` case of THE VALAQUENTA FORMAT
+(`valaquenta.plugin/1`, ../FORMAT.md) — schema validation is delegated to
+engine/format.py; `format.normalise()` upgrades a bare
+`valaquenta.engine-manifest/1` file on read.
+
 SCHEMA  (schema id: "valaquenta.engine-manifest/1")
 --------------------------------------------------
     engine            str   — MUST equal module.name
@@ -335,19 +341,25 @@ _REQUIRED_UI = ("menu", "tools", "display_modes", "analysis_lenses",
 
 
 def validate(engine: str, module: Any = None) -> List[str]:
-    """Return a list of problems with `engine`'s manifest; [] means clean.
-    A missing file is one problem ('no manifest — scaffold it')."""
+    """Problems with `engine`'s manifest; [] means clean.  The schema check is
+    delegated to the ValaQuenta Format validator (`engine/format.py`,
+    `valaquenta.plugin/1`); the engine-specific cross-checks (version match,
+    tool→equation, origin filled) stay here."""
     man = load(engine)
     if man is None:
         return [f"{engine}: no manifest.json (run scaffold_all to seed it)"]
     p: List[str] = []
-    if man.get("schema") != SCHEMA_ID:
-        p.append(f"{engine}: schema is {man.get('schema')!r}, expected {SCHEMA_ID!r}")
-    for k in _REQUIRED_TOP:
-        if k not in man:
-            p.append(f"{engine}: missing top-level '{k}'")
-    if man.get("engine") != engine:
-        p.append(f"{engine}: manifest 'engine' = {man.get('engine')!r} != dir name")
+
+    try:
+        from . import format as _fmt                              # noqa: PLC0415
+        p += [f"{engine}: {e}" for e in _fmt.validate(man, name=engine)]
+    except Exception as e:                                        # noqa: BLE001
+        # format.py unavailable — fall back to the local structural check
+        for k in _REQUIRED_TOP:
+            if k not in man and k != "engine":
+                p.append(f"{engine}: missing top-level '{k}'")
+        p.append(f"{engine}: (format.py check skipped: {type(e).__name__}: {e})")
+
     prov = man.get("provenance", {})
     for k in _REQUIRED_PROV:
         if k not in prov:

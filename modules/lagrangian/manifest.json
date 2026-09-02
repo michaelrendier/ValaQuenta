@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "lagrangian",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.lagrangian",
+  "type": "engine",
+  "name": "lagrangian",
   "display": "L_NN  Ainulindale Lagrangian",
   "version": "0.111",
   "summary": "The four-term SMNNIP Lagrangian density L_NN = (2/π)∮[L_kin + L_mat + (1/φ)L_bias + L_coup] r dr dθ.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.lagrangian",
+    "class": "LagrangianModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -152,5 +162,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "lagrangian",
   "_scaffolded": true
 }

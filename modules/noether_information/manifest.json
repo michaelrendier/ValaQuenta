@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "noether_information",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.noether_information",
+  "type": "engine",
+  "name": "noether_information",
   "display": "J_info  Information Current",
   "version": "0.111",
   "summary": "Noether current for information-translation symmetry of L_NN.",
   "confidence_floor": "CONJECTURE",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.noether_information",
+    "class": "NoetherInformationModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -102,5 +112,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "noether_information",
   "_scaffolded": true
 }

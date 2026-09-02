@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "sigma_expansion",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.sigma_expansion",
+  "type": "engine",
+  "name": "sigma_expansion",
   "display": "Sigma Expansion — J_red/J_blue Balance Curve",
   "version": "0.100",
   "summary": "Closed-form Taylor expansion of P_red(sigma)=|J_red|^2/(|J_red|^2+|J_blue|^2) around sigma=1/2.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.sigma_expansion",
+    "class": "SigmaExpansionModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -94,5 +104,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "sigma_expansion",
   "_scaffolded": true
 }

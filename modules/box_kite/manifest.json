@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "box_kite",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.box_kite",
+  "type": "engine",
+  "name": "box_kite",
   "display": "The Box-Kite Debugger (ZD Geometry)",
   "version": "0.2",
   "summary": "Makes the sedenion zero-divisor geometry visible and exactly enumerable.",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.box_kite",
+    "class": "BoxKiteModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -205,5 +215,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "box_kite",
   "_scaffolded": true
 }

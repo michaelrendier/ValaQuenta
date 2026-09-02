@@ -1,17 +1,37 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "emerger",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.emerger",
+  "type": "engine",
+  "name": "emerger",
   "display": "The Emerger (Sedenion Bracketing & Firing Order)",
   "version": "0.1",
   "summary": "Brackets a Cayley-Dickson 16-vector five ways, classifies each group as C/H/O/FRAGMENT by closure, and walks the brackets in a sigma_RB-phased firing order -- the ascent dual of Generational Lineage.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.emerger",
+    "class": "EmergerModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "The ascent side of the Generational Lineage engine (e10, 2026-08-18): lineage walks descent (what built this), the Emerger walks generation (what this builds). The five standard bracketings {1:15} {2:14} {8:8} {4:4:4:4} {4:8:4} are the Cayley-Dickson order-of-operations losses read forward; e0 is the anchor, never bracketed.",
-    "authors": ["Cody Michael Allison"],
+    "authors": [
+      "Cody Michael Allison"
+    ],
     "created": "2026-09-01",
     "status_label": "THEORETICAL:CALCULATED",
-    "predecessors": ["add_scale_sign", "box_kite", "scale", "angular_rank"],
-    "citations": ["deMarrais_boxkites", "Cawagas_sedenion_zerodivisors"],
+    "predecessors": [
+      "add_scale_sign",
+      "box_kite",
+      "scale",
+      "angular_rank"
+    ],
+    "citations": [
+      "deMarrais_boxkites",
+      "Cawagas_sedenion_zerodivisors"
+    ],
     "wiki": {
       "ainulindale": "Ainulindale/wiki/109_the_emerger.md",
       "valaquenta": "ValaQuenta/wiki/emerger.md"
@@ -21,9 +41,24 @@
   },
   "environment": {
     "constants": [
-      {"symbol": "sigma_RB", "role": "tilt (Re) + axis (Im) -- two 8-vectors; sets the firing phase", "value": null, "source": "engine"},
-      {"symbol": "Omega_ZS", "role": "Lambert-W fixed point W(1); the 3 rotor faces of the 12-step precession", "value": 0.5671432904097838, "source": ".clauderc_canonical_maths"},
-      {"symbol": "d_star", "role": "the Zero Definer, Omega_ZS/ln(10); the 4 catastrophe/fold faces", "value": 0.24631, "source": ".clauderc_canonical_maths"}
+      {
+        "symbol": "sigma_RB",
+        "role": "tilt (Re) + axis (Im) -- two 8-vectors; sets the firing phase",
+        "value": null,
+        "source": "engine"
+      },
+      {
+        "symbol": "Omega_ZS",
+        "role": "Lambert-W fixed point W(1); the 3 rotor faces of the 12-step precession",
+        "value": 0.5671432904097838,
+        "source": ".clauderc_canonical_maths"
+      },
+      {
+        "symbol": "d_star",
+        "role": "the Zero Definer, Omega_ZS/ln(10); the 4 catastrophe/fold faces",
+        "value": 0.24631,
+        "source": ".clauderc_canonical_maths"
+      }
     ],
     "native_space": "spherical complex radial polar",
     "arithmetic": "fractions.Fraction exact; float only at output boundary",
@@ -38,23 +73,98 @@
       "blurb": "Five sedenion bracketings, e0 anchored; C/H/O/FRAGMENT by CD-closure; canonical or sigma_RB-phased firing order; exact ZD test by rank-deficiency of L_x over Fraction."
     },
     "tools": [
-      {"name": "emerge", "equation": "emerge", "label": "Emerge", "desc": "sigma_RB tilt-phase fixes the entry bracket, then walk the five brackets and report what each grouping lets emerge, in order", "params": ["x", "mode"]},
-      {"name": "verify", "equation": "verify", "label": "Verify (14 checks)", "desc": "14 exact self-checks of the bracketing algebra straight from the CD table", "params": []},
-      {"name": "firing_order", "equation": "firing_order", "label": "Firing Order", "desc": "Sigma_tilt -> 12-step precession, lcm(4 d* faces, 3 Lambert-W faces)", "params": ["x", "mode"]},
-      {"name": "sigma_rb", "equation": "sigma_rb", "label": "σ_RB", "desc": "psi[k] = x[k] + i*x[k+8], times conj of the XOR-4 partner; split into tilt (Re) and axis (Im)", "params": ["x"]},
-      {"name": "domain_of", "equation": "domain_of", "label": "Domain of G", "desc": "adjoin e0 to a set of imaginary indices, test CD-closure, classify span as C/H/O/FRAGMENT", "params": ["indices"]},
-      {"name": "scale_partitions", "equation": "scale_partitions", "label": "Scale Partitions", "desc": "ways to partition the 15 imaginary indices into C/H/O-sized groups", "params": []},
-      {"name": "legal_orders", "equation": "legal_orders", "label": "Legal Orders", "desc": "the 4 of 120 bracket permutations that respect the emergence prerequisites", "params": []},
-      {"name": "lineage_report", "equation": "lineage_report", "label": "Lineage Report", "desc": "per bracket: confidence tier, what it descends from, what it lets emerge", "params": []}
+      {
+        "name": "emerge",
+        "equation": "emerge",
+        "label": "Emerge",
+        "desc": "sigma_RB tilt-phase fixes the entry bracket, then walk the five brackets and report what each grouping lets emerge, in order",
+        "params": [
+          "x",
+          "mode"
+        ]
+      },
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify (14 checks)",
+        "desc": "14 exact self-checks of the bracketing algebra straight from the CD table",
+        "params": []
+      },
+      {
+        "name": "firing_order",
+        "equation": "firing_order",
+        "label": "Firing Order",
+        "desc": "Sigma_tilt -> 12-step precession, lcm(4 d* faces, 3 Lambert-W faces)",
+        "params": [
+          "x",
+          "mode"
+        ]
+      },
+      {
+        "name": "sigma_rb",
+        "equation": "sigma_rb",
+        "label": "σ_RB",
+        "desc": "psi[k] = x[k] + i*x[k+8], times conj of the XOR-4 partner; split into tilt (Re) and axis (Im)",
+        "params": [
+          "x"
+        ]
+      },
+      {
+        "name": "domain_of",
+        "equation": "domain_of",
+        "label": "Domain of G",
+        "desc": "adjoin e0 to a set of imaginary indices, test CD-closure, classify span as C/H/O/FRAGMENT",
+        "params": [
+          "indices"
+        ]
+      },
+      {
+        "name": "scale_partitions",
+        "equation": "scale_partitions",
+        "label": "Scale Partitions",
+        "desc": "ways to partition the 15 imaginary indices into C/H/O-sized groups",
+        "params": []
+      },
+      {
+        "name": "legal_orders",
+        "equation": "legal_orders",
+        "label": "Legal Orders",
+        "desc": "the 4 of 120 bracket permutations that respect the emergence prerequisites",
+        "params": []
+      },
+      {
+        "name": "lineage_report",
+        "equation": "lineage_report",
+        "label": "Lineage Report",
+        "desc": "per bracket: confidence tier, what it descends from, what it lets emerge",
+        "params": []
+      }
     ],
-    "display_modes": ["text", "fano", "3d_cartesian", "sonification"],
-    "analysis_lenses": ["emerge", "spectral", "lineage", "calibrate"],
-    "proof": {"guided": true, "academic": true},
+    "display_modes": [
+      "text",
+      "fano",
+      "3d_cartesian",
+      "sonification"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": true,
+      "academic": true
+    },
     "desktop": {
       "window": "PDesktopWindow",
       "surface": "svg",
       "opengl": true,
-      "pgui_widgets": ["PComboBox", "PListWidget"]
+      "pgui_widgets": [
+        "PComboBox",
+        "PListWidget"
+      ]
     }
-  }
+  },
+  "engine": "emerger"
 }

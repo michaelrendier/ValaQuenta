@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "jwst",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.jwst",
+  "type": "engine",
+  "name": "jwst",
   "display": "JWST  Spectral Pixel  →  𝕆",
   "version": "0.111",
   "summary": "JWST NIRCam spectral pixel module.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.jwst",
+    "class": "JWSTModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -102,5 +112,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "jwst",
   "_scaffolded": true
 }

@@ -1,0 +1,41 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "com.example.hello_lens",
+  "type": "lens",
+  "name": "hello_lens",
+  "display": "Hello Lens (reference plugin)",
+  "version": "1.0",
+  "summary": "Smallest conforming ValaQuenta Format plugin: an analysis lens that reports the numbers it was handed.",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": { "module": "ValaQuenta.examples.hello_lens.plugin", "class": "HelloLens" },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Reference plugin for ValaQuenta/FORMAT.md — exercises the `lens` type and the discovery loader from outside modules/.",
+    "authors": ["ValaQuenta Format"],
+    "created": "2026-09-01",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": { "ainulindale": "", "valaquenta": "ValaQuenta/wiki/valaquenta_format.md" },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "n/a",
+    "arithmetic": "float",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": { "label": "Hello Lens", "group": "Examples", "order": 900, "blurb": "reference lens plugin" },
+    "tools": [],
+    "display_modes": ["text"],
+    "analysis_lenses": ["hello"],
+    "proof": { "guided": false, "academic": false },
+    "desktop": { "window": "PDesktopWindow", "surface": "text", "opengl": false, "pgui_widgets": [] }
+  }
+}

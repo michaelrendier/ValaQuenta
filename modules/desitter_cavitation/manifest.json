@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "desitter_cavitation",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.desitter_cavitation",
+  "type": "engine",
+  "name": "desitter_cavitation",
   "display": "De Sitter Cavitation Engine — No Singularity: the Abrikosov-Vortex Core",
   "version": "0.100",
   "summary": "The black-hole interior is a finite, sub-Planckian de Sitter core — the Abrikosov vortex core made gravitational: the condensate goes to zer",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.desitter_cavitation",
+    "class": "DeSitterCavitationModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -119,5 +129,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "desitter_cavitation",
   "_scaffolded": true
 }

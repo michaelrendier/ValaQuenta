@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainulindale.org/schema/valaquenta-plugin-1.schema.json",
+  "title": "ValaQuenta Plugin Manifest",
+  "description": "The manifest.json contract for a ValaQuenta Format plugin (valaquenta.plugin/1). Superset of valaquenta.engine-manifest/1. See ValaQuenta/FORMAT.md.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema", "format_version", "id", "type", "name", "version", "entry",
+    "provenance", "license"
+  ],
+  "properties": {
+    "schema": { "const": "valaquenta.plugin/1" },
+    "format_version": { "type": "integer", "const": 1 },
+    "id": {
+      "type": "string",
+      "description": "Reverse-DNS unique id, e.g. org.ainulindale.emerger",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9][a-z0-9_-]*)+$"
+    },
+    "type": {
+      "enum": ["engine", "face", "lens", "tab"],
+      "description": "engine=EquationModule, face=chat-room identity, lens=analyse(), tab=run_tab()+act()"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "display": { "type": "string", "description": "Optional long display name; defaults to name." },
+    "version": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+){0,3}([.-][A-Za-z0-9]+)*$" },
+    "summary": { "type": "string" },
+    "confidence_floor": { "enum": ["ESTABLISHED", "THEORETICAL", "CONJECTURE", "OPEN"] },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "SPDX identifier. GPL-3.0-only or a permissive licence for GNU-shippable plugins; anything for private ones."
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "class"],
+      "properties": {
+        "module": { "type": "string", "minLength": 1, "description": "Importable Python module path." },
+        "class": { "type": "string", "minLength": 1, "description": "Attribute in `module` implementing the type's contract." }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          { "enum": ["registry.read", "registry.run", "proof.render", "manifest.read",
+                     "codegate.propose", "net.search", "net.browse"] },
+          { "type": "string", "pattern": "^fs\\.read:[A-Za-z0-9_./-]+$" }
+        ]
+      },
+      "description": "Declared like WebExtension permissions. Absent = read-only registry + proof + manifest."
+    },
+    "dependencies": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9]+(\\.[a-z0-9][a-z0-9_-]*)+$" },
+      "additionalProperties": { "type": "string", "description": "Version range, e.g. '>=0.1', '1.x', '*'." }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["origin", "authors", "created", "status_label", "predecessors",
+                   "citations", "wiki", "notebook", "proof_locale"],
+      "properties": {
+        "origin": { "type": "string" },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "created": { "type": "string" },
+        "status_label": { "type": "string" },
+        "predecessors": { "type": "array", "items": { "type": "string" } },
+        "citations": { "type": "array", "items": { "type": "string" } },
+        "wiki": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "ainulindale": { "type": "string" },
+            "valaquenta": { "type": "string" }
+          }
+        },
+        "notebook": { "type": "string" },
+        "proof_locale": { "type": "string" }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "constants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["symbol", "role"],
+            "properties": {
+              "symbol": { "type": "string" },
+              "role": { "type": "string" },
+              "value": { "type": ["number", "null"] },
+              "source": { "type": "string" }
+            }
+          }
+        },
+        "native_space": { "type": "string" },
+        "arithmetic": { "type": "string" },
+        "requires_engines": { "type": "array", "items": { "type": "string" } },
+        "external": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "menu": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "label": { "type": "string" },
+            "group": { "type": "string" },
+            "order": { "type": "integer" },
+            "blurb": { "type": "string" }
+          }
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "equation": { "type": "string" },
+              "label": { "type": "string" },
+              "desc": { "type": "string" },
+              "params": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "display_modes": { "type": "array", "items": { "type": "string" } },
+        "analysis_lenses": { "type": "array", "items": { "type": "string" } },
+        "proof": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "guided": { "type": "boolean" },
+            "academic": { "type": "boolean" }
+          }
+        },
+        "desktop": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "window": { "type": "string" },
+            "surface": { "type": "string" },
+            "opengl": { "type": "boolean" },
+            "pgui_widgets": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    }
+  }
+}

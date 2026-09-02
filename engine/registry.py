@@ -3,6 +3,11 @@ ainulindale_engine.engine.registry
 =====================================
 Module registry — the contract that all equation modules must satisfy.
 
+An engine is the `type: engine` case of THE VALAQUENTA FORMAT
+(`valaquenta.plugin/1`) — see ../FORMAT.md and engine/format.py. Its
+`manifest.json` (Full Engine Protocol part 2c) IS the plugin manifest; the
+`EquationModule` subclass below IS the plugin's `entry.class`.
+
 HOW TO ADD A NEW MODULE (the code half)
 ========================================
 1. Create a directory under ainulindale_engine/modules/your_module/

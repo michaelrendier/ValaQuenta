@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "add_scale_sign",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.add_scale_sign",
+  "type": "engine",
+  "name": "add_scale_sign",
   "display": "ADD:SCALE:SIGN (the tier-0 datatype)",
   "version": "0.1",
   "summary": "A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add.",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.add_scale_sign",
+    "class": "AddScaleSignModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -115,5 +125,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "add_scale_sign",
   "_scaffolded": true
 }

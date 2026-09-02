@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "angular_rank",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.angular_rank",
+  "type": "engine",
+  "name": "angular_rank",
   "display": "The 16D Oscilloscope (Angular Rank)",
   "version": "0.1",
   "summary": "Measures three things about any signal embedded in the 16 sedenion dimensions, without knowing its language, its meaning, or its author: ANG",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.angular_rank",
+    "class": "AngularRankModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -161,5 +171,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "angular_rank",
   "_scaffolded": true
 }

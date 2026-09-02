@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "bao_mass_gap",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.bao_mass_gap",
+  "type": "engine",
+  "name": "bao_mass_gap",
   "display": "The Mass Gap — spectral residue of BAO",
   "version": "0.131",
   "summary": "The mass gap as the residue of the BAO spectral decomposition.",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.bao_mass_gap",
+    "class": "BaoMassGapModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -108,5 +118,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "bao_mass_gap",
   "_scaffolded": true
 }

@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "hyperwebster",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.hyperwebster",
+  "type": "engine",
+  "name": "hyperwebster",
   "display": "HyperWebster  Horner Bijection",
   "version": "0.111",
   "summary": "HyperWebster hypergallery.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.hyperwebster",
+    "class": "HyperWebsterModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -115,5 +125,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "hyperwebster",
   "_scaffolded": true
 }

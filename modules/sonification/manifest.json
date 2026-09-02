@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "sonification",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.sonification",
+  "type": "engine",
+  "name": "sonification",
   "display": "Sonification  ω = pitch",
   "version": "0.111",
   "summary": "Equation-derived audio.",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.sonification",
+    "class": "SonificationModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -191,5 +201,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "sonification",
   "_scaffolded": true
 }

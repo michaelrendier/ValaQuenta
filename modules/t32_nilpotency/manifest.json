@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "t32_nilpotency",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.t32_nilpotency",
+  "type": "engine",
+  "name": "t32_nilpotency",
   "display": "T32 Nilpotency — Hyperwebster Address Primitives",
   "version": "0.100",
   "summary": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.t32_nilpotency",
+    "class": "T32NilpotencyModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -66,5 +76,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "t32_nilpotency",
   "_scaffolded": true
 }

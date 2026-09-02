@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "berry_keating",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.berry_keating",
+  "type": "engine",
+  "name": "berry_keating",
   "display": "H_NN  Berry-Keating Operator",
   "version": "0.111",
   "summary": "H_NN candidate xp operator.",
   "confidence_floor": "OPEN",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.berry_keating",
+    "class": "BerryKeatingModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -111,5 +121,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "berry_keating",
   "_scaffolded": true
 }

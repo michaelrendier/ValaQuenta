@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "archimedes_screw",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.archimedes_screw",
+  "type": "engine",
+  "name": "archimedes_screw",
   "display": "The Archimedes Screw (Prime Coordinate Engine)",
   "version": "0.3",
   "summary": "The machine that does the work, distinct from the medium it lifts: 0_RB is the water, the screw is the logarithm.",
   "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.archimedes_screw",
+    "class": "ArchimedesScrewModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -332,5 +342,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "archimedes_screw",
   "_scaffolded": true
 }

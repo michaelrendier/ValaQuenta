@@ -135,7 +135,8 @@ Engines where this convention is load-bearing:
 
 | Page | What | Status |
 |------|------|--------|
-| [engine_manifest.md](engine_manifest.md) | `engine/manifest.py` + `modules/<name>/manifest.json` — per-engine provenance, environmental constants, and the UI plugin-registration block. The curses **ValaQuenta Tab** builds its menus / tools / display modes / analysis lenses procedurally from these (Full Engine Protocol part **2c**). | ESTABLISHED — 23/23 engines have a manifest; `emerger` hand-filled, the rest are live scaffolds pending provenance |
+| [valaquenta_format.md](valaquenta_format.md) | **THE VALAQUENTA FORMAT** (`valaquenta.plugin/1`) — the plugin/extension contract for PtolemyDesktop, the WebExtension analogue. Spec `FORMAT.md`, schema `schema/valaquenta-plugin-1.schema.json`, loader/validator `engine/format.py`. Types: `engine` / `face` / `lens` / `tab`. Permissions, licensing (GNU-shippable vs private), discovery path. | ESTABLISHED — 23 engines + `examples/hello_lens` validate clean; built-in manifests upgraded to `valaquenta.plugin/1` |
+| [engine_manifest.md](engine_manifest.md) | `engine/manifest.py` + `modules/<name>/manifest.json` — the `type: engine` case of the Format: per-engine provenance, environmental constants, and the UI plugin-registration block. The curses **ValaQuenta Tab** builds its menus / tools / display modes / analysis lenses procedurally from these (Full Engine Protocol part **2c**). | ESTABLISHED — 23/23 engines have a manifest; `emerger` hand-filled, the rest scaffolds pending provenance |
 
 ## Known defects
 

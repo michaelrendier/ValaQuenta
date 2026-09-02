@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "hypergon_constructibility",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.hypergon_constructibility",
+  "type": "engine",
+  "name": "hypergon_constructibility",
   "display": "Hypergon Constructibility — Gauss-Wantzel + Factorization Test",
   "version": "0.100",
   "summary": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL result: 4/16 constructible, 12/16 holes).",
   "confidence_floor": "OPEN",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.hypergon_constructibility",
+    "class": "HypergonConstructibilityModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -78,5 +88,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "hypergon_constructibility",
   "_scaffolded": true
 }

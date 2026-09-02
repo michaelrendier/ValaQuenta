@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "inversion",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.inversion",
+  "type": "engine",
+  "name": "inversion",
   "display": "Inside-Out Inversion Engine  (I|O)",
   "version": "0.111",
   "summary": "The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2).",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.inversion",
+    "class": "InversionModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -117,5 +127,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "inversion",
   "_scaffolded": true
 }

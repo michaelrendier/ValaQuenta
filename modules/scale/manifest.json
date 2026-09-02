@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "scale",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.scale",
+  "type": "engine",
+  "name": "scale",
   "display": "The Scale (Decompositional Analysis, Forwards and Backwards)",
   "version": "0.1",
   "summary": "SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions.",
   "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.scale",
+    "class": "ScaleModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -145,5 +155,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "scale",
   "_scaffolded": true
 }
