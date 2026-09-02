@@ -1,0 +1,209 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "box_kite",
+  "display": "The Box-Kite Debugger (ZD Geometry)",
+  "version": "0.2",
+  "summary": "Makes the sedenion zero-divisor geometry visible and exactly enumerable.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/84_the_box_kite_debugger.md",
+      "valaquenta": "ValaQuenta/wiki/box_kite.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/15_box_kite.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Box-Kite Debugger (ZD Geometry)",
+      "group": "Sedenion · ZD geometry",
+      "order": 100,
+      "blurb": "Makes the sedenion zero-divisor geometry visible and exactly enumerable."
+    },
+    "tools": [
+      {
+        "name": "verify_counts",
+        "equation": "verify_counts",
+        "label": "Verify Counts",
+        "desc": "42 / 84 / 168 / 336 / 7, all derived  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "box_kites",
+        "equation": "box_kites",
+        "label": "Box Kites",
+        "desc": "The 7 box-kites, keyed by strut s = a XOR b  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "box_kite_graph",
+        "equation": "box_kite_graph",
+        "label": "Box Kite Graph",
+        "desc": "each chart is an octahedron K_2,2,2  [process= not set]",
+        "params": [
+          "s"
+        ]
+      },
+      {
+        "name": "chart_spectrum",
+        "equation": "chart_spectrum",
+        "label": "Chart Spectrum",
+        "desc": "THE DISPERSION RELATION, chart level: {0,4,4,4,6,6}  [process= not set]",
+        "params": [
+          "s"
+        ]
+      },
+      {
+        "name": "associator",
+        "equation": "associator",
+        "label": "Associator",
+        "desc": "[a,b,c] = (ab)c - a(bc)  [process= not set]",
+        "params": [
+          "i",
+          "j",
+          "k"
+        ]
+      },
+      {
+        "name": "associator_field",
+        "equation": "associator_field",
+        "label": "Associator Field",
+        "desc": "curvature painted on a box-kite  [process= not set]",
+        "params": [
+          "s"
+        ]
+      },
+      {
+        "name": "commutator",
+        "equation": "commutator",
+        "label": "Commutator",
+        "desc": "[a,b] = ab - ba  [process= not set]",
+        "params": [
+          "i",
+          "j"
+        ]
+      },
+      {
+        "name": "glued_graph",
+        "equation": "glued_graph",
+        "label": "Glued Graph",
+        "desc": "The 42-vertex atlas — and its cross-strut edge count  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "glued_spectrum",
+        "equation": "glued_spectrum",
+        "label": "Glued Spectrum",
+        "desc": "Laplacian spectrum of the whole atlas  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "chart_of",
+        "equation": "chart_of",
+        "label": "Chart Of",
+        "desc": "where a monad address sits in the atlas  [process= not set]",
+        "params": [
+          "v",
+          "check_zd"
+        ]
+      },
+      {
+        "name": "address_census",
+        "equation": "address_census",
+        "label": "Address Census",
+        "desc": "Exhaustive census over a corpus of monad addresses  [process= not set]",
+        "params": [
+          "addresses",
+          "limit",
+          "check_zd"
+        ]
+      },
+      {
+        "name": "skeleton_overlap",
+        "equation": "skeleton_overlap",
+        "label": "Skeleton Overlap",
+        "desc": "THE CHARTS DO TOUCH — in the skeleton, not the adjacency  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "fixed_point_gluing",
+        "equation": "fixed_point_gluing",
+        "label": "Fixed Point Gluing",
+        "desc": "at e_0  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "fixed_point_weight",
+        "equation": "fixed_point_weight",
+        "label": "Fixed Point Weight",
+        "desc": "How much of an address is pure 0_RB  [process= not set]",
+        "params": [
+          "v"
+        ]
+      },
+      {
+        "name": "skeleton_counts",
+        "equation": "skeleton_counts",
+        "label": "Skeleton Counts",
+        "desc": "15 points, 35 lines, 15 Fano planes (NOT 32)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "e0_is_outside",
+        "equation": "e0_is_outside",
+        "label": "E0 Is Outside",
+        "desc": "0_RB IS NOT THE GEOMETRY — checked, not asserted  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "associator_census",
+        "equation": "associator_census",
+        "label": "Associator Census",
+        "desc": "How much of the algebra is curved  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "zero_divisor_pairs",
+        "equation": "zero_divisor_pairs",
+        "label": "Zero Divisor Pairs",
+        "desc": "All 336 ordered annihilating diagonal pairs  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "sigma_expansion",
+  "display": "Sigma Expansion — J_red/J_blue Balance Curve",
+  "version": "0.100",
+  "summary": "Closed-form Taylor expansion of P_red(sigma)=|J_red|^2/(|J_red|^2+|J_blue|^2) around sigma=1/2.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/76_sigma_expansion.md",
+      "valaquenta": "ValaQuenta/wiki/sigma_expansion.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/15_sigma_expansion.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Sigma Expansion — J_red/J_blue Balance Curve",
+      "group": "Critical line · σ",
+      "order": 100,
+      "blurb": "Closed-form Taylor expansion of P_red(sigma)=|J_red|^2/(|J_red|^2+|J_blue|^2) around sigma=1/2."
+    },
+    "tools": [
+      {
+        "name": "moments",
+        "equation": "moments",
+        "label": "Moments",
+        "desc": "M_n, L_n moments at sigma=1/2 (raw inputs to the derivation)  [process= not set]",
+        "params": [
+          "text"
+        ]
+      },
+      {
+        "name": "taylor_coefficients",
+        "equation": "taylor_coefficients",
+        "label": "Taylor Coefficients",
+        "desc": "c1, c3 — derived (not fitted) Taylor coefficients of P_red(sigma) at 1/2  [process= not set]",
+        "params": [
+          "text"
+        ]
+      },
+      {
+        "name": "predict_P_red",
+        "equation": "predict_P_red",
+        "label": "Predict P Red",
+        "desc": "Cheap closed-form P_red(sigma) prediction (no sigma-sweep needed)  [process= not set]",
+        "params": [
+          "text",
+          "sigma"
+        ]
+      },
+      {
+        "name": "verify_against_actual",
+        "equation": "verify_against_actual",
+        "label": "Verify Against Actual",
+        "desc": "Error-check: predicted vs",
+        "params": [
+          "text"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

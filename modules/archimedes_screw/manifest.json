@@ -1,0 +1,336 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "archimedes_screw",
+  "display": "The Archimedes Screw (Prime Coordinate Engine)",
+  "version": "0.3",
+  "summary": "The machine that does the work, distinct from the medium it lifts: 0_RB is the water, the screw is the logarithm.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/83_the_archimedes_screw.md",
+      "valaquenta": "ValaQuenta/wiki/archimedes_screw.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/14_archimedes_screw.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Archimedes Screw (Prime Coordinate Engine)",
+      "group": "Primes · number theory",
+      "order": 100,
+      "blurb": "The machine that does the work, distinct from the medium it lifts: 0_RB is the water, the screw is the logarithm."
+    },
+    "tools": [
+      {
+        "name": "screw_coordinates",
+        "equation": "screw_coordinates",
+        "label": "Screw Coordinates",
+        "desc": "Search-term interface: four coordinates, one axis  [process= not set]",
+        "params": [
+          "term",
+          "value"
+        ]
+      },
+      {
+        "name": "screw_pitch",
+        "equation": "screw_pitch",
+        "label": "Screw Pitch",
+        "desc": "One turn of the screw = one prime = lift of ln p  [process= not set]",
+        "params": [
+          "p"
+        ]
+      },
+      {
+        "name": "chebyshev_psi_explicit",
+        "equation": "chebyshev_psi_explicit",
+        "label": "Chebyshev Psi Explicit",
+        "desc": "explicit formula on the screw axis  [process= not set]",
+        "params": [
+          "x",
+          "zeros"
+        ]
+      },
+      {
+        "name": "zero_sum",
+        "equation": "zero_sum",
+        "label": "Zero Sum",
+        "desc": "THE PRIME-SIDE FERMAT POTENTIAL — the bend  [process= not set]",
+        "params": [
+          "x",
+          "zeros"
+        ]
+      },
+      {
+        "name": "clean_path_L",
+        "equation": "clean_path_L",
+        "label": "Clean Path L",
+        "desc": "L — the clean path: \"the path of least primes\", computed  [process= not set]",
+        "params": [
+          "x"
+        ]
+      },
+      {
+        "name": "l_io_decomposition",
+        "equation": "l_io_decomposition",
+        "label": "L Io Decomposition",
+        "desc": "The three L_(I|O) slots by role: L, psi_bend, L_IO  [process= not set]",
+        "params": [
+          "x",
+          "zeros"
+        ]
+      },
+      {
+        "name": "chebyshev_psi_exact",
+        "equation": "chebyshev_psi_exact",
+        "label": "Chebyshev Psi Exact",
+        "desc": "psi(x) by sieve -- the ground truth the tones rebuild  [process= not set]",
+        "params": [
+          "x"
+        ]
+      },
+      {
+        "name": "shake_order",
+        "equation": "shake_order",
+        "label": "Shake Order",
+        "desc": "The shake order: every leaf-drop, in sequence, with its prime  [process= not set]",
+        "params": [
+          "x",
+          "zeros"
+        ]
+      },
+      {
+        "name": "fall_height",
+        "equation": "fall_height",
+        "label": "Fall Height",
+        "desc": "u_fall = ln(gpf N)  [process= not set]",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "discovery_height",
+        "equation": "discovery_height",
+        "label": "Discovery Height",
+        "desc": "Where the first strike lands: ln(lpf N)  [process= not set]",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "smoothness_u",
+        "equation": "smoothness_u",
+        "label": "Smoothness U",
+        "desc": "The Dickman coordinate: u = ln N / ln(gpf N)  [process= not set]",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "dickman_rho",
+        "equation": "dickman_rho",
+        "label": "Dickman Rho",
+        "desc": "Dickman rho(u)  [process= not set]",
+        "params": [
+          "u"
+        ]
+      },
+      {
+        "name": "harvest",
+        "equation": "harvest",
+        "label": "Harvest",
+        "desc": "leaves falling at sieve step p  [process= not set]",
+        "params": [
+          "X",
+          "p"
+        ]
+      },
+      {
+        "name": "semiprime_harvest",
+        "equation": "semiprime_harvest",
+        "label": "Semiprime Harvest",
+        "desc": "Two-parent leaves falling at step p  [process= not set]",
+        "params": [
+          "X",
+          "p"
+        ]
+      },
+      {
+        "name": "fall_split",
+        "equation": "fall_split",
+        "label": "Fall Split",
+        "desc": "The birth record: both falls, delta, and the collapse  [process= not set]",
+        "params": [
+          "N"
+        ]
+      },
+      {
+        "name": "mertens",
+        "equation": "mertens",
+        "label": "Mertens",
+        "desc": "M(x) = Σ μ(n)  [process= not set]",
+        "params": [
+          "x"
+        ]
+      },
+      {
+        "name": "mobius",
+        "equation": "mobius",
+        "label": "Mobius",
+        "desc": "μ, the Dirichlet inverse of 1  [process= not set]",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "mertens_envelope",
+        "equation": "mertens_envelope",
+        "label": "Mertens Envelope",
+        "desc": "RH on the exclusion side: M(x) = O(x^(1/2+eps))  [process= not set]",
+        "params": [
+          "x",
+          "eps"
+        ]
+      },
+      {
+        "name": "sieve_extinction",
+        "equation": "sieve_extinction",
+        "label": "Sieve Extinction",
+        "desc": "grown / extinct / identified  [process= not set]",
+        "params": [
+          "N"
+        ]
+      },
+      {
+        "name": "domain_ladder",
+        "equation": "domain_ladder",
+        "label": "Domain Ladder",
+        "desc": "what the domain actually is  [process= not set]",
+        "params": [
+          "modulus_bits",
+          "gnfs_bits"
+        ]
+      },
+      {
+        "name": "zero_height_lambert",
+        "equation": "zero_height_lambert",
+        "label": "Zero Height Lambert",
+        "desc": "Lambert inverse of the zero count: gamma_n = 2*pi*n/W(n/e)  [process= not set]",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "zero_count_smooth",
+        "equation": "zero_count_smooth",
+        "label": "Zero Count Smooth",
+        "desc": "Riemann-von Mangoldt zero count N(T)  [process= not set]",
+        "params": [
+          "T"
+        ]
+      },
+      {
+        "name": "amplitude_envelope",
+        "equation": "amplitude_envelope",
+        "label": "Amplitude Envelope",
+        "desc": "RH in the prime domain: one shared envelope 2*sqrt(x)  [process= not set]",
+        "params": [
+          "x",
+          "sigma"
+        ]
+      },
+      {
+        "name": "envelope_ratio",
+        "equation": "envelope_ratio",
+        "label": "Envelope Ratio",
+        "desc": "How loudly an off-line zero would drown the others  [process= not set]",
+        "params": [
+          "x",
+          "sigma_off"
+        ]
+      },
+      {
+        "name": "interference_profile",
+        "equation": "interference_profile",
+        "label": "Interference Profile",
+        "desc": "Per-zero tones at x -- primes are the antinodes  [process= not set]",
+        "params": [
+          "x",
+          "zeros"
+        ]
+      },
+      {
+        "name": "prime_count_log10",
+        "equation": "prime_count_log10",
+        "label": "Prime Count Log10",
+        "desc": "log10 pi(10^d) -- the finiteness readout at RSA scale  [process= not set]",
+        "params": [
+          "digits"
+        ]
+      },
+      {
+        "name": "splitting_vector",
+        "equation": "splitting_vector",
+        "label": "Splitting Vector",
+        "desc": "chi_N readout: the cheapest N-specific shadow there is  [process= not set]",
+        "params": [
+          "N",
+          "limit"
+        ]
+      },
+      {
+        "name": "ramified_primes",
+        "equation": "ramified_primes",
+        "label": "Ramified Primes",
+        "desc": "Ramification = detachment: Euler factor degenerates at the factors  [process= not set]",
+        "params": [
+          "N",
+          "limit"
+        ]
+      },
+      {
+        "name": "lambert_w",
+        "equation": "lambert_w",
+        "label": "Lambert W",
+        "desc": "The screw gear ratio: W(x)e^{W(x)} = x, W(1) = OMEGA_ZS  [process= not set]",
+        "params": [
+          "x"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

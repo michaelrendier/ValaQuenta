@@ -1,0 +1,112 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "bao_mass_gap",
+  "display": "The Mass Gap — spectral residue of BAO",
+  "version": "0.131",
+  "summary": "The mass gap as the residue of the BAO spectral decomposition.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/50_bao_mass_gap_engine.md",
+      "valaquenta": "ValaQuenta/wiki/bao_mass_gap.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/19_bao_mass_gap.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Mass Gap — spectral residue of BAO",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "The mass gap as the residue of the BAO spectral decomposition."
+    },
+    "tools": [
+      {
+        "name": "summary",
+        "equation": "summary",
+        "label": "Summary",
+        "desc": "Mass gap — Δ = 0",
+        "params": []
+      },
+      {
+        "name": "gap_value",
+        "equation": "gap_value",
+        "label": "Gap Value",
+        "desc": "Δ = Ω_ζΣ − D*·ln(10) — two constants, one subtraction  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "spectral_residue",
+        "equation": "spectral_residue",
+        "label": "Spectral Residue",
+        "desc": "Spectral residue of BAO — why the gap IS a residue  [process= not set]",
+        "params": [
+          "n_zeros"
+        ]
+      },
+      {
+        "name": "gap_identity",
+        "equation": "gap_identity",
+        "label": "Gap Identity",
+        "desc": "Δ = 1/(1000√2) — the Red/Blue symmetry point  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "bao_consistency",
+        "equation": "bao_consistency",
+        "label": "Bao Consistency",
+        "desc": "Δ vs Planck 2018 r_s = 147",
+        "params": []
+      },
+      {
+        "name": "mtheory_compactification",
+        "equation": "mtheory_compactification",
+        "label": "Mtheory Compactification",
+        "desc": "Compactification scale = Δ — 11 = 4+7, G₂ holonomy, one vacuum  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "validate",
+        "equation": "validate",
+        "label": "Validate",
+        "desc": "Validation — all 7 checks  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

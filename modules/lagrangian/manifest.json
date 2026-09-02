@@ -1,0 +1,156 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "lagrangian",
+  "display": "L_NN  Ainulindale Lagrangian",
+  "version": "0.111",
+  "summary": "The four-term SMNNIP Lagrangian density L_NN = (2/π)∮[L_kin + L_mat + (1/φ)L_bias + L_coup] r dr dθ.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/04_lagrangian_engine.md",
+      "valaquenta": "ValaQuenta/wiki/lagrangian.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/04_lagrangian.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "L_NN  Ainulindale Lagrangian",
+      "group": "Currents · conservation",
+      "order": 100,
+      "blurb": "The four-term SMNNIP Lagrangian density L_NN = (2/π)∮[L_kin + L_mat + (1/φ)L_bias + L_coup] r dr dθ."
+    },
+    "tools": [
+      {
+        "name": "polar_lagrangian",
+        "equation": "polar_lagrangian",
+        "label": "Polar Lagrangian",
+        "desc": "Full L_NN — polar integral  [process= not set]",
+        "params": [
+          "psi_norms",
+          "A_comps",
+          "beta_norms",
+          "algebra",
+          "layer"
+        ]
+      },
+      {
+        "name": "L_kinetic",
+        "equation": "L_kinetic",
+        "label": "L Kinetic",
+        "desc": "L_kin = -1/4 · F_μν^a · F^{μν,a}  [process= not set]",
+        "params": [
+          "A_comps",
+          "g",
+          "algebra"
+        ]
+      },
+      {
+        "name": "L_matter",
+        "equation": "L_matter",
+        "label": "L Matter",
+        "desc": "L_mat = i·Ψ̄·γ^μ·D_μ·Ψ  [process= not set]",
+        "params": [
+          "psi_norms",
+          "A_comps",
+          "g",
+          "hbar_nn",
+          "algebra"
+        ]
+      },
+      {
+        "name": "L_bias",
+        "equation": "L_bias",
+        "label": "L Bias",
+        "desc": "L_bias — Mexican hat / Higgs potential  [process= not set]",
+        "params": [
+          "beta_norms",
+          "mu_sq",
+          "lam"
+        ]
+      },
+      {
+        "name": "L_coupling",
+        "equation": "L_coupling",
+        "label": "L Coupling",
+        "desc": "L_coup = -(1/φ)·Γ_ij·Ψ̄^L·β·Ψ^R  (Yukawa)  [process= not set]",
+        "params": [
+          "psi_norms",
+          "beta_norms",
+          "g"
+        ]
+      },
+      {
+        "name": "alpha_nn_running",
+        "equation": "alpha_nn_running",
+        "label": "Alpha Nn Running",
+        "desc": "α_NN(r) = g²/(4π·ħ_NN·ln(1/r))  running coupling  [process= not set]",
+        "params": [
+          "g",
+          "hbar_nn",
+          "r"
+        ]
+      },
+      {
+        "name": "rg_flow",
+        "equation": "rg_flow",
+        "label": "Rg Flow",
+        "desc": "RG flow α_NN(l), ħ_NN(l) — all strata  [process= not set]",
+        "params": [
+          "alpha_0",
+          "hbar_0",
+          "algebra",
+          "max_layer"
+        ]
+      },
+      {
+        "name": "mastery_check",
+        "equation": "mastery_check",
+        "label": "Mastery Check",
+        "desc": "Mastery: vev_distance < ħ_NN/2  [process= not set]",
+        "params": [
+          "beta_norms",
+          "vev",
+          "hbar_nn"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "3d_cartesian",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

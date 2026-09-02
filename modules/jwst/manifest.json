@@ -1,0 +1,106 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "jwst",
+  "display": "JWST  Spectral Pixel  →  𝕆",
+  "version": "0.111",
+  "summary": "JWST NIRCam spectral pixel module.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/10_jwst_engine.md",
+      "valaquenta": "ValaQuenta/wiki/jwst.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/10_jwst.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "JWST  Spectral Pixel  →  𝕆",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "JWST NIRCam spectral pixel module."
+    },
+    "tools": [
+      {
+        "name": "spectral_to_octonion",
+        "equation": "spectral_to_octonion",
+        "label": "Spectral To Octonion",
+        "desc": "8 NIRCam filters → 𝕆 element  [process= not set]",
+        "params": [
+          "intensities"
+        ]
+      },
+      {
+        "name": "cd_spectral_address",
+        "equation": "cd_spectral_address",
+        "label": "Cd Spectral Address",
+        "desc": "Cayley-Dickson spectral pixel address  [process= not set]",
+        "params": [
+          "intensities",
+          "pixel_x",
+          "pixel_y"
+        ]
+      },
+      {
+        "name": "synthetic_hydrogen",
+        "equation": "synthetic_hydrogen",
+        "label": "Synthetic Hydrogen",
+        "desc": "Synthetic Paschen series spectrum (hydrogen)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "synthetic_stellar",
+        "equation": "synthetic_stellar",
+        "label": "Synthetic Stellar",
+        "desc": "Synthetic blackbody T=5000K spectrum  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "lambda_to_r",
+        "equation": "lambda_to_r",
+        "label": "Lambda To R",
+        "desc": "λ (nm) → r ∈ (0,1)  radial coordinate  [process= not set]",
+        "params": [
+          "wavelength_nm"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "fano",
+      "3d_cartesian"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

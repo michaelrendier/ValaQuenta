@@ -127,6 +127,8 @@ def main():
     parser.add_argument('--curses',   action='store_true', help='Curses console GUI')
     parser.add_argument('--headless', action='store_true', help='No GUI, text output')
     parser.add_argument('--info',     action='store_true', help='Print registry info and exit')
+    parser.add_argument('--manifests', action='store_true',
+                        help='Validate the engine manifests (Full Engine Protocol 2c) and exit')
     parser.add_argument('--version',  action='store_true', help='Print version and exit')
 
     args = parser.parse_args()
@@ -141,6 +143,23 @@ def main():
 
     if args.info:
         print(registry.summary())
+        return
+
+    if args.manifests:
+        from .engine import manifest as _m
+        bad = 0
+        for engine in registry.list_modules():
+            probs = _m.validate(engine, registry.get_module(engine))
+            for pr in probs:
+                print("  ✗", pr); bad += 1
+            if not probs:
+                print("  ✓", engine)
+        tree = _m.menu_tree(registry)
+        print(f"\n{len(tree['groups'])} menu groups, {tree['count']} engines, "
+              f"{bad} manifest problem(s)")
+        if tree['missing_manifest']:
+            print("  (live scaffold, not written: "
+                  + ", ".join(tree['missing_manifest']) + ")")
         return
 
     if args.headless:

@@ -1,0 +1,102 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "turing_diagonal",
+  "display": "Turing Diagonal Engine — i²=-1 = Cantor = Gödel = Enigma = UDOE",
+  "version": "0.100",
+  "summary": "The diagonal flip i²=[[-1,0],[0,-1]] unifies every self-referential proof.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/turing_diagonal.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Turing Diagonal Engine — i²=-1 = Cantor = Gödel = Enigma = UDOE",
+      "group": "Tower · identity",
+      "order": 100,
+      "blurb": "The diagonal flip i²=[[-1,0],[0,-1]] unifies every self-referential proof."
+    },
+    "tools": [
+      {
+        "name": "full_turing_diagonal",
+        "equation": "full_turing_diagonal",
+        "label": "Full Turing Diagonal",
+        "desc": "All 4 Turing Diagonal engines  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "prediction_diagonal_test",
+        "equation": "prediction_diagonal_test",
+        "label": "Prediction Diagonal Test",
+        "desc": "Apply Turing diagonal to any prediction → decidable/undecidable  [process= not set]",
+        "params": [
+          "prediction"
+        ]
+      },
+      {
+        "name": "enigma_derangement",
+        "equation": "enigma_derangement",
+        "label": "Enigma Derangement",
+        "desc": "D_n/n! → 1/e",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "hypercomplex_identity_diagonal",
+        "equation": "hypercomplex_identity_diagonal",
+        "label": "Hypercomplex Identity Diagonal",
+        "desc": "i²=[[-1,0],[0,-1]]",
+        "params": []
+      },
+      {
+        "name": "turing_halting_diagonal",
+        "equation": "turing_halting_diagonal",
+        "label": "Turing Halting Diagonal",
+        "desc": "the program that escapes HALT",
+        "params": [
+          "n_programs"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

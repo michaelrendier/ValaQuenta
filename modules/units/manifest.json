@@ -1,0 +1,95 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "units",
+  "display": "Units (The Equation Index)",
+  "version": "0.1",
+  "summary": "A unit is a point in the 7-axis SI base-dimension lattice (kg,m,s,A,K,mol,cd) -- the same leaf/composite structure this project already runs",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/97_units_as_the_equation_index.md",
+      "valaquenta": "ValaQuenta/wiki/units.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Units (The Equation Index)",
+      "group": "Decomposition · The Scale",
+      "order": 100,
+      "blurb": "A unit is a point in the 7-axis SI base-dimension lattice (kg,m,s,A,K,mol,cd) -- the same leaf/composite structure this project already runs on numbers (factor_lineage) and processes (pathway_decompos"
+    },
+    "tools": [
+      {
+        "name": "unit_compose",
+        "equation": "unit_compose",
+        "label": "Unit Compose",
+        "desc": "multiply/divide as exponent-vector add/subtract  [process= not set]",
+        "params": [
+          "a",
+          "b",
+          "op"
+        ]
+      },
+      {
+        "name": "lineage_table_verified",
+        "equation": "lineage_table_verified",
+        "label": "Lineage Table Verified",
+        "desc": "named compounds trace exactly back to the 7 leaves  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "cancellation_demo",
+        "equation": "cancellation_demo",
+        "label": "Cancellation Demo",
+        "desc": "mol/L * L cancels back to mol exactly  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "equation_index",
+        "equation": "equation_index",
+        "label": "Equation Index",
+        "desc": "a dimension signature narrows the candidate laws  [process= not set]",
+        "params": [
+          "exponents"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

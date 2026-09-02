@@ -1,0 +1,165 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "angular_rank",
+  "display": "The 16D Oscilloscope (Angular Rank)",
+  "version": "0.1",
+  "summary": "Measures three things about any signal embedded in the 16 sedenion dimensions, without knowing its language, its meaning, or its author: ANG",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/angular_rank.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/16_angular_rank.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The 16D Oscilloscope (Angular Rank)",
+      "group": "Sedenion · ZD geometry",
+      "order": 100,
+      "blurb": "Measures three things about any signal embedded in the 16 sedenion dimensions, without knowing its language, its meaning, or its author: ANGULAR CONTENT (how much direction survives once the common mo"
+    },
+    "tools": [
+      {
+        "name": "verify_null_space",
+        "equation": "verify_null_space",
+        "label": "Verify Null Space",
+        "desc": "nullity 4, rank 12, {sqrt2 x4, 1 x8, 0 x4}  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "null_occupancy_baseline",
+        "equation": "null_occupancy_baseline",
+        "label": "Null Occupancy Baseline",
+        "desc": "isotropic energy in ker(L_a) is exactly 4/16  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "angular_residual",
+        "equation": "angular_residual",
+        "label": "Angular Residual",
+        "desc": "sin of the angle to the common direction  [process= not set]",
+        "params": [
+          "datum"
+        ]
+      },
+      {
+        "name": "calibration",
+        "equation": "calibration",
+        "label": "Calibration",
+        "desc": "0",
+        "params": []
+      },
+      {
+        "name": "null_occupancy",
+        "equation": "null_occupancy",
+        "label": "Null Occupancy",
+        "desc": "energy landing in ker(L_a) -- what the internal channel cannot reach  [process= not set]",
+        "params": [
+          "datum"
+        ]
+      },
+      {
+        "name": "external_component",
+        "equation": "external_component",
+        "label": "External Component",
+        "desc": "Energy of a signal outside a FROZEN internal span  [process= not set]",
+        "params": [
+          "signal",
+          "internal"
+        ]
+      },
+      {
+        "name": "bearing",
+        "equation": "bearing",
+        "label": "Bearing",
+        "desc": "how far the span moved between two datums  [process= not set]",
+        "params": [
+          "before",
+          "after"
+        ]
+      },
+      {
+        "name": "numerical_rank",
+        "equation": "numerical_rank",
+        "label": "Numerical Rank",
+        "desc": "Rank of the accumulated trace, with its tolerance  [process= not set]",
+        "params": [
+          "datum"
+        ]
+      },
+      {
+        "name": "occupancy",
+        "equation": "occupancy",
+        "label": "Occupancy",
+        "desc": "Per-dimension energy fraction and participation ratio  [process= not set]",
+        "params": [
+          "datum"
+        ]
+      },
+      {
+        "name": "embed_log_bands",
+        "equation": "embed_log_bands",
+        "label": "Embed Log Bands",
+        "desc": "16 log-spaced band energies  [process= not set]",
+        "params": [
+          "power_spectrum"
+        ]
+      },
+      {
+        "name": "angular_report",
+        "equation": "angular_report",
+        "label": "Angular Report",
+        "desc": "THE STRESS TEST, one card -- every entry stamped with its datum  [process= not set]",
+        "params": [
+          "datum"
+        ]
+      },
+      {
+        "name": "null_space",
+        "equation": "null_space",
+        "label": "Null Space",
+        "desc": "ker(L_a) for an arbitrary sedenion a  [process= not set]",
+        "params": [
+          "a"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

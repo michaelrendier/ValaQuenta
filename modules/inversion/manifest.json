@@ -1,0 +1,121 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "inversion",
+  "display": "Inside-Out Inversion Engine  (I|O)",
+  "version": "0.111",
+  "summary": "The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2).",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/03_inversion_engine.md",
+      "valaquenta": "ValaQuenta/wiki/inversion.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/03_inversion.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Inside-Out Inversion Engine  (I|O)",
+      "group": "Inside-out · inversion",
+      "order": 100,
+      "blurb": "The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2)."
+    },
+    "tools": [
+      {
+        "name": "inversion_map",
+        "equation": "inversion_map",
+        "label": "Inversion Map",
+        "desc": "(I|O) Inversion Map J_N  [process= not set]",
+        "params": [
+          "r",
+          "theta_rad"
+        ]
+      },
+      {
+        "name": "derive_horizon_rotation",
+        "equation": "derive_horizon_rotation",
+        "label": "Derive Horizon Rotation",
+        "desc": "Horizon rotation pi/2, derived not assumed  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "involution_check",
+        "equation": "involution_check",
+        "label": "Involution Check",
+        "desc": "(I|O) Involution: J_N applied twice  [process= not set]",
+        "params": [
+          "r",
+          "theta_rad"
+        ]
+      },
+      {
+        "name": "gradient_flow",
+        "equation": "gradient_flow",
+        "label": "Gradient Flow",
+        "desc": "Gradient flow: r=1 to phi attractor  [process= not set]",
+        "params": [
+          "r0",
+          "max_steps"
+        ]
+      },
+      {
+        "name": "phi_crossing_step",
+        "equation": "phi_crossing_step",
+        "label": "Phi Crossing Step",
+        "desc": "phi-crossing step = H/4 = (pi/2) hbar_NN  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "d_star_gap",
+        "equation": "d_star_gap",
+        "label": "D Star Gap",
+        "desc": "d* x ln(10) vs OMEGA_ZS  [OPEN — gap = 0",
+        "params": []
+      },
+      {
+        "name": "four_horizons",
+        "equation": "four_horizons",
+        "label": "Four Horizons",
+        "desc": "(I|O) unifies four physical horizons  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "complex_plane",
+      "3d_cartesian",
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

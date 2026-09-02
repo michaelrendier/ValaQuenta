@@ -1,0 +1,119 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "add_scale_sign",
+  "display": "ADD:SCALE:SIGN (the tier-0 datatype)",
+  "version": "0.1",
+  "summary": "A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/107_add_scale_sign_datatype.md",
+      "valaquenta": "ValaQuenta/wiki/add_scale_sign.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "ADD:SCALE:SIGN (the tier-0 datatype)",
+      "group": "Decomposition · The Scale",
+      "order": 100,
+      "blurb": "A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add."
+    },
+    "tools": [
+      {
+        "name": "round_trip",
+        "equation": "round_trip",
+        "label": "Round Trip",
+        "desc": "(~T ∘ T)(x) = x, exactly  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "equation_parts",
+        "equation": "equation_parts",
+        "label": "Equation Parts",
+        "desc": "EACH GENERATOR'S EQUATION PART  (ADD→a, SCALE→ln s, SIGN→g)  [process= not set]",
+        "params": [
+          "add",
+          "scale",
+          "sign"
+        ]
+      },
+      {
+        "name": "fold",
+        "equation": "fold",
+        "label": "Fold",
+        "desc": "Γ = tanh(u/2),  u = g·ln s + a  [process= not set]",
+        "params": [
+          "add",
+          "scale",
+          "sign"
+        ]
+      },
+      {
+        "name": "orthogonal_charts",
+        "equation": "orthogonal_charts",
+        "label": "Orthogonal Charts",
+        "desc": "Γ_SCALE ⟂ Γ_ADD, parity g  [process= not set]",
+        "params": [
+          "add",
+          "scale",
+          "sign"
+        ]
+      },
+      {
+        "name": "camshaft_defect",
+        "equation": "camshaft_defect",
+        "label": "Camshaft Defect",
+        "desc": "u_total − Σ u_parts  (non-zero ⇔ [SCALE,ADD]=ADD)  [process= not set]",
+        "params": [
+          "add",
+          "scale",
+          "sign"
+        ]
+      },
+      {
+        "name": "two_orderings",
+        "equation": "two_orderings",
+        "label": "Two Orderings",
+        "desc": "chrono ordering  vs  zeta ordering  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

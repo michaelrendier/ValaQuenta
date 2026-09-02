@@ -1,0 +1,123 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "desitter_cavitation",
+  "display": "De Sitter Cavitation Engine — No Singularity: the Abrikosov-Vortex Core",
+  "version": "0.100",
+  "summary": "The black-hole interior is a finite, sub-Planckian de Sitter core — the Abrikosov vortex core made gravitational: the condensate goes to zer",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/108_desitter_cavitation.md",
+      "valaquenta": "ValaQuenta/wiki/desitter_cavitation.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/18_desitter_cavitation.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "De Sitter Cavitation Engine — No Singularity: the Abrikosov-Vortex Core",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "The black-hole interior is a finite, sub-Planckian de Sitter core — the Abrikosov vortex core made gravitational: the condensate goes to zero (a Riemann zero, winding 1) while density, pressure and cu"
+    },
+    "tools": [
+      {
+        "name": "full_desitter_cavitation",
+        "equation": "full_desitter_cavitation",
+        "label": "Full Desitter Cavitation",
+        "desc": "The whole engine: Holcus + no-singularity check + mass-class table + partition + cosmic budget  [process= not ",
+        "params": []
+      },
+      {
+        "name": "kretschmann_core",
+        "equation": "kretschmann_core",
+        "label": "Kretschmann Core",
+        "desc": "HOLCUS — core curvature is the de Sitter Kretschmann at L_dS = r_s  [process= not set]",
+        "params": [
+          "M_kg"
+        ]
+      },
+      {
+        "name": "no_singularity_check",
+        "equation": "no_singularity_check",
+        "label": "No Singularity Check",
+        "desc": "Consistency scorecard: finite, M^-4, sub-Planckian; Schwarzschild K->inf is the denied artifact  [process= not",
+        "params": []
+      },
+      {
+        "name": "mass_class_table",
+        "equation": "mass_class_table",
+        "label": "Mass Class Table",
+        "desc": "Engineering table: kugelblitz / stellar / IMBH / SMBH — r_s, tau_interior, T_H, t_evap, bounce, K_core, echo  ",
+        "params": []
+      },
+      {
+        "name": "interior_timescales",
+        "equation": "interior_timescales",
+        "label": "Interior Timescales",
+        "desc": "Interior BANG time, de Sitter / Hawking temperatures, exterior bounce, ringdown echo  [process= not set]",
+        "params": [
+          "M_kg"
+        ]
+      },
+      {
+        "name": "energy_partition",
+        "equation": "energy_partition",
+        "label": "Energy Partition",
+        "desc": "SECONDARY — stiff-space vs stiff-matter release; default split 1 - d* : d*  [process= not set]",
+        "params": [
+          "M_kg"
+        ]
+      },
+      {
+        "name": "stiff_matter_ceiling",
+        "equation": "stiff_matter_ceiling",
+        "label": "Stiff Matter Ceiling",
+        "desc": "The incompressibility ceiling: p = rho c^2 (Zel'dovich), sound speed = c  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "cosmic_cavitation_budget",
+        "equation": "cosmic_cavitation_budget",
+        "label": "Cosmic Cavitation Budget",
+        "desc": "SECONDARY — naive Omega_cav = Omega_BH (1 - d*) vs Omega_Lambda; expected to fall short (dark-flow, not dark-e",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

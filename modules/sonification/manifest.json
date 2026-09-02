@@ -1,0 +1,195 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "sonification",
+  "display": "Sonification  ω = pitch",
+  "version": "0.111",
+  "summary": "Equation-derived audio.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/08_sonification_engine.md",
+      "valaquenta": "ValaQuenta/wiki/sonification.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/08_sonification.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Sonification  ω = pitch",
+      "group": "Instruments · display",
+      "order": 100,
+      "blurb": "Equation-derived audio."
+    },
+    "tools": [
+      {
+        "name": "tone_higgs",
+        "equation": "tone_higgs",
+        "label": "Tone Higgs",
+        "desc": "higgs  f = 110",
+        "params": []
+      },
+      {
+        "name": "tone_photon",
+        "equation": "tone_photon",
+        "label": "Tone Photon",
+        "desc": "photon  f = 1760",
+        "params": []
+      },
+      {
+        "name": "tone_electron",
+        "equation": "tone_electron",
+        "label": "Tone Electron",
+        "desc": "electron  f = 550",
+        "params": []
+      },
+      {
+        "name": "tone_W_plus",
+        "equation": "tone_W_plus",
+        "label": "Tone W Plus",
+        "desc": "W_plus  f = 660",
+        "params": []
+      },
+      {
+        "name": "tone_W_minus",
+        "equation": "tone_W_minus",
+        "label": "Tone W Minus",
+        "desc": "W_minus  f = 586",
+        "params": []
+      },
+      {
+        "name": "tone_Z0",
+        "equation": "tone_Z0",
+        "label": "Tone Z0",
+        "desc": "Z0  f = 55",
+        "params": []
+      },
+      {
+        "name": "tone_gluon_1",
+        "equation": "tone_gluon_1",
+        "label": "Tone Gluon 1",
+        "desc": "gluon_1  f = 220",
+        "params": []
+      },
+      {
+        "name": "tone_phi_attractor",
+        "equation": "tone_phi_attractor",
+        "label": "Tone Phi Attractor",
+        "desc": "phi_attractor  f = 733",
+        "params": []
+      },
+      {
+        "name": "tone_d_star",
+        "equation": "tone_d_star",
+        "label": "Tone D Star",
+        "desc": "d_star  f = 137",
+        "params": []
+      },
+      {
+        "name": "tone_stratum_R",
+        "equation": "tone_stratum_R",
+        "label": "Tone Stratum R",
+        "desc": "stratum_R  f = 110",
+        "params": []
+      },
+      {
+        "name": "tone_stratum_C",
+        "equation": "tone_stratum_C",
+        "label": "Tone Stratum C",
+        "desc": "stratum_C  f = 275",
+        "params": []
+      },
+      {
+        "name": "tone_stratum_H",
+        "equation": "tone_stratum_H",
+        "label": "Tone Stratum H",
+        "desc": "stratum_H  f = 330",
+        "params": []
+      },
+      {
+        "name": "tone_stratum_O",
+        "equation": "tone_stratum_O",
+        "label": "Tone Stratum O",
+        "desc": "stratum_O  f = 880",
+        "params": []
+      },
+      {
+        "name": "wavetable_sine",
+        "equation": "wavetable_sine",
+        "label": "Wavetable Sine",
+        "desc": "Wavetable: sine  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "wavetable_rydberg",
+        "equation": "wavetable_rydberg",
+        "label": "Wavetable Rydberg",
+        "desc": "Wavetable: rydberg  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "wavetable_higgs_hat",
+        "equation": "wavetable_higgs_hat",
+        "label": "Wavetable Higgs Hat",
+        "desc": "Wavetable: higgs_hat  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "wavetable_phi_recursion",
+        "equation": "wavetable_phi_recursion",
+        "label": "Wavetable Phi Recursion",
+        "desc": "Wavetable: phi_recursion  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "wavetable_fano",
+        "equation": "wavetable_fano",
+        "label": "Wavetable Fano",
+        "desc": "Wavetable: fano  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "quasiparticle_rests",
+        "equation": "quasiparticle_rests",
+        "label": "Quasiparticle Rests",
+        "desc": "Quasi-particle rest durations (Gravinon = 144/89 beats)  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "sonification",
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

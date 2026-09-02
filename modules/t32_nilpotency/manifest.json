@@ -1,0 +1,70 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "t32_nilpotency",
+  "display": "T32 Nilpotency — Hyperwebster Address Primitives",
+  "version": "0.100",
+  "summary": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/78_t32_nilpotency.md",
+      "valaquenta": "ValaQuenta/wiki/t32_nilpotency.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/17_t32_nilpotency.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "T32 Nilpotency — Hyperwebster Address Primitives",
+      "group": "Sedenion · ZD geometry",
+      "order": 100,
+      "blurb": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency test."
+    },
+    "tools": [
+      {
+        "name": "prime_nilpotency_report",
+        "equation": "prime_nilpotency_report",
+        "label": "Prime Nilpotency Report",
+        "desc": "Nilpotency status of a set of primes in T32/GF(2)  [process= not set]",
+        "params": [
+          "primes"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

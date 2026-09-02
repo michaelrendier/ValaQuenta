@@ -12,10 +12,10 @@ HOW TO ADD A NEW MODULE (the code half)
 5. Register your module: registry.register(YourModule())
 6. Done. The engine and viewer pick it up automatically.
 
-FULL ENGINE PROTOCOL (amended 2026-08-04 by Cody — FIVE parts, was four)
+FULL ENGINE PROTOCOL (amended 2026-09-01 by Cody — SIX parts, was five)
 ========================================================================
 Steps 1–6 above ship the code. They do not finish the engine. An engine is
-not "done" until all five artifacts exist, because code alone is
+not "done" until all six artifacts exist, because code alone is
 undiscoverable from a cold context — which is the exact failure the
 .clauderc_* family exists to prevent.
 
@@ -33,6 +33,19 @@ undiscoverable from a cold context — which is the exact failure the
                          and per-equation overrides. render_guided /
                          render_academic consume it; the derivation
                          browser attaches it under key `p`.
+    2c. MANIFEST         modules/<name>/manifest.json — the engine carries
+                         its own provenance, environmental constants, and
+                         ValaQuenta-Tab / desktop-renderer plugin
+                         registration. engine/manifest.py loads it;
+                         menu_tree() builds The ValaQuenta Tab's menus,
+                         tools, display modes and analysis lenses
+                         PROCEDURALLY from these — nothing in the UI is
+                         hand-maintained per engine. A missing manifest is
+                         scaffolded live from the registry; write the
+                         scaffolds with `python3 -m ValaQuenta.engine.manifest
+                         scaffold`, then hand-fill provenance.origin (and
+                         drop the `_scaffolded` flag). Schema + validator in
+                         engine/manifest.py; `... manifest validate` gates it.
     3. AINULINDALE WIKI  Ainulindale/wiki/NN_<name>.md — the narrative page:
                          origin quote, what changed, honest boundaries,
                          predecessor links.
@@ -68,8 +81,13 @@ Module requirements:
       guided tour). A missing `process=` renders as a visible TODO.
     - Every module defines `process_description` (a property; default is the
       first sentence of `description`, override for a crisper line).
+    - Every engine carries a manifest (Full Engine Protocol 2c):
+      modules/<name>/manifest.json — provenance, environmental constants, and
+      the UI plugin-registration block the ValaQuenta Tab / desktop renderer
+      read. `module.manifest()` returns it (loads the sidecar, scaffolds if
+      absent).
 
-Version: 0.112 — process= on every Equation; process_description on every module
+Version: 0.113 — engine manifest (2c): provenance + env constants + UI registration
 """
 
 from abc import ABC, abstractmethod
@@ -198,6 +216,14 @@ class EquationModule(ABC):
         s = ' '.join((self.description or '').split())
         parts = re.split(r'(?<=[.!?])\s+', s, maxsplit=1)
         return parts[0] if parts and parts[0] else s
+
+    def manifest(self) -> Dict[str, Any]:
+        """This engine's manifest (Full Engine Protocol 2c) —
+        modules/<name>/manifest.json if written, else a live scaffold built
+        from the registry.  Provenance, environmental constants, and the UI
+        plugin-registration block the ValaQuenta Tab / desktop renderer read."""
+        from . import manifest as _m                              # lazy: avoid cycle
+        return _m.load(self.name) or _m.scaffold(self.name, self)
 
     @property
     @abstractmethod

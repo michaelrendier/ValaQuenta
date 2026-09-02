@@ -1,0 +1,119 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "hyperwebster",
+  "display": "HyperWebster  Horner Bijection",
+  "version": "0.111",
+  "summary": "HyperWebster hypergallery.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/09_hyperwebster_engine.md",
+      "valaquenta": "ValaQuenta/wiki/hyperwebster.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/09_hyperwebster.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "HyperWebster  Horner Bijection",
+      "group": "Primes · number theory",
+      "order": 100,
+      "blurb": "HyperWebster hypergallery."
+    },
+    "tools": [
+      {
+        "name": "horner_encode",
+        "equation": "horner_encode",
+        "label": "Horner Encode",
+        "desc": "Horner base-97 bijection: text → integer address  [process= not set]",
+        "params": [
+          "text"
+        ]
+      },
+      {
+        "name": "fano_encode",
+        "equation": "fano_encode",
+        "label": "Fano Encode",
+        "desc": "Fano base-7 octonion path address  [process= not set]",
+        "params": [
+          "text"
+        ]
+      },
+      {
+        "name": "semantic_word",
+        "equation": "semantic_word",
+        "label": "Semantic Word",
+        "desc": "SemanticWord — Horner + Fano + hash  [process= not set]",
+        "params": [
+          "text"
+        ]
+      },
+      {
+        "name": "monad_address",
+        "equation": "monad_address",
+        "label": "Monad Address",
+        "desc": "Monad: word → algebra tower coordinates  [process= not set]",
+        "params": [
+          "text",
+          "algebra"
+        ]
+      },
+      {
+        "name": "address_range",
+        "equation": "address_range",
+        "label": "Address Range",
+        "desc": "n consecutive Horner addresses from start_text  [process= not set]",
+        "params": [
+          "text",
+          "n"
+        ]
+      },
+      {
+        "name": "fano_path",
+        "equation": "fano_path",
+        "label": "Fano Path",
+        "desc": "Fano generator path → nearest keyword  [process= not set]",
+        "params": [
+          "text"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "fano",
+      "3d_cartesian"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

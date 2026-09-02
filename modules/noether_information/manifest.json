@@ -1,0 +1,106 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "noether_information",
+  "display": "J_info  Information Current",
+  "version": "0.111",
+  "summary": "Noether current for information-translation symmetry of L_NN.",
+  "confidence_floor": "CONJECTURE",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "CONJECTURE",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/06_noether_information_engine.md",
+      "valaquenta": "ValaQuenta/wiki/noether_information.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/06_noether_information.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "J_info  Information Current",
+      "group": "Currents · conservation",
+      "order": 100,
+      "blurb": "Noether current for information-translation symmetry of L_NN."
+    },
+    "tools": [
+      {
+        "name": "information_current",
+        "equation": "information_current",
+        "label": "Information Current",
+        "desc": "J_info^μ — information Noether current  [process= not set]",
+        "params": [
+          "psi_norms",
+          "algebra",
+          "layer",
+          "total_layers"
+        ]
+      },
+      {
+        "name": "entropic_arrow",
+        "equation": "entropic_arrow",
+        "label": "Entropic Arrow",
+        "desc": "Entropic arrow: ∂_l I_info ≥ 0  [process= not set]",
+        "params": [
+          "n_steps",
+          "algebra"
+        ]
+      },
+      {
+        "name": "delta_J_info",
+        "equation": "delta_J_info",
+        "label": "Delta J Info",
+        "desc": "ΔJ_info — cycle-averaged information current violation  [process= not set]",
+        "params": [
+          "psi_norms",
+          "algebra",
+          "layer"
+        ]
+      },
+      {
+        "name": "information_capacity",
+        "equation": "information_capacity",
+        "label": "Information Capacity",
+        "desc": "C_max = n_neurons × log₂(dim_algebra) bits  [process= not set]",
+        "params": [
+          "algebra",
+          "n_neurons"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane",
+      "3d_cartesian"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

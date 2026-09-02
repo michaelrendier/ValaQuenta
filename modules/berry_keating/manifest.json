@@ -1,0 +1,115 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "berry_keating",
+  "display": "H_NN  Berry-Keating Operator",
+  "version": "0.111",
+  "summary": "H_NN candidate xp operator.",
+  "confidence_floor": "OPEN",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "OPEN",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/07_berry_keating_engine.md",
+      "valaquenta": "ValaQuenta/wiki/berry_keating.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/07_berry_keating.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "H_NN  Berry-Keating Operator",
+      "group": "Critical line · σ",
+      "order": 100,
+      "blurb": "H_NN candidate xp operator."
+    },
+    "tools": [
+      {
+        "name": "d_star_gap_report",
+        "equation": "d_star_gap_report",
+        "label": "D Star Gap Report",
+        "desc": "d* gap workbench  [gap = 0",
+        "params": []
+      },
+      {
+        "name": "gap_candidates",
+        "equation": "gap_candidates",
+        "label": "Gap Candidates",
+        "desc": "Gap candidate expressions — sorted by proximity to Ω  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "h_nn_eigenvalues",
+        "equation": "h_nn_eigenvalues",
+        "label": "H Nn Eigenvalues",
+        "desc": "H_NN eigenvalues — harmonic oscillator approximation  [process= not set]",
+        "params": [
+          "hbar_nn",
+          "n_max"
+        ]
+      },
+      {
+        "name": "xp_spectrum",
+        "equation": "xp_spectrum",
+        "label": "Xp Spectrum",
+        "desc": "Classical xp torus  x·p = d*·ħ_NN  [process= not set]",
+        "params": [
+          "hbar_nn"
+        ]
+      },
+      {
+        "name": "T_map",
+        "equation": "T_map",
+        "label": "T Map",
+        "desc": "T coordinate map at single x  [Open Problem 3]  [process= not set]",
+        "params": [
+          "x"
+        ]
+      },
+      {
+        "name": "T_map_trajectory",
+        "equation": "T_map_trajectory",
+        "label": "T Map Trajectory",
+        "desc": "T map curve  x ∈ [x_min, x_max]  [process= not set]",
+        "params": [
+          "x_min",
+          "x_max"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "3d_cartesian",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

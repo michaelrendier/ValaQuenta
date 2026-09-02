@@ -1,0 +1,124 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "l_io_photon_path",
+  "display": "L_(I|O) Photon Path Engine (GR)",
+  "version": "0.2",
+  "summary": "GR version of L_(I|O): Kaiser-Squires shear->convergence, Poisson solve for the lensing potential, deflection field, and the lens equation b",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/82_l_io_photon_path.md",
+      "valaquenta": "ValaQuenta/wiki/l_io_photon_path.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/18_l_io_photon_path.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "L_(I|O) Photon Path Engine (GR)",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "GR version of L_(I|O): Kaiser-Squires shear->convergence, Poisson solve for the lensing potential, deflection field, and the lens equation beta=theta-alpha(theta)."
+    },
+    "tools": [
+      {
+        "name": "bounded_lensing_pipeline",
+        "equation": "bounded_lensing_pipeline",
+        "label": "Bounded Lensing Pipeline",
+        "desc": "Full pipeline w/ non-periodic boundary handler  [process= not set]",
+        "params": [
+          "gamma1",
+          "gamma2",
+          "pixel_scale_arcsec",
+          "taper_frac",
+          "pad_factor"
+        ]
+      },
+      {
+        "name": "kaiser_squires_kappa",
+        "equation": "kaiser_squires_kappa",
+        "label": "Kaiser Squires Kappa",
+        "desc": "Kaiser-Squires: shear -> convergence  [process= not set]",
+        "params": [
+          "gamma1",
+          "gamma2"
+        ]
+      },
+      {
+        "name": "lensing_potential",
+        "equation": "lensing_potential",
+        "label": "Lensing Potential",
+        "desc": "Poisson solve: convergence -> lensing potential  [process= not set]",
+        "params": [
+          "kappa"
+        ]
+      },
+      {
+        "name": "deflection_field",
+        "equation": "deflection_field",
+        "label": "Deflection Field",
+        "desc": "alpha = grad(psi)  -- the actual bending  [process= not set]",
+        "params": [
+          "psi",
+          "pixel_scale_arcsec"
+        ]
+      },
+      {
+        "name": "trace_photon",
+        "equation": "trace_photon",
+        "label": "Trace Photon",
+        "desc": "Lens equation: beta = theta - alpha(theta)  [process= not set]",
+        "params": [
+          "theta1",
+          "theta2",
+          "alpha1",
+          "alpha2"
+        ]
+      },
+      {
+        "name": "l_io_deficit",
+        "equation": "l_io_deficit",
+        "label": "L Io Deficit",
+        "desc": "= -psi(theta)  [wiki/52 target #1, formalized]  [process= not set]",
+        "params": [
+          "psi"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

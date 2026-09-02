@@ -1,0 +1,102 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "singularity_null",
+  "display": "Singularity-NULL Engine — The Singularity IS Identity. Tower Collapses.",
+  "version": "0.100",
+  "summary": "The Singularity IS identity.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/singularity_null.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Singularity-NULL Engine — The Singularity IS Identity. Tower Collapses.",
+      "group": "Tower · identity",
+      "order": 100,
+      "blurb": "The Singularity IS identity."
+    },
+    "tools": [
+      {
+        "name": "full_singularity_null",
+        "equation": "full_singularity_null",
+        "label": "Full Singularity Null",
+        "desc": "All 4 Singularity-NULL engines  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "circle_null_modes",
+        "equation": "circle_null_modes",
+        "label": "Circle Null Modes",
+        "desc": "How many ways can circle say NULL? Exactly 1: Ptolemy inversion",
+        "params": []
+      },
+      {
+        "name": "tower_collapse_snakes",
+        "equation": "tower_collapse_snakes",
+        "label": "Tower Collapse Snakes",
+        "desc": "Snakes & Ladders = Cayley-Dickson tower",
+        "params": [
+          "n_max"
+        ]
+      },
+      {
+        "name": "berry_keating_singularity",
+        "equation": "berry_keating_singularity",
+        "label": "Berry Keating Singularity",
+        "desc": "H=xp: singularity is repulsive fixed point",
+        "params": [
+          "max_t"
+        ]
+      },
+      {
+        "name": "flt_prime_extinction_sieve",
+        "equation": "flt_prime_extinction_sieve",
+        "label": "Flt Prime Extinction Sieve",
+        "desc": "FLT defines primes by extinction",
+        "params": [
+          "N"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

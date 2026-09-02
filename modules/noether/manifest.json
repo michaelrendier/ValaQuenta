@@ -1,0 +1,120 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "noether",
+  "display": "Noether Currents  ∂_μJ^μ = 0",
+  "version": "0.111",
+  "summary": "Emmy Noether theorem applied to L_NN.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/05_noether_engine.md",
+      "valaquenta": "ValaQuenta/wiki/noether.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/05_noether.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Noether Currents  ∂_μJ^μ = 0",
+      "group": "Currents · conservation",
+      "order": 100,
+      "blurb": "Emmy Noether theorem applied to L_NN."
+    },
+    "tools": [
+      {
+        "name": "conservation_diagnostic",
+        "equation": "conservation_diagnostic",
+        "label": "Conservation Diagnostic",
+        "desc": "∂_μJ^μ — full Noether conservation check  [process= not set]",
+        "params": [
+          "psi_norms",
+          "g",
+          "algebra"
+        ]
+      },
+      {
+        "name": "violation_scan",
+        "equation": "violation_scan",
+        "label": "Violation Scan",
+        "desc": "Violation scan across all algebra strata  [process= not set]",
+        "params": [
+          "psi_norms",
+          "g"
+        ]
+      },
+      {
+        "name": "resonance_artifacts",
+        "equation": "resonance_artifacts",
+        "label": "Resonance Artifacts",
+        "desc": "Resonance artifact detection (J history)  [process= not set]",
+        "params": [
+          "n_steps",
+          "g",
+          "algebra"
+        ]
+      },
+      {
+        "name": "blockchain_record",
+        "equation": "blockchain_record",
+        "label": "Blockchain Record",
+        "desc": "Record violation to NoetherLedger (blockchain)  [process= not set]",
+        "params": [
+          "algebra",
+          "violation",
+          "g"
+        ]
+      },
+      {
+        "name": "blockchain_verify",
+        "equation": "blockchain_verify",
+        "label": "Blockchain Verify",
+        "desc": "Verify NoetherLedger chain integrity  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "blockchain_summary",
+        "equation": "blockchain_summary",
+        "label": "Blockchain Summary",
+        "desc": "NoetherLedger summary  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane",
+      "3d_cartesian"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

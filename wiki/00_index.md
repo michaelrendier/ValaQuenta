@@ -131,6 +131,12 @@ Engines where this convention is load-bearing:
 | What is the dispersion relation ω(k) on the zero-divisor surface? Without it the argument-principle contour still lives in ℂ and pays ℂ's price (~√N) — the same wall Fermat hits. This is the single named open item of `archimedes_screw`. | archimedes_screw.md; Ainulindale wiki/83 |
 | **P2 (Monster gap in ALL odd-sector pairs) is FALSE.** 10/12 directed odd-sector pairs meet MONSTER_GAP={1,11,15}; exactly one unordered class, `{(3,9),(7,13)}`, does not. Either the prediction needs weakening to "almost all", or that class is significant. | ZeroLattice/03_results.ipynb; zero_lattice.md |
 
+## Tooling / infrastructure
+
+| Page | What | Status |
+|------|------|--------|
+| [engine_manifest.md](engine_manifest.md) | `engine/manifest.py` + `modules/<name>/manifest.json` — per-engine provenance, environmental constants, and the UI plugin-registration block. The curses **ValaQuenta Tab** builds its menus / tools / display modes / analysis lenses procedurally from these (Full Engine Protocol part **2c**). | ESTABLISHED — 23/23 engines have a manifest; `emerger` hand-filled, the rest are live scaffolds pending provenance |
+
 ## Known defects
 
 | Defect | Location | Status |

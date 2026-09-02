@@ -1,0 +1,82 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "hypergon_constructibility",
+  "display": "Hypergon Constructibility — Gauss-Wantzel + Factorization Test",
+  "version": "0.100",
+  "summary": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL result: 4/16 constructible, 12/16 holes).",
+  "confidence_floor": "OPEN",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "OPEN",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/77_hypergon_constructibility.md",
+      "valaquenta": "ValaQuenta/wiki/hypergon_constructibility.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/16_hypergon_constructibility.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Hypergon Constructibility — Gauss-Wantzel + Factorization Test",
+      "group": "Primes · number theory",
+      "order": 100,
+      "blurb": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL result: 4/16 constructible, 12/16 holes)."
+    },
+    "tools": [
+      {
+        "name": "sedenion_hypergon_sweep",
+        "equation": "sedenion_hypergon_sweep",
+        "label": "Sedenion Hypergon Sweep",
+        "desc": "All 16 N-gons — Gauss-Wantzel constructibility, verified not assumed  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "verify_nilpotent_split_conjecture",
+        "equation": "verify_nilpotent_split_conjecture",
+        "label": "Verify Nilpotent Split Conjecture",
+        "desc": "Re-test: does p,q nilpotency survive a magnitude-matched control?  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "prime_definition_report",
+        "equation": "prime_definition_report",
+        "label": "Prime Definition Report",
+        "desc": "Dual definition of prime — arithmetic + geometric, not yet unified  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

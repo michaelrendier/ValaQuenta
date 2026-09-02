@@ -24,25 +24,35 @@ conventions ARE the function breadcrumbs.
     | ↑↓ nav  →/Enter open·run  ←/⌫ up  / filter  d mode  q |
     +--------------------------------------------------------+
 
+The root listing is grouped PROCEDURALLY from the engine manifests
+(modules/<engine>/manifest.json — Full Engine Protocol part 2c): group
+headers, tools, display modes, analysis lenses and provenance all come from
+the manifest, nothing is hand-maintained here.  A missing manifest is
+scaffolded live from the registry so the Tab is always complete.
+
 Keys:
-    Up / Down       move the selection (or scroll a RESULT with Tab-focus RIGHT)
-    Enter / Right   descend (engine → equation), or run, or go up on '..'
+    Up / Down       move the selection (skips group headers; scrolls a RESULT
+                    with Tab-focus RIGHT)
+    Enter / Right   descend (group → engine → equation), or run, or up on '..'
     Left / Bksp     up one level
     Tab             toggle focus LEFT (listing) / RIGHT (result scroll)
     /               filter the current listing
-    d               cycle display mode (equation level)
-    p               proof-on-the-fly INPUTS for the selected equation (stub seam)
+    a               analysis-lens menu (per-engine from the manifest)
+    i               manifest / provenance panel for the current engine
+    d               cycle display mode (per-engine from the manifest)
+    p               proof-on-the-fly INPUTS for the selected equation
     r               re-run
     q / Esc         quit
 
-Version: 0.155
+Version: 0.160 — procedural menus from the engine manifests
 """
 
 import curses
 import textwrap
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from .registry import ModuleRegistry, CONFIDENCE
+from . import manifest
 
 
 # ── Colour pair IDs ───────────────────────────────────────────────────────────
@@ -151,6 +161,20 @@ class DerivationBrowser:
         self._reg = registry
         self._modules: List[str] = registry.list_modules()
 
+        # ── procedural menu from the engine manifests (Full Engine Protocol 2c)
+        self._menu = manifest.menu_tree(registry)
+        self._entry: Dict[str, Dict[str, Any]] = {}
+        self._grouped: List[Tuple[str, List[str]]] = []
+        self._headers: set = set()
+        for g in self._menu['groups']:
+            names = []
+            for e in g['engines']:
+                self._entry[e['engine']] = e
+                names.append(e['engine'])
+            label = f"── {g['group']} ──"
+            self._headers.add(label)
+            self._grouped.append((label, names))
+
         self.path: List[str] = []
         self.sel: int = 0
         self.filter: str = ''
@@ -159,17 +183,35 @@ class DerivationBrowser:
         self.result_scroll: int = 0
         self.focus_right: bool = False
         self.show_tools: bool = False          # 'a' — the analysis lens menu
+        self.show_info: bool = False           # 'i' — the manifest / provenance panel
         self._last_value: Any = None           # last equation run value, for the lenses
 
     # ── navigation model ────────────────────────────────────────────────────
     def _engine_eqs(self, engine: str) -> List[str]:
         return [k.split('.', 1)[1] for k in self._reg.list_equations(engine)]
 
+    def _engine_entry(self, engine: str) -> Dict[str, Any]:
+        return self._entry.get(engine, {})
+
+    def _engine_lenses(self, engine: str) -> List[str]:
+        lenses = self._engine_entry(engine).get('analysis_lenses') or []
+        return lenses or [t[0] for t in ANALYSIS_TOOLS]
+
+    def _root_rows(self) -> List[str]:
+        """Grouped engine listing from the manifests: header rows (── group ──,
+        not selectable) interleaved with their engines."""
+        rows: List[str] = []
+        for label, names in self._grouped:
+            rows.append(label)
+            rows.extend(names)
+        return rows
+
     def _listing(self) -> List[str]:
         if self.show_tools:
-            return ['..'] + [t[0] for t in ANALYSIS_TOOLS]
+            engine = self.path[0] if self.path else ''
+            return ['..'] + self._engine_lenses(engine)
         if not self.path:
-            items = list(self._modules)
+            items = self._root_rows()
         elif len(self.path) == 1:
             items = ['..'] + self._engine_eqs(self.path[0])
         else:
@@ -177,7 +219,8 @@ class DerivationBrowser:
         if self.filter:
             f = self.filter.lower()
             items = [i for i in items
-                     if i in ('..', self.RUN_ROW) or f in i.lower()]
+                     if i in ('..', self.RUN_ROW) or i in self._headers
+                     or f in i.lower()]
         return items or ['..']
 
     def _current_equation(self):
@@ -188,14 +231,46 @@ class DerivationBrowser:
     def _selected(self) -> str:
         lst = self._listing()
         self.sel = max(0, min(self.sel, len(lst) - 1))
+        # never land on a non-selectable group header
+        if lst[self.sel] in self._headers:
+            fwd = [i for i in range(self.sel, len(lst)) if lst[i] not in self._headers]
+            bwd = [i for i in range(self.sel, -1, -1) if lst[i] not in self._headers]
+            if fwd:
+                self.sel = fwd[0]
+            elif bwd:
+                self.sel = bwd[0]
         return lst[self.sel]
 
+    def _step_sel(self, delta: int) -> None:
+        """Move the selection by `delta`, skipping group-header rows."""
+        lst = self._listing()
+        i = self.sel
+        while True:
+            i += delta
+            if i < 0 or i >= len(lst):
+                return
+            if lst[i] not in self._headers:
+                self.sel = i
+                return
+
+    def _modes(self) -> List[str]:
+        """Display modes for the current engine, from its manifest; the global
+        list otherwise."""
+        if self.path:
+            m = self._engine_entry(self.path[0]).get('display_modes')
+            if m:
+                return m
+        return DISPLAY_MODES
+
     def _mode(self) -> str:
-        return DISPLAY_MODES[self.mode_idx % len(DISPLAY_MODES)]
+        modes = self._modes()
+        return modes[self.mode_idx % len(modes)]
 
     # ── actions ─────────────────────────────────────────────────────────────
     def _enter(self):
         item = self._selected()
+        if item in self._headers:
+            return
         if item == '..':
             self._up()
             return
@@ -383,12 +458,12 @@ class DerivationBrowser:
                 if self.focus_right and self.result:
                     self.result_scroll = max(0, self.result_scroll - 1)
                 else:
-                    self.sel = max(0, self.sel - 1)
+                    self._step_sel(-1)
             elif k == curses.KEY_DOWN:
                 if self.focus_right and self.result:
                     self.result_scroll += 1
                 else:
-                    self.sel += 1
+                    self._step_sel(1)
             elif k in (curses.KEY_ENTER, 10, 13, curses.KEY_RIGHT):
                 self._enter()
             elif k in (curses.KEY_LEFT, curses.KEY_BACKSPACE, 127, 8, ord('h')):
@@ -402,6 +477,8 @@ class DerivationBrowser:
             elif k == ord('a'):
                 self.show_tools = not self.show_tools
                 self.sel = 0
+            elif k == ord('i'):
+                self.show_info = not self.show_info
             elif k == ord('r') and len(self.path) == 2:
                 self._run()
 
@@ -428,7 +505,7 @@ class DerivationBrowser:
 
         focus = 'RIGHT' if self.focus_right and self.result else 'LEFT'
         status = (f' ↑↓ nav  →/Enter open·run  ←/⌫ up  Tab:{focus}  / filter'
-                  f'  a:lenses  d:{self._mode()}  p:proof  q:quit ')
+                  f'  a:lenses  i:info  d:{self._mode()}  p:proof  q:quit ')
         if self.filter:
             status = f' [filter: {self.filter}] ' + status
         _safe_addstr(self._scr, h - 1, 0, status.ljust(w), curses.color_pair(C_DIM))
@@ -449,11 +526,15 @@ class DerivationBrowser:
             i = top + row - 1
             mark = ''
             attr = 0
-            if not self.path and item in self._modules:
-                mod = self._reg.get_module(item)
+            if item in self._headers:
+                _safe_addstr(win, row, 1, item.ljust(w - 3),
+                             curses.color_pair(C_DIM) | curses.A_BOLD)
+                continue
+            if not self.path and item in self._entry:
+                st = self._entry[item].get('status', '')
                 mark = '  ' + {'ESTABLISHED': '✓', 'THEORETICAL': '◈',
                                'CONJECTURE': '◇', 'OPEN': '?'}.get(
-                    getattr(mod, 'confidence_floor', ''), '')
+                    st.split(':')[0], '◈' if 'CALCULATED' in st else '')
             elif len(self.path) == 1 and item != '..':
                 eq = self._reg.get_equation(f'{self.path[0]}.{item}')
                 if eq:
@@ -484,19 +565,28 @@ class DerivationBrowser:
 
         item = self._selected()
 
+        if self.show_info:
+            self._draw_info(put, w)
+            return
+
         if self.show_tools:
             ctx = ('/'.join(self.path)) or '(pick an engine first)'
+            engine = self.path[0] if self.path else ''
+            lens_names = self._engine_lenses(engine)
+            tdesc_of = dict(ANALYSIS_TOOLS)
             put('ANALYSIS LENSES', curses.color_pair(C_ACCENT) | curses.A_BOLD)
             put('Run a tool ACROSS the current mathematics — including its own.')
             put(f'context: {ctx}')
+            if engine and self._engine_entry(engine).get('analysis_lenses'):
+                put(f'(from {engine}/manifest.json)', curses.color_pair(C_DIM))
             put('')
-            for tname, tdesc in ANALYSIS_TOOLS:
+            for tname in lens_names:
                 fn, note = _probe_tool(tname)
-                ok = '✓' if fn else '✗'
-                col = C_GOLD if tname == item else (C_TEAL if fn else C_RED)
+                ok = '✓' if fn else '·'
+                col = C_GOLD if tname == item else (C_TEAL if fn else C_DIM)
                 put(f'{ok} {tname}', curses.color_pair(col) | (curses.A_BOLD if tname == item else 0))
                 if tname == item:
-                    put(f'   {tdesc}', curses.color_pair(C_DIM))
+                    put(f'   {tdesc_of.get(tname, "engine-specific lens")}', curses.color_pair(C_DIM))
                     put(f'   [{note}]', curses.color_pair(C_DIM))
             put('')
             put('Enter runs the highlighted lens on the last result, or on this '
@@ -506,29 +596,40 @@ class DerivationBrowser:
         if not self.path:                                  # ROOT
             put('ValaQuenta — the derivation engine.', curses.color_pair(C_ACCENT) | curses.A_BOLD)
             put('')
+            n_missing = len(self._menu['missing_manifest'])
             put(f'{len(self._modules)} engines, '
-                f'{len(self._reg.list_equations())} equations. Pick an engine.')
+                f'{len(self._reg.list_equations())} equations, '
+                f'{len(self._menu["groups"])} groups.')
+            if n_missing:
+                put(f'{n_missing} engine(s) on a live scaffold — '
+                    f'run manifest scaffold to seed.', curses.color_pair(C_DIM))
             put('')
-            if item in self._modules:
+            if item in self._entry:
+                e = self._entry[item]
                 mod = self._reg.get_module(item)
-                put(f'▸ {mod.display_name}  v{mod.version}',
+                put(f'▸ {e["display"]}  v{mod.version}',
                     curses.color_pair(C_GOLD) | curses.A_BOLD)
-                put(f'floor: {mod.confidence_floor}', curses.color_pair(
-                    CONFIDENCE_COLOUR_ID.get(mod.confidence_floor, C_DIM)))
+                put(f'{e["menu"].get("group", "")}   ·   {e["status"]}'
+                    + ('   [scaffold]' if e['scaffolded'] else ''),
+                    curses.color_pair(C_DIM))
                 put('')
-                put(mod.process_description)
+                put(e['summary'] or mod.process_description)
+                put('')
+                put('i → manifest / provenance panel', curses.color_pair(C_DIM))
         elif len(self.path) == 1:                           # ENGINE
             mod = self._reg.get_module(self.path[0])
+            e = self._engine_entry(self.path[0])
             if item == '..':
                 put(f'{mod.display_name}  v{mod.version}',
                     curses.color_pair(C_GOLD) | curses.A_BOLD)
-                put(f'floor: {mod.confidence_floor}', curses.color_pair(
+                put(f'{e.get("menu", {}).get("group", "")}   ·   '
+                    f'{e.get("status", mod.confidence_floor)}', curses.color_pair(
                     CONFIDENCE_COLOUR_ID.get(mod.confidence_floor, C_DIM)))
                 put('')
                 put(mod.process_description)
                 put('')
                 put(f'{len(self._engine_eqs(self.path[0]))} equations. '
-                    f'→ steps into one.')
+                    f'→ steps into one.   i → manifest panel')
             else:
                 eq = self._reg.get_equation(f'{self.path[0]}.{item}')
                 if eq:
@@ -570,6 +671,56 @@ class DerivationBrowser:
             put(f"params  : {', '.join(d['params']) or '(none)'}")
             put('')
             put('[Enter] run    [p] proof inputs    [d] mode', curses.color_pair(C_TEAL))
+
+    # ── the manifest / provenance panel  (key 'i') ─────────────────────────
+    def _draw_info(self, put, w):
+        engine = self.path[0] if self.path else self._selected()
+        e = self._entry.get(engine)
+        if not e:
+            put('(no engine selected)'); return
+        man = manifest.load(engine) or {}
+        prov = e.get('provenance', {})
+        env = e.get('environment', {})
+        dsk = e.get('desktop', {})
+
+        put(f'{e["display"]}', curses.color_pair(C_GOLD) | curses.A_BOLD)
+        put(f'{e["menu"].get("group", "")}   ·   {e["status"]}'
+            + ('   [scaffold — provenance pending]' if e['scaffolded'] else
+               '   [manifest.json]'), curses.color_pair(C_DIM))
+        put('')
+        put('PROVENANCE', curses.color_pair(C_ACCENT) | curses.A_BOLD)
+        if prov.get('origin'):
+            put(prov['origin'])
+        put(f"authors    : {', '.join(prov.get('authors', [])) or '—'}", curses.color_pair(C_DIM))
+        put(f"created    : {prov.get('created') or '—'}", curses.color_pair(C_DIM))
+        put(f"predecessors: {', '.join(prov.get('predecessors', [])) or '—'}", curses.color_pair(C_DIM))
+        put(f"citations  : {', '.join(prov.get('citations', [])) or '—'}", curses.color_pair(C_DIM))
+        wiki = prov.get('wiki', {})
+        put(f"wiki       : {wiki.get('valaquenta') or '—'}", curses.color_pair(C_DIM))
+        put(f"             {wiki.get('ainulindale') or '—'}", curses.color_pair(C_DIM))
+        put(f"notebook   : {prov.get('notebook') or '—'}", curses.color_pair(C_DIM))
+        put(f"proof_locale: {prov.get('proof_locale') or '—'}", curses.color_pair(C_DIM))
+        put('')
+        put('ENVIRONMENT', curses.color_pair(C_ACCENT) | curses.A_BOLD)
+        put(f"native space: {env.get('native_space', '—')}", curses.color_pair(C_DIM))
+        for c in env.get('constants', []):
+            val = c.get('value')
+            put(f"  {c.get('symbol', '?'):<10} {('= ' + repr(val)) if val is not None else '(engine)'}"
+                f"  — {c.get('role', '')}", curses.color_pair(C_DIM))
+        if env.get('requires_engines'):
+            put(f"requires   : {', '.join(env['requires_engines'])}", curses.color_pair(C_DIM))
+        if env.get('external'):
+            put(f"external   : {', '.join(env['external'])}", curses.color_pair(C_DIM))
+        put('')
+        put('DESKTOP RENDERER', curses.color_pair(C_ACCENT) | curses.A_BOLD)
+        put(f"window {dsk.get('window', '—')}   surface {dsk.get('surface', '—')}"
+            f"   opengl {dsk.get('opengl', False)}", curses.color_pair(C_DIM))
+        if dsk.get('pgui_widgets'):
+            put(f"pgui widgets: {', '.join(dsk['pgui_widgets'])}", curses.color_pair(C_DIM))
+        put(f"tools ({len(e.get('tools', []))})   display modes: "
+            f"{', '.join(e.get('display_modes', []))}", curses.color_pair(C_DIM))
+        put('')
+        put('i → close panel', curses.color_pair(C_TEAL))
 
 
 def run_curses(registry: ModuleRegistry):

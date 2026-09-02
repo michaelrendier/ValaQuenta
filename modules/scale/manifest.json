@@ -1,0 +1,149 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "scale",
+  "display": "The Scale (Decompositional Analysis, Forwards and Backwards)",
+  "version": "0.1",
+  "summary": "SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/107_add_scale_sign_datatype.md",
+      "valaquenta": "ValaQuenta/wiki/scale.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/17_scale.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Scale (Decompositional Analysis, Forwards and Backwards)",
+      "group": "Decomposition · The Scale",
+      "order": 100,
+      "blurb": "SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions."
+    },
+    "tools": [
+      {
+        "name": "polar_round_trip",
+        "equation": "polar_round_trip",
+        "label": "Polar Round Trip",
+        "desc": "recompose(*decompose(Z)) == Z, exactly  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "scale_invariance_under_self_rescale",
+        "equation": "scale_invariance_under_self_rescale",
+        "label": "Scale Invariance Under Self Rescale",
+        "desc": "theta is unchanged as Z is rescaled by any positive real  [process= not set]",
+        "params": [
+          "Z"
+        ]
+      },
+      {
+        "name": "scale_factor",
+        "equation": "scale_factor",
+        "label": "Scale Factor",
+        "desc": "|dGamma/dZ|, exact  [process= not set]",
+        "params": [
+          "Z",
+          "Z0"
+        ]
+      },
+      {
+        "name": "verify_no_caustic",
+        "equation": "verify_no_caustic",
+        "label": "Verify No Caustic",
+        "desc": "the fold's derivative never vanishes, only diverges at one pole  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "cross_ratio_is_scale_blind",
+        "equation": "cross_ratio_is_scale_blind",
+        "label": "Cross Ratio Is Scale Blind",
+        "desc": "cross-ratio survives every anchor; the angle does not  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "two_ring_point",
+        "equation": "two_ring_point",
+        "label": "Two Ring Point",
+        "desc": "any pair of readings, folded  [process= not set]",
+        "params": [
+          "ring1",
+          "ring2",
+          "Z0"
+        ]
+      },
+      {
+        "name": "fold_unfold_round_trip",
+        "equation": "fold_unfold_round_trip",
+        "label": "Fold Unfold Round Trip",
+        "desc": "Gamma=tanh(log(Z/Z0)/2), exact, any complex Z  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "locally_square",
+        "equation": "locally_square",
+        "label": "Locally Square",
+        "desc": "any two rings give locally-square cells  [process= not set]",
+        "params": [
+          "Z",
+          "Z0"
+        ]
+      },
+      {
+        "name": "custom_ring_chart_demo",
+        "equation": "custom_ring_chart_demo",
+        "label": "Custom Ring Chart Demo",
+        "desc": "any two functions of any object, folded  [process= not set]",
+        "params": [
+          "obj",
+          "ring1_fn",
+          "ring2_fn",
+          "Z0"
+        ]
+      },
+      {
+        "name": "rsa_pathway_control",
+        "equation": "rsa_pathway_control",
+        "label": "Rsa Pathway Control",
+        "desc": "RSA CRT-decrypt, a genuine fan-out  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}
