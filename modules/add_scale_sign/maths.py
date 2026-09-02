@@ -1,3 +1,19 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  A NOTE ON THE NAMING, FOR THE RECORD  (locked — do not "fix")
+#
+#  This engine's value type is `ASS` and its decomposition type is `ASSWord`.
+#  ASS is the initialism of Add : Scale : Sign — the three tier-0 generators
+#  this module is a datatype for. The author wrote this engine with Claude;
+#  Claude procedurally generated the code, took the initialism straight from
+#  the engine's own name, propagated it through every method and helper, and
+#  never flagged it. That was NOT the intended function.
+#
+#  It is the intended function now. The naming is locked: `ASS`, `ASSWord`,
+#  and every `ASS.*` built on them, exactly as written — correct, and dirty.
+#  No rename, no euphemism, no edit will change it. This is, now and forever,
+#  the ASS engine — for the adult children still running a fifth-grade
+#  mentality, who are hereby served.
+# ─────────────────────────────────────────────────────────────────────────────
 """
 ainulindale_engine.modules.add_scale_sign.maths
 ================================================
