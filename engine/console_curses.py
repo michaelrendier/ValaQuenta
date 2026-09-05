@@ -48,6 +48,7 @@ Version: 0.160 — procedural menus from the engine manifests
 """
 
 import curses
+import json
 import textwrap
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -127,6 +128,25 @@ def _safe_addstr(win, y, x, text, attr=0):
 def _box(win, title, colour_pair=C_ACCENT):
     win.box()
     _safe_addstr(win, 0, 2, f' {title} ', curses.color_pair(colour_pair) | curses.A_BOLD)
+
+
+def _prettify(obj):
+    """Result panel: pretty-print JSON. A dict/list -> indented JSON; a string
+    that parses as JSON -> re-indented; prose / anything else -> unchanged."""
+    if isinstance(obj, str):
+        s = obj.strip()
+        if s[:1] not in ('{', '['):
+            return obj
+        try:
+            obj = json.loads(s)
+        except ValueError:
+            return obj
+    if isinstance(obj, (dict, list, tuple)):
+        try:
+            return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
+        except (TypeError, ValueError):
+            return _pp(obj)
+    return str(obj)
 
 
 def _pp(obj, indent=0, depth=0):
@@ -314,8 +334,10 @@ class DerivationBrowser:
             return None, last
 
         data, err = _try(lambda p: mod.viewer_data(name, p, self._mode()))
-        text = (data.get('text') or str(data)) if data else \
-            f'ERROR: {type(err).__name__}: {err}'
+        if data:
+            text = _prettify(data.get('text') or data)
+        else:
+            text = f'ERROR: {type(err).__name__}: {err}'
         val, _ = _try(lambda p: mod.run(name, p).get('result'))
         self._last_value = val
         self.result = self._wrap(f'▸ RESULT  ({engine}.{name}, mode={self._mode()})\n\n{text}'
