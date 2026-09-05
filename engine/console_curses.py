@@ -47,6 +47,7 @@ Keys:
 Version: 0.160 — procedural menus from the engine manifests
 """
 
+import ast
 import curses
 import json
 import textwrap
@@ -130,22 +131,73 @@ def _box(win, title, colour_pair=C_ACCENT):
     _safe_addstr(win, 0, 2, f' {title} ', curses.color_pair(colour_pair) | curses.A_BOLD)
 
 
+def _match_brace(s, i):
+    """Index of the '}' matching the '{' at s[i], or -1. Quote-aware."""
+    depth, q = 0, None
+    for k in range(i, len(s)):
+        c = s[k]
+        if q is not None:
+            if c == q and s[k - 1] != '\\':
+                q = None
+            continue
+        if c in '"\'':
+            q = c
+        elif c == '{':
+            depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                return k
+    return -1
+
+
+def _expand_mapping(span):
+    """A '{...}' literal -> one entry per line (via _pp), or None if it
+    isn't a dict."""
+    for loader in (json.loads, ast.literal_eval):
+        try:
+            obj = loader(span)
+        except (ValueError, SyntaxError):
+            continue
+        if isinstance(obj, dict):
+            return _pp(obj)
+    return None
+
+
+def _reflow(text):
+    """Break any Python/JSON dict literal embedded in `text` onto one entry
+    per line. Leaves prose and non-mapping braces (LaTeX \\frac{a}{b}, sets)
+    alone — only spans that actually parse as a dict are expanded."""
+    out, i, n = [], 0, len(text)
+    while i < n:
+        if text[i] == '{':
+            j = _match_brace(text, i)
+            if j - i > 8:
+                exp = _expand_mapping(text[i:j + 1])
+                if exp is not None:
+                    out.append('\n' + exp)
+                    i = j + 1
+                    continue
+        out.append(text[i])
+        i += 1
+    return ''.join(out)
+
+
 def _prettify(obj):
-    """Result panel: pretty-print JSON. A dict/list -> indented JSON; a string
-    that parses as JSON -> re-indented; prose / anything else -> unchanged."""
+    """Result panel: dict/list -> one entry per line; a string with a dict
+    literal in it -> that literal broken onto one entry per line; prose ->
+    unchanged."""
+    if isinstance(obj, (dict, list, tuple)):
+        return _pp(obj)
     if isinstance(obj, str):
         s = obj.strip()
-        if s[:1] not in ('{', '['):
-            return obj
-        try:
-            obj = json.loads(s)
-        except ValueError:
-            return obj
-    if isinstance(obj, (dict, list, tuple)):
-        try:
-            return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
-        except (TypeError, ValueError):
-            return _pp(obj)
+        if s[:1] in ('{', '['):
+            for loader in (json.loads, ast.literal_eval):
+                try:
+                    return _pp(loader(s))
+                except (ValueError, SyntaxError):
+                    pass
+        return _reflow(obj)
     return str(obj)
 
 
