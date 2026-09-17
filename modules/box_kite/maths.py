@@ -952,3 +952,90 @@ def address_census(addresses: Dict[str, Sequence[float]],
         'mean_local_curvature': sum(curv) / n,
         'exact_zero_divisors':  zdc if check_zd else None,
     }
+
+
+# --------------------------------------------------------------------------
+# The pencil: 7 factorisations of one relation, PG(3,2)
+# --------------------------------------------------------------------------
+
+def pg32_lines() -> List[Tuple[int, int, int]]:
+    """
+    The 35 lines of PG(3,2): {a, b, a^b} for a != b, a^b not in {0, a, b}.
+
+    Each of the 15 points sits on exactly 7 lines (105 incidences / 15 = 7)
+    -- this is what makes each point's pencil well-defined. Verified in
+    verify_pencil_counts().
+    """
+    lines = set()
+    for a in range(1, 16):
+        for b in range(1, 16):
+            c = a ^ b
+            if a != b and c not in (0, a, b):
+                lines.add(frozenset((a, b, c)))
+    return sorted(tuple(sorted(L)) for L in lines)
+
+
+def pencil(r: int) -> List[Tuple[int, int]]:
+    """
+    THE PENCIL of relation r: the 7 ways to FACTOR r into two others.
+
+        pencil(1) == [(2,3), (4,5), (6,7), (8,9), (10,11), (12,13), (14,15)]
+
+    r in 1..15 (any of the 15 PG(3,2) points, not only a strut 1..7 -- the
+    pencil ranges over the full 16-dimensional basis; a box kite's strut is
+    the special case r in 1..7). For every a != r in 1..15, {a, a^r} is a
+    factor pair of r (a ^ (a^r) == r); pairing is an involution with no
+    fixed points once a == r is excluded, so exactly 7 unordered pairs fall
+    out. Returned sorted by the smaller member, ascending -- the pencil
+    path's station order.
+    """
+    if not (1 <= r <= 15):
+        raise ValueError("pencil: r must be one of the 15 PG(3,2) points, 1..15")
+    seen = set()
+    pairs = []
+    for a in range(1, 16):
+        if a == r:
+            continue
+        b = a ^ r
+        pair = (min(a, b), max(a, b))
+        if pair not in seen:
+            seen.add(pair)
+            pairs.append(pair)
+    return sorted(pairs)
+
+
+def verify_pencil_counts() -> Dict[str, object]:
+    """
+    THE HONEST CHECK for the pencil, mirroring verify_counts() above.
+
+    105 incidences (35 lines x 3 points) / 15 points = 7 lines per point,
+    exactly; pencil(r) must return those same 7 factor pairs for every r.
+    """
+    lines = pg32_lines()
+    incidence = {r: 0 for r in range(1, 16)}
+    for L in lines:
+        for p in L:
+            incidence[p] += 1
+    uniform7 = set(incidence.values()) == {7}
+    pencils = {r: pencil(r) for r in range(1, 16)}
+    sizes_all_7 = all(len(p) == 7 for p in pencils.values())
+    # cross-check: the pencil pairs of r, together with r, are exactly the
+    # lines through r.
+    consistent = all(
+        {frozenset((r, a, b)) for a, b in pencils[r]} ==
+        {frozenset(L) for L in lines if r in L}
+        for r in range(1, 16)
+    )
+    return {
+        'lines': len(lines),
+        'lines_expect_35': len(lines) == 35,
+        'incidences': sum(incidence.values()),
+        'incidences_expect_105': sum(incidence.values()) == 105,
+        'uniform_7_per_point': uniform7,
+        'pencil_1':            pencils[1],
+        'pencil_1_expect':     [(2, 3), (4, 5), (6, 7), (8, 9),
+                                 (10, 11), (12, 13), (14, 15)],
+        'sizes_all_7':         sizes_all_7,
+        'consistent_with_lines': consistent,
+    }
+
