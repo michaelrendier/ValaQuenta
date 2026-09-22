@@ -146,6 +146,7 @@ def _discover_paths(engine: str) -> Dict[str, str]:
 # ─────────────────────────────────────────────────────────────────────────────
 _GROUP_HINTS = {
     "emerger": "Sedenion · ZD geometry",
+    "prime_gauge_field": "Sedenion · ZD geometry",
     "box_kite": "Sedenion · ZD geometry",
     "angular_rank": "Sedenion · ZD geometry",
     "t32_nilpotency": "Sedenion · ZD geometry",

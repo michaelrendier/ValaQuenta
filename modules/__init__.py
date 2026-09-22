@@ -162,5 +162,27 @@ Current modules (Phase 5):
                          (reading -- spectroscopy, factoral decomposition).
                          confidence floor THEORETICAL.
 
-Version: 0.155 — Phase 11: emerger (Sedenion Bracketing & Firing Order)
+Current modules (Phase 12):
+    prime_gauge_field  — The Weyl-shaped local-scale connection built
+                         directly from Gamma(s)=(s-1)/(s+1), the SCALE
+                         engine's own global conformal map. Two candidate
+                         connections: A=grad(log|Gamma|), provably flat
+                         for ANY holomorphic scalar (Poincare lemma) --
+                         generalizes the earlier Schwarzian-derivative-
+                         zero finding to any such map, not special to
+                         Gamma; and A=(Re Gamma, Im Gamma) read directly
+                         as an R^2-valued 1-form, NOT a gradient -- this
+                         one carries real curvature, closed form
+                         F(s)=2*Im(dGamma/ds), verified against finite
+                         differences. The pre-registered prediction
+                         (FastInverse paper) -- that the flat locus is the
+                         construction's trivial/vacuum point -- partially
+                         confirmed: F=0 exactly on the real axis (Gamma
+                         real-valued, a defensible "trivial phase" locus)
+                         AND on sigma=-1 (Gamma's own pole line, NOT
+                         predicted, reported honestly as new rather than
+                         folded into the prediction after the fact).
+                         confidence floor THEORETICAL.
+
+Version: 0.156 — Phase 12: prime_gauge_field (The Prime Gauge Field)
 """

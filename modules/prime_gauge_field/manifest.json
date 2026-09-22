@@ -1,0 +1,126 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.prime_gauge_field",
+  "type": "engine",
+  "name": "prime_gauge_field",
+  "display": "The Prime Gauge Field",
+  "version": "0.1",
+  "summary": "The Weyl-shaped local-scale connection built directly from Smith's Gamma(s)=(s-1)/(s+1) -- two candidate connections (grad(log|Gamma|), provably flat; (Re Gamma, Im Gamma) as a 1-form, genuinely not), closed-form curvature verified against finite differences, and the pre-registered flat-locus prediction checked honestly (partial match: real axis matches, the pole line sigma=-1 was not predicted).",
+  "confidence_floor": "THEORETICAL",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.prime_gauge_field",
+    "class": "PrimeGaugeFieldModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "The 2026-09-21 gauge-field experiment (.claude/scratchpad/2026-09-21_smith_apollonian_uft_probe/) tested whether Gamma carries classical gauge curvature and found its Schwarzian derivative exactly zero -- a single global Mobius map, correctly flat. This module runs the Weyl-shaped question that result did not answer: make the scale connection local and test its curvature directly.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-09-21",
+    "status_label": "THEORETICAL:CALCULATED",
+    "predecessors": [
+      "scale",
+      "add_scale_sign",
+      "emerger"
+    ],
+    "citations": [
+      "Weyl_1918_gravitation_und_elektrizitaet",
+      "Wiener_1990_short_rsa_secret_exponents"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/122_the_prime_gauge_field.md",
+      "valaquenta": "ValaQuenta/wiki/prime_gauge_field.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/20_prime_gauge_field.ipynb",
+    "proof_locale": null,
+    "related_paper": "FourthAgePapers/FastInverse/README.md"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "Gamma",
+        "role": "Smith's conformal map, (s-1)/(s+1) -- the SCALE engine's own global chart",
+        "value": null,
+        "source": "GenerationalLineage/engine/toolsets/scale.py"
+      },
+      {
+        "symbol": "F(s)",
+        "role": "curvature of the (Re Gamma, Im Gamma) connection, closed form 2*Im(dGamma/ds)",
+        "value": null,
+        "source": "engine"
+      }
+    ],
+    "native_space": "complex s-plane, s = sigma + i*t (the zeta-argument coordinate)",
+    "arithmetic": "complex float; closed forms verified against finite-difference numerics",
+    "requires_engines": ["scale"],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Prime Gauge Field",
+      "group": "Sedenion · ZD geometry",
+      "order": 65,
+      "blurb": "The local-scale (Weyl-shaped) connection built from Gamma; two candidate curvatures, one provably flat, one genuinely not."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "closed form vs finite difference, flatness of the gradient reading, and the pre-registered prediction over 2000 random points",
+        "params": []
+      },
+      {
+        "name": "report",
+        "equation": "report",
+        "label": "Report",
+        "desc": "one point, full readout: Gamma, the connection, both curvatures, the zero-locus check",
+        "params": ["s"]
+      },
+      {
+        "name": "curvature",
+        "equation": "curvature",
+        "label": "Curvature",
+        "desc": "F(s) = 2*Im(dGamma/ds), the connection that is NOT flat",
+        "params": ["s"]
+      },
+      {
+        "name": "log_potential_curvature",
+        "equation": "log_potential_curvature",
+        "label": "Log-Potential Curvature",
+        "desc": "A=grad(log|Gamma|) -- always zero, for any holomorphic scalar",
+        "params": ["s"]
+      },
+      {
+        "name": "prediction_check",
+        "equation": "prediction_check",
+        "label": "Prediction Check",
+        "desc": "the pre-registered flat-locus prediction, checked over a random sample",
+        "params": ["n_samples"]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "curvature",
+      "verify"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": true
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": false,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "prime_gauge_field"
+}
