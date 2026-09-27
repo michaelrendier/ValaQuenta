@@ -1,0 +1,125 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.oblique_gear",
+  "type": "engine",
+  "name": "oblique_gear",
+  "display": "The Oblique Gear Across Scale (Black Hole / Galaxy)",
+  "version": "0.1",
+  "summary": "Tests whether the black-hole crank angle and the galaxy rotation-curve tangent angle are the same fact, or just the same constant.",
+  "confidence_floor": "OPEN",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.oblique_gear",
+    "class": "ObliqueGearModule"
+  },
+  "permissions": [],
+  "dependencies": {
+    "org.ainulindale.h_rb_hat": "*"
+  },
+  "provenance": {
+    "origin": "FourthAgePapers/ChiralityBlackHole/README.md second claim, 2026-09-26 conversation",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-09-26",
+    "status_label": "OPEN:CALCULATED",
+    "predecessors": [
+      "h_rb_hat"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": ""
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "d*",
+        "role": "crank throw / galaxy transition-radius fraction",
+        "value": 0.246,
+        "source": "h_rb_hat/maths.py D_STAR (imported here, not re-declared)"
+      }
+    ],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "float; sympy used once, out-of-band, to derive the closed forms this module evaluates numerically",
+    "requires_engines": [
+      "h_rb_hat"
+    ],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Oblique Gear Across Scale (Black Hole / Galaxy)",
+      "group": "SIGMA_RB · precession",
+      "order": 105,
+      "blurb": "Black-hole crank angle vs galaxy rotation-curve tangent angle — same fact, or same constant?"
+    },
+    "tools": [
+      {
+        "name": "crank_angle_deg",
+        "equation": "crank_angle_deg",
+        "label": "Crank Angle",
+        "desc": "theta_crank = arctan(d*), the Witches Hat half-angle  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "stokes_dimensionless",
+        "equation": "stokes_dimensionless",
+        "label": "Stokes Dimensionless",
+        "desc": "y(x) = (2/pi)*atan(x), the galaxy curve  [process= not set]",
+        "params": ["x"]
+      },
+      {
+        "name": "stokes_tangent_angle_deg",
+        "equation": "stokes_tangent_angle_deg",
+        "label": "Stokes Tangent Angle",
+        "desc": "tangent angle of the galaxy curve at any x = r/r_t  [process= not set]",
+        "params": ["x"]
+      },
+      {
+        "name": "crank_vs_galaxy_tangent_check",
+        "equation": "crank_vs_galaxy_tangent_check",
+        "label": "Crank vs Galaxy Tangent Check",
+        "desc": "THE CHECK — REFUTED as stated, ~3.84 deg gap  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "find_matching_radius",
+        "equation": "find_matching_radius",
+        "label": "Find Matching Radius",
+        "desc": "where the tangent WOULD equal theta_crank — no significant match found  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "full_report",
+        "equation": "full_report",
+        "label": "Full Report",
+        "desc": "everything this module knows, in one call  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "spectral",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": false,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "oblique_gear",
+  "_scaffolded": true
+}

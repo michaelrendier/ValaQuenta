@@ -70,6 +70,9 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [turing_diagonal.md](turing_diagonal.md) | `modules/turing_diagonal/` | ESTABLISHED | i²=−1 = Cantor = Gödel = Enigma; D_n/n!→1/e |
 | [singularity_null.md](singularity_null.md) | `modules/singularity_null/` | THEORETICAL | Singularity IS identity; circle says NULL one way |
 | [hyperwebster.md](hyperwebster.md) | `modules/hyperwebster/` | THEORETICAL | Horner bijection exact; Zipf = PNT |
+| *(page pending)* | `modules/oblique_gear/` | OPEN | Black-hole crank angle vs galaxy tangent — REFUTED as stated, ~3.84° gap; shared d* survives |
+| *(page pending)* | `modules/spectral_primes/` | OPEN | Spin (non-resonant) vs wobble (carries the primes); crossing pinned at σ=0.500000 to machine precision |
+| [bracketing_firing_order.md](bracketing_firing_order.md) | `modules/bracketing_firing_order/` | ESTABLISHED | Bell(16)=10,480,142,147; firing order (3,1,2) on [Scale,Sign,Add]→[Add,Scale,Sign]; set-membership generalizes Recamán |
 
 ## Physics and cosmology
 

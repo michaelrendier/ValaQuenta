@@ -1,0 +1,121 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.bracketing_firing_order",
+  "type": "engine",
+  "name": "bracketing_firing_order",
+  "display": "Bracketing, Firing Order, and Set Membership",
+  "version": "0.1",
+  "summary": "Three general-purpose tools -- unordered groupings, sequenced orderings, and set-membership memory -- consumed by add_scale_sign and the sedenion Emerger bracket alike.",
+  "confidence_floor": "ESTABLISHED",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.bracketing_firing_order",
+    "class": "BracketingFiringOrderModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Live conversation, 2026-09-27 -- correcting a too-narrow scope (ASS-only bracket) into the general arena Cody named directly",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-09-27",
+    "status_label": "ESTABLISHED:CALCULATED",
+    "predecessors": [
+      "add_scale_sign"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": ""
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "n/a -- domain-independent combinatorics",
+    "arithmetic": "Python int (exact, arbitrary precision) for counts; float for trajectories",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Bracketing, Firing Order, and Set Membership",
+      "group": "Tier 0 · combinatorics",
+      "order": 5,
+      "blurb": "The arena (groupings), the sequence (orderings), and the memory (set membership) -- one module, domain-independent."
+    },
+    "tools": [
+      {
+        "name": "bell_number",
+        "equation": "bell_number",
+        "label": "Bell Number",
+        "desc": "exact count of unordered groupings of n things  [process= not set]",
+        "params": ["n"]
+      },
+      {
+        "name": "bracketing_report",
+        "equation": "bracketing_report",
+        "label": "Bracketing Report",
+        "desc": "count always, list only when feasible (n<=12)  [process= not set]",
+        "params": ["items"]
+      },
+      {
+        "name": "firing_order_count",
+        "equation": "firing_order_count",
+        "label": "Firing Order Count",
+        "desc": "n! possible sequencings  [process= not set]",
+        "params": ["n"]
+      },
+      {
+        "name": "apply_firing_order",
+        "equation": "apply_firing_order",
+        "label": "Apply Firing Order",
+        "desc": "resequence a written order by a chosen permutation  [process= not set]",
+        "params": ["written", "firing_order"]
+      },
+      {
+        "name": "collisions",
+        "equation": "collisions",
+        "label": "Collisions",
+        "desc": "has a firing recurred? Recaman's rule, generalized  [process= not set]",
+        "params": ["steps", "x0"]
+      },
+      {
+        "name": "would_collide",
+        "equation": "would_collide",
+        "label": "Would Collide",
+        "desc": "the flip test, checkable before committing  [process= not set]",
+        "params": ["steps_so_far", "candidate_next", "x0"]
+      },
+      {
+        "name": "jurisdiction_violation",
+        "equation": "jurisdiction_violation",
+        "label": "Jurisdiction Violation",
+        "desc": "did a bracketing use another jurisdiction's maths illegally?  [process= not set]",
+        "params": ["object_name", "requested_operation", "jurisdiction_map"]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "spectral",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": false,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "bracketing_firing_order",
+  "_scaffolded": true
+}

@@ -307,6 +307,66 @@ class ASSWord:
     def additive(self) -> bool:
         return abs(self.firing_defect()) < 1e-9
 
+    # ── the Long Path's own memory — set-membership over the trajectory ──
+    # Added 2026-09-27, after the Recamán sequence's defining rule was
+    # traced exactly: the flip between its two branches is decided by a
+    # SET-MEMBERSHIP test against every prior value in its own history,
+    # not a fixed threshold. "Paper's Hands / the Long Path" (record()'s
+    # own docstring) already names the recorded step sequence — what was
+    # missing was giving that path an actual memory of where it has been.
+    def trajectory(self, x0: float = 1.0) -> Tuple[float, ...]:
+        """The Long Path made explicit: x0, then the position after each
+        successive atomic step fires, in this word's own recorded
+        (chrono or zeta) order — the ASS analogue of Recaman's a(0), a(1),
+        a(2), ... . Not the source element's own (add,scale,sign) — the
+        actual sequence of INTERMEDIATE positions visited while building
+        up to it, step by step."""
+        pos = [x0]
+        x = x0
+        for s in self.steps:
+            x = s(x)
+            pos.append(x)
+        return tuple(pos)
+
+    def visited(self, x0: float = 1.0, tol: float = 1e-9) -> Dict[float, List[int]]:
+        """Which trajectory positions repeat, and at which step indices --
+        the actual set-membership record a Recaman-style flip test would
+        consult. Keys are the rounded position; values are every index
+        (into trajectory()) that landed there. A position with more than
+        one index IS a collision -- the Long Path revisited itself."""
+        traj = self.trajectory(x0)
+        seen: Dict[float, List[int]] = {}
+        for i, x in enumerate(traj):
+            key = round(x / tol) * tol if tol else x
+            seen.setdefault(key, []).append(i)
+        return seen
+
+    def collisions(self, x0: float = 1.0, tol: float = 1e-9) -> List[Tuple[int, int, float]]:
+        """Every (earlier_index, later_index, position) where this word's
+        own Long Path returns to a position it already visited. Empty for
+        a self-avoiding path (the common case for a short word); non-empty
+        is a real, checkable structural fact about this specific word."""
+        seen = self.visited(x0, tol)
+        out = []
+        for pos, idxs in seen.items():
+            if len(idxs) > 1:
+                for a, b in zip(idxs, idxs[1:]):
+                    out.append((a, b, pos))
+        return sorted(out)
+
+    def would_collide(self, next_step: "ASS", x0: float = 1.0, tol: float = 1e-9) -> bool:
+        """The operator-level flip test itself: given a CANDIDATE next
+        atomic step (not yet appended), would firing it land the Long Path
+        on a position already in its own visited set? This is the direct
+        ASS-engine analogue of Recaman's own decision rule -- checkable
+        BEFORE committing to the step, exactly as Recaman's own a(n-1)-n
+        candidate is checked before deciding whether to keep it."""
+        traj = self.trajectory(x0)
+        candidate = next_step(traj[-1])
+        visited_positions = {round(x / tol) * tol if tol else x for x in traj}
+        key = round(candidate / tol) * tol if tol else candidate
+        return key in visited_positions
+
     # kept for back-compat with earlier callers
     def u_sum_of_parts(self) -> float:
         return self.u_generators()

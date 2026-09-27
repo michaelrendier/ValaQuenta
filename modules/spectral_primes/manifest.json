@@ -1,0 +1,109 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.spectral_primes",
+  "type": "engine",
+  "name": "spectral_primes",
+  "display": "Spectral Representation of the Primes (Spin / Wobble)",
+  "version": "0.1",
+  "summary": "Splits the theta(t)-rotation spiral into spin (non-resonant major loop) and wobble (prime-resonant minor loop); tests the tilt=wobble identity and the Real-Tilt/Axis crossing.",
+  "confidence_floor": "OPEN",
+  "license": "LicenseRef-ValaQuenta-Private",
+  "entry": {
+    "module": "ValaQuenta.modules.spectral_primes",
+    "class": "SpectralPrimesModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Live conversation, 2026-09-26, walking RiemannHypothesisProof/ADDENDUM_toroidal_theta_structure_2026-09-25.md's open items (spin/wobble naming, tilt identity, the crossing) to computed conclusions",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-09-26",
+    "status_label": "OPEN:CALCULATED",
+    "predecessors": [
+      "h_rb_hat"
+    ],
+    "citations": [
+      "Riemann 1859", "von Mangoldt", "Weil (explicit formula)"
+    ],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": ""
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "Riemann-Siegel theta / spiral (t as third axis)",
+    "arithmetic": "mpmath, dps=30",
+    "requires_engines": [],
+    "external": ["mpmath"]
+  },
+  "ui": {
+    "menu": {
+      "label": "Spectral Representation of the Primes (Spin / Wobble)",
+      "group": "Riemann · spectral geometry",
+      "order": 110,
+      "blurb": "Spin (non-resonant) vs wobble (prime-resonant); tilt=wobble refuted as tested; the crossing pinned at sigma=1/2."
+    },
+    "tools": [
+      {
+        "name": "spin_is_monotonic",
+        "equation": "spin_is_monotonic",
+        "label": "Spin Is Monotonic",
+        "desc": "theta'(t), the major loop — non-resonant  [process= not set]",
+        "params": ["n_zeros"]
+      },
+      {
+        "name": "wobble_carries_primes_demo",
+        "equation": "wobble_carries_primes_demo",
+        "label": "Wobble Carries Primes",
+        "desc": "psi(x) reconstruction from the minor loop's zero set  [process= not set]",
+        "params": ["n_zeros"]
+      },
+      {
+        "name": "tilt_vs_wobble_correlation",
+        "equation": "tilt_vs_wobble_correlation",
+        "label": "Tilt vs Wobble Correlation",
+        "desc": "REFUTED AS TESTED — correlation ~0.037  [process= not set]",
+        "params": ["n_zeros"]
+      },
+      {
+        "name": "crossing_does_not_drift",
+        "equation": "crossing_does_not_drift",
+        "label": "The Crossing",
+        "desc": "isolated, simple, pinned at sigma=1/2 — moves in t, not sigma  [process= not set]",
+        "params": ["n_zeros", "n_test"]
+      },
+      {
+        "name": "full_report",
+        "equation": "full_report",
+        "label": "Full Report",
+        "desc": "everything this module knows, in one call  [process= not set]",
+        "params": ["n_zeros"]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "spectral",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": false,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "spectral_primes",
+  "_scaffolded": true
+}

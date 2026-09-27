@@ -184,5 +184,57 @@ Current modules (Phase 12):
                          folded into the prediction after the fact).
                          confidence floor THEORETICAL.
 
-Version: 0.156 — Phase 12: prime_gauge_field (The Prime Gauge Field)
+    oblique_gear       — The Oblique Gear, tested across scale. Does the
+                         black-hole crank angle theta_crank = arctan(d*)
+                         (h_rb_hat's Witches Hat half-angle) equal the
+                         galaxy Stokes-drift rotation curve's own tangent
+                         angle at its transition radius r=r_t, making the
+                         two `arctan` usages the same fact twice? Computed
+                         directly: REFUTED as stated -- 13.82 deg (crank)
+                         vs 17.66 deg (galaxy tangent at r_t), a real
+                         ~3.84 deg gap. The shared-d*, shared-arctan-family
+                         kinship survives; the stronger same-mechanism
+                         claim, in this formulation, does not. Confidence
+                         floor OPEN.
+
+    spectral_primes    — Spectral Representation of the Primes. The
+                         theta(t)-rotation spiral split into spin (major
+                         loop, theta'(t), non-resonant) and wobble (minor
+                         loop, resonant at the primes -- classical von
+                         Mangoldt/Weil, demonstrated via psi(x)
+                         reconstruction from the same zero set). Primes
+                         are not an artifact of wobbling -- they are its
+                         genuine spectral content. Separately tests
+                         whether the real-axis tilt (oblique gearing's
+                         Omega proportional to sin(tilt)) IS the wobble by
+                         minimum-information identification: REFUTED AS
+                         TESTED, correlation ~0.037, methodological gap
+                         (pointwise vs interval sampling) named and left
+                         open. Also: the crossing of the Real Tilt and the
+                         central t-Axis is an isolated, simple zero,
+                         pinned at sigma=0.500000 to machine precision
+                         across every zero tested -- moves up the t-axis,
+                         never sideways in sigma. Confidence floor OPEN.
+
+    bracketing_firing_order — The Bracketing Engine, the Firing Order
+                         Engine, and Set Membership. THREE domain-
+                         independent tools, not one thing tied to
+                         add_scale_sign: BRACKETING (exact Bell-number
+                         count of unordered groupings, always; exhaustive
+                         list only when n<=12), FIRING ORDER (n!
+                         sequencings; applying one is a literal
+                         permutation -- verified: (3,1,2) applied to
+                         [Scale,Sign,Add] gives [Add,Scale,Sign], ASS's
+                         own canonical name reached by resequencing), and
+                         SET MEMBERSHIP (trajectory/collision detection,
+                         generalizing Recaman's own defining rule to any
+                         sequence of callables; plus jurisdiction_violation,
+                         grounded in GenerationalLineage's decomposition/
+                         emerger "two jurisdictions", parametrized not
+                         hardcoded). add_scale_sign (3 generators) and the
+                         sedenion Emerger bracket (16 components) are both
+                         CONSUMERS of this, not separate implementations.
+                         Confidence floor ESTABLISHED.
+
+Version: 0.159 — Phase 15: bracketing_firing_order (Bracketing, Firing Order, and Set Membership)
 """
