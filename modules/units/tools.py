@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.units.tools
-=========================================
+ValaQuenta.modules.units.tools
+==============================
 UNITS -- Module Tools
 
 Implements the EquationModule registry contract.

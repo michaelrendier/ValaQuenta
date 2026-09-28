@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.units
-===================================
+ValaQuenta.modules.units
+========================
 UNITS -- dimensional exponent vectors as a fourth domain for this project's
 factoral-decomposition discipline (numbers, processes, and now physical
 units), plus THE EQUATION INDEX: a unit's dimension signature narrows the

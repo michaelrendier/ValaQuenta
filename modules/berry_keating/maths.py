@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.berry_keating.maths
-================================================
+ValaQuenta.modules.berry_keating.maths
+======================================
 H_NN candidate operator, d* gap workbench, T coordinate scaffold.
 
 Open Problems:
@@ -72,8 +72,10 @@ def d_star_gap_report() -> Dict[str, Any]:
 
 def lambert_W_approx(x: float) -> float:
     """
-    Lambert W function W(x) approximation via iteration.
-    W(x)·e^{W(x)} = x  → solved by Newton iteration.
+    Approximate the Lambert W function W(x), the solution of W·e^W = x, by Newton iteration.
+
+    :param x: argument; non-positive x returns 0.0
+    :returns: W(x)
     """
     if x <= 0:
         return 0.0
@@ -116,7 +118,12 @@ def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
     The physical gap is the ratio m/Ω evaluated at the conformal boundary.
 
     Status: CANDIDATE PATH — not yet evaluated as closed form for 0.00070 gap.
-    From Addendum IV §VI (Gemini deep-research synthesis, 2026-05-07).
+    From Addendum IV §VI (Gemini deep-research synthesis).
+
+    :param alpha_floor: α at the SMIP domain floor
+    :param omega: Ω_ζΣ, the domain ceiling
+    :param p: holographic/unification exponent
+    :returns: dict with the candidate mass gap m and how far it sits from the target
     """
     W_val  = 2.0 / alpha_floor                       # ≈ 274.07
     factor = (1.0 - 2.0 / p) ** 2                   # = 1/4 for p=4/3
@@ -174,7 +181,11 @@ def lambert_tsallis_Wq_candidate(q: float = 1.1,
         dW_q/dq |_{q=1} = ?   (not yet derived)
 
     This is a candidate approach, not an evaluation.
-    Source: Gemini deep-research synthesis, 2026-05-07.
+    Source: Gemini deep-research synthesis.
+
+    :param q: Tsallis index; q → 1 recovers the standard Lambert W
+    :param z: argument; None uses Ω_ζΣ
+    :returns: dict with W_q(z) and the comparison with the target gap
     """
     z_val  = z if z is not None else math.e  # W(e) = 1 exactly
     W_std  = lambert_W_approx(z_val)
@@ -206,6 +217,9 @@ def gap_candidates(d_star: float = D_STAR_SPEC) -> List[Dict[str, Any]]:
     """
     Generate candidate expressions for d* from elementary constants.
     Each candidate is evaluated and gap from Ω computed.
+
+    :param d_star: the d* the candidates are compared against
+    :returns: one dict per candidate expression, with its value and its distance from Ω
     """
     candidates = []
     Ω = OMEGA_ZS
@@ -253,6 +267,10 @@ def h_nn_eigenvalues(hbar_nn: float, n_max: int = 10) -> Dict[str, Any]:
 
     The Riemann zeros are conjectured to be eigenvalues of an operator
     of this form (Berry-Keating conjecture).
+
+    :param hbar_nn: ħ_NN
+    :param n_max: number of levels
+    :returns: dict with E_n = ħ_NN·(n + ½) for n < n_max
     """
     eigenvalues = [hbar_nn * (n + 0.5) for n in range(n_max + 1)]
     # Spacing between consecutive eigenvalues (should relate to Riemann zeros)
@@ -279,6 +297,12 @@ def xp_spectrum_discrete(hbar_nn: float, x_min: float = 0.1,
     In classical (semiclassical) form: H_cl = x·p  → torus in phase space.
 
     Energy surface E(x,p) = x·p at fixed E defines hyperbola x·p = E.
+
+    :param hbar_nn: ħ_NN
+    :param x_min: lower end of the x range
+    :param x_max: upper end of the x range
+    :param n_pts: number of sample points
+    :returns: dict with the sampled xp landscape
     """
     import math as _m
     xs = [x_min + (x_max - x_min) * i / (n_pts - 1) for i in range(n_pts)]
@@ -314,6 +338,10 @@ def T_map_scaffold(x: float, d_star: float = D_STAR_SPEC) -> Dict[str, Any]:
 
     Formal T map definition remains open (Open Problem 3).
     This is a scaffold — the architecture, not the proof.
+
+    :param x: point at which to evaluate T
+    :param d_star: the d* in the exponent
+    :returns: dict with T_re and T_im
     """
     if x <= 0:
         return {'error': 'x must be > 0'}
@@ -340,7 +368,15 @@ def T_map_scaffold(x: float, d_star: float = D_STAR_SPEC) -> Dict[str, Any]:
 def T_map_trajectory(x_min: float = 0.1, x_max: float = 10.0,
                      n_pts: int = 128,
                      d_star: float = D_STAR_SPEC) -> Dict[str, Any]:
-    """Generate T map trajectory for viewer rendering."""
+    """
+    Generate T map trajectory for viewer rendering.
+
+    :param x_min: lower end of the x range
+    :param x_max: upper end of the x range
+    :param n_pts: number of sample points
+    :param d_star: the d* in the exponent
+    :returns: dict with the trajectory arrays for rendering
+    """
     xs = [x_min + (x_max - x_min) * i / (n_pts - 1) for i in range(n_pts)]
     trajectory = [T_map_scaffold(x, d_star) for x in xs]
     cartesian  = [(t['T_re'], t['T_im']) for t in trajectory]

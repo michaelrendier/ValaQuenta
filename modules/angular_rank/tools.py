@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.angular_rank.tools
-================================================
+ValaQuenta.modules.angular_rank.tools
+=====================================
 The 16D Oscilloscope -- Module Tools
 
 Implements the EquationModule registry contract.

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.inversion
-======================================
+ValaQuenta.modules.inversion
+============================
 Inside-Out Inversion Engine — (I|O) module
 
 Version: 0.111

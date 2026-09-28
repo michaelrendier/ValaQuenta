@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_discocat.maths
-======================================================
+ValaQuenta.modules.translator_discocat.maths
+============================================
 The Translator, VERSION 1 of 2 — Categorical Compositional Distributional
 Semantics (DisCoCat). Mathematics.
 
@@ -94,6 +94,9 @@ def reduce_type(t: PregroupType) -> Dict[str, Any]:
 
     Leftmost-innermost cancellation. Pregroup reduction is confluent for
     these types, so the order does not change the normal form.
+
+    :param t: the pregroup type to reduce
+    :returns: dict with the reduced type and the ordered cancellations (the reduction witness)
     """
     atoms = list(t.atoms)
     witness: List[Dict[str, Any]] = []
@@ -121,6 +124,11 @@ def is_grammatical(subject_t: PregroupType,
 
     Returns the verdict AND the reduced type, so an ungrammatical input
     reports what it actually reduced to rather than just False.
+
+    :param subject_t: pregroup type of the subject
+    :param verb_t: pregroup type of the verb
+    :param object_t: pregroup type of the object
+    :returns: dict with the verdict and the type the clause actually reduced to
     """
     full = subject_t * verb_t * object_t
     red = reduce_type(full)
@@ -148,13 +156,21 @@ class MeaningSpace:
         self.dim = N_CHANNELS
 
     def noun(self, token: str) -> List[float]:
-        """Noun meaning: the 16-dim prime-channel signature."""
+        """
+        Noun meaning: the 16-dim prime-channel signature.
+
+        :param token: the noun
+        :returns: the 16-dim prime-channel signature
+        """
         return channel_signature(token)
 
     def verb_tensor(self, token: str) -> List[List[List[float]]]:
         """
         Verb meaning: order-3 tensor T[i][j][k] over N (x) S (x) N.
         Built by reshaping the verb's 4096-dim harmonic vector.
+
+        :param token: the verb
+        :returns: the order-3 tensor T[i][j][k] over N⊗S⊗N
         """
         flat = hypervector(token)
         n = self.dim
@@ -171,6 +187,11 @@ class MeaningSpace:
         contractions, leaving a vector in S:
 
             s_j = sum_i sum_k  subj_i * T[i][j][k] * obj_k
+
+        :param subj: subject vector in N
+        :param verb: verb tensor over N⊗S⊗N
+        :param obj: object vector in N
+        :returns: the sentence vector in S
         """
         n = self.dim
         out = [0.0] * n
@@ -215,9 +236,20 @@ class DisCoCatTranslator(TranslatorEngine):
 
     @property
     def version_name(self) -> str:
+        """
+        Return the engine's version name.
+
+        :returns: 'discocat'
+        """
         return 'discocat'
 
     def encode(self, token: str) -> List[float]:
+        """
+        Encode a token as its noun meaning.
+
+        :param token: the token
+        :returns: the noun vector
+        """
         return self.space.noun(token)
 
     def compose(self, subject: str, verb: str, obj: str) -> List[float]:
@@ -226,6 +258,12 @@ class DisCoCatTranslator(TranslatorEngine):
         composed anyway — a clause whose type does not reduce to s raises,
         because a DisCoCat composition of a non-reducing type is undefined,
         not merely low quality.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: the sentence vector in S
+        :raises ValueError: the clause's type does not reduce to s
         """
         check = is_grammatical(N, TRANSITIVE_VERB, N)
         if not check['grammatical']:
@@ -236,7 +274,14 @@ class DisCoCatTranslator(TranslatorEngine):
                                    self.space.noun(obj))
 
     def explain(self, subject: str, verb: str, obj: str) -> Dict[str, Any]:
-        """Full trace: types, reduction witness, and the resulting vector."""
+        """
+        Full trace: types, reduction witness, and the resulting vector.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: dict with the types, the reduction witness and the sentence vector
+        """
         check = is_grammatical(N, TRANSITIVE_VERB, N)
         vec = self.compose(subject, verb, obj)
         return {
@@ -283,6 +328,12 @@ def word_order_sensitivity(engine: 'DisCoCatTranslator',
     its two noun slots, so these should differ. Reported as a measurement.
     A cosine near 1.0 would mean this construction cannot see word order —
     a real negative result, to be reported, never patched around.
+
+    :param engine: the translator to measure
+    :param subject: subject token
+    :param verb: verb token
+    :param obj: object token
+    :returns: dict with the cosine between the sentence and its subject/object swap
     """
     a = engine.compose(subject, verb, obj)
     b = engine.compose(obj, verb, subject)

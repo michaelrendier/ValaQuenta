@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.scale
-===================================
+ValaQuenta.modules.scale
+========================
 THE SCALE -- decompositional analysis, forwards and backwards.
 
 SCALE is tier-0 (ADD, SCALE, SIGN) -- the most complicated of the three

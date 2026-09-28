@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.h_rb_hat.maths
-==========================================
+ValaQuenta.modules.h_rb_hat.maths
+=================================
 Σ_RB — The RedBlue Summed Integral
          The inductive boundary sum. R̂ and B̂ summed over all primes.
          The Σ is the summation sign. The RB is Red-Blue. This is what it is.
@@ -113,6 +113,10 @@ def geometric_coupling(p: int, sigma: float) -> float:
 
     The Euler product Π_p (1 − p^{-s})^{-1} = ζ(s) when σ > 1.
     At σ = ½ the product is on the critical line — convergence conditional.
+
+    :param p: prime
+    :param sigma: coupling exponent σ
+    :returns: G_p(σ) = p^(−σ)
     """
     if sigma == 0.0:
         return 1.0
@@ -131,6 +135,11 @@ def euler_product(sigma: float, t: float = 0.0, n_primes: int = 20) -> complex:
     This IS the generating function of Σ_RB:
     The geometric coupling Σ_p G_p(σ) e^{it·ln p} = ζ(σ+it).
     The Riemann zeros are where ζ(s) = 0 — the eigenvalue condition.
+
+    :param sigma: real part σ of s
+    :param t: imaginary part t of s
+    :param n_primes: number of primes in the product
+    :returns: the truncated product Π (1 − p^(−s))^(−1)
     """
     s = complex(sigma, t)
     product = complex(1.0, 0.0)
@@ -148,6 +157,11 @@ def dirichlet_series(sigma: float, t: float = 0.0, n_terms: int = 100) -> comple
 
     Alternative to Euler product — converges for σ > 1.
     At σ = ½: partial sums oscillate (lack of i causes NS breakdown).
+
+    :param sigma: real part σ of s
+    :param t: imaginary part t of s
+    :param n_terms: number of terms
+    :returns: the partial sum Σ n^(−s)
     """
     s = complex(sigma, t)
     total = complex(0.0, 0.0)
@@ -165,6 +179,10 @@ def red_energy(x: float, p_momentum: float) -> float:
     The forward channel. What IS. The attractor.
     Classical orbit: xp = E  (hyperbola — enumerates the primes).
     Scale invariant: x → λx, p → p/λ leaves E unchanged.
+
+    :param x: position
+    :param p_momentum: momentum
+    :returns: E_Red = x·p
     """
     return x * p_momentum
 
@@ -179,6 +197,11 @@ def blue_energy_weierstrass(x: float, g2: float = 1.0, g3: float = 0.0) -> float
     Poles at x = 0 and lattice points — the true singularities.
     The Frey curve (if it existed) would have a rational point at a pole.
     Wiles proved it cannot. The pole is the forbidden zone.
+
+    :param x: position; must not sit on a pole
+    :param g2: Weierstrass invariant g₂
+    :param g3: Weierstrass invariant g₃
+    :returns: ℘(x; g₂, g₃)
     """
     if abs(x) < 1e-9:
         return float('inf')
@@ -196,6 +219,12 @@ def blue_energy(x: float, p_momentum: float, g2: float = 1.0, g3: float = 0.0) -
     The backward channel. What CANNOT BE. The repulsor.
     Elliptic orbits: bounded, periodic, the forbidden zone.
     E_Blue = ∞ at x = 0 (the pole — nothing can exist there).
+
+    :param x: position
+    :param p_momentum: momentum
+    :param g2: Weierstrass invariant g₂
+    :param g3: Weierstrass invariant g₃
+    :returns: E_Blue = ½p² + ℘(x)
     """
     wp = blue_energy_weierstrass(x, g2, g3)
     if wp == float('inf'):
@@ -220,6 +249,14 @@ def sigma_rb_term(prime: int, sigma: float,
     The term is self-adjoint because E_Red and E_Blue are adjoint channels:
         ⟨R̂_p ⊗ ∂̂_∂M φ, ψ⟩ = ⟨φ, ∂̂_∂M† ⊗ B̂_p ψ⟩
     This follows from R̂_p† = B̂_p (functional equation as operator identity).
+
+    :param prime: the prime p
+    :param sigma: coupling exponent σ
+    :param x: position
+    :param p_momentum: momentum
+    :param g2: Weierstrass invariant g₂
+    :param g3: Weierstrass invariant g₃
+    :returns: dict with the term p^(−σ)·[E_Red + E_Blue] and its parts
     """
     G  = geometric_coupling(prime, sigma)
     Er = red_energy(x, p_momentum)
@@ -250,6 +287,14 @@ def sigma_rb_evaluate(sigma: float, x: float, p_momentum: float,
 
     At σ = ½:  the geometric couplings G_p = p^{-½} weight each prime
                equally on the critical line — the balanced distinction.
+
+    :param sigma: coupling exponent σ
+    :param x: position
+    :param p_momentum: momentum
+    :param n_primes: number of primes summed
+    :param g2: Weierstrass invariant g₂
+    :param g3: Weierstrass invariant g₃
+    :returns: dict with the total and the per-prime terms
     """
     terms      = []
     total_red  = 0.0
@@ -369,7 +414,12 @@ def self_adjoint_demonstration() -> Dict[str, Any]:
 # ── Sigma phase diagram  (which σ → which theory) ─────────────────────────────
 
 def sigma_to_theory(sigma: float) -> str:
-    """Map a sigma value to the theory name at that coupling."""
+    """
+    Map a sigma value to the theory name at that coupling.
+
+    :param sigma: coupling exponent σ
+    :returns: the name of the theory at that coupling
+    """
     if sigma >= 1.9:
         return 'General Relativity'
     elif abs(sigma - 1.0) < 0.05:
@@ -393,6 +443,9 @@ def sigma_phase_diagram(n_points: int = 20) -> Dict[str, Any]:
 
     The Navier-Stokes position is marked: σ=1 but Im=0 (lacks i).
     This is why NS cannot describe complex resonances.
+
+    :param n_points: number of σ values
+    :returns: dict mapping σ to theory with the Euler-product magnitude at each
     """
     sigmas = [i / (n_points - 1) * 2.5 for i in range(n_points)]
     diagram = []
@@ -438,6 +491,9 @@ def facet_general_relativity(kappa: float = 1.0) -> Dict[str, Any]:
     Noether current: energy-momentum tensor T^μν (conserved: ∂_μ T^μν = 0)
     Dark matter entry point: T_μν contains only Re(ψ).
     The Im(ψ) component (the adjoint / dark matter) is absent.
+
+    :param kappa: gravitational coupling constant κ
+    :returns: dict describing the GR facet of Σ_RB
     """
     G_sum = sum(geometric_coupling(p, SIGMA_GR) for p in PRIMES)
     return {
@@ -783,6 +839,10 @@ def dark_matter_halo(galaxy_size_ly: float = 50000.0,
         The imaginary Noether current IS the dark current — the thing that's conserved
         but invisible to any real-valued theory (NS, classical GR without Im).
         The galaxy is surrounded by its own adjoint.
+
+    :param galaxy_size_ly: galaxy size in light-years
+    :param observation_yr: observation span in years
+    :returns: dict with the standing-wave period and the apparent-mass argument
     """
     c_ly_per_yr = 1.0              # c = 1 light-year per year
     T_years     = 2.0 * galaxy_size_ly / c_ly_per_yr

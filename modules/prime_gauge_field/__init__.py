@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.prime_gauge_field
-================================================
+ValaQuenta.modules.prime_gauge_field
+====================================
 The Prime Gauge Field -- the Weyl-shaped local-scale connection built
 directly from Smith's Gamma(s)=(s-1)/(s+1), and its curvature.
 

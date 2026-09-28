@@ -1,7 +1,7 @@
 """
-ainulindale_engine.engine.console_qt
-======================================
-Qt viewer — Phase 3.
+ValaQuenta.engine.console_qt
+============================
+Qt viewer for the registry: a VisPy canvas, a module list and a shell.
 
 Layout:
     +-----------------------------+------------------+
@@ -218,7 +218,12 @@ class VispyCanvas(_QWidgetBase):
         self._layout.addWidget(self._fallback_text)
 
     def render(self, display_mode: str, data: Dict[str, Any]):
-        """Dispatch to correct renderer."""
+        """
+        Dispatch to correct renderer.
+
+        :param display_mode: one of 'complex_plane', '3d_cartesian', 'fano', 'sonification', 'text'
+        :param data: viewer-ready data from EquationModule.viewer_data()
+        """
         self._current_mode = display_mode
 
         if not _HAS_VISPY:
@@ -498,6 +503,11 @@ class SonificationPanel(_QWidgetBase):
         self.setVisible(False)
 
     def set_data(self, data: Dict):
+        """
+        Show the angular frequency of the current result and reveal the panel.
+
+        :param data: viewer data; its 'omega' key is the angular frequency in rad/s
+        """
         self._current_data = data
         omega = data.get('omega', 0.0)
         freq  = omega / (2 * math.pi) if omega else 0.0
@@ -703,6 +713,7 @@ class SelectorPanel(_QWidgetBase):
 # ── Output / info panel ───────────────────────────────────────────────────────
 
 class OutputPanel(_QWidgetBase):
+    """Read-only text panel that collects the run output."""
     def __init__(self, parent=None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
@@ -719,9 +730,15 @@ class OutputPanel(_QWidgetBase):
         layout.addWidget(self._text)
 
     def write(self, text: str):
+        """
+        Append a line to the output panel.
+
+        :param text: the line to append
+        """
         self._text.append(text)
 
     def clear(self):
+        """Empty the output panel."""
         self._text.clear()
 
 
@@ -823,7 +840,11 @@ _QMainBase = QMainWindow if _HAS_QT else object
 
 
 class AinulindalWindow(_QMainBase):
+    """
+    Main window: VisPy canvas, module list, output panel and shell.
 
+    :param registry: the populated module registry
+    """
     def __init__(self, registry):
         super().__init__()
         self._registry = registry
@@ -960,6 +981,12 @@ class AinulindalWindow(_QMainBase):
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def run_qt(registry):
+    """
+    Open the Qt viewer and run its event loop.
+
+    :param registry: the populated module registry
+    :raises ImportError: PyQt5 is not installed
+    """
     if not _HAS_QT:
         raise ImportError("PyQt5 not available")
 

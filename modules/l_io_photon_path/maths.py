@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.l_io_photon_path.maths
-====================================================
+ValaQuenta.modules.l_io_photon_path.maths
+=========================================
 L_(I|O) as General Relativity: the actual (bent) photon path vs.
 the clean (stationary-action, flat-space) path — computed from real
 measured weak-lensing shear, not a toy model.
@@ -146,7 +146,14 @@ def _tukey_window(n: int, taper_frac: float) -> np.ndarray:
 
 def apodize_and_pad(field: np.ndarray, taper_frac: float = 0.1,
                      pad_factor: float = 2.0) -> Tuple[np.ndarray, Tuple[int, int]]:
-    """Taper a real (non-periodic) field to zero at its edges, then zero-pad it."""
+    """
+    Taper a real (non-periodic) field to zero at its edges, then zero-pad it.
+
+    :param field: the 2-D field
+    :param taper_frac: fraction of each edge tapered
+    :param pad_factor: padded size as a multiple of the original
+    :returns: (padded_field, pad) where pad is the padding added on each axis
+    """
     ny, nx = field.shape
     window = np.outer(_tukey_window(ny, taper_frac), _tukey_window(nx, taper_frac))
     tapered = field * window
@@ -159,7 +166,14 @@ def apodize_and_pad(field: np.ndarray, taper_frac: float = 0.1,
 
 def crop_padding(padded_field: np.ndarray, pad: Tuple[int, int],
                   orig_shape: Tuple[int, int]) -> np.ndarray:
-    """Inverse of apodize_and_pad's zero-padding step."""
+    """
+    Undo the zero-padding of apodize_and_pad.
+
+    :param padded_field: the padded field
+    :param pad: the padding returned by apodize_and_pad
+    :param orig_shape: shape of the original field
+    :returns: the field cropped back to orig_shape
+    """
     pad_y, pad_x = pad
     ny, nx = orig_shape
     return padded_field[pad_y:pad_y + ny, pad_x:pad_x + nx]
@@ -175,6 +189,13 @@ def bounded_lensing_pipeline(gamma1: np.ndarray, gamma2: np.ndarray,
     legitimately periodic-safe: zero wraps into zero), then crop every output
     back to the original frame. kaiser_squires_kappa() and lensing_potential()
     themselves are untouched -- this only changes what they're fed.
+
+    :param gamma1: shear component γ₁
+    :param gamma2: shear component γ₂
+    :param pixel_scale_arcsec: pixel scale in arcsec
+    :param taper_frac: fraction of each edge tapered
+    :param pad_factor: padded size as a multiple of the original
+    :returns: dict of the convergence, lensing potential, deflection and source-plane fields, each in the original frame
     """
     orig_shape = gamma1.shape
     g1_pad, pad = apodize_and_pad(gamma1, taper_frac, pad_factor)
@@ -203,6 +224,10 @@ def kaiser_squires_kappa(gamma1: np.ndarray, gamma2: np.ndarray) -> np.ndarray:
     additive mass-sheet degeneracy) is set to zero -- not fit, just the
     standard convention: KS reconstruction is only defined relative to a
     mean, and that mean is not observable from shear alone.
+
+    :param gamma1: shear component γ₁
+    :param gamma2: shear component γ₂
+    :returns: the convergence κ
     """
     ny, nx = gamma1.shape
     k1 = np.fft.fftfreq(nx) * 2 * np.pi
@@ -225,6 +250,9 @@ def lensing_potential(kappa: np.ndarray) -> np.ndarray:
     """
     nabla^2 psi = 2 kappa  ->  psi_hat(k) = -2 kappa_hat(k) / |k|^2
     Exact FFT Poisson solve. No fitting.
+
+    :param kappa: convergence field
+    :returns: the lensing potential ψ
     """
     ny, nx = kappa.shape
     k1 = np.fft.fftfreq(nx) * 2 * np.pi
@@ -245,6 +273,10 @@ def deflection_field(psi: np.ndarray, pixel_scale_arcsec: float) -> Tuple[np.nda
     alpha = grad(psi), converted from per-pixel to arcsec using the real
     JWST pixel scale (no fitting -- this is a unit conversion, not a
     parameter chosen to match an outcome).
+
+    :param psi: lensing potential
+    :param pixel_scale_arcsec: pixel scale in arcsec
+    :returns: (alpha1, alpha2), the deflection in arcsec
     """
     dpsi_dy, dpsi_dx = np.gradient(psi)
     alpha1 = dpsi_dx / pixel_scale_arcsec
@@ -264,6 +296,12 @@ def trace_photon(theta1: np.ndarray, theta2: np.ndarray,
 
     Returns both so the deviation (beta - theta = -alpha) is explicit:
     that deviation IS the "unclean" part of the path, computed, not assumed.
+
+    :param theta1: apparent position, first axis
+    :param theta2: apparent position, second axis
+    :param alpha1: deflection, first axis
+    :param alpha2: deflection, second axis
+    :returns: dict with the apparent positions θ and the source positions β = θ − α
     """
     beta1 = theta1 - alpha1
     beta2 = theta2 - alpha2
@@ -278,13 +316,14 @@ def trace_photon(theta1: np.ndarray, theta2: np.ndarray,
 
 def l_io_deficit(psi: np.ndarray) -> Dict[str, float]:
     """
-    L_(I|O) - L := -psi(theta)  (Fermat potential term, standard GR lensing).
+    Report raw statistics of L_(I|O) − L := −ψ(θ), the Fermat potential term of standard GR lensing.
 
-    This is reported as raw statistics of the ACTUAL computed field --
-    no rescaling, no clipping to a "typical" range, no fit to any target
-    value. If the field is dominated by shot noise from ~2500 discrete
-    background galaxies (it may well be, honestly stated), that shows up
-    directly in these numbers.
+    The field is reported as computed: no rescaling, no clipping to a typical
+    range, no fit to a target. Shot noise from the discrete background
+    galaxies shows up directly in these numbers.
+
+    :param psi: lensing potential
+    :returns: dict of statistics of the deficit field
     """
     return {
         'mean':   float(np.nanmean(psi)),

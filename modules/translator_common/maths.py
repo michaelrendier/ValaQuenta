@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_common.maths
-====================================================
+ValaQuenta.modules.translator_common.maths
+==========================================
 The Translator — SHARED SUBSTRATE for both Translator engines.
 
 This is NOT itself a registered engine. It has no tools.py and does not
@@ -88,6 +88,9 @@ def channel_signature(token: str) -> List[float]:
 
     Deterministic. No parameters. Empty token -> zero vector (kept as an
     honest zero, NOT special-cased to something non-degenerate).
+
+    :param token: the token; an empty token gives the zero vector
+    :returns: the 16 prime-channel values x_k
     """
     out = []
     for p in PRIME_CHANNELS:
@@ -107,6 +110,9 @@ def hypervector(token: str) -> List[float]:
 
     At h = 0 this reduces EXACTLY to channel_signature() (verified by
     verify_harmonic_reduction below). Deterministic, no parameters.
+
+    :param token: the token
+    :returns: the 4096 values x_j, j = h·16 + k
     """
     out = [0.0] * D_HYPER
     codes = [(i, ord(ch)) for i, ch in enumerate(token, start=1)]
@@ -126,6 +132,10 @@ def verify_harmonic_reduction(token: str, tol: float = 1e-12) -> Dict[str, Any]:
     This is the joint that holds the two engines together. If it ever fails,
     the engines are no longer in the same space and must NOT be combined.
     Returns the residual; does not raise.
+
+    :param token: the token to check
+    :param tol: tolerance on the residual
+    :returns: dict with the residual and whether hypervector()[0:16] equals channel_signature(token); it does not raise
     """
     sig = channel_signature(token)
     hyp = hypervector(token)[:N_CHANNELS]
@@ -136,10 +146,23 @@ def verify_harmonic_reduction(token: str, tol: float = 1e-12) -> Dict[str, Any]:
 # ── Vector helpers (pure Python — registry contract forbids deps in maths) ───
 
 def dot(a: Sequence[float], b: Sequence[float]) -> float:
+    """
+    Return the dot product of two vectors.
+
+    :param a: first vector
+    :param b: second vector, of the same length
+    :returns: Σ aᵢbᵢ
+    """
     return sum(x * y for x, y in zip(a, b))
 
 
 def norm(a: Sequence[float]) -> float:
+    """
+    Return the Euclidean norm of a vector.
+
+    :param a: the vector
+    :returns: √(a·a)
+    """
     return math.sqrt(dot(a, a))
 
 
@@ -147,6 +170,10 @@ def cosine(a: Sequence[float], b: Sequence[float]) -> float:
     """
     Cosine similarity. Returns 0.0 for a zero vector — that is a genuine
     'no direction' answer, not a fallback that hides a degenerate input.
+
+    :param a: first vector
+    :param b: second vector, of the same length
+    :returns: the cosine similarity, or 0.0 if either vector is zero
     """
     na, nb = norm(a), norm(b)
     if na == 0.0 or nb == 0.0:
@@ -173,17 +200,33 @@ class TranslatorEngine(ABC):
 
     @abstractmethod
     def encode(self, token: str) -> List[float]:
-        """Token -> that engine's native vector for it."""
+        """
+        Token -> that engine's native vector for it.
+
+        :param token: the token
+        :returns: the token's native vector in this engine
+        """
 
     @abstractmethod
     def compose(self, subject: str, verb: str, obj: str) -> List[float]:
         """
         Compose a transitive sentence into the 16-dim sentence space S.
         Both engines MUST return length-16 so results are comparable.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: the sentence vector in the 16-dim space S
         """
 
     def sentence_similarity(self, a: Sequence[str], b: Sequence[str]) -> float:
-        """Cosine between two composed (subject, verb, object) triples."""
+        """
+        Cosine between two composed (subject, verb, object) triples.
+
+        :param a: (subject, verb, object) triple
+        :param b: (subject, verb, object) triple
+        :returns: the cosine between the two composed triples
+        """
         return cosine(self.compose(*a), self.compose(*b))
 
 
@@ -199,6 +242,11 @@ def compare_engines(engine_a: TranslatorEngine,
     This reports. It does not score, rank, or tune. A low agreement figure
     is a finding about the two constructions, not a defect to be corrected
     by adjusting either engine.
+
+    :param engine_a: first Translator engine
+    :param engine_b: second Translator engine
+    :param triples: (subject, verb, object) triples to run through both
+    :returns: dict with the per-triple agreement of the two engines
     """
     rows = []
     for t in triples:

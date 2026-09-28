@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.format
-==================================
+ValaQuenta.engine.format
+========================
 THE VALAQUENTA FORMAT — the plugin / extension contract.
 
 A ValaQuenta plugin is a directory (or a `.vqx` zip of one) carrying a
@@ -63,9 +63,9 @@ _ID_RE = re.compile(r"^[a-z0-9]+(\.[a-z0-9][a-z0-9_-]*)+$")
 _FS_PERM_RE = re.compile(r"^fs\.read:[A-Za-z0-9_./-]+$")
 
 # default id namespace + licence for the built-in ValaQuenta engines (Cody's
-# private layer — kept behind ValaQuenta, not GNU-shipped)
+# engines (GPL-3.0-only since 2026-09-28)
 _BUILTIN_NS = "org.ainulindale"
-_BUILTIN_LICENSE = "LicenseRef-ValaQuenta-Private"
+_BUILTIN_LICENSE = "GPL-3.0-only"
 
 _SCHEMA_CACHE: Optional[Dict[str, Any]] = None
 
@@ -74,6 +74,11 @@ _SCHEMA_CACHE: Optional[Dict[str, Any]] = None
 #  schema
 # ─────────────────────────────────────────────────────────────────────────────
 def schema() -> Dict[str, Any]:
+    """
+    Return the valaquenta.plugin/1 JSON schema, loaded once and cached.
+
+    :returns: the parsed schema
+    """
     global _SCHEMA_CACHE
     if _SCHEMA_CACHE is None:
         _SCHEMA_CACHE = json.loads(_SCHEMA_PATH.read_text())
@@ -89,8 +94,15 @@ def _guess_entry_class(name: str) -> str:
 
 def normalise(man: Dict[str, Any], *, name: Optional[str] = None,
               path: Optional[pathlib.Path] = None) -> Dict[str, Any]:
-    """Return `man` as a valaquenta.plugin/1 dict, back-filling the keys an
-    engine-manifest/1 file omits, in canonical key order.  Idempotent."""
+    """
+    Return `man` as a valaquenta.plugin/1 dict, back-filling the keys an
+    engine-manifest/1 file omits, in canonical key order.  Idempotent.
+
+    :param man: the manifest, either valaquenta.plugin/1 or a bare valaquenta.engine-manifest/1
+    :param name: engine name used to back-fill id, name and entry; defaults to the manifest's own
+    :param path: manifest path; its parent directory name is the last-resort engine name
+    :returns: the manifest as a valaquenta.plugin/1 dict
+    """
     m = dict(man)
     eng = m.get("engine") or name or m.get("name") or (path.parent.name if path else "")
 
@@ -123,9 +135,15 @@ def normalise(man: Dict[str, Any], *, name: Optional[str] = None,
 #  entry resolution
 # ─────────────────────────────────────────────────────────────────────────────
 def resolve_entry(man: Dict[str, Any]) -> Dict[str, Any]:
-    """{'module','class','ok','obj'|'error'} — imports the entry module and
-    finds the named attribute (or, for an engine, the sole EquationModule
-    subclass if the guessed name misses)."""
+    """
+    Import a plugin's entry module and find its entry object.
+
+    For an engine whose guessed class name misses, the sole EquationModule
+    subclass in the module is used instead.
+
+    :param man: a normalised manifest
+    :returns: dict with 'module', 'class' and 'ok', plus 'obj' on success or 'error' on failure
+    """
     m = normalise(man)
     ent = m.get("entry", {})
     mod_name, cls_name = ent.get("module", ""), ent.get("class", "")
@@ -208,8 +226,14 @@ def _structural_errors(m: Dict[str, Any]) -> List[str]:
 
 def validate(man: Dict[str, Any], *, name: Optional[str] = None,
              deep: bool = True) -> List[str]:
-    """Problems with `man` as a ValaQuenta plugin; [] = clean.  `deep` also
-    imports the entry module and checks the type contract."""
+    """
+    Check a manifest against the valaquenta.plugin/1 contract.
+
+    :param man: the manifest to check
+    :param name: engine name used to normalise a bare engine manifest
+    :param deep: also import the entry module and check the type contract
+    :returns: the problems found; an empty list means clean
+    """
     m = normalise(man, name=name)
     errs = list(_schema_errors(m))
 
@@ -237,6 +261,18 @@ def validate(man: Dict[str, Any], *, name: Optional[str] = None,
 # ─────────────────────────────────────────────────────────────────────────────
 @dataclass
 class PluginInfo:
+    """
+    A discovered plugin.
+
+    :ivar id: reverse-DNS plugin id
+    :ivar type: 'engine', 'face', 'lens' or 'tab'
+    :ivar name: short plugin name
+    :ivar version: plugin version
+    :ivar path: path of the plugin's manifest
+    :ivar manifest: the normalised manifest
+    :ivar entry: the entry point, {'module', 'class'}
+    :ivar license: SPDX licence identifier
+    """
     id: str
     type: str
     name: str
@@ -250,6 +286,11 @@ class PluginInfo:
 
     @property
     def scaffolded(self) -> bool:
+        """
+        Report whether the manifest was machine-scaffolded and not yet hand-filled.
+
+        :returns: True if the manifest carries `_scaffolded`
+        """
         return bool(self.manifest.get("_scaffolded"))
 
 
@@ -278,8 +319,14 @@ def _scan_dir_of_plugins(root: pathlib.Path, source: str) -> List[PluginInfo]:
 
 
 def discover(paths: Optional[List[str]] = None) -> List[PluginInfo]:
-    """Built-in engines, then examples, then user plugins, then
-    $VALAQUENTA_PLUGIN_PATH / `paths`.  First id wins (built-in beats user)."""
+    """
+    Find plugins: built-in engines, then examples, then user plugins, then $VALAQUENTA_PLUGIN_PATH and `paths`.
+
+    The first id found wins, so a built-in beats a user plugin of the same id.
+
+    :param paths: extra directories to search
+    :returns: the plugins found, in search order
+    """
     found: List[PluginInfo] = []
 
     # built-in engines (modules/<name>/manifest.json) via the engine loader
@@ -315,6 +362,12 @@ def discover(paths: Optional[List[str]] = None) -> List[PluginInfo]:
 
 
 def load(id_or_path: str) -> Optional[PluginInfo]:
+    """
+    Load one plugin by id or by directory.
+
+    :param id_or_path: a plugin id, or a directory containing manifest.json
+    :returns: the plugin, or None if not found
+    """
     p = pathlib.Path(id_or_path).expanduser()
     if p.is_dir() and (p / "manifest.json").is_file():
         return _info_from_manifest(json.loads((p / "manifest.json").read_text()),
@@ -329,6 +382,14 @@ def load(id_or_path: str) -> Optional[PluginInfo]:
 #  upgrade the built-in engine manifests in place
 # ─────────────────────────────────────────────────────────────────────────────
 def upgrade(write: bool = False) -> List[str]:
+    """
+    Rewrite the built-in engine manifests as valaquenta.plugin/1 in canonical key order.
+
+    The guessed entry class is corrected where it does not resolve.
+
+    :param write: write the files; False only reports what would change
+    :returns: one status line per engine
+    """
     out: List[str] = []
     for eng in _mf.available():
         mpath = _VQ / "modules" / eng / _mf.MANIFEST_NAME

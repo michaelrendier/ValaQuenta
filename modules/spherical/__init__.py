@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.spherical
-=====================================
+ValaQuenta.modules.spherical
+============================
 Spherical harmonics and resonant cavity mathematics.
 Mode identification: J_N anti-Möbius period 2π → l=1 → Y₁⁰ → Re(s)=½.
 

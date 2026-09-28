@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.berry_keating.tools
-================================================
+ValaQuenta.modules.berry_keating.tools
+======================================
 BerryKeatingModule — registry contract.
 
 Equations:
@@ -27,7 +27,14 @@ from .maths import (
 
 
 class BerryKeatingModule(EquationModule):
+    """
+    H_NN  Berry-Keating Operator
 
+    H_NN candidate xp operator. d* gap workbench (gap=0.000707). T coordinate
+    map scaffold. Open Problems 2 & 3.
+
+    Registry module for ``berry_keating``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.berry_keating.maths`.
+    """
     @property
     def name(self): return 'berry_keating'
 

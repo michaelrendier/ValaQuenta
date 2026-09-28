@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.tier8_sedenion.maths
-===============================================
+ValaQuenta.modules.tier8_sedenion.maths
+=======================================
 Tier 8 — D-CS: THE SEDENION ENGINE PAPER.
 
 The sedenion engine as a zero-free-parameter prime-hash architecture.
@@ -22,6 +22,7 @@ Version: 0.110 — Third Age: Tier 8 D-CS + Leech divergence-inversion (E-8-6)
 import math
 import cmath
 import numpy as np
+_trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in NumPy 2.0
 from typing import Dict, List, Any, Tuple
 
 # ── Ainulindale constants ──────────────────────────────────────────────────────
@@ -44,18 +45,35 @@ PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,
           73,79,83,89,97,101,103,107,109,113]
 
 def horner_prime_hash(s: str, modulus: int = 10**9 + 7) -> int:
-    """Horner-scheme prime hash: h = Σ ord(c_i) * p_i  mod  modulus."""
+    """
+    Horner-scheme prime hash: h = Σ ord(c_i) * p_i  mod  modulus.
+
+    :param s: string to hash
+    :param modulus: modulus of the hash
+    :returns: the hash, an integer in [0, modulus)
+    """
     h = 0
     for i, c in enumerate(s.lower()):
         h = (h + ord(c) * PRIMES[i % len(PRIMES)]) % modulus
     return h
 
 def hash_to_sigma(h: int, modulus: int = 10**9 + 7) -> float:
-    """Map a hash integer to σ ∈ (0, 1) via h/modulus."""
+    """
+    Map a hash integer to σ ∈ (0, 1) via h/modulus.
+
+    :param h: hash integer
+    :param modulus: the modulus the hash was taken under
+    :returns: σ = h / modulus
+    """
     return h / modulus
 
 def hash_to_sedenion_address(s: str) -> Tuple[float, int]:
-    """Return (σ_address, dimension_index) for a string."""
+    """
+    Return (σ_address, dimension_index) for a string.
+
+    :param s: string to address
+    :returns: (σ_address, dimension_index)
+    """
     h = horner_prime_hash(s)
     sigma = hash_to_sigma(h)
     dim   = int(h % 16)
@@ -64,9 +82,28 @@ def hash_to_sedenion_address(s: str) -> Tuple[float, int]:
 
 # ── Cayley-Dickson multiplication ──────────────────────────────────────────────
 def cd_conj(x):
+    """
+    Return the Cayley-Dickson conjugate: negate every component except e₀.
+
+    :param x: coefficient vector of length 2ⁿ
+    :type x: numpy.ndarray
+    :returns: the conjugate, a new array
+    :rtype: numpy.ndarray
+    """
     c = x.copy(); c[1:] = -c[1:]; return c
 
 def cd_mul(a, b):
+    """
+    Multiply two Cayley-Dickson elements by the doubling rule
+    (a₁, a₂)(b₁, b₂) = (a₁b₁ − conj(b₂)a₂,  b₂a₁ + a₂conj(b₁)).
+
+    :param a: coefficient vector of length 2ⁿ
+    :type a: numpy.ndarray
+    :param b: coefficient vector of the same length
+    :type b: numpy.ndarray
+    :returns: the product, a vector of the same length
+    :rtype: numpy.ndarray
+    """
     n = len(a)
     if n == 1: return np.array([a[0]*b[0]])
     h = n//2
@@ -76,6 +113,16 @@ def cd_mul(a, b):
     return np.concatenate([c1,c2])
 
 def e_k(k, dim=16):
+    """
+    Return the basis element eₖ as a coefficient vector.
+
+    :param k: basis index
+    :type k: int
+    :param dim: algebra dimension
+    :type dim: int
+    :returns: the vector with a 1 at index k and zeros elsewhere
+    :rtype: numpy.ndarray
+    """
     v = np.zeros(dim); v[k] = 1.0; return v
 
 
@@ -693,8 +740,8 @@ def hermite_timing_wheel() -> Dict[str, Any]:
     weight = np.exp(-x_int**2)
     H2 = np.array([eval_hermite(2, x) for x in x_int])
     H3 = np.array([eval_hermite(3, x) for x in x_int])
-    ortho_23 = float(np.trapz(H2 * H3 * weight, x_int))
-    H2_norm  = float(np.trapz(H2**2 * weight, x_int))
+    ortho_23 = float(_trapz(H2 * H3 * weight, x_int))
+    H2_norm  = float(_trapz(H2**2 * weight, x_int))
     H2_expected = 2**2 * math.factorial(2) * math.sqrt(math.pi)  # = 4 × 2 × √π
     ortho_verified = abs(ortho_23) < 0.01 and abs(H2_norm - H2_expected) < 0.1
 

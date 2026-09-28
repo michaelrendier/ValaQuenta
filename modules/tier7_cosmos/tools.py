@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.tier7_cosmos.tools
+ValaQuenta.modules.tier7_cosmos.tools
 Version: 0.110
 """
 from typing import Dict, List, Any
@@ -16,6 +16,16 @@ from .maths import (
 
 
 class Tier7CosmosModule(EquationModule):
+    """
+    Tier 7 — Cosmology + Mathematics + Standard Model from H_RB
+
+    Cosmological + mathematical consequences of Ainulindale. 10 cosmology
+    engines (primes=expansion, galaxy formation, dark matter, NS, BH, ΛCDM, FLT,
+    Leech, GUE). 4 Standard Model engines (E-7-1→E-7-4): SMMIP↔SM, gauge groups
+    from ℂ/ℍ/𝕆, hydrogen spectral CD, Pauli exclusion = FLT + zero-divisors.
+
+    Registry module for ``tier7_cosmos``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.tier7_cosmos.maths`.
+    """
     @property
     def name(self): return 'tier7_cosmos'
     @property

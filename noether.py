@@ -1,18 +1,16 @@
 """
-NoetherCurrents — Forward and Backward, from one symmetry.
+Forward and backward Noether currents from one symmetry.
 
 The same Noether armature generates both:
 
-  Forward current  (Riemann / Red):  what the word IS.
-                                      The attractor. The equator. What settles.
-                                      L_R = ẋ log ẋ − ẋ
+  Forward current  (Riemann / Red):  what the word IS. The attractor, the
+  equator, what settles.  L_R = ẋ log ẋ − ẋ
 
-  Backward current (Fermat  / Blue): what the word CANNOT BE.
-                                      The repulsor. The forbidden zone. What cannot settle.
-                                      L_F = the Frey elliptic Lagrangian
+  Backward current (Fermat / Blue):  what the word CANNOT BE. The repulsor,
+  the forbidden zone, what cannot settle.  L_F = the Frey elliptic Lagrangian
 
-The rotating field (Phase 3 / Yang-Mills) is their interaction.
-The word is where forward and backward agree.
+The rotating field (the third, Yang-Mills phase) is their interaction. The
+word is where forward and backward agree.
 
 Electrons travel one way. Charge travels the other. Same wire.
 """
@@ -42,6 +40,10 @@ class NoetherCurrents:
         The current is the rate of change of the semantic prime.
 
         J_forward = x · ∂L/∂ẋ − L = E (the conserved prime itself)
+
+        :param word: the word whose semantic prime is evolved
+        :param t: evolution time along H = xp
+        :returns: the forward current J_forward = E, the conserved semantic prime
         """
         x0 = abs(word.prime) if word.prime != 0 else 1.0
         p0 = 1.0 / x0 if x0 != 0 else 1.0
@@ -59,6 +61,10 @@ class NoetherCurrents:
         The backward current is the forward current reflected:
         J_backward = −J_forward evaluated at the boundary.
         Where J_forward + J_backward = 0: the equator. The prime.
+
+        :param word: the word whose backward current is taken
+        :param t: evolution time along H = xp
+        :returns: the backward current J_backward = −J_forward at the boundary
         """
         fwd = word.noether_forward if word.noether_forward != 0 else self.forward(word, t)
         current = -fwd
@@ -67,11 +73,15 @@ class NoetherCurrents:
 
     def rotating_field(self, word: SemanticWord) -> float:
         """
-        Phase 3 — the Yang-Mills carrier.
-        The rotating semantic field: the interaction of forward and backward.
-        This is the meaning. Not forward. Not backward. Their rotation.
+        Return the rotating semantic field, the Yang-Mills carrier.
 
-        J_3 = (J_forward − J_backward) / 2
+        The field is the interaction of the forward and backward currents. It is
+        the meaning: not forward, not backward, but their rotation.
+
+            J_3 = (J_forward − J_backward) / 2
+
+        :param word: the word whose two currents are combined
+        :returns: the third-phase current J_3
         """
         fwd = word.noether_forward
         bwd = word.noether_backward
@@ -82,6 +92,9 @@ class NoetherCurrents:
         """
         Where forward and backward agree: the prime.
         J_forward + J_backward + J_3 = 0  (three-phase balance)
+
+        :param word: the word whose three currents are summed
+        :returns: J_forward + J_backward + J_3, which is 0 at the prime (three-phase balance)
         """
         self.forward(word)
         self.backward(word)
@@ -91,27 +104,29 @@ class NoetherCurrents:
 
     def forced_sigma(self, E: float, sigma_0: float = 0.0) -> float:
         """
-        The two currents meet at σ = ½ — from ANY starting position σ₀ and for
-        ANY energy scale E > 0. Not assigned. Derived.
+        Return the σ at which the two currents meet: ½, from ANY σ₀ and ANY E > 0.
 
-        From the right (σ > ½): forward current  F(σ) = e^{-σ·E}
-        From the left  (σ < ½): backward current B(σ) = e^{-(1-σ)·E}
+        σ is derived, never assigned.
 
-        They meet where F(σ) = B(σ). Both currents are strictly positive, so
-        take logs — the balance condition becomes LINEAR:
+        From the right (σ > ½) the forward current is F(σ) = e^{-σ·E}; from the
+        left (σ < ½) the backward current is B(σ) = e^{-(1-σ)·E}. They meet where
+        F(σ) = B(σ). Both are strictly positive, so take logs and the balance
+        condition is LINEAR:
 
             -σE  =  -(1-σ)E     ⟺     E·(1 - 2σ) = 0     ⟺     σ = ½   (E ≠ 0)
 
-        Newton on h(σ) = ln F − ln B = E(1-2σ) has h'(σ) = -2E, so a single
-        step reaches ½ exactly from any real σ₀ (E cancels):
+        Newton on h(σ) = ln F − ln B = E(1-2σ) has h'(σ) = -2E, so one step
+        reaches ½ exactly from any real σ₀ (E cancels):
 
             σ ← σ - h(σ)/h'(σ) = σ + (1 - 2σ)/2 = ½
 
-        No exponential is evaluated away from the balance point, so — unlike
-        the previous softmax-weighted-average iteration — there is no overflow
-        for σ₀ < 0 and no spurious early exit for large E. That old scheme and
-        both of its failure modes are documented in
-        `notebooks/engines/03_noether.ipynb`.
+        No exponential is evaluated away from the balance point, so there is no
+        overflow for σ₀ < 0 and no early exit for large E. E = 0 makes F ≡ B ≡ 1:
+        the currents balance everywhere and the symmetric meeting point is ½.
+
+        :param E: energy scale; any real value, 0 included
+        :param sigma_0: starting position of σ; any real value
+        :returns: 0.5, exactly
         """
         if E == 0.0:
             # F ≡ B ≡ 1 for every σ: the currents are balanced everywhere, and

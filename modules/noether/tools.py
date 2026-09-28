@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.noether.tools
-==========================================
+ValaQuenta.modules.noether.tools
+================================
 NoetherModule — registry contract implementation.
 
 Equations:
@@ -26,7 +26,16 @@ from .maths import (
 
 
 class NoetherModule(EquationModule):
+    """
+    Noether Currents  ∂_μJ^μ = 0
 
+    Emmy Noether theorem applied to L_NN. Symmetry → conserved current.
+    Violation = |∂_μJ^μ| — the training diagnostic with no GD analog. Blockchain
+    ledger records every violation event. Resonance artifact detection
+    identifies boundary oscillations.
+
+    Registry module for ``noether``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.noether.maths`.
+    """
     @property
     def name(self): return 'noether'
 

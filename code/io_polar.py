@@ -1,3 +1,8 @@
+"""
+J_N polar operator and the (I|O) zeta on the critical line.
+
+Compares ζ(½+it) with ζ applied after J_N (input side) and J_N applied after ζ (output side), with the plots.
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -12,11 +17,22 @@ ALPHA = 1/137.035999084
 
 # ── J_N operator ─────────────────────────────────────────────────────────
 def J_N(r, theta):
-    """J_N: (r,θ) → (1/r, θ+π/2)"""
+    """
+    J_N: (r,θ) → (1/r, θ+π/2)
+
+    :param r: radius; must be nonzero
+    :param theta: angle in radians
+    :returns: (1/r, (θ + π/2) mod 2π)
+    """
     return 1.0/r, (theta + PI/2) % (2*PI)
 
 def J_N_complex(z):
-    """Apply J_N to complex number z = r·e^(iθ)"""
+    """
+    Apply J_N to complex number z = r·e^(iθ)
+
+    :param z: complex number r·e^(iθ)
+    :returns: J_N(z) as a complex number
+    """
     if abs(z) == 0: return None
     r = abs(z); theta = np.angle(z)
     r2, t2 = J_N(r, theta)
@@ -24,6 +40,12 @@ def J_N_complex(z):
 
 # ── Zeta on critical line ─────────────────────────────────────────────────
 def zeta_std(t):
+    """
+    Return ζ(½ + it) on the critical line.
+
+    :param t: height
+    :returns: the value
+    """
     return complex(mpmath.zeta(0.5 + 1j*t))
 
 # ── (I|O) Zeta: apply J_N to INPUT before evaluating ──────────────────────
@@ -31,7 +53,12 @@ def zeta_std(t):
 # J_N(1/2 + it): r = sqrt(1/4 + t^2), θ = arctan(2t)
 # J_N maps this to (1/r, θ+π/2)
 def io_input(t):
-    """Compute J_N applied to s = 1/2 + it"""
+    """
+    Compute J_N applied to s = 1/2 + it
+
+    :param t: height
+    :returns: J_N applied to s = ½ + it
+    """
     s = 0.5 + 1j*t
     r = abs(s)
     theta = np.angle(s)
@@ -39,13 +66,23 @@ def io_input(t):
     return r2 * np.exp(1j * t2)
 
 def zeta_io_input(t):
-    """ζ(J_N(1/2+it)) — J_N applied to input"""
+    """
+    ζ(J_N(1/2+it)) — J_N applied to input
+
+    :param t: height
+    :returns: ζ(J_N(½ + it))
+    """
     s2 = io_input(t)
     return complex(mpmath.zeta(s2))
 
 # ── (I|O) Zeta: apply J_N to OUTPUT ───────────────────────────────────────
 def zeta_io_output(t):
-    """J_N(ζ(1/2+it)) — J_N applied to output"""
+    """
+    J_N(ζ(1/2+it)) — J_N applied to output
+
+    :param t: height
+    :returns: J_N(ζ(½ + it))
+    """
     z = zeta_std(t)
     if abs(z) < 1e-15: return 0+0j
     return J_N_complex(z)

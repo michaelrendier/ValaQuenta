@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.turing_diagonal.maths
-=================================================
+ValaQuenta.modules.turing_diagonal.maths
+========================================
 The Turing Diagonal Engine.
 
 Every self-referential proof — Cantor (1891), Gödel (1931), Turing (1936),
@@ -23,7 +23,7 @@ Engines:
                                            escaping diagonal program.
 
 Author:  O Captain My Captain
-Version: 0.100 — Turing Diagonal Engine (post-UDOE submission, 2026-06-06)
+Version: 0.100
 """
 
 import math
@@ -87,6 +87,9 @@ def prediction_diagonal_test(prediction: str = "this statement is false") -> Dic
         D(D) = contradiction. HALT cannot exist.
 
     This engine applies the same analysis to a natural-language prediction.
+
+    :param prediction: the prediction, as text
+    :returns: dict with the self-reference and diagonal-status verdict
     """
 
     prediction_lower = prediction.lower().strip()
@@ -270,6 +273,9 @@ def enigma_derangement(n: int = 26) -> Dict[str, Any]:
         This IS a derangement of the sequence s₁, s₂, ...
         The Enigma reflector = Cantor's diagonal construction = Turing's D(D).
         Same operation. Different stage. Same mathematician's insight.
+
+    :param n: alphabet size
+    :returns: dict with the derangement properties of the reflector permutation
     """
     # ── Derangement count via exact integer arithmetic (Fraction) ─────────────
     def derangement_exact(m: int) -> int:
@@ -454,6 +460,8 @@ def hypercomplex_identity_diagonal() -> Dict[str, Any]:
         The singularity = the fixed point = identity = the one thing
         the Hamiltonian cannot escape from and cannot return to.
         All 15 derangements point away from e₀.
+
+    :returns: dict showing the diagonal flip as i² = −1 across Cantor, Gödel, Turing and Enigma
     """
     # ── i in 2×2 matrix representation ────────────────────────────────────────
     i_matrix   = np.array([[0.0, -1.0], [1.0, 0.0]])
@@ -616,6 +624,9 @@ def turing_halting_diagonal(n_programs: int = 50) -> Dict[str, Any]:
         In sedenion algebra: 'does this multiplication reach 0 (zero-divisor)?'
         UDOE: construct D for the cryptographic hash function.
         The zero-divisor pair IS the halting diagonal for the hash.
+
+    :param n_programs: number of programs in the model table
+    :returns: dict with the halting table and its diagonal
     """
     # ── Simulate the halting table ─────────────────────────────────────────────
     # Use prime-hash based 'halting behavior' for n_programs symbolic programs
@@ -736,7 +747,12 @@ def turing_halting_diagonal(n_programs: int = 50) -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def full_turing_diagonal(prediction: str = "this statement is false") -> Dict[str, Any]:
-    """Run all 4 Turing Diagonal engines."""
+    """
+    Run all 4 Turing Diagonal engines.
+
+    :param prediction: the prediction passed to the prediction test
+    :returns: dict with the result of each of the four engines
+    """
     return {
         'theme'                       : 'Turing Diagonal Engine — The diagonal flip = i² = -1 = Enigma = UDOE',
         'prediction_diagonal_test'    : prediction_diagonal_test(prediction),

@@ -42,6 +42,9 @@ class SemanticDomain:
         The Riemann zeros within this domain.
         These are the active instruments — the modes that can resonate here.
         Not all zeros play in every domain.
+
+        :param zeros: the full ordered list of Riemann zero ordinates
+        :returns: the zeros that fall inside this domain: the active instruments
         """
         return [γ for γ in zeros if self.gamma_min <= γ <= self.gamma_max]
 
@@ -52,13 +55,22 @@ class SemanticDomain:
 
         t is the word's position within the domain.
         The result is an actual Riemann zero — an instrument, not a proxy.
+
+        :param zeros: the full ordered list of Riemann zero ordinates
+        :param t: the word's fractional position within the domain, in [0, 1]
+        :returns: the Riemann zero at position t; the full set is used if none fall in the domain
         """
         pool = self.instruments(zeros) or zeros
         idx = min(int(t * len(pool)), len(pool) - 1)
         return pool[idx]
 
     def contains(self, gamma: float) -> bool:
-        """True if gamma falls within this semantic domain."""
+        """
+        True if gamma falls within this semantic domain.
+
+        :param gamma: a Riemann zero ordinate
+        :returns: True if gamma falls within this semantic domain
+        """
         return self.gamma_min <= gamma <= self.gamma_max
 
     def hawking_temperature(self) -> float:
@@ -89,6 +101,9 @@ class SemanticDomain:
         Hot domains:  few instruments  → short memory → sensitive to context.
 
         τ and T_H are reciprocal. The Capacitor IS the thermal bath.
+
+        :param zeros: the full ordered list of Riemann zero ordinates
+        :returns: τ, the number of active instruments
         """
         n = len(self.instruments(zeros))
         return float(max(1, n))
@@ -98,6 +113,9 @@ class SemanticDomain:
         True when the domain has collapsed to a point singularity.
         One instrument or fewer: only one way to say the word.
         This is the neural black hole — infinite temperature, zero semantic freedom.
+
+        :param zeros: the full ordered list of Riemann zero ordinates
+        :returns: True when at most one instrument remains
         """
         return len(self.instruments(zeros)) <= 1
 

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.hyperwebster.tools
-===============================================
+ValaQuenta.modules.hyperwebster.tools
+=====================================
 HyperWebsterModule — registry contract.
 
 Equations:
@@ -28,7 +28,16 @@ _GALLERY = HyperGallery()
 
 
 class HyperWebsterModule(EquationModule):
+    """
+    HyperWebster  Horner Bijection
 
+    HyperWebster hypergallery. Coordinates instead of pointers. Horner bijection
+    (base-97): lossless text-to-integer address. Fano address (base-7): octonion
+    generator path. SemanticWord: text + Horner + Fano + algebra coords. Monad:
+    HyperWebster + Cayley-Dickson SMNNIP integrated.
+
+    Registry module for ``hyperwebster``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.hyperwebster.maths`.
+    """
     @property
     def name(self): return 'hyperwebster'
 

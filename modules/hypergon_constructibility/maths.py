@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.hypergon_constructibility.maths
-=============================================================
+ValaQuenta.modules.hypergon_constructibility.maths
+==================================================
 The factorization engine, built purely: which sedenion basis positions
 (hyper-N-gons, N=1..16) are geometrically constructible, and whether
 zero-divisor/nilpotency structure actually distinguishes real factor
@@ -55,20 +55,39 @@ KNOWN_FERMAT_PRIMES = {3, 5, 17, 257, 65537}  # only 5 ever known to exist
 # ── Part 1: Gauss-Wantzel constructibility ──────────────────────────────────
 
 def is_fermat_prime(p: int) -> bool:
-    """p is a known Fermat prime (2^(2^n)+1). Whether more exist beyond
-    the 5 known is a genuine open problem in number theory -- this checks
-    against the known set, not a generative test."""
+    """
+    Report whether p is a known Fermat prime, 2^(2^n)+1.
+
+    Whether more exist beyond the five known is a genuine open problem in
+    number theory. This checks against the known set; it is not a generative
+    test.
+
+    :param p: integer to test
+    :returns: True if p is one of the known Fermat primes
+    """
     return p in KNOWN_FERMAT_PRIMES
 
 
 def is_power_of_two(n: int) -> bool:
+    """
+    Report whether n is a positive power of two.
+
+    :param n: integer to test
+    :returns: True if n = 2^k for some k ≥ 0
+    """
     return n > 0 and (n & (n - 1)) == 0
 
 
 def is_constructible(n: int) -> bool:
-    """Gauss-Wantzel: True iff n is expressible as 2^k times a product of
-    DISTINCT Fermat primes (k>=0). For a single prime p specifically, this
-    reduces to: p==2, or p is itself a Fermat prime."""
+    """
+    Gauss-Wantzel: report whether the regular n-gon is constructible.
+
+    True iff n is 2^k times a product of DISTINCT Fermat primes (k ≥ 0). For a
+    single prime p this reduces to: p == 2, or p is itself a Fermat prime.
+
+    :param n: number of sides
+    :returns: True if the regular n-gon is constructible
+    """
     if is_power_of_two(n):
         return True
     if is_fermat_prime(n):
@@ -128,12 +147,17 @@ from ..t32_nilpotency.maths import (
 
 
 def verify_nilpotent_split_conjecture(seed: int = 20260711) -> Dict[str, Any]:
-    """Re-test Phase 22's corrected factorization conjecture (individual
+    """
+    Re-test Phase 22's corrected factorization conjecture (individual
     p, q nilpotency, not the earlier Fermat-midpoint a,b) against THREE
     datasets: close real factor pairs, far-apart real factor pairs, and a
     random-pair control (primes not necessarily factors of any common N).
     HONEST result computed here, not assumed from the prior session's
-    narrower test."""
+    narrower test.
+
+    :param seed: random seed for the control pairs
+    :returns: nilpotency rates for the close, far-apart and random-control datasets, and the verdict
+    """
     import random
     primes = sieve(10000)
 

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.sigma_expansion.tools
-==================================================
+ValaQuenta.modules.sigma_expansion.tools
+========================================
 SigmaExpansionModule — registry contract.
 
 Equations:
@@ -21,7 +21,18 @@ from .maths import (
 
 
 class SigmaExpansionModule(EquationModule):
+    """
+    Sigma Expansion — J_red/J_blue Balance Curve
 
+    Closed-form Taylor expansion of
+    P_red(sigma)=|J_red|^2/(|J_red|^2+|J_blue|^2) around sigma=1/2. c1, c3
+    derived (not fitted) from Dirichlet-projection moments. Verified to ~1e-6
+    near sigma=1/2 against direct computation. Raw |J_red|^2+|J_blue|^2 is NOT
+    constant across sigma -- minimum at 1/2, not a flat quantum-probability-
+    style conservation.
+
+    Registry module for ``sigma_expansion``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.sigma_expansion.maths`.
+    """
     @property
     def name(self): return 'sigma_expansion'
 

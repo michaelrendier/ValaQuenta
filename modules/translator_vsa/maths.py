@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_vsa.maths
-=================================================
+ValaQuenta.modules.translator_vsa.maths
+=======================================
 The Translator, VERSION 2 of 2 — Vector-Symbolic Architecture /
 Hyperdimensional Computing (VSA / HDC). Mathematics.
 
@@ -57,6 +57,10 @@ def permute(v: Sequence[float], shift: int = 1) -> List[float]:
     """
     Permute (P): cyclic shift. Orthogonal, invertible, and it is what
     encodes position/sequence. P^D = identity.
+
+    :param v: the vector
+    :param shift: cyclic shift
+    :returns: the shifted vector
     """
     d = len(v)
     if d == 0:
@@ -75,6 +79,11 @@ def bind(a: Sequence[float], b: Sequence[float]) -> List[float]:
     document explicitly rules out ("Pairs role-filler concepts
     non-commutatively"). Permuting the left operand first breaks the
     symmetry: P(a).b != P(b).a in general.
+
+    :param a: role vector
+    :param b: filler vector, of the same length
+    :returns: P(a)·b, elementwise
+    :raises ValueError: the vectors differ in length
     """
     if len(a) != len(b):
         raise ValueError(f"bind: dimension mismatch {len(a)} vs {len(b)}")
@@ -109,6 +118,9 @@ def role_vector(role_name: str) -> List[float]:
     """
     A role's hypervector is the prime-channel expansion of its own name.
     Deterministic and inspectable — no seed, no draw.
+
+    :param role_name: the role's name
+    :returns: the prime-channel expansion of the name
     """
     return hypervector(role_name)
 
@@ -126,6 +138,10 @@ def fold_to_channels(v: Sequence[float]) -> List[float]:
     built the vector — the natural map back, not a chosen readout.
     Needed so this engine's compose() lands in the SAME 16-dim space as
     the DisCoCat engine's, which is what makes the two combinable.
+
+    :param v: a 4096-dim hypervector
+    :returns: the 16 channel sums s_k
+    :raises ValueError: v is not of length 4096
     """
     if len(v) != D_HYPER:
         raise ValueError(f"fold_to_channels: expected {D_HYPER}, got {len(v)}")
@@ -153,15 +169,32 @@ class VSATranslator(TranslatorEngine):
 
     @property
     def version_name(self) -> str:
+        """
+        Return the engine's version name.
+
+        :returns: 'vsa'
+        """
         return 'vsa'
 
     def encode(self, token: str) -> List[float]:
-        """Filler hypervector — full 4096-dim."""
+        """
+        Filler hypervector — full 4096-dim.
+
+        :param token: the token
+        :returns: the filler hypervector, 4096-dim
+        """
         return hypervector(token)
 
     def sentence_hypervector(self, subject: str, verb: str,
                              obj: str) -> List[float]:
-        """The 4096-dim bound-and-bundled sentence, before folding."""
+        """
+        The 4096-dim bound-and-bundled sentence, before folding.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: the 4096-dim bound-and-bundled sentence
+        """
         return bundle(
             bind(self.roles['ROLE_SUBJECT'], self.encode(subject)),
             bind(self.roles['ROLE_VERB'],    self.encode(verb)),
@@ -169,9 +202,25 @@ class VSATranslator(TranslatorEngine):
         )
 
     def compose(self, subject: str, verb: str, obj: str) -> List[float]:
+        """
+        Compose a sentence and fold it into the 16-dim space S.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: the folded sentence vector
+        """
         return fold_to_channels(self.sentence_hypervector(subject, verb, obj))
 
     def explain(self, subject: str, verb: str, obj: str) -> Dict[str, Any]:
+        """
+        Trace a composition.
+
+        :param subject: subject token
+        :param verb: verb token
+        :param obj: object token
+        :returns: dict with the tokens, the sentence hypervector and the folded vector
+        """
         hv = self.sentence_hypervector(subject, verb, obj)
         folded = fold_to_channels(hv)
         return {
@@ -194,6 +243,10 @@ def verify_vsa_identities(tokens: Sequence[str] = ('dog', 'bites', 'man'),
       2. permutation preserves norm:       |P(a)| == |a|
       3. bind is NON-commutative:          a (x) b != b (x) a
       4. bind distributes over bundle:     a (x) (b+c) == (a (x) b)+(a (x) c)
+
+    :param tokens: three tokens to test the identities on
+    :param tol: tolerance
+    :returns: dict with the result of each identity
     """
     a, b, c = (hypervector(t) for t in tokens)
     inv = permute(permute(a), -1)
@@ -229,6 +282,9 @@ def capacity_probe(tokens: Sequence[str]) -> Dict[str, Any]:
     together and bundling will not be recoverable. That is a REAL RESULT
     about deriving hypervectors instead of drawing them. It must be
     reported as such — not repaired by switching to a PRNG.
+
+    :param tokens: distinct tokens to compare pairwise
+    :returns: dict with the distribution of pairwise cosines
     """
     vs = {t: hypervector(t) for t in tokens}
     pairs = []
@@ -262,6 +318,11 @@ def unbind_probe(subject: str = 'dog', verb: str = 'bites',
     Uses only cosine — no learned readout, no threshold.
 
     Reports per-role rank. Failure is retained and reported.
+
+    :param subject: subject token
+    :param verb: verb token
+    :param obj: object token
+    :returns: dict with the rank of the correct filler for each role
     """
     eng = VSATranslator()
     sent = eng.sentence_hypervector(subject, verb, obj)

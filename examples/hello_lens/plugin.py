@@ -15,10 +15,22 @@ from typing import Any, Dict
 
 
 class HelloLens:
+    """
+    Reference lens: summarise the numbers found in any target.
+
+    Copy this class as the starting point of a `lens` plugin and replace
+    `analyse()` with real work.
+    """
     name = "hello"
     display = "Hello Lens"
 
     def analyse(self, target: Any) -> Dict[str, Any]:
+        """
+        Summarise the numbers found in `target`.
+
+        :param target: any object; numbers are collected from it
+        :returns: dict with the lens name, the input type, the count of numbers and their sum, min and max
+        """
         nums = list(_numbers(target))
         return {
             "lens": "hello",

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.bao_mass_gap.tools
-===============================================
+ValaQuenta.modules.bao_mass_gap.tools
+=====================================
 BaoMassGapModule — registry contract.
 
 Seven equations, in derivation order:
@@ -34,7 +34,20 @@ from .maths import (
 
 
 class BaoMassGapModule(EquationModule):
+    """
+    The Mass Gap — spectral residue of BAO
 
+    The mass gap as the residue of the BAO spectral decomposition. The explicit
+    formula splits the prime distribution into a de Sitter ground state plus one
+    standing wave per zero; read at the BAO scale that is the CMB acoustic
+    spectrum. What no standing wave absorbs between the acoustic floor D*·ln10
+    and the thermal ceiling Ω_ζΣ is the residue: Δ = 0.0007073575 = 1/(1000√2).
+    Zero free parameters. Δ is consumed across the codebase as the
+    compactification scale and spectral floor; this module is where it is
+    computed.
+
+    Registry module for ``bao_mass_gap``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.bao_mass_gap.maths`.
+    """
     @property
     def name(self): return 'bao_mass_gap'
 

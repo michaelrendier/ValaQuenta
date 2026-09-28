@@ -76,7 +76,12 @@ L_PLANCK       = 1.616255e-35        # Planck length (m)
 
 # Time compression at distance eps above M87* horizon (infalling)
 def m87_compression(eps_m: float) -> float:
-    """Gravitational time dilation factor at eps metres above M87* horizon."""
+    """
+    Gravitational time dilation factor at eps metres above M87* horizon.
+
+    :param eps_m: height above the M87* horizon, in metres
+    :returns: the gravitational time-dilation factor R_s / eps
+    """
     return M87_RS_M / eps_m
 
 # Distance to see exactly N universe lifetimes in T_watch seconds
@@ -88,6 +93,18 @@ YR_TO_S         = 3.156e7            # seconds per year
 
 @dataclass
 class BellPhase:
+    """
+    One phase of the jellyfish bell.
+
+    :ivar name: phase label
+    :ivar half_angle: bell half-angle, in radians
+    :ivar sigma: σ of the phase
+    :ivar k: CD tower level
+    :ivar m_arm: number of arms (1 = bar, 2 = two-arm)
+    :ivar resonance: Lindblad resonance, 'ILR' or 'OLR'
+    :ivar omega_ratio: Ω_p / Ω for a flat rotation curve
+    :ivar zd_state: 'contracted' or 'expanded'
+    """
     name:        str
     half_angle:  float   # radians
     sigma:       float
@@ -100,6 +117,16 @@ class BellPhase:
 
 @dataclass
 class GalaxyType:
+    """
+    A galaxy class in the bell picture.
+
+    :ivar name: class label
+    :ivar zd_state: 'active' or 'completed'
+    :ivar bell_phase: 'mid-stroke', 'contracted', 'expanded' or 'dissolved'
+    :ivar inner_slope: stellar-density power law at small r
+    :ivar dm_identity: True if the stars ARE their dark-matter halo
+    :ivar description: one-line description
+    """
     name:        str
     zd_state:    str     # 'active' or 'completed'
     bell_phase:  str     # 'mid-stroke' | 'contracted' | 'expanded' | 'dissolved'
@@ -110,6 +137,15 @@ class GalaxyType:
 
 @dataclass
 class LindbladMode:
+    """
+    A Lindblad resonance mode.
+
+    :ivar m: number of arms
+    :ivar resonance: 'ILR' or 'OLR'
+    :ivar omega_ratio: Ω_p / Ω
+    :ivar angle_form: symbolic expression in THE ANGLE
+    :ivar silver_form: symbolic expression in the silver ratio
+    """
     m:           int     # number of arms
     resonance:   str     # 'ILR' or 'OLR'
     omega_ratio: float   # Ω_p / Ω
@@ -119,6 +155,17 @@ class LindbladMode:
 
 @dataclass
 class BaoTowerMapping:
+    """
+    BAO shells mapped onto the CD tower.
+
+    :ivar bao_mpc: BAO scale, in Mpc
+    :ivar bao_ly: BAO scale, in light-years
+    :ivar bao_watch_s: BAO crossing time in watch-seconds, at 2.648 mm from the M87* horizon
+    :ivar n_bao_total: BAO shells in the observable universe
+    :ivar n_bao_60s: BAO shells crossed in 60 watch-seconds
+    :ivar cd_levels: CD tower levels, k = 0..8, so 9
+    :ivar bao_per_level: BAO shells per CD level
+    """
     bao_mpc:     float
     bao_ly:      float
     bao_watch_s: float   # at 2.648mm from M87* horizon
@@ -130,6 +177,16 @@ class BaoTowerMapping:
 
 @dataclass
 class ResonanceCoupling:
+    """
+    The coupling between the spiral and the halo.
+
+    :ivar spiral_freq: spiral frequency, symbolic
+    :ivar halo_freq: halo frequency, symbolic
+    :ivar coupling_node: sedenion element(s) at the coupling
+    :ivar direction_source: where the thrust direction comes from
+    :ivar thrust_direction: the thrust direction
+    :ivar medium: the coupling medium
+    """
     spiral_freq:     str   # symbolic
     halo_freq:       str   # symbolic
     coupling_node:   str   # sedenion element(s)
@@ -353,11 +410,14 @@ def stellar_halo_profile_comparison() -> Dict:
 
 def bao_tower_mapping(compression_factor: float = None) -> BaoTowerMapping:
     """
-    BAO shells as physical manifestation of CD tower levels.
+    Return the BAO shells as the physical manifestation of the CD tower levels.
 
-    At 2.648mm from M87* horizon: 1 galaxy rotation = 1 watch-second.
-    Each BAO crossing = 2.13 watch-seconds = one CD-level step.
-    60 watch-seconds = 13.8 billion years = age of universe.
+    At 2.648 mm from the M87* horizon, 1 galaxy rotation = 1 watch-second.
+    Each BAO crossing = 2.13 watch-seconds = one CD-level step, and 60
+    watch-seconds = 13.8 billion years = the age of the universe.
+
+    :param compression_factor: time-compression factor; None uses m87_compression(2.648 mm)
+    :returns: the mapping
     """
     if compression_factor is None:
         eps_m = 2.648e-3
@@ -606,6 +666,11 @@ def predictions() -> List[Dict]:
 # ── Run all ───────────────────────────────────────────────────────────────────
 
 def run_all() -> Dict:
+    """
+    Run the swimming engine and score every prediction.
+
+    :returns: the engine dict with 'predictions', 'confirmed', 'total_predictions' and 'score' ("confirmed/total") added
+    """
     engine = the_swimming_engine()
     preds  = predictions()
 

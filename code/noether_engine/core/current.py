@@ -50,7 +50,12 @@ class Current:
     xi_mu_L: Optional[Tuple[sp.Expr, ...]] = None
 
     def divergence(self, L: Lagrangian) -> sp.Expr:
-        """Compute ∂_μ J^μ."""
+        """
+        Compute ∂_μ J^μ.
+
+        :param L: the Lagrangian
+        :returns: ∂_μ J^μ
+        """
         div = sp.Integer(0)
         for mu, Jmu in enumerate(self.components):
             div += sp.diff(Jmu, L.coords[mu])
@@ -67,6 +72,11 @@ class Current:
         )
 
     def as_dict(self) -> Dict[str, sp.Expr]:
+        """
+        Return the components keyed by index.
+
+        :returns: {'J^0': …, 'J^1': …, …}
+        """
         return {f"J^{mu}": c for mu, c in enumerate(self.components)}
 
     def __repr__(self) -> str:
@@ -115,6 +125,11 @@ def derive_canonical_current(
 
     The result is a Current object; its conservation ∂_μ J^μ = 0 on-shell
     must be verified separately by theorems/first_theorem.
+
+    :param L: the Lagrangian
+    :param S: the symmetry
+    :param convention: 'vertical', or 'total' to add ξ^μ ℒ
+    :returns: the Noether current
     """
     n_coords = len(L.coords)
     components: List[sp.Expr] = []

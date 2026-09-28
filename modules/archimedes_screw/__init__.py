@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.archimedes_screw
-==============================================
+ValaQuenta.modules.archimedes_screw
+===================================
 The Archimedes Screw -- Prime Coordinate Engine
 
 0_RB is the water. The screw is the logarithm: the machine that turns

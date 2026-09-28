@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.emerger.maths
-==========================================
+ValaQuenta.modules.emerger.maths
+================================
 THE EMERGER -- Sedenion Bracketing & Firing Order.
 
     "the grouping of what sedenion operators creates what different domains
@@ -65,20 +65,46 @@ Vec = Tuple[F, ...]
 # ======================================================================
 
 def zero_vec(dim: int = SEDENION_DIM) -> Vec:
+    """
+    Return the zero vector of the given dimension, as Fractions.
+
+    :param dim: dimension
+    :returns: a tuple of dim zeros
+    """
     return tuple(F(0) for _ in range(dim))
 
 
 def basis(k: int, dim: int = SEDENION_DIM) -> Vec:
+    """
+    Return the basis vector eₖ, as Fractions.
+
+    :param k: basis index
+    :param dim: dimension
+    :returns: a tuple with a 1 at index k
+    """
     v = [F(0)] * dim
     v[k] = F(1)
     return tuple(v)
 
 
 def cd_conj(x: Sequence[F]) -> Vec:
+    """
+    Return the Cayley-Dickson conjugate: negate every component except e₀.
+
+    :param x: coefficient vector
+    :returns: the conjugate
+    """
     return (x[0],) + tuple(-c for c in x[1:])
 
 
 def cd_mul(a: Sequence[F], b: Sequence[F]) -> Vec:
+    """
+    Multiply two Cayley-Dickson elements exactly, over Fractions.
+
+    :param a: coefficient vector
+    :param b: coefficient vector of the same length
+    :returns: the product a·b
+    """
     n = len(a)
     if n == 1:
         return (a[0] * b[0],)
@@ -95,8 +121,14 @@ def _sub(u, v): return tuple(x - y for x, y in zip(u, v))
 
 
 def coerce_vec(v, dim: int = SEDENION_DIM) -> Vec:
-    """Accept a length-dim sequence of numbers, or a name like 'e1+e10',
-    'e0', '2*e3-e11', '1.5+e2'.  Returns a tuple of Fraction."""
+    """
+    Accept a length-dim sequence of numbers, or a name like 'e1+e10',
+    'e0', '2*e3-e11', '1.5+e2'.  Returns a tuple of Fraction.
+
+    :param v: a length-dim sequence of numbers, or a name such as 'e1+e10', 'e0', '2*e3-e11' or '1.5+e2'
+    :param dim: dimension
+    :returns: the vector as a tuple of Fraction
+    """
     if isinstance(v, str):
         acc = [F(0)] * dim
         for tok in v.replace(" ", "").replace("-", "+-").split("+"):
@@ -116,18 +148,34 @@ def coerce_vec(v, dim: int = SEDENION_DIM) -> Vec:
 
 
 def norm_sq(x: Sequence[F]) -> F:
+    """
+    Return the exact squared norm of a vector.
+
+    :param x: coefficient vector
+    :returns: Σ xₖ², as a Fraction
+    """
     return sum((c * c for c in x), F(0))
 
 
 def left_matrix(a: Sequence[F]) -> List[List[F]]:
-    """L_a with  L_a . x == cd_mul(a, x).  Columns = a * e_k."""
+    """
+    L_a with  L_a . x == cd_mul(a, x).  Columns = a * e_k.
+
+    :param a: coefficient vector
+    :returns: the matrix L_a as rows of Fractions
+    """
     dim = len(a)
     cols = [cd_mul(a, basis(k, dim)) for k in range(dim)]
     return [[cols[k][r] for k in range(dim)] for r in range(dim)]
 
 
 def mat_rank(M: List[List[F]]) -> int:
-    """Exact rank by Gaussian elimination over Fraction."""
+    """
+    Exact rank by Gaussian elimination over Fraction.
+
+    :param M: matrix as rows of Fractions
+    :returns: the rank
+    """
     M = [row[:] for row in M]
     rows, cols = len(M), len(M[0])
     r = 0
@@ -149,7 +197,12 @@ def mat_rank(M: List[List[F]]) -> int:
 
 
 def is_zero_divisor(x: Sequence[F]) -> bool:
-    """x != 0 has a partner y != 0 with x*y = 0  <=>  L_x is rank-deficient."""
+    """
+    x != 0 has a partner y != 0 with x*y = 0  <=>  L_x is rank-deficient.
+
+    :param x: coefficient vector
+    :returns: True if x has a nonzero partner y with x·y = 0
+    """
     if all(c == 0 for c in x):
         return False
     return mat_rank(left_matrix(x)) < len(x)
@@ -168,6 +221,9 @@ def on_zd_equator(x: Sequence[F]) -> bool:
     set of the J_red <-> J_blue hemisphere swap -- the balance equator the
     zero divisors sit on.  (Sufficient for the basis assessor pairs; the
     exact locus is box_kite's 42 assessors -- G_2 is the blow-up.)
+
+    :param x: coefficient vector
+    :returns: True if x is purely imaginary and norm-balanced across the CD-double boundary
     """
     h = len(x) // 2
     a, b = x[:h], x[h:]
@@ -188,6 +244,9 @@ def sigma_rb(x: Sequence[F]) -> Dict[str, object]:
     T1 (Oblique-Gear): s[k^4] = conj s[k]  =>  Sigma_axis = 0 identically.
     tilt = Perfect Perturbation (Scale);  axis = Perfect Turbulent Flow.
     Sigma_tilt = 0  <=>  sigma = 1/2.
+
+    :param x: coefficient vector
+    :returns: dict with ψ, the tilt and axis series and Sigma_tilt
     """
     dim = len(x)
 
@@ -216,6 +275,9 @@ def firing_phase(sigma_tilt: F) -> Tuple[int, int]:
     (gcd(12,5)=1 so the 12-phase clock cycles all five brackets).
         s = St / (1 + |St|)  in (-1, 1) ;  u = (s+1)/2 in (0,1)
         step12 = floor(12 u) ;  entry bracket = step12 mod 5
+
+    :param sigma_tilt: Σ_tilt of the vector
+    :returns: (step12, entry_bracket)
     """
     a = sigma_tilt if sigma_tilt >= 0 else -sigma_tilt
     s = sigma_tilt / (1 + a)
@@ -264,7 +326,13 @@ BRACKET_ROLE = {
 
 
 def domain_of(group: FrozenSet[int], dim: int = SEDENION_DIM) -> str:
-    """Classify span({e_0} u group): C / H / O / FRAGMENT (by closure)."""
+    """
+    Classify span({e_0} u group): C / H / O / FRAGMENT (by closure).
+
+    :param group: imaginary indices forming the group
+    :param dim: dimension
+    :returns: 'C', 'H', 'O' or 'FRAGMENT', by closure of span({e₀} ∪ group)
+    """
     idx = sorted(group)
     n = len(idx)
     if n == 0:
@@ -295,7 +363,12 @@ GAIN_LABEL = {0: "annihilator (gain 0)", 1: "unit (gain 1, NOW)",
 
 
 def gain_class(x: Sequence[F]) -> str:
-    """Dominant {4:8:4} block by norm.  G0={4..7}, G1={1,2,3,8..11}, Gr2={12..15}."""
+    """
+    Dominant {4:8:4} block by norm.  G0={4..7}, G1={1,2,3,8..11}, Gr2={12..15}.
+
+    :param x: coefficient vector
+    :returns: the dominant {4:8:4} block: 'G0', 'G1' or 'Gr2'
+    """
     g0 = sum((x[i] * x[i] for i in (4, 5, 6, 7)), F(0))
     g1 = sum((x[i] * x[i] for i in (1, 2, 3, 8, 9, 10, 11)), F(0))
     g2 = sum((x[i] * x[i] for i in (12, 13, 14, 15)), F(0))
@@ -331,6 +404,13 @@ def legal_orders() -> List[List[str]]:
 
 
 def firing_order(x: Sequence[F], mode: str = "sigma_rb") -> Dict[str, object]:
+    """
+    Return the order in which the five brackets fire for a vector.
+
+    :param x: coefficient vector or name
+    :param mode: 'sigma_rb' to phase the order by Σ_tilt, anything else for the canonical order
+    :returns: dict with Σ_tilt, the phase, the entry bracket and the order
+    """
     x = coerce_vec(x)
     sig = sigma_rb(x)
     step12, entry = firing_phase(sig["Sigma_tilt"])
@@ -358,6 +438,10 @@ def emerge(x: Sequence[F], mode: str = "sigma_rb") -> Dict[str, object]:
     its groups, each group's domain type, ZD-equator membership, gain
     class, and the emergent scalar -- conditioned on the brackets fired
     before it.
+
+    :param x: coefficient vector or name
+    :param mode: 'sigma_rb' or 'canonical', as for firing_order
+    :returns: dict with, per bracket, its groups, domain types, equator membership, gain class and emergent scalar
     """
     x = coerce_vec(x)
     fo = firing_order(x, mode=mode)
@@ -426,6 +510,9 @@ def scale_partitions(dim: int = SEDENION_DIM) -> Dict[str, object]:
     C-, H-, O-sized groups (1 / 3 / 7), and report how many partitions
     are all-subalgebra vs contain a FRAGMENT.  This is the "different
     brackets of different scales" space the permutative bracketer moves in.
+
+    :param dim: dimension
+    :returns: dict with the partition counts, all-subalgebra and containing a FRAGMENT
     """
     imag = list(range(1, dim))
     m = len(imag)
@@ -465,6 +552,11 @@ def scale_partitions(dim: int = SEDENION_DIM) -> Dict[str, object]:
 # ======================================================================
 
 def verify() -> Dict[str, object]:
+    """
+    Run the module's self-checks.
+
+    :returns: dict with 'all_pass' and each check's result
+    """
     e = lambda k: basis(k)
     e1_e10 = _add(e(1), e(10))
     e1_e2 = _add(e(1), e(2))
@@ -490,6 +582,11 @@ def verify() -> Dict[str, object]:
 
 
 def lineage_report() -> List[Dict[str, str]]:
+    """
+    Report each bracket's tier and lineage.
+
+    :returns: one dict per bracket, in canonical order, with its tier, parent and emergent
+    """
     return [
         {"bracket": b, "tier": BRACKET_ROLE[b][0],
          "descends_from": BRACKET_ROLE[b][1], "emerges": BRACKET_ROLE[b][2]}

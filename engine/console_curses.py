@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.console_curses
-==========================================
+ValaQuenta.engine.console_curses
+================================
 Curses console — the DERIVATION BROWSER.  Ptolemy /derivation shortcut mode.
 
 A file-manager over the registry.  You pick ValaQuenta apart one scope at a
@@ -67,14 +67,29 @@ CONFIDENCE_COLOUR_ID = {
 DISPLAY_MODES = ['text', 'complex_plane', '3d_cartesian', 'fano', 'sonification']
 
 # Analysis toolset — the browser runs these ACROSS any engine's mathematics.
-# The Emerger (sedenion bracketing) and the FactoralDecomposition tools are
+# The Emerger (sedenion bracketing) and the GenerationalLineage tools are
 # lenses; you pick a result or an engine, then run a lens on it.
 ANALYSIS_TOOLS = [
     ('emerge',    'Sedenion bracketing & firing order — bracket the result as a 16-vector'),
-    ('spectral',  'Factor the result signal into its wavelengths (FactoralDecomposition)'),
+    ('spectral',  'Factor the result signal into its wavelengths (GenerationalLineage)'),
     ('lineage',   'Generational lineage / two-trees of the result, if it is an integer'),
-    ('calibrate', 'Run the factoral decomposition ON this engine (FD vq_lineage_of)'),
+    ('calibrate', 'Run the factoral decomposition ON this engine (GL vq_lineage_of)'),
 ]
+
+
+def _gl_attr(attr):
+    """Import `attr` from GenerationalLineage, whose import name is `engine`.
+
+    Falls back to the sibling checkout ``../GenerationalLineage`` when the
+    package is not installed.
+    """
+    import importlib                             # noqa: PLC0415
+    import pathlib                               # noqa: PLC0415
+    import sys                                   # noqa: PLC0415
+    sibling = pathlib.Path(__file__).resolve().parents[2] / 'GenerationalLineage'
+    if sibling.is_dir() and str(sibling) not in sys.path:
+        sys.path.append(str(sibling))
+    return getattr(importlib.import_module('engine'), attr)
 
 
 def _probe_tool(name):
@@ -84,14 +99,11 @@ def _probe_tool(name):
             from ..modules.emerger import emerge  # noqa: PLC0415
             return emerge, 'ValaQuenta.modules.emerger'
         if name == 'spectral':
-            from FactoralDecomposition.engine import spectral_decompose  # noqa: PLC0415
-            return spectral_decompose, 'FactoralDecomposition.engine'
+            return _gl_attr('spectral_decompose'), 'GenerationalLineage.engine'
         if name == 'lineage':
-            from FactoralDecomposition.engine import factor_lineage  # noqa: PLC0415
-            return factor_lineage, 'FactoralDecomposition.engine'
+            return _gl_attr('factor_lineage'), 'GenerationalLineage.engine'
         if name == 'calibrate':
-            from FactoralDecomposition.engine import vq_lineage_of  # noqa: PLC0415
-            return vq_lineage_of, 'FactoralDecomposition.engine'
+            return _gl_attr('vq_lineage_of'), 'GenerationalLineage.engine'
     except Exception as e:                       # noqa: BLE001
         return None, f'unavailable: {type(e).__name__}'
     return None, 'unknown tool'
@@ -518,6 +530,7 @@ class DerivationBrowser:
 
     # ── main loop ──────────────────────────────────────────────────────────
     def run(self):
+        """Run the browser's event loop until the user quits with q or Esc."""
         curses.curs_set(0)
         self._scr.keypad(True)
         _init_colours()
@@ -798,5 +811,9 @@ class DerivationBrowser:
 
 
 def run_curses(registry: ModuleRegistry):
-    """Entry point called by __main__."""
+    """
+    Run the curses derivation browser. Entry point called by __main__.
+
+    :param registry: the populated module registry
+    """
     curses.wrapper(lambda stdscr: DerivationBrowser(stdscr, registry).run())

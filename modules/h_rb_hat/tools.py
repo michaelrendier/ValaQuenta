@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.h_rb_hat.tools
-==========================================
+ValaQuenta.modules.h_rb_hat.tools
+=================================
 SigmaRBModule — registry contract for Σ_RB (RedBlue Summed Integral).
 
 Version: 0.120
@@ -26,7 +26,18 @@ from .maths import (
 
 
 class SigmaRBModule(EquationModule):
+    """
+    Σ_RB  RedBlue Summed Integral
 
+    Σ_RB = Σ_p p^{-σ} [R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p]. The RedBlue Summed
+    Integral. The Boundary Generator. The Σ is the summation sign. The RB is
+    Red-Blue. The existence of a distinction. Facet projections: GR (σ=2), Yang-
+    Mills (σ=1), QM/RH (σ=½), NS (σ=1, Im=0), Noether (boundary invariant),
+    Fermat (forbidden zone). All six open Clay Millennium Problems project from
+    this operator.
+
+    Registry module for ``h_rb_hat``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.h_rb_hat.maths`.
+    """
     @property
     def name(self): return 'h_rb_hat'
 

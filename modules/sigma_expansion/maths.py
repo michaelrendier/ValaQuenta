@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.sigma_expansion.maths
-==================================================
+ValaQuenta.modules.sigma_expansion.maths
+========================================
 Closed-form Taylor expansion of the J_red/J_blue balance around sigma=1/2.
 
 Origin: derived 2026-07-11, in the course of testing whether a quantum-
@@ -55,9 +55,15 @@ PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
 # ── Raw projection (for direct/actual comparison, not the closed form) ──────
 
 def project_at_sigma(text: str, sigma: float) -> List[complex]:
-    """The actual, directly-computed J_red(sigma) per prime channel -- no
+    """
+    The actual, directly-computed J_red(sigma) per prime channel -- no
     closed form, used only to verify the derived coefficients against
-    ground truth."""
+    ground truth.
+
+    :param text: input string
+    :param sigma: σ at which to project
+    :returns: J_red(σ) per prime channel, as complex values
+    """
     chars = [ord(c) for c in text if 32 <= ord(c) < 128]
     n = len(chars)
     if n == 0:
@@ -75,8 +81,14 @@ def project_at_sigma(text: str, sigma: float) -> List[complex]:
 
 
 def actual_P_red(text: str, sigma: float) -> float:
-    """Directly-computed P_red(sigma) -- ground truth, expensive (sweeps
-    the full character sequence at the given sigma)."""
+    """
+    Directly-computed P_red(sigma) -- ground truth, expensive (sweeps
+    the full character sequence at the given sigma).
+
+    :param text: input string
+    :param sigma: σ at which to evaluate
+    :returns: P_red(σ)
+    """
     r = project_at_sigma(text, sigma)
     b = project_at_sigma(text, 1.0 - sigma)
     e_r = sum(abs(x) ** 2 for x in r)
@@ -87,9 +99,14 @@ def actual_P_red(text: str, sigma: float) -> float:
 # ── Closed-form derivation ───────────────────────────────────────────────────
 
 def moments(text: str) -> Dict[str, Any]:
-    """M_0..M_3 (channel-independent) and per-channel L_0..L_3, evaluated
+    """
+    M_0..M_3 (channel-independent) and per-channel L_0..L_3, evaluated
     once at sigma=1/2. These are the only quantities the derivation needs
-    -- no sweep over sigma required."""
+    -- no sweep over sigma required.
+
+    :param text: input string
+    :returns: dict with M₀..M₃ and the per-channel L₀..L₃ at σ = ½
+    """
     chars = [ord(c) for c in text if 32 <= ord(c) < 128]
     n = len(chars)
     logs = [math.log(k) if k > 1 else 0.0 for k in range(1, n + 1)]
@@ -118,11 +135,15 @@ def moments(text: str) -> Dict[str, Any]:
 
 
 def taylor_coefficients(text: str) -> Dict[str, Any]:
-    """DERIVE c1, c3 in closed form (not fitted) via product/quotient-rule
+    """
+    DERIVE c1, c3 in closed form (not fitted) via product/quotient-rule
     differentiation of F(sigma)=|N(sigma)|^2/D(sigma)^2 at sigma=1/2,
     summed across all 16 prime channels.
 
     P_red(sigma) - 1/2  ~  c1*d + c3*d^3      (d = sigma - 1/2)
+
+    :param text: input string
+    :returns: dict with the derived coefficients c1 and c3
     """
     m = moments(text)
     M0, M1, M2, M3 = m['M0'], m['M1'], m['M2'], m['M3']
@@ -157,22 +178,33 @@ def taylor_coefficients(text: str) -> Dict[str, Any]:
 
 
 def predict_P_red(text: str, sigma: float) -> float:
-    """The closed-form prediction: 1/2 + c1*d + c3*d^3. Cheap -- one pass
+    """
+    The closed-form prediction: 1/2 + c1*d + c3*d^3. Cheap -- one pass
     over moments regardless of how many sigma values are queried, versus
-    a fresh O(N) sweep per sigma for the actual computation."""
+    a fresh O(N) sweep per sigma for the actual computation.
+
+    :param text: input string
+    :param sigma: σ at which to predict
+    :returns: 1/2 + c1·d + c3·d³ with d = σ − 1/2
+    """
     coeffs = taylor_coefficients(text)
     d = sigma - 0.5
     return 0.5 + coeffs['c1'] * d + coeffs['c3'] * d ** 3
 
 
 def verify_against_actual(text: str, sigmas: List[float] = None) -> Dict[str, Any]:
-    """Error-check utility: compare the cheap closed-form prediction
+    """
+    Error-check utility: compare the cheap closed-form prediction
     against the expensive direct computation. Large residuals flag either
     a bug in whatever produced the 'actual' values, or that the object
     being tested is NOT the simple i^-sigma Dirichlet projection this
     derivation assumes (e.g. monad.py's Engine uses a different sigma
     mechanism -- see wiki, this does not apply there without re-deriving
     against that engine's actual formula).
+
+    :param text: input string
+    :param sigmas: σ values to compare at; None uses a default grid
+    :returns: dict with the predicted and actual values and their residuals
     """
     if sigmas is None:
         sigmas = [0.5 + d / 20.0 for d in range(-9, 10) if d != 0]

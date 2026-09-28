@@ -1,19 +1,20 @@
 """
-ainulindale_engine.modules
-===========================
-Equation modules. Each subdirectory is a self-contained module
-implementing the EquationModule registry contract.
+ValaQuenta.modules
+==================
+Equation modules. Each subdirectory is a self-contained module: `maths.py`
+holds the mathematics as plain functions, `tools.py` holds the
+EquationModule registry class, and `manifest.json` carries its provenance and
+UI registration.
 
-Current modules (Phase 1):
-    inversion   — (I|O) map, gradient flow, phi attractor
+Modules
+-------
+    inversion          — (I|O) map, gradient flow, phi attractor
 
-Current modules (Phase 2):
     lagrangian         — L_NN, all four terms, running coupling
     noether            — Emmy Noether conserved currents, violation diagnostics
     noether_information — Information current, entropic arrow, blockchain ledger
     spherical          — Y_lm harmonics, Courant theorem, Tesla/Schumann, J_N mode ID
 
-Current modules (Phase 3 — Second Age):
     berry_keating      — H_NN candidate, d* gap (OP-3 RESOLVED: T_transform = Wiles 1995)
     h_rb_hat           — Σ_RB: RedBlue Summed Integral
                          The inductive boundary sum. R̂ and B̂ over all primes.
@@ -22,18 +23,12 @@ Current modules (Phase 3 — Second Age):
     clay_millennium    — All 7 Clay Millennium Problems derived from Σ_RB
                          RH, Yang-Mills, NS, P/NP, Hodge, BSD, Poincaré (SOLVED).
 
-Planned modules:
-    sonification       — Equation-derived audio (radian -> pitch)
-    hyperwebster       — HyperWebster hypergalley, monad
-    jwst               — JWST spectral pixel module
 
-Current modules (Phase 4):
     sigma_expansion    — Closed-form Taylor expansion of P_red(sigma) around
                          sigma=1/2 (c1, c3 derived, not fitted). Raw
                          |J_red|^2+|J_blue|^2 is NOT constant across sigma —
                          minimum at 1/2, not flat quantum-style conservation.
 
-Current modules (Phase 5):
     archimedes_screw   — The machine, distinct from the medium it lifts.
                          0_RB is the water; the screw is the logarithm.
                          Four search terms (Ordinal, Zeta Index, Digits,
@@ -162,7 +157,6 @@ Current modules (Phase 5):
                          (reading -- spectroscopy, factoral decomposition).
                          confidence floor THEORETICAL.
 
-Current modules (Phase 12):
     prime_gauge_field  — The Weyl-shaped local-scale connection built
                          directly from Gamma(s)=(s-1)/(s+1), the SCALE
                          engine's own global conformal map. Two candidate
@@ -236,5 +230,155 @@ Current modules (Phase 12):
                          CONSUMERS of this, not separate implementations.
                          Confidence floor ESTABLISHED.
 
-Version: 0.159 — Phase 15: bracketing_firing_order (Bracketing, Firing Order, and Set Membership)
+    add_scale_sign     — A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE ×
+                         SIGN), x ↦ sign·scale·x + add. Compose with @, invert
+                         with ~, take residuals (strip one generator, keep the
+                         rest), decompose into an ASSWord. Each generator
+                         carries its equation part: ADD → a, SCALE → ln s, SIGN
+                         → g; the word is u = g·ln s + a and the fold is Γ =
+                         tanh(u/2). Read-out on the orthogonal Smith charts
+                         (Γ_SCALE, Γ_ADD, parity). Firing order is recorded —
+                         the three-phase camshaft SIGN→SCALE→ADD — and its
+                         defect (u_total − Σ u_parts) is non-zero exactly when
+                         [SCALE, ADD] = ADD bites. No sedenion here; order
+                         matters at THIS tier.
+
+    bao_mass_gap       — The mass gap as the residue of the BAO spectral
+                         decomposition. The explicit formula splits the prime
+                         distribution into a de Sitter ground state plus one
+                         standing wave per zero; read at the BAO scale that is
+                         the CMB acoustic spectrum. What no standing wave
+                         absorbs between the acoustic floor D*·ln10 and the
+                         thermal ceiling Ω_ζΣ is the residue: Δ = 0.0007073575 =
+                         1/(1000√2). Zero free parameters. Δ is consumed across
+                         the codebase as the compactification scale and spectral
+                         floor; this module is where it is computed.
+
+    constants          — Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F,
+                         d*, Λ — all drop out of H_RB algebraic structure. Two
+                         ceilings force domain [α_F, OMEGA_ZS]. d* has 4 values
+                         (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological
+                         scale; Sombrero = Hawking pair; OMEGA_ZS = de Sitter
+                         attractor. Einstein wrote it in 1915, removed it 1917,
+                         universe re-inserted 1998 at 40σ.
+
+    derivation_chain   — Full derivation chain from root constants to Geometric
+                         Observer. T1: Riemann=Fermat (R̂†=B̂). T2: Yang-Mills,
+                         BK, Noether, NS, Langlands, BSD all drop out. T3: H_RB
+                         is what remains. T4: Geometries defined → Geometric
+                         Observer (another Hamiltonian). T5: ln = Hubble
+                         constant of ℕ, d* tower → ln(10) [OPEN], ħ↔ln.
+
+    hypergon_constructibility
+                       — All 16 sedenion hyper-N-gons tested for Gauss-Wantzel
+                         constructibility (REAL result: 4/16 constructible,
+                         12/16 holes). Phase 22's corrected nilpotent-split
+                         factorization conjecture re-tested against a magnitude-
+                         matched control (HONEST result: does not survive —
+                         likely address-mapping artifact, not a real factoring
+                         signal). Dual arithmetic/geometric prime definition,
+                         NOT unified into a working factoring mechanism.
+
+    l_io_photon_path   — GR version of L_(I|O): Kaiser-Squires
+                         shear->convergence, Poisson solve for the lensing
+                         potential, deflection field, and the lens equation
+                         beta=theta-alpha(theta). The difference between the
+                         clean (undeflected) path theta and the actual (bent)
+                         source position beta is the real, measured L_(I|O)
+                         deviation. L_(I|O)-L is identified with -psi(theta),
+                         the Fermat potential -- established GR, not a new
+                         operator. Requires real shear input; no synthetic
+                         fallback.
+
+    sigma_cavitation   — σ-parameterised sedenion cavitation SVG renderer. A
+                         renderer, not a registered equation module: it exports
+                         only `generate`.
+
+    singularity_null   — The Singularity IS identity. The Hamiltonian sees only
+                         one thing: AWAY. Engines: circle-null modes (Ptolemy
+                         inversion = 1 word), tower collapse snakes (n-ball
+                         volume = Snakes & Ladders board, peak n*≈5.257), Berry-
+                         Keating singularity (H=xp, repulsive fixed point, σ=½
+                         equatorial geodesic), FLT prime extinction sieve
+                         (primes defined by negative space, σ=½ as FLT
+                         boundary).
+
+    t32_nilpotency     — Standalone, minimal, verified-correct primitives:
+                         Hyperwebster base-97 address encoding, T32/GF(2)
+                         Cayley-Dickson multiplication, nilpotency test. Meant
+                         to be imported by other engines
+                         (hypergon_constructibility, fermat_monster_engine.py)
+                         rather than each maintaining its own copy.
+
+    tier6_physics      — Full QM and Standard Model from Ainulindale.
+                         Foundation: Zero Divisors=Addition, CD
+                         Tower=Subtraction → Mathematics. 8 engines:
+                         sedenion_arithmetic, quantum_mechanics, standard_model,
+                         dirac_equation, gauge_unification, higgs_mechanism,
+                         particle_spectrum, feynman_path_integral.
+
+    tier7_cosmos       — Cosmological + mathematical consequences of
+                         Ainulindale. 10 cosmology engines (primes=expansion,
+                         galaxy formation, dark matter, NS, BH, ΛCDM, FLT,
+                         Leech, GUE). 4 Standard Model engines (E-7-1→E-7-4):
+                         SMMIP↔SM, gauge groups from ℂ/ℍ/𝕆, hydrogen spectral
+                         CD, Pauli exclusion = FLT + zero-divisors.
+
+    tier8_sedenion     — D-CS first paper: sedenion engine as zero-free-
+                         parameter prime-hash architecture. 5 engines: self-
+                         organisation (16 ops → d*/σ½/D*=1), gnarl validation,
+                         OMEGA_ZS 6-family, Hermite timing wheel, orbit trap
+                         Hyperwebster address.
+
+    tier9_chem         — D-CHEM paper (Erika Schafer collaboration). 5 engines:
+                         periodic table from CD strata, Cosic EIIP protein
+                         resonance, cancer = zero-divisor collapse, drug =
+                         conformal inversion of cancer address, hydro-radiolysis
+                         chromatography (J_R/J_B probe, G:A:V=6:3:1).
+
+    translator_common  — Shared substrate of the two Translator engines
+                         (translator_discocat, translator_vsa): one derived
+                         vector space so their results can be combined and
+                         cross-tested. Not a registered engine.
+
+    translator_discocat
+                       — Version 1 of two Translator constructions. Categorical
+                         compositional distributional semantics: syntax is a
+                         pregroup grammar, semantics is vector spaces, and the
+                         pregroup reduction n.(n^r.s.n^l).n -> s maps
+                         functorially onto contraction of an order-3 verb tensor
+                         against subject and object vectors. Noun and sentence
+                         spaces are the 16 prime channels (the sedenion basis);
+                         the verb tensor is 16^3 = 4096 and is the verb token's
+                         own prime-channel harmonics reshaped — derived, never
+                         trained. Shares its vector space with translator_vsa so
+                         the two versions can be combined and cross-tested.
+
+    translator_vsa     — Version 2 of two Translator constructions. Kanerva's
+                         vector-symbolic architecture: concepts are
+                         4096-dimensional hypervectors, structure is built by
+                         non-commutative binding (P(a).b), superposing bundle,
+                         and cyclic permutation for sequence. Role vectors are
+                         the prime-channel expansions of their own names — no
+                         PRNG anywhere, so results are reproducible and no seed
+                         can be selected. Folds to the same 16 prime channels as
+                         translator_discocat so the two versions can be combined
+                         and cross-tested. Quasi-orthogonality, which textbook
+                         VSA assumes, is measured here instead.
+
+    turing_diagonal    — The diagonal flip i²=[[-1,0],[0,-1]] unifies every
+                         self-referential proof. Engines: prediction diagonal
+                         test (any prediction → decidable/undecidable), enigma
+                         derangement (D_n/n!→1/e, Turing proof of concept),
+                         hypercomplex identity diagonal (eₖ²=-1 for k=1..15),
+                         halting diagonal (D(D) → σ=½ oscillation).
+
+    udeo_crypto        — Tests five candidate RSA private-key-recovery
+                         mechanisms against known toy keys, each scored against
+                         a random-guess control (not just reported as working).
+                         Includes one proven, ESTABLISHED-tier result (d = e mod
+                         4, classical number theory) and four OPEN/CONJECTURE-
+                         tier results from the sedenion/zero-divisor/Zero-
+                         Lattice framework, none of which recover d from (n, e)
+                         alone.
 """

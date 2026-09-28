@@ -72,20 +72,35 @@ DEFAULT_N_ZEROS = 60
 # ── the zero set (shared substrate for everything below) ───────────────────
 
 def get_zeros(n: int = DEFAULT_N_ZEROS) -> List[mp.mpf]:
-    """The imaginary parts of the first n nontrivial Riemann zeros."""
+    """
+    The imaginary parts of the first n nontrivial Riemann zeros.
+
+    :param n: number of zeros
+    :returns: the imaginary parts of the first n nontrivial Riemann zeros
+    """
     return [mp.zetazero(k).imag for k in range(1, n + 1)]
 
 
 # ── (1) SPIN — major loop, theta'(t), non-resonant ──────────────────────────
 
 def spin_series(t_values: Sequence[mp.mpf]) -> List[mp.mpf]:
-    """theta'(t) at each height -- the smooth carrier rate. No prime
-    content: the whole point is that this series has no resonant peaks."""
+    """
+    theta'(t) at each height -- the smooth carrier rate. No prime
+    content: the whole point is that this series has no resonant peaks.
+
+    :param t_values: zero heights
+    :returns: θ'(t) at each height
+    """
     return [mp.diff(mp.siegeltheta, t) for t in t_values]
 
 
 def spin_is_monotonic(theta_primes: Sequence[mp.mpf]) -> Dict[str, Any]:
-    """Direct check: zero non-monotonic steps = no resonance in the spin."""
+    """
+    Direct check: zero non-monotonic steps = no resonance in the spin.
+
+    :param theta_primes: the spin series
+    :returns: dict with the count of non-monotonic steps; zero means no resonance in the spin
+    """
     diffs = [float(theta_primes[i + 1] - theta_primes[i])
              for i in range(len(theta_primes) - 1)]
     n_negative = sum(1 for d in diffs if d < 0)
@@ -102,9 +117,15 @@ def spin_is_monotonic(theta_primes: Sequence[mp.mpf]) -> Dict[str, Any]:
 
 def wobble_series(t_values: Sequence[mp.mpf],
                    theta_primes: Sequence[mp.mpf]) -> List[mp.mpf]:
-    """spacing - 2*pi/theta'(t) at each zero -- the minor-loop fluctuation.
+    """
+    spacing - 2*pi/theta'(t) at each zero -- the minor-loop fluctuation.
     Classically, this is where the primes live (via the explicit formula,
-    demonstrated concretely in psi_explicit_formula below)."""
+    demonstrated concretely in psi_explicit_formula below).
+
+    :param t_values: zero heights
+    :param theta_primes: the spin series at those heights
+    :returns: spacing − 2π/θ'(t) at each zero
+    """
     out = []
     for i in range(len(t_values) - 1):
         spacing = t_values[i + 1] - t_values[i]
@@ -114,8 +135,13 @@ def wobble_series(t_values: Sequence[mp.mpf],
 
 
 def true_psi(x: float) -> float:
-    """Exact psi(x) = sum of ln(p) over prime powers p^k <= x. Reference
-    value the truncated explicit formula is checked against."""
+    """
+    Exact psi(x) = sum of ln(p) over prime powers p^k <= x. Reference
+    value the truncated explicit formula is checked against.
+
+    :param x: upper bound
+    :returns: ψ(x), the sum of ln p over prime powers pᵏ ≤ x
+    """
     x = float(x)
     total = 0.0
     n = 2
@@ -137,12 +163,18 @@ def true_psi(x: float) -> float:
 
 def psi_explicit_formula(x: float, zero_imag_parts: Sequence[mp.mpf]
                           ) -> Tuple[mp.mpf, mp.mpf, mp.mpf]:
-    """Truncated von Mangoldt explicit formula:
+    """
+    Truncated von Mangoldt explicit formula:
         psi(x) = x - sum_rho x^rho/rho - ln(2*pi) - (1/2)*ln(1 - x^-2)
     summed over rho=1/2+i*gamma and its conjugate (real part doubled).
     Same zero set as spin_series/wobble_series -- one smooth term (x, NO
     zero information) plus one oscillatory term built ENTIRELY from the
-    zeros. Returns (reconstructed, smooth_part, oscillatory_part)."""
+    zeros. Returns (reconstructed, smooth_part, oscillatory_part).
+
+    :param x: evaluation point
+    :param zero_imag_parts: ordinates γ of the zeros ρ = ½ + iγ
+    :returns: (reconstructed, smooth_part, oscillatory_part)
+    """
     xm = mp.mpf(x)
     smooth = xm - mp.log(2 * mp.pi) - mp.mpf('0.5') * mp.log(1 - xm ** -2)
     osc = mp.mpf(0)
@@ -155,12 +187,18 @@ def psi_explicit_formula(x: float, zero_imag_parts: Sequence[mp.mpf]
 def wobble_carries_primes_demo(zero_imag_parts: Sequence[mp.mpf],
                                 test_points: Sequence[float] = None
                                 ) -> Dict[str, Any]:
-    """The concrete demonstration: reconstruct psi(x) near primes and away
+    """
+    The concrete demonstration: reconstruct psi(x) near primes and away
     from them using ONLY the oscillatory (wobble-family) term, and compare
     to the exact step function. Expect Gibbs-phenomenon undershoot exactly
     AT primes (finite truncation) and close agreement AWAY from primes --
     both are signatures that the oscillatory term is doing real work
-    exactly where the primes are, not elsewhere."""
+    exactly where the primes are, not elsewhere.
+
+    :param zero_imag_parts: ordinates γ of the zeros ρ = ½ + iγ
+    :param test_points: points at which to reconstruct ψ; None uses a default set near and away from primes
+    :returns: dict comparing the wobble-only reconstruction with the exact step function
+    """
     if test_points is None:
         test_points = [2, 2.5, 3, 4, 5, 6, 7, 8, 10, 11, 12]
     rows = []
@@ -188,9 +226,15 @@ def wobble_carries_primes_demo(zero_imag_parts: Sequence[mp.mpf],
 
 def tilt_residual_series(t_values: Sequence[mp.mpf],
                           sigma: mp.mpf = mp.mpf('0.7')) -> List[mp.mpf]:
-    """The 'real-axis tilt' signal (ADDENDUM sec B): the theta(t)-rotation
+    """
+    The 'real-axis tilt' signal (ADDENDUM sec B): the theta(t)-rotation
     applied off the critical line leaves a nonzero imaginary residual,
-    exactly zero on sigma=1/2. Pointwise, one sample per zero-height."""
+    exactly zero on sigma=1/2. Pointwise, one sample per zero-height.
+
+    :param t_values: zero heights
+    :param sigma: the off-critical σ at which the rotation is applied
+    :returns: the imaginary residual at each height
+    """
     out = []
     for t in t_values:
         s = mp.mpc(sigma, t)
@@ -201,10 +245,17 @@ def tilt_residual_series(t_values: Sequence[mp.mpf],
 
 def tilt_vs_wobble_correlation(tilt: Sequence[mp.mpf],
                                 wobble: Sequence[mp.mpf]) -> Dict[str, Any]:
-    """Direct Pearson correlation between the tilt residual and the wobble
-    deviation. REFUTED AS TESTED (2026-09-26): correlates at ~0.037,
-    essentially zero -- the 'minimum information -> tilt=wobble' argument
-    does not survive this test, at this alignment."""
+    """
+    Return the Pearson correlation between the tilt residual and the wobble deviation.
+
+    REFUTED AS TESTED: it correlates at about 0.037, essentially zero, so
+    the "minimum information → tilt = wobble" argument does not survive this
+    test at this alignment.
+
+    :param tilt: the tilt residual series
+    :param wobble: the wobble series
+    :returns: dict with the correlation
+    """
     n = min(len(tilt), len(wobble))
     a = [float(x) for x in tilt[:n]]
     b = [float(x) for x in wobble[:n]]
@@ -232,10 +283,16 @@ def tilt_vs_wobble_correlation(tilt: Sequence[mp.mpf],
 
 def crossing_shape_at(gamma_n: mp.mpf, sigma_range: Sequence[mp.mpf]
                        ) -> List[Tuple[float, float, float, float]]:
-    """At fixed height t=gamma_n, scan sigma near 1/2. Returns
+    """
+    At fixed height t=gamma_n, scan sigma near 1/2. Returns
     (sigma, Re, Im, |value|) for each sample -- the shape of the crossing
     of the Real Tilt (the trajectory's instantaneous position) against the
-    Axis (Re=Im=0)."""
+    Axis (Re=Im=0).
+
+    :param gamma_n: zero height t = γₙ
+    :param sigma_range: σ values to scan near ½
+    :returns: (σ, Re, Im, |value|) for each sample: the crossing of the Real Tilt against the Axis
+    """
     out = []
     for sigma in sigma_range:
         s = mp.mpc(sigma, gamma_n)
@@ -247,10 +304,17 @@ def crossing_shape_at(gamma_n: mp.mpf, sigma_range: Sequence[mp.mpf]
 
 def crossing_does_not_drift(zero_imag_parts: Sequence[mp.mpf],
                              n_test: int = 5) -> Dict[str, Any]:
-    """Tests whether the crossing sigma-location drifts across different
-    zero heights. CONFIRMED (2026-09-26): pinned at sigma=0.500000 to
-    machine precision at every zero tested -- moves UP the t-axis (a new
-    crossing at each gamma_n), never sideways in sigma."""
+    """
+    Test whether the crossing's σ-location drifts across zero heights.
+
+    CONFIRMED: it is pinned at σ = 0.500000 to machine precision at every
+    zero tested. The crossing moves UP the t-axis, a new one at each γₙ,
+    and never sideways in σ.
+
+    :param zero_imag_parts: ordinates γ of the zeros
+    :param n_test: number of zeros tested
+    :returns: dict with the σ found at each zero and the maximum drift
+    """
     rows = []
     for gamma in zero_imag_parts[:n_test]:
         sigma_fine = [mp.mpf('0.5') + mp.mpf(d) / 2000 for d in range(-6, 7, 2)]
@@ -280,6 +344,12 @@ def crossing_does_not_drift(zero_imag_parts: Sequence[mp.mpf],
 # ── the complete, honest report ─────────────────────────────────────────────
 
 def full_report(n_zeros: int = DEFAULT_N_ZEROS) -> Dict[str, Any]:
+    """
+    Run the whole module on the first n zeros.
+
+    :param n_zeros: number of zeros
+    :returns: dict with the spin, wobble and tilt results, the explicit-formula demonstration and the crossing tests
+    """
     zeros = get_zeros(n_zeros)
     thp = spin_series(zeros)
     wob = wobble_series(zeros, thp)

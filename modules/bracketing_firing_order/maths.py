@@ -62,9 +62,15 @@ ENUMERATION_CEILING_N = 12
 
 
 def bell_number(n: int) -> int:
-    """Exact count of unordered partitions of n distinct things -- the
+    """
+    Exact count of unordered partitions of n distinct things -- the
     Bell number B(n), via the Bell triangle (arbitrary precision, no
-    approximation). B(0)=1, B(3)=5, B(16)=10480142147 (~1.05e10)."""
+    approximation). B(0)=1, B(3)=5, B(16)=10480142147 (~1.05e10).
+
+    :param n: number of distinct things
+    :returns: B(n), exact
+    :raises ValueError: n is negative
+    """
     if n < 0:
         raise ValueError("n must be >= 0")
     triangle = [[1]]
@@ -77,10 +83,16 @@ def bell_number(n: int) -> int:
 
 
 def set_partitions(items: Sequence[Any]) -> List[List[List[Any]]]:
-    """Every unordered partition of `items` into non-empty groups --
+    """
+    Every unordered partition of `items` into non-empty groups --
     exhaustive, exact. Refuses (raises) above ENUMERATION_CEILING_N rather
     than silently hanging on an astronomically large output; use
-    bell_number() for the exact count regardless of n."""
+    bell_number() for the exact count regardless of n.
+
+    :param items: the distinct things
+    :returns: every unordered partition into non-empty groups
+    :raises ValueError: len(items) exceeds ENUMERATION_CEILING_N
+    """
     n = len(items)
     if n > ENUMERATION_CEILING_N:
         raise ValueError(
@@ -103,8 +115,13 @@ def set_partitions(items: Sequence[Any]) -> List[List[List[Any]]]:
 
 
 def bracketing_report(items: Sequence[Any]) -> Dict[str, Any]:
-    """The arena, characterized for a specific set of things: the exact
-    count always, the actual list only when feasible."""
+    """
+    The arena, characterized for a specific set of things: the exact
+    count always, the actual list only when feasible.
+
+    :param items: the distinct things
+    :returns: dict with the exact count, and the list when feasible
+    """
     n = len(items)
     count = bell_number(n)
     feasible = n <= ENUMERATION_CEILING_N
@@ -126,19 +143,31 @@ def bracketing_report(items: Sequence[Any]) -> Dict[str, Any]:
 # ═══════════════════════════════════════════════════════════════════════
 
 def firing_order_count(n: int) -> int:
-    """Exact count of ways to sequence n distinct things: n! ."""
+    """
+    Exact count of ways to sequence n distinct things: n! .
+
+    :param n: number of distinct things
+    :returns: n!
+    :raises ValueError: n is negative
+    """
     if n < 0:
         raise ValueError("n must be >= 0")
     return math.factorial(n)
 
 
 def apply_firing_order(written: Sequence[Any], firing_order: Sequence[int]) -> List[Any]:
-    """Resequence `written` (1-indexed positions) by `firing_order` --
+    """
+    Resequence `written` (1-indexed positions) by `firing_order` --
     firing_order[k] names which ORIGINAL position fires k-th.
 
     Worked example, verified: written=[Scale,Sign,Add], firing_order=(3,1,2)
     -> [Add,Scale,Sign] -- ASS's own canonical name, reached by
     resequencing the written order, not by renaming anything.
+
+    :param written: the items in written order
+    :param firing_order: 1-indexed original positions in firing order
+    :returns: the items resequenced
+    :raises ValueError: firing_order is not a permutation of the positions
     """
     n = len(written)
     if sorted(firing_order) != list(range(1, n + 1)):
@@ -147,11 +176,16 @@ def apply_firing_order(written: Sequence[Any], firing_order: Sequence[int]) -> L
 
 
 def all_firing_orders(items: Sequence[Any]) -> List[Tuple[Any, ...]]:
-    """Every possible sequencing of `items` -- exhaustive. Caller's
+    """
+    Every possible sequencing of `items` -- exhaustive. Caller's
     responsibility to keep n small (n! grows fast: 10!~3.6M); this
     function does not guard n the way set_partitions() does, since
     itertools.permutations is already lazy-friendly -- convert to list
-    only for small, deliberately-chosen n."""
+    only for small, deliberately-chosen n.
+
+    :param items: the distinct things; keep the count small, n! grows fast
+    :returns: every sequencing, as tuples
+    """
     return list(itertools.permutations(items))
 
 
@@ -164,8 +198,14 @@ def all_firing_orders(items: Sequence[Any]) -> List[Tuple[Any, ...]]:
 # ═══════════════════════════════════════════════════════════════════════
 
 def trajectory(steps: Sequence[Callable[[float], float]], x0: float = 1.0) -> Tuple[float, ...]:
-    """x0, then the position after each successive step fires, in order --
-    the Long Path made explicit for any sequence of callables."""
+    """
+    x0, then the position after each successive step fires, in order --
+    the Long Path made explicit for any sequence of callables.
+
+    :param steps: callables x → x, fired in order
+    :param x0: starting position
+    :returns: x0 followed by the position after each step
+    """
     pos = [x0]
     x = x0
     for s in steps:
@@ -176,7 +216,14 @@ def trajectory(steps: Sequence[Callable[[float], float]], x0: float = 1.0) -> Tu
 
 def visited_positions(steps: Sequence[Callable[[float], float]], x0: float = 1.0,
                        tol: float = 1e-9) -> Dict[float, List[int]]:
-    """Which trajectory positions repeat, and at which step indices."""
+    """
+    Which trajectory positions repeat, and at which step indices.
+
+    :param steps: callables x → x, fired in order
+    :param x0: starting position
+    :param tol: tolerance for calling two positions equal
+    :returns: map from each repeated position to the step indices that reach it
+    """
     traj = trajectory(steps, x0)
     seen: Dict[float, List[int]] = {}
     for i, x in enumerate(traj):
@@ -187,10 +234,17 @@ def visited_positions(steps: Sequence[Callable[[float], float]], x0: float = 1.0
 
 def collisions(steps: Sequence[Callable[[float], float]], x0: float = 1.0,
                tol: float = 1e-9) -> List[Tuple[int, int, float]]:
-    """Every (earlier_index, later_index, position) where the trajectory
+    """
+    Every (earlier_index, later_index, position) where the trajectory
     revisits a position it already reached. Recaman's own defining rule,
     generalized: this IS the set-membership test that rule runs, applied
-    to any stepped process, not just the integer line."""
+    to any stepped process, not just the integer line.
+
+    :param steps: callables x → x, fired in order
+    :param x0: starting position
+    :param tol: tolerance for calling two positions equal
+    :returns: (earlier_index, later_index, position) for each revisit
+    """
     seen = visited_positions(steps, x0, tol)
     out = []
     for pos, idxs in seen.items():
@@ -203,10 +257,18 @@ def collisions(steps: Sequence[Callable[[float], float]], x0: float = 1.0,
 def would_collide(steps_so_far: Sequence[Callable[[float], float]],
                    candidate_next: Callable[[float], float],
                    x0: float = 1.0, tol: float = 1e-9) -> bool:
-    """The operator-level flip test: would firing `candidate_next` land on
+    """
+    The operator-level flip test: would firing `candidate_next` land on
     a position already in the trajectory so far? Checkable BEFORE
     committing to the step -- Recaman's own a(n-1)-n candidate check,
-    generalized to any process."""
+    generalized to any process.
+
+    :param steps_so_far: callables already fired
+    :param candidate_next: the step under test
+    :param x0: starting position
+    :param tol: tolerance for calling two positions equal
+    :returns: True if firing the candidate lands on a position already visited
+    """
     traj = trajectory(steps_so_far, x0)
     candidate = candidate_next(traj[-1])
     visited = {round(x / tol) * tol if tol else x for x in traj}
@@ -224,7 +286,8 @@ def would_collide(steps_so_far: Sequence[Callable[[float], float]],
 
 def jurisdiction_violation(object_name: str, requested_operation: str,
                             jurisdiction_map: Dict[str, Set[str]]) -> Dict[str, Any]:
-    """Is `requested_operation` a member of the set of operations legal
+    """
+    Is `requested_operation` a member of the set of operations legal
     for `object_name`'s own jurisdiction? `jurisdiction_map` is
     {object_name: {legal_operation, ...}}, supplied by the caller -- e.g.
     GenerationalLineage's own TOOLSETS/DECOMPOSITION_LINE/EMERGER_LINE,
@@ -236,6 +299,11 @@ def jurisdiction_violation(object_name: str, requested_operation: str,
     language of another jurisdiction illegally" -- illegal, precisely
     because it fails membership in the set the object is actually native
     to.
+
+    :param object_name: the object whose jurisdiction applies
+    :param requested_operation: the operation requested
+    :param jurisdiction_map: {object_name: {legal_operation, …}}, supplied by the caller
+    :returns: dict with the verdict; a violation is a failed set-membership test
     """
     legal_ops = jurisdiction_map.get(object_name)
     if legal_ops is None:

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.prime_gauge_field.maths
-=====================================================
+ValaQuenta.modules.prime_gauge_field.maths
+==========================================
 THE PRIME GAUGE FIELD -- the Weyl-shaped local-scale connection Gamma's own
 Schwarzian-zero result did NOT test.
 
@@ -56,22 +56,37 @@ from typing import Any, Dict, List, Tuple
 
 # ── the established object this engine is built on, re-derived not copied ──
 def gamma(s: complex) -> complex:
-    """Smith's map. ESTABLISHED, GenerationalLineage/engine/toolsets/scale.py."""
+    """
+    Smith's map Γ(s) = (s−1)/(s+1). ESTABLISHED; the same map as GenerationalLineage/engine/toolsets/scale.py.
+
+    :param s: complex argument
+    :returns: Γ(s)
+    """
     return (s - 1) / (s + 1)
 
 
 def dgamma(s: complex) -> complex:
-    """d(Gamma)/ds = 2/(s+1)^2, exact -- matches scale.py's own
-    local_scale_factor = |dGamma/ds|, re-derived independently this
-    session and confirmed to agree exactly."""
+    """
+    Return dΓ/ds = 2/(s+1)², exact. It equals the local scale factor |dΓ/ds| of scale.py.
+
+    :param s: complex argument
+    :returns: dΓ/ds
+    """
     return 2 / (s + 1) ** 2
 
 
 # ── candidate connection 1: the gradient reading -- provably always flat ──
 def log_potential_curvature(s: complex, h: float = 1e-5) -> float:
-    """A = grad(log|Gamma|). Curl of a gradient is zero for ANY scalar,
-    always -- this function exists to make that structural fact visible
-    and checkable in code, not because a nonzero result is possible."""
+    """
+    Return the curl of A = grad log|Γ|, which is zero for any scalar potential.
+
+    The function makes that structural fact checkable in code; a nonzero
+    result is not possible.
+
+    :param s: complex argument
+    :param h: finite-difference step
+    :returns: the curl, zero to rounding
+    """
     def logmag(z: complex) -> float:
         return cmath.log(abs(gamma(z))).real
 
@@ -88,23 +103,37 @@ def log_potential_curvature(s: complex, h: float = 1e-5) -> float:
 
 # ── candidate connection 2: Gamma itself, read as a 1-form -- the real test ──
 def connection(s: complex) -> Tuple[float, float]:
-    """A(s) = (Re(Gamma(s)), Im(Gamma(s))) -- Gamma read as an R^2-valued
-    connection, not as a C-valued holomorphic function collapsed to one
-    scalar. This is the reading that can carry curvature."""
+    """
+    Return A(s) = (Re Γ(s), Im Γ(s)): Γ read as an ℝ²-valued connection, the reading that can carry curvature.
+
+    :param s: complex argument
+    :returns: (A_x, A_y)
+    """
     g = gamma(s)
     return g.real, g.imag
 
 
 def curvature(s: complex) -> float:
-    """F(s) = dA_y/dx - dA_x/dy for A = connection(s). Closed form via
-    Cauchy-Riemann (u_y = -v_x): F(s) = v_x - u_y = 2*v_x = 2*Im(dGamma/ds).
-    Exact; verify() checks it against curvature_numeric()."""
+    """
+    Return F(s) = ∂A_y/∂x − ∂A_x/∂y for A = connection(s).
+
+    By Cauchy-Riemann (u_y = −v_x) this is F = 2·v_x = 2·Im(dΓ/ds), exact.
+    verify() checks it against curvature_numeric().
+
+    :param s: complex argument
+    :returns: F(s)
+    """
     return 2 * dgamma(s).imag
 
 
 def curvature_numeric(s: complex, h: float = 1e-5) -> float:
-    """Finite-difference cross-check of curvature() -- the honesty check,
-    never the production path."""
+    """
+    Return a finite-difference estimate of curvature(): the cross-check, never the production path.
+
+    :param s: complex argument
+    :param h: finite-difference step
+    :returns: the numeric F(s)
+    """
     def u(z: complex) -> float:
         return gamma(z).real
 
@@ -118,9 +147,16 @@ def curvature_numeric(s: complex, h: float = 1e-5) -> float:
 
 # ── the pre-registered prediction, checked exactly ─────────────────────────
 def zero_locus_predicate(s: complex, tol: float = 1e-9) -> Dict[str, Any]:
-    """Closed-form zero locus of curvature(): the real axis (t=0) or the
-    vertical line sigma=-1 (through Gamma's pole). Compares the predicted
-    locus against the measured one at a single point."""
+    """
+    Compare the closed-form zero locus of curvature() with the measured one at a point.
+
+    The predicted locus is the real axis (t = 0) or the vertical line σ = −1,
+    through Γ's pole.
+
+    :param s: complex point
+    :param tol: tolerance for calling a value zero
+    :returns: dict with the predicted and measured zero flags and whether they agree
+    """
     on_real_axis = abs(s.imag) < tol
     on_pole_line = abs(s.real + 1) < tol
     predicted_zero = on_real_axis or on_pole_line
@@ -133,8 +169,15 @@ def zero_locus_predicate(s: complex, tol: float = 1e-9) -> Dict[str, Any]:
 
 
 def prediction_check(n_samples: int = 2000, seed: int = 0) -> Dict[str, Any]:
-    """Sweeps random points, not just the two loci picked to look good --
-    the honest test of whether the closed-form zero locus is complete."""
+    """
+    Test the closed-form zero locus at random points, not only at the two loci.
+
+    This is the check of whether the locus is complete.
+
+    :param n_samples: number of random points
+    :param seed: random seed
+    :returns: dict with the agreement counts and any counterexamples
+    """
     rng = random.Random(seed)
     mismatches: List[Tuple[complex, Dict[str, Any]]] = []
     for _ in range(n_samples):
@@ -184,8 +227,12 @@ def verify() -> Dict[str, Any]:
 
 
 def report(s: complex) -> Dict[str, Any]:
-    """One point, full readout -- Gamma, its connection, both candidate
-    curvatures, and the zero-locus check."""
+    """
+    Give one point's full readout: Γ, its connection, both curvatures and the zero-locus check.
+
+    :param s: complex point
+    :returns: the readout dict
+    """
     g = gamma(s)
     return {
         "s": s, "Gamma": g, "|Gamma|": abs(g),

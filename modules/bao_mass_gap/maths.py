@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.bao_mass_gap.maths
-===============================================
+ValaQuenta.modules.bao_mass_gap.maths
+=====================================
 The Mass Gap — spectral residue of BAO.
 
     Δ = Ω_ζΣ − D*·ln(10) = 0.0007073575 = 1/(1000√2)
@@ -192,6 +192,9 @@ def spectral_residue(n_zeros: int = N_ZEROS_DEFAULT) -> Dict[str, Any]:
 
     n_zeros changes the convergence demonstration only. The residue is a
     difference of two constants and does not move.
+
+    :param n_zeros: number of Riemann zeros summed
+    :returns: dict with the partial sums over the zeros, the residue and the gap
     """
     zeros = RIEMANN_ZEROS[:n_zeros]
 

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.box_kite.maths
-============================================
+ValaQuenta.modules.box_kite.maths
+=================================
 THE BOX-KITE DEBUGGER -- making the zero-divisor geometry visible.
 
 "how do we 'debug' the geometries / how do we watch the geometries
@@ -119,6 +119,10 @@ def cd_multiplication_table(levels: int = 4) -> Tuple[Dict[Tuple[int, int],
         (0,b)(0,d) = (-conj(d) b, 0)
 
     levels = 1 -> C, 2 -> H, 3 -> O, 4 -> S (sedenions), 5 -> T_32, ...
+
+    :param levels: number of doublings from the reals; the algebra has dimension 2^levels
+    :returns: (table, dim) where table[(i, j)] = (sign, index) means e_i·e_j = sign·e_index
+    :raises ValueError: levels is not a positive integer
     """
     if levels < 0:
         raise ValueError("cd_multiplication_table: levels must be >= 0")
@@ -150,12 +154,25 @@ _SED_TABLE, SEDENION_DIM = cd_multiplication_table(4)
 
 
 def basis_mul(i: int, j: int) -> Tuple[int, int]:
-    """e_i * e_j = (sign, index). Sedenions."""
+    """
+    Return the product of two sedenion basis elements: e_i·e_j = sign·e_index.
+
+    :param i: index of the left element, 0..15
+    :param j: index of the right element, 0..15
+    :returns: (sign, index)
+    """
     return _SED_TABLE[(i, j)]
 
 
 def multiply(x: Sequence[float], y: Sequence[float]) -> List[float]:
-    """Full sedenion product of two 16-vectors."""
+    """
+    Full sedenion product of two 16-vectors.
+
+    :param x: 16-vector
+    :param y: 16-vector
+    :returns: the sedenion product x·y
+    :raises ValueError: either vector is not of length 16
+    """
     if len(x) != 16 or len(y) != 16:
         raise ValueError("multiply: sedenions are 16-vectors")
     out = [0.0] * 16
@@ -173,7 +190,13 @@ def multiply(x: Sequence[float], y: Sequence[float]) -> List[float]:
 
 
 def is_zero(v: Sequence[float], tol: float = 1e-12) -> bool:
-    """True if every component is below tol."""
+    """
+    True if every component is below tol.
+
+    :param v: vector
+    :param tol: absolute tolerance
+    :returns: True if every component has magnitude below tol
+    """
     return all(abs(c) < tol for c in v)
 
 
@@ -196,6 +219,11 @@ def associator(i: int, j: int, k: int) -> List[float]:
     Exact measure of how far the geometry bends under reassociation --
     the direct analogue of a curvature tensor. Vanishes identically on
     the associative levels (R, C, H) and does not on O or S.
+
+    :param i: basis index
+    :param j: basis index
+    :param k: basis index
+    :returns: the 16-vector [e_i, e_j, e_k]
     """
     s1, m = basis_mul(i, j)
     s2, n = basis_mul(m, k)
@@ -208,7 +236,13 @@ def associator(i: int, j: int, k: int) -> List[float]:
 
 
 def commutator(i: int, j: int) -> List[float]:
-    """THE TORSION.  [e_i, e_j] = e_i e_j - e_j e_i"""
+    """
+    THE TORSION.  [e_i, e_j] = e_i e_j - e_j e_i
+
+    :param i: basis index
+    :param j: basis index
+    :returns: the 16-vector [e_i, e_j]
+    """
     s1, m = basis_mul(i, j)
     s2, n = basis_mul(j, i)
     v = [0.0] * 16
@@ -218,7 +252,14 @@ def commutator(i: int, j: int) -> List[float]:
 
 
 def associator_defect(i: int, j: int, k: int) -> float:
-    """Euclidean norm of the associator -- the scalar curvature at a triple."""
+    """
+    Euclidean norm of the associator -- the scalar curvature at a triple.
+
+    :param i: basis index
+    :param j: basis index
+    :param k: basis index
+    :returns: ‖[e_i, e_j, e_k]‖
+    """
     return math.sqrt(sum(c * c for c in associator(i, j, k)))
 
 
@@ -241,7 +282,13 @@ def associator_census() -> Dict[str, int]:
 # --------------------------------------------------------------------------
 
 def diagonals(a: int, b: int) -> List[List[float]]:
-    """The two diagonals of the Assessor plane span(e_a, e_{b+8})."""
+    """
+    The two diagonals of the Assessor plane span(e_a, e_{b+8}).
+
+    :param a: lower index of the Assessor
+    :param b: upper index of the Assessor, offset by 8
+    :returns: the two diagonal 16-vectors of span(e_a, e_{b+8})
+    """
     return [basis_vector((1.0, a), (1.0, b + 8)),
             basis_vector((1.0, a), (-1.0, b + 8))]
 
@@ -252,6 +299,10 @@ def is_assessor(a: int, b: int) -> bool:
 
     Computed, not asserted: multiplies the actual diagonals against every
     other candidate diagonal and checks for a vanishing product.
+
+    :param a: lower index
+    :param b: upper index, offset by 8
+    :returns: True if the plane contains zero-dividing diagonals
     """
     if not (1 <= a <= 7 and 1 <= b <= 7):
         return False
@@ -281,6 +332,10 @@ def strut(a: int, b: int) -> int:
 
     This is the octonion-index arithmetic underlying the Fano plane, and
     it is why exactly 7 box-kites partition the space.
+
+    :param a: lower index of the Assessor
+    :param b: upper index of the Assessor
+    :returns: a XOR b, in 1..7
     """
     return a ^ b
 
@@ -360,6 +415,10 @@ def assessors_adjacent(A: Tuple[int, int], B: Tuple[int, int]) -> bool:
     True if any diagonal of Assessor A annihilates any diagonal of B.
     This is the edge relation of the box-kite graph -- computed from
     vanishing products, not imposed.
+
+    :param A: first Assessor as (a, b)
+    :param B: second Assessor as (a, b)
+    :returns: True if some diagonal of A annihilates some diagonal of B
     """
     for x in diagonals(*A):
         for y in diagonals(*B):
@@ -375,6 +434,10 @@ def box_kite_graph(s: int) -> Dict[str, object]:
     Comes out 4-regular with exactly 3 non-edges -- the reversal pairs
     (a,b) <-> (b,a). That is K_{2,2,2}: THE OCTAHEDRON. Checked here
     rather than assumed; 'is_octahedron' is the assertion.
+
+    :param s: strut, 1..7
+    :returns: dict with the 6 vertices, the edges and 'is_octahedron'
+    :raises ValueError: s is outside 1..7
     """
     if not (1 <= s <= 7):
         raise ValueError("box_kite_graph: strut must be in 1..7")
@@ -416,6 +479,11 @@ def eigenvalues_symmetric(M: List[List[float]], tol: float = 1e-12,
     Pure Python -- the registry contract asks maths.py to carry no
     external dependencies, and the matrices here are at most 42x42.
     Returns them sorted ascending.
+
+    :param M: real symmetric matrix as rows of floats
+    :param tol: off-diagonal tolerance
+    :param max_sweeps: limit on Jacobi sweeps
+    :returns: the eigenvalues, ascending
     """
     n = len(M)
     A = [row[:] for row in M]
@@ -455,6 +523,9 @@ def chart_spectrum(s: int) -> List[float]:
     and propagates nowhere. It emerges from the graph rather than being
     inserted, which is the check that 0_RB really is outside the geometry
     it generates.
+
+    :param s: strut, 1..7
+    :returns: the octahedral Laplacian spectrum ω²(k)
     """
     g = box_kite_graph(s)
     return eigenvalues_symmetric(_laplacian(6, g['edges']))
@@ -507,6 +578,9 @@ def associator_field(s: int) -> Dict[str, object]:
     the defect of the triple (a_i, b_i+8, a_j). This is what "watch the
     geometries interact" looks like as numbers: where the field is large,
     the geometry is bending.
+
+    :param s: strut, 1..7
+    :returns: dict with the associator defect at each vertex and edge of box-kite s
     """
     g = box_kite_graph(s)
     V = g['vertices']
@@ -740,7 +814,12 @@ _SQRT2 = math.sqrt(2.0)
 
 
 def norm(v: Sequence[float]) -> float:
-    """Euclidean norm of a 16-vector."""
+    """
+    Euclidean norm of a 16-vector.
+
+    :param v: 16-vector
+    :returns: the Euclidean norm
+    """
     return math.sqrt(sum(c * c for c in v))
 
 
@@ -751,6 +830,9 @@ def fixed_point_weight(v: Sequence[float]) -> float:
     1.0 means the address is pure identity (pure 0_RB, no geometry at all);
     0.0 means it carries none. This is the direct measure of Cody's "they
     are all from the fixed point anyway".
+
+    :param v: 16-vector address
+    :returns: the share of energy on e₀, in [0, 1]
     """
     n2 = sum(c * c for c in v)
     return (v[0] * v[0] / n2) if n2 > 0 else 0.0
@@ -767,6 +849,9 @@ def energy_split(v: Sequence[float]) -> Dict[str, float]:
 
     Shares sum to 1. The e_0 + e_8 share is the part of the address that
     lives OUTSIDE the ZD geometry entirely.
+
+    :param v: 16-vector address
+    :returns: the shares on e₀, e₈, the lower imaginaries and the upper imaginaries; they sum to 1
     """
     n2 = sum(c * c for c in v)
     if n2 <= 0:
@@ -787,6 +872,11 @@ def diagonal_amplitudes(v: Sequence[float], a: int, b: int) -> Tuple[float, floa
 
     These are the actual zero-dividing directions, so this is the address's
     overlap with the ZD structure in that plane.
+
+    :param v: 16-vector address
+    :param a: lower index of the Assessor
+    :param b: upper index of the Assessor
+    :returns: (d+, d−)
     """
     return ((v[a] + v[b + 8]) / _SQRT2, (v[a] - v[b + 8]) / _SQRT2)
 
@@ -798,6 +888,9 @@ def assessor_coordinates(v: Sequence[float]) -> Dict[Tuple[int, int], Dict[str, 
     For each (a, b): the in-plane energy v_a^2 + v_{b+8}^2, both diagonal
     amplitudes, and which diagonal dominates. This is the exhaustive
     readout -- 42 rows, nothing summarised away.
+
+    :param v: 16-vector address
+    :returns: for each of the 42 Assessors (a, b): the in-plane energy, both diagonal amplitudes and the dominant diagonal
     """
     out = {}
     for (a, b) in assessors():
@@ -820,6 +913,9 @@ def chart_projection(v: Sequence[float]) -> Dict[int, float]:
     NOTE these do NOT partition the address's energy: each basis index sits
     in 6 of the 7 charts, so the chart energies deliberately overlap. That
     overlap IS the skeleton touching -- see skeleton_overlap().
+
+    :param v: 16-vector address
+    :returns: the energy in each of the 7 charts, keyed by strut
     """
     coords = assessor_coordinates(v)
     out = {s: 0.0 for s in range(1, 8)}
@@ -829,7 +925,12 @@ def chart_projection(v: Sequence[float]) -> Dict[int, float]:
 
 
 def nearest_assessor(v: Sequence[float]) -> Tuple[Tuple[int, int], float]:
-    """The Assessor carrying the most of the address's energy, and how much."""
+    """
+    The Assessor carrying the most of the address's energy, and how much.
+
+    :param v: 16-vector address
+    :returns: ((a, b), energy) for the Assessor carrying the most energy
+    """
     coords = assessor_coordinates(v)
     best = max(coords.items(), key=lambda kv: kv[1]['energy'])
     return best[0], best[1]['energy']
@@ -843,6 +944,10 @@ def local_curvature(v: Sequence[float], top: int = 3) -> float:
     associator vanishes identically) and sums the defect over their triples.
     Scalar curvature at the address, in the same units associator_field()
     reports on the charts.
+
+    :param v: 16-vector address
+    :param top: number of largest components used
+    :returns: the summed associator defect over their triples
     """
     idx = sorted(range(1, 16), key=lambda i: -abs(v[i]))[:max(1, top)]
     tot = 0.0
@@ -876,6 +981,11 @@ def chart_of(v: Sequence[float], check_zd: bool = True) -> Dict[str, object]:
     check_zd=False skips the exact zero-divisor test (168 sedenion products,
     ~9 ms) and reports None for it. Everything else is microseconds, so the
     census defaults to skipping it; single lookups keep it on.
+
+    :param v: 16-vector address
+    :param check_zd: also test the address against the zero-divisor structure
+    :returns: the atlas report described above
+    :raises ValueError: v is not of length 16
     """
     if len(v) != 16:
         raise ValueError("chart_of: a sedenion address is a 16-vector")
@@ -920,6 +1030,11 @@ def address_census(addresses: Dict[str, Sequence[float]],
 
     Deliberately descriptive: counts and distributions only, no scoring
     against an expected outcome.
+
+    :param addresses: {name: 16-vector}
+    :param limit: stop after this many addresses; None takes all
+    :param check_zd: also test each address against the zero-divisor structure
+    :returns: dict with the distributions over charts, Assessors, peak dimensions and fixed-point weight
     """
     items = list(addresses.items())
     if limit is not None:
@@ -988,6 +1103,10 @@ def pencil(r: int) -> List[Tuple[int, int]]:
     fixed points once a == r is excluded, so exactly 7 unordered pairs fall
     out. Returned sorted by the smaller member, ascending -- the pencil
     path's station order.
+
+    :param r: relation index, 1..15
+    :returns: the 7 factor pairs (a, a XOR r)
+    :raises ValueError: r is outside 1..15
     """
     if not (1 <= r <= 15):
         raise ValueError("pencil: r must be one of the 15 PG(3,2) points, 1..15")

@@ -25,7 +25,7 @@ The code demonstrates that these numbers work:
 Where the numbers came from: see the mathematics paper.
 That these numbers work: see this file.
 
-Status: ESTABLISHED (Addendum VIII, 2026-05-17)
+Status: ESTABLISHED (Addendum VIII)
 Closes: clay_millennium.yang_mills_mass_gap() — was OPEN, now DERIVED.
 """
 

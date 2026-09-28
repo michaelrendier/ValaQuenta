@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.clay_millennium.tools
-=================================================
+ValaQuenta.modules.clay_millennium.tools
+========================================
 ClayMillenniumModule — registry contract.
 
 Version: 0.130
@@ -27,7 +27,17 @@ from .maths import (
 
 
 class ClayMillenniumModule(EquationModule):
+    """
+    Clay Millennium Problems — Σ_RB derivations
 
+    All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent
+    proofs (Stone / Wiles conjugate), Noether balance scan, spectral
+    decomposition + BAO residue / mass gap. Poincaré (SOLVED) and FLT (Wiles
+    1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP,
+    Hodge, BSD.
+
+    Registry module for ``clay_millennium``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.clay_millennium.maths`.
+    """
     @property
     def name(self): return 'clay_millennium'
 

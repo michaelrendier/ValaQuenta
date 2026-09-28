@@ -51,6 +51,10 @@ class Understand:
         The surface form is a coordinate. The prime is the point.
         The domain constrains which instruments are available.
         Without a domain, all instruments play.
+
+        :param text: surface form, in any language or script
+        :param domain: optional domain restricting which instruments (zeros) are available; None lets all play
+        :returns: the word mapped to a Riemann zero in semantic space
         """
         surface = text.strip()
         tokens  = re.findall(r'\w+', surface.lower())
@@ -97,6 +101,9 @@ class Understand:
 
         The music creates the instruments.
         The description selects which ones play.
+
+        :param description: text saying where meaning starts and stops; its token count sets the width of the zero window
+        :returns: the semantic domain centred on the description's zero
         """
         desc_word = self.read(description)
         center_gamma = desc_word.gamma
@@ -130,6 +137,10 @@ class Understand:
 
         The Riemann zeros γₙ are the formant frequencies.
         The acoustic prime is the word the waveform is pointing at.
+
+        :param signal: acoustic samples of a speech waveform
+        :param sample_rate: samples per second
+        :returns: the word whose semantic prime the formant structure points at
         """
         if not signal:
             return SemanticWord(surface='<silence>', prime=0j)
@@ -168,6 +179,10 @@ class Understand:
 
         No search. No iteration. No eddy currents.
         The prime emerges from the physics.
+
+        :param word: the word to evolve
+        :param t: evolution time under H = xp
+        :returns: the word carrying its conserved prime E
         """
         x0 = word.projections.get('x0', abs(word.prime) or 1.0)
         p0 = word.projections.get('p0', 1.0 / x0 if x0 else 1.0)
@@ -211,6 +226,10 @@ class Understand:
         to the pondered prime to find its projections.
 
         No intelligence. Just operations.
+
+        :param word: the pondered word
+        :param operations: functions SemanticWord → SemanticWord to apply; None uses the registered default stack
+        :returns: the word with the operations' projections attached
         """
         ops = operations or self._ops
         for op in ops:
@@ -218,7 +237,11 @@ class Understand:
         return word
 
     def register_operation(self, op: Callable) -> None:
-        """Add a mathematical operation to the default stack."""
+        """
+        Add a mathematical operation to the default stack.
+
+        :param op: function SemanticWord → SemanticWord
+        """
         self._ops.append(op)
 
     # ── UNDERSTAND ────────────────────────────────────────────────────────────
@@ -234,6 +257,9 @@ class Understand:
         The prime IS the multidimensional context IS the word.
         Not the string. The point in semantic space
         that all the coordinate systems were pointing at.
+
+        :param word: the calculated word
+        :returns: the word reduced to its DC component: the prime
         """
         # Derive σ from the two Noether currents — forward from the right,
         # backward from the left. The mathematics forces them to meet at σ=1/2.
@@ -260,13 +286,16 @@ class Understand:
                 t: float = 1.0,
                 domain: Optional[SemanticDomain] = None) -> SemanticWord:
         """
-        Read → Ponder → Calculate → Understand.
-        The full pipeline in one call.
+        Run the full pipeline in one call: Read → Ponder → Calculate → Understand.
 
-        domain: optional SemanticDomain from describe() — constrains the semantic space.
+        Input is any surface form in any language or script; output is the
+        semantic prime as multidimensional context.
 
-        Input:  any surface form (any language, any script)
-        Output: the semantic prime as multidimensional context
+        :param text: surface form to process
+        :param operations: operations for the calculate step; None uses the default stack
+        :param t: evolution time for the ponder step
+        :param domain: optional SemanticDomain from describe() constraining the semantic space
+        :returns: the understood word
         """
         word = self.read(text, domain=domain)
         word = self.ponder(word, t=t)
@@ -291,6 +320,8 @@ class Understand:
             T_H → ∞. The Capacitor cannot hold the charge.
 
         τ · T_H = constant. The Capacitor IS the thermal bath.
+
+        :param domain: domain whose coherence time sets the Capacitor time constant
         """
         tau = domain.coherence_time(RIEMANN_ZEROS)
         self._C.tau = tau

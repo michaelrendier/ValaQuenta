@@ -60,7 +60,7 @@ Two trees, one world:
 
 No renormalization. Failed predictions stay in data.
 
-Version: 0.100 — 2026-06-25
+Version: 0.100
 """
 
 import math
@@ -185,6 +185,10 @@ def multiply(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     """
     Multiply two sedenion vectors a, b ∈ ℝ¹⁶ using the pre-computed table.
     Exact for integer/rational inputs; float for general inputs.
+
+    :param a: sedenion vector in ℝ¹⁶
+    :param b: sedenion vector in ℝ¹⁶
+    :returns: the sedenion product a·b
     """
     result = np.zeros(16, dtype=float)
     for i in range(16):
@@ -200,11 +204,22 @@ def multiply(a: np.ndarray, b: np.ndarray) -> np.ndarray:
 
 
 def norm_sq(a: np.ndarray) -> float:
+    """
+    Return the squared Euclidean norm of a sedenion vector.
+
+    :param a: sedenion vector in ℝ¹⁶
+    :returns: a·a
+    """
     return float(np.dot(a, a))
 
 
 def e_k(k: int) -> np.ndarray:
-    """Return basis vector eₖ."""
+    """
+    Return basis vector eₖ.
+
+    :param k: basis index, 0..15
+    :returns: the 16-vector with a 1 at index k
+    """
     v = np.zeros(16)
     v[k] = 1.0
     return v
@@ -249,6 +264,9 @@ def classify_zd_pairs(pairs: list) -> Dict[str, List]:
       - mixed:       at least one factor has a mix of odd/even indices
       - even_sector: both factors at all-even indices
     Returns dict with counts and the (i,j),(k,l) index tuples.
+
+    :param pairs: zero-divisor pairs as ((i, j), (k, l)) index tuples
+    :returns: the pairs grouped under 'odd_sector', 'mixed' and 'even_sector', with counts
     """
     result = {'odd_sector': [], 'mixed': [], 'even_sector': []}
     for _, _, ij, kl in pairs:
@@ -270,6 +288,9 @@ def basis_to_cell(k: int) -> Dict:
     """
     Map basis element eₖ to its Sedenion Point Mapping coordinates.
     Returns dict with shell, sigma, angle_deg, j_type, is_monster_gap.
+
+    :param k: basis index, 0..15
+    :returns: dict with shell, sigma, angle_deg, j_type and is_monster_gap
     """
     shell, angle_deg, j_type = BASIS_MAP[k]
     return {
@@ -299,6 +320,9 @@ def sphere_coordinates(k: int) -> Tuple[float, float, float]:
 
     In the inverted tree (root=t_256=center, leaves=ℝ=surface):
     r = 1 − sigma (so outer shells → larger r → closer to surface)
+
+    :param k: basis index, 0..15
+    :returns: (r, theta, phi)
     """
     cell  = basis_to_cell(k)
     sigma = cell['sigma']
@@ -361,6 +385,9 @@ def zd_path_coordinates(constellation: Tuple[int,int,int,int]) -> List[Dict]:
 
     Path visits: center → Shell4/J_blue → Shell3/J_red → Shell2/J_blue → Shell1/J_red → ℝ leaf
     (In the inverted tree: root=center, leaves=ℝ surface)
+
+    :param constellation: (a, b, c, d) with (eₐ + e_b) × (e_c + e_d) = 0
+    :returns: the Sedenion Point Mapping coordinates of each stop on the path
     """
     a, b, c, d = constellation
     path = []
@@ -536,6 +563,11 @@ def view_tree(tree: Optional[Dict] = None, zd_pairs: Optional[List] = None,
 
     THE ANGLE ROTATION transforms the switchback ZD path into a straight radial line.
     After rotation: every ZD path is a radial spoke. The tree = the wheel.
+
+    :param tree: the lattice tree; None builds the default
+    :param zd_pairs: known zero-divisor pairs; None uses the default set
+    :param computed_pairs: pairs found by computation, shown alongside
+    :returns: the rendered views of the tree, including the ASCII spoke wheel
     """
     if tree is None:
         tree = build_tree()
@@ -691,6 +723,11 @@ def zeta_geometric(
 
     The Euler product is the canonical geometric form.
     No renormalization. Converges for Re(s) > 0.
+
+    :param s: complex argument
+    :param scale_level: CD tower level; accepted for interface symmetry and not used by the computation
+    :param pairs: ZD pairs to weight; None uses the default 84
+    :returns: the Euler-product value ζ_T(s)
     """
     weights = _zd_weights(pairs)
     # Use UNIQUE prime weights — Euler product, each prime once
@@ -715,6 +752,10 @@ def zeta_dirichlet(
     ζ_T^D(s) = Σ_{84 pairs} w^{−s}
     Counts each ZD pair's prime contribution.
     Converges for Re(s) > 0. No renormalization.
+
+    :param s: complex argument
+    :param pairs: ZD pairs to weight; None uses the default 84
+    :returns: the Dirichlet-series value ζ_T^D(s)
     """
     weights = _zd_weights(pairs)
     return sum(w ** (-s) for w in weights if w > 0)
@@ -730,6 +771,11 @@ def critical_line_samples(
 
     Returns dict with gamma values, |ζ_T| values, and identified zeros.
     Compares with known Riemann zeros to check alignment.
+
+    :param gamma_min: lower end of the γ range
+    :param gamma_max: upper end of the γ range
+    :param n_points: number of samples
+    :returns: dict with the γ values, |ζ_T| values and identified zeros
     """
     gammas = np.linspace(gamma_min, gamma_max, n_points)
 
@@ -795,6 +841,10 @@ def switch_scale(sigma: float, direction: str = 'up') -> Dict:
 
     The ZD structure at each level is COMPLETE for that level.
     No partial sums are renormalised. The structure is switched, not patched.
+
+    :param sigma: current σ
+    :param direction: 'up' toward the ℝ leaf or 'down' toward the t_256 root
+    :returns: the adjacent level's σ and its ZD structure
     """
     # σ = 1 − k/4 → k = 4(1−σ)
     k_current = round(4.0 * (1.0 - sigma))

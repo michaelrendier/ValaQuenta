@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.scale.tools
-=========================================
+ValaQuenta.modules.scale.tools
+==============================
 THE SCALE -- Module Tools
 
 Implements the EquationModule registry contract.

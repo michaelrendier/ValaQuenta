@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.units.maths
-=========================================
+ValaQuenta.modules.units.maths
+==============================
 UNITS -- dimensional exponent vectors as a fourth domain for this project's
 own factoral-decomposition discipline: numbers (prime/composite), processes
 (operator DAGs), and now physical units (the 7 SI base dimensions as
@@ -31,29 +31,59 @@ SI_BASE: Tuple[str, ...] = ('kg', 'm', 's', 'A', 'K', 'mol', 'cd')
 
 def unit_vector(exponents: Sequence[float], name: str = None,
                 lineage: Tuple[Tuple[str, int], ...] = ()) -> Dict[str, Any]:
-    """A unit as a point in the 7-axis SI exponent lattice. Multiplying
+    """
+    A unit as a point in the 7-axis SI exponent lattice. Multiplying
     quantities ADDS exponent vectors; dividing SUBTRACTS; cancellation is a
     component landing on zero -- no special-casing, it falls out of vector
-    arithmetic."""
+    arithmetic.
+
+    :param exponents: the 7 SI base-dimension exponents
+    :param name: optional name of the unit
+    :param lineage: (parent_name, power) pairs the unit is built from
+    :returns: the unit as a dict with its exponent vector
+    :raises ValueError: the exponent vector is not of length 7
+    """
     if len(exponents) != len(SI_BASE):
         raise ValueError(f'need exactly {len(SI_BASE)} exponents (kg,m,s,A,K,mol,cd)')
     return {'exponents': tuple(exponents), 'name': name, 'lineage': lineage}
 
 
 def unit_mul(a: Dict[str, Any], b: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Multiply two units: add their exponent vectors.
+
+    :param a: first unit
+    :param b: second unit
+    :returns: the product unit
+    """
     return unit_vector([x + y for x, y in zip(a['exponents'], b['exponents'])])
 
 
 def unit_div(a: Dict[str, Any], b: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Divide two units: subtract their exponent vectors.
+
+    :param a: numerator unit
+    :param b: denominator unit
+    :returns: the quotient unit
+    """
     return unit_vector([x - y for x, y in zip(a['exponents'], b['exponents'])])
 
 
 def unit_pow(a: Dict[str, Any], n: float) -> Dict[str, Any]:
+    """
+    Raise a unit to a power: scale its exponent vector.
+
+    :param a: the unit
+    :param n: the power
+    :returns: the powered unit
+    """
     return unit_vector([x * n for x in a['exponents']])
 
 
 def unit_lineage_decompose(u: Dict[str, Any], table: Dict[str, Dict]) -> Dict[str, Any]:
-    """Trace a named composite unit's generational lineage back to the 7 SI
+    """
+    Trace a named composite unit's generational lineage back to the 7 SI
     leaves, and verify the trace RECOMBINES to the exact same exponent
     vector declared directly. `lineage` entries are (parent_name, power)
     pairs -- a composite is built from a SIGNED exponent of each parent
@@ -61,7 +91,12 @@ def unit_lineage_decompose(u: Dict[str, Any], table: Dict[str, Dict]) -> Dict[st
     bare list of names summed as if every step were an addition (that was
     this function's own first draft in the sibling SFR port, caught by
     running it, not assumed correct: it failed all six named units before
-    being fixed to carry signed powers)."""
+    being fixed to carry signed powers).
+
+    :param u: a named composite unit
+    :param table: named units keyed by name
+    :returns: dict with the trace to the 7 SI leaves and whether it recombines to the declared exponent vector
+    """
     def _walk(name):
         if name in SI_BASE:
             v = [0] * len(SI_BASE)
@@ -167,8 +202,13 @@ EQUATION_INDEX: Dict[Tuple[int, ...], List[str]] = {
 
 
 def equation_index_lookup(exponents: Tuple[int, ...]) -> List[str]:
-    """Given a dimension signature, return the candidate equations that
+    """
+    Given a dimension signature, return the candidate equations that
     produce it -- the "equation index" reading. Not exhaustive (the space
     of physical laws is not finite the way SI_BASE's 7 leaves are); this is
-    a real, checkable starting table, extend it as new domains come up."""
+    a real, checkable starting table, extend it as new domains come up.
+
+    :param exponents: the dimension signature, 7 integers
+    :returns: names of the candidate equations with that signature
+    """
     return EQUATION_INDEX.get(tuple(exponents), [])

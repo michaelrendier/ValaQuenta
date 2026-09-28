@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.clay_millennium.maths
-==================================================
+ValaQuenta.modules.clay_millennium.maths
+========================================
 Clay Millennium Problems — derivation from Σ_RB.
 
 Each problem is shown to project from the Inductive Self-Adjoint Geometric

@@ -20,6 +20,7 @@ says what.
 """
 import importlib
 import os
+import pathlib
 import sys
 import traceback
 
@@ -36,10 +37,21 @@ warnings = []
 
 
 def ok(msg):
+    """
+    Print a PASS line.
+
+    :param msg: what passed
+    """
     print(f'  {GREEN}PASS{RESET}  {msg}')
 
 
 def bad(msg, detail=''):
+    """
+    Print a FAIL line and record the failure.
+
+    :param msg: what failed
+    :param detail: extra text printed under the failure
+    """
     print(f'  {RED}FAIL{RESET}  {msg}')
     if detail:
         print(f'        {DIM}{detail}{RESET}')
@@ -47,6 +59,12 @@ def bad(msg, detail=''):
 
 
 def warn(msg, detail=''):
+    """
+    Print a SKIP line and record the warning.
+
+    :param msg: what was skipped
+    :param detail: extra text printed under the skip
+    """
     print(f'  {YELLOW}SKIP{RESET}  {msg}')
     if detail:
         print(f'        {DIM}{detail}{RESET}')
@@ -103,14 +121,10 @@ for name in TOPLEVEL:
         bad(f'ValaQuenta.{name}', f'{e.__class__.__name__}: {e}')
 
 print('\n[4] Engine modules')
-MODULES = [
-    'berry_keating', 'clay_millennium', 'constants', 'derivation_chain',
-    'h_rb_hat', 'hyperwebster', 'inversion', 'jwst', 'lagrangian', 'noether',
-    'noether_information', 'sigma_cavitation', 'singularity_null',
-    'sonification', 'spherical', 'tier6_physics', 'tier7_cosmos',
-    'tier8_sedenion', 'tier9_chem', 'translator_common', 'translator_discocat',
-    'translator_vsa', 'turing_diagonal',
-]
+MODULES = sorted(
+    d.name for d in (pathlib.Path(__file__).resolve().parent / 'modules').iterdir()
+    if d.is_dir() and (d / '__init__.py').exists()
+)
 for name in MODULES:
     try:
         importlib.import_module(f'ValaQuenta.modules.{name}')

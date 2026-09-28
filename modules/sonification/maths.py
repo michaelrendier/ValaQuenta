@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.sonification.maths
-===============================================
+ValaQuenta.modules.sonification.maths
+=====================================
 Equation-derived audio. Every sound is a derivation.
 
 ω (angular frequency) = pitch.
@@ -117,6 +117,10 @@ def omega_from_equation(equation_name: str,
       2. If result is a dict, look for known keys: 'phi', 'r', 'alpha_nn',
          'd_star', 'gap', 'violation', 'I_info'.
       3. If the equation name matches a particle, return that FREQ.
+
+    :param equation_name: name of the equation that produced the result
+    :param result: the equation's result: a float, or a dict with known keys
+    :returns: dict carrying ω in rad/s and how it was derived
     """
     freq: Optional[Fraction] = None
     label = equation_name
@@ -172,6 +176,10 @@ def wavetable(name: str, n_samples: int = 512) -> Dict[str, Any]:
       'higgs_hat'    Mexican hat oscillation (SSB potential)
       'phi_recursion' r → 1+1/r spiral waveform
       'fano'         Fano-plane 7-harmonic superposition
+
+    :param name: 'sine', 'rydberg', 'higgs_hat', 'phi_recursion' or 'fano'
+    :param n_samples: number of samples
+    :returns: dict with the wavetable samples
     """
     if n_samples < 2:
         n_samples = 512
@@ -238,6 +246,12 @@ def sonification_data(equation_name: str,
     """
     Produce the full sonification viewer_data dict.
     Combines omega_from_equation + wavetable.
+
+    :param equation_name: name of the equation
+    :param params: its parameter values
+    :param result: its result
+    :param wavetable_name: wavetable to render the result on
+    :returns: the viewer_data dict for the sonification display
     """
     omega_info = omega_from_equation(equation_name, result)
     wt         = wavetable(wavetable_name)

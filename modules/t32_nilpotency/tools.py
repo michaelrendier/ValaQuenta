@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.t32_nilpotency.tools
-===================================================
+ValaQuenta.modules.t32_nilpotency.tools
+=======================================
 T32NilpotencyModule — registry contract.
 
 The reusable primitive module -- Hyperwebster address, T32/GF(2)
@@ -19,7 +19,16 @@ _DEFAULT_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
 
 
 class T32NilpotencyModule(EquationModule):
+    """
+    T32 Nilpotency — Hyperwebster Address Primitives
 
+    Standalone, minimal, verified-correct primitives: Hyperwebster base-97
+    address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency test.
+    Meant to be imported by other engines (hypergon_constructibility,
+    fermat_monster_engine.py) rather than each maintaining its own copy.
+
+    Registry module for ``t32_nilpotency``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.t32_nilpotency.maths`.
+    """
     @property
     def name(self): return 't32_nilpotency'
 

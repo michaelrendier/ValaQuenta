@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.tier9_chem.maths
-==========================================
+ValaQuenta.modules.tier9_chem.maths
+===================================
 Tier 9 — D-CHEM: CHEMISTRY, BIOCHEMISTRY, AND CANCER TARGETING.
 
 Collaborator: Erika Schafer
@@ -23,6 +23,7 @@ Version: 0.100 — Third Age: Tier 9 D-CHEM
 import math
 import cmath
 import numpy as np
+_trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in NumPy 2.0
 from typing import Dict, List, Any, Tuple
 
 # ── Ainulindale constants ──────────────────────────────────────────────────────
@@ -44,9 +45,28 @@ PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
 
 # ── CD multiplication ──────────────────────────────────────────────────────────
 def cd_conj(x):
+    """
+    Return the Cayley-Dickson conjugate: negate every component except e₀.
+
+    :param x: coefficient vector of length 2ⁿ
+    :type x: numpy.ndarray
+    :returns: the conjugate, a new array
+    :rtype: numpy.ndarray
+    """
     c = x.copy(); c[1:] = -c[1:]; return c
 
 def cd_mul(a, b):
+    """
+    Multiply two Cayley-Dickson elements by the doubling rule
+    (a₁, a₂)(b₁, b₂) = (a₁b₁ − conj(b₂)a₂,  b₂a₁ + a₂conj(b₁)).
+
+    :param a: coefficient vector of length 2ⁿ
+    :type a: numpy.ndarray
+    :param b: coefficient vector of the same length
+    :type b: numpy.ndarray
+    :returns: the product, a vector of the same length
+    :rtype: numpy.ndarray
+    """
     n = len(a)
     if n == 1: return np.array([a[0]*b[0]])
     h = n//2
@@ -56,6 +76,16 @@ def cd_mul(a, b):
     return np.concatenate([c1,c2])
 
 def e_k(k, dim=16):
+    """
+    Return the basis element eₖ as a coefficient vector.
+
+    :param k: basis index
+    :type k: int
+    :param dim: algebra dimension
+    :type dim: int
+    :returns: the vector with a 1 at index k and zeros elsewhere
+    :rtype: numpy.ndarray
+    """
     v = np.zeros(dim); v[k] = 1.0; return v
 
 
@@ -906,10 +936,10 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
     cancer_chrom  = chromatogram_profile(times, cancer_AR_AB)
 
     # Integrate peaks
-    healthy_JR = float(np.trapz(healthy_chrom[:60], times[:60]))    # t<7.5
-    healthy_JB = float(np.trapz(healthy_chrom[120:], times[120:]))  # t>15
-    cancer_JR  = float(np.trapz(cancer_chrom[:60], times[:60]))
-    cancer_JB  = float(np.trapz(cancer_chrom[120:], times[120:]))
+    healthy_JR = float(_trapz(healthy_chrom[:60], times[:60]))    # t<7.5
+    healthy_JB = float(_trapz(healthy_chrom[120:], times[120:]))  # t>15
+    cancer_JR  = float(_trapz(cancer_chrom[:60], times[:60]))
+    cancer_JB  = float(_trapz(cancer_chrom[120:], times[120:]))
 
     chromatogram = {
         'healthy_JR_area' : round(healthy_JR, 4),

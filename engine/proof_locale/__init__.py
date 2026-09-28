@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.proof_locale
-========================================
+ValaQuenta.engine.proof_locale
+==============================
 English "puzzle pieces" for the on-the-fly derivation proofs — handled the way
 translations are handled with a locale catalog.
 

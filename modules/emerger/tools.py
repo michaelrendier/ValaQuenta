@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.emerger.tools
-==========================================
+ValaQuenta.modules.emerger.tools
+================================
 THE EMERGER -- Sedenion Bracketing & Firing Order.  Module Tools.
 
 Implements the EquationModule registry contract:

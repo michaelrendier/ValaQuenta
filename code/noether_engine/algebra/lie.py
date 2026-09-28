@@ -27,6 +27,12 @@ import sympy as sp
 
 
 class LieGeneratorConvention(Enum):
+    """
+    Normalisation of Lie generators.
+
+    :cvar PHYSICS: Tr(T^a T^b) = ½ δ^{ab}
+    :cvar MATH: Tr(T^a T^b) = 2 δ^{ab}
+    """
     PHYSICS = 'physics'    # Tr(T^a T^b) = (1/2) δ^{ab}
     MATH = 'math'          # Tr(T^a T^b) = 2 δ^{ab}
 
@@ -45,6 +51,9 @@ def u1_generator(convention: str = 'physics') -> sp.Matrix:
     whether one factors out the i). We return the 1x1 identity matrix, the
     generator of phase rotations e^{iθ}. Convention affects normalization of
     the associated current, not the generator matrix itself.
+
+    :param convention: 'physics' or 'math'
+    :returns: the 1×1 identity matrix
     """
     return sp.Matrix([[1]])
 
@@ -67,6 +76,10 @@ def su2_generators(
 
     Physics convention : T^a = σ^a / 2
     Math convention    : T^a = σ^a  (so Tr(T^a T^b) = 2 δ^{ab})
+
+    :param convention: 'physics' or 'math'
+    :returns: the three generators
+    :raises ValueError: the convention is unknown
     """
     s1, s2, s3 = _pauli_matrices()
     if convention == 'physics':
@@ -114,6 +127,10 @@ def su3_generators(convention: str = 'physics') -> List[sp.Matrix]:
     Math convention    : T^a = λ^a
 
     Returns a list of 8 matrices.
+
+    :param convention: 'physics' or 'math'
+    :returns: the eight generators
+    :raises ValueError: the convention is unknown
     """
     gm = _gell_mann_matrices()
     if convention == 'physics':
@@ -127,5 +144,11 @@ def su3_generators(convention: str = 'physics') -> List[sp.Matrix]:
 # ── Generator commutator helper ────────────────────────────────────────────
 
 def commutator(A: sp.Matrix, B: sp.Matrix) -> sp.Matrix:
-    """[A, B] = AB - BA."""
+    """
+    [A, B] = AB - BA.
+
+    :param A: first matrix
+    :param B: second matrix
+    :returns: AB − BA
+    """
     return A * B - B * A

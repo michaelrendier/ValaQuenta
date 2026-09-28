@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine
-==========================
+ValaQuenta.engine
+=================
 Core engine: constants, units, and module registry.
 
 Version: 0.111

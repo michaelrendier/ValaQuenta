@@ -81,9 +81,13 @@ class CorpusProcessor:
     def process_file(self, path: str, language: Optional[str] = None,
                      skip_seen: bool = True, verbose: bool = True) -> dict:
         """
-        Process a single text file. Records all words to the lexicon.
+        Process a single text file and record all its words to the lexicon.
 
-        Returns stats dict for this file.
+        :param path: path of the text file
+        :param language: language tag recorded with the words; None to leave untagged
+        :param skip_seen: skip a file already recorded in the lexicon
+        :param verbose: print progress
+        :returns: statistics for this file
         """
         path = os.path.abspath(path)
 
@@ -152,8 +156,14 @@ class CorpusProcessor:
                           skip_seen: bool = True,
                           verbose: bool = True) -> dict:
         """
-        Process all matching files in a directory.
-        Saves lexicon after each file.
+        Process all matching files in a directory, saving the lexicon after each file.
+
+        :param directory: directory to scan
+        :param pattern: glob pattern of files to process
+        :param recursive: descend into subdirectories
+        :param skip_seen: skip files already recorded in the lexicon
+        :param verbose: print progress
+        :returns: aggregate statistics over the files processed
         """
         import glob
         search = os.path.join(directory, '**', pattern) if recursive else \
@@ -206,6 +216,10 @@ class CorpusProcessor:
         This forces cross-language semantic alignment:
         words that mean the same thing, in the same passage context,
         cluster around the same Riemann zeros.
+
+        :param paths: the same content in several languages; the first file provides the passage structure and domain descriptions
+        :param verbose: print progress
+        :returns: statistics for the parallel set
         """
         if not paths:
             return {}
@@ -339,6 +353,11 @@ class CorpusProcessor:
 
     @property
     def stats(self) -> dict:
+        """
+        Return counters for the current processor.
+
+        :returns: files, passages and words processed, plus the lexicon statistics
+        """
         return {
             'files_processed':    self._files_processed,
             'passages_processed': self._passages_processed,

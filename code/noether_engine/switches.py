@@ -43,7 +43,7 @@ class InvalidSwitchValueError(SwitchError):
 class UnsupportedCombinationError(SwitchError):
     """
     Raised when the engine is asked to run a switch combination that is
-    within the declared switch space but not yet implemented.
+    within the declared switch space but not implemented.
 
     The error message names the offending combination and the target session
     for its implementation.
@@ -88,6 +88,9 @@ class Switch:
         """
         Check that `value` is one of the declared choices.
         Raises InvalidSwitchValueError otherwise.
+
+        :param value: the value to check
+        :raises InvalidSwitchValueError: `value` is not one of the declared choices
         """
         if value not in self.choices:
             raise InvalidSwitchValueError(
@@ -390,9 +393,21 @@ class SwitchSettings:
         return inst
 
     def get(self, name: str) -> str:
+        """
+        Return the value of a switch.
+
+        :param name: the switch name
+        :returns: the switch's current value
+        """
         return self.values[name]
 
     def is_default(self, name: str) -> bool:
+        """
+        Report whether a switch was left at its default.
+
+        :param name: the switch name
+        :returns: True if the user did not supply it
+        """
         return name not in self.user_supplied
 
     def as_metadata_dict(self) -> Dict[str, Dict[str, Any]]:
@@ -443,6 +458,10 @@ def validate_combination(settings: SwitchSettings) -> None:
       InconsistentCombinationError — if the combination is mathematically invalid
 
     Does not return; either succeeds silently or raises.
+
+    :param settings: the settings to check
+    :raises UnsupportedCombinationError: the combination is deferred
+    :raises InconsistentCombinationError: the combination is mathematically invalid
     """
     # Check single-switch-value deferrals
     for (switch_name, switch_value), status in DEFERRED_SWITCH_VALUES.items():

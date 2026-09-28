@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.noether_information.tools
-======================================================
+ValaQuenta.modules.noether_information.tools
+============================================
 NoetherInformationModule — registry contract.
 
 Equations:
@@ -24,7 +24,16 @@ from .maths import (
 
 
 class NoetherInformationModule(EquationModule):
+    """
+    J_info  Information Current
 
+    Noether current for information-translation symmetry of L_NN. I_information
+    = Shannon entropy of activation distribution. Phi_flux = information flux
+    through algebra boundary. t_e = entropic time (layer where I_info is
+    maximal). Entropic arrow: ∂_l I_info ≥ 0.
+
+    Registry module for ``noether_information``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.noether_information.maths`.
+    """
     @property
     def name(self): return 'noether_information'
 

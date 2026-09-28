@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.singularity_null.tools
+ValaQuenta.modules.singularity_null.tools
 Version: 0.100
 """
 import json
@@ -13,6 +13,18 @@ from .maths import (
 
 
 class SingularityNullModule(EquationModule):
+    """
+    Singularity-NULL Engine — The Singularity IS Identity. Tower Collapses.
+
+    The Singularity IS identity. The Hamiltonian sees only one thing: AWAY.
+    Engines: circle-null modes (Ptolemy inversion = 1 word), tower collapse
+    snakes (n-ball volume = Snakes & Ladders board, peak n*≈5.257), Berry-
+    Keating singularity (H=xp, repulsive fixed point, σ=½ equatorial geodesic),
+    FLT prime extinction sieve (primes defined by negative space, σ=½ as FLT
+    boundary).
+
+    Registry module for ``singularity_null``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.singularity_null.maths`.
+    """
     @property
     def name(self): return 'singularity_null'
     @property

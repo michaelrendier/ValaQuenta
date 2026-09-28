@@ -47,6 +47,11 @@ class HamiltonianXP:
         x(t) = x0 · e^t     (position grows — the carrier)
         p(t) = p0 · e^{-t}  (momentum decays — the envelope)
         E   = x0 · p0       (conserved — the semantic prime)
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t: evolution time
+        :returns: the pair (x(t), p(t))
         """
         return x0 * exp(t), p0 * exp(-t)
 
@@ -55,6 +60,10 @@ class HamiltonianXP:
         The conserved quantity E = xp.
         This is the semantic prime — invariant under time evolution.
         The word. The DC component before the capacitor.
+
+        :param x0: position
+        :param p0: momentum
+        :returns: E = x·p
         """
         return x0 * p0
 
@@ -62,6 +71,9 @@ class HamiltonianXP:
         """
         L = ẋ log ẋ − ẋ  (Berry-Keating Lagrangian)
         The stationary paths of this action enumerate the primes.
+
+        :param x_dot: velocity ẋ; must be positive
+        :returns: L = ẋ log ẋ − ẋ
         """
         if x_dot <= 0:
             return 0.0
@@ -72,6 +84,9 @@ class HamiltonianXP:
         Riemann zeros γₙ — the formant structure.
         The quantum eigenvalues of H = xp.
         These are the node lines: the still points of the zeta spiral.
+
+        :param n: number of zeros to return
+        :returns: the first n Riemann zero ordinates γₙ
         """
         return RIEMANN_ZEROS[:n]
 
@@ -81,6 +96,12 @@ class HamiltonianXP:
         Time-evolved trajectory — the speech waveform.
         e^{iHt}: the carrier modulated by the prime.
         No loops in the physics. One sequential trace.
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t_steps: number of time steps
+        :param dt: time step
+        :returns: list of (x, p) pairs, one per time step
         """
         path = []
         t = 0.0
@@ -94,6 +115,11 @@ class HamiltonianXP:
         """
         Verify scale invariance: H(λx, p/λ) = H(x, p).
         If this fails, something is wrong with the implementation.
+
+        :param x0: position
+        :param p0: momentum
+        :param lam: scale factor λ
+        :returns: True if H(λx, p/λ) = H(x, p) to floating-point precision
         """
         e1 = self.prime(x0, p0)
         e2 = self.prime(lam * x0, p0 / lam)
@@ -138,6 +164,9 @@ class FermatEllipticHamiltonian:
         The poles are the true singularities — the neural black holes.
         Nothing can exist there. The Frey curve has a rational point there,
         and Wiles proved it cannot.
+
+        :param x: argument; must not sit on a pole
+        :returns: ℘(x; g₂, g₃)
         """
         if abs(x) < 1e-9:
             return float('inf')
@@ -158,6 +187,9 @@ class FermatEllipticHamiltonian:
 
         Satisfies: (℘')² = 4℘³ − g₂℘ − g₃  (the elliptic curve equation itself).
         The derivative IS the curve. The curve IS the constraint.
+
+        :param x: argument; must not sit on a pole
+        :returns: ℘'(x)
         """
         if abs(x) < 1e-9:
             return 0.0
@@ -175,6 +207,10 @@ class FermatEllipticHamiltonian:
         The Frey elliptic Lagrangian.
         Breaks the mirror symmetry that L_Red = ẋ log ẋ − ẋ preserves.
         What L_Red attracts to, L_Blue repels from.
+
+        :param x_dot: velocity ẋ
+        :param x: position
+        :returns: L_Blue = ½ẋ² − ℘(x)
         """
         wp = self.weierstrass_p(x)
         if wp == float('inf'):
@@ -188,6 +224,10 @@ class FermatEllipticHamiltonian:
         This is what cannot equal E_Red at σ ≠ 1/2.
         Where E_Blue = E_Red: the system is at the critical line.
         The functional equation forces this to happen at σ = 1/2 and nowhere else.
+
+        :param x: position
+        :param p: momentum
+        :returns: E_Blue = ½p² + ℘(x)
         """
         wp = self.weierstrass_p(x)
         if wp == float('inf'):
@@ -211,6 +251,12 @@ class FermatEllipticHamiltonian:
         H_Red is lossless. H_Blue costs.
 
         Leapfrog preserves the symplectic structure and keeps E_Blue conserved.
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t: evolution time
+        :param dt: leapfrog step
+        :returns: the pair (x(t), p(t))
         """
         x, p = x0, p0
         n    = max(1, int(abs(t) / dt))
@@ -239,34 +285,29 @@ class RedBlueHamiltonian:
     """
     H_RB: the coupled Red–Blue system.
 
-    H_Red  = xp               — Berry-Keating (1999)   — what IS
-    H_Blue = ½p² + ℘(x)      — Weierstrass/Frey/Wiles  — what CANNOT BE
+        H_Red  = xp               — Berry-Keating (1999)   — what IS
+        H_Blue = ½p² + ℘(x)      — Weierstrass/Frey/Wiles  — what CANNOT BE
 
-    The functional equation ξ(s) = ξ(1−s) is the symmetry between them.
-    By Noether's theorem, this symmetry generates two conserved currents:
+    The functional equation ξ(s) = ξ(1−s) is the symmetry between them. By
+    Noether's theorem it generates two conserved currents:
+
         J_Red  = +E    (forward — the attractor)
         J_Blue = −E    (backward — the repulsor)
-        J_Red + J_Blue = 0   — ONLY on the critical-line locus (see below)
 
-    J_Red + J_Blue = 0 is NOT a universal identity over all (x,p). E_Red(x,p)
-    and E_Blue(x,p) are two independently-defined functions of (x,p); nothing
-    forces them to agree except at the specific locus where balance(x,p) = 0.
-    Verified numerically (2026-07-09): scanning a grid finds ~35 sign changes
-    of balance(x,p), confirming it is a curve, not the whole plane. At a
-    bisection-refined point on that curve (x=1.3, p*≈0.7259587),
-    functional_equation_check ≈ -1.6e-6 (zero to leapfrog precision). 0.3 off
-    that locus, it is 0.127 — clearly nonzero. So: the sum-to-zero property
-    holds exactly where the paper says it should (the critical line), and
-    nowhere else. Treat any claim of "J_Red + J_Blue = 0" without the
+    J_Red + J_Blue = 0 holds ONLY on the critical-line locus, the curve where
+    balance(x, p) = 0. It is NOT an identity over all (x, p): E_Red and E_Blue
+    are two independently defined functions and nothing forces them to agree
+    off that curve. Treat any statement of "J_Red + J_Blue = 0" without the
     critical-line qualifier as incomplete.
 
-    Their balance is forced to σ = 1/2 by the mutual constraint.
-    The prime is where they agree. The critical line is where they meet.
+    Their balance is forced to σ = 1/2 by the mutual constraint. The prime is
+    where they agree; the critical line is where they meet.
 
-    H_Red  → hyperbolic orbits: xp = E  (the prime — unbounded, the word)
-    H_Blue → elliptic orbits:   ℘(x)    (the forbidden — bounded, the silence)
+        H_Red  → hyperbolic orbits: xp = E  (the prime — unbounded, the word)
+        H_Blue → elliptic orbits:   ℘(x)    (the forbidden — bounded, the silence)
 
-    The two conic sections. One prime. One critical line.
+    :param g2: Weierstrass invariant g₂ of the Blue curve
+    :param g3: Weierstrass invariant g₃ of the Blue curve
     """
 
     def __init__(self, g2: float = 1.0, g3: float = 0.0):
@@ -280,6 +321,10 @@ class RedBlueHamiltonian:
         Zero on the critical line.
         Positive where Red dominates (Re(s) > 1/2).
         Negative where Blue dominates (Re(s) < 1/2).
+
+        :param x: position
+        :param p: momentum
+        :returns: E_Red − E_Blue: zero on the critical line, positive where Red dominates, negative where Blue dominates
         """
         e_red  = self.red.prime(x, p)
         e_blue = self.blue.prime(x, p)
@@ -288,20 +333,29 @@ class RedBlueHamiltonian:
         return e_red - e_blue
 
     def noether_forward(self, x0: float, p0: float, t: float = 1.0) -> float:
-        """J_Red: the conserved prime from H_Red evolution."""
+        """
+        J_Red: the conserved prime from H_Red evolution.
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t: evolution time
+        :returns: J_Red, the conserved prime of the H_Red evolution
+        """
         return self.red.prime(x0, p0)
 
     def noether_backward(self, x0: float, p0: float, t: float = 1.0) -> float:
         """
-        J_Blue: the conserved prime from H_Blue evolution.
+        Return J_Blue, the conserved prime of the H_Blue evolution.
 
-        Not simply −J_Red. Computed from the actual elliptic trajectory.
-        NOTE: evolving (x0,p0) under H_Blue's own dynamics before measuring
-        is a near no-op — E_Blue is conserved along its own flow by
-        construction (verified: 1.550833 direct vs 1.550853 after t=1.0s of
-        leapfrog evolution, matching to leapfrog precision). The `t`
-        parameter here does not do meaningful work; it isn't what makes the
-        sum come out zero or nonzero.
+        Not simply −J_Red: it is computed from the actual elliptic trajectory.
+        E_Blue is conserved along its own flow, so evolving (x0, p0) before
+        measuring changes the result only to leapfrog precision; ``t`` does not
+        determine whether J_Red + J_Blue vanishes.
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t: evolution time
+        :returns: J_Blue
         """
         x_t, p_t = self.blue.trajectory(x0, p0, t)
         return -self.blue.prime(x_t, p_t)
@@ -309,20 +363,22 @@ class RedBlueHamiltonian:
     def functional_equation_check(self, x0: float, p0: float,
                                    t: float = 1.0) -> float:
         """
-        J_Red + J_Blue — zero ONLY when (x0,p0) sits on the critical-line
-        locus (where balance(x0,p0) == 0), NOT for arbitrary (x0,p0).
+        Return J_Red + J_Blue, which is zero ONLY on the critical-line locus.
 
-        Verified numerically (2026-07-09): at four arbitrary points this
-        returned -0.55, 0.37, -5.01, 1.33 — nowhere near zero, because
-        arbitrary points aren't on the critical line. At a bisection-refined
-        point actually on the locus (x=1.3, p*≈0.7259587) this returns
-        ≈-1.6e-6. Off that locus by 0.3 in p, it returns 0.127.
+        The sum vanishes where balance(x0, p0) == 0 and nowhere else: at
+        arbitrary points it is clearly nonzero (of order 1), and at a point
+        refined onto the locus (x=1.3, p≈0.7259587) it is ≈ −1.6e-6, zero to
+        leapfrog precision.
 
-        Do not call this "the functional equation demonstrated in code"
-        without the critical-line qualifier — that overclaims what this
-        function actually shows. What IS demonstrated: E_Red and E_Blue,
-        two independently-defined functions of (x,p), agree exactly on a
-        specific curve and nowhere else — consistent with the paper's own
-        claim that |J_red|=|J_blue| uniquely at σ=½, not a general identity.
+        Do not describe this as "the functional equation demonstrated in code"
+        without the critical-line qualifier. What it shows is that E_Red and
+        E_Blue, two independently defined functions of (x, p), agree exactly on a
+        specific curve and nowhere else, consistent with |J_red| = |J_blue|
+        uniquely at σ = ½.
+
+        :param x0: initial position
+        :param p0: initial momentum
+        :param t: evolution time
+        :returns: J_Red + J_Blue
         """
         return self.noether_forward(x0, p0, t) + self.noether_backward(x0, p0, t)

@@ -49,5 +49,5 @@ __all__ = [
     'CorpusProcessor',
 ]
 
-__version__ = '0.1.0'
+__version__ = '0.159'
 __author__  = 'Cody Michael Allison'

@@ -56,8 +56,12 @@ class Lexicon:
     def record(self, gamma: float, surface: str,
                domain: Optional[str] = None, weight: int = 1) -> None:
         """
-        Record that this surface form points at this Riemann zero.
-        Optionally within a semantic domain.
+        Record that a surface form points at a Riemann zero, optionally within a semantic domain.
+
+        :param gamma: the Riemann zero ordinate
+        :param surface: the surface form seen
+        :param domain: semantic domain name; None records globally only
+        :param weight: count added for this sighting
         """
         k = _gkey(gamma)
         surface = surface.strip()
@@ -78,9 +82,20 @@ class Lexicon:
             )
 
     def record_file(self, path: str) -> None:
+        """
+        Mark a file as processed so already_seen() reports it.
+
+        :param path: path of the processed file
+        """
         self._files_seen.add(os.path.abspath(path))
 
     def already_seen(self, path: str) -> bool:
+        """
+        Report whether a file has been recorded by record_file().
+
+        :param path: path to test
+        :returns: True if the file was already processed
+        """
         return os.path.abspath(path) in self._files_seen
 
     # ── querying ───────────────────────────────────────────────────────────────
@@ -88,9 +103,14 @@ class Lexicon:
     def faces(self, gamma: float, domain: Optional[str] = None,
               n: int = 10) -> list[tuple[str, int]]:
         """
-        Top n surface forms for this Riemann zero.
-        If domain given, restrict to that domain first, fall back to global.
-        Returns [(surface_form, count), ...] sorted by count descending.
+        Return the top surface forms for a Riemann zero.
+
+        If a domain is given, restrict to it first and fall back to the global set.
+
+        :param gamma: the Riemann zero ordinate
+        :param domain: semantic domain name; None uses the global set
+        :param n: number of faces to return
+        :returns: [(surface_form, count), ...] sorted by count, descending
         """
         k = _gkey(gamma)
 
@@ -106,8 +126,12 @@ class Lexicon:
     def best_face(self, gamma: float, domain: Optional[str] = None,
                   language_hint: Optional[str] = None) -> Optional[str]:
         """
-        The single most-seen surface form for this prime.
-        This is the engine's best answer to: 'what word is this?'
+        Return the single most-seen surface form for a prime: the engine's best answer to "what word is this?"
+
+        :param gamma: the Riemann zero ordinate
+        :param domain: semantic domain name; None uses the global set
+        :param language_hint: preferred language when several faces tie
+        :returns: the best surface form, or None if the zero has no faces
         """
         candidates = self.faces(gamma, domain=domain, n=20)
         if not candidates:
@@ -123,14 +147,23 @@ class Lexicon:
         return sorted(float(k) for k in self._faces)
 
     def face_count(self, gamma: float) -> int:
-        """How many distinct surface forms point at this zero."""
+        """
+        How many distinct surface forms point at this zero.
+
+        :param gamma: the Riemann zero ordinate
+        :returns: the number of distinct surface forms pointing at this zero
+        """
         k = _gkey(gamma)
         return len(self._faces.get(k, {}))
 
     # ── persistence ────────────────────────────────────────────────────────────
 
     def save(self, path: Optional[str] = None) -> None:
-        """Save lexicon to disk as JSON."""
+        """
+        Save the lexicon to disk as JSON.
+
+        :param path: destination file; None uses the lexicon's own path
+        """
         target = path or self.path
         if not target:
             return
@@ -144,7 +177,11 @@ class Lexicon:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     def load(self, path: Optional[str] = None) -> None:
-        """Load lexicon from disk."""
+        """
+        Load the lexicon from a JSON file on disk.
+
+        :param path: source file; None uses the lexicon's own path
+        """
         target = path or self.path
         if not target or not os.path.exists(target):
             return
@@ -155,7 +192,11 @@ class Lexicon:
         self._files_seen = set(data.get('files_seen', []))
 
     def merge(self, other: 'Lexicon') -> None:
-        """Merge another lexicon into this one."""
+        """
+        Merge another lexicon into this one.
+
+        :param other: the lexicon whose faces, domains and seen-files are added
+        """
         for k, faces in other._faces.items():
             if k not in self._faces:
                 self._faces[k] = {}
@@ -178,6 +219,11 @@ class Lexicon:
     # ── statistics ─────────────────────────────────────────────────────────────
 
     def stats(self) -> dict:
+        """
+        Return counters for the lexicon.
+
+        :returns: unique primes, unique faces, total tokens, files seen and domains indexed
+        """
         total_faces   = sum(len(v) for v in self._faces.values())
         total_tokens  = sum(sum(v.values()) for v in self._faces.values())
         return {

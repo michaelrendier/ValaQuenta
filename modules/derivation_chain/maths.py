@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.derivation_chain.maths
-==================================================
+ValaQuenta.modules.derivation_chain.maths
+=========================================
 Tiers 1 – 5: The full derivation chain from root constants to Geometric Observer.
 
 The chain:

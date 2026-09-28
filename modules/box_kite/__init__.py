@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.box_kite
-======================================
+ValaQuenta.modules.box_kite
+===========================
 The Box-Kite Debugger -- the zero-divisor geometry, made watchable.
 
 The object is PSL(2,7), order 168, Aut(Fano plane) -- NOT G2. Moreno's

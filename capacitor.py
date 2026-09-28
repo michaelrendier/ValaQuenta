@@ -42,6 +42,9 @@ class Capacitor:
         """
         One integration step: V += (signal − V) / τ
         The capacitor charges toward the signal.
+
+        :param signal: input sample the capacitor charges toward
+        :returns: the new voltage V after one step V += (signal − V) / τ
         """
         self._state += (signal - self._state) / self.tau
         self._n += 1
@@ -51,6 +54,9 @@ class Capacitor:
         """
         Extract the DC component from a sequence of signals.
         This is the prime. This is the word.
+
+        :param signals: sequence of input samples
+        :returns: the DC component of the sequence: the prime, the word
         """
         for s in signals:
             self.charge(s)

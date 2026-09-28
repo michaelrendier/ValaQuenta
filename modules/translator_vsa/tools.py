@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_vsa.tools
-=================================================
+ValaQuenta.modules.translator_vsa.tools
+=======================================
 The Translator, version 2 (VSA / hyperdimensional computing) — Module Tools.
 
 Implements the EquationModule registry contract.

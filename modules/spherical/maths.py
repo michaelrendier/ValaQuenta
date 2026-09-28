@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.spherical.maths
-==========================================
+ValaQuenta.modules.spherical.maths
+==================================
 Spherical Harmonics and Resonant Cavity Mathematics
 
 The J_N four-cycle has angular period 4 × (π/2) = 2π.
@@ -53,6 +53,11 @@ def assoc_legendre(l: int, m: int, x: float) -> float:
     """
     Associated Legendre polynomial P_l^m(x), m ≥ 0, x ∈ [-1, 1].
     Computed via upward recurrence for numerical stability.
+
+    :param l: degree
+    :param m: order, m ≥ 0
+    :param x: argument in [−1, 1]
+    :returns: P_l^m(x)
     """
     if m < 0 or m > l:
         return 0.0
@@ -87,6 +92,12 @@ def Y_lm(l: int, m: int, theta: float, phi: float) -> float:
       m < 0:  √2 · K_lm · P_l^|m|(cos θ) · sin(|m|φ)
 
     where K_lm = √((2l+1)/4π · (l-|m|)!/(l+|m|)!)
+
+    :param l: degree
+    :param m: order
+    :param theta: polar angle in radians
+    :param phi: azimuth in radians
+    :returns: the real spherical harmonic Y_l^m(θ, φ)
     """
     abs_m = abs(m)
     if abs_m > l:
@@ -109,6 +120,9 @@ def Y_10(theta: float) -> float:
     """
     Y₁⁰(θ,φ) = √(3/4π) · cos(θ).
     The J_N fundamental mode. Node line: θ = π/2 (equatorial great circle).
+
+    :param theta: polar angle in radians
+    :returns: Y₁⁰(θ)
     """
     return math.sqrt(3.0 / (4.0 * math.pi)) * math.cos(theta)
 
@@ -119,6 +133,11 @@ def node_latitudes(l: int, m: int, n_samples: int = 2000) -> List[float]:
     """
     Locate θ values where Y_l^m(θ, 0) = 0 via bisection on the unit interval.
     For l=1, m=0: returns [π/2] — the equatorial great circle.
+
+    :param l: degree
+    :param m: order
+    :param n_samples: number of bisection intervals
+    :returns: the θ values at which Y_l^m(θ, 0) = 0
     """
     nodes: List[float] = []
     prev_sign = math.copysign(1.0, Y_lm(l, m, 1e-9, 0.0))
@@ -196,6 +215,9 @@ def courant_check(k: int = 1) -> Dict:
     Northern hemisphere (θ < π/2): Y > 0.
     Southern hemisphere (θ > π/2): Y < 0.
     Theorem satisfied with equality — the tightest possible case.
+
+    :param k: eigenfunction index
+    :returns: dict with the node lines, nodal domains and whether the theorem is satisfied
     """
     l = k       # for m=0, the k-th non-trivial mode is l=k
     nodes = node_latitudes(l, 0)
@@ -234,6 +256,10 @@ def schumann_frequencies(n_modes: int = 7,
     The n=1 mode (l=1) has the equatorial node — the same mode selected
     by the J_N anti-Möbius period 2π. Tesla identified this cavity
     experimentally in 1899. Schumann derived the eigenfrequencies in 1952.
+
+    :param n_modes: number of modes
+    :param radius_m: cavity radius in metres
+    :returns: dict with the mode frequencies in Hz
     """
     f0    = C_LIGHT / (2.0 * math.pi * radius_m)
     modes = []

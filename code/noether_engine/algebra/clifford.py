@@ -29,6 +29,15 @@ from ..switches import UnsupportedCombinationError
 
 
 def dirac_gamma_matrices(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError.
+
+    Use field_type 'real_scalar', 'complex_scalar' or 'algebra_valued' instead.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Dirac gamma matrices (field_type='dirac_4_component') not yet "
         "supported — reason: spinor representation machinery scheduled for "

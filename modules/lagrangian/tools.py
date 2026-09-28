@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.lagrangian.tools
-=============================================
+ValaQuenta.modules.lagrangian.tools
+===================================
 LagrangianModule — registry contract implementation.
 
 Equations:
@@ -31,7 +31,16 @@ from .maths import (
 
 
 class LagrangianModule(EquationModule):
+    """
+    L_NN  Ainulindale Lagrangian
 
+    The four-term SMNNIP Lagrangian density L_NN = (2/π)∮[L_kin + L_mat +
+    (1/φ)L_bias + L_coup] r dr dθ. Running coupling α_NN(r) =
+    g²/(4π·ħ_NN·ln(1/r)). RG flow per algebra stratum. Mastery crystallization
+    condition.
+
+    Registry module for ``lagrangian``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.lagrangian.maths`.
+    """
     @property
     def name(self): return 'lagrangian'
 

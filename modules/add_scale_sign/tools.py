@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.add_scale_sign.tools
-===============================================
+ValaQuenta.modules.add_scale_sign.tools
+=======================================
 THE ADD:SCALE:SIGN DATATYPE -- Module Tools (EquationModule registry contract).
 
 Surfaces the datatype's equation parts, the generalized-equation word, the

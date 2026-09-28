@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.box_kite.tools
-============================================
+ValaQuenta.modules.box_kite.tools
+=================================
 The Box-Kite Debugger -- Module Tools
 
 Implements the EquationModule registry contract.

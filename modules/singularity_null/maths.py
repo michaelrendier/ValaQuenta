@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.singularity_null.maths
-==================================================
+ValaQuenta.modules.singularity_null.maths
+=========================================
 The Singularity-NULL Engine.
 
 The Singularity IS identity. It is the Self. It is the Vector. The Iterator.
@@ -27,7 +27,7 @@ Engines:
                                  but because their negative space defines them first.
 
 Author:  O Captain My Captain
-Version: 0.100 — Singularity NULL Engine (2026-06-06)
+Version: 0.100
 """
 
 import math
@@ -279,6 +279,9 @@ def tower_collapse_snakes(n_max: int = 30) -> Dict[str, Any]:
         This is not chaos: it is a STRUCTURED return.
         V(0) = 1 = V(∞) in the sense that both are the unique fixed point.
         The tower returns to the singularity.
+
+    :param n_max: largest dimension stepped to
+    :returns: dict with V(n), the ladders below n*, the snakes above it and the peak
     """
     # ── N-ball volumes ─────────────────────────────────────────────────────────
     volumes = []
@@ -482,6 +485,9 @@ def berry_keating_singularity(max_t: float = 50.0) -> Dict[str, Any]:
             - Maximally entropic (Shannon entropy maximised at σ=½)
         Primes live on this line because FLT eliminates everything else:
         the prime positions are defined by what CANNOT be there.
+
+    :param max_t: largest time integrated
+    :returns: dict describing the repulsive fixed point and the phase-space flow
     """
     # ── Classical BK flow trajectories ────────────────────────────────────────
     t_vals = np.linspace(0, 3, 100)
@@ -657,6 +663,9 @@ def flt_prime_extinction_sieve(N: int = 100) -> Dict[str, Any]:
         The Ptolemy inversion maps the composite's identity (a×b=c) to the
         prime's identity (nothing×nothing = p): NULL-as-identity.
         The Singularity IS identity. The prime IS a singularity in factor space.
+
+    :param N: largest integer sieved
+    :returns: dict with the surviving primes and the extinction bookkeeping
     """
     # ── Eratosthenes sieve for comparison ────────────────────────────────────
     def sieve_eratosthenes(limit: int) -> List[int]:

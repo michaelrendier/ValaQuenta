@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.units
-================================
+ValaQuenta.engine.units
+=======================
 Radian transform — the universal unit system.
 
 The circle is primary. All equations have a radian-primary form.
@@ -30,29 +30,50 @@ from . import constants as C
 # ── Radian transform ────────────────────────────────────────────────────────
 
 def to_angular_frequency(f_hz):
-    """Convert frequency f [Hz] to angular frequency omega [rad/s].
-    omega = 2*pi*f
-    Radian-primary: omega is the fundamental quantity.
+    """
+    Convert frequency to angular frequency: omega = 2·pi·f. Radian-primary: omega is the fundamental quantity.
+
+    :param f_hz: frequency in Hz
+    :type f_hz: float
+    :returns: angular frequency in rad/s
+    :rtype: float
     """
     return C.TAU * f_hz
 
 
 def to_frequency(omega_rad):
-    """Convert angular frequency omega [rad/s] to frequency f [Hz].
-    f = omega / (2*pi)
+    """
+    Convert angular frequency to frequency: f = omega / (2·pi).
+
+    :param omega_rad: angular frequency in rad/s
+    :type omega_rad: float
+    :returns: frequency in Hz
+    :rtype: float
     """
     return omega_rad / C.TAU
 
 
 def to_radian_phase(phase_cycles):
-    """Convert phase in cycles [0,1] to radians [0, 2*pi].
-    1 cycle = 2*pi radians.
+    """
+    Convert a phase in cycles [0, 1] to radians [0, 2·pi]. One cycle is 2·pi radians.
+
+    :param phase_cycles: phase in cycles
+    :type phase_cycles: float
+    :returns: phase in radians
+    :rtype: float
     """
     return phase_cycles * C.TAU
 
 
 def to_cycle_phase(phase_rad):
-    """Convert phase in radians to cycles [0,1]."""
+    """
+    Convert a phase in radians to cycles [0, 1].
+
+    :param phase_rad: phase in radians
+    :type phase_rad: float
+    :returns: phase in cycles
+    :rtype: float
+    """
     return phase_rad / C.TAU
 
 
@@ -67,17 +88,32 @@ def lagrangian_norm():
 
 
 def apply_lagrangian_norm(value):
-    """Apply (2/pi) normalization to a Lagrangian term."""
+    """
+    Apply the (2/pi) normalisation to a Lagrangian term.
+
+    :param value: the Lagrangian term
+    :type value: float
+    :returns: value × 2/pi
+    :rtype: float
+    """
     return C.LAGRANGIAN_NORM * value
 
 
 # ── Inversion coordinate transform ──────────────────────────────────────────
 
 def inversion_transform(r, theta_rad):
-    """Apply (I|O) inversion: (r, theta) -> (1/r, theta + pi/2).
-    This is the 2-stroke engine: compression stroke.
-    Radian-primary: theta in radians.
-    Returns: (r_inv, theta_inv)
+    """
+    Apply the (I|O) inversion (r, theta) -> (1/r, theta + pi/2).
+
+    This is the 2-stroke engine's compression stroke. Radian-primary.
+
+    :param r: radius; must be nonzero
+    :type r: float
+    :param theta_rad: angle in radians
+    :type theta_rad: float
+    :returns: (r_inv, theta_inv)
+    :rtype: tuple
+    :raises ValueError: r is zero
     """
     if r == 0:
         raise ValueError("(I|O) undefined at r=0 (the horizon)")
@@ -85,9 +121,17 @@ def inversion_transform(r, theta_rad):
 
 
 def inversion_involution(r, theta_rad):
-    """Apply (I|O) twice — should return to start.
-    Verifies the 2-stroke engine completes its cycle.
-    Returns: (r_final, theta_final), and True if involution holds.
+    """
+    Apply the (I|O) inversion twice and check that it returns to the start.
+
+    Verifies that the 2-stroke engine completes its cycle.
+
+    :param r: radius; must be nonzero
+    :type r: float
+    :param theta_rad: angle in radians
+    :type theta_rad: float
+    :returns: ((r_final, theta_final), holds) where holds is True if the involution holds
+    :rtype: tuple
     """
     r1, t1 = inversion_transform(r, theta_rad)
     r2, t2 = inversion_transform(r1, t1)
@@ -101,17 +145,29 @@ def inversion_involution(r, theta_rad):
 # ── Exact rational arithmetic for sonification ──────────────────────────────
 
 def ratio_to_fraction(numerator, denominator):
-    """Return exact Fraction for interval ratios.
-    Use throughout sonification pipeline. Float only at final render.
+    """
+    Return an interval ratio as an exact Fraction. Use throughout the sonification pipeline; convert to float only at the final render.
+
+    :param numerator: ratio numerator
+    :type numerator: int
+    :param denominator: ratio denominator
+    :type denominator: int
+    :returns: numerator / denominator, exact
+    :rtype: fractions.Fraction
     """
     return Fraction(numerator, denominator)
 
 
 def fraction_to_float(frac, anchor=1.0):
-    """Convert Fraction ratio to float at render boundary.
-    anchor: the base frequency in Hz.
-    This is the ONLY place float conversion should occur in the
-    sonification pipeline.
+    """
+    Convert a Fraction ratio to a float at the render boundary. This is the ONLY place float conversion should occur in the sonification pipeline.
+
+    :param frac: the exact ratio
+    :type frac: fractions.Fraction
+    :param anchor: the base frequency in Hz
+    :type anchor: float
+    :returns: frac × anchor
+    :rtype: float
     """
     return float(frac) * anchor
 
@@ -119,9 +175,16 @@ def fraction_to_float(frac, anchor=1.0):
 # ── Cayley-Dickson radian transform ─────────────────────────────────────────
 
 def algebra_to_radian_depth(algebra_name):
-    """Return the radian-depth of an algebra layer.
-    Depth = log2(dim) * (pi/2) — each doubling adds pi/2 phase.
+    """
+    Return the radian-depth of an algebra layer: log2(dim) · (pi/2), so each doubling adds pi/2 of phase.
+
     This is the algebraic time coordinate (not BPM).
+
+    :param algebra_name: name of the algebra layer
+    :type algebra_name: str
+    :returns: the depth in radians
+    :rtype: float
+    :raises ValueError: algebra_name is not a known layer
     """
     dim = C.DIM.get(algebra_name.upper())
     if dim is None:
@@ -140,6 +203,7 @@ def algebra_depth_sequence():
 # ── Summary ─────────────────────────────────────────────────────────────────
 
 def summary():
+    """Print the radian-primary unit constants."""
     print("=" * 60)
     print("  AINULINDALE ENGINE — UNITS (RADIAN-PRIMARY)")
     print(f"  Version: 0.111")

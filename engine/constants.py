@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.constants
-=====================================
+ValaQuenta.engine.constants
+===========================
 Physical and mathematical constants for the SMMIP framework.
 
 Single source of truth. All modules import from here.

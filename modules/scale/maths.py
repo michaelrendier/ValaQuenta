@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.scale.maths
-=========================================
+ValaQuenta.modules.scale.maths
+==============================
 THE SCALE -- decompositional analysis, forwards and backwards.
 
 Cody, 2026-08-25: "this is why it's the primary forensic tool of the
@@ -79,22 +79,38 @@ SED_DIM = 16
 # ── 1. Polar decompose/recompose -- scale extracted from ONE point ─────────
 
 def polar_decompose(Z: complex) -> Tuple[float, float]:
-    """Z -> (r, theta). r = |Z| (the scale, real, ordinal). theta = arg(Z)
+    """
+    Z -> (r, theta). r = |Z| (the scale, real, ordinal). theta = arg(Z)
     (scale-blind: arg(lambda*Z) = arg(Z) for any real lambda>0). Exact,
-    not approximate -- Python's cmath.polar to full float precision."""
+    not approximate -- Python's cmath.polar to full float precision.
+
+    :param Z: complex number
+    :returns: (r, θ)
+    """
     return cmath.polar(Z)
 
 
 def polar_recompose(r: float, theta: float) -> complex:
-    """(r, theta) -> Z. The exact inverse of polar_decompose -- the
+    """
+    (r, theta) -> Z. The exact inverse of polar_decompose -- the
     return path. recompose(*decompose(Z)) == Z for every Z, checked in
-    verify_polar_round_trip()."""
+    verify_polar_round_trip().
+
+    :param r: modulus
+    :param theta: argument in radians
+    :returns: Z = r·e^(iθ)
+    """
     return cmath.rect(r, theta)
 
 
 def verify_polar_round_trip(samples: Sequence[complex] = None) -> Dict[str, Any]:
-    """THE FORWARD/BACKWARD CHECK for #1 -- round-trip every sample point
-    through decompose then recompose and report the worst error."""
+    """
+    THE FORWARD/BACKWARD CHECK for #1 -- round-trip every sample point
+    through decompose then recompose and report the worst error.
+
+    :param samples: points to test; None uses a default set
+    :returns: dict with the worst round-trip error
+    """
     if samples is None:
         samples = [complex(3.7, -1.4), complex(-2, 5), complex(0.001, 0.001),
                   complex(1e6, -3), complex(-1, -1)]
@@ -110,10 +126,16 @@ def verify_polar_round_trip(samples: Sequence[complex] = None) -> Dict[str, Any]
 def scale_invariance_under_self_rescale(Z: complex,
                                         lambdas: Sequence[float] = None
                                         ) -> Dict[str, Any]:
-    """theta is unchanged as Z is rescaled by any positive real lambda --
+    """
+    theta is unchanged as Z is rescaled by any positive real lambda --
     the exact, narrow sense in which the angle IS scale-blind, BEFORE any
     fold is applied. Verified directly, not asserted from the textbook
-    fact alone."""
+    fact alone.
+
+    :param Z: complex number
+    :param lambdas: positive real factors; None uses a default set
+    :returns: dict with θ at each rescaling and the spread
+    """
     if lambdas is None:
         lambdas = (0.01, 0.5, 1.0, 7.0, 1000.0)
     thetas = [cmath.phase(lam * Z) for lam in lambdas]
@@ -124,30 +146,48 @@ def scale_invariance_under_self_rescale(Z: complex,
 # ── 2. The Mobius fold, its scale factor, and the cross-ratio ──────────────
 
 def mobius_fold(Z: complex, Z0: complex) -> complex:
-    """Gamma = (Z-Z0)/(Z+Z0) -- the Smith-chart Mobius fold. Gamma(Z0)=0
+    """
+    Gamma = (Z-Z0)/(Z+Z0) -- the Smith-chart Mobius fold. Gamma(Z0)=0
     by construction, for any Z0 != 0. Same primitive as
     SedenionFactoralRelativity/engine/lineage.py's ring_chart_gamma
     (PW8/PW10) -- ported here as this engine's own copy, not imported
-    cross-repo, per this project's module-independence convention."""
+    cross-repo, per this project's module-independence convention.
+
+    :param Z: complex impedance
+    :param Z0: complex anchor; must be nonzero
+    :returns: Γ = (Z − Z0)/(Z + Z0)
+    """
     return (Z - Z0) / (Z + Z0)
 
 
 def scale_factor(Z: complex, Z0: complex) -> float:
-    """|dGamma/dZ| = |2*Z0/(Z+Z0)^2| -- the fold's own derivative, exact.
+    """
+    |dGamma/dZ| = |2*Z0/(Z+Z0)^2| -- the fold's own derivative, exact.
     The local area-scaling of the conformal map: how much a small patch
     near Z is stretched or compressed once folded. Never zero for finite
     Z (checked in verify_no_caustic below) -- the map has no true
-    caustics, only its one isolated pole at Z=-Z0."""
+    caustics, only its one isolated pole at Z=-Z0.
+
+    :param Z: complex point
+    :param Z0: complex anchor
+    :returns: |dΓ/dZ| = |2·Z0/(Z + Z0)²|
+    """
     return abs(2 * Z0) / abs(Z + Z0) ** 2
 
 
 def verify_no_caustic(Z0: complex = 1.0,
                       test_points: Sequence[complex] = None) -> Dict[str, Any]:
-    """A true caustic needs the fold's derivative to VANISH somewhere.
+    """
+    A true caustic needs the fold's derivative to VANISH somewhere.
     Checked directly across widely different magnitudes: it never does --
     only diverges at the single pole Z=-Z0. Crowding-toward-infinity at
     one isolated point is a different phenomenon from an envelope/fold
-    singularity, and this module does not conflate the two."""
+    singularity, and this module does not conflate the two.
+
+    :param Z0: complex anchor
+    :param test_points: points to test; None uses a default spread of magnitudes
+    :returns: dict with the smallest derivative found and the verdict
+    """
     if test_points is None:
         test_points = [0.001+0j, 100+0j, 1+50j, -50+0.1j, 1e6+1j]
     values = [abs(scale_factor(z, Z0)) for z in test_points]
@@ -156,19 +196,33 @@ def verify_no_caustic(Z0: complex = 1.0,
 
 
 def cross_ratio(z1: complex, z2: complex, z3: complex, z4: complex) -> complex:
-    """THE SCALE INVARIANT underneath the two-ring fold. Exact under EVERY
+    """
+    THE SCALE INVARIANT underneath the two-ring fold. Exact under EVERY
     choice of anchor Z0 -- not a property of any one point, a property of
-    a relationship among four."""
+    a relationship among four.
+
+    :param z1: first point
+    :param z2: second point
+    :param z3: third point
+    :param z4: fourth point
+    :returns: the cross-ratio (z1, z2; z3, z4)
+    """
     return ((z1 - z3) * (z2 - z4)) / ((z1 - z4) * (z2 - z3))
 
 
 def verify_cross_ratio_is_scale_blind(
         points: Tuple[complex, complex, complex, complex] = None,
         anchors: Sequence[complex] = None) -> Dict[str, Any]:
-    """THE FORWARD/BACKWARD CHECK for #2. Folds the same 4 points through
+    """
+    THE FORWARD/BACKWARD CHECK for #2. Folds the same 4 points through
     the SAME fold at several DIFFERENT anchors ("different scales") and
     confirms the cross-ratio of the folded points never changes -- the
-    scale-blind object survives being folded, unlike the angle."""
+    scale-blind object survives being folded, unlike the angle.
+
+    :param points: four points; None uses a default set
+    :param anchors: anchors to fold at; None uses a default set
+    :returns: dict with the cross-ratio at each anchor and the spread
+    """
     if points is None:
         points = (complex(2, 1), complex(0.5, -0.3), complex(4, 2.2), complex(1.1, 0.9))
     if anchors is None:
@@ -184,9 +238,16 @@ def verify_cross_ratio_is_scale_blind(
 
 
 def two_ring_point(ring1: float, ring2: float, Z0: complex) -> Dict[str, Any]:
-    """The general two-ring instrument: Z = ring1 + i*ring2, folded
+    """
+    The general two-ring instrument: Z = ring1 + i*ring2, folded
     through mobius_fold. ring1/ring2 mean whatever the caller defines --
-    resistance/reactance is one choice among many, not a constraint."""
+    resistance/reactance is one choice among many, not a constraint.
+
+    :param ring1: first ring value (real part)
+    :param ring2: second ring value (imaginary part)
+    :param Z0: complex anchor
+    :returns: dict with Z, Γ and the scale factor
+    """
     Z = complex(ring1, ring2)
     G = mobius_fold(Z, Z0)
     return {'Z': Z, 'Z0': Z0, 'gamma': G, 'abs_gamma': abs(G),
@@ -206,11 +267,22 @@ def custom_ring_chart(obj: Any, ring1_fn: Callable[[Any], float],
                       ring2_fn: Callable[[Any], float], Z0: complex,
                       ring1_name: str = 'ring1', ring2_name: str = 'ring2'
                       ) -> Dict[str, Any]:
-    """Z = ring1_fn(obj) + i*ring2_fn(obj), folded. This is the ONE entry
-    point a user needs: define what the two rings mean for your own
-    relationship, pass them in as plain functions, get back the fold and
-    everything derived from it. two_ring_point (above) is the special
-    case where the caller has already computed the two numbers by hand."""
+    """
+    Fold Z = ring1_fn(obj) + i·ring2_fn(obj).
+
+    This is the ONE entry point a user needs: define what the two rings mean
+    for the relationship, pass them in as plain functions, and get back the
+    fold and everything derived from it. two_ring_point is the special case
+    where the two numbers are already computed.
+
+    :param obj: the object under study
+    :param ring1_fn: function obj → first ring value
+    :param ring2_fn: function obj → second ring value
+    :param Z0: complex anchor
+    :param ring1_name: label for the first ring
+    :param ring2_name: label for the second ring
+    :returns: dict with Z, Γ, the scale factor and the ring labels
+    """
     r1, r2 = ring1_fn(obj), ring2_fn(obj)
     pt = two_ring_point(r1, r2, Z0)
     pt['ring1_name'] = ring1_name
@@ -222,12 +294,21 @@ def custom_ring_chart_series(objs: Sequence[Any], ring1_fn: Callable[[Any], floa
                              ring2_fn: Callable[[Any], float], Z0: complex,
                              ring1_name: str = 'ring1', ring2_name: str = 'ring2'
                              ) -> Dict[str, Any]:
-    """The same instrument run over a whole collection at once -- each
-    object's own Z, Gamma, and scale factor, plus the per-integer-cell
+    """
+    Run custom_ring_chart over a whole collection.
+
+    Each object gets its own Z, Γ and scale factor, plus the per-integer-cell
     bucketing (round(ring1), round(ring2)) that makes "windows of order"
-    visible without re-deriving it by hand. Same move as
-    SedenionFactoralRelativity's factoral_spiral (PW13), independently
-    ported here."""
+    visible.
+
+    :param objs: the objects
+    :param ring1_fn: function obj → first ring value
+    :param ring2_fn: function obj → second ring value
+    :param Z0: complex anchor
+    :param ring1_name: label for the first ring
+    :param ring2_name: label for the second ring
+    :returns: dict with the per-object charts and the cell buckets
+    """
     readings = []
     cells: Dict[Tuple[int, int], List[int]] = {}
     for idx, obj in enumerate(objs):
@@ -244,9 +325,15 @@ def custom_ring_chart_series(objs: Sequence[Any], ring1_fn: Callable[[Any], floa
 # unbound-then-exp, exactly, in full generality (not just the real axis) ───
 
 def fold_is_log_tanh(Z: complex, Z0: complex) -> Dict[str, Any]:
-    """Gamma = tanh( (1/2) * ln(Z/Z0) ), EXACTLY, for ANY complex Z, Z0 --
+    """
+    Gamma = tanh( (1/2) * ln(Z/Z0) ), EXACTLY, for ANY complex Z, Z0 --
     not a special case of the real axis. Checked directly against
-    mobius_fold(), not asserted from the real-axis identity alone."""
+    mobius_fold(), not asserted from the real-axis identity alone.
+
+    :param Z: complex point
+    :param Z0: complex anchor
+    :returns: dict comparing mobius_fold(Z, Z0) with tanh(½·ln(Z/Z0))
+    """
     direct = mobius_fold(Z, Z0)
     via_log = cmath.tanh(0.5 * cmath.log(Z / Z0))
     return {'fold_direct': direct, 'fold_via_log_tanh': via_log,
@@ -254,10 +341,16 @@ def fold_is_log_tanh(Z: complex, Z0: complex) -> Dict[str, Any]:
 
 
 def unfold_is_arctanh_exp(G: complex, Z0: complex) -> Dict[str, Any]:
-    """Z = Z0 * exp(2 * arctanh(Gamma)), EXACTLY -- the mirror operation.
+    """
+    Z = Z0 * exp(2 * arctanh(Gamma)), EXACTLY -- the mirror operation.
     Checked as a genuine round trip: fold a real Z, then unfold the
     result back, and confirm you recover the ORIGINAL Z, via both the
-    rational inverse AND this log/exp path independently."""
+    rational inverse AND this log/exp path independently.
+
+    :param G: folded value Γ
+    :param Z0: complex anchor
+    :returns: dict with Z = Z0·exp(2·arctanh Γ) and the round-trip check
+    """
     Z_rational = Z0 * (1 + G) / (1 - G)
     w = cmath.atanh(G)
     Z_logexp = Z0 * cmath.exp(2 * w)
@@ -266,10 +359,15 @@ def unfold_is_arctanh_exp(G: complex, Z0: complex) -> Dict[str, Any]:
 
 
 def verify_fold_unfold_round_trip(samples=None) -> Dict[str, Any]:
-    """THE FORWARD/BACKWARD CHECK for the master identity: fold then
+    """
+    THE FORWARD/BACKWARD CHECK for the master identity: fold then
     unfold a real sample of (Z, Z0) pairs and confirm the ORIGINAL Z
     comes back exactly, via the log/exp path specifically (not just the
-    rational formula, which is a different, already-known inverse)."""
+    rational formula, which is a different, already-known inverse).
+
+    :param samples: (Z, Z0) pairs; None uses a default set
+    :returns: dict with the worst error of the log/exp round trip
+    """
     if samples is None:
         samples = [(complex(2.3, 1.1), complex(1, 0)),
                   (complex(-3, 4), complex(2, -1)),
@@ -306,11 +404,18 @@ def verify_fold_unfold_round_trip(samples=None) -> Dict[str, Any]:
 # tested per pair in scale.md, not claimed here in general.
 
 def verify_locally_square(Z: complex, Z0: complex, h: float = 1e-5) -> Dict[str, Any]:
-    """At any point Z, the tangent vectors along increasing ring1
+    """
+    At any point Z, the tangent vectors along increasing ring1
     (constant ring2) and increasing ring2 (constant ring1) are equal in
     magnitude and exactly 90 degrees apart -- checked directly by
     central-difference, not assumed from the general holomorphy argument
-    alone."""
+    alone.
+
+    :param Z: complex point
+    :param Z0: complex anchor
+    :param h: central-difference step
+    :returns: dict with the two tangent magnitudes and the angle between them
+    """
     d_d1 = (mobius_fold(Z + h, Z0) - mobius_fold(Z - h, Z0)) / (2 * h)
     d_d2 = (mobius_fold(Z + 1j * h, Z0) - mobius_fold(Z - 1j * h, Z0)) / (2 * h)
     equal_mag = abs(abs(d_d1) - abs(d_d2)) < 1e-6
@@ -337,13 +442,21 @@ class ProcessOperator:
 
 def pathway_decompose(input_value: Any, operators: Sequence[ProcessOperator],
                       output_name: str) -> Dict[str, Any]:
-    """Run a DAG of named PROCESS OPERATORS -- the forward direction of
+    """
+    Run a DAG of named PROCESS OPERATORS -- the forward direction of
     process decomposition. Resolves dependencies in whatever order makes
     them satisfiable, not assumed left-to-right, so a genuine fan-out
     (one operator feeding two later ones) is represented correctly rather
     than forced into a linear chain. Whatever the process's own minimum
     tool-set turns out to need is what this reports -- never fit to a
-    target dimension or rounded to the nearest named algebra."""
+    target dimension or rounded to the nearest named algebra.
+
+    :param input_value: the value fed to the operators
+    :param operators: the named process operators forming the DAG
+    :param output_name: name of the operator whose output is wanted
+    :returns: dict with the resolved order, each operator's output and the minimum tool-set needed
+    :raises ValueError: the DAG has a missing dependency or a cycle
+    """
     results: Dict[str, Any] = {'input': input_value}
     resolved = {'input'}
     order: List[str] = []

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.noether.maths
-==========================================
+ValaQuenta.modules.noether.maths
+================================
 Emmy Noether conserved currents applied to ℒ_NN.
 
 Symmetry → conservation law:
@@ -37,6 +37,12 @@ THRESHOLDS = {'PASS': 0.2, 'MARGINAL': 0.5}
 # ── Conservation status ────────────────────────────────────────────────────────
 
 def conservation_status(violation: float) -> str:
+    """
+    Classify a violation magnitude against THRESHOLDS.
+
+    :param violation: violation magnitude |∂_μJ^μ|
+    :returns: 'PASS', 'MARGINAL' or 'VIOLATION'
+    """
     if violation < THRESHOLDS['PASS']:
         return 'PASS'
     elif violation < THRESHOLDS['MARGINAL']:
@@ -61,6 +67,11 @@ def activation_current(psi_norms: List[float],
     T^a·Ψ collapses to the same scalar for all generators; the distribution
     over generators follows the algebra's symmetry weights.
     Full vector form requires QuatEl/OctEl (in derivation engine).
+
+    :param psi_norms: activation norms |Ψᵢ|
+    :param g: gauge coupling
+    :param algebra: algebra dimension (1, 2, 4 or 8)
+    :returns: the current components, one per generator
     """
     n_gen = max(1, N_GEN.get(algebra, 0))
     psi_sq_sum = sum(p * p for p in psi_norms)
@@ -82,6 +93,10 @@ def noether_violation(J_curr: List[float],
     """
     ∂_μJ^μ ≈ mean|J_curr - J_prev| (finite difference, single layer step).
     Returns scalar violation magnitude.
+
+    :param J_curr: current at this layer
+    :param J_prev: current at the previous layer; None for the first layer
+    :returns: the violation magnitude, mean |J_curr − J_prev|
     """
     if J_prev is None:
         return 0.0
@@ -101,6 +116,12 @@ def conservation_diagnostic(psi_norms: List[float],
     Returns:
       J, J_prev, violation, status, conserved, algebra, gauge,
       delta_J (cycle-averaged), label, latex
+
+    :param psi_norms: activation norms |Ψᵢ|
+    :param g: gauge coupling
+    :param algebra: algebra dimension
+    :param psi_prev: activation norms of the previous layer; None for the first layer
+    :returns: the diagnostic dict
     """
     J      = activation_current(psi_norms, g, algebra)
     J_prev = activation_current(psi_prev, g, algebra) if psi_prev else None
@@ -139,6 +160,9 @@ def resonance_artifacts(J_history: List[List[float]]) -> Dict[str, Any]:
       'amplitude':          peak-to-peak amplitude
       'artifact_detected':  bool
       'n_crossings':        zero crossings in J[0] component
+
+    :param J_history: current vectors, one per layer step
+    :returns: dict with the dominant period, amplitude, detection flag and zero-crossing count
     """
     if len(J_history) < 4:
         return {
@@ -199,7 +223,15 @@ class NoetherLedger:
 
     def record(self, algebra: int, violation: float,
                J: List[float], metadata: Optional[Dict] = None) -> Dict[str, Any]:
-        """Record a Noether violation event to the chain."""
+        """
+        Record a Noether violation event to the chain.
+
+        :param algebra: algebra dimension of the event
+        :param violation: violation magnitude
+        :param J: the current vector
+        :param metadata: extra fields stored with the block
+        :returns: the block appended to the chain
+        """
         status = conservation_status(violation)
         idx    = len(self._chain)
         block_content = {
@@ -234,6 +266,11 @@ class NoetherLedger:
         return {'valid': True, 'broken_at': None, 'length': len(self._chain)}
 
     def summary(self) -> Dict[str, Any]:
+        """
+        Summarise the chain.
+
+        :returns: dict with total blocks, violation and pass counts, chain validity and the last hash
+        """
         total      = len(self._chain)
         violations = [b for b in self._chain if b['status'] == 'VIOLATION']
         passes     = [b for b in self._chain if b['status'] == 'PASS']
@@ -247,6 +284,11 @@ class NoetherLedger:
 
     @property
     def chain(self) -> List[Dict]:
+        """
+        Return a copy of the chain.
+
+        :returns: the blocks, oldest first
+        """
         return list(self._chain)
 
 
@@ -256,4 +298,9 @@ _LEDGER = NoetherLedger()
 
 
 def get_ledger() -> NoetherLedger:
+    """
+    Return the module-level singleton ledger.
+
+    :returns: the shared NoetherLedger
+    """
     return _LEDGER

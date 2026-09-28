@@ -15,8 +15,8 @@
 #  mentality, who are hereby served.
 # ─────────────────────────────────────────────────────────────────────────────
 """
-ainulindale_engine.modules.add_scale_sign.maths
-================================================
+ValaQuenta.modules.add_scale_sign.maths
+=======================================
 THE ADD:SCALE:SIGN DATATYPE — a value type for manipulating elements of the
 tier-0 floor  Aff(1,ℝ) = ℝ ⋊ (ℝ_{>0} × ℤ/2) = ADD ⋊ (SCALE × SIGN),
 i.e. the maps   x ↦ sign·scale·x + add.
@@ -98,14 +98,32 @@ class ASS:
 
     @classmethod
     def ADD(cls, a: float) -> "ASS":
+        """
+        Return the ADD generator x ↦ x + a.
+
+        :param a: the offset
+        :returns: the element ASS(a, 1, +1)
+        """
         return cls(float(a), 1.0, 1)
 
     @classmethod
     def SCALE(cls, s: float) -> "ASS":
+        """
+        Return the SCALE generator x ↦ s·x.
+
+        :param s: the scale factor
+        :returns: the element ASS(0, s, +1)
+        """
         return cls(0.0, float(s), 1)
 
     @classmethod
     def SIGN(cls, g: int) -> "ASS":
+        """
+        Return the SIGN generator x ↦ g·x.
+
+        :param g: the sign, +1 or −1
+        :returns: the element ASS(0, 1, g)
+        """
         return cls(0.0, 1.0, int(g))
 
     IDENTITY: "ASS" = None          # filled after class body
@@ -127,7 +145,12 @@ class ASS:
         )
 
     def then(self, other: "ASS") -> "ASS":
-        """Forward chaining: do `self`, THEN `other`.  self.then(o) == o @ self."""
+        """
+        Chain forward: do `self`, THEN `other`. self.then(o) == o @ self.
+
+        :param other: the element fired second
+        :returns: the composed element
+        """
         return other @ self
 
     # ── invert (backward) ─────────────────────────────────────────────
@@ -145,12 +168,22 @@ class ASS:
         return inv
 
     def backward(self) -> "ASS":
+        """
+        Return the inverse element: the backward direction of the chain.
+
+        :returns: ~self
+        """
         return ~self
 
     # ── residuals — the str.strip / str.replace analogue ─────────────
     def residual(self, without: str) -> "ASS":
-        """Return this element with ONE generator reset to its identity —
-        'strip the SIGN and keep the rest'. `without` ∈ {'ADD','SCALE','SIGN'}."""
+        """
+        Return this element with ONE generator reset to its identity: strip the SIGN and keep the rest.
+
+        :param without: the generator to reset: 'ADD', 'SCALE' or 'SIGN'
+        :returns: the residual element
+        :raises ValueError: `without` is not one of the three generators
+        """
         w = without.upper()
         if w == "ADD":
             return ASS(0.0, self.scale, self.sign)
@@ -161,7 +194,13 @@ class ASS:
         raise ValueError("without must be one of ADD, SCALE, SIGN")
 
     def only(self, part: str) -> "ASS":
-        """The complementary move — keep ONE generator, drop the other two."""
+        """
+        Keep ONE generator and drop the other two: the complement of residual().
+
+        :param part: the generator to keep: 'ADD', 'SCALE' or 'SIGN'
+        :returns: the element carrying only that generator
+        :raises ValueError: `part` is not one of the three generators
+        """
         p = part.upper()
         if p == "ADD":
             return ASS.ADD(self.add)
@@ -177,6 +216,12 @@ class ASS:
         return (ASS.SIGN(self.sign), ASS.SCALE(self.scale), ASS.ADD(self.add))
 
     def is_ground(self, tol: float = 1e-12) -> bool:
+        """
+        Report whether this element is the ground element, the identity ASS(0, 1, +1).
+
+        :param tol: tolerance on add and scale
+        :returns: True if it is the ground
+        """
         return (abs(self.add) <= tol and abs(self.scale - 1.0) <= tol
                 and self.sign == 1)
 
@@ -190,6 +235,11 @@ class ASS:
         return _gamma(self.u())
 
     def equation_parts(self) -> Dict[str, Any]:
+        """
+        Break the element into its three generators and the word they make.
+
+        :returns: dict with the 'ADD', 'SCALE' and 'SIGN' maps and increments, the word u = g·ln s + a, the fold Γ = tanh(u/2) and the additivity flag
+        """
         a, s, g = self.add, self.scale, self.sign
         u = self.u()
         return {
@@ -236,13 +286,18 @@ class ASS:
 
     # ── lineage — two orderings of the recorded steps ────────────────
     def lineage(self, order: str = "chrono") -> "ASSWord":
-        """Return the recorded generator sequence as an ASSWord.
+        """
+        Return the recorded generator sequence as an ASSWord.
 
         order='chrono'  — application order (the record / when it fired).
         order='zeta'    — sorted by spectral weight |u_k| descending
                           (how much each step moves the fold — SCALE-heavy
                           steps first). The departure between the two
                           orderings is this datatype's ψ(x)−x.
+
+        :param order: 'chrono' for application order (when each step fired), or 'zeta' for spectral weight |u_k| descending
+        :returns: the recorded generator sequence
+        :raises ValueError: `order` is neither 'chrono' nor 'zeta'
         """
         steps = list(self.steps)
         if order == "zeta":
@@ -257,6 +312,11 @@ class ASS:
         return tuple((s.add, s.scale, s.sign) for s in self.steps)
 
     def camshaft(self) -> Tuple[str, ...]:
+        """
+        Return the camshaft: the canonical firing order of the three generators.
+
+        :returns: the generator names, in order
+        """
         return CAMSHAFT
 
     def __repr__(self) -> str:
@@ -284,6 +344,11 @@ class ASSWord:
     source: ASS
 
     def u_total(self) -> float:
+        """
+        Return u of the resulting element.
+
+        :returns: u = g·ln s + a
+        """
         return self.source.u()
 
     def u_generators(self) -> float:
@@ -305,6 +370,11 @@ class ASSWord:
         return self.u_total() - self.u_generators()
 
     def additive(self) -> bool:
+        """
+        Report whether the word is additive: its firing defect is zero.
+
+        :returns: True if |firing_defect()| < 1e-9
+        """
         return abs(self.firing_defect()) < 1e-9
 
     # ── the Long Path's own memory — set-membership over the trajectory ──
@@ -315,12 +385,17 @@ class ASSWord:
     # own docstring) already names the recorded step sequence — what was
     # missing was giving that path an actual memory of where it has been.
     def trajectory(self, x0: float = 1.0) -> Tuple[float, ...]:
-        """The Long Path made explicit: x0, then the position after each
+        """
+        The Long Path made explicit: x0, then the position after each
         successive atomic step fires, in this word's own recorded
         (chrono or zeta) order — the ASS analogue of Recaman's a(0), a(1),
         a(2), ... . Not the source element's own (add,scale,sign) — the
         actual sequence of INTERMEDIATE positions visited while building
-        up to it, step by step."""
+        up to it, step by step.
+
+        :param x0: starting position
+        :returns: x0 followed by the position after each step fires
+        """
         pos = [x0]
         x = x0
         for s in self.steps:
@@ -329,11 +404,17 @@ class ASSWord:
         return tuple(pos)
 
     def visited(self, x0: float = 1.0, tol: float = 1e-9) -> Dict[float, List[int]]:
-        """Which trajectory positions repeat, and at which step indices --
+        """
+        Which trajectory positions repeat, and at which step indices --
         the actual set-membership record a Recaman-style flip test would
         consult. Keys are the rounded position; values are every index
         (into trajectory()) that landed there. A position with more than
-        one index IS a collision -- the Long Path revisited itself."""
+        one index IS a collision -- the Long Path revisited itself.
+
+        :param x0: starting position
+        :param tol: tolerance for calling two positions equal
+        :returns: map from each rounded position to the trajectory indices that reach it; more than one index is a collision
+        """
         traj = self.trajectory(x0)
         seen: Dict[float, List[int]] = {}
         for i, x in enumerate(traj):
@@ -342,10 +423,16 @@ class ASSWord:
         return seen
 
     def collisions(self, x0: float = 1.0, tol: float = 1e-9) -> List[Tuple[int, int, float]]:
-        """Every (earlier_index, later_index, position) where this word's
+        """
+        Every (earlier_index, later_index, position) where this word's
         own Long Path returns to a position it already visited. Empty for
         a self-avoiding path (the common case for a short word); non-empty
-        is a real, checkable structural fact about this specific word."""
+        is a real, checkable structural fact about this specific word.
+
+        :param x0: starting position
+        :param tol: tolerance for calling two positions equal
+        :returns: (earlier_index, later_index, position) for each revisit; empty for a self-avoiding path
+        """
         seen = self.visited(x0, tol)
         out = []
         for pos, idxs in seen.items():
@@ -355,12 +442,19 @@ class ASSWord:
         return sorted(out)
 
     def would_collide(self, next_step: "ASS", x0: float = 1.0, tol: float = 1e-9) -> bool:
-        """The operator-level flip test itself: given a CANDIDATE next
-        atomic step (not yet appended), would firing it land the Long Path
-        on a position already in its own visited set? This is the direct
-        ASS-engine analogue of Recaman's own decision rule -- checkable
-        BEFORE committing to the step, exactly as Recaman's own a(n-1)-n
-        candidate is checked before deciding whether to keep it."""
+        """
+        Run the operator-level flip test on a candidate step.
+
+        Given a CANDIDATE next atomic step, not yet appended, report whether
+        firing it would land the Long Path on a position already in its own
+        visited set. It is checkable BEFORE committing to the step, the way
+        Recamán's a(n−1)−n candidate is checked before it is kept.
+
+        :param next_step: the candidate atomic step
+        :param x0: starting position
+        :param tol: tolerance for calling two positions equal
+        :returns: True if the step would land on a visited position
+        """
         traj = self.trajectory(x0)
         candidate = next_step(traj[-1])
         visited_positions = {round(x / tol) * tol if tol else x for x in traj}
@@ -369,12 +463,27 @@ class ASSWord:
 
     # kept for back-compat with earlier callers
     def u_sum_of_parts(self) -> float:
+        """
+        Return the sum of the three generators' words; alias of u_generators().
+
+        :returns: Σ u of ADD(a), SCALE(s) and SIGN(g)
+        """
         return self.u_generators()
 
     def gamma(self) -> float:
+        """
+        Return the fold Γ of the resulting element.
+
+        :returns: Γ = tanh(u/2)
+        """
         return self.source.gamma()
 
     def as_equation(self) -> str:
+        """
+        Render the word as an equation string, with a note when the firing defect is nonzero.
+
+        :returns: the equation text
+        """
         s = self.source                    # the resulting element — g·ln s + a
         terms = []
         if abs(s.scale - 1.0) > 1e-12:
@@ -419,13 +528,31 @@ def compose(*elements: ASS) -> ASS:
 
 
 def from_map(add: float, scale: float, sign: int = 1) -> ASS:
+    """
+    Build an element from the map x ↦ g·s·x + a.
+
+    :param add: the offset a
+    :param scale: the scale s
+    :param sign: the sign g
+    :returns: ASS(add, scale, sign)
+    """
     return ASS(add, scale, sign)
 
 
 def word(u: float) -> ASS:
-    """The pure-SCALE element whose word is u  (Γ = tanh(u/2))."""
+    """
+    The pure-SCALE element whose word is u  (Γ = tanh(u/2)).
+
+    :param u: the word
+    :returns: the pure-SCALE element with that word, scale e^u
+    """
     return ASS.SCALE(_EXP(u))
 
 
 def ground() -> ASS:
+    """
+    Return the ground element, the identity: "the now".
+
+    :returns: ASS.GROUND
+    """
     return ASS.GROUND

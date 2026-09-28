@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.archimedes_screw.tools
-====================================================
+ValaQuenta.modules.archimedes_screw.tools
+=========================================
 The Archimedes Screw -- Module Tools
 
 Implements the EquationModule registry contract.

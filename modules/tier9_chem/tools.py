@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.tier9_chem.tools
+ValaQuenta.modules.tier9_chem.tools
 Version: 0.100
 """
 from typing import Dict, List, Any
@@ -11,6 +11,16 @@ from .maths import (
 
 
 class Tier9ChemModule(EquationModule):
+    """
+    Tier 9 — D-CHEM: Cancer Drugs from Algebraic Signature (Erika Schafer)
+
+    D-CHEM paper (Erika Schafer collaboration). 5 engines: periodic table from
+    CD strata, Cosic EIIP protein resonance, cancer = zero-divisor collapse,
+    drug = conformal inversion of cancer address, hydro-radiolysis
+    chromatography (J_R/J_B probe, G:A:V=6:3:1).
+
+    Registry module for ``tier9_chem``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.tier9_chem.maths`.
+    """
     @property
     def name(self): return 'tier9_chem'
     @property

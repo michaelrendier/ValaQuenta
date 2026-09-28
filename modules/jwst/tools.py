@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.jwst.tools
-=======================================
+ValaQuenta.modules.jwst.tools
+=============================
 JWSTModule — registry contract.
 
 Equations:
@@ -26,7 +26,15 @@ from .maths import (
 
 
 class JWSTModule(EquationModule):
+    """
+    JWST  Spectral Pixel  →  𝕆
 
+    JWST NIRCam spectral pixel module. 8 filter intensities (900–4440nm) → 8
+    octonion components. Cayley-Dickson addressing: λ → r ∈ (0,1). One 𝕆 element
+    per sky pixel.
+
+    Registry module for ``jwst``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.jwst.maths`.
+    """
     @property
     def name(self): return 'jwst'
 

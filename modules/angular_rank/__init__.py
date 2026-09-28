@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.angular_rank
-==========================================
+ValaQuenta.modules.angular_rank
+===============================
 The 16D Oscilloscope -- angular content and subspace occupancy, measured on
 a frozen datum.
 

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.inversion.maths
-============================================
+ValaQuenta.modules.inversion.maths
+==================================
 Inside-Out Inversion Engine — Mathematics
 
 The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2)
@@ -67,6 +67,9 @@ def derive_horizon_rotation(n_terms: int = 200000) -> Dict[str, Any]:
     Derive the (I|O) horizon's rotation angle phi = pi/2 from Hurwitz's
     proven 4-division-algebra fact plus the Basel-derived value of pi,
     rather than assuming phi as a bare input.
+
+    :param n_terms: number of Basel-series terms used for π
+    :returns: dict with the derived φ = π/2 and its derivation
     """
     zeta2 = sum(1.0 / (n * n) for n in range(1, n_terms + 1))
     pi_basel = math.sqrt(6.0 * zeta2)
@@ -130,6 +133,11 @@ class _ObserverSingleton:
 
 
 def get_observer() -> _ObserverSingleton:
+    """
+    Return the observer singleton.
+
+    :returns: the shared observer
+    """
     return _ObserverSingleton()
 
 
@@ -151,11 +159,24 @@ class InversionMap:
     """
 
     def apply(self, r: float, theta: float) -> Tuple[float, float]:
-        """Single compression stroke: (r, theta) -> (1/r, theta + pi/2)"""
+        """
+        Apply one compression stroke: (r, θ) → (1/r, θ + π/2).
+
+        :param r: radius; must be nonzero
+        :param theta: angle in radians
+        :returns: (r_new, theta_new)
+        """
         return inversion_transform(r, theta)
 
     def apply_n(self, r: float, theta: float, n: int) -> List[Tuple[float, float]]:
-        """Apply J_N n times. Returns trajectory [(r_0, t_0), ..., (r_n, t_n)]."""
+        """
+        Apply J_N n times.
+
+        :param r: starting radius
+        :param theta: starting angle in radians
+        :param n: number of applications
+        :returns: the trajectory [(r₀, θ₀), …, (rₙ, θₙ)]
+        """
         trajectory = [(r, theta)]
         for _ in range(n):
             r, theta = inversion_transform(r, theta)
@@ -165,9 +186,12 @@ class InversionMap:
     def is_involution(self, r: float, theta: float,
                       tol: float = 1e-12) -> Tuple[bool, float, float]:
         """
-        Verify that applying J_N twice returns r to start.
-        (Theta shifts by pi per double application — full cycle requires 4.)
-        Returns: (r_closes, r_after_2, theta_after_2)
+        Check that applying J_N twice returns r to its start. θ shifts by π per double application; a full cycle takes four.
+
+        :param r: starting radius
+        :param theta: starting angle in radians
+        :param tol: tolerance on r
+        :returns: (r_closes, r_after_2, theta_after_2)
         """
         (r2, t2), r_closes = inversion_involution(r, theta)
         return r_closes, r2, t2
@@ -185,7 +209,12 @@ class InversionMap:
         ]
 
     def coordinate_regime(self, r: float) -> str:
-        """Classify which side of the horizon r is on."""
+        """
+        Classify which side of the horizon r is on.
+
+        :param r: radius
+        :returns: which side of the horizon r is on
+        """
         if r < C.A_PI:
             return "sub-BK-floor (unphysical)"
         elif r < 1.0:
@@ -263,9 +292,11 @@ class RecursionAttractor:
 
     def iterate(self, r0: float, steps: int = 50) -> List[float]:
         """
-        Iterate the recursion from r0.
-        The recursion: r_{n+1} = 1 + 1/r_n  (phi fixed point iteration)
-        Converges to phi from any r0 > 0.
+        Iterate r → 1 + 1/r from r0. Converges to φ from any r0 > 0.
+
+        :param r0: starting value; must be positive
+        :param steps: number of iterations
+        :returns: the sequence of values, r0 first
         """
         trajectory = [r0]
         r = r0
@@ -323,9 +354,14 @@ class GradientFlow:
 
     def step(self, r: float, hbar: float = None) -> float:
         """
-        Step toward phi via phi-recursion: r -> 1 + 1/r  (FLAG-4 fix v0.112)
-        Fixed point: r* = 1 + 1/r* -> r* = phi exactly.
-        Converges from any r > 0 in O(log(1/epsilon)) steps.
+        Step toward φ by the recursion r → 1 + 1/r.
+
+        The fixed point r* = 1 + 1/r* is φ exactly, reached from any r > 0 in
+        O(log(1/ε)) steps.
+
+        :param r: current value; must be positive
+        :param hbar: unused; accepted for interface symmetry
+        :returns: the next value
         """
         if r == 0.0:
             r = 1e-9
@@ -334,8 +370,12 @@ class GradientFlow:
     def flow(self, r0: float = 1.0, max_steps: int = 1000,
              tol: float = 1e-8) -> Dict[str, Any]:
         """
-        Run gradient flow from r0 to phi attractor.
-        Returns trajectory and convergence info.
+        Run the gradient flow from r0 to the φ attractor.
+
+        :param r0: starting value
+        :param max_steps: iteration limit
+        :param tol: convergence tolerance
+        :returns: dict with the trajectory and convergence information
         """
         r = r0
         trajectory = [r]

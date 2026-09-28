@@ -1,8 +1,7 @@
 """
-ainulindale_engine.engine.manifest
-====================================
-The ENGINE MANIFEST — the additional required class of engine data (Cody,
-2026-09-01).  One JSON file per engine, carried BY the module:
+ValaQuenta.engine.manifest
+==========================
+The ENGINE MANIFEST — the additional required class of engine data.  One JSON file per engine, carried BY the module:
 
     modules/<engine>/manifest.json
 
@@ -49,7 +48,7 @@ SCHEMA  (schema id: "valaquenta.engine-manifest/1")
         native_space  str        — default "spherical complex radial polar"
         arithmetic    str        — default "fractions.Fraction exact; float only at boundary"
         requires_engines [str]   — sibling engines called at runtime
-        external      [str]      — outside packages (e.g. "FactoralDecomposition.engine")
+        external      [str]      — outside packages (e.g. "GenerationalLineage.engine")
 
     ui:
         menu:  { label, group, order:int, blurb }
@@ -101,7 +100,12 @@ def available() -> List[str]:
 
 
 def load(engine: str) -> Optional[Dict[str, Any]]:
-    """Load the manifest for `engine`, or None if it hasn't been written yet."""
+    """
+    Load the manifest for `engine`, or None if it hasn't been written yet.
+
+    :param engine: engine name, the module directory under modules/
+    :returns: the manifest dict, cached; None if there is no manifest.json
+    """
     if engine in _CACHE:
         return _CACHE[engine]
     path = _manifest_path(engine)
@@ -111,6 +115,7 @@ def load(engine: str) -> Optional[Dict[str, Any]]:
 
 
 def clear_cache() -> None:
+    """Drop every cached manifest so the next load() re-reads from disk."""
     _CACHE.clear()
 
 
@@ -187,9 +192,15 @@ _GROUP_HINTS = {
 
 
 def scaffold(engine: str, module: Any) -> Dict[str, Any]:
-    """Build a manifest dict for `engine` from what the module already knows
+    """
+    Build a manifest dict for `engine` from what the module already knows
     plus the path conventions.  Text-only provenance fields are left blank
-    (or 'TODO') for a human to fill; everything mechanical is populated."""
+    (or 'TODO') for a human to fill; everything mechanical is populated.
+
+    :param engine: engine name
+    :param module: the registered EquationModule instance
+    :returns: a manifest dict marked `_scaffolded`
+    """
     disc = _discover_paths(engine)
     eqs = list(module.formulary())
 
@@ -268,8 +279,14 @@ def _titlecase(name: str) -> str:
 #  menu_tree  —  what The ValaQuenta Tab consumes
 # ─────────────────────────────────────────────────────────────────────────────
 def entry_for(engine: str, module: Any) -> Dict[str, Any]:
-    """The manifest for `engine` if written, else a live scaffold.  Always a
-    complete dict — the Tab never has to special-case a missing file."""
+    """
+    The manifest for `engine` if written, else a live scaffold.  Always a
+    complete dict — the Tab never has to special-case a missing file.
+
+    :param engine: engine name
+    :param module: the registered EquationModule instance
+    :returns: the written manifest, else a live scaffold
+    """
     man = load(engine)
     if man is None:
         man = scaffold(engine, module)
@@ -277,7 +294,8 @@ def entry_for(engine: str, module: Any) -> Dict[str, Any]:
 
 
 def menu_tree(registry: Any) -> Dict[str, Any]:
-    """Procedural menu for the whole registry, grouped and ordered.
+    """
+    Procedural menu for the whole registry, grouped and ordered.
 
     Returns:
         {
@@ -287,6 +305,9 @@ def menu_tree(registry: Any) -> Dict[str, Any]:
         }
     where each `entry` is  {engine, display, summary, status, menu, tools,
     display_modes, analysis_lenses, proof, provenance, environment, desktop}.
+
+    :param registry: the populated module registry
+    :returns: the grouped menu (see above)
     """
     by_group: Dict[str, Dict[str, Any]] = {}
     missing: List[str] = []
@@ -342,10 +363,16 @@ _REQUIRED_UI = ("menu", "tools", "display_modes", "analysis_lenses",
 
 
 def validate(engine: str, module: Any = None) -> List[str]:
-    """Problems with `engine`'s manifest; [] means clean.  The schema check is
+    """
+    Problems with `engine`'s manifest; [] means clean.  The schema check is
     delegated to the ValaQuenta Format validator (`engine/format.py`,
     `valaquenta.plugin/1`); the engine-specific cross-checks (version match,
-    tool→equation, origin filled) stay here."""
+    tool→equation, origin filled) stay here.
+
+    :param engine: engine name
+    :param module: the registered module for cross-checks; None skips them
+    :returns: the problems found; an empty list means clean
+    """
     man = load(engine)
     if man is None:
         return [f"{engine}: no manifest.json (run scaffold_all to seed it)"]
@@ -387,6 +414,14 @@ def validate(engine: str, module: Any = None) -> List[str]:
 #  write scaffolds to disk
 # ─────────────────────────────────────────────────────────────────────────────
 def write_scaffold(engine: str, module: Any, overwrite: bool = False) -> str:
+    """
+    Write a scaffolded manifest.json for one engine.
+
+    :param engine: engine name
+    :param module: the registered EquationModule instance
+    :param overwrite: replace an existing manifest
+    :returns: a one-line status: 'wrote …' or 'skip …'
+    """
     path = _manifest_path(engine)
     if path.exists() and not overwrite:
         return f"skip  {engine}  (exists)"
@@ -398,6 +433,13 @@ def write_scaffold(engine: str, module: Any, overwrite: bool = False) -> str:
 
 
 def scaffold_all(registry: Any, overwrite: bool = False) -> List[str]:
+    """
+    Write a scaffolded manifest.json for every registered engine that lacks one.
+
+    :param registry: the populated module registry
+    :param overwrite: replace existing manifests
+    :returns: one status line per engine
+    """
     out = []
     for engine in registry.list_modules():
         out.append(write_scaffold(engine, registry.get_module(engine), overwrite))

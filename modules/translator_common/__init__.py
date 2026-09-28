@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_common
-==============================================
+ValaQuenta.modules.translator_common
+====================================
 The Translator — shared substrate for both Translator versions.
 
 NOT a registered engine: no tools.py, no EquationModule, absent from the

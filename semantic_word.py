@@ -60,7 +60,12 @@ class SemanticWord:
         return len(self.projections)
 
     def add_projection(self, context: str, value: Any) -> None:
-        """Add a face — another way of saying this word."""
+        """
+        Add a face: another way of saying this word.
+
+        :param context: name of the context the face belongs to
+        :param value: the face's value in that context
+        """
         self.projections[context] = value
 
     def is_understood(self) -> bool:

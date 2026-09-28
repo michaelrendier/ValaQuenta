@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.archimedes_screw.maths
-====================================================
+ValaQuenta.modules.archimedes_screw.maths
+=========================================
 THE ARCHIMEDES SCREW -- the machine that does the work.
 
 0_RB (formerly H_hat_RB) is the water: the medium, the rest state, e_0.
@@ -195,6 +195,12 @@ def lambert_w(x: float, tol: float = 1e-14, max_iter: int = 60) -> float:
     W(1) = OMEGA_ZS = 0.5671432904... -- the constant already canonical
     in this project, and the same one that sets sigma = 1/2 in the
     paper's section 12.1.
+
+    :param x: argument, x ≥ −1/e
+    :param tol: convergence tolerance
+    :param max_iter: iteration limit
+    :returns: W₀(x)
+    :raises ValueError: x < −1/e
     """
     if x < -1.0 / math.e:
         raise ValueError(f"lambert_w: x = {x} is below the branch point -1/e")
@@ -230,6 +236,10 @@ def screw_pitch(p: float) -> float:
     This is the von Mangoldt weight Lambda(p^m) = ln p, and it is the
     exact jump height of chebyshev_psi at x = p. The pitch IS the prime,
     in log coordinates.
+
+    :param p: prime
+    :returns: ln p
+    :raises ValueError: p ≤ 1
     """
     if p <= 1:
         raise ValueError("screw_pitch: p must be > 1")
@@ -241,21 +251,38 @@ def screw_pitch(p: float) -> float:
 # --------------------------------------------------------------------------
 
 def u_axis(x: float) -> float:
-    """u = ln x. The screw's lift coordinate; every other term maps here."""
+    """
+    u = ln x. The screw's lift coordinate; every other term maps here.
+
+    :param x: positive real
+    :returns: u = ln x
+    :raises ValueError: x is not positive
+    """
     if x <= 0:
         raise ValueError("u_axis: x must be positive")
     return math.log(x)
 
 
 def digits_of(x: float) -> int:
-    """Number of decimal digits: d = floor(log10 x) + 1."""
+    """
+    Number of decimal digits: d = floor(log10 x) + 1.
+
+    :param x: positive real
+    :returns: floor(log10 x) + 1
+    :raises ValueError: x is not positive
+    """
     if x <= 0:
         raise ValueError("digits_of: x must be positive")
     return int(math.floor(math.log10(x))) + 1
 
 
 def u_from_digits(d: int) -> float:
-    """Lower edge of the d-digit band on the screw axis: u = (d-1) ln 10."""
+    """
+    Lower edge of the d-digit band on the screw axis: u = (d-1) ln 10.
+
+    :param d: decimal digit count
+    :returns: (d − 1)·ln 10
+    """
     return (d - 1) * math.log(10.0)
 
 
@@ -290,6 +317,10 @@ def li(x: float) -> float:
     Accurate and stable for 1 < x <~ 1e15. Above that the intermediate
     e^u overflows a float; use prime_count_log10() instead, which works
     entirely in log space and is the right tool at RSA scale.
+
+    :param x: argument, x > 1
+    :returns: Li(x)
+    :raises ValueError: x ≤ 1
     """
     if x <= 1.0:
         raise ValueError("li: x must exceed 1")
@@ -307,6 +338,10 @@ def prime_count_log10(digits: int) -> float:
     prime_count_log10(309) = 306.15, i.e. ~10^306 ~ 2^1017 candidate
     primes below 10^309. (Below 2^1024 exactly the count is ~2^1014.5.)
     Finite, structured, countable -- large, but not infinite.
+
+    :param digits: decimal digit count of the bound
+    :returns: log10 π(10^digits)
+    :raises ValueError: digits < 1
     """
     if digits < 1:
         raise ValueError("prime_count_log10: digits must be >= 1")
@@ -322,6 +357,10 @@ def nth_prime_estimate(n: int) -> float:
         p_n ~ n (ln n + ln ln n - 1 + (ln ln n - 2)/ln n)
 
     Valid for n >= 6; below that the exact small primes are returned.
+
+    :param n: prime ordinal
+    :returns: the estimate of the n-th prime; exact for n < 6
+    :raises ValueError: n < 1
     """
     small = [2, 3, 5, 7, 11]
     if n <= 0:
@@ -345,6 +384,10 @@ def zero_count_smooth(T: float) -> float:
 
     S(T) is O(ln T) and oscillatory; it is what makes the smooth count
     unreliable at small T and irrelevant at large T.
+
+    :param T: height
+    :returns: the smooth zero count N(T)
+    :raises ValueError: T is not positive
     """
     if T <= 0:
         raise ValueError("zero_count_smooth: T must be positive")
@@ -374,6 +417,10 @@ def zero_height_lambert(n: float) -> float:
 
     Asymptotic: poor for n < ~10 (S(T) dominates). Use
     zero_height(n) which prefers the tabulated values.
+
+    :param n: zero index
+    :returns: γₙ ≈ 2πn / W(n/e)
+    :raises ValueError: n is not positive
     """
     if n <= 0:
         raise ValueError("zero_height_lambert: n must be positive")
@@ -384,6 +431,10 @@ def zero_height(n: int) -> float:
     """
     Height of the n-th non-trivial zero: tabulated where known
     (n <= 50, LMFDB), Lambert-W asymptotic above.
+
+    :param n: zero index
+    :returns: the height γₙ
+    :raises ValueError: n < 1
     """
     if n <= 0:
         raise ValueError("zero_height: n must be >= 1")
@@ -393,12 +444,22 @@ def zero_height(n: int) -> float:
 
 
 def zero_index(gamma: float) -> float:
-    """Zeta index value at height gamma -- the smooth count N(gamma)."""
+    """
+    Zeta index value at height gamma -- the smooth count N(gamma).
+
+    :param gamma: height
+    :returns: the smooth count N(γ)
+    """
     return zero_count_smooth(gamma)
 
 
 def zeros_upto(count: int) -> List[float]:
-    """First `count` zero heights, tabulated then asymptotic."""
+    """
+    First `count` zero heights, tabulated then asymptotic.
+
+    :param count: number of zeros
+    :returns: the first `count` zero heights, ascending
+    """
     return [zero_height(k) for k in range(1, count + 1)]
 
 
@@ -414,6 +475,9 @@ def mean_gap(x: float) -> float:
     x equals the screw axis coordinate at x, and equals the screw pitch
     of x. Spacing, lift and pitch are the same number because the screw
     is the logarithm.
+
+    :param x: positive real
+    :returns: ln x
     """
     return u_axis(x)
 
@@ -422,6 +486,9 @@ def total_spaces(x: float) -> float:
     """
     Total count of non-primes ('spaces between') up to x: x - pi(x),
     with pi(x) estimated by Li(x).
+
+    :param x: positive real
+    :returns: x − Li(x)
     """
     return x - li(x)
 
@@ -432,6 +499,9 @@ def gap_at_zero_scale(n: int) -> float:
 
     The dual of mean_gap on the other side of the explicit formula --
     primes thin out as ln x, zeros crowd in as 1/ln T.
+
+    :param n: zero index
+    :returns: 2π / ln(γₙ / 2π)
     """
     g = zero_height(n)
     return TWO_PI / math.log(g / TWO_PI)
@@ -459,6 +529,9 @@ def von_mangoldt(n: int) -> float:
 
     This is the leaf-drop quantum: the size of the jump psi takes at n.
     Non-zero only at prime powers -- the screw lifts only on primes.
+
+    :param n: positive integer
+    :returns: Λ(n)
     """
     if n < 2:
         return 0.0
@@ -477,6 +550,9 @@ def chebyshev_psi_exact(x: float) -> float:
 
     The ground truth the explicit formula reconstructs. Exact, and the
     left-hand side of the binding equation.
+
+    :param x: positive real
+    :returns: ψ(x)
     """
     xi = int(math.floor(x))
     if xi < 2:
@@ -498,6 +574,9 @@ def leaf_drops(x: float) -> List[Tuple[int, float]]:
     The jump height is ln p exactly. Reading the list is reading the
     primes off the screw -- 'when it lets go' and 'which prime' are the
     same column of this table.
+
+    :param x: positive real
+    :returns: (n, ln p) for each prime power n ≤ x
     """
     xi = int(math.floor(x))
     out: List[Tuple[int, float]] = []
@@ -522,6 +601,11 @@ def tone(u: float, gamma: float, sigma: float = 0.5) -> float:
     zero -- one shared amplitude. sigma is exposed as a parameter so the
     RH statement can be exhibited rather than asserted: see
     amplitude_envelope().
+
+    :param u: screw height ln x
+    :param gamma: height of the zero
+    :param sigma: real part of the zero
+    :returns: the tone value
     """
     mod_rho = math.hypot(sigma, gamma)
     arg_rho = math.atan2(gamma, sigma)
@@ -530,7 +614,14 @@ def tone(u: float, gamma: float, sigma: float = 0.5) -> float:
 
 def tone_sum(u: float, zeros: Optional[List[float]] = None,
              sigma: float = 0.5) -> float:
-    """Sum of tones over the supplied zeros -- the oscillating term."""
+    """
+    Sum of tones over the supplied zeros -- the oscillating term.
+
+    :param u: screw height ln x
+    :param zeros: zero heights; None uses the tabulated set
+    :param sigma: real part of every zero
+    :returns: the sum of tones
+    """
     zs = zeros if zeros is not None else ZEROS_KNOWN
     return sum(tone(u, g, sigma) for g in zs)
 
@@ -547,6 +638,10 @@ def clean_path_L(x: float) -> float:
 
     Trivial as code. It is here because the correspondence is only
     inspectable if every slot in it is addressable.
+
+    :param x: positive real
+    :returns: L(x) = x
+    :raises ValueError: x is outside the function's domain
     """
     if x <= 0:
         raise ValueError("clean_path_L: x must be positive")
@@ -577,6 +672,11 @@ def zero_sum(x: float, zeros: Optional[List[float]] = None,
         psi_Cheb = x - zero_sum(x) - ...  (primes)
 
     so zero_sum enters with a minus in both readings.
+
+    :param x: positive real
+    :param zeros: zero heights; None uses the tabulated set
+    :param sigma: real part of every zero
+    :returns: Σ_ρ x^ρ/ρ
     """
     return tone_sum(u_axis(x), zeros, sigma)
 
@@ -602,6 +702,10 @@ def l_io_decomposition(x: float, zeros: Optional[List[float]] = None
     "the path of least primes". zero_sum sits in the psi slot -- the bend.
     Chebyshev psi is NOT the counterpart of the lensing psi; it is the
     counterpart of L_(I|O), one slot away.
+
+    :param x: positive real
+    :param zeros: zero heights; None uses the tabulated set
+    :returns: dict with the terms 'L', 'psi_bend' and 'L_IO'
     """
     L = clean_path_L(x)
     bend = zero_sum(x, zeros)
@@ -625,6 +729,12 @@ def chebyshev_psi_explicit(x: float, zeros: Optional[List[float]] = None,
     sum at K terms leaves an error controlled by x/K -- this is the
     resolution wall: sharply resolving one jump near x needs zeros up to
     height ~x.
+
+    :param x: real, x > 1
+    :param zeros: zero heights; None uses the tabulated set
+    :param sigma: real part of every zero
+    :returns: ψ(x) from the explicit formula
+    :raises ValueError: x ≤ 1
     """
     if x <= 1.0:
         raise ValueError("chebyshev_psi_explicit: x must exceed 1")
@@ -643,6 +753,10 @@ def interference_profile(x: float, zeros: Optional[List[float]] = None
     between primes they cancel. Zeros are the node lines (still points,
     paper section 6); primes are the ANTINODES of the same field
     (paper section 6.4). One standing wave, read from either side.
+
+    :param x: positive real
+    :param zeros: zero heights; None uses the tabulated set
+    :returns: [(γₖ, toneₖ)] for each zero
     """
     u = math.log(x)
     zs = zeros if zeros is not None else ZEROS_KNOWN
@@ -662,6 +776,10 @@ def amplitude_envelope(x: float, sigma: float = 0.5) -> float:
     Equal envelope <=> all nodes on one line <=> RH. This is the
     amplitude face of the nodal-line argument already in the paper's
     section 6, not a separate result.
+
+    :param x: positive real
+    :param sigma: real part of the zero
+    :returns: 2·x^σ
     """
     return 2.0 * x ** sigma
 
@@ -674,6 +792,10 @@ def envelope_ratio(x: float, sigma_off: float) -> float:
     At x = 10^6 a zero at sigma = 0.6 is already ~4 times louder; at
     x = 10^12, ~250 times. Divergent in x for any sigma_off > 1/2 --
     which is why the node structure is stable only on the line.
+
+    :param x: positive real
+    :param sigma_off: real part of the hypothetical off-line zero
+    :returns: x^(σ_off − ½)
     """
     return x ** (sigma_off - 0.5)
 
@@ -683,7 +805,13 @@ def envelope_ratio(x: float, sigma_off: float) -> float:
 # --------------------------------------------------------------------------
 
 def kronecker(a: int, n: int) -> int:
-    """Kronecker symbol (a/n). Cheap, exact, integer arithmetic only."""
+    """
+    Kronecker symbol (a/n). Cheap, exact, integer arithmetic only.
+
+    :param a: integer
+    :param n: integer
+    :returns: the Kronecker symbol (a/n)
+    """
     if n == 0:
         return 1 if a in (1, -1) else 0
     result = 1
@@ -713,6 +841,9 @@ def fundamental_discriminant(N: int) -> int:
     Discriminant of Q(sqrt N) for squarefree N:  D = N if N = 1 mod 4,
     else 4N. The ramified primes are exactly the primes dividing D --
     for N = p*q squarefree, exactly p and q.
+
+    :param N: squarefree integer
+    :returns: D = N if N ≡ 1 mod 4, else 4N
     """
     if N % 4 == 1:
         return N
@@ -729,6 +860,10 @@ def splitting_type(p: int, N: int) -> str:
 
     Ramification is the leaf letting go, stated in arithmetic: the local
     factor loses a piece at exactly the primes dividing the discriminant.
+
+    :param p: rational prime
+    :param N: squarefree integer
+    :returns: 'split', 'inert' or 'ramified'
     """
     D = fundamental_discriminant(N)
     chi = kronecker(D, p)
@@ -742,6 +877,10 @@ def splitting_vector(N: int, limit: int = 100) -> List[Tuple[int, int]]:
     This is the cheapest N-specific shadow there is -- Kronecker symbols,
     milliseconds, computable from N alone with no knowledge of p and q.
     It is the concrete form of "the detachment fingerprint".
+
+    :param N: squarefree integer
+    :param limit: largest prime scanned
+    :returns: [(p, χ_N(p))] for the primes ≤ limit
     """
     D = fundamental_discriminant(N)
     return [(p, kronecker(D, p)) for p in _sieve(limit)]
@@ -757,6 +896,10 @@ def ramified_primes(N: int, limit: int = 10 ** 6) -> List[int]:
     It is here because it makes the identification 'ramified prime =
     prime factor' executable and inspectable at toy scale, which is what
     an engine is for.
+
+    :param N: squarefree integer
+    :param limit: largest prime scanned
+    :returns: the primes ≤ limit that divide the discriminant
     """
     return [p for p in _sieve(limit)
             if kronecker(fundamental_discriminant(N), p) == 0]
@@ -787,6 +930,11 @@ def screw_coordinates(term: str, value: float) -> Dict[str, float]:
     The 'zeta_index' entry is the one that makes the equation a machine:
     it is the summation index of the explicit formula, so choosing k is
     choosing how many tones to sound.
+
+    :param term: 'magnitude', 'digits', 'ordinal' or 'zeta_index'
+    :param value: the value of that coordinate
+    :returns: dict with all four coordinates
+    :raises ValueError: term is not one of the four
     """
     if term not in _TERMS:
         raise ValueError(f"screw_coordinates: term must be one of {_TERMS}")
@@ -830,6 +978,10 @@ def shake_order(x: float, zeros: Optional[List[float]] = None) -> Dict[str, obje
 
     The residual is the honest readout of the resolution wall: it shrinks
     as more zeros are included and never reaches zero at finite K.
+
+    :param x: positive real
+    :param zeros: zero heights; None uses the tabulated set
+    :returns: dict with the drops, psi_exact, psi_tones and the residual
     """
     drops = leaf_drops(x)
     exact = chebyshev_psi_exact(x)
@@ -897,6 +1049,10 @@ def lpf(n: int) -> int:
 
     Where the first strike lands: you learn N is composite here, and the
     cofactor N/lpf(N) comes free. Trial division, O(sqrt n).
+
+    :param n: integer ≥ 2
+    :returns: the least prime factor
+    :raises ValueError: n < 2
     """
     if n < 2:
         raise ValueError("lpf: n must be >= 2")
@@ -918,6 +1074,10 @@ def gpf(n: int) -> int:
     is finished with n. This is the smoothness criterion (n is y-smooth iff
     gpf(n) <= y), i.e. the function every practical factoring method is
     organised around. Trial division, O(sqrt n).
+
+    :param n: integer ≥ 2
+    :returns: the greatest prime factor
+    :raises ValueError: n < 2
     """
     if n < 2:
         raise ValueError("gpf: n must be >= 2")
@@ -941,12 +1101,20 @@ def fall_height(n: int) -> float:
 
     The completion event in lift coordinates. For a prime this equals
     ln n -- a prime is its own leaf and falls at its own height.
+
+    :param n: integer ≥ 2
+    :returns: ln(gpf n)
     """
     return math.log(gpf(n))
 
 
 def discovery_height(n: int) -> float:
-    """Where the first strike lands, on the screw axis: ln(lpf n)."""
+    """
+    Where the first strike lands, on the screw axis: ln(lpf n).
+
+    :param n: integer ≥ 2
+    :returns: ln(lpf n)
+    """
     return math.log(lpf(n))
 
 
@@ -958,6 +1126,10 @@ def smoothness_u(n: int) -> float:
     native to this axis. u = 1 for a prime (falls at its own height);
     u = 2 for a balanced semiprime (falls at the square root); u grows as
     the number gets smoother.
+
+    :param n: integer ≥ 2
+    :returns: u = ln n / ln(gpf n)
+    :raises ValueError: n < 2, or the ratio is undefined
     """
     if n < 2:
         raise ValueError("smoothness_u: n must be >= 2")
@@ -1014,6 +1186,10 @@ def dickman_rho(u: float) -> float:
     rho(3) = 0.0486083, rho(4) = 0.0049109, rho(5) = 0.00035473.
 
     The balanced-semiprime case is u = 2 exactly -- exponent 1/u = 1/2.
+
+    :param u: real, u ≥ 0
+    :returns: ρ(u)
+    :raises ValueError: u < 0
     """
     if u < 0:
         raise ValueError("dickman_rho: u must be >= 0")
@@ -1037,6 +1213,10 @@ def gpf_table(X: int) -> List[int]:
     O(X) memory -- this is the whole harvest in a single sweep.
 
     Index 0 and 1 are returned as 0 (no prime factor).
+
+    :param X: upper bound
+    :returns: list g with g[n] = gpf(n) for n ≤ X, and 0 at n = 0, 1
+    :raises ValueError: X < 1
     """
     if X < 1:
         raise ValueError("gpf_table: X must be >= 1")
@@ -1054,6 +1234,10 @@ def psi_smooth(x: int, y: int) -> int:
 
     Exact, by sieve. n = 1 counts as smooth (empty factorisation), matching
     the standard convention.
+
+    :param x: upper bound
+    :param y: smoothness bound
+    :returns: Ψ(x, y)
     """
     if x < 1:
         return 0
@@ -1073,6 +1257,11 @@ def harvest(X: int, p: int) -> int:
 
     Cross-check against harvest_curve(), which counts the same thing directly
     off the sieve table. They must agree; disagreement is a bug.
+
+    :param X: upper bound
+    :param p: prime
+    :returns: the number of n ≤ X with gpf(n) = p
+    :raises ValueError: p < 2
     """
     if p < 2:
         raise ValueError("harvest: p must be >= 2")
@@ -1083,6 +1272,9 @@ def harvest_curve(X: int) -> Dict[int, int]:
     """
     The whole harvest in one sweep: {p: number of leaves falling at step p}
     for every prime p <= X. Counted directly off gpf_table.
+
+    :param X: upper bound
+    :returns: {p: leaves falling at step p} for every prime p ≤ X
     """
     tab = gpf_table(X)
     out: Dict[int, int] = {}
@@ -1100,6 +1292,11 @@ def semiprime_harvest(X: int, p: int) -> int:
 
     Includes q = p (i.e. N = p^2, a prime square) by the standard semiprime
     convention. Exact; pi() here is an exact sieve count, not Li.
+
+    :param X: upper bound
+    :param p: prime
+    :returns: π(min(p, X/p))
+    :raises ValueError: p < 2
     """
     if p < 2:
         raise ValueError("semiprime_harvest: p must be >= 2")
@@ -1125,6 +1322,10 @@ def fall_split(N: int) -> Dict[str, float]:
     fall events. It vanishes for balanced N -- which is exactly why balanced
     RSA is hard: the two observables coincide at ln(N)/2 and there is no
     early event to catch.
+
+    :param N: semiprime
+    :returns: dict with the discovery and fall heights, their sum ln N and δ
+    :raises ValueError: N < 4
     """
     if N < 4:
         raise ValueError("fall_split: N must be >= 4")
@@ -1178,6 +1379,11 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
     The only row that matters as a target is 'gnfs'. Everything above it
     is naive-domain accounting that was beaten in the 1990s. A new method
     has to clear 2^112, not 2^1024.
+
+    :param modulus_bits: bit length of the modulus
+    :param gnfs_bits: bit cost of GNFS at that size
+    :returns: dict of counts as base-2 logarithms
+    :raises ValueError: modulus_bits < 4
     """
     if modulus_bits < 4:
         raise ValueError("domain_ladder: modulus_bits must be >= 4")
@@ -1259,6 +1465,10 @@ def mobius(n: int) -> int:
     The Dirichlet inverse of the constant function 1: SUM_{d|n} mu(d) is
     1 at n=1 and 0 otherwise. This is the operator the sieve actually
     runs on -- inclusion-exclusion, not positive testing.
+
+    :param n: positive integer
+    :returns: μ(n)
+    :raises ValueError: n < 1
     """
     if n < 1:
         raise ValueError("mobius: n must be >= 1")
@@ -1287,6 +1497,9 @@ def mertens(x: int) -> int:
     slowly than x and changes sign endlessly.
 
     Checkpoints: M(10) = -1, M(100) = 1, M(1000) = 2, M(10000) = -23.
+
+    :param x: upper bound
+    :returns: M(x)
     """
     if x < 1:
         return 0
@@ -1310,6 +1523,11 @@ def mertens_envelope(x: float, eps: float = 0.0) -> float:
     This is the SAME 1/2 as the critical line and the same 1/2 as the
     shared tone envelope 2*sqrt(x) in amplitude_envelope() -- read on the
     negative side instead of the bulk. Two counting functions, one bound.
+
+    :param x: positive real
+    :param eps: ε in the exponent
+    :returns: x^(½ + ε)
+    :raises ValueError: x is not positive
     """
     if x <= 0:
         raise ValueError("mertens_envelope: x must be positive")
@@ -1331,6 +1549,10 @@ def sieve_extinction(N: int) -> Dict[str, object]:
 
     'mu' is N's own negative-space value; mu = 0 flags a squared factor,
     i.e. a leaf that was never squarefree to begin with.
+
+    :param N: composite integer
+    :returns: dict with the grown, extinct and identified heights and 'dead_but_unnamed'
+    :raises ValueError: N < 2
     """
     if N < 2:
         raise ValueError("sieve_extinction: N must be >= 2")

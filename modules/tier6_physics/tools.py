@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.tier6_physics.tools
+ValaQuenta.modules.tier6_physics.tools
 Version: 0.100
 """
 from typing import Dict, List, Any
@@ -11,6 +11,17 @@ from .maths import (
 )
 
 class Tier6PhysicsModule(EquationModule):
+    """
+    Tier 6 — Full Physics: QM + Standard Model
+
+    Full QM and Standard Model from Ainulindale. Foundation: Zero
+    Divisors=Addition, CD Tower=Subtraction → Mathematics. 8 engines:
+    sedenion_arithmetic, quantum_mechanics, standard_model, dirac_equation,
+    gauge_unification, higgs_mechanism, particle_spectrum,
+    feynman_path_integral.
+
+    Registry module for ``tier6_physics``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.tier6_physics.maths`.
+    """
     @property
     def name(self): return 'tier6_physics'
     @property

@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.noether_information.maths
-======================================================
+ValaQuenta.modules.noether_information.maths
+============================================
 Information current J_info — Noether current for information symmetry.
 
 Conserved under information-translation symmetry of L_NN:
@@ -38,6 +38,9 @@ def shannon_information(psi_norms: List[float]) -> float:
     I_information = -Σ_i p_i · log₂(p_i)   (Shannon entropy in bits)
 
     p_i = |Ψ_i|² / Σ_j|Ψ_j|²  (activation probability distribution)
+
+    :param psi_norms: activation norms |Ψᵢ|
+    :returns: the Shannon entropy in bits
     """
     norm_sq = sum(p * p for p in psi_norms)
     if norm_sq < 1e-12:
@@ -52,6 +55,10 @@ def phi_flux(psi_norms: List[float], algebra: int) -> float:
 
     Information flux through an algebra boundary is proportional to
     the algebra dimension (the information capacity of that stratum).
+
+    :param psi_norms: activation norms |Ψᵢ|
+    :param algebra: algebra dimension of the stratum
+    :returns: Φ_flux
     """
     dim = ALG_DIM.get(algebra, 1)
     psi_sq_mean = sum(p * p for p in psi_norms) / max(len(psi_norms), 1)
@@ -70,6 +77,12 @@ def information_current(psi_norms: List[float],
       J_info^1   : spatial component = Φ_flux
       I_info     : total information (Shannon entropy, bits)
       t_e        : entropic time estimate = argmax I_info ~ layer/total_layers
+
+    :param psi_norms: activation norms |Ψᵢ|
+    :param algebra: algebra dimension of the stratum
+    :param layer: index of the layer
+    :param total_layers: number of layers
+    :returns: dict with J⁰, J¹, I_info and t_e
     """
     I = shannon_information(psi_norms)
     flux = phi_flux(psi_norms, algebra)
@@ -105,6 +118,10 @@ def entropic_arrow(psi_history: List[List[float]],
 
     psi_history: list of psi_norms, one per layer step.
     Returns: I_values, J0_values, arrow_violations, t_e_max
+
+    :param psi_history: activation norms, one list per layer step
+    :param algebra: algebra dimension of the stratum
+    :returns: dict with I_values, J0_values, arrow_violations and t_e_max
     """
     I_vals = [shannon_information(p) for p in psi_history]
     J0_vals = [I / max(i+1, 1) for i, I in enumerate(I_vals)]
@@ -136,6 +153,10 @@ def delta_J_info(J_curr: Dict[str, float],
       ΔJ_info = |J_info^0_curr - J_info^0_prev|
 
     Zero → information current conserved (entropic symmetry unbroken).
+
+    :param J_curr: information current of the current cycle
+    :param J_prev: information current of the previous cycle; None for the first cycle
+    :returns: |J⁰_curr − J⁰_prev|
     """
     if J_prev is None:
         return 0.0
@@ -155,6 +176,10 @@ def information_capacity(algebra: int, n_neurons: int) -> Dict[str, float]:
 
     The sedenion shell (dims 8–15) does NOT add capacity because
     zero-divisors make the norm not multiplicative — information leaks.
+
+    :param algebra: algebra dimension of the stratum
+    :param n_neurons: neurons in the layer
+    :returns: dict with the capacity C_max in bits
     """
     dim = ALG_DIM.get(algebra, 1)
     bits_per_neuron = math.log2(max(dim, 1))

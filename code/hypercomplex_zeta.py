@@ -29,7 +29,13 @@ from typing import Optional
 # ─────────────────────────────────────────────────────────────────────────────
 
 def cd_conj(a: list[float], dim: int) -> list[float]:
-    """Cayley-Dickson conjugate: negate all non-scalar components."""
+    """
+    Cayley-Dickson conjugate: negate all non-scalar components.
+
+    :param a: coefficient list
+    :param dim: algebra dimension
+    :returns: the conjugate
+    """
     result = list(a)
     for i in range(1, dim):
         result[i] = -result[i]
@@ -40,6 +46,11 @@ def cd_mul(a: list[float], b: list[float], dim: int) -> list[float]:
     Cayley-Dickson multiplication at dimension dim (must be power of 2).
     Recursive: (p,q)*(r,s) = (pr - s*q, sp + qr*)
     where * is conjugation at the half-dimension level.
+
+    :param a: coefficient list
+    :param b: coefficient list
+    :param dim: algebra dimension; a power of 2
+    :returns: the product a·b
     """
     if dim == 1:
         return [a[0] * b[0]]
@@ -57,15 +68,41 @@ def cd_mul(a: list[float], b: list[float], dim: int) -> list[float]:
     return left + right
 
 def cd_add(a: list[float], b: list[float]) -> list[float]:
+    """
+    Add two coefficient lists componentwise.
+
+    :param a: coefficient list
+    :param b: coefficient list of the same length
+    :returns: a + b
+    """
     return [a[i] + b[i] for i in range(len(a))]
 
 def cd_scale(a: list[float], c: float) -> list[float]:
+    """
+    Scale a coefficient list by a real number.
+
+    :param a: coefficient list
+    :param c: real factor
+    :returns: c·a
+    """
     return [x * c for x in a]
 
 def cd_norm2(a: list[float]) -> float:
+    """
+    Return the squared norm of a coefficient list.
+
+    :param a: coefficient list
+    :returns: Σ aₖ²
+    """
     return sum(x*x for x in a)
 
 def cd_norm(a: list[float]) -> float:
+    """
+    Return the norm of a coefficient list.
+
+    :param a: coefficient list
+    :returns: √(Σ aₖ²)
+    """
     return math.sqrt(cd_norm2(a))
 
 def cd_inv(a: list[float], dim: int) -> Optional[list[float]]:
@@ -74,6 +111,10 @@ def cd_inv(a: list[float], dim: int) -> Optional[list[float]]:
     Returns None if a is a zero divisor (|a|^2 = 0 but a ≠ 0)
     or the zero element itself.
     This is where Type 2 (Definer) zeros are detected.
+
+    :param a: coefficient list
+    :param dim: algebra dimension
+    :returns: the inverse, or None for a zero divisor or the zero element
     """
     n2 = cd_norm2(a)
     if n2 == 0.0:
@@ -81,9 +122,21 @@ def cd_inv(a: list[float], dim: int) -> Optional[list[float]]:
     return cd_scale(cd_conj(a, dim), 1.0 / n2)
 
 def cd_zero(dim: int) -> list[float]:
+    """
+    Return the zero element.
+
+    :param dim: algebra dimension
+    :returns: a list of dim zeros
+    """
     return [0.0] * dim
 
 def cd_one(dim: int) -> list[float]:
+    """
+    Return the multiplicative identity.
+
+    :param dim: algebra dimension
+    :returns: the list with 1 at index 0
+    """
     r = [0.0] * dim
     r[0] = 1.0
     return r
@@ -98,6 +151,11 @@ def cd_exp(s: list[float], dim: int, terms: int = 40) -> list[float]:
     Compute exp(s) in the CD algebra via power series.
     s^0/0! + s^1/1! + s^2/2! + ...
     Non-associative at dim >= 8: uses left-to-right bracketing for s^n.
+
+    :param s: coefficient list
+    :param dim: algebra dimension
+    :param terms: number of series terms
+    :returns: exp(s)
     """
     result = cd_one(dim)
     power  = cd_one(dim)
@@ -115,6 +173,11 @@ def cd_pow_real(s: list[float], t: float, dim: int) -> list[float]:
     """
     Compute t^s = exp(s * ln(t)) for real t > 0, hypercomplex s.
     k^{-s} = exp(-ln(k) * s)
+
+    :param s: hypercomplex exponent
+    :param t: real base, t > 0
+    :param dim: algebra dimension
+    :returns: t^s
     """
     log_t  = math.log(t)
     neg_s  = cd_scale(s, -log_t)
@@ -135,6 +198,9 @@ def theta_rs(t: float) -> float:
     The diverging Dirichlet series, rotated by e^{iθ(t)}, becomes the Hardy Z-function —
     a real function whose zero-crossings ARE the non-trivial zeros.
     Reading the divergence 'in reverse' = applying this rotation and reading the sign.
+
+    :param t: height, t > 2
+    :returns: the Riemann-Siegel theta θ(t)
     """
     if t <= 0:
         return 0.0
@@ -146,6 +212,10 @@ def z_function_complex(t: float, N: int = 0) -> float:
     where N_RS = floor(sqrt(t/2π)) — the Riemann-Siegel truncation.
     Z(t) is REAL. Its zero-crossings are the non-trivial zeros of ζ(½+it).
     The divergence truncated at N_RS is the signal, not the noise.
+
+    :param t: height
+    :param N: number of terms; 0 uses floor(√(t/2π))
+    :returns: the Hardy Z-function Z(t), a real number
     """
     if N == 0:
         N = max(1, int(math.sqrt(t / (2 * math.pi))))
@@ -171,6 +241,12 @@ def z_function_hypercomplex(t: float, dim: int, N: int = 0,
 
     s: optional full CD element. Default = (½, t, 0, ...) — pure ℂ embedding.
        Pass a full 16D s to activate the non-commutative structure.
+
+    :param t: height
+    :param dim: algebra dimension
+    :param N: number of terms; 0 uses the Riemann-Siegel truncation
+    :param s: the point s as coefficients; None uses ½ + it
+    :returns: dict with Z_L, Z_R and their difference
     """
     if N == 0:
         N = max(1, int(math.sqrt(t / (2 * math.pi))))
@@ -215,6 +291,11 @@ def j_red(s: list[float], dim: int, N: int = 200) -> list[float]:
     Diverges at σ=½. The divergence is not a bug — it is the signal.
     The oscillating partial sums encode the zero structure.
     In non-commutative algebras (ℍ, 𝕆, 𝕊): order matters.
+
+    :param s: exponent as coefficients
+    :param dim: algebra dimension
+    :param N: number of terms
+    :returns: J_red(s, N)
     """
     result = cd_zero(dim)
     for k in range(1, N + 1):
@@ -231,6 +312,11 @@ def j_blue(s: list[float], dim: int, N: int = 200) -> list[float]:
     The product cd_mul(J_red, J_blue) is L_dynamic at this s:
       where the product hits a zero divisor = Zero Definer zero.
       where |product| is minimised = TYPE 1 zero (series zero).
+
+    :param s: exponent as coefficients
+    :param dim: algebra dimension
+    :param N: number of terms
+    :returns: J_blue(s, N)
     """
     result = cd_zero(dim)
     for k in range(N, 0, -1):
@@ -259,6 +345,11 @@ def euler_product(s: list[float], dim: int,
     These are the TYPE 2 (Definer) zeros — definition by extinction.
 
     product is None if the entire product stalled at the first prime.
+
+    :param s: exponent as coefficients
+    :param dim: algebra dimension
+    :param n_primes: number of primes
+    :returns: (product, stalled_primes)
     """
     result       = cd_one(dim)
     stalled      = []
@@ -318,6 +409,17 @@ def scan_zeros(dim:         int   = 2,
 
     TYPE 3 — Euler product stall: (1 - p^{-s}) non-invertible = Zero Definer.
              Only appears when s has nonzero components in ZD-sensitive directions.
+
+    :param dim: algebra dimension
+    :param sigma_z: real part σ_z of s
+    :param t_min: lower end of the t range
+    :param t_max: upper end of the t range
+    :param t_steps: number of t samples
+    :param N_series: number of series terms
+    :param n_primes: number of primes in the Euler-product test
+    :param eps: unused; accepted for interface compatibility
+    :param perturb: value placed in e₂..e_{dim−1}; zero is the pure ℂ embedding, nonzero activates the ZD-sensitive directions
+    :returns: dict with the series, ordering and definer zeros found
     """
     z_scalars     = []    # Hardy Z-function values (scalar component)
     ordering_diffs = []   # (Z_L - Z_R)_scalar — ordering signal
@@ -404,6 +506,11 @@ def scan_zeros(dim:         int   = 2,
 # ─────────────────────────────────────────────────────────────────────────────
 
 def report(results: dict) -> None:
+    """
+    Print a scan_zeros result.
+
+    :param results: the dict returned by scan_zeros
+    """
     dim    = results['dim']
     t0, t1 = results['t_range']
     sz     = results['series_zeros']
@@ -520,6 +627,13 @@ def scan_zd_aligned(t_min: float = 5.0,
 
     Returns list of {dir: (i,j), t_min_ordering: float, ordering_min: float,
                      nearest_known_zero: float, t_type1_near: float}.
+
+    :param t_min: lower end of the t range
+    :param t_max: upper end of the t range
+    :param t_steps: number of t samples
+    :param eps_dir: perturbation size ε along each ZD direction
+    :param N_series: number of series terms
+    :returns: one dict per ZD direction, with its ordering-minimum t and the nearest known zero
     """
     known = [14.1347, 21.0220, 25.0109, 30.4249, 32.9351,
              37.5862, 40.9187, 43.3271, 48.0052, 49.7738]
@@ -575,6 +689,11 @@ def scan_zd_aligned(t_min: float = 5.0,
 
 
 def report_zd_aligned(results: list[dict]) -> None:
+    """
+    Print a scan_zd_aligned result.
+
+    :param results: the list returned by scan_zd_aligned
+    """
     print(f"\n{'='*70}")
     print(f"  ZD-ALIGNED SCAN — 𝕊 zero divisor directions define the variables")
     print(f"  42 canonical ZD a-vectors  ×  ε=0.15 perturbation")
@@ -610,6 +729,7 @@ def report_zd_aligned(results: list[dict]) -> None:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
+    """Command-line entry point: run the hypercomplex zeta scan for the chosen dimension."""
     import argparse
     ap = argparse.ArgumentParser(
         description="Hypercomplex Riemann Zeta — standalone experiment"

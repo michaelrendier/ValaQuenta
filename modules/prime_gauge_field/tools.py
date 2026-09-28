@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.prime_gauge_field.tools
-=====================================================
+ValaQuenta.modules.prime_gauge_field.tools
+==========================================
 THE PRIME GAUGE FIELD -- Module Tools.
 
 Implements the EquationModule registry contract:

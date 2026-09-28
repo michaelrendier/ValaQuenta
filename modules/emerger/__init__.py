@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.emerger
-====================================
+ValaQuenta.modules.emerger
+==========================
 The Emerger -- Sedenion Bracketing & Firing Order.
 
 A dynamic permutative bracketer. Works in the imaginary domain; e_0 (the

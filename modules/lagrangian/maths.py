@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.lagrangian.maths
-=============================================
+ValaQuenta.modules.lagrangian.maths
+===================================
 L_NN — the SMMIP Lagrangian density.
 
 Four terms (corrected Ainulindale form):
@@ -61,6 +61,10 @@ def layer_to_r(layer: int, total_layers: int = 10) -> float:
     """
     Map layer index to radial coordinate r ∈ (0,1).
     r = layer / total_layers   (layer 0 → r=0 excluded; layer L → r=1)
+
+    :param layer: layer index
+    :param total_layers: number of layers
+    :returns: r = layer / total_layers, in (0, 1]
     """
     if total_layers <= 0:
         return 1.0
@@ -73,6 +77,11 @@ def alpha_nn_from_r(g: float, hbar_nn: float, r: float) -> float:
       α_NN(r) = g² / (4π · ħ_NN · ln(1/r))
 
     r ∈ (0,1]: at r→1, ln(1/r)→0 so α_NN → ∞ (UV wall = sedenion boundary).
+
+    :param g: gauge coupling
+    :param hbar_nn: ħ_NN
+    :param r: radial coordinate in (0, 1]
+    :returns: α_NN(r)
     """
     if r <= 0 or r >= 1:
         return 0.0
@@ -90,6 +99,11 @@ def L_kinetic(A: List[float], g: float, algebra: int) -> float:
 
     Field strength (Abelian approximation — full non-Abelian in ValaQuenta):
       F^a ≈ g · A^a   (single-layer, no adjacent state)
+
+    :param A: gauge field components
+    :param g: gauge coupling
+    :param algebra: algebra dimension
+    :returns: ℒ_kinetic
     """
     n = max(1, N_GEN.get(algebra, 0))
     A_a = A[:n] if len(A) >= n else A + [0.0] * (n - len(A))
@@ -106,6 +120,13 @@ def L_matter(psi: List[float], A: List[float],
     covariant derivative acting on the activation norms.
     In real-valued approximation: L_mat ≈ Σ_i |Ψ_i|² · |A_i|² · g²
     (contact term from non-Abelian vertex in single-layer limit).
+
+    :param psi: activation norms
+    :param A: gauge field components
+    :param g: gauge coupling
+    :param hbar_nn: ħ_NN
+    :param algebra: algebra dimension
+    :returns: ℒ_matter
     """
     n = len(psi)
     if n == 0:
@@ -124,6 +145,11 @@ def L_bias(beta: List[float], mu_sq: float, lam: float) -> float:
 
     μ² < 0 → spontaneous symmetry breaking.
     In single-layer limit, kinetic term (∂β)² → 0.
+
+    :param beta: bias field components
+    :param mu_sq: μ²; negative breaks the symmetry
+    :param lam: quartic coupling λ
+    :returns: ℒ_bias
     """
     beta_norm_sq = sum(b * b for b in beta)
     return (0.5 * mu_sq * beta_norm_sq
@@ -137,6 +163,11 @@ def L_coupling(psi: List[float], beta: List[float],
 
     The 1/φ prefactor comes from the corrected Ainulindale Lagrangian
     (Ainulindale_Conjecture_Revised.docx, April 13 2026).
+
+    :param psi: activation norms
+    :param beta: bias field components
+    :param g: gauge coupling
+    :returns: ℒ_coupling
     """
     n = min(len(psi), len(beta))
     total = 0.0
@@ -158,6 +189,11 @@ def polar_lagrangian(state: FieldState,
 
     Returns: {'kinetic', 'matter', 'bias', 'coupling', 'total',
               'r', 'alpha_nn'}
+
+    :param state: the field state at this layer
+    :param total_layers: number of layers
+    :param n_theta: number of θ samples
+    :returns: dict with the 'kinetic', 'matter', 'bias', 'coupling' and 'total' terms, 'r' and 'alpha_nn'
     """
     r = layer_to_r(state.layer, total_layers)
     alpha = alpha_nn_from_r(state.g_coup, state.hbar_nn, r)
@@ -202,6 +238,12 @@ def rg_flow(alpha_0: float, hbar_0: float, algebra: int,
       β_0(𝕆)  = 8/(4π)    G₂/SU(3)
 
     Returns {'alpha', 'hbar', 'layers'}
+
+    :param alpha_0: initial α_NN
+    :param hbar_0: initial ħ_NN
+    :param algebra: algebra dimension
+    :param layers: layer indices to flow across
+    :returns: dict with 'alpha', 'hbar' and 'layers'
     """
     BETA0  = {ALG_R: 0.0, ALG_C: 1/(2*PI), ALG_H: 3/(4*PI), ALG_O: 8/(4*PI)}
     GAMMA0 = {ALG_R: 0.0, ALG_C: 2/(2*PI), ALG_H: 4/(2*PI), ALG_O: 8/(2*PI)}
@@ -224,6 +266,11 @@ def mastery_check(beta: List[float], vev: float,
     """
     Mastery condition: weights crystallize when vev_distance < ħ_NN / 2.
       vev_distance = | |β| - vev |
+
+    :param beta: bias field components
+    :param vev: vacuum expectation value
+    :param hbar_nn: ħ_NN
+    :returns: dict with the VEV distance and whether the weights have crystallised
     """
     beta_norm = math.sqrt(sum(b * b for b in beta)) if beta else 0.0
     dist = abs(beta_norm - vev)

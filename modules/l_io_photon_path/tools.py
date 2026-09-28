@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.l_io_photon_path.tools
-====================================================
+ValaQuenta.modules.l_io_photon_path.tools
+=========================================
 L_(I|O) Photon Path Engine (GR) — Module Tools
 
 Implements the EquationModule registry contract.

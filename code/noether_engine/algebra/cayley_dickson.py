@@ -44,7 +44,13 @@ import sympy as sp
 # ═══════════════════════════════════════════════════════════════════════════
 
 def real_multiplication(a: Sequence[sp.Expr], b: Sequence[sp.Expr]) -> List[sp.Expr]:
-    """Real multiplication: just numeric product."""
+    """
+    Real multiplication: just numeric product.
+
+    :param a: one component
+    :param b: one component
+    :returns: the product
+    """
     assert len(a) == 1 and len(b) == 1
     return [a[0] * b[0]]
 
@@ -59,6 +65,10 @@ def complex_multiplication(
 ) -> List[sp.Expr]:
     """
     (a0 + a1 i)(b0 + b1 i) = (a0 b0 - a1 b1) + (a0 b1 + a1 b0) i.
+
+    :param a: components (a0, a1)
+    :param b: components (b0, b1)
+    :returns: the product's components
     """
     assert len(a) == 2 and len(b) == 2
     return [
@@ -93,6 +103,10 @@ def quaternion_multiplication(
     """
     Hamilton quaternion multiplication.
     Verified: i²=j²=k²=ijk=-1, ij=k, jk=i, ki=j.
+
+    :param a: components (a0..a3)
+    :param b: components (b0..b3)
+    :returns: the product's components
     """
     assert len(a) == 4 and len(b) == 4
     a0, a1, a2, a3 = a
@@ -217,6 +231,10 @@ def octonion_multiplication(
     with a0 the scalar part and a1..a7 the coefficients of e_1..e_7.
 
     Returns the product c = a·b as a length-8 list.
+
+    :param a: components (a0..a7)
+    :param b: components (b0..b7)
+    :returns: the product's components
     """
     assert len(a) == 8 and len(b) == 8
     c: List[sp.Expr] = [sp.Integer(0) for _ in range(8)]
@@ -267,6 +285,14 @@ class CayleyDicksonAlgebra:
     name: str
 
     def multiply(self, a: Sequence[sp.Expr], b: Sequence[sp.Expr]) -> List[sp.Expr]:
+        """
+        Multiply two elements of this algebra.
+
+        :param a: components of the left element
+        :param b: components of the right element
+        :returns: the product's components
+        :raises ValueError: the algebra label is not R, C, H or O
+        """
         if self.label == 'R':
             return real_multiplication(a, b)
         elif self.label == 'C':
@@ -284,13 +310,21 @@ class CayleyDicksonAlgebra:
           R: a* = a
           C: (a0, a1)* = (a0, -a1)
           H, O: (a0, a_1,...,a_n) → (a0, -a_1,..., -a_n)
+
+        :param a: components of the element
+        :returns: the conjugate's components
         """
         if self.label == 'R':
             return list(a)
         return [a[0]] + [-ai for ai in a[1:]]
 
     def norm_squared(self, a: Sequence[sp.Expr]) -> sp.Expr:
-        """|a|² = a · a* summed as scalar component."""
+        """
+        |a|² = a · a* summed as scalar component.
+
+        :param a: components of the element
+        :returns: |a|²
+        """
         conj_a = self.conjugate(a)
         prod = self.multiply(a, conj_a)
         return sp.expand(prod[0])
@@ -318,6 +352,10 @@ def left_multiplication_matrix(
     For ℂ with index=1, returns the single i-matrix.
     For ℍ with index=1,2,3, returns L_i, L_j, L_k.
     For 𝕆 with index=1..7, returns the corresponding octonion generator.
+
+    :param algebra_label: 'C', 'H' or 'O'
+    :param imag_unit_index: 1-based index of the imaginary unit
+    :returns: the matrix L_{e_k}
     """
     alg = CayleyDicksonAlgebra(
         label=algebra_label,

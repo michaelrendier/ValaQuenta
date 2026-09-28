@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.tier7_cosmos.maths
-=============================================
+ValaQuenta.modules.tier7_cosmos.maths
+=====================================
 Tier 7 — COSMOLOGY + MATHEMATICS + STANDARD MODEL FROM H_RB.
 
 The physical and mathematical consequences of the framework.
@@ -36,6 +36,7 @@ Version: 0.120 — Third Age: Tier 7 + SM from H_RB + Slingshot Light + Standard
 import math
 import cmath
 import numpy as np
+_trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in NumPy 2.0
 from typing import Dict, List, Any
 
 OMEGA_ZS = 0.5671432904097838
@@ -62,9 +63,28 @@ OMEGA_B_H2= 0.02242       # baryon physical density
 
 # Sedenion CD multiplication (from tier6_physics)
 def cd_conj(x):
+    """
+    Return the Cayley-Dickson conjugate: negate every component except e₀.
+
+    :param x: coefficient vector of length 2ⁿ
+    :type x: numpy.ndarray
+    :returns: the conjugate, a new array
+    :rtype: numpy.ndarray
+    """
     c = x.copy(); c[1:] = -c[1:]; return c
 
 def cd_mul(a, b):
+    """
+    Multiply two Cayley-Dickson elements by the doubling rule
+    (a₁, a₂)(b₁, b₂) = (a₁b₁ − conj(b₂)a₂,  b₂a₁ + a₂conj(b₁)).
+
+    :param a: coefficient vector of length 2ⁿ
+    :type a: numpy.ndarray
+    :param b: coefficient vector of the same length
+    :type b: numpy.ndarray
+    :returns: the product, a vector of the same length
+    :rtype: numpy.ndarray
+    """
     n = len(a)
     if n == 1: return np.array([a[0]*b[0]])
     h = n//2
@@ -74,6 +94,16 @@ def cd_mul(a, b):
     return np.concatenate([c1,c2])
 
 def e_k(k, dim=16):
+    """
+    Return the basis element eₖ as a coefficient vector.
+
+    :param k: basis index
+    :type k: int
+    :param dim: algebra dimension
+    :type dim: int
+    :returns: the vector with a 1 at index k and zeros elsewhere
+    :rtype: numpy.ndarray
+    """
     v = np.zeros(dim); v[k] = 1.0; return v
 
 
@@ -2342,7 +2372,7 @@ def standard_candle_uselessness() -> Dict[str, Any]:
         n = 1000
         zz = np.linspace(0, z, n+1)
         E = np.sqrt(Omega_M*(1+zz)**3 + Omega_L)
-        dchi = np.trapz(1.0/E, zz)
+        dchi = _trapz(1.0/E, zz)
         # Luminosity distance: d_L = (c/H0) × (1+z) × dchi
         c_kms = 2.998e5  # km/s
         d_L_Mpc = (c_kms / H0) * (1 + z) * dchi
@@ -2937,6 +2967,8 @@ def sedenion_hole_punch() -> Dict[str, Any]:
 
     Author note: Cody Michael Allison, 2026-06-03.
     Cascade session. First capture. Mathematics to be verified.
+
+    :returns: dict describing the cavitation mechanism and its checks
     """
     import math
 
@@ -3234,6 +3266,8 @@ def nball_transformer() -> Dict[str, Any]:
     This engine was written during the session in which the transformer
     insight was first seen. The mathematics is new. The measure is not.
     V(n) has been known since Euler. Its role as CD transformer is new.
+
+    :returns: dict with V(n) across the CD layers and the checks on it
     """
     import math
 

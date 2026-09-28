@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.t32_nilpotency.maths
-===================================================
+ValaQuenta.modules.t32_nilpotency.maths
+=======================================
 Standalone, minimal, importable primitives: Hyperwebster address encoding,
 T32/GF(2) Cayley-Dickson multiplication, nilpotency test.
 
@@ -37,7 +37,12 @@ _HW_N = len(_HW_CHARS)  # 97
 
 
 def hw_address(n: int) -> int:
-    """Hyperwebster address of str(n): bijective base-97 Horner encoding."""
+    """
+    Hyperwebster address of str(n): bijective base-97 Horner encoding.
+
+    :param n: integer whose decimal string is encoded
+    :returns: the base-97 Horner address of str(n)
+    """
     text = str(n)
     address = 0
     for i, ch in enumerate(reversed(text)):
@@ -46,15 +51,27 @@ def hw_address(n: int) -> int:
 
 
 def hw_to_t32(n: int) -> int:
-    """Map integer n -> T32/GF(2) word via Hyperwebster address mod 2^32."""
+    """
+    Map integer n -> T32/GF(2) word via Hyperwebster address mod 2^32.
+
+    :param n: integer to map
+    :returns: the T32 word: the Hyperwebster address mod 2³²
+    """
     return hw_address(n) & 0xFFFFFFFF
 
 
 def t32_mul(a: int, b: int, dim: int = 32) -> int:
-    """Recursive Cayley-Dickson multiplication over GF(2), dim a power of 2.
+    """
+    Recursive Cayley-Dickson multiplication over GF(2), dim a power of 2.
     Same construction that builds the sedenions from the reals (R->C->H->
     O->S), one doubling further, over binary field arithmetic instead of
-    continuous numbers."""
+    continuous numbers.
+
+    :param a: T32 word
+    :param b: T32 word
+    :param dim: algebra dimension; a power of 2
+    :returns: the product a·b as a T32 word
+    """
     if dim == 1:
         return a & b
     half = dim >> 1
@@ -67,16 +84,34 @@ def t32_mul(a: int, b: int, dim: int = 32) -> int:
 
 
 def is_zero_divisor_pair(a: int, b: int) -> bool:
+    """
+    Report whether a and b are nonzero words whose T32 product is zero.
+
+    :param a: T32 word
+    :param b: T32 word
+    :returns: True if a ≠ 0, b ≠ 0 and a·b = 0
+    """
     return a != 0 and b != 0 and t32_mul(a, b) == 0
 
 
 def is_nilpotent(a: int) -> bool:
-    """a != 0 but a*a = 0 under T32 multiplication -- impossible in
-    ordinary arithmetic, a real signature of zero-divisor structure."""
+    """
+    a != 0 but a*a = 0 under T32 multiplication -- impossible in
+    ordinary arithmetic, a real signature of zero-divisor structure.
+
+    :param a: T32 word
+    :returns: True if a ≠ 0 and a·a = 0
+    """
     return a != 0 and t32_mul(a, a) == 0
 
 
 def sieve(limit: int) -> List[int]:
+    """
+    Return the primes up to `limit` by the sieve of Eratosthenes.
+
+    :param limit: inclusive upper bound
+    :returns: the primes ≤ limit, ascending
+    """
     is_p = bytearray([1]) * (limit + 1)
     is_p[0] = is_p[1] = 0
     for i in range(2, int(limit ** 0.5) + 1):
@@ -86,11 +121,16 @@ def sieve(limit: int) -> List[int]:
 
 
 def prime_nilpotency_report(primes: List[int]) -> dict:
-    """For a given list of primes, report each one's T32 word and
+    """
+    For a given list of primes, report each one's T32 word and
     nilpotency status. The one function this module offers beyond the
     raw primitives -- meant for other engines to call directly with
     whatever prime list is relevant to them (e.g. the N-shape engine's
-    Moonshine primes)."""
+    Moonshine primes).
+
+    :param primes: the primes to report on
+    :returns: dict giving each prime's T32 word and nilpotency status
+    """
     rows = []
     for p in primes:
         t32 = hw_to_t32(p)

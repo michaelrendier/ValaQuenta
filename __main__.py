@@ -1,15 +1,15 @@
 """
-ainulindale_engine.__main__
-=============================
+ValaQuenta.__main__
+===================
 Single callable entry point.
 
 How it's called determines which GUI it uses:
 
-    python3 -m ainulindale_engine              # auto-detect
-    python3 -m ainulindale_engine --qt         # Qt viewer + VisPy + QTermWidget
-    python3 -m ainulindale_engine --curses     # curses console (Ptolemy /derivation)
-    python3 -m ainulindale_engine --headless   # no GUI, JSON output
-    python3 -m ainulindale_engine --info       # print registry, exit
+    python3 -m ValaQuenta              # auto-detect
+    python3 -m ValaQuenta --qt         # Qt viewer + VisPy + QTermWidget
+    python3 -m ValaQuenta --curses     # curses console (Ptolemy /derivation)
+    python3 -m ValaQuenta --headless   # no GUI, JSON output
+    python3 -m ValaQuenta --info       # print registry, exit
 
 Ptolemy shortcut (/derivation):
     The curses mode is the self-contained console GUI that lives at
@@ -47,6 +47,21 @@ from .modules.units import UnitsModule
 from .modules.add_scale_sign import AddScaleSignModule
 from .modules.desitter_cavitation import DeSitterCavitationModule
 from .modules.emerger import EmergerModule
+from .modules.constants import ConstantsModule
+from .modules.derivation_chain import DerivationChainModule
+from .modules.h_rb_hat import SigmaRBModule
+from .modules.clay_millennium import ClayMillenniumModule
+from .modules.tier6_physics import Tier6PhysicsModule
+from .modules.tier7_cosmos import Tier7CosmosModule
+from .modules.tier8_sedenion import Tier8SedenionModule
+from .modules.tier9_chem import Tier9ChemModule
+from .modules.translator_discocat import DisCoCatTranslatorModule
+from .modules.translator_vsa import VSATranslatorModule
+from .modules.udeo_crypto import UDEOCryptoModule
+from .modules.bracketing_firing_order import BracketingFiringOrderModule
+from .modules.oblique_gear import ObliqueGearModule
+from .modules.prime_gauge_field import PrimeGaugeFieldModule
+from .modules.spectral_primes import SpectralPrimesModule
 
 def _register_all():
     registry = get_registry()
@@ -73,6 +88,21 @@ def _register_all():
     register(AddScaleSignModule())
     register(DeSitterCavitationModule())
     register(EmergerModule())
+    register(ConstantsModule())
+    register(DerivationChainModule())
+    register(SigmaRBModule())
+    register(ClayMillenniumModule())
+    register(Tier6PhysicsModule())
+    register(Tier7CosmosModule())
+    register(Tier8SedenionModule())
+    register(Tier9ChemModule())
+    register(DisCoCatTranslatorModule())
+    register(VSATranslatorModule())
+    register(UDEOCryptoModule())
+    register(BracketingFiringOrderModule())
+    register(ObliqueGearModule())
+    register(PrimeGaugeFieldModule())
+    register(SpectralPrimesModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────
@@ -86,8 +116,8 @@ def _run_curses(registry):
     try:
         from .engine.console_curses import run_curses
         run_curses(registry)
-    except ImportError:
-        print("[ainulindale_engine] curses console not yet built — Phase 3")
+    except ImportError as exc:
+        print(f"[ValaQuenta] curses console unavailable ({exc})")
         print("Running headless mode instead.")
         _run_headless(registry)
 
@@ -96,8 +126,8 @@ def _run_qt(registry):
     try:
         from .engine.console_qt import run_qt
         run_qt(registry)
-    except ImportError:
-        print("[ainulindale_engine] Qt viewer not yet built — Phase 3")
+    except ImportError as exc:
+        print(f"[ValaQuenta] Qt viewer unavailable ({exc})")
         print("Falling back to curses.")
         _run_curses(registry)
 
@@ -116,8 +146,14 @@ def _auto_detect(registry):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    """
+    Parse the command line, register the modules and launch the requested interface.
+
+    Flags: --qt, --curses, --headless, --info, --manifests, --version. With no
+    flag the best available interface is chosen automatically.
+    """
     parser = argparse.ArgumentParser(
-        description="Ainulindale Derivation Engine and Viewer",
+        description="ValaQuenta Derivation Engine and Viewer",
         epilog=(
             "Ptolemy /derivation shortcut uses --curses mode.\n"
             "The GUI skin is the only difference between modes."
@@ -135,10 +171,10 @@ def main():
 
     if args.version:
         from . import __version__
-        print(f"ainulindale_engine {__version__}")
+        print(f"ValaQuenta {__version__}")
         return
 
-    print("[ainulindale_engine] loading modules...")
+    print("[ValaQuenta] loading modules...")
     registry = _register_all()
 
     if args.info:

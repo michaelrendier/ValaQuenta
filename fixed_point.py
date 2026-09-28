@@ -41,7 +41,7 @@ THE GAP (what cannot be encoded):
 
 No free parameters. No renormalization. Failed predictions stay in data.
 
-Version: 0.100 — 2026-06-25
+Version: 0.100
 """
 
 import math
@@ -81,6 +81,9 @@ def v_nball(n: float) -> float:
 
     Trivial zeros: V(n) = 0 at n = −2, −4, −6, ... (poles of Γ)
     These are the trivial zeros of ζ(s) embedded in the transformer.
+
+    :param n: dimension; any real value
+    :returns: V(n) = π^(n/2) / Γ(n/2 + 1)
     """
     if n == 0:
         return 1.0   # exact, no floating point
@@ -123,6 +126,9 @@ def transformer_profile(n_max: int = 260) -> Dict:
       n≈5.3: V≈5.28  Peak — maximum differentiation
       n=16:  V=0.235 Sedenion level
       n=256: V≈0     T_256 (maximal fixed point — all boundary)
+
+    :param n_max: largest dimension to include
+    :returns: V(n) from n = 0 to n_max with the landmark values
     """
     ns     = list(range(n_max + 1))
     vols   = [v_nball(n) for n in ns]
@@ -146,6 +152,21 @@ def transformer_profile(n_max: int = 260) -> Dict:
 
 @dataclass
 class FixedPoint:
+    """
+    A fixed point of the Cayley-Dickson tower.
+
+    :ivar name: label of the fixed point
+    :ivar k: CD tower level (−∞ for The Unit, 8 for T_256)
+    :ivar dim: algebra dimension
+    :ivar n_ball_n: the n-ball dimension that describes it
+    :ivar V: V(n_ball_n)
+    :ivar sigma: σ position in the tower
+    :ivar angular_q: angular quantum at this level
+    :ivar n_imaginaries: number of imaginary units
+    :ivar n_fano: number of embedded Fano planes
+    :ivar character: 'trivial' or 'maximal'
+    :ivar description: one-line description
+    """
     name:          str
     k:             int          # CD tower level (−∞ for The Unit, 8 for T_256)
     dim:           int          # algebra dimension
@@ -392,6 +413,9 @@ def roots_of_unity_collapse(k: int = 8) -> Dict:
     This is not an approximation. It is the exhaustion of the algebra's
     resolving power. Below π/128, sedenion basis elements are indistinguishable.
     The only remaining object is their common norm.
+
+    :param k: CD tower level
+    :returns: the angular spacing and the resolving-power collapse at level k
     """
     dim      = 2 ** k
     q        = 2.0 * math.pi / dim

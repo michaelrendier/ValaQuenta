@@ -1,6 +1,6 @@
 """
-ainulindale_engine.engine.registry
-=====================================
+ValaQuenta.engine.registry
+==========================
 Module registry — the contract that all equation modules must satisfy.
 
 An engine is the `type: engine` case of THE VALAQUENTA FORMAT
@@ -10,14 +10,16 @@ An engine is the `type: engine` case of THE VALAQUENTA FORMAT
 
 HOW TO ADD A NEW MODULE (the code half)
 ========================================
-1. Create a directory under ainulindale_engine/modules/your_module/
+1. Create a directory under ValaQuenta/modules/your_module/
 2. Add __init__.py, maths.py, tools.py
-3. In maths.py, define a class that inherits from EquationModule
-4. Implement all required methods (see EquationModule below)
-5. Register your module: registry.register(YourModule())
+3. In maths.py, put the mathematics as plain functions
+4. In tools.py, define a class that inherits from EquationModule and
+   implements all required methods (see EquationModule below)
+5. Register it: add registry.register(YourModule()) to
+   __main__.py::_register_all()
 6. Done. The engine and viewer pick it up automatically.
 
-FULL ENGINE PROTOCOL (amended 2026-09-01 by Cody — SIX parts, was five)
+FULL ENGINE PROTOCOL (SIX parts)
 ========================================================================
 Steps 1–6 above ship the code. They do not finish the engine. An engine is
 not "done" until all six artifacts exist, because code alone is
@@ -57,7 +59,7 @@ undiscoverable from a cold context — which is the exact failure the
     4. VALAQUENTA WIKI   ValaQuenta/wiki/<name>.md — the engineering page:
                          file, class, claim, mechanism, confidence table.
                          Add the row to wiki/00_index.md.
-    5. .clauderc_ValaQuenta ENTRY   ← NEW, added 2026-08-04.
+    5. .clauderc_ValaQuenta ENTRY                        (the context-primer export line)
                          export CTX_<NAME>="…" in ~/.clauderc_ValaQuenta AND
                          the module name appended to VALAQUENTA_ENGINE_INDEX,
                          so `ctxengine <name>` resolves without reading source.
@@ -115,17 +117,16 @@ class Equation:
     """
     A single named equation with metadata.
 
-    Attributes:
-        name        : short identifier (e.g. 'inversion_map')
-        display     : human-readable name
-        latex       : LaTeX string (for viewer rendering)
-        radian_form : equation rewritten in radian-primary units
-        confidence  : one of CONFIDENCE keys
-        code_verified: True if backed by executable code
-        params      : list of parameter names
-        compute     : callable(*params) -> result
-        display_options: list of viewer modes this equation supports
-                         e.g. ['fano', 'complex_plane', '3d_cartesian', 'sonification']
+    :ivar name: short identifier, e.g. 'inversion_map'
+    :ivar display: human-readable name
+    :ivar latex: LaTeX string for viewer rendering
+    :ivar radian_form: the equation rewritten in radian-primary units
+    :ivar confidence: one of the CONFIDENCE keys
+    :ivar code_verified: True if backed by executable code
+    :ivar params: list of parameter names
+    :ivar compute: callable(*params) → result
+    :ivar display_options: viewer modes this equation supports, e.g. ['fano', 'complex_plane', '3d_cartesian', 'sonification']
+    :ivar process: outside-observer one-line "what this does as a derivation step", for the proof-on-the-fly engine and the derivation browser
     """
 
     def __init__(self, name, display, latex, radian_form,
@@ -163,8 +164,11 @@ class Equation:
         return f"{d}  [process= not set]"
 
     def declaration(self) -> Dict[str, Any]:
-        """Everything the derivation browser / proof-on-the-fly needs about
-        this step, as data."""
+        """
+        Return everything the derivation browser and proof-on-the-fly need about this step, as data.
+
+        :returns: dict with the name, process, display, latex, radian_form, confidence, code_verified, params and display_options
+        """
         return {
             'name': self.name,
             'process': str(self),
@@ -185,7 +189,7 @@ class EquationModule(ABC):
     """
     Base class for all equation modules.
 
-    Every module in ainulindale_engine/modules/ must implement this interface.
+    Every module in ValaQuenta/modules/ must implement this interface.
     The engine and viewer call only these methods.
     """
 
@@ -247,12 +251,15 @@ class EquationModule(ABC):
     @abstractmethod
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Execute a named equation with given parameters.
-        Returns a dict with at minimum:
-            'result': the computed value
-            'equation': the Equation object
-            'params': the params used
-        May include additional diagnostic keys.
+        Execute a named equation with the given parameters.
+
+        The returned dict has at minimum 'result' (the computed value), 'equation'
+        (the Equation object) and 'params' (the params used), and may include
+        additional diagnostic keys.
+
+        :param equation_name: name of an equation in this module's formulary
+        :param params: parameter values keyed by parameter name
+        :returns: the result dict
         """
 
     @abstractmethod
@@ -261,15 +268,23 @@ class EquationModule(ABC):
                     display_mode: str) -> Dict[str, Any]:
         """
         Return data formatted for a specific viewer display mode.
-        display_mode: one of 'fano', 'complex_plane', '3d_cartesian',
-                              'sonification', 'text'
-        Returns viewer-ready data dict. Structure depends on display_mode.
+
+        The structure of the returned dict depends on the display mode.
+
+        :param equation_name: name of an equation in this module's formulary
+        :param params: parameter values keyed by parameter name
+        :param display_mode: one of 'fano', 'complex_plane', '3d_cartesian', 'sonification', 'text'
+        :returns: a viewer-ready data dict
         """
 
     # ── Optional hooks ───────────────────────────────────────────────────────
 
     def on_register(self, registry: 'ModuleRegistry') -> None:
-        """Called when this module is registered. Override if needed."""
+        """
+        Run when this module is registered. Override to hook registration.
+
+        :param registry: the registry the module was registered with
+        """
         pass
 
     def shell_commands(self) -> Dict[str, Any]:
@@ -307,7 +322,12 @@ class ModuleRegistry:
         self._formulary: Dict[str, Equation] = {}  # flat: name -> Equation
 
     def register(self, module: EquationModule) -> None:
-        """Register a module. Calls module.on_register(self)."""
+        """
+        Register a module, index its equations, and call module.on_register().
+
+        :param module: the module to register; its name must be unique
+        :raises ValueError: a module of the same name is already registered
+        """
         if module.name in self._modules:
             raise ValueError(f"Module '{module.name}' already registered. "
                              f"Use a unique module name.")
@@ -320,22 +340,52 @@ class ModuleRegistry:
               f"({len(module.formulary())} equations)")
 
     def get_module(self, name: str) -> Optional[EquationModule]:
+        """
+        Return a registered module by name.
+
+        :param name: the module's name
+        :returns: the module, or None if not registered
+        """
         return self._modules.get(name)
 
     def get_equation(self, full_name: str) -> Optional[Equation]:
-        """full_name: 'module_name.equation_name'"""
+        """
+        Return a registered equation by its qualified name.
+
+        :param full_name: 'module_name.equation_name'
+        :returns: the equation, or None if not registered
+        """
         return self._formulary.get(full_name)
 
     def list_modules(self) -> List[str]:
+        """
+        List the registered module names.
+
+        :returns: module names in registration order
+        """
         return list(self._modules.keys())
 
     def list_equations(self, module_name: Optional[str] = None) -> List[str]:
+        """
+        List the registered equations by qualified name.
+
+        :param module_name: restrict to this module; None lists every module
+        :returns: 'module.equation' names
+        """
         if module_name:
             return [k for k in self._formulary if k.startswith(module_name + '.')]
         return list(self._formulary.keys())
 
     def run(self, full_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
-        """Run a named equation: 'module.equation_name'"""
+        """
+        Run a named equation.
+
+        :param full_name: 'module_name.equation_name'
+        :param params: parameter values keyed by parameter name
+        :returns: the module's run() result dict
+        :raises KeyError: the module or equation is not registered
+        :raises ValueError: full_name is not of the form 'module.equation'
+        """
         parts = full_name.split('.', 1)
         if len(parts) != 2:
             raise ValueError(f"Use 'module.equation_name' format, got: {full_name}")
@@ -346,6 +396,11 @@ class ModuleRegistry:
         return module.run(eq_name, params)
 
     def summary(self) -> str:
+        """
+        Render the registry as text.
+
+        :returns: a multi-line listing of every module and its equations
+        """
         lines = [
             "=" * 60,
             "  AINULINDALE ENGINE — MODULE REGISTRY",
@@ -373,7 +428,11 @@ def get_registry() -> ModuleRegistry:
 
 
 def register(module: EquationModule) -> None:
-    """Register a module with the global registry."""
+    """
+    Register a module with the global registry.
+
+    :param module: the module to register; its name must be unique
+    """
     _registry.register(module)
 
 
@@ -382,5 +441,5 @@ if __name__ == "__main__":
     print()
     print("No modules registered yet. Import and register modules to populate.")
     print("Example:")
-    print("  from ainulindale_engine.modules.inversion import InversionModule")
+    print("  from ValaQuenta.modules.inversion import InversionModule")
     print("  register(InversionModule())")

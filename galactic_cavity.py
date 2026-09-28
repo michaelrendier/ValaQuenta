@@ -23,7 +23,7 @@ SMMIP constants:
   d*       = 0.24600  — transition fraction (P1: r_t = d* × r_max_baryonic)
   OMEGA_ZS = 0.5671432904097838  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
 
-Both confirmed against SPARC 97-galaxy high-quality sample (2026-05-30).
+Both confirmed against SPARC 97-galaxy high-quality sample.
 """
 
 from __future__ import annotations
@@ -83,6 +83,9 @@ class CavityMode:
         For the absorbing BC (open cavity), the solution decays exponentially.
         The sinc factor gives the inner solid-body rotation.
         The exponential gives the outer flat-to-falling transition.
+
+        :param r_kpc: galactocentric radius, in kpc
+        :returns: Ψ(r)
         """
         if r_kpc <= 0:
             return 1.0
@@ -94,6 +97,9 @@ class CavityMode:
         """
         ρ_DM(r) ∝ |Ψ(r)|²  — DM density IS the wave intensity.
         Normalised to 1.0 at r=0.
+
+        :param r_kpc: galactocentric radius, in kpc
+        :returns: ρ_DM(r), normalised to 1.0 at r = 0
         """
         return self.amplitude(r_kpc) ** 2
 
@@ -110,6 +116,10 @@ class CavityMode:
         confirming the Witches Hat interpretation: the brim IS the quantum
         potential barrier. Below: classically allowed (baryons). Above:
         quantum tunnelling (DM wave).
+
+        :param r_kpc: galactocentric radius, in kpc
+        :param c_eff_kms: effective wave speed in km/s; None uses the cavity's own
+        :returns: the Bohmian quantum potential Q(r)
         """
         c_eff = (c_eff_kms or self.v_flat) * KMS / KPC_M  # kpc/s → SI then back
 
@@ -130,6 +140,10 @@ class CavityMode:
         F_Q(r) = −dQ/dr  — the Bohmian guiding force per unit mass (m/s²).
         Positive = outward, Negative = inward.
         Sign change at r = r_t is the brim crossing.
+
+        :param r_kpc: galactocentric radius, in kpc
+        :param c_eff_kms: effective wave speed in km/s; None uses the cavity's own
+        :returns: F_Q(r) in m/s² per unit mass; positive is outward
         """
         dr = r_kpc * 0.001 + 0.001
         Qp = self.quantum_potential(r_kpc + dr, c_eff_kms)
@@ -150,13 +164,21 @@ class CavityMode:
         The physical meaning: stars are not orbiting a mass. They are riding
         the gravitational pilot wave. The flat asymptote OMEGA_ZS × v_max
         is the terminal Stokes drift speed of the l=0 mode.
+
+        :param r_kpc: galactocentric radius, in kpc
+        :returns: the orbital speed v_orbit(r) in km/s
         """
         if r_kpc <= 0:
             return 0.0
         return self.v_flat * (2.0 / math.pi) * math.atan(r_kpc / self.r_t)
 
     def rotation_curve(self, r_kpc_array: list[float]) -> list[float]:
-        """Full rotation curve from Stokes drift."""
+        """
+        Full rotation curve from Stokes drift.
+
+        :param r_kpc_array: radii in kpc
+        :returns: the Stokes-drift orbital speed at each radius, in km/s
+        """
         return [self.stokes_velocity(r) for r in r_kpc_array]
 
     # ── Jeans compression test ─────────────────────────────────────────────────
@@ -170,6 +192,9 @@ class CavityMode:
 
         For typical DM halos: λ_J / R ~ 0.3–1.0 → WAVE, NOT MASS.
         This is the formal proof of the compression argument.
+
+        :param c_s_kms: sound speed in km/s; None uses the cavity's own
+        :returns: λ_J / R_cavity
         """
         c_s = (c_s_kms or self.v_flat * 0.3) * KMS  # m/s
 
@@ -198,6 +223,9 @@ class CavityMode:
         mimics mass because T_μν is static — but the pressure terms are
         nonzero (wave ≠ dust). This explains why CDM works phenomenologically
         while being mechanistically wrong.
+
+        :param c_eff_kms: effective wave speed in km/s; None uses the cavity's own
+        :returns: the standing-wave period T in Gyr
         """
         c_eff_ms = (c_eff_kms or self.v_flat) * KMS
         period_s = 2 * math.pi * self.r_cavity * KPC_M / (D_STAR * c_eff_ms)
@@ -215,6 +243,9 @@ class CavityMode:
 
         Returns ℏ_gal in kg⋅m²/s (same units as ℏ = 1.055×10⁻³⁴ kg⋅m²/s).
         The ratio ℏ_gal / ℏ gives the scale separation.
+
+        :param M_galaxy_Msun: galaxy mass in solar masses
+        :returns: ℏ_galactic in kg·m²/s
         """
         M_sun_kg = 1.989e30  # kg
         return M_galaxy_Msun * M_sun_kg * self.v_flat * KMS * self.r_t * KPC_M
@@ -240,7 +271,12 @@ class CavityMode:
     # ── Summary report ────────────────────────────────────────────────────────
 
     def report(self, M_galaxy_Msun: float = 1e11) -> str:
-        """Full derivation report for this galactic particle."""
+        """
+        Full derivation report for this galactic particle.
+
+        :param M_galaxy_Msun: galaxy mass in solar masses
+        :returns: the multi-line derivation report
+        """
         jeans = self.jeans_ratio()
         period = self.wave_period_gyr()
         hbar_gal = self.galactic_planck(M_galaxy_Msun)
@@ -322,6 +358,9 @@ class CosmologicalSMIG:
         The factor 1/d* = 4.07 vs observed 1.03 — a factor of 4 discrepancy.
         This IS the Hubble tension. The SMIG predicts H0 is off by 1/d* in the
         standard flat-universe assumption. The correct geometry is NOT flat.
+
+        :param r_Mpc: distance in Mpc
+        :returns: v_Hubble = H0 × r, in km/s
         """
         return self.H0 * r_Mpc  # km/s
 

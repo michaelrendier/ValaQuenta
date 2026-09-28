@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.inversion.tools
-============================================
+ValaQuenta.modules.inversion.tools
+==================================
 Inside-Out Inversion Engine — Module Tools
 
 Implements the EquationModule registry contract.
@@ -149,7 +149,14 @@ class InversionModule(EquationModule):
     # ── Run ──────────────────────────────────────────────────────────────────
 
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
-        """Execute a named equation."""
+        """
+        Execute a named equation.
+
+        :param equation_name: name of an equation in this module's formulary
+        :param params: parameter values keyed by parameter name
+        :returns: the result dict
+        :raises KeyError: the equation is not in this module
+        """
         eq = next((e for e in self.formulary() if e.name == equation_name), None)
         if eq is None:
             raise KeyError(f"Equation '{equation_name}' not found in {self.name} module")
@@ -168,7 +175,13 @@ class InversionModule(EquationModule):
                     display_mode: str) -> Dict[str, Any]:
         """
         Return data formatted for a specific viewer mode.
-        Currently prepares data structures; renderer lives in the viewer layer.
+
+        The data structures are prepared here; rendering lives in the viewer layer.
+
+        :param equation_name: name of an equation in this module's formulary
+        :param params: parameter values keyed by parameter name
+        :param display_mode: the viewer mode
+        :returns: viewer-ready data
         """
         result = self.run(equation_name, params)
 

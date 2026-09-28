@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_vsa
-===========================================
+ValaQuenta.modules.translator_vsa
+=================================
 The Translator, version 2 of 2 — VSA / hyperdimensional computing
 (bind, bundle, permute). See translator_discocat for version 1, and
 translator_common for the shared substrate that lets the two be combined.

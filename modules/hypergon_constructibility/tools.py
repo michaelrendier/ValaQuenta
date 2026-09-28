@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.hypergon_constructibility.tools
-==============================================================
+ValaQuenta.modules.hypergon_constructibility.tools
+==================================================
 HypergonConstructibilityModule — registry contract.
 
 Equations:
@@ -22,7 +22,18 @@ from .maths import (
 
 
 class HypergonConstructibilityModule(EquationModule):
+    """
+    Hypergon Constructibility — Gauss-Wantzel + Factorization Test
 
+    All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL
+    result: 4/16 constructible, 12/16 holes). Phase 22's corrected nilpotent-
+    split factorization conjecture re-tested against a magnitude-matched control
+    (HONEST result: does not survive — likely address-mapping artifact, not a
+    real factoring signal). Dual arithmetic/geometric prime definition, NOT
+    unified into a working factoring mechanism.
+
+    Registry module for ``hypergon_constructibility``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.hypergon_constructibility.maths`.
+    """
     @property
     def name(self): return 'hypergon_constructibility'
 

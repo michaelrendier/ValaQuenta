@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.l_io_photon_path
-==============================================
+ValaQuenta.modules.l_io_photon_path
+===================================
 L_(I|O) Photon Path Engine (GR) module
 
 Version: 0.2

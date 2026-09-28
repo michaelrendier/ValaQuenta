@@ -77,16 +77,26 @@ def crank_angle_deg() -> float:
 # ── galaxy side (dimensionless form of galactic_cavity.py's stokes_velocity) ─
 
 def stokes_dimensionless(x: float) -> float:
-    """y(x) = (2/pi) * atan(x)  -- v(r)/v_flat with x = r/r_t.
+    """
+    y(x) = (2/pi) * atan(x)  -- v(r)/v_flat with x = r/r_t.
     Same function as ValaQuenta/galactic_cavity.py's stokes_velocity(),
     non-dimensionalised so its slope is directly comparable (as an angle)
-    to theta_crank, which is dimensionless by construction."""
+    to theta_crank, which is dimensionless by construction.
+
+    :param x: r / r_t
+    :returns: (2/π)·atan(x)
+    """
     return (2.0 / math.pi) * math.atan(x)
 
 
 def stokes_tangent_angle_deg(x: float) -> float:
-    """The tangent angle of the dimensionless rotation curve at x = r/r_t.
-    dy/dx = (2/pi) / (1+x^2); angle = arctan(dy/dx)."""
+    """
+    The tangent angle of the dimensionless rotation curve at x = r/r_t.
+    dy/dx = (2/pi) / (1+x^2); angle = arctan(dy/dx).
+
+    :param x: r / r_t
+    :returns: the tangent angle, in degrees
+    """
     slope = (2.0 / math.pi) / (1.0 + x * x)
     return math.degrees(math.atan(slope))
 

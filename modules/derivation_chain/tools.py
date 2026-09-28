@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.derivation_chain.tools
-==================================================
+ValaQuenta.modules.derivation_chain.tools
+=========================================
 DerivationChainModule — registry contract.
 
 Version: 0.100
@@ -28,7 +28,17 @@ from .maths import (
 
 
 class DerivationChainModule(EquationModule):
+    """
+    Derivation Chain — Tiers 1–5
 
+    Full derivation chain from root constants to Geometric Observer. T1:
+    Riemann=Fermat (R̂†=B̂). T2: Yang-Mills, BK, Noether, NS, Langlands, BSD all
+    drop out. T3: H_RB is what remains. T4: Geometries defined → Geometric
+    Observer (another Hamiltonian). T5: ln = Hubble constant of ℕ, d* tower →
+    ln(10) [OPEN], ħ↔ln.
+
+    Registry module for ``derivation_chain``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.derivation_chain.maths`.
+    """
     @property
     def name(self): return 'derivation_chain'
 

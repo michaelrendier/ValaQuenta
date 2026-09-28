@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.constants.maths
-==========================================
+ValaQuenta.modules.constants.maths
+==================================
 Tier 0 — Constant Derivations.
 
 π, φ, e, √, i  are NOT inputs to the RedBlue Geometries Engine.

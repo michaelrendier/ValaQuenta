@@ -37,7 +37,7 @@ Protocol requirements honoured:
   - Every formulary entry carries a confidence tier and a radian-primary form
     (see tools.py).
 
-Version: 0.100 — 2026-08-30
+Version: 0.100
 """
 
 from __future__ import annotations
@@ -83,7 +83,12 @@ _BOUNCE_EXPONENT_DEFAULT = 2
 # ══════════════════════════════════════════════════════════════════════════════
 
 def r_schwarzschild(M: float) -> float:
-    """r_s = 2 G M / c^2.  ESTABLISHED (Schwarzschild 1916)."""
+    """
+    r_s = 2 G M / c^2.  ESTABLISHED (Schwarzschild 1916).
+
+    :param M: mass in kg
+    :returns: r_s in metres
+    """
     return 2.0 * G_NEWTON * M / C_LIGHT**2
 
 
@@ -92,12 +97,20 @@ def L_desitter(M: float) -> float:
     Interior de Sitter radius.  Gravastar matching (Mazur–Mottola 2001):
     the interior de Sitter metric 1 − (r/L)^2 joins Schwarzschild 1 − r_s/r
     at the shell r ≈ r_s, forcing  L_dS = r_s.  ESTABLISHED (matching identity).
+
+    :param M: mass in kg
+    :returns: L_dS = r_s in metres
     """
     return r_schwarzschild(M)
 
 
 def H_desitter(M: float) -> float:
-    """Interior de Sitter Hubble rate H = c / L_dS = c^3 / (2 G M)."""
+    """
+    Interior de Sitter Hubble rate H = c / L_dS = c^3 / (2 G M).
+
+    :param M: mass in kg
+    :returns: H in 1/s
+    """
     return C_LIGHT / L_desitter(M)
 
 
@@ -108,6 +121,9 @@ def tau_interior(M: float) -> float:
     The core cannot 'sit there': it doubles on a light-crossing time.
     ESTABLISHED (de Sitter kinematics).  Radian-primary: one radian of
     expansion phase.
+
+    :param M: mass in kg
+    :returns: τ in seconds
     """
     return L_desitter(M) / C_LIGHT
 
@@ -127,6 +143,9 @@ def kretschmann_core(M: float) -> float:
     interior, K = 48 G^2 M^2 / (c^4 r^6) → ∞ as r → 0.
     Confidence: ESTABLISHED as a de Sitter identity; THEORETICAL as the
     claim that this is what a real interior realises.
+
+    :param M: mass in kg
+    :returns: K_core in m⁻⁴
     """
     L = L_desitter(M)
     # exact rational prefactor 24, kept symbolic until the float boundary
@@ -134,7 +153,12 @@ def kretschmann_core(M: float) -> float:
 
 
 def kretschmann_core_closed(M: float) -> float:
-    """Same number via the closed form (3/2) c^8 / (G^4 M^4) — cross-check."""
+    """
+    Same number via the closed form (3/2) c^8 / (G^4 M^4) — cross-check.
+
+    :param M: mass in kg
+    :returns: K_core in m⁻⁴, by the closed form
+    """
     return float(Fraction(3, 2)) * C_LIGHT**8 / (G_NEWTON**4 * M**4)
 
 
@@ -143,12 +167,21 @@ def kretschmann_schwarzschild(M: float, r: float) -> float:
     Schwarzschild Kretschmann K(r) = 48 G^2 M^2 / (c^4 r^6).  Provided for
     contrast only: it is what DIVERGES at r → 0 in the singular solution.
     ESTABLISHED.
+
+    :param M: mass in kg
+    :param r: radius in metres
+    :returns: K(r) in m⁻⁴
     """
     return 48.0 * G_NEWTON**2 * M**2 / (C_LIGHT**4 * r**6)
 
 
 def kretschmann_ratio_planck(M: float) -> float:
-    """K_core(M) / K_Planck.  < 1 ⟺ the core is sub-Planckian (smooth)."""
+    """
+    K_core(M) / K_Planck.  < 1 ⟺ the core is sub-Planckian (smooth).
+
+    :param M: mass in kg
+    :returns: K_core / K_Planck
+    """
     return kretschmann_core(M) / K_PLANCK
 
 
@@ -193,6 +226,9 @@ def core_energy_density(M: float) -> float:
     Energy density of the de Sitter core (the stiff-space channel):
         ρ_dS c^2 = 3 c^4 / (8π G L_dS^2) = 3 c^8 / (32π G^3 M^2)   [J/m^3]
     Scales as M^-2.  ESTABLISHED (de Sitter).
+
+    :param M: mass in kg
+    :returns: ρ_dS c² in J/m³
     """
     L = L_desitter(M)
     return 3.0 * C_LIGHT**4 / (8.0 * math.pi * G_NEWTON * L**2)
@@ -203,6 +239,9 @@ def reheating_reaches_qgp(M: float) -> bool:
     Does the core's energy density reach the quark–gluon deconfinement
     threshold (~1 GeV/fm^3)?  True for stellar & low-intermediate mass,
     False for supermassive.  ENGINEERING calculation.
+
+    :param M: mass in kg
+    :returns: True if the core's energy density reaches the deconfinement threshold
     """
     return core_energy_density(M) >= QGP_ENERGY_DENSITY
 
@@ -219,6 +258,10 @@ def energy_partition(M: float, space_fraction: float | None = None) -> Dict[str,
 
     space_fraction overrides the split so 01_predictions.ipynb can test
     alternatives (½, Ω_ZS, 1−Ω_ZS, …).
+
+    :param M: mass in kg
+    :param space_fraction: fraction of Mc² in the stiff-space channel; None uses 1 − d*
+    :returns: dict with E_space, E_matter and their fractions
     """
     f = (1.0 - D_STAR) if space_fraction is None else float(space_fraction)
     E_total = M * C_LIGHT**2
@@ -238,7 +281,12 @@ def energy_partition(M: float, space_fraction: float | None = None) -> Dict[str,
 # ══════════════════════════════════════════════════════════════════════════════
 
 def T_hawking(M: float) -> float:
-    """T_H = ħ c^3 / (8π G M k_B).  ESTABLISHED (Hawking 1975)."""
+    """
+    T_H = ħ c^3 / (8π G M k_B).  ESTABLISHED (Hawking 1975).
+
+    :param M: mass in kg
+    :returns: T_H in kelvin
+    """
     return H_BAR * C_LIGHT**3 / (8.0 * math.pi * G_NEWTON * M * K_BOLTZ)
 
 
@@ -248,6 +296,9 @@ def T_desitter(M: float) -> float:
         T_dS = ħ H_dS / (2π k_B) = ħ c^3 / (4π G M k_B) = 2 · T_H(M).
     Both go as c^3/GM — the core inherits the hole's temperature scale,
     exactly doubled.  ESTABLISHED (Gibbons–Hawking 1977).
+
+    :param M: mass in kg
+    :returns: T_dS in kelvin
     """
     return H_BAR * H_desitter(M) / (2.0 * math.pi * K_BOLTZ)
 
@@ -257,6 +308,9 @@ def t_evaporation(M: float) -> float:
     Hawking evaporation time, t_evap = 5120π G^2 M^3 / (ħ c^4)
     (geometric-optics, massless-photon coefficient).  ESTABLISHED to the
     prefactor's model dependence.
+
+    :param M: mass in kg
+    :returns: t_evap in seconds
     """
     return 5120.0 * math.pi * G_NEWTON**2 * M**3 / (H_BAR * C_LIGHT**4)
 
@@ -267,6 +321,10 @@ def t_bounce_exterior(M: float, exponent: int = _BOUNCE_EXPONENT_DEFAULT) -> flo
     n = 2 (default, 'short' bounce — Haggard–Rovelli): observationally live
     only at primordial mass.  n = 1 gives the 'long' family (≈ Hawking).
     Coefficient O(1), model dependent.  THEORETICAL.
+
+    :param M: mass in kg
+    :param exponent: the n in (M/m_Pl)ⁿ t_Pl
+    :returns: the exterior-frame bounce delay in seconds
     """
     return (M / M_PLANCK) ** exponent * T_PLANCK
 
@@ -281,6 +339,9 @@ def echo_delay(M: float) -> float:
     i.e. of order the interior light-crossing time τ_interior, log-enhanced.
     The observational shadow of "there is a core to reflect off".
     THEORETICAL (coefficient model dependent).
+
+    :param M: mass in kg
+    :returns: Δt_echo in seconds
     """
     rs = r_schwarzschild(M)
     return (2.0 * rs / C_LIGHT) * math.log(rs / L_PLANCK)
@@ -306,6 +367,9 @@ def no_singularity_check(masses_kg: List[float] | None = None) -> Dict[str, obje
 
     Returns a scorecard.  This is a CHECK of internal consistency, not a
     proof that nature picks this interior.
+
+    :param masses_kg: masses to sweep; None uses a default sweep
+    :returns: dict with the result of checks (a) to (d)
     """
     if masses_kg is None:
         masses_kg = [1e12, 10 * M_SUN, 1e4 * M_SUN, 1e9 * M_SUN]
@@ -412,6 +476,10 @@ def cosmic_cavitation_budget(omega_bh: float = 1.0e-5,
     energy — the mechanism may still matter (it is directional and
     cumulative → a dark-flow rather than dark-energy signature) but the
     magnitude fails as written.
+
+    :param omega_bh: black-hole mass density as a fraction of critical
+    :param space_fraction: fraction released into the stiff-space channel; None uses 1 − d*
+    :returns: dict with Ω_cav and its comparison with the observed Ω_Λ
     """
     f = (1.0 - D_STAR) if space_fraction is None else float(space_fraction)
     OMEGA_LAMBDA_OBS = 0.6847

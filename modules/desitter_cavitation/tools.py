@@ -3,7 +3,7 @@ ValaQuenta.modules.desitter_cavitation.tools
 ============================================
 EquationModule wrapper for the De Sitter Cavitation engine.
 
-Version: 0.100 — 2026-08-30
+Version: 0.100
 """
 
 from typing import Dict, List, Any

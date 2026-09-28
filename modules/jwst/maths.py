@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.jwst.maths
-=======================================
+ValaQuenta.modules.jwst.maths
+=============================
 JWST spectral pixel module.
 Cayley-Dickson addressing of spectral data.
 
@@ -56,12 +56,20 @@ def lambda_to_r(wavelength_nm: float) -> float:
     """
     Map wavelength to radial coordinate r ∈ (0,1).
     r = (λ - λ_min) / (λ_max - λ_min)
+
+    :param wavelength_nm: wavelength in nm
+    :returns: r = (λ − λ_min) / (λ_max − λ_min), in (0, 1)
     """
     return (wavelength_nm - LAMBDA_MIN) / (LAMBDA_MAX - LAMBDA_MIN + 1e-9)
 
 
 def r_to_lambda(r: float) -> float:
-    """Inverse: r → wavelength in nm."""
+    """
+    Invert lambda_to_r: map a radial coordinate to a wavelength.
+
+    :param r: radial coordinate in (0, 1)
+    :returns: wavelength in nm
+    """
     return LAMBDA_MIN + r * (LAMBDA_MAX - LAMBDA_MIN)
 
 
@@ -78,6 +86,9 @@ def spectral_to_octonion(intensities: List[float]) -> Dict[str, Any]:
     Norm: |Ψ| = sqrt(Σ I_k²)
 
     Returns: components, norm, r_coords (radial addresses of each filter)
+
+    :param intensities: up to 8 intensities, one per NIRCam filter in filter order; missing components are 0
+    :returns: dict with the octonion components, the norm |Ψ| = √ΣI² and the radial address of each filter
     """
     comps = (list(intensities) + [0.0] * 8)[:8]
     norm  = math.sqrt(sum(c*c for c in comps))
@@ -98,6 +109,9 @@ def spectral_to_octonion(intensities: List[float]) -> Dict[str, Any]:
 def octonion_to_spectral(components: List[float]) -> Dict[str, Any]:
     """
     Reverse: 𝕆 components → spectral intensities at filter wavelengths.
+
+    :param components: the 8 octonion components
+    :returns: dict of spectral intensities at the filter wavelengths
     """
     comps = (list(components) + [0.0] * 8)[:8]
     return {
@@ -121,6 +135,11 @@ def cd_spectral_address(intensities: List[float],
       𝕆 layer : all 8 components
 
     Plus: pixel coordinates (x,y) encoded as base-100 integer pair.
+
+    :param intensities: the 8 filter intensities
+    :param pixel_x: pixel column
+    :param pixel_y: pixel row
+    :returns: dict with the ℝ, ℂ, ℍ and 𝕆 layers and the pixel coordinates as a base-100 pair
     """
     oct_data = spectral_to_octonion(intensities)
     comps    = oct_data['components']
@@ -164,6 +183,9 @@ def synthetic_spectrum(emission_type: str = 'hydrogen') -> Dict[str, Any]:
       'hydrogen'   Balmer series (Hα at 656nm outside NIRCam, Pa-α at 1875nm etc.)
       'flat'       uniform across all filters
       'stellar'    blackbody-like declining with wavelength
+
+    :param emission_type: 'hydrogen', 'flat' or 'stellar'
+    :returns: dict with the filter intensities of the synthetic spectrum
     """
     if emission_type == 'hydrogen':
         # Paschen series falls in NIRCam range

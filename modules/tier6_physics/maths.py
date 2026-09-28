@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.tier6_physics.maths
-===============================================
+ValaQuenta.modules.tier6_physics.maths
+======================================
 Tier 6 — FULL PHYSICS.
 
 Foundation (new claim, first stated this session):
@@ -32,6 +32,7 @@ Version: 0.100 — Third Age: Tier 6 Physics
 import math
 import cmath
 import numpy as np
+_trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in NumPy 2.0
 from typing import Dict, List, Any, Tuple
 
 # ── Physical constants (SI) ────────────────────────────────────────────────────
@@ -71,7 +72,12 @@ PARTICLE_MASSES_GEV = {
 # ── Cayley-Dickson multiplication ──────────────────────────────────────────────
 
 def cd_conj(x: np.ndarray) -> np.ndarray:
-    """CD conjugate: negate all components except e₀."""
+    """
+    Return the Cayley-Dickson conjugate: negate every component except e₀.
+
+    :param x: coefficient vector of length 2ⁿ
+    :returns: the conjugate, a new array
+    """
     c = x.copy()
     c[1:] = -c[1:]
     return c
@@ -84,6 +90,10 @@ def cd_mul(a: np.ndarray, b: np.ndarray) -> np.ndarray:
 
     Verified:  i·j = k  (quaternion)  ✓
                e₁·e₂ = e₃ (octonion first triple) ✓
+
+    :param a: coefficient vector of length 2ⁿ
+    :param b: coefficient vector of the same length
+    :returns: the product, a vector of the same length
     """
     n = len(a)
     if n == 1:
@@ -96,13 +106,24 @@ def cd_mul(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     return np.concatenate([c1, c2])
 
 def cd_basis(k: int, dim: int = 16) -> np.ndarray:
-    """Return the k-th basis element of dimension dim."""
+    """
+    Return the k-th basis element of the given dimension.
+
+    :param k: basis index
+    :param dim: algebra dimension
+    :returns: the basis vector eₖ
+    """
     e = np.zeros(dim)
     e[k] = 1.0
     return e
 
 def build_multiplication_table(dim: int = 16) -> np.ndarray:
-    """Build the full dim×dim CD multiplication table."""
+    """
+    Build the full dim×dim Cayley-Dickson multiplication table.
+
+    :param dim: algebra dimension
+    :returns: array T with T[i, j] the signed index of eᵢ·eⱼ
+    """
     table = np.zeros((dim, dim, dim))
     for i in range(dim):
         for j in range(dim):
@@ -416,7 +437,7 @@ def quantum_mechanics() -> Dict[str, Any]:
             'E_n'        : round(E_bk[n], 6),
             'norm_factor': round(float(norm_factor), 8),
             'prob_max_x' : round(float(x_arr[np.argmax(prob)]), 6),
-            'normalised' : abs(np.trapz(prob, x_arr) - 1.0) < 0.01,
+            'normalised' : abs(_trapz(prob, x_arr) - 1.0) < 0.01,
         })
 
     # ── 7. Path integral connection ───────────────────────────────────────
@@ -1291,7 +1312,7 @@ def feynman_path_integral() -> Dict[str, Any]:
     dt = t_arr[1] - t_arr[0]
     xdot_arr = x0 * np.exp(t_arr)
     L_arr = xdot_arr * np.log(xdot_arr) - xdot_arr
-    S_classical = float(np.trapz(L_arr, t_arr))
+    S_classical = float(_trapz(L_arr, t_arr))
 
     # Phase factor e^{iS/ħ}
     phase = cmath.exp(1j * S_classical / hbar_NN)
@@ -1303,7 +1324,7 @@ def feynman_path_integral() -> Dict[str, Any]:
         xdot_i = x0_i * np.exp(t_arr)
         valid = xdot_i > 0
         L_i = np.where(valid, xdot_i * np.log(np.maximum(xdot_i, 1e-10)) - xdot_i, 0)
-        S_i = float(np.trapz(L_i, t_arr))
+        S_i = float(_trapz(L_i, t_arr))
         dS  = S_i - S_classical
         path_data.append({
             'x0'    : round(float(x0_i), 4),
@@ -1592,7 +1613,7 @@ def hypercomplex_euler() -> Dict[str, Any]:
     for x0 in x0_vals:
         xdot = x0 * np.exp(T)
         L = xdot * np.log(xdot) - xdot
-        S = float(np.trapz(L, T))
+        S = float(_trapz(L, T))
         phases.append(cmath.exp(1j * S / hbar_NN))
 
     Z_BK = sum(phases) / len(phases)

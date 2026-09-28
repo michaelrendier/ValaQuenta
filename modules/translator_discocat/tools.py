@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.translator_discocat.tools
-======================================================
+ValaQuenta.modules.translator_discocat.tools
+============================================
 The Translator, version 1 (DisCoCat) — Module Tools.
 
 Implements the EquationModule registry contract.

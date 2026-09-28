@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.tier8_sedenion.tools
+ValaQuenta.modules.tier8_sedenion.tools
 Version: 0.100
 """
 from typing import Dict, List, Any
@@ -12,6 +12,16 @@ from .maths import (
 
 
 class Tier8SedenionModule(EquationModule):
+    """
+    Tier 8 — D-CS: Sedenion Self-Organisation Paper
+
+    D-CS first paper: sedenion engine as zero-free-parameter prime-hash
+    architecture. 5 engines: self-organisation (16 ops → d*/σ½/D*=1), gnarl
+    validation, OMEGA_ZS 6-family, Hermite timing wheel, orbit trap Hyperwebster
+    address.
+
+    Registry module for ``tier8_sedenion``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.tier8_sedenion.maths`.
+    """
     @property
     def name(self): return 'tier8_sedenion'
     @property

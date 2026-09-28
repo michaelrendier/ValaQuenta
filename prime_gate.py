@@ -44,7 +44,12 @@ D_STAR = 0.24600
 
 
 def sieve(limit: int) -> List[int]:
-    """Primes up to `limit`, plain Eratosthenes sieve. No dependencies."""
+    """
+    Return the primes up to `limit` by the plain sieve of Eratosthenes. No dependencies.
+
+    :param limit: inclusive upper bound
+    :returns: the primes ≤ limit, ascending
+    """
     if limit < 2:
         return []
     is_p = bytearray([1]) * (limit + 1)
@@ -69,20 +74,37 @@ class BoundaryAlarm:
         self.events: List[Tuple[int, object]] = []
 
     def scan(self, sequence: Sequence) -> List[Tuple[int, object]]:
-        """Feed a whole sequence; record every crossing (index, value), in order."""
+        """
+        Feed a whole sequence and record every crossing, in order.
+
+        :param sequence: the values to scan
+        :returns: the (index, value) pairs at which the boundary function fired
+        """
         self.events = [(i, v) for i, v in enumerate(sequence) if self.boundary_fn(v)]
         return self.events
 
     def count_at(self, sequence: Sequence, upto: int) -> int:
-        """How many crossings have fired by position `upto`."""
+        """
+        Count the crossings that have fired by a position.
+
+        :param sequence: the values to scan
+        :param upto: position up to which crossings are counted
+        :returns: the number of crossings
+        """
         return sum(1 for v in sequence[:upto] if self.boundary_fn(v))
 
 
 def sigma_half_alarm(trajectory: Sequence[float], eps: float = 1e-6) -> List[Tuple[int, float]]:
     """
-    Demonstrates BoundaryAlarm is not prime-specific: fires when a sigma
-    trajectory crosses 1/2 -- the Holcus FIRING signal, wiki/44's halting
-    reframe ("does it stop HERE, at this depth"), same alarm primitive.
+    Fire when a σ trajectory crosses ½.
+
+    Demonstrates that BoundaryAlarm is not prime-specific: this is the Holcus
+    FIRING signal, wiki/44's halting reframe ("does it stop HERE, at this
+    depth"), on the same alarm primitive.
+
+    :param trajectory: σ values in order
+    :param eps: tolerance within which a value counts as ½
+    :returns: the (index, σ) pairs at which the alarm fired
     """
     alarm = BoundaryAlarm(lambda sigma: abs(sigma - 0.5) < eps)
     return alarm.scan(trajectory)
@@ -104,9 +126,13 @@ class PrimeGateEngine:
 
     def gate_alarm(self, x: float) -> int:
         """
-        pi(x): how many primes have fired the alarm by x. Gap-blind.
-        Fast path (bisection) for an equivalent, slower definition:
+        Return π(x): how many primes have fired the alarm by x. Gap-blind.
+
+        Uses a bisection fast path for the equivalent, slower definition
         BoundaryAlarm(is_prime).count_at(range(2, x+1), x-1).
+
+        :param x: upper bound
+        :returns: the number of primes ≤ x
         """
         lo, hi = 0, len(self.primes)
         while lo < hi:
@@ -118,7 +144,12 @@ class PrimeGateEngine:
         return lo
 
     def is_prime(self, v: int) -> bool:
-        """The boundary condition the alarm fires on."""
+        """
+        Return the boundary condition the alarm fires on.
+
+        :param v: integer to test
+        :returns: True if v is prime
+        """
         return v in self._prime_set
 
     def alarm_events(self) -> List[Tuple[int, int]]:
@@ -170,9 +201,13 @@ class PrimeGateEngine:
 
     def curvature_spiral(self, scale: float = 0.002) -> List[Tuple[float, float]]:
         """
-        Side investigation from the same session, not an alarm function.
-        Heading from genuine curvature accumulation kappa_n = ln(p_n) (NOT
-        raw gap_n -- summing gap_n telescopes trivially back to p_n).
+        Return the spiral whose heading accumulates the curvature κₙ = ln(pₙ).
+
+        This is a side investigation, not an alarm function. The heading uses
+        κₙ = ln(pₙ), not the raw gap gₙ, because summing gₙ telescopes back to pₙ.
+
+        :param scale: heading increment per unit of κ, in radians
+        :returns: the (x, y) points of the spiral, starting at the origin
         """
         theta = 0.0
         x = y = 0.0

@@ -1,5 +1,5 @@
 """
-ainulindale_engine.modules.turing_diagonal.tools
+ValaQuenta.modules.turing_diagonal.tools
 Version: 0.100
 """
 import json
@@ -13,6 +13,17 @@ from .maths import (
 
 
 class TuringDiagonalModule(EquationModule):
+    """
+    Turing Diagonal Engine — i²=-1 = Cantor = Gödel = Enigma = UDOE
+
+    The diagonal flip i²=[[-1,0],[0,-1]] unifies every self-referential proof.
+    Engines: prediction diagonal test (any prediction → decidable/undecidable),
+    enigma derangement (D_n/n!→1/e, Turing proof of concept), hypercomplex
+    identity diagonal (eₖ²=-1 for k=1..15), halting diagonal (D(D) → σ=½
+    oscillation).
+
+    Registry module for ``turing_diagonal``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.turing_diagonal.maths`.
+    """
     @property
     def name(self): return 'turing_diagonal'
     @property

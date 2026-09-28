@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.sonification.tools
-===============================================
+ValaQuenta.modules.sonification.tools
+=====================================
 SonificationModule — registry contract.
 
 Equations:
@@ -26,7 +26,16 @@ from .maths import (
 
 
 class SonificationModule(EquationModule):
+    """
+    Sonification  ω = pitch
 
+    Equation-derived audio. ω (angular frequency) = pitch. Radian transform made
+    audible. fractions.Fraction throughout; float only at WAV render boundary.
+    Viewer renders waveform and plays via SonificationPanel. Standalone
+    Ainulindale Synthesizer is a separate repo.
+
+    Registry module for ``sonification``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.sonification.maths`.
+    """
     @property
     def name(self): return 'sonification'
 
