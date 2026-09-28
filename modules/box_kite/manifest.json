@@ -8,7 +8,7 @@
   "version": "0.2",
   "summary": "Makes the sedenion zero-divisor geometry visible and exactly enumerable.",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.box_kite",
     "class": "BoxKiteModule"

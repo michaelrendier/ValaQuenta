@@ -1,0 +1,145 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "clay_millennium",
+  "display": "Clay Millennium Problems — Σ_RB derivations",
+  "version": "0.130",
+  "summary": "All 7 Clay Millennium Problems derived from Σ_RB.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/clay_millennium.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/12_clay_millennium.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Clay Millennium Problems — Σ_RB derivations",
+      "group": "Lineage · decomposition",
+      "order": 100,
+      "blurb": "All 7 Clay Millennium Problems derived from Σ_RB."
+    },
+    "tools": [
+      {
+        "name": "clay_summary",
+        "equation": "clay_summary",
+        "label": "Clay Summary",
+        "desc": "All 7 Clay Millennium Problems — Σ_RB summary  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "riemann_hypothesis",
+        "equation": "riemann_hypothesis",
+        "label": "Riemann Hypothesis",
+        "desc": "RH — two proofs + spectral decomp + BAO residue  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "rh_proof_stone",
+        "equation": "rh_proof_stone",
+        "label": "Rh Proof Stone",
+        "desc": "RH Proof I — Stone's theorem on self-adjoint Σ_RB  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "rh_proof_wiles_conjugate",
+        "equation": "rh_proof_wiles_conjugate",
+        "label": "Rh Proof Wiles Conjugate",
+        "desc": "RH Proof II — conjugate via Wiles; Frey curve impossible  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "rh_noether_balance_scan",
+        "equation": "rh_noether_balance_scan",
+        "label": "Rh Noether Balance Scan",
+        "desc": "RH Numerical — σ=½ derived from Noether balance scan  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "rh_spectral_decomposition",
+        "equation": "rh_spectral_decomposition",
+        "label": "Rh Spectral Decomposition",
+        "desc": "RH Spectral — explicit formula, BAO residue, mass gap  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "yang_mills_mass_gap",
+        "equation": "yang_mills_mass_gap",
+        "label": "Yang Mills Mass Gap",
+        "desc": "Yang-Mills mass gap — min eigenvalue at σ=1 > 0  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "navier_stokes",
+        "equation": "navier_stokes",
+        "label": "Navier Stokes",
+        "desc": "Navier-Stokes — real projection of Σ_RB lacks i  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "p_vs_np",
+        "equation": "p_vs_np",
+        "label": "P Vs Np",
+        "desc": "P vs NP — Red (analytic) vs Blue (elliptic) complexity  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "hodge_conjecture",
+        "equation": "hodge_conjecture",
+        "label": "Hodge Conjecture",
+        "desc": "Hodge — algebraic cycles from inductive prime sum  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "birch_swinnerton_dyer",
+        "equation": "birch_swinnerton_dyer",
+        "label": "Birch Swinnerton Dyer",
+        "desc": "BSD — rank(E) = ord L(E,1) = Blue eigenspace multiplicity  [OPEN]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "poincare_conjecture",
+        "equation": "poincare_conjecture",
+        "label": "Poincare Conjecture",
+        "desc": "Poincaré — trivial Σ_RB → S³  [SOLVED — validation]  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

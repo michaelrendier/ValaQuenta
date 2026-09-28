@@ -29,7 +29,7 @@
     "license": {
       "type": "string",
       "minLength": 1,
-      "description": "SPDX identifier. GPL-3.0-only or a permissive licence for GNU-shippable plugins; anything for private ones."
+      "description": "SPDX identifier. GPL-3.0-only or a permissive licence for GNU-shippable plugins; any SPDX or LicenseRef id for third-party plugins that stay private."
     },
     "entry": {
       "type": "object",

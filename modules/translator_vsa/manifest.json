@@ -1,0 +1,122 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "translator_vsa",
+  "display": "The Translator v2 — VSA / hyperdimensional (bind.bundle.permute)",
+  "version": "0.111",
+  "summary": "Version 2 of two Translator constructions.",
+  "confidence_floor": "OPEN",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "OPEN",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/translator_vsa.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Translator v2 — VSA / hyperdimensional (bind.bundle.permute)",
+      "group": "UDEO · translation",
+      "order": 100,
+      "blurb": "Version 2 of two Translator constructions."
+    },
+    "tools": [
+      {
+        "name": "permute",
+        "equation": "permute",
+        "label": "Permute",
+        "desc": "Permute P — cyclic shift (sequence/position)  [process= not set]",
+        "params": [
+          "vector",
+          "shift"
+        ]
+      },
+      {
+        "name": "bind",
+        "equation": "bind",
+        "label": "Bind",
+        "desc": "Bind (x) — non-commutative role-filler pairing  [process= not set]",
+        "params": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "name": "bundle",
+        "equation": "bundle",
+        "label": "Bundle",
+        "desc": "Bundle (+) — superposition, un-normalised  [process= not set]",
+        "params": [
+          "vectors"
+        ]
+      },
+      {
+        "name": "sentence_hypervector",
+        "equation": "sentence_hypervector",
+        "label": "Sentence Hypervector",
+        "desc": "Bound-and-bundled sentence (4096-dim)  [process= not set]",
+        "params": [
+          "subject",
+          "verb",
+          "object"
+        ]
+      },
+      {
+        "name": "capacity_probe",
+        "equation": "capacity_probe",
+        "label": "Capacity Probe",
+        "desc": "Quasi-orthogonality of derived hypervectors  [process= not set]",
+        "params": [
+          "tokens"
+        ]
+      },
+      {
+        "name": "unbind_probe",
+        "equation": "unbind_probe",
+        "label": "Unbind Probe",
+        "desc": "Constituent recovery from the bundle  [process= not set]",
+        "params": [
+          "subject",
+          "verb",
+          "object"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

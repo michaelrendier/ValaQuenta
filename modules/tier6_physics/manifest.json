@@ -1,0 +1,131 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "tier6_physics",
+  "display": "Tier 6 — Full Physics: QM + Standard Model",
+  "version": "0.100",
+  "summary": "Full QM and Standard Model from Ainulindale.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/tier6_physics.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/13_tier6_physics.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Tier 6 — Full Physics: QM + Standard Model",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "Full QM and Standard Model from Ainulindale."
+    },
+    "tools": [
+      {
+        "name": "full_physics",
+        "equation": "full_physics",
+        "label": "Full Physics",
+        "desc": "Tier 6 — all 8 physics engines  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "sedenion_arithmetic",
+        "equation": "sedenion_arithmetic",
+        "label": "Sedenion Arithmetic",
+        "desc": "Zero Divisors=Addition, CD Tower=Subtraction → Mathematics  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "quantum_mechanics",
+        "equation": "quantum_mechanics",
+        "label": "Quantum Mechanics",
+        "desc": "Full QM from H_RB at σ=½  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "standard_model",
+        "equation": "standard_model",
+        "label": "Standard Model",
+        "desc": "Full Standard Model Lagrangian from SMMIP (term-for-term)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "dirac_equation",
+        "equation": "dirac_equation",
+        "label": "Dirac Equation",
+        "desc": "Dirac equation — Clifford algebra, antimatter, spin  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "gauge_unification",
+        "equation": "gauge_unification",
+        "label": "Gauge Unification",
+        "desc": "U(1)×SU(2)×SU(3) from ℂ×ℍ×𝕆 (Dixon 1994)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "higgs_mechanism",
+        "equation": "higgs_mechanism",
+        "label": "Higgs Mechanism",
+        "desc": "SSB = Sombrero brim at electroweak scale  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "particle_spectrum",
+        "equation": "particle_spectrum",
+        "label": "Particle Spectrum",
+        "desc": "17 SM particles from 16 sedenion strata  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "feynman_path_integral",
+        "equation": "feynman_path_integral",
+        "label": "Feynman Path Integral",
+        "desc": "Path integral = Lichtenberg Lagrangian of Action Potential  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "hypercomplex_euler",
+        "equation": "hypercomplex_euler",
+        "label": "Hypercomplex Euler",
+        "desc": "e^{iπ}+1=0 → J_R+J_G+J_B=0 → ∫Dxe^{iS/ħ}=0 → Higgs lifts Z≠0  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

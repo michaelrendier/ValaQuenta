@@ -8,7 +8,7 @@
   "version": "0.111",
   "summary": "HyperWebster hypergallery.",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.hyperwebster",
     "class": "HyperWebsterModule"

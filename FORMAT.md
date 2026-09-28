@@ -56,7 +56,7 @@ canonical order.
 | `name` | string | short machine name |
 | `version` | string | `0.1`, `1.2.3`, `2.0-rc1` |
 | `entry` | `{ "module": <import path>, "class": <attr> }` | the Python object implementing the type contract |
-| `license` | SPDX string | `GPL-3.0-only` (or permissive) ⇒ GNU-shippable; anything else ⇒ private (e.g. `LicenseRef-ValaQuenta-Private`) |
+| `license` | SPDX string | `GPL-3.0-only` (or permissive) ⇒ GNU-shippable; anything else ⇒ private (a third party's own `LicenseRef-…`) |
 | `provenance` | object | §2.4 |
 
 ### 2.2 Optional keys
@@ -160,7 +160,7 @@ After discovery the host registers each plugin by `type`: `engine` → the
 - `valaquenta.engine-manifest/1` files (pre-Format) are accepted: `normalise()`
   sets `schema`/`format_version`, derives `id` = `org.ainulindale.<name>`,
   `type` = `engine`, `entry` from `ValaQuenta.modules.<name>`, `license` =
-  `LicenseRef-ValaQuenta-Private`. `python3 -m ValaQuenta.engine.format upgrade
+  `GPL-3.0-only`. `python3 -m ValaQuenta.engine.format upgrade
   --write` rewrites them in canonical order.
 
 ---
@@ -171,12 +171,13 @@ The `license` field is load-bearing:
 
 - **`GPL-3.0-only`** or a permissive SPDX id ⇒ the plugin can ship with
   PtolemyDesktop / PTorrent (both GNU) and go "out there" on its own.
-- Anything else (e.g. **`LicenseRef-ValaQuenta-Private`**) ⇒ the plugin stays
-  behind ValaQuenta — discoverable and runnable locally, never published.
+- Anything else (a `LicenseRef-…` id) ⇒ the plugin stays with its author —
+  discoverable and runnable locally, never published.
 
-The Raw monad that PtolemyDesktop ships is trained on GNU components only and
-carries a GNU licence; a user's own engine layer (Cody's ValaQuenta) is
-private and marked so.
+Every built-in ValaQuenta engine is **`GPL-3.0-only`** (2026-09-28): the
+mathematics and the code that implements it are free software. The Raw monad
+that PtolemyDesktop ships is trained on GNU components only and carries a GNU
+licence. A third party's own engine layer may declare any licence it likes.
 
 ---
 

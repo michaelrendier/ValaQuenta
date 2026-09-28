@@ -8,7 +8,7 @@
   "version": "0.100",
   "summary": "The black-hole interior is a finite, sub-Planckian de Sitter core — the Abrikosov vortex core made gravitational: the condensate goes to zer",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.desitter_cavitation",
     "class": "DeSitterCavitationModule"

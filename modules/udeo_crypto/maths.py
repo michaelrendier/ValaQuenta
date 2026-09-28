@@ -1,6 +1,6 @@
 """
-ainulindale_engine.modules.udeo_crypto.UDEO_RSA_DEMO
-======================================================
+ValaQuenta.modules.udeo_crypto.maths
+====================================
 UDEO RSA private-key-recovery engine — three candidate mechanisms (Cody's),
 each implemented literally and tested against known toy RSA keys, with a
 random-guess control run alongside every result.
@@ -87,13 +87,24 @@ PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,
 # ══════════════════════════════════════════════════════════════════════════
 
 def cd_conj(x: np.ndarray) -> np.ndarray:
-    """Cayley-Dickson conjugate: negate all but the scalar component."""
+    """
+    Cayley-Dickson conjugate: negate all but the scalar component.
+
+    :param x: coefficient vector
+    :returns: the conjugate
+    """
     c = x.copy()
     c[1:] = -c[1:]
     return c
 
 def cd_mul(a: np.ndarray, b: np.ndarray) -> np.ndarray:
-    """Recursive Cayley-Dickson product. Works for any power-of-2 length."""
+    """
+    Recursive Cayley-Dickson product. Works for any power-of-2 length.
+
+    :param a: coefficient vector
+    :param b: coefficient vector of the same power-of-2 length
+    :returns: the product a·b
+    """
     n = len(a)
     if n == 1:
         return np.array([a[0] * b[0]])
@@ -104,6 +115,13 @@ def cd_mul(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     return np.concatenate([c1, c2])
 
 def e_k(k: int, dim: int) -> np.ndarray:
+    """
+    Return the basis element eₖ as a coefficient vector.
+
+    :param k: basis index
+    :param dim: algebra dimension
+    :returns: the vector with a 1 at index k
+    """
     v = np.zeros(dim)
     v[k] = 1.0
     return v
@@ -139,19 +157,37 @@ def _cd_mul_batch(A: np.ndarray, B: np.ndarray) -> np.ndarray:
     return np.concatenate([C1, C2], axis=0)
 
 def left_mult_matrix(a: np.ndarray, dim: int) -> np.ndarray:
-    """Matrix L_a such that L_a @ x == cd_mul(a, x). cd_mul is bilinear
-    in its second argument, so this is a well-defined linear operator."""
+    """
+    Matrix L_a such that L_a @ x == cd_mul(a, x). cd_mul is bilinear
+    in its second argument, so this is a well-defined linear operator.
+
+    :param a: coefficient vector
+    :param dim: algebra dimension
+    :returns: the matrix L_a
+    """
     A = a.reshape(dim, 1)
     I = np.eye(dim)
     return _cd_mul_batch(A, I)
 
 def right_mult_matrix(a: np.ndarray, dim: int) -> np.ndarray:
-    """Matrix R_a such that R_a @ x == cd_mul(x, a)."""
+    """
+    Matrix R_a such that R_a @ x == cd_mul(x, a).
+
+    :param a: coefficient vector
+    :param dim: algebra dimension
+    :returns: the matrix R_a
+    """
     A = a.reshape(dim, 1)
     I = np.eye(dim)
     return _cd_mul_batch(I, A)
 
 def normalize(v: np.ndarray) -> np.ndarray:
+    """
+    Scale a vector to unit norm; a vector of norm below 1e-15 is returned unchanged.
+
+    :param v: the vector
+    :returns: v / ‖v‖
+    """
     n = np.linalg.norm(v)
     return v / n if n > 1e-15 else v
 
@@ -165,6 +201,10 @@ def map_int_to_hypercomplex_placeholder(x: int, dim: int) -> np.ndarray:
     plus a secondary residue term. It is illustrative, not the full Horner
     bijection over Riemann zero indices. Kept only for comparison against
     map_int_to_hypercomplex() below, which uses the real P1 mechanism.
+
+    :param x: integer to embed
+    :param dim: algebra dimension
+    :returns: the embedding vector
     """
     coords = [0.0] * dim
     coords[x % dim] += 1.0
@@ -181,6 +221,10 @@ def map_int_to_hypercomplex(x: int, dim: int) -> np.ndarray:
     (e_i+e_j) pairs udeo_poc.py's own zero-divisor search uses), but now
     both terms are derived from the validated prime/Riemann-zero hash
     instead of arithmetic on x directly.
+
+    :param x: integer to embed
+    :param dim: algebra dimension
+    :returns: the two-term embedding vector
     """
     zidx = p1_zero_index(str(x))
     hraw = p1_horner_hash(str(x))
@@ -191,16 +235,29 @@ def map_int_to_hypercomplex(x: int, dim: int) -> np.ndarray:
     return normalize(coords)
 
 def horner_prime_hash(s: str, modulus: int = 10**9 + 7) -> int:
-    """Same Horner-scheme prime hash used in tier8_sedenion — applied here
+    """
+    Same Horner-scheme prime hash used in tier8_sedenion — applied here
     to the decimal string of an integer, per 'primes are words' / integers
     are words too. PLACEHOLDER — see the P1 hash below for the real,
-    already-validated mechanism (monad.py); kept only for comparison."""
+    already-validated mechanism (monad.py); kept only for comparison.
+
+    :param s: string to hash, typically an integer's decimal digits
+    :param modulus: modulus of the hash
+    :returns: the hash in [0, modulus)
+    """
     h = 0
     for i, c in enumerate(s.lower()):
         h = (h + ord(c) * PRIMES[i % len(PRIMES)]) % modulus
     return h
 
 def hash_to_sigma_placeholder(h: int, modulus: int = 10**9 + 7) -> float:
+    """
+    Map a hash to σ = h / modulus. Placeholder; see sigma_of_int for the P1 mechanism.
+
+    :param h: hash integer
+    :param modulus: the modulus of the hash
+    :returns: σ in [0, 1)
+    """
     return h / modulus
 
 
@@ -228,6 +285,12 @@ for _k in range(_p1_cap):
 del _i, _k, _cnt
 
 def p1_next_prime(v: int) -> int:
+    """
+    Return the next prime at or above v, with v reduced into the P1 prime cap.
+
+    :param v: starting integer
+    :returns: the prime
+    """
     v = max(2, int(v) % (_P1_PRIME_CAP + 1))
     while v <= _P1_PRIME_CAP + 1:
         if _p1_sieve[min(v, _P1_PRIME_CAP + 1)] or v > _P1_PRIME_CAP:
@@ -236,13 +299,26 @@ def p1_next_prime(v: int) -> int:
     return 65537
 
 def p1_horner_hash(w: str, base: int = 95, offset: int = 32) -> int:
+    """
+    Return the Horner hash of a word in the given base.
+
+    :param w: the word
+    :param base: Horner base
+    :param offset: character-code offset
+    :returns: the non-negative hash integer
+    """
     v = 0
     for ch in w:
         v = v * base + max(0, ord(ch) - offset)
     return abs(v)
 
 def p1_zero_index(w: str) -> int:
-    """P1: word -> Horner int -> next prime p -> pi(p) = zero index in [1, 6542]."""
+    """
+    P1: word -> Horner int -> next prime p -> pi(p) = zero index in [1, 6542].
+
+    :param w: the word
+    :returns: the zero index π(p) in [1, 6542]
+    """
     v = p1_horner_hash(w)
     p = p1_next_prime(v)
     idx = _p1_prime_pi_table[min(p, _P1_PRIME_CAP + 1)]
@@ -251,13 +327,26 @@ def p1_zero_index(w: str) -> int:
 _P1_MAX_ZERO_IDX = 6542
 
 def sigma_of_int(x: int) -> float:
-    """sigma address via the REAL P1 mechanism, mapped to (0, 1]."""
+    """
+    sigma address via the REAL P1 mechanism, mapped to (0, 1].
+
+    :param x: integer
+    :returns: σ in (0, 1]
+    """
     return p1_zero_index(str(x)) / _P1_MAX_ZERO_IDX
 
 
 # ── Toy RSA ──────────────────────────────────────────────────────────────
 
 def rsa_keygen(p: int, q: int, e: int) -> Dict[str, int]:
+    """
+    Build an RSA key from primes and a public exponent.
+
+    :param p: first prime
+    :param q: second prime
+    :param e: public exponent; must be coprime to φ(n)
+    :returns: dict with p, q, n, phi_n, e and the private exponent d
+    """
     n = p * q
     phi_n = (p - 1) * (q - 1)
     assert math.gcd(e, phi_n) == 1, "e must be coprime to phi(n)"
@@ -280,6 +369,13 @@ def random_wrong_d_candidates(phi_n: int, true_d: int, e: int,
     phi_n, in range) other than the true d. This is the control
     population every method is scored against — if a method can't beat
     this population, it has found nothing.
+
+    :param phi_n: φ(n)
+    :param true_d: the true private exponent, excluded
+    :param e: public exponent
+    :param count: number of candidates
+    :param seed: random seed
+    :returns: valid private exponents other than the true d
     """
     rng = random.Random(seed)
     candidates = set()
@@ -295,9 +391,15 @@ def random_wrong_d_candidates(phi_n: int, true_d: int, e: int,
     return sorted(candidates)
 
 def percentile_rank(true_value: float, control_values: List[float]) -> float:
-    """What fraction of the control population the true value beats
+    """
+    What fraction of the control population the true value beats
     (scores lower than). 50th percentile == indistinguishable from chance.
-    Near 0th or 100th == the true value is a genuine outlier."""
+    Near 0th or 100th == the true value is a genuine outlier.
+
+    :param true_value: the true key's score
+    :param control_values: the control population's scores
+    :returns: the fraction of the control population the true value beats
+    """
     if not control_values:
         return 50.0
     below = sum(1 for c in control_values if true_value < c)
@@ -360,6 +462,9 @@ def method1_zero_divisor_shadow(dim: int = 16) -> Dict[str, Any]:
     Test: does the true d_s align with that shadow direction better than
     a random valid d' would? Given only (n, e) — d is used only to score,
     never to compute the candidate direction.
+
+    :param dim: algebra dimension
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     per_key = []
     for key in TOY_KEYS:
@@ -430,6 +535,9 @@ def ptolemy_null_partner(x_s: np.ndarray) -> np.ndarray:
     no such closed-form exists in this repo. This is the faithful, literal
     reading of 'the shape of the hole' as the Ptolemy-inverted partner in
     e's own subspace, not an invented substitute.
+
+    :param x_s: the embedded vector
+    :returns: the conformal-inverse partner in x_s's dominant 2-D subspace
     """
     idx = np.argsort(-np.abs(x_s))[:2]
     i, j = int(idx[0]), int(idx[1])
@@ -451,6 +559,10 @@ def method1b_ptolemy_null_operator(dim: int = 16, n_verification_keys: int = 40)
     the 6 toy keys AND n_verification_keys independent random keys from the
     start (Method 6 showed the 6-key sample alone can look like a signal
     that doesn't survive scale-up).
+
+    :param dim: algebra dimension
+    :param n_verification_keys: independent random keys tested after the toy keys
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     def run_on_keys(keys):
         per_key = []
@@ -583,6 +695,9 @@ def method2_j2_involution_t256(dim: int = 256) -> Dict[str, Any]:
 
     Test: does d_s align with a dominant eigenvector of Delta better than
     a random valid d' would? Given only (n, e).
+
+    :param dim: algebra dimension; 256 for T_256
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     per_key = []
     for key in TOY_KEYS:
@@ -662,13 +777,23 @@ def sigma_face_metric(sigma: float) -> float:
     the flat reference point — a deliberate reuse of the *shape* of the
     wiki/34 metric, not a claim that these are the same sigma. That
     reinterpretation is this engine's choice, not something wiki/34 states.
+
+    :param sigma: σ value
+    :returns: g(σ)
     """
     eps = 1e-6
     x = abs(2.0 * sigma - 1.0)          # 0 at sigma=1/2, -> 1 at sigma -> 0 or 1
     return 1.0 / max(1.0 - x, eps)
 
 def geodesic_distance(sigma_a: float, sigma_b: float, steps: int = 200) -> float:
-    """Numerical integral of g(sigma) ds along the straight path a -> b."""
+    """
+    Numerical integral of g(sigma) ds along the straight path a -> b.
+
+    :param sigma_a: start σ
+    :param sigma_b: end σ
+    :param steps: integration steps
+    :returns: ∫ g(σ) dσ along the straight path
+    """
     xs = np.linspace(sigma_a, sigma_b, steps)
     gs = np.array([sigma_face_metric(x) for x in xs])
     return float(abs(np.trapezoid(gs, xs)))
@@ -682,6 +807,9 @@ def method3_spectral_relativity(dim: int = 16) -> Dict[str, Any]:
     to the TRUE d's hash-address a statistical outlier compared to the
     distance from e's address to random valid d' addresses? Given only
     (n, e).
+
+    :param dim: algebra dimension
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     per_key = []
     for key in TOY_KEYS:
@@ -765,6 +893,10 @@ def method4_content_public_private_hash(dim: int = 16, search_pool: int = 500) -
     values, embed each, and see whether the TRUE d's embedding is the
     closest match to the recovered vector, and by how much, versus the
     random-guess control pool.
+
+    :param dim: algebra dimension
+    :param search_pool: number of candidate d′ values searched
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     per_key = []
     for key in TOY_KEYS:
@@ -863,6 +995,12 @@ TOWER_LEVEL_BASE_DEG = {0: 0.0, 1: 0.0, 2: 45.0, 3: 0.0, 4: 45.0,
 THE_ANGLE_DEG = 22.5   # pi/8 — the angular quantum, from zero_lattice.py / telperion_engine.py
 
 def tower_level_geometry(k: int) -> Dict[str, Any]:
+    """
+    Return the geometry of CD tower level k.
+
+    :param k: tower level, 0..8
+    :returns: dict with σ = 1 − k/4, θ = kπ/8 and the red/blue flags
+    """
     sigma = 1.0 - k / 4.0
     theta = k * math.pi / 8.0
     is_red = (k % 2 == 1) and k > 0
@@ -879,6 +1017,10 @@ def variable_tower_path(x: int, label: str) -> Dict[str, Any]:
     Trace integer x through the 9-level CD tower (ℝ -> T_256), same
     geometry AbrikosovTree/telperion_engine.py uses for prime leaves,
     generalised to any integer standing in for an RSA quantity.
+
+    :param x: integer standing in for an RSA quantity
+    :param label: name of the quantity
+    :returns: dict with the integer's position at each of the 9 tower levels
     """
     ns = x % 16
     q = ns % 4
@@ -905,7 +1047,13 @@ def variable_tower_path(x: int, label: str) -> Dict[str, Any]:
     return {'label': label, 'value': x, 'nshape': ns, 'quadrant': q, 'levels': levels}
 
 def path_angular_distance(path_a: Dict, path_b: Dict) -> float:
-    """Mean absolute angular difference (degrees) between two paths, level by level."""
+    """
+    Mean absolute angular difference (degrees) between two paths, level by level.
+
+    :param path_a: path from variable_tower_path
+    :param path_b: path from variable_tower_path
+    :returns: mean absolute angular difference in degrees
+    """
     diffs = []
     for la, lb in zip(path_a['levels'], path_b['levels']):
         d = abs(la['phi_deg'] - lb['phi_deg']) % 360.0
@@ -991,6 +1139,9 @@ def method5_zero_lattice_paths(search_pool: int = 200) -> Dict[str, Any]:
     The real test, same as every engine above: given ONLY (n, e) — Hash
     NOT exposed — does d's path show any structure a random valid d'
     wouldn't also show?
+
+    :param search_pool: number of candidate d′ values searched
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     per_key = []
     for key in TOY_KEYS:
@@ -1069,6 +1220,12 @@ def method5_zero_lattice_paths(search_pool: int = 200) -> Dict[str, Any]:
 # per-level rotation sequence is the candidate "emergent information."
 
 def level_dim(k: int) -> int:
+    """
+    Return the algebra dimension at tower level k.
+
+    :param k: tower level
+    :returns: max(1, 2^k)
+    """
     return max(1, 2 ** k)
 
 def raw_shell_angles(x: int, k: int) -> Tuple[float, float]:
@@ -1080,6 +1237,10 @@ def raw_shell_angles(x: int, k: int) -> Tuple[float, float]:
     azimuth in the (e1, e2) plane. At k=0 (dim=1) the embedding is a single
     scalar -- degenerate, both angles defined as 0 (the tower's pole, same
     convention telperion_engine.py uses for k=0).
+
+    :param x: integer to embed
+    :param k: tower level
+    :returns: (theta, phi) in radians
     """
     dim = level_dim(k)
     if dim == 1:
@@ -1103,6 +1264,10 @@ def emergent_rotation_information(x: int, label: str) -> Dict[str, Any]:
     each intermediate level, and the rotation (d_theta_k, d_phi_k) needed at
     each shell to correct the raw path onto that straight Lagrangian path.
     This per-level rotation sequence is the emergent-information signature.
+
+    :param x: integer
+    :param label: name of the quantity
+    :returns: dict with the raw angles, the straight-line target and the per-level correction at each level 0..8
     """
     raw = [raw_shell_angles(x, k) for k in range(N_LEVELS_TOWER)]
     theta_1, phi_1 = raw[1]
@@ -1130,6 +1295,13 @@ def emergent_rotation_information(x: int, label: str) -> Dict[str, Any]:
     return {'label': label, 'value': x, 'corrections': corrections, 'signature': signature}
 
 def signature_distance(sig_a: Tuple[float, ...], sig_b: Tuple[float, ...]) -> float:
+    """
+    Return the Euclidean distance between two rotation signatures.
+
+    :param sig_a: first signature
+    :param sig_b: second signature, of the same length
+    :returns: the distance
+    """
     return float(np.linalg.norm(np.array(sig_a) - np.array(sig_b)))
 
 def _random_toy_key(rng: random.Random, primes: List[int]) -> Dict[str, int]:
@@ -1156,6 +1328,10 @@ def method6_emergent_rotation_signature(search_pool: int = 200, n_verification_k
     result is treated as authoritative; the small-sample result is kept in
     the record, not deleted, per the standing 'failed predictions stay in
     the record' policy.
+
+    :param search_pool: number of candidate d′ values searched
+    :param n_verification_keys: independent random keys tested after the toy keys
+    :returns: dict with the method's scores, the random-guess control and the verdict
     """
     def run_on_keys(keys):
         per_key = []

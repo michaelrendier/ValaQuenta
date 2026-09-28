@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "A unit is a point in the 7-axis SI base-dimension lattice (kg,m,s,A,K,mol,cd) -- the same leaf/composite structure this project already runs",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.units",
     "class": "UnitsModule"

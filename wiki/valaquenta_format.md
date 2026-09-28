@@ -44,8 +44,8 @@ Declared: `registry.run`, `codegate.propose`, `net.search`, `net.browse`,
 ## Licensing
 
 `license` is load-bearing: `GPL-3.0-only` / permissive ⇒ ships with the GNU
-framework and can go out on its own; anything else (e.g.
-`LicenseRef-ValaQuenta-Private`) ⇒ stays behind ValaQuenta.
+framework and can go out on its own; anything else (a `LicenseRef-…` id) ⇒
+stays with its author. All built-in ValaQuenta engines are `GPL-3.0-only`.
 
 ## Commands
 

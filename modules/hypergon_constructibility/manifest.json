@@ -8,7 +8,7 @@
   "version": "0.100",
   "summary": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL result: 4/16 constructible, 12/16 holes).",
   "confidence_floor": "OPEN",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.hypergon_constructibility",
     "class": "HypergonConstructibilityModule"

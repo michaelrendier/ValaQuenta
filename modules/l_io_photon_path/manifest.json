@@ -8,7 +8,7 @@
   "version": "0.2",
   "summary": "GR version of L_(I|O): Kaiser-Squires shear->convergence, Poisson solve for the lensing potential, deflection field, and the lens equation b",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.l_io_photon_path",
     "class": "LIOPhotonPathModule"

@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "Measures three things about any signal embedded in the 16 sedenion dimensions, without knowing its language, its meaning, or its author: ANG",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.angular_rank",
     "class": "AngularRankModule"

@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add.",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.add_scale_sign",
     "class": "AddScaleSignModule"

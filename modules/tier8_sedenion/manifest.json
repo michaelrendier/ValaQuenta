@@ -1,0 +1,117 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "tier8_sedenion",
+  "display": "Tier 8 — D-CS: Sedenion Self-Organisation Paper",
+  "version": "0.100",
+  "summary": "D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/tier8_sedenion.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Tier 8 — D-CS: Sedenion Self-Organisation Paper",
+      "group": "Sedenion · ZD geometry",
+      "order": 100,
+      "blurb": "D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture."
+    },
+    "tools": [
+      {
+        "name": "full_sedenion",
+        "equation": "full_sedenion",
+        "label": "Full Sedenion",
+        "desc": "Tier 8 — all 5 D-CS engines  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "sedenion_self_organisation",
+        "equation": "sedenion_self_organisation",
+        "label": "Sedenion Self Organisation",
+        "desc": "16 operator names → d*/σ½/D*=1 via prime hash",
+        "params": []
+      },
+      {
+        "name": "gnarl_validation",
+        "equation": "gnarl_validation",
+        "label": "Gnarl Validation",
+        "desc": "Gnarl = sedenion zero-divisor boundary",
+        "params": []
+      },
+      {
+        "name": "omega_zs_6_family",
+        "equation": "omega_zs_6_family",
+        "label": "Omega Zs 6 Family",
+        "desc": "OMEGA_ZS = W(1) appears in 6 independent domains simultaneously",
+        "params": []
+      },
+      {
+        "name": "hermite_timing_wheel",
+        "equation": "hermite_timing_wheel",
+        "label": "Hermite Timing Wheel",
+        "desc": "H_n has n zeros = n BAO timing marks",
+        "params": []
+      },
+      {
+        "name": "orbit_trap_address",
+        "equation": "orbit_trap_address",
+        "label": "Orbit Trap Address",
+        "desc": "Mandelbrot orbit trap = Hyperwebster sedenion address",
+        "params": []
+      },
+      {
+        "name": "leech_divergence_inversion",
+        "equation": "leech_divergence_inversion",
+        "label": "Leech Divergence Inversion",
+        "desc": "Zero-divisors are divergence-inverted sources",
+        "params": []
+      },
+      {
+        "name": "causality_lattice_packing",
+        "equation": "causality_lattice_packing",
+        "label": "Causality Lattice Packing",
+        "desc": "Causal/total = 23/4095",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

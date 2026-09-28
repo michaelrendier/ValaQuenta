@@ -1,0 +1,166 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "tier7_cosmos",
+  "display": "Tier 7 — Cosmology + Mathematics + Standard Model from H_RB",
+  "version": "0.110",
+  "summary": "Cosmological + mathematical consequences of Ainulindale.",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/tier7_cosmos.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Tier 7 — Cosmology + Mathematics + Standard Model from H_RB",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "Cosmological + mathematical consequences of Ainulindale."
+    },
+    "tools": [
+      {
+        "name": "full_cosmos",
+        "equation": "full_cosmos",
+        "label": "Full Cosmos",
+        "desc": "Tier 7 — all 14 engines (10 cosmology + 4 SM from H_RB)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "explicit_formula_de_sitter",
+        "equation": "explicit_formula_de_sitter",
+        "label": "Explicit Formula De Sitter",
+        "desc": "Primes = expansion of the universe (ψ(x) = de Sitter + BAO)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "sin_cos_frequencies",
+        "equation": "sin_cos_frequencies",
+        "label": "Sin Cos Frequencies",
+        "desc": "e^{±iθ} = two counter-rotating vortices; tan=σ=½ balance  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "galaxy_formation",
+        "equation": "galaxy_formation",
+        "label": "Galaxy Formation",
+        "desc": "Galaxy = inside-out null cone via r→R_H²/r inversion  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "dark_matter_geometry",
+        "equation": "dark_matter_geometry",
+        "label": "Dark Matter Geometry",
+        "desc": "Dark matter = inversion shadow = Chladni antinode = Im(ψ)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "navier_stokes_sedenion",
+        "equation": "navier_stokes_sedenion",
+        "label": "Navier Stokes Sedenion",
+        "desc": "NS fails in ℝ (missing i)",
+        "params": []
+      },
+      {
+        "name": "black_hole_crossing",
+        "equation": "black_hole_crossing",
+        "label": "Black Hole Crossing",
+        "desc": "Horizon crossing = algebraic phase transition: octonion → sedenion  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "lambda_cdm_omega_zs",
+        "equation": "lambda_cdm_omega_zs",
+        "label": "Lambda Cdm Omega Zs",
+        "desc": "OMEGA_ZS = de Sitter attractor",
+        "params": []
+      },
+      {
+        "name": "flt_noether_deepened",
+        "equation": "flt_noether_deepened",
+        "label": "Flt Noether Deepened",
+        "desc": "FLT = Noether conservation law",
+        "params": []
+      },
+      {
+        "name": "leech_lattice_sedenion",
+        "equation": "leech_lattice_sedenion",
+        "label": "Leech Lattice Sedenion",
+        "desc": "24D Leech lattice defines 16D sedenion zero-divisors  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "gue_random_matrix",
+        "equation": "gue_random_matrix",
+        "label": "Gue Random Matrix",
+        "desc": "Prime gaps = GUE statistics = quantum chaotic eigenvalues  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "smmip_standard_model",
+        "equation": "smmip_standard_model",
+        "label": "Smmip Standard Model",
+        "desc": "L_SM drops out of H_RB term-for-term (E-7-1)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "gauge_group_cd_tower",
+        "equation": "gauge_group_cd_tower",
+        "label": "Gauge Group Cd Tower",
+        "desc": "U(1)×SU(2)×SU(3) = Aut(ℂ)×Aut(ℍ)×Aut(𝕆)",
+        "params": []
+      },
+      {
+        "name": "hydrogen_spectral_cd",
+        "equation": "hydrogen_spectral_cd",
+        "label": "Hydrogen Spectral Cd",
+        "desc": "Hydrogen spectral series = transitions between CD strata (E-7-3)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "pauli_exclusion_fermat",
+        "equation": "pauli_exclusion_fermat",
+        "label": "Pauli Exclusion Fermat",
+        "desc": "Pauli exclusion = FLT + sedenion zero-divisors (E-7-4)  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

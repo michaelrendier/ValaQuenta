@@ -1,0 +1,191 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "h_rb_hat",
+  "display": "Σ_RB  RedBlue Summed Integral",
+  "version": "0.120",
+  "summary": "Σ_RB = Σ_p p^{-σ} [R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p].",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/h_rb_hat.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Σ_RB  RedBlue Summed Integral",
+      "group": "Tower · identity",
+      "order": 100,
+      "blurb": "Σ_RB = Σ_p p^{-σ} [R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p]."
+    },
+    "tools": [
+      {
+        "name": "sigma_rb_evaluate",
+        "equation": "sigma_rb_evaluate",
+        "label": "Sigma Rb Evaluate",
+        "desc": "Σ_RB — RedBlue Summed Integral at (σ, x, p)  [process= not set]",
+        "params": [
+          "sigma",
+          "x",
+          "p_momentum",
+          "n_primes"
+        ]
+      },
+      {
+        "name": "self_adjoint_demonstration",
+        "equation": "self_adjoint_demonstration",
+        "label": "Self Adjoint Demonstration",
+        "desc": "Self-adjointness: 1=1 is adjoint to 1!=1  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "sigma_phase_diagram",
+        "equation": "sigma_phase_diagram",
+        "label": "Sigma Phase Diagram",
+        "desc": "σ phase diagram — which σ → which theory  [process= not set]",
+        "params": [
+          "n_points"
+        ]
+      },
+      {
+        "name": "euler_product",
+        "equation": "euler_product",
+        "label": "Euler Product",
+        "desc": "Euler product ζ(s) = Π_p (1−p^{−s})^{−1}  [process= not set]",
+        "params": [
+          "sigma",
+          "t",
+          "n_primes"
+        ]
+      },
+      {
+        "name": "facet_gr",
+        "equation": "facet_gr",
+        "label": "Facet Gr",
+        "desc": "Facet: General Relativity (σ=2)  [process= not set]",
+        "params": [
+          "kappa"
+        ]
+      },
+      {
+        "name": "facet_yang_mills",
+        "equation": "facet_yang_mills",
+        "label": "Facet Yang Mills",
+        "desc": "Facet: Yang-Mills / Standard Model (σ=1)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "facet_qm",
+        "equation": "facet_qm",
+        "label": "Facet Qm",
+        "desc": "Facet: Quantum Mechanics (σ=½)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "facet_navier_stokes",
+        "equation": "facet_navier_stokes",
+        "label": "Facet Navier Stokes",
+        "desc": "Facet: Navier-Stokes (σ=1, Im=0) — lacks i  [process= not set]",
+        "params": [
+          "galaxy_size_ly"
+        ]
+      },
+      {
+        "name": "facet_riemann",
+        "equation": "facet_riemann",
+        "label": "Facet Riemann",
+        "desc": "Facet: Riemann Zeta / Berry-Keating (σ=½)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "facet_noether",
+        "equation": "facet_noether",
+        "label": "Facet Noether",
+        "desc": "Facet: Noether Current (boundary invariant)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "facet_fermat",
+        "equation": "facet_fermat",
+        "label": "Facet Fermat",
+        "desc": "Facet: Fermat constraint (forbidden zone, σ<½)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "dark_matter_halo",
+        "equation": "dark_matter_halo",
+        "label": "Dark Matter Halo",
+        "desc": "Dark matter halo — standing gravitational wave resonance  [process= not set]",
+        "params": [
+          "galaxy_size_ly"
+        ]
+      },
+      {
+        "name": "sigma_rb_baseline",
+        "equation": "sigma_rb_baseline",
+        "label": "Sigma Rb Baseline",
+        "desc": "SIGMA_RB — Σ_RB at σ=½ (forced by Noether balance)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "precession_stroke",
+        "equation": "precession_stroke",
+        "label": "Precession Stroke",
+        "desc": "Precession stroke — one L_(I|O) cycle = one hat revolution  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "oblique_crank",
+        "equation": "oblique_crank",
+        "label": "Oblique Crank",
+        "desc": "Oblique crank — arctan(d*) converts stroke to precession  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "trine_configuration",
+        "equation": "trine_configuration",
+        "label": "Trine Configuration",
+        "desc": "Trine — three quantum-force strokes per precession revolution  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "complex_plane",
+      "3d_cartesian"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

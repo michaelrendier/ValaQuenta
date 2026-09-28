@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "Three general-purpose tools -- unordered groupings, sequenced orderings, and set-membership memory -- consumed by add_scale_sign and the sedenion Emerger bracket alike.",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.bracketing_firing_order",
     "class": "BracketingFiringOrderModule"

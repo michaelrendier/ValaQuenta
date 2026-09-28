@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "Brackets a Cayley-Dickson 16-vector five ways, classifies each group as C/H/O/FRAGMENT by closure, and walks the brackets in a sigma_RB-phased firing order -- the ascent dual of Generational Lineage.",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.emerger",
     "class": "EmergerModule"

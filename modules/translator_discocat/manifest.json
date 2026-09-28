@@ -1,0 +1,111 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "translator_discocat",
+  "display": "The Translator v1 — DisCoCat (pregroup . tensor)",
+  "version": "0.111",
+  "summary": "Version 1 of two Translator constructions.",
+  "confidence_floor": "OPEN",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "OPEN",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/translator_discocat.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "The Translator v1 — DisCoCat (pregroup . tensor)",
+      "group": "UDEO · translation",
+      "order": 100,
+      "blurb": "Version 1 of two Translator constructions."
+    },
+    "tools": [
+      {
+        "name": "pregroup_reduction",
+        "equation": "pregroup_reduction",
+        "label": "Pregroup Reduction",
+        "desc": "Pregroup type reduction  x^(a) x^(a+1) -> 1  [process= not set]",
+        "params": [
+          "atoms"
+        ]
+      },
+      {
+        "name": "grammaticality",
+        "equation": "grammaticality",
+        "label": "Grammaticality",
+        "desc": "Transitive clause reduces to s  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "functor_contraction",
+        "equation": "functor_contraction",
+        "label": "Functor Contraction",
+        "desc": "Functor: reduction -> tensor contraction  [process= not set]",
+        "params": [
+          "subject",
+          "verb",
+          "object"
+        ]
+      },
+      {
+        "name": "sentence_meaning",
+        "equation": "sentence_meaning",
+        "label": "Sentence Meaning",
+        "desc": "Composed sentence vector in S (16-dim)  [process= not set]",
+        "params": [
+          "subject",
+          "verb",
+          "object"
+        ]
+      },
+      {
+        "name": "word_order_sensitivity",
+        "equation": "word_order_sensitivity",
+        "label": "Word Order Sensitivity",
+        "desc": "DOG BITES MAN vs MAN BITES DOG  [process= not set]",
+        "params": [
+          "subject",
+          "verb",
+          "object"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text",
+      "complex_plane"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

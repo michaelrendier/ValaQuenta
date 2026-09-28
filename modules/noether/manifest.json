@@ -8,7 +8,7 @@
   "version": "0.111",
   "summary": "Emmy Noether theorem applied to L_NN.",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.noether",
     "class": "NoetherModule"

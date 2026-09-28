@@ -8,7 +8,7 @@
   "version": "0.111",
   "summary": "The four-term SMNNIP Lagrangian density L_NN = (2/π)∮[L_kin + L_mat + (1/φ)L_bias + L_coup] r dr dθ.",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.lagrangian",
     "class": "LagrangianModule"

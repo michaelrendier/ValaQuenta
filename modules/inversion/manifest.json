@@ -8,7 +8,7 @@
   "version": "0.111",
   "summary": "The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2).",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.inversion",
     "class": "InversionModule"

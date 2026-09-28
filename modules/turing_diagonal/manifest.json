@@ -8,7 +8,7 @@
   "version": "0.100",
   "summary": "The diagonal flip i²=[[-1,0],[0,-1]] unifies every self-referential proof.",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.turing_diagonal",
     "class": "TuringDiagonalModule"

@@ -8,7 +8,7 @@
   "version": "0.3",
   "summary": "The machine that does the work, distinct from the medium it lifts: 0_RB is the water, the screw is the logarithm.",
   "confidence_floor": "THEORETICAL",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.archimedes_screw",
     "class": "ArchimedesScrewModule"

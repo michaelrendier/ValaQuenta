@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions.",
   "confidence_floor": "ESTABLISHED",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.scale",
     "class": "ScaleModule"

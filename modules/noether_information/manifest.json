@@ -8,7 +8,7 @@
   "version": "0.111",
   "summary": "Noether current for information-translation symmetry of L_NN.",
   "confidence_floor": "CONJECTURE",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.noether_information",
     "class": "NoetherInformationModule"

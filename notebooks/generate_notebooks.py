@@ -58,7 +58,7 @@ def load_maths(tier):
     paths = {7: '../../modules/tier7_cosmos/maths.py',
              8: '../../modules/tier8_sedenion/maths.py',
              9: '../../modules/tier9_chem/maths.py',
-             'udeo_crypto': '../../modules/udeo_crypto/UDEO_RSA_DEMO.py'}
+             'udeo_crypto': '../../modules/udeo_crypto/maths.py'}
     spec = importlib.util.spec_from_file_location(f't{tier}', paths[tier])
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     return m
@@ -902,7 +902,7 @@ ENGINES = [
 # ── UDEO_CRYPTO engines/plots ───────────────────────────────────────────────────
 # Five candidate RSA key-recovery mechanisms, each honestly scored against a
 # random-guess control -- plus the one proven (d = e mod 4) result. See
-# ValaQuenta/modules/udeo_crypto/UDEO_RSA_DEMO.py for the full engine.
+# ValaQuenta/modules/udeo_crypto/maths.py for the full engine.
 
 PLOTS_UDEO = {
 

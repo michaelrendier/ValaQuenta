@@ -1,0 +1,138 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "constants",
+  "display": "Tier 0 Constants — π φ e √ i derived from H_RB",
+  "version": "0.120",
+  "summary": "Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure.",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/constants.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/01_constants.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Tier 0 Constants — π φ e √ i derived from H_RB",
+      "group": "Reference",
+      "order": 100,
+      "blurb": "Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure."
+    },
+    "tools": [
+      {
+        "name": "derive_lambda",
+        "equation": "derive_lambda",
+        "label": "Derive Lambda",
+        "desc": "Λ — Einstein cosmological constant: J_neg at cosmological scale  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "all_constants",
+        "equation": "all_constants",
+        "label": "All Constants",
+        "desc": "All 9 constants — Tier 0: π φ e √ i Ω_ζΣ α_F d* Λ  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_i",
+        "equation": "derive_i",
+        "label": "Derive I",
+        "desc": "i — Cayley-Dickson closure: x²+1=0  [σ=i, democratic facet]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_sqrt",
+        "equation": "derive_sqrt",
+        "label": "Derive Sqrt",
+        "desc": "√ — σ=½ IS the square root: G_p(½)=1/√p  [critical line]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_e",
+        "equation": "derive_e",
+        "label": "Derive E",
+        "desc": "e — Berry-Keating canonical: ẋ=x → x(t)=e^t  [σ=e, thermodynamic]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_pi",
+        "equation": "derive_pi",
+        "label": "Derive Pi",
+        "desc": "π — U(1) normalisation (2/π)·π=2 AND Basel ζ(2)=π²/6  [σ=π, gauge]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_phi",
+        "equation": "derive_phi",
+        "label": "Derive Phi",
+        "desc": "φ — CD recursion eigenvalue f(x)=1+1/x  [σ=φ, structural]  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "euler_identity",
+        "equation": "euler_identity",
+        "label": "Euler Identity",
+        "desc": "e^{iπ}+1=0 — theorem of H_RB, not a definition  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_omega_zs",
+        "equation": "derive_omega_zs",
+        "label": "Derive Omega Zs",
+        "desc": "Ω_ζΣ = W(1) — thermal information ceiling T·e^T=1  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "derive_alpha_fermat",
+        "equation": "derive_alpha_fermat",
+        "label": "Derive Alpha Fermat",
+        "desc": "α_F = 1/137",
+        "params": []
+      },
+      {
+        "name": "derive_d_star",
+        "equation": "derive_d_star",
+        "label": "Derive D Star",
+        "desc": "d* — 4 values: BK spectral floor, gap=0",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

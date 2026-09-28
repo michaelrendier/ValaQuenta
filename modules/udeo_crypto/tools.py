@@ -1,10 +1,10 @@
 """
-ainulindale_engine.modules.udeo_crypto.tools
+ValaQuenta.modules.udeo_crypto.tools
 Version: 0.100
 """
 from typing import Dict, List, Any
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
-from .UDEO_RSA_DEMO import (
+from .maths import (
     rsa_control_baseline, mod4_identity_theorem,
     method1_zero_divisor_shadow, method2_j2_involution_t256,
     method3_spectral_relativity, method4_content_public_private_hash,
@@ -13,6 +13,18 @@ from .UDEO_RSA_DEMO import (
 
 
 class UDEOCryptoModule(EquationModule):
+    """
+    UDEO RSA Key-Recovery — Five Candidate Mechanisms, Honestly Scored
+
+    Tests five candidate RSA private-key-recovery mechanisms against known toy
+    keys, each scored against a random-guess control (not just reported as
+    working). Includes one proven, ESTABLISHED-tier result (d = e mod 4,
+    classical number theory) and four OPEN/CONJECTURE-tier results from the
+    sedenion/zero-divisor/Zero-Lattice framework, none of which recover d from
+    (n, e) alone.
+
+    Registry module for ``udeo_crypto``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.udeo_crypto.maths`.
+    """
     @property
     def name(self): return 'udeo_crypto'
     @property

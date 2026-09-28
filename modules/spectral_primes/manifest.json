@@ -8,7 +8,7 @@
   "version": "0.1",
   "summary": "Splits the theta(t)-rotation spiral into spin (non-resonant major loop) and wobble (prime-resonant minor loop); tests the tilt=wobble identity and the Real-Tilt/Axis crossing.",
   "confidence_floor": "OPEN",
-  "license": "LicenseRef-ValaQuenta-Private",
+  "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.spectral_primes",
     "class": "SpectralPrimesModule"

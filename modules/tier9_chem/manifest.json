@@ -1,0 +1,103 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "tier9_chem",
+  "display": "Tier 9 — D-CHEM: Cancer Drugs from Algebraic Signature (Erika Schafer)",
+  "version": "0.100",
+  "summary": "D-CHEM paper (Erika Schafer collaboration).",
+  "confidence_floor": "THEORETICAL",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "THEORETICAL",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": "ValaQuenta/wiki/tier9_chem.md"
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Tier 9 — D-CHEM: Cancer Drugs from Algebraic Signature (Erika Schafer)",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "D-CHEM paper (Erika Schafer collaboration)."
+    },
+    "tools": [
+      {
+        "name": "full_chem",
+        "equation": "full_chem",
+        "label": "Full Chem",
+        "desc": "Tier 9 — all 5 D-CHEM engines  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "periodic_table",
+        "equation": "periodic_table",
+        "label": "Periodic Table",
+        "desc": "Periodic table = H_RB spectrum at CD strata",
+        "params": []
+      },
+      {
+        "name": "cosic_eiip",
+        "equation": "cosic_eiip",
+        "label": "Cosic Eiip",
+        "desc": "Cosic RRM: protein function = EIIP Riemann zero address",
+        "params": []
+      },
+      {
+        "name": "cancer_zero_divisor",
+        "equation": "cancer_zero_divisor",
+        "label": "Cancer Zero Divisor",
+        "desc": "Cancer = zero-divisor collapse",
+        "params": []
+      },
+      {
+        "name": "drug_targeting",
+        "equation": "drug_targeting",
+        "label": "Drug Targeting",
+        "desc": "Drug = conformal inversion of cancer sedenion address",
+        "params": []
+      },
+      {
+        "name": "hydro_radiolysis_chromatography",
+        "equation": "hydro_radiolysis_chromatography",
+        "label": "Hydro Radiolysis Chromatography",
+        "desc": "Radiolysis probes J_R/J_B",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}

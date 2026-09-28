@@ -1,0 +1,91 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "valaquenta"
+dynamic = ["version"]
+description = "ValaQuenta: the derivation engine. Pure mathematics, runnable code, no physical substrate required."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-only" }
+authors = [{ name = "Cody Michael Allison (Michael Rendier)", email = "the.wandering.god@gmail.com" }]
+keywords = ["mathematics", "Riemann zeta", "Cayley-Dickson", "sedenions", "Noether", "derivation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = ["numpy", "sympy", "mpmath", "scipy", "jsonschema"]
+
+[project.optional-dependencies]
+plots = ["matplotlib"]
+gui = ["PyQt5", "vispy", "sounddevice"]
+docs = ["sphinx"]
+dev = ["pytest", "matplotlib", "nbformat", "nbconvert", "ipykernel"]
+
+[project.urls]
+Repository = "https://github.com/michaelrendier/ValaQuenta"
+
+# The repository root IS the `ValaQuenta` package (`from ValaQuenta.modules.noether import ...`).
+[tool.setuptools]
+package-dir = { "ValaQuenta" = "." }
+packages = [
+    "ValaQuenta",
+    "ValaQuenta.engine",
+    "ValaQuenta.engine.proof_locale",
+    "ValaQuenta.examples.hello_lens",
+    "ValaQuenta.modules",
+    "ValaQuenta.modules.add_scale_sign",
+    "ValaQuenta.modules.angular_rank",
+    "ValaQuenta.modules.archimedes_screw",
+    "ValaQuenta.modules.bao_mass_gap",
+    "ValaQuenta.modules.berry_keating",
+    "ValaQuenta.modules.box_kite",
+    "ValaQuenta.modules.bracketing_firing_order",
+    "ValaQuenta.modules.clay_millennium",
+    "ValaQuenta.modules.constants",
+    "ValaQuenta.modules.derivation_chain",
+    "ValaQuenta.modules.desitter_cavitation",
+    "ValaQuenta.modules.emerger",
+    "ValaQuenta.modules.h_rb_hat",
+    "ValaQuenta.modules.hypergon_constructibility",
+    "ValaQuenta.modules.hyperwebster",
+    "ValaQuenta.modules.inversion",
+    "ValaQuenta.modules.jwst",
+    "ValaQuenta.modules.l_io_photon_path",
+    "ValaQuenta.modules.lagrangian",
+    "ValaQuenta.modules.noether",
+    "ValaQuenta.modules.noether_information",
+    "ValaQuenta.modules.oblique_gear",
+    "ValaQuenta.modules.prime_gauge_field",
+    "ValaQuenta.modules.scale",
+    "ValaQuenta.modules.sigma_cavitation",
+    "ValaQuenta.modules.sigma_expansion",
+    "ValaQuenta.modules.singularity_null",
+    "ValaQuenta.modules.sonification",
+    "ValaQuenta.modules.spectral_primes",
+    "ValaQuenta.modules.spherical",
+    "ValaQuenta.modules.t32_nilpotency",
+    "ValaQuenta.modules.tier6_physics",
+    "ValaQuenta.modules.tier7_cosmos",
+    "ValaQuenta.modules.tier8_sedenion",
+    "ValaQuenta.modules.tier9_chem",
+    "ValaQuenta.modules.translator_common",
+    "ValaQuenta.modules.translator_discocat",
+    "ValaQuenta.modules.translator_vsa",
+    "ValaQuenta.modules.turing_diagonal",
+    "ValaQuenta.modules.udeo_crypto",
+    "ValaQuenta.modules.units",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "ValaQuenta.__version__" }
+
+[tool.setuptools.package-data]
+"ValaQuenta" = ["schema/*.json"]
+"ValaQuenta.engine" = ["proof_locale/*.json"]
+"ValaQuenta.modules" = ["*/manifest.json"]
+"ValaQuenta.examples.hello_lens" = ["manifest.json"]

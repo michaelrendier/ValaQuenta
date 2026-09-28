@@ -1,0 +1,117 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "udeo_crypto",
+  "display": "UDEO RSA Key-Recovery — Five Candidate Mechanisms, Honestly Scored",
+  "version": "0.100",
+  "summary": "Tests five candidate RSA private-key-recovery mechanisms against known toy keys, each scored against a random-guess control (not just report",
+  "confidence_floor": "OPEN",
+  "provenance": {
+    "origin": "",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "",
+    "status_label": "OPEN",
+    "predecessors": [],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "",
+      "valaquenta": ""
+    },
+    "notebook": "",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "UDEO RSA Key-Recovery — Five Candidate Mechanisms, Honestly Scored",
+      "group": "UDEO · translation",
+      "order": 100,
+      "blurb": "Tests five candidate RSA private-key-recovery mechanisms against known toy keys, each scored against a random-guess control (not just reported as working)."
+    },
+    "tools": [
+      {
+        "name": "compare_all_methods",
+        "equation": "compare_all_methods",
+        "label": "Compare All Methods",
+        "desc": "Side-by-side comparison of all five methods vs random-guess controls  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "mod4_identity_theorem",
+        "equation": "mod4_identity_theorem",
+        "label": "Mod4 Identity Theorem",
+        "desc": "d = e (mod 4) always — proven, classical number theory  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "rsa_control_baseline",
+        "equation": "rsa_control_baseline",
+        "label": "Rsa Control Baseline",
+        "desc": "Reference only: sedenion degeneracy given the FULL known key  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "method1_zero_divisor_shadow",
+        "equation": "method1_zero_divisor_shadow",
+        "label": "Method1 Zero Divisor Shadow",
+        "desc": "Method 1: does d_s align with e_s's near-annihilator direction in S^16?  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "method2_j2_involution_t256",
+        "equation": "method2_j2_involution_t256",
+        "label": "Method2 J2 Involution T256",
+        "desc": "Method 2: J2 asymmetry operator L_{e_s}-R_{e_s} eigenspectrum in T_256  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "method3_spectral_relativity",
+        "equation": "method3_spectral_relativity",
+        "label": "Method3 Spectral Relativity",
+        "desc": "Method 3: sigma-face metric geodesic distance from e to d  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "method4_content_public_private_hash",
+        "equation": "method4_content_public_private_hash",
+        "label": "Method4 Content Public Private Hash",
+        "desc": "Method 4: Content+Public-Hash recovers -Private_s exactly (Hash exposure required)  [process= not set]",
+        "params": []
+      },
+      {
+        "name": "method5_zero_lattice_paths",
+        "equation": "method5_zero_lattice_paths",
+        "label": "Method5 Zero Lattice Paths",
+        "desc": "Method 5: trace Content/Public/Private/Hash through the 9-level CD tower  [process= not set]",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "_scaffolded": true
+}
