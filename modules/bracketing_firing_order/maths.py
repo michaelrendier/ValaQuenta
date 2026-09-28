@@ -4,16 +4,6 @@ ValaQuenta.modules.bracketing_firing_order.maths
 THE BRACKETING ENGINE, THE FIRING ORDER ENGINE, AND SET MEMBERSHIP --
 three general-purpose tools, not one thing tied to `add_scale_sign`.
 
-Born 2026-09-27, from a live correction: the `ASS`-engine bracket
-(`[SCALE,ADD]=ADD`) and the Emerger's "bracket a 16-vector five ways"
-looked like two unrelated uses of the word "bracket" -- they are not.
-Cody, directly: "bracketing the add:scale:sign in different ordered
-groupings, bracketing the sedenion into different ordered groupings...and
-bracketing set membership...are all 'bracketing engine functions'...the
-arena." This module is that arena, built once, domain-independent --
-`add_scale_sign` (3 generators) and the sedenion bracket (16 components)
-are both CONSUMERS of it, not separate implementations.
-
 THREE TOOLS, KEPT SEPARATE ON PURPOSE:
 
 1. BRACKETING -- "how many unordered ways can these n things be grouped?"

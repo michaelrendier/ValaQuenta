@@ -111,6 +111,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['term', 'value'],
                 compute=lambda term, value: screw_coordinates(term, value),
                 display_options=['text'],
+                process='Search-term interface: four coordinates, one axis',
             ),
             Equation(
                 name='screw_pitch',
@@ -122,6 +123,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['p'],
                 compute=lambda p: screw_pitch(p),
                 display_options=['text'],
+                process='One turn of the screw = one prime = lift of ln p',
             ),
             Equation(
                 name='chebyshev_psi_explicit',
@@ -136,6 +138,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: chebyshev_psi_explicit(x, zeros),
                 display_options=['text'],
+                process='explicit formula on the screw axis',
             ),
             Equation(
                 name='zero_sum',
@@ -147,6 +150,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: zero_sum(x, zeros),
                 display_options=['text'],
+                process='THE PRIME-SIDE FERMAT POTENTIAL — the bend',
             ),
             Equation(
                 name='clean_path_L',
@@ -158,6 +162,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x'],
                 compute=lambda x: clean_path_L(x),
                 display_options=['text'],
+                process='L — the clean path: "the path of least primes", computed',
             ),
             Equation(
                 name='l_io_decomposition',
@@ -169,6 +174,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: l_io_decomposition(x, zeros),
                 display_options=['text'],
+                process='The three L_(I|O) slots by role: L, psi_bend, L_IO',
             ),
             Equation(
                 name='chebyshev_psi_exact',
@@ -180,6 +186,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x'],
                 compute=lambda x: chebyshev_psi_exact(x),
                 display_options=['text'],
+                process='psi(x) by sieve -- the ground truth the tones rebuild',
             ),
             Equation(
                 name='shake_order',
@@ -191,6 +198,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: shake_order(x, zeros),
                 display_options=['text'],
+                process='The shake order: every leaf-drop, in sequence, with its prime',
             ),
             Equation(
                 name='fall_height',
@@ -202,6 +210,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['n'],
                 compute=lambda n: fall_height(n),
                 display_options=['text'],
+                process='u_fall = ln(gpf N)',
             ),
             Equation(
                 name='discovery_height',
@@ -213,6 +222,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['n'],
                 compute=lambda n: discovery_height(n),
                 display_options=['text'],
+                process='Where the first strike lands: ln(lpf N)',
             ),
             Equation(
                 name='smoothness_u',
@@ -224,6 +234,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['n'],
                 compute=lambda n: smoothness_u(n),
                 display_options=['text'],
+                process='The Dickman coordinate: u = ln N / ln(gpf N)',
             ),
             Equation(
                 name='dickman_rho',
@@ -235,6 +246,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['u'],
                 compute=lambda u: dickman_rho(u),
                 display_options=['text'],
+                process='Dickman rho(u)',
             ),
             Equation(
                 name='harvest',
@@ -246,6 +258,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['X', 'p'],
                 compute=lambda X, p: harvest(X, p),
                 display_options=['text'],
+                process='leaves falling at sieve step p',
             ),
             Equation(
                 name='semiprime_harvest',
@@ -257,6 +270,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['X', 'p'],
                 compute=lambda X, p: semiprime_harvest(X, p),
                 display_options=['text'],
+                process='Two-parent leaves falling at step p',
             ),
             Equation(
                 name='fall_split',
@@ -268,6 +282,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['N'],
                 compute=lambda N: fall_split(N),
                 display_options=['text'],
+                process='The birth record: both falls, delta, and the collapse',
             ),
             Equation(
                 name='mertens',
@@ -279,6 +294,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x'],
                 compute=lambda x: mertens(x),
                 display_options=['text'],
+                process='M(x) = Σ μ(n)',
             ),
             Equation(
                 name='mobius',
@@ -290,6 +306,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['n'],
                 compute=lambda n: mobius(n),
                 display_options=['text'],
+                process='μ, the Dirichlet inverse of 1',
             ),
             Equation(
                 name='mertens_envelope',
@@ -301,6 +318,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'eps'],
                 compute=lambda x, eps=0.0: mertens_envelope(x, eps),
                 display_options=['text'],
+                process='RH on the exclusion side: M(x) = O(x^(1/2+eps))',
             ),
             Equation(
                 name='sieve_extinction',
@@ -312,6 +330,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['N'],
                 compute=lambda N: sieve_extinction(N),
                 display_options=['text'],
+                process='grown / extinct / identified',
             ),
             Equation(
                 name='domain_ladder',
@@ -324,6 +343,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['modulus_bits', 'gnfs_bits'],
                 compute=lambda modulus_bits=2048, gnfs_bits=112.0: domain_ladder(modulus_bits, gnfs_bits),
                 display_options=['text'],
+                process='what the domain actually is',
             ),
             Equation(
                 name='zero_height_lambert',
@@ -335,6 +355,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['n'],
                 compute=lambda n: zero_height_lambert(n),
                 display_options=['text'],
+                process='Lambert inverse of the zero count: gamma_n = 2*pi*n/W(n/e)',
             ),
             Equation(
                 name='zero_count_smooth',
@@ -346,6 +367,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['T'],
                 compute=lambda T: zero_count_smooth(T),
                 display_options=['text'],
+                process='Riemann-von Mangoldt zero count N(T)',
             ),
             Equation(
                 name='amplitude_envelope',
@@ -357,6 +379,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'sigma'],
                 compute=lambda x, sigma=0.5: amplitude_envelope(x, sigma),
                 display_options=['text'],
+                process='RH in the prime domain: one shared envelope 2*sqrt(x)',
             ),
             Equation(
                 name='envelope_ratio',
@@ -368,6 +391,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'sigma_off'],
                 compute=lambda x, sigma_off: envelope_ratio(x, sigma_off),
                 display_options=['text'],
+                process='How loudly an off-line zero would drown the others',
             ),
             Equation(
                 name='interference_profile',
@@ -379,6 +403,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x', 'zeros'],
                 compute=lambda x, zeros=None: interference_profile(x, zeros),
                 display_options=['text'],
+                process='Per-zero tones at x -- primes are the antinodes',
             ),
             Equation(
                 name='prime_count_log10',
@@ -390,6 +415,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['digits'],
                 compute=lambda digits: prime_count_log10(digits),
                 display_options=['text'],
+                process='log10 pi(10^d) -- the finiteness readout at RSA scale',
             ),
             Equation(
                 name='splitting_vector',
@@ -401,6 +427,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['N', 'limit'],
                 compute=lambda N, limit=100: splitting_vector(N, limit),
                 display_options=['text'],
+                process='chi_N readout: the cheapest N-specific shadow there is',
             ),
             Equation(
                 name='ramified_primes',
@@ -412,6 +439,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['N', 'limit'],
                 compute=lambda N, limit=10 ** 6: ramified_primes(N, limit),
                 display_options=['text'],
+                process='Ramification = detachment: Euler factor degenerates at the factors',
             ),
             Equation(
                 name='lambert_w',
@@ -423,6 +451,7 @@ class ArchimedesScrewModule(EquationModule):
                 params=['x'],
                 compute=lambda x: lambert_w(x),
                 display_options=['text'],
+                process='The screw gear ratio: W(x)e^{W(x)} = x, W(1) = OMEGA_ZS',
             ),
         ]
 

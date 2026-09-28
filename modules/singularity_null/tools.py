@@ -52,6 +52,7 @@ class SingularityNullModule(EquationModule):
                 'Complete Singularity-NULL module.',
                 'THEORETICAL', True, [],
                 lambda: full_singularity_null(), ['text'],
+                process='All 4 Singularity-NULL engines',
             ),
             Equation(
                 'circle_null_modes',
@@ -60,6 +61,7 @@ class SingularityNullModule(EquationModule):
                 'The Ptolemy inversion is the unique conformal map exchanging 0 and ∞. One vocabulary word.',
                 'ESTABLISHED', True, [],
                 lambda: circle_null_modes(), ['text'],
+                process='How many ways can circle say NULL? Exactly 1: Ptolemy inversion.',
             ),
             Equation(
                 'tower_collapse_snakes',
@@ -68,6 +70,7 @@ class SingularityNullModule(EquationModule):
                 'After n*: all snakes. Tower collapses to V→0 ≡ singularity.',
                 'ESTABLISHED', True, ['n_max'],
                 lambda n_max=30: tower_collapse_snakes(n_max), ['text'],
+                process='Snakes & Ladders = Cayley-Dickson tower. V(n) = board height. Peak n*≈5.257.',
             ),
             Equation(
                 'berry_keating_singularity',
@@ -76,6 +79,7 @@ class SingularityNullModule(EquationModule):
                 'The singularity has H=0, S=0, one eigenvalue=0. Only direction: AWAY.',
                 'ESTABLISHED', True, ['max_t'],
                 lambda max_t=50.0: berry_keating_singularity(max_t), ['text'],
+                process='H=xp: singularity is repulsive fixed point. σ=½ is equatorial geodesic.',
             ),
             Equation(
                 'flt_prime_extinction_sieve',
@@ -84,6 +88,7 @@ class SingularityNullModule(EquationModule):
                 'Primes on σ=½: their negative space (what they cannot be) defines them first.',
                 'ESTABLISHED', True, ['N'],
                 lambda N=100: flt_prime_extinction_sieve(N), ['text'],
+                process='FLT defines primes by extinction. Negative space = primary identity.',
             ),
         ]
 

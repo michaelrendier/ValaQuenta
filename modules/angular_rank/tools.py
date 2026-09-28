@@ -102,6 +102,7 @@ class AngularRankModule(EquationModule):
                 params=[],
                 compute=lambda: verify_null_space(),
                 display_options=['text'],
+                process='nullity 4, rank 12, {sqrt2 x4, 1 x8, 0 x4}',
             ),
             Equation(
                 name='null_occupancy_baseline',
@@ -113,6 +114,7 @@ class AngularRankModule(EquationModule):
                 params=[],
                 compute=lambda: null_occupancy_baseline(_demo_zd()),
                 display_options=['text'],
+                process='isotropic energy in ker(L_a) is exactly 4/16',
             ),
             Equation(
                 name='angular_residual',
@@ -124,6 +126,7 @@ class AngularRankModule(EquationModule):
                 params=['datum'],
                 compute=lambda datum: angular_residual(datum),
                 display_options=['text'],
+                process='sin of the angle to the common direction',
             ),
             Equation(
                 name='calibration',
@@ -135,6 +138,7 @@ class AngularRankModule(EquationModule):
                 params=[],
                 compute=lambda: CALIBRATION,
                 display_options=['text'],
+                process='0.0000 / 0.0002 / 0.4020 (Phase 27.2)',
             ),
             Equation(
                 name='null_occupancy',
@@ -146,6 +150,7 @@ class AngularRankModule(EquationModule):
                 params=['datum'],
                 compute=lambda datum: null_occupancy(datum, _demo_zd()),
                 display_options=['text'],
+                process='energy landing in ker(L_a) -- what the internal channel cannot reach',
             ),
             Equation(
                 name='external_component',
@@ -157,6 +162,7 @@ class AngularRankModule(EquationModule):
                 params=['signal', 'internal'],
                 compute=lambda signal, internal: external_component(signal, internal),
                 display_options=['text'],
+                process='Energy of a signal outside a FROZEN internal span',
             ),
             Equation(
                 name='bearing',
@@ -168,6 +174,7 @@ class AngularRankModule(EquationModule):
                 params=['before', 'after'],
                 compute=lambda before, after: bearing(before, after),
                 display_options=['text'],
+                process='how far the span moved between two datums',
             ),
             Equation(
                 name='numerical_rank',
@@ -179,6 +186,7 @@ class AngularRankModule(EquationModule):
                 params=['datum'],
                 compute=lambda datum: numerical_rank(datum),
                 display_options=['text'],
+                process='Rank of the accumulated trace, with its tolerance',
             ),
             Equation(
                 name='occupancy',
@@ -190,6 +198,7 @@ class AngularRankModule(EquationModule):
                 params=['datum'],
                 compute=lambda datum: occupancy(datum),
                 display_options=['text'],
+                process='Per-dimension energy fraction and participation ratio',
             ),
             Equation(
                 name='embed_log_bands',
@@ -201,6 +210,7 @@ class AngularRankModule(EquationModule):
                 params=['power_spectrum'],
                 compute=lambda power_spectrum: embed_log_bands(power_spectrum),
                 display_options=['text'],
+                process='16 log-spaced band energies',
             ),
             Equation(
                 name='angular_report',
@@ -212,6 +222,7 @@ class AngularRankModule(EquationModule):
                 params=['datum'],
                 compute=lambda datum: angular_report(datum, a=_demo_zd()),
                 display_options=['text'],
+                process='THE STRESS TEST, one card -- every entry stamped with its datum',
             ),
             Equation(
                 name='null_space',
@@ -223,6 +234,7 @@ class AngularRankModule(EquationModule):
                 params=['a'],
                 compute=lambda a: null_space(a),
                 display_options=['text'],
+                process='ker(L_a) for an arbitrary sedenion a',
             ),
         ]
 

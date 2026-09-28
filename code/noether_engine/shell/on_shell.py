@@ -33,6 +33,10 @@ def is_on_shell_zero(
       'after_eom'    : expression after attempting E-L substitution
       'on_shell_zero': bool
       'method'       : which technique produced the verdict
+
+    :param expr: the expression to test
+    :param L: the Lagrangian whose equations of motion apply
+    :returns: dict with 'original', 'simplified', 'after_eom', 'on_shell_zero' and 'method'
     """
     original = expr
     simp = sp.simplify(expr)

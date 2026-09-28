@@ -3,12 +3,6 @@ ValaQuenta.modules.box_kite.maths
 =================================
 THE BOX-KITE DEBUGGER -- making the zero-divisor geometry visible.
 
-"how do we 'debug' the geometries / how do we watch the geometries
-
-::
-
- interact"   -- Cody Michael Allison, 2026-08-05
-
 WHAT THE OBJECT IS, AND WHERE IT IS NOT
 ---------------------------------------
 Moreno (1997) proved the sedenions' norm-one zero divisors are

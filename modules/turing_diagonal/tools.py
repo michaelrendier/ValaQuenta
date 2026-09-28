@@ -51,6 +51,7 @@ class TuringDiagonalModule(EquationModule):
                 'Complete Turing Diagonal module: diagonal flip = i² unifies Cantor/Gödel/Turing/Enigma/UDOE.',
                 'ESTABLISHED', True, [],
                 lambda: full_turing_diagonal(), ['text'],
+                process='All 4 Turing Diagonal engines',
             ),
             Equation(
                 'prediction_diagonal_test',
@@ -60,6 +61,7 @@ class TuringDiagonalModule(EquationModule):
                 'ESTABLISHED', True, ['prediction'],
                 lambda prediction='this statement is false': prediction_diagonal_test(prediction),
                 ['text'],
+                process='Apply Turing diagonal to any prediction → decidable/undecidable',
             ),
             Equation(
                 'enigma_derangement',
@@ -68,6 +70,7 @@ class TuringDiagonalModule(EquationModule):
                 'The derangement is the algebraic form of the diagonal argument.',
                 'ESTABLISHED', True, ['n'],
                 lambda n=26: enigma_derangement(n), ['text'],
+                process='D_n/n! → 1/e. Enigma reflector = Cantor diagonal = Turing D(D).',
             ),
             Equation(
                 'hypercomplex_identity_diagonal',
@@ -76,6 +79,7 @@ class TuringDiagonalModule(EquationModule):
                 '15 sedenion derangements. e₀=1 is the ONLY fixed point (the singularity).',
                 'ESTABLISHED', True, [],
                 lambda: hypercomplex_identity_diagonal(), ['text'],
+                process='i²=[[-1,0],[0,-1]]. Cantor=Gödel=Turing=Enigma=sedenion.',
             ),
             Equation(
                 'turing_halting_diagonal',
@@ -84,6 +88,7 @@ class TuringDiagonalModule(EquationModule):
                 'The diagonal program lives at the critical line: equidistant between YES and NO.',
                 'ESTABLISHED', True, ['n_programs'],
                 lambda n_programs=50: turing_halting_diagonal(n_programs), ['text'],
+                process='the program that escapes HALT. Oscillates at σ=½.',
             ),
         ]
 

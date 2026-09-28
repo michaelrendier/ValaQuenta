@@ -81,6 +81,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['n'],
                 compute=lambda n: bell_number(n),
                 display_options=['text'],
+                process='exact count of unordered groupings — the Bell number',
             ),
             Equation(
                 name='bracketing_report',
@@ -92,6 +93,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['items'],
                 compute=lambda items: bracketing_report(items),
                 display_options=['text'],
+                process='exact count always, exhaustive list only when feasible',
             ),
             Equation(
                 name='firing_order_count',
@@ -103,6 +105,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['n'],
                 compute=lambda n: firing_order_count(n),
                 display_options=['text'],
+                process='exact count of sequencings — n!',
             ),
             Equation(
                 name='apply_firing_order',
@@ -114,6 +117,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['written', 'firing_order'],
                 compute=lambda written, firing_order: apply_firing_order(written, firing_order),
                 display_options=['text'],
+                process='resequence a written order by a chosen permutation',
             ),
             Equation(
                 name='collisions',
@@ -125,6 +129,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['steps', 'x0'],
                 compute=lambda steps, x0=1.0: collisions(steps, x0),
                 display_options=['text'],
+                process='has a firing recurred? (Recaman, generalized)',
             ),
             Equation(
                 name='would_collide',
@@ -136,6 +141,7 @@ class BracketingFiringOrderModule(EquationModule):
                 params=['steps_so_far', 'candidate_next', 'x0'],
                 compute=lambda steps_so_far, candidate_next, x0=1.0: would_collide(steps_so_far, candidate_next, x0),
                 display_options=['text'],
+                process='the operator-level flip test, before committing',
             ),
             Equation(
                 name='jurisdiction_violation',
@@ -148,6 +154,7 @@ class BracketingFiringOrderModule(EquationModule):
                 compute=lambda object_name, requested_operation, jurisdiction_map:
                     jurisdiction_violation(object_name, requested_operation, jurisdiction_map),
                 display_options=['text'],
+                process="did a bracketing use another jurisdiction's language illegally?",
             ),
         ]
 

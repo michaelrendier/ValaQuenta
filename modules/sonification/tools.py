@@ -83,6 +83,7 @@ class SonificationModule(EquationModule):
                     'label'   : p,
                 },
                 display_options=['sonification', 'text'],
+                process=f'Converts the {particle} frequency to an angular frequency, omega = 2*pi*f.',
             ))
 
         # Wavetables
@@ -97,6 +98,7 @@ class SonificationModule(EquationModule):
                 params=[],
                 compute=lambda n=wt_name: wavetable(n),
                 display_options=['sonification', 'text'],
+                process=f'Generates the 512-point {wt_name} wavetable.',
             ))
 
         # Quasi-particle rests
@@ -110,6 +112,7 @@ class SonificationModule(EquationModule):
             params=[],
             compute=lambda: {k: v for k, v in QUASIPARTICLE_RESTS.items()},
             display_options=['text'],
+            process='Quasi-particle rest durations (Gravinon = 144/89 beats)',
         ))
 
         return eqs

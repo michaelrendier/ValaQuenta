@@ -75,6 +75,7 @@ class SigmaRBModule(EquationModule):
                 compute=lambda sigma=0.5, x=1.0, p_momentum=1.0, n_primes=20:
                     sigma_rb_evaluate(sigma, x, p_momentum, n_primes),
                 display_options=['complex_plane', '3d_cartesian'],
+                process='Σ_RB — RedBlue Summed Integral at (σ, x, p)',
             ),
             Equation(
                 name='self_adjoint_demonstration',
@@ -86,6 +87,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=self_adjoint_demonstration,
                 display_options=[],
+                process='Demonstration that self-adjointness means truth-preservation, not form-preservation.',
             ),
             Equation(
                 name='sigma_phase_diagram',
@@ -97,6 +99,7 @@ class SigmaRBModule(EquationModule):
                 params=['n_points'],
                 compute=lambda n_points=20: sigma_phase_diagram(n_points),
                 display_options=['3d_cartesian'],
+                process='σ phase diagram — which σ → which theory',
             ),
             Equation(
                 name='euler_product',
@@ -110,6 +113,7 @@ class SigmaRBModule(EquationModule):
                     {'result': euler_product(sigma, t, n_primes),
                      'magnitude': abs(euler_product(sigma, t, n_primes))},
                 display_options=['complex_plane'],
+                process='Euler product ζ(s) = Π_p (1−p^{−s})^{−1}',
             ),
             Equation(
                 name='facet_gr',
@@ -121,6 +125,7 @@ class SigmaRBModule(EquationModule):
                 params=['kappa'],
                 compute=lambda kappa=1.0: facet_general_relativity(kappa),
                 display_options=['3d_cartesian'],
+                process='Facet: General Relativity (σ=2)',
             ),
             Equation(
                 name='facet_yang_mills',
@@ -132,6 +137,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=facet_yang_mills,
                 display_options=['3d_cartesian'],
+                process='Facet: Σ_RB at σ=1 projected onto a gauge bundle.',
             ),
             Equation(
                 name='facet_qm',
@@ -143,6 +149,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=facet_quantum_mechanics,
                 display_options=['complex_plane'],
+                process='Facet: Σ_RB at σ=½ projected onto a Hilbert space.',
             ),
             Equation(
                 name='facet_navier_stokes',
@@ -154,6 +161,7 @@ class SigmaRBModule(EquationModule):
                 params=['galaxy_size_ly'],
                 compute=lambda galaxy_size_ly=50000.0: facet_navier_stokes(),
                 display_options=['3d_cartesian'],
+                process='Facet: Navier-Stokes (σ=1, Im=0) — lacks i',
             ),
             Equation(
                 name='facet_riemann',
@@ -165,6 +173,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=facet_riemann_zeta,
                 display_options=['complex_plane'],
+                process='Facet: Σ_RB at σ=½ — the Riemann Zeta connection.',
             ),
             Equation(
                 name='facet_noether',
@@ -176,6 +185,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=facet_noether_current,
                 display_options=[],
+                process='Facet: Σ_RB boundary invariant — the Noether current.',
             ),
             Equation(
                 name='facet_fermat',
@@ -187,6 +197,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=facet_fermat,
                 display_options=[],
+                process="Facet: Σ_RB in the forbidden zone (σ < ½) — Fermat's Last Theorem.",
             ),
             Equation(
                 name='dark_matter_halo',
@@ -198,6 +209,7 @@ class SigmaRBModule(EquationModule):
                 params=['galaxy_size_ly'],
                 compute=lambda galaxy_size_ly=50000.0: dark_matter_halo(galaxy_size_ly),
                 display_options=['3d_cartesian'],
+                process='Dark matter halo — standing gravitational wave resonance',
             ),
             Equation(
                 name='sigma_rb_baseline',
@@ -209,6 +221,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=sigma_rb_baseline,
                 display_options=[],
+                process='SIGMA_RB — Σ_RB evaluated at σ=½.',
             ),
             Equation(
                 name='precession_stroke',
@@ -220,6 +233,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=precession_stroke,
                 display_options=[],
+                process='The precession IS a stroke.',
             ),
             Equation(
                 name='oblique_crank',
@@ -231,6 +245,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=oblique_crank,
                 display_options=[],
+                process='The oblique crank — how the linear stroke converts to rotational precession.',
             ),
             Equation(
                 name='trine_configuration',
@@ -242,6 +257,7 @@ class SigmaRBModule(EquationModule):
                 params=[],
                 compute=trine_configuration,
                 display_options=[],
+                process='Trine — three power strokes per precession revolution.',
             ),
         ]
 

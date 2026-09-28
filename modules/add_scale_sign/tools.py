@@ -84,6 +84,7 @@ class AddScaleSignModule(EquationModule):
                 radian_form="forward = @, backward = ~; the record reverses with it",
                 confidence="ESTABLISHED", code_verified=True, params=[],
                 compute=_round_trip, display_options=["text"],
+                process='(~T ∘ T)(x) = x, exactly',
             ),
             Equation(
                 name="equation_parts",
@@ -93,6 +94,7 @@ class AddScaleSignModule(EquationModule):
                 confidence="ESTABLISHED", code_verified=True, params=["add", "scale", "sign"],
                 compute=lambda add, scale, sign: ASS(add, scale, sign).equation_parts(),
                 display_options=["text"],
+                process="EACH GENERATOR'S EQUATION PART (ADD→a, SCALE→ln s, SIGN→g)",
             ),
             Equation(
                 name="fold",
@@ -103,6 +105,7 @@ class AddScaleSignModule(EquationModule):
                 compute=lambda add, scale, sign: {"u": ASS(add, scale, sign).u(),
                                                   "Γ": ASS(add, scale, sign).gamma()},
                 display_options=["text"],
+                process='Γ = tanh(u/2), u = g·ln s + a',
             ),
             Equation(
                 name="orthogonal_charts",
@@ -111,6 +114,7 @@ class AddScaleSignModule(EquationModule):
                 radian_form="multiplicative ring ⟂ additive ring; SIGN picks the sheet",
                 confidence="ESTABLISHED", code_verified=True, params=["add", "scale", "sign"],
                 compute=_chart, display_options=["text"],
+                process='Γ_SCALE ⟂ Γ_ADD, parity g',
             ),
             Equation(
                 name="camshaft_defect",
@@ -119,6 +123,7 @@ class AddScaleSignModule(EquationModule):
                 radian_form="the three-phase camshaft SIGN→SCALE→ADD; the defect is this datatype's ψ(x)−x",
                 confidence="ESTABLISHED", code_verified=True, params=["add", "scale", "sign"],
                 compute=_camshaft_defect, display_options=["text"],
+                process='u_total − Σ u_parts (non-zero ⇔ [SCALE,ADD]=ADD)',
             ),
             Equation(
                 name="two_orderings",
@@ -127,6 +132,7 @@ class AddScaleSignModule(EquationModule):
                 radian_form="two orderings of one recorded word; their departure is the datatype's ψ(x)−x",
                 confidence="ESTABLISHED", code_verified=True, params=[],
                 compute=_two_orderings, display_options=["text"],
+                process='chrono ordering vs zeta ordering',
             ),
         ]
 

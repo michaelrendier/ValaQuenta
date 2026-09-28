@@ -67,6 +67,7 @@ class BerryKeatingModule(EquationModule):
                 params=[],
                 compute=d_star_gap_report,
                 display_options=['text'],
+                process='Complete d* gap workbench.',
             ),
             Equation(
                 name='gap_candidates',
@@ -78,6 +79,7 @@ class BerryKeatingModule(EquationModule):
                 params=[],
                 compute=gap_candidates,
                 display_options=['text', '3d_cartesian'],
+                process='Generate candidate expressions for d* from elementary constants.',
             ),
             Equation(
                 name='h_nn_eigenvalues',
@@ -89,6 +91,7 @@ class BerryKeatingModule(EquationModule):
                 params=['hbar_nn', 'n_max'],
                 compute=lambda hbar_nn=0.1, n_max=10: h_nn_eigenvalues(hbar_nn, int(n_max)),
                 display_options=['text', 'complex_plane'],
+                process='H_NN eigenvalues — harmonic oscillator approximation',
             ),
             Equation(
                 name='xp_spectrum',
@@ -100,6 +103,7 @@ class BerryKeatingModule(EquationModule):
                 params=['hbar_nn'],
                 compute=lambda hbar_nn=0.1: xp_spectrum_discrete(hbar_nn),
                 display_options=['text', 'complex_plane', '3d_cartesian'],
+                process='Classical xp torus x·p = d*·ħ_NN',
             ),
             Equation(
                 name='T_map',
@@ -111,6 +115,7 @@ class BerryKeatingModule(EquationModule):
                 params=['x'],
                 compute=lambda x=1.0: T_map_scaffold(x),
                 display_options=['text'],
+                process='T coordinate map at single x [Open Problem 3]',
             ),
             Equation(
                 name='T_map_trajectory',
@@ -122,6 +127,7 @@ class BerryKeatingModule(EquationModule):
                 params=['x_min', 'x_max'],
                 compute=lambda x_min=0.1, x_max=10.0: T_map_trajectory(x_min, x_max),
                 display_options=['text', 'complex_plane', '3d_cartesian'],
+                process='T map curve x ∈ [x_min, x_max]',
             ),
         ]
 

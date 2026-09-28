@@ -71,6 +71,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='All tiers in sequence. The complete derivation.',
                 confidence='THEORETICAL',
                 code_verified=True, params=[], compute=full_derivation_chain, display_options=[],
+                process='Run all tiers in order.',
             ),
             Equation(
                 name='riemann_equals_fermat',
@@ -79,6 +80,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Wiles bridge: same prime distribution from opposite sides.',
                 confidence='ESTABLISHED (Wiles) + THEORETICAL (operator identity)',
                 code_verified=True, params=[], compute=riemann_equals_fermat, display_options=[],
+                process='TIER 1 — Riemann = Fermat.',
             ),
             Equation(
                 name='yang_mills_dropout',
@@ -87,6 +89,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Mass gap drops out constructively from two root constants.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=yang_mills_dropout, display_options=[],
+                process='TIER 2 — Yang-Mills mass gap drops out.',
             ),
             Equation(
                 name='berry_keating_dropout',
@@ -95,6 +98,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Scale invariance + self-adjointness + BK domain → unique H=xp.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=berry_keating_dropout, display_options=[],
+                process='TIER 2 — Berry-Keating Hamiltonian drops out.',
             ),
             Equation(
                 name='noether_dropout',
@@ -103,6 +107,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Conservation falls from self-adjointness. J_G not computed — forced.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=noether_dropout, display_options=[],
+                process='TIER 2 — Noether current drops out.',
             ),
             Equation(
                 name='navier_stokes_dropout',
@@ -111,6 +116,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Yang-Mills at σ=1, real projection. Singularity = complex node in ℝ.',
                 confidence='THEORETICAL',
                 code_verified=True, params=[], compute=navier_stokes_dropout, display_options=[],
+                process='TIER 2 — Navier-Stokes drops out as H_RB with Im=0 forced.',
             ),
             Equation(
                 name='langlands_dropout',
@@ -119,6 +125,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Gauge current at σ=1 decomposed over 16 sedenion components = Langlands.',
                 confidence='THEORETICAL',
                 code_verified=True, params=[], compute=langlands_dropout, display_options=[],
+                process='TIER 2 — Langlands Programme drops out.',
             ),
             Equation(
                 name='bsd_dropout',
@@ -127,6 +134,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='L(E,s) = Blue Euler product. Rank = spectral count.',
                 confidence='ESTABLISHED (rank 0,1); THEORETICAL (rank≥2)',
                 code_verified=True, params=[], compute=bsd_dropout, display_options=[],
+                process='TIER 2 — Birch and Swinnerton-Dyer drops out.',
             ),
             Equation(
                 name='h_rb_emergence',
@@ -135,6 +143,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Not postulated. Falls out after BK+Fermat+2ceilings simplify everything else.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=h_rb_emergence, display_options=[],
+                process='TIER 3 — The RedBlue Hamiltonian is what remains.',
             ),
             Equation(
                 name='geometry_definition',
@@ -143,6 +152,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Radial complex spherical polar coords. ½ is equatorial great circle (Chladni).',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=geometry_definition, display_options=[],
+                process='TIER 4 — The correct coordinate system reveals σ=½ as the equatorial circle.',
             ),
             Equation(
                 name='geometric_observer',
@@ -151,6 +161,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='"There is another Hamiltonian sitting here!" H_obs governs observation itself.',
                 confidence='THEORETICAL',
                 code_verified=True, params=[], compute=geometric_observer, display_options=[],
+                process='TIER 4 — The Geometric Observer: ∂̂_{∂M} is another Hamiltonian.',
             ),
             Equation(
                 name='ln_natural_unit',
@@ -159,6 +170,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='BK flow: t=ln(x). Constant rate = de Sitter Hubble constant.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=ln_natural_unit, display_options=[],
+                process='TIER 5 — ln(x) is the natural unit of the BK flow = Hubble constant of ℕ.',
             ),
             Equation(
                 name='d_star_tower_ln10',
@@ -167,6 +179,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Full CD radial measure of d* = ln(10). Exact weight function open.',
                 confidence='OPEN',
                 code_verified=True, params=[], compute=d_star_tower_ln10, display_options=[],
+                process='TIER 5 — The d* tower: full CD radial measure → ln(10).',
             ),
             Equation(
                 name='planck_ln_connection',
@@ -175,6 +188,7 @@ class DerivationChainModule(EquationModule):
                 radian_form='Landauer + BK: ħ·ω·ln(2) = Planck erasure. ħ_NN = d* in natural units.',
                 confidence='THEORETICAL',
                 code_verified=True, params=[], compute=planck_ln_connection, display_options=[],
+                process="TIER 5 — Planck's constant ↔ ln: quantum of action vs quantum of information.",
             ),
         ]
 

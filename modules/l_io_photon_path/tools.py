@@ -14,7 +14,7 @@ bent by real mass, and that bending IS the L_(I\|O) - L difference.
 Requires real (gamma1, gamma2) shear data as input -- see
 BulletCluster/optical/jwst/pixel_vector_field.py for the source.
 
-Boundary role (2026-07-21): (I\|O)_RB (renamed from H_hat_RB) defines a
+Boundary role: (I\|O)_RB (renamed from H_hat_RB) defines a
 boundary/degenerate locus; this module is the general template for
 crossing one -- see maths.py's module docstring addendum for the k=0
 zeroing convention and the (flagged, not established) zeta-pole
@@ -80,6 +80,7 @@ class LIOPhotonPathModule(EquationModule):
                 compute=lambda gamma1, gamma2, pixel_scale_arcsec, taper_frac=0.1, pad_factor=2.0:
                     bounded_lensing_pipeline(gamma1, gamma2, pixel_scale_arcsec, taper_frac, pad_factor),
                 display_options=['text'],
+                process='Full pipeline w/ non-periodic boundary handler',
             ),
             Equation(
                 name='kaiser_squires_kappa',
@@ -91,6 +92,7 @@ class LIOPhotonPathModule(EquationModule):
                 params=['gamma1', 'gamma2'],
                 compute=lambda gamma1, gamma2: kaiser_squires_kappa(gamma1, gamma2),
                 display_options=['text'],
+                process='Kaiser-Squires: shear -> convergence',
             ),
             Equation(
                 name='lensing_potential',
@@ -102,6 +104,7 @@ class LIOPhotonPathModule(EquationModule):
                 params=['kappa'],
                 compute=lambda kappa: lensing_potential(kappa),
                 display_options=['text'],
+                process='Poisson solve: convergence -> lensing potential',
             ),
             Equation(
                 name='deflection_field',
@@ -113,6 +116,7 @@ class LIOPhotonPathModule(EquationModule):
                 params=['psi', 'pixel_scale_arcsec'],
                 compute=lambda psi, pixel_scale_arcsec: deflection_field(psi, pixel_scale_arcsec),
                 display_options=['text'],
+                process='alpha = grad(psi) -- the actual bending',
             ),
             Equation(
                 name='trace_photon',
@@ -124,6 +128,7 @@ class LIOPhotonPathModule(EquationModule):
                 params=['theta1', 'theta2', 'alpha1', 'alpha2'],
                 compute=lambda theta1, theta2, alpha1, alpha2: trace_photon(theta1, theta2, alpha1, alpha2),
                 display_options=['text'],
+                process='Lens equation: beta = theta - alpha(theta)',
             ),
             Equation(
                 name='l_io_deficit',
@@ -135,6 +140,7 @@ class LIOPhotonPathModule(EquationModule):
                 params=['psi'],
                 compute=lambda psi: l_io_deficit(psi),
                 display_options=['text'],
+                process='= -psi(theta) [wiki/52 target #1, formalized]',
             ),
         ]
 

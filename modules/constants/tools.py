@@ -70,6 +70,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_lambda,
                 display_options=[],
+                process="Derivation of Λ — Einstein's cosmological constant.",
             ),
             Equation(
                 name='all_constants',
@@ -81,6 +82,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=all_constants,
                 display_options=[],
+                process='Run all nine Tier 0 derivations and assemble the complete table.',
             ),
             Equation(
                 name='derive_i',
@@ -92,6 +94,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_i,
                 display_options=[],
+                process='Derivation of i — the imaginary unit.',
             ),
             Equation(
                 name='derive_sqrt',
@@ -103,6 +106,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_sqrt,
                 display_options=[],
+                process='Derivation of √ — the square root operation.',
             ),
             Equation(
                 name='derive_e',
@@ -114,6 +118,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_e,
                 display_options=[],
+                process="Derivation of e — Euler's number / the natural base.",
             ),
             Equation(
                 name='derive_pi',
@@ -125,6 +130,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_pi,
                 display_options=[],
+                process='Derivation of π — the circle constant.',
             ),
             Equation(
                 name='derive_phi',
@@ -136,6 +142,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_phi,
                 display_options=[],
+                process='Derivation of φ — the golden ratio.',
             ),
             Equation(
                 name='euler_identity',
@@ -147,6 +154,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=euler_identity,
                 display_options=[],
+                process="Euler's identity e^{iπ} + 1 = 0 — a theorem of RedBlue Geometries Engine.",
             ),
             Equation(
                 name='derive_omega_zs',
@@ -158,6 +166,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_omega_zs,
                 display_options=[],
+                process='Derivation of OMEGA_ZS = W(1) = 0.56714329...',
             ),
             Equation(
                 name='derive_alpha_fermat',
@@ -169,6 +178,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_alpha_fermat,
                 display_options=[],
+                process='Derivation of Alpha_Fermat = 1/137.035999...',
             ),
             Equation(
                 name='derive_d_star',
@@ -180,6 +190,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_d_star,
                 display_options=[],
+                process='Derivation of d* — the four values of the BK spectral coordinate.',
             ),
         ]
 

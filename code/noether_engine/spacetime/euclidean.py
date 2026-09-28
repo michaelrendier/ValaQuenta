@@ -12,6 +12,9 @@ from ..switches import UnsupportedCombinationError
 
 
 class EuclideanSpacetime:
+    """
+    Euclidean spacetime. Not implemented: constructing it raises UnsupportedCombinationError.
+    """
     def __init__(self, *args, **kwargs):
         raise UnsupportedCombinationError(
             "Switch combination (spacetime=euclidean) not yet supported — "

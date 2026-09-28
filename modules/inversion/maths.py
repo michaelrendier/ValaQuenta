@@ -21,7 +21,7 @@ Status of claims::
     d* = 0.24600: THEORETICAL (numerically confirmed)
     d* x ln(10) = OMEGA_ZS: OPEN (gap = 0.00070, highest priority)
     phi as recursion attractor: ESTABLISHED (numerically confirmed)
-    phi crossing step = H/4 = (pi/2) hbar_NN: CORRECTED 2026-07-22, proof
+    phi crossing step = H/4 = (pi/2) hbar_NN: CORRECTED, proof
       closed -- see derive_horizon_rotation() below. Previously this used
       pi/2 as a bare, unjustified input (C.PI/2.0, where C.PI = math.pi,
       copy-pasted with no derivation) while the docstring claimed "proof

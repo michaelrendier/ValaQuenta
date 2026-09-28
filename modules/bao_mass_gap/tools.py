@@ -88,6 +88,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=summary,
                 display_options=[],
+                process='One-screen summary of the engine — the console landing view.',
             ),
             Equation(
                 name='gap_value',
@@ -99,6 +100,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=gap_value,
                 display_options=[],
+                process='Δ = Ω_ζΣ − D*·ln(10) — two constants, one subtraction',
             ),
             Equation(
                 name='spectral_residue',
@@ -112,6 +114,7 @@ class BaoMassGapModule(EquationModule):
                 params=['n_zeros'],
                 compute=spectral_residue,
                 display_options=['complex_plane'],
+                process='The gap as the residue of the BAO spectral decomposition.',
             ),
             Equation(
                 name='gap_identity',
@@ -123,6 +126,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=gap_identity,
                 display_options=[],
+                process='Δ = 1/(1000√2).',
             ),
             Equation(
                 name='bao_consistency',
@@ -134,6 +138,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=bao_consistency,
                 display_options=[],
+                process='Δ against the measured BAO acoustic scale.',
             ),
             Equation(
                 name='mtheory_compactification',
@@ -145,6 +150,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=mtheory_compactification,
                 display_options=[],
+                process='The gap as the compactification scale.',
             ),
             Equation(
                 name='validate',
@@ -156,6 +162,7 @@ class BaoMassGapModule(EquationModule):
                 params=[],
                 compute=validate,
                 display_options=[],
+                process='Run every check in the module.',
             ),
         ]
 

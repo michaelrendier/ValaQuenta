@@ -118,3 +118,13 @@ string-list-based design this module's arithmetic supersedes for
 cancellation, while its "label is the string" idea remains a real,
 unimplemented next step: reverse-lookup `LINEAGE_TABLE` after arithmetic so
 a computed vector re-adopts its name automatically).
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> Cody, 2026-08-25: "information lives in the units...units can spectrally
+> show direct generational lineage...mitochondrial lineage if you
+> will...units are directly how the geometries hold the permutation...the
+> units will identify exactly what equations matter...they are the equation
+> index."

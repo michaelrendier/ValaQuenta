@@ -131,3 +131,17 @@ functionality now.
 - `GenerationalLineage/engine/lines.py` — the real "two jurisdictions"
   (`TOOLSETS`, `DECOMPOSITION_LINE`, `EMERGER_LINE`) that §3b's
   `jurisdiction_violation` is grounded in.
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> Born 2026-09-27, from a live correction: the `ASS`-engine bracket
+> (`[SCALE,ADD]=ADD`) and the Emerger's "bracket a 16-vector five ways"
+> looked like two unrelated uses of the word "bracket" -- they are not.
+> Cody, directly: "bracketing the add:scale:sign in different ordered
+> groupings, bracketing the sedenion into different ordered groupings...and
+> bracketing set membership...are all 'bracketing engine functions'...the
+> arena." This module is that arena, built once, domain-independent --
+> `add_scale_sign` (3 generators) and the sedenion bracket (16 components)
+> are both CONSUMERS of it, not separate implementations.

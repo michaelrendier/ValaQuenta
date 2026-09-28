@@ -16,6 +16,7 @@ from ..switches import UnsupportedCombinationError
 
 
 class ADMSpacetime:
+    """ADM spacetime. Not implemented: constructing it raises UnsupportedCombinationError."""
     def __init__(self, *args, **kwargs):
         raise UnsupportedCombinationError(
             "Switch combination (spacetime=adm) not yet supported — "

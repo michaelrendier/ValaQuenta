@@ -9,12 +9,6 @@ PW16, itself ported from PtolemyDesktop/Archimedes/UnitVector.py -- three
 independent implementations of the same identity, per this project's
 per-repo self-containment convention.
 
-Cody, 2026-08-25: "information lives in the units...units can spectrally
-show direct generational lineage...mitochondrial lineage if you
-will...units are directly how the geometries hold the permutation...the
-units will identify exactly what equations matter...they are the equation
-index."
-
 A unit carries no numeric content and does no work itself -- exactly the
 "geometry does no work" finding already established for 0_RB and sigma_RB
 this session -- but it is what determines which permutations of content

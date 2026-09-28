@@ -77,6 +77,7 @@ class ObliqueGearModule(EquationModule):
                 params=[],
                 compute=lambda: crank_angle_deg(),
                 display_options=['text'],
+                process='Black-hole side: theta_crank = arctan(d*)',
             ),
             Equation(
                 name='stokes_dimensionless',
@@ -88,6 +89,7 @@ class ObliqueGearModule(EquationModule):
                 params=['x'],
                 compute=lambda x: stokes_dimensionless(x),
                 display_options=['text'],
+                process='Galaxy side: y(x) = (2/pi)*atan(x), x = r/r_t',
             ),
             Equation(
                 name='stokes_tangent_angle_deg',
@@ -99,6 +101,7 @@ class ObliqueGearModule(EquationModule):
                 params=['x'],
                 compute=lambda x: stokes_tangent_angle_deg(x),
                 display_options=['text'],
+                process='Tangent angle of the galaxy curve at any x = r/r_t',
             ),
             Equation(
                 name='crank_vs_galaxy_tangent_check',
@@ -110,6 +113,7 @@ class ObliqueGearModule(EquationModule):
                 params=[],
                 compute=lambda: crank_vs_galaxy_tangent_check(),
                 display_options=['text'],
+                process='does the galaxy tangent angle at r=r_t equal theta_crank?',
             ),
             Equation(
                 name='find_matching_radius',
@@ -121,6 +125,7 @@ class ObliqueGearModule(EquationModule):
                 params=[],
                 compute=lambda: find_matching_radius(),
                 display_options=['text'],
+                process='Where WOULD the tangent angle equal theta_crank?',
             ),
             Equation(
                 name='full_report',
@@ -132,6 +137,7 @@ class ObliqueGearModule(EquationModule):
                 params=[],
                 compute=lambda: full_report(),
                 display_options=['text'],
+                process='Everything this module knows, in one call',
             ),
         ]
 

@@ -78,6 +78,11 @@ class Symmetry:
         Spacetime translation x^μ → x^μ + ε δ^μ_direction.
         Fields transform as φ(x) → φ(x - ε δ^μ_direction e_μ), so the
         vertical variation is δφ = -∂_direction φ.
+
+        :param direction: index of the translated coordinate
+        :param coords: the spacetime coordinates
+        :param fields: the fields that transform
+        :returns: the symmetry
         """
         n = len(coords)
         shift = [sp.Integer(0)] * n
@@ -105,6 +110,11 @@ class Symmetry:
         Global U(1) phase rotation: φ → e^{iεq} φ ≈ φ + iεq φ.
         For complex_scalar: δφ = i·q·φ, δφ* = -i·q·φ*.
         For algebra_valued complex (ℂ): rotate 2-component as (re, im) → (re - εq·im, im + εq·re).
+
+        :param field: a complex or algebra-valued field
+        :param charge: the charge q
+        :returns: the symmetry
+        :raises ValueError: the field has no U(1) phase to rotate
         """
         if field.field_type == 'complex_scalar':
             # δφ = i q φ  (as a sympy complex expression)
@@ -142,6 +152,12 @@ class Symmetry:
 
         For algebra-valued fields, `generator` is the Cayley-Dickson left-
         multiplication matrix of the imaginary unit.
+
+        :param field: an algebra-valued field
+        :param generator: Lie algebra generator matrix T
+        :param parameter_name: name of the transformation parameter
+        :returns: the symmetry
+        :raises ValueError: the generator does not fit the field's representation
         """
         if field.field_type != 'algebra_valued':
             raise ValueError(

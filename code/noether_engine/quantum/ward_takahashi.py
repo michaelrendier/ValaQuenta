@@ -23,6 +23,13 @@ from ..switches import UnsupportedCombinationError
 
 
 def ward_identity(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError naming the switch combination.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Switch combination (theory=quantum_ward) not yet supported — "
         "reason: Ward-Takahashi machinery scheduled for session 4. "

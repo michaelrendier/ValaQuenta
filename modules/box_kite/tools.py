@@ -95,6 +95,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: verify_counts(),
                 display_options=['text'],
+                process='42 / 84 / 168 / 336 / 7, all derived',
             ),
             Equation(
                 name='box_kites',
@@ -106,6 +107,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: box_kites(),
                 display_options=['text'],
+                process='The 7 box-kites, keyed by strut s = a XOR b',
             ),
             Equation(
                 name='box_kite_graph',
@@ -117,6 +119,7 @@ class BoxKiteModule(EquationModule):
                 params=['s'],
                 compute=lambda s: box_kite_graph(s),
                 display_options=['text'],
+                process='each chart is an octahedron K_2,2,2',
             ),
             Equation(
                 name='chart_spectrum',
@@ -128,6 +131,7 @@ class BoxKiteModule(EquationModule):
                 params=['s'],
                 compute=lambda s: chart_spectrum(s),
                 display_options=['text'],
+                process='THE DISPERSION RELATION, chart level: {0,4,4,4,6,6}',
             ),
             Equation(
                 name='associator',
@@ -139,6 +143,7 @@ class BoxKiteModule(EquationModule):
                 params=['i', 'j', 'k'],
                 compute=lambda i, j, k: associator(i, j, k),
                 display_options=['text'],
+                process='[a,b,c] = (ab)c - a(bc)',
             ),
             Equation(
                 name='associator_field',
@@ -150,6 +155,7 @@ class BoxKiteModule(EquationModule):
                 params=['s'],
                 compute=lambda s: associator_field(s),
                 display_options=['text'],
+                process='curvature painted on a box-kite',
             ),
             Equation(
                 name='commutator',
@@ -161,6 +167,7 @@ class BoxKiteModule(EquationModule):
                 params=['i', 'j'],
                 compute=lambda i, j: commutator(i, j),
                 display_options=['text'],
+                process='[a,b] = ab - ba',
             ),
             Equation(
                 name='glued_graph',
@@ -172,6 +179,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: glued_graph(),
                 display_options=['text'],
+                process='The 42-vertex atlas — and its cross-strut edge count',
             ),
             Equation(
                 name='glued_spectrum',
@@ -183,6 +191,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: glued_spectrum(),
                 display_options=['text'],
+                process='Laplacian spectrum of the whole atlas',
             ),
             Equation(
                 name='chart_of',
@@ -194,6 +203,7 @@ class BoxKiteModule(EquationModule):
                 params=['v', 'check_zd'],
                 compute=lambda v, check_zd=True: chart_of(v, check_zd),
                 display_options=['text'],
+                process='where a monad address sits in the atlas',
             ),
             Equation(
                 name='address_census',
@@ -205,6 +215,7 @@ class BoxKiteModule(EquationModule):
                 params=['addresses', 'limit', 'check_zd'],
                 compute=lambda addresses, limit=None, check_zd=False: address_census(addresses, limit, check_zd),
                 display_options=['text'],
+                process='Exhaustive census over a corpus of monad addresses',
             ),
             Equation(
                 name='skeleton_overlap',
@@ -216,6 +227,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: skeleton_overlap(),
                 display_options=['text'],
+                process='THE CHARTS DO TOUCH — in the skeleton, not the adjacency',
             ),
             Equation(
                 name='fixed_point_gluing',
@@ -227,6 +239,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: fixed_point_gluing(),
                 display_options=['text'],
+                process='at e_0',
             ),
             Equation(
                 name='fixed_point_weight',
@@ -238,6 +251,7 @@ class BoxKiteModule(EquationModule):
                 params=['v'],
                 compute=lambda v: fixed_point_weight(v),
                 display_options=['text'],
+                process='How much of an address is pure 0_RB',
             ),
             Equation(
                 name='skeleton_counts',
@@ -249,6 +263,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: skeleton_counts(),
                 display_options=['text'],
+                process='15 points, 35 lines, 15 Fano planes (NOT 32)',
             ),
             Equation(
                 name='e0_is_outside',
@@ -260,6 +275,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: e0_is_outside(),
                 display_options=['text'],
+                process='0_RB IS NOT THE GEOMETRY — checked, not asserted',
             ),
             Equation(
                 name='associator_census',
@@ -271,6 +287,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: associator_census(),
                 display_options=['text'],
+                process='How much of the algebra is curved',
             ),
             Equation(
                 name='zero_divisor_pairs',
@@ -282,6 +299,7 @@ class BoxKiteModule(EquationModule):
                 params=[],
                 compute=lambda: zero_divisor_pairs(),
                 display_options=['text'],
+                process='All 336 ordered annihilating diagonal pairs',
             ),
         ]
 

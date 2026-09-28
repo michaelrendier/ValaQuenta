@@ -85,6 +85,7 @@ class SpectralPrimesModule(EquationModule):
                 compute=lambda n_zeros=DEFAULT_N_ZEROS: spin_is_monotonic(
                     spin_series(get_zeros(n_zeros))),
                 display_options=['text'],
+                process="theta'(t), the major loop — non-resonant",
             ),
             Equation(
                 name='wobble_carries_primes_demo',
@@ -97,6 +98,7 @@ class SpectralPrimesModule(EquationModule):
                 compute=lambda n_zeros=DEFAULT_N_ZEROS: wobble_carries_primes_demo(
                     get_zeros(n_zeros)),
                 display_options=['text'],
+                process='the minor loop carries the primes (psi(x) reconstruction)',
             ),
             Equation(
                 name='tilt_vs_wobble_correlation',
@@ -110,6 +112,7 @@ class SpectralPrimesModule(EquationModule):
                     tilt_residual_series(get_zeros(n_zeros)),
                     wobble_series(get_zeros(n_zeros), spin_series(get_zeros(n_zeros)))),
                 display_options=['text'],
+                process='TILT vs WOBBLE — REFUTED AS TESTED',
             ),
             Equation(
                 name='crossing_does_not_drift',
@@ -122,6 +125,7 @@ class SpectralPrimesModule(EquationModule):
                 compute=lambda n_zeros=DEFAULT_N_ZEROS, n_test=5: crossing_does_not_drift(
                     get_zeros(n_zeros), n_test),
                 display_options=['text'],
+                process='isolated, simple, pinned at sigma=1/2',
             ),
             Equation(
                 name='full_report',
@@ -133,6 +137,7 @@ class SpectralPrimesModule(EquationModule):
                 params=['n_zeros'],
                 compute=lambda n_zeros=DEFAULT_N_ZEROS: full_report(n_zeros),
                 display_options=['text'],
+                process='Everything this module knows, in one call',
             ),
         ]
 

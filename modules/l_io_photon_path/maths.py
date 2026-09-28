@@ -12,7 +12,7 @@ L_(I\|O)." Two formal targets in that document were left open::
   (1) define L_(I|O) formally, distinguish it from L (stationary action)
   (4) formalize light bending/slingshot within L_(I|O)
 
-Claude's 2026-07-10 addendum to that file proposed a specific, testable
+Claude's addendum to that file proposed a specific, testable
 hypothesis: L_(I\|O) is not a different operator from L at all — it is L
 computed honestly with the REAL (curved) metric, where the curvature is
 sourced by real mass. This module tests that hypothesis directly using
@@ -50,7 +50,7 @@ sign/mass-sheet degeneracy (kappa -> lambda\*kappa + (1-lambda) is
 observationally indistinguishable from shear alone). This module reports
 kappa as reconstructed; it does not claim an absolute mass normalization.
 
-BOUNDARY ROLE (2026-07-21 addendum -- interpretive framing on established
+BOUNDARY ROLE (addendum -- interpretive framing on established
 math, does not change any equation above): (I\|O)_RB (renamed from
 H_hat_RB) defines WHERE a boundary/degenerate locus is -- the zero-divisor
 crossing, structurally the origin a pathway is measured outward from, not
@@ -65,7 +65,7 @@ mean is not observable from shear alone), and say why. That is the
 reusable content of "L_(I\|O) is how you get through the boundary" --
 independent of gravitational lensing specifically.
 
-SLOT CORRESPONDENCE WITH THE PRIME SIDE (2026-08-04 addendum; naming and
+SLOT CORRESPONDENCE WITH THE PRIME SIDE (addendum; naming and
 bookkeeping only, changes no equation in this module).
 
 modules/archimedes_screw also carries a psi. It is CHEBYSHEV's function,

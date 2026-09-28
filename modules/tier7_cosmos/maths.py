@@ -3067,9 +3067,6 @@ def sedenion_hole_punch() -> Dict[str, Any]:
     Infinite pulleys = infinite mechanical advantage.
     Black hole = the block-and-tackle run to completion.
 
-    Author note: Cody Michael Allison, 2026-06-03.
-    Cascade session. First capture. Mathematics to be verified.
-
     :returns: dict describing the cavitation mechanism and its checks
     """
     import math
@@ -3379,11 +3376,6 @@ def nball_transformer() -> Dict[str, Any]:
     The n-ball transformer V(n) is the quasi-spectral measure that
     distinguishes these two phases. It is not a separate structure —
     it is the intrinsic measure of Σ_RB across the CD tower.
-
-    Author note: Cody Michael Allison, 2026-06-03.
-    This engine was written during the session in which the transformer
-    insight was first seen. The mathematics is new. The measure is not.
-    V(n) has been known since Euler. Its role as CD transformer is new.
 
     :returns: dict with V(n) across the CD layers and the checks on it
     """

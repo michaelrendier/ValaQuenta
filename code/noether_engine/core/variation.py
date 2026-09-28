@@ -89,6 +89,10 @@ def vertical_variation(L: Lagrangian, S: Symmetry) -> Variation:
     Compute the vertical variation δℒ under symmetry S.
 
     δℒ_vert = Σ_fields [ ∂ℒ/∂φ · δφ + ∂ℒ/∂(∂_μφ) · ∂_μ(δφ) ]
+
+    :param L: the Lagrangian
+    :param S: the symmetry
+    :returns: δℒ_vert
     """
     delta_L = sp.Integer(0)
     for f, dphi in S.field_variations.items():
@@ -118,6 +122,10 @@ def total_variation(L: Lagrangian, S: Symmetry) -> Variation:
     Compute the total variation δ̂ℒ under symmetry S.
 
     δ̂ℒ = δℒ_vert + ξ^μ ∂_μ ℒ
+
+    :param L: the Lagrangian
+    :param S: the symmetry
+    :returns: δ̂ℒ = δℒ_vert + ξ^μ ∂_μ ℒ
     """
     vv = vertical_variation(L, S)
     delta_L = vv.delta_L

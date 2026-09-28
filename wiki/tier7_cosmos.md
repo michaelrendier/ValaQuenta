@@ -56,3 +56,19 @@ Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`py
 
 
 Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+`sedenion_hole_punch`:
+
+> Author note: Cody Michael Allison, 2026-06-03.
+> Cascade session. First capture. Mathematics to be verified.
+
+`nball_transformer`:
+
+> Author note: Cody Michael Allison, 2026-06-03.
+> This engine was written during the session in which the transformer
+> insight was first seen. The mathematics is new. The measure is not.
+> V(n) has been known since Euler. Its role as CD transformer is new.

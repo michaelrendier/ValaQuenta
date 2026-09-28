@@ -69,6 +69,7 @@ class NoetherInformationModule(EquationModule):
                 params=['psi_norms', 'algebra', 'layer', 'total_layers'],
                 compute=None,
                 display_options=['text', 'complex_plane'],
+                process='J_info^μ — information Noether current',
             ),
             Equation(
                 name='entropic_arrow',
@@ -80,6 +81,7 @@ class NoetherInformationModule(EquationModule):
                 params=['n_steps', 'algebra'],
                 compute=None,
                 display_options=['text', '3d_cartesian', 'complex_plane'],
+                process='Entropic arrow: ∂_l I_info ≥ 0',
             ),
             Equation(
                 name='delta_J_info',
@@ -91,6 +93,7 @@ class NoetherInformationModule(EquationModule):
                 params=['psi_norms', 'algebra', 'layer'],
                 compute=None,
                 display_options=['text'],
+                process='ΔJ_info — cycle-averaged information current violation',
             ),
             Equation(
                 name='information_capacity',
@@ -102,6 +105,7 @@ class NoetherInformationModule(EquationModule):
                 params=['algebra', 'n_neurons'],
                 compute=lambda algebra, n_neurons: information_capacity(int(algebra), int(n_neurons)),
                 display_options=['text', '3d_cartesian'],
+                process='C_max = n_neurons × log₂(dim_algebra) bits',
             ),
         ]
 

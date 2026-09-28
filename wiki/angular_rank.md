@@ -178,3 +178,15 @@ Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**)
 - Phase 27.2 (angular residual), Phase 27.3 (bounded precession — the *kinematic* sense;
   see Operating-L_(I|O) Addendum A.2 on why `bearing()` does not reuse that word),
   Phase 19 (the organs)
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> "we don't remove items from a list while iterating over it... that's an
+> 
+> ::
+> 
+>  amateur move... that is definitely iterating over a field while modifying
+>  it. by the nature of code, that's going to drift and possibly seize the
+>  engine down the line"          -- Cody Michael Allison, 2026-08-15

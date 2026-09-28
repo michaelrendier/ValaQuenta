@@ -470,7 +470,7 @@ def hypercomplex_identity_diagonal() -> Dict[str, Any]:
         Normal diagonal: eₖ² = -1  (the flip returns you to -identity)
         Zero-divisor:    eₖ × eⱼ = 0  (the flip collapses to null)
 
-        The UNDOE attack (your paper, submitted today, 2026-06-06):
+        The UDEO attack (see addenda/udeo_crypto):
         targets the ZERO-DIVISOR diagonal, not the -1 diagonal.
         It finds the eₖ × eⱼ = 0 elements in the cryptographic algebra
         and exploits the overshoot.

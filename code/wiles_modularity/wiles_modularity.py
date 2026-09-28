@@ -49,6 +49,10 @@ def is_quadratic_residue(a: int, p: int) -> int:
     """
     Legendre symbol (a/p): 1 if a is a QR mod p, -1 if NR, 0 if a≡0.
     Uses Euler's criterion: a^{(p-1)/2} ≡ (a/p) mod p.
+
+    :param a: integer
+    :param p: odd prime
+    :returns: the Legendre symbol (a/p): 1, −1 or 0
     """
     if a % p == 0:
         return 0
@@ -60,6 +64,10 @@ def tonelli_shanks(n: int, p: int) -> Optional[int]:
     """
     Compute √n mod p if it exists, else None.
     Uses Tonelli-Shanks algorithm.
+
+    :param n: the residue
+    :param p: odd prime
+    :returns: a square root of n mod p, or None if none exists
     """
     if n % p == 0:
         return 0
@@ -89,7 +97,13 @@ def tonelli_shanks(n: int, p: int) -> Optional[int]:
 
 
 def modinv(a: int, p: int) -> int:
-    """Modular inverse of a mod p (p prime)."""
+    """
+    Modular inverse of a mod p (p prime).
+
+    :param a: integer coprime to p
+    :param p: prime modulus
+    :returns: a⁻¹ mod p
+    """
     return pow(a, p - 2, p)
 
 
@@ -134,6 +148,9 @@ class EllipticCurve:
         For odd p: uses discriminant and Legendre symbol.
 
         Returns count including the point at infinity.
+
+        :param p: prime
+        :returns: #E(𝔽_p), including the point at infinity
         """
         count = 1  # point at infinity
 
@@ -168,11 +185,19 @@ class EllipticCurve:
 
         This is the fundamental invariant of the Modularity Theorem.
         The theorem states: a_p(E) = a_p(f) for the associated eigenform f.
+
+        :param p: prime
+        :returns: a_p(E) = p + 1 − #E(𝔽_p)
         """
         return p + 1 - self.count_points_Fp(p)
 
     def ap_sequence(self, primes: list[int]) -> dict[int, int]:
-        """Compute a_p(E) for a list of primes."""
+        """
+        Compute a_p(E) for a list of primes.
+
+        :param primes: list of primes
+        :returns: {p: a_p(E)}
+        """
         return {p: self.ap(p) for p in primes}
 
     def __repr__(self) -> str:
@@ -257,6 +282,10 @@ class ModularForm:
         (coeffs[0]=1). The eigenform f = q^s × product starts at q^1 (s=1 for
         all our weight-2 forms whose eta exponents sum to 24/24=1). Therefore:
             a_p(f) = coeffs[p-1]   (index shifted by 1)
+
+        :param p: prime
+        :returns: a_p(f)
+        :raises ValueError: a_p(f) is neither known nor computable from the eta product
         """
         if p in self._known_ap:
             return self._known_ap[p]
@@ -270,6 +299,10 @@ class ModularForm:
         """
         Compute a_p(f) for all primes in list.
         Always prefers known_ap entries; fills remainder via eta if available.
+
+        :param primes: list of primes
+        :returns: {p: a_p(f)}
+        :raises ValueError: some a_p(f) is neither known nor computable
         """
         result = {}
         missing = []
@@ -339,6 +372,10 @@ class WilesConjugate:
             'ap_f':         {p: a_p(f)}
             'discrepancies': [p where they differ]
             'sigma':        estimated significance of match
+
+        :param primes: list of primes to compare at
+        :param verbose: print the comparison
+        :returns: dict with 'matches', 'ap_E', 'ap_f', 'discrepancies' and 'sigma'
         """
         ap_E = self.E.ap_sequence(primes)
         ap_f = self.f.ap_sequence(primes)
@@ -439,6 +476,9 @@ class WilesConjugate:
         d* = 0.24600 is the natural scale parameter.
         The ratio |a_p(E)| / (2√p) ∈ [0,1] by Hasse's theorem —
         this is the normalised Frobenius angle θ_p where a_p = 2√p · cos(θ_p).
+
+        :param p: prime
+        :returns: dict with a_p(E) and a_p(f) in H_hat_RB coordinates at σ = 1
         """
         ae = self.E.ap(p)
         af = self.f.ap(p)
@@ -472,7 +512,12 @@ class WilesConjugate:
 # ============================================================================
 
 def primes_up_to(n: int) -> list[int]:
-    """Sieve of Eratosthenes."""
+    """
+    Return the primes up to n by the sieve of Eratosthenes.
+
+    :param n: inclusive upper bound
+    :returns: the primes ≤ n
+    """
     sieve = [True] * (n + 1)
     sieve[0] = sieve[1] = False
     for i in range(2, int(n**0.5) + 1):

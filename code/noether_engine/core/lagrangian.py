@@ -24,7 +24,13 @@ from .field import Field
 
 
 def minkowski_metric(signature: str = 'mostly_minus') -> sp.Matrix:
-    """Return the 4x4 Minkowski metric in the chosen signature."""
+    """
+    Return the 4x4 Minkowski metric in the chosen signature.
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: the 4×4 metric
+    :raises ValueError: the signature is unknown
+    """
     if signature == 'mostly_minus':
         return sp.Matrix([
             [ 1, 0, 0, 0],
@@ -92,6 +98,10 @@ class Lagrangian:
         """
         ∂ℒ/∂φ — partial derivative of the Lagrangian with respect to the
         field (treating derivatives of the field as independent variables).
+
+        :param field: the field
+        :param component_index: which component of a multi-component field
+        :returns: ∂ℒ/∂φ
         """
         if field.field_type == 'algebra_valued':
             target = field.components[component_index]
@@ -103,6 +113,11 @@ class Lagrangian:
         """
         ∂ℒ/∂(∂_μ φ) — partial derivative of the Lagrangian with respect to
         the μ-th spacetime derivative of the field.
+
+        :param field: the field
+        :param mu: coordinate index
+        :param component_index: which component of a multi-component field
+        :returns: ∂ℒ/∂(∂_μ φ)
         """
         if field.field_type == 'algebra_valued':
             target = field.components[component_index]
@@ -116,6 +131,10 @@ class Lagrangian:
         Euler-Lagrange equation for this field:
           ∂ℒ/∂φ - ∂_μ (∂ℒ/∂(∂_μ φ)) = 0
         Returns the LHS as a sympy expression; = 0 on-shell.
+
+        :param field: the field
+        :param component_index: which component of a multi-component field
+        :returns: the left side of the Euler-Lagrange equation; zero on-shell
         """
         eom = self.dL_dphi(field, component_index)
         n_coords = len(self.coords)

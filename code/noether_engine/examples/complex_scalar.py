@@ -37,6 +37,10 @@ def build_complex_scalar_example(signature: str = 'mostly_minus') -> Tuple[Lagra
     Construct the Lagrangian using algebra='C' for the complex scalar.
     The field has two real components φ = (φ_re, φ_im) and the global U(1)
     acts as a rotation in the (re, im) plane.
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: (Lagrangian, Symmetry, context dict)
+    :raises ValueError: the signature is unknown
     """
     coords = sp.symbols('t x y z', real=True)
     phi = Field(name='phi', field_type='algebra_valued', algebra='C', coords=coords)
@@ -89,6 +93,9 @@ def run_complex_scalar_example(signature: str = 'mostly_minus') -> Dict:
     """
     Build the complex-scalar example, derive the conserved U(1) current,
     and return the full result with verification.
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: the derivation result with its verification
     """
     L, S, ctx = build_complex_scalar_example(signature=signature)
 

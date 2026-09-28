@@ -82,3 +82,10 @@ def test_registry_run_contract(registry):
                        {"psi_norms": [0.5, 0.5, 0.7], "g": 1.0, "algebra": 2})
     assert set(out) >= {"equation", "params", "result", "module"}
     assert out["result"]["status"] == "PASS"
+
+
+def test_every_equation_has_a_process_line(registry):
+    """The derivation browser shows Equation.process; none may fall back to '[process= not set]'."""
+    unset = [f"{n}.{e.name}" for n in registry.list_modules()
+             for e in registry.get_module(n).formulary() if not e.process]
+    assert unset == []

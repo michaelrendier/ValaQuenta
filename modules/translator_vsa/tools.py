@@ -71,6 +71,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['vector', 'shift'],
                 display_options=['text'],
+                process='Permute P — cyclic shift (sequence/position)',
             ),
             Equation(
                 name='bind',
@@ -81,6 +82,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['a', 'b'],
                 display_options=['text'],
+                process='Bind (x) — non-commutative role-filler pairing',
             ),
             Equation(
                 name='bundle',
@@ -91,6 +93,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['vectors'],
                 display_options=['text'],
+                process='Bundle (+) — superposition, un-normalised',
             ),
             Equation(
                 name='sentence_hypervector',
@@ -101,6 +104,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['subject', 'verb', 'object'],
                 display_options=['text', 'complex_plane'],
+                process='Bound-and-bundled sentence (4096-dim)',
             ),
             Equation(
                 name='capacity_probe',
@@ -113,6 +117,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['tokens'],
                 display_options=['text'],
+                process='Quasi-orthogonality of derived hypervectors',
             ),
             Equation(
                 name='unbind_probe',
@@ -123,6 +128,7 @@ class VSATranslatorModule(EquationModule):
                 code_verified=True,
                 params=['subject', 'verb', 'object'],
                 display_options=['text'],
+                process='Constituent recovery from the bundle',
             ),
         ]
 

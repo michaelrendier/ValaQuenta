@@ -33,12 +33,18 @@ def charge_from_current(
     Return the charge expression:
       Q(t) = ∫ J^0 d^{d-1}x
 
-    Session 1 returns a symbolic ∫ expression over the spatial coordinates
+    Returns a symbolic ∫ expression over the spatial coordinates
     (excluding the time coordinate at index `time_coord_index`). The user
     is responsible for evaluating the integral on a specific field
     configuration if they want a number.
 
     The integral is returned as sp.Integral for user inspection.
+
+    :param current: the Noether current
+    :param L: the Lagrangian the current came from
+    :param time_coord_index: index of the time coordinate
+    :param spatial_volume_symbol: symbol for the spatial volume
+    :returns: Q(t) as an unevaluated sp.Integral
     """
     J0 = current.components[time_coord_index]
 
@@ -70,6 +76,10 @@ def form_from_current(
     Session 1 returns a symbolic placeholder marked with the signature and
     the four J^μ components. A full exterior-algebra computation is
     delegated to session 2 when `sympy.diffgeom` usage is formalized.
+
+    :param current: the Noether current
+    :param L: the Lagrangian; its signature fixes the Hodge dual
+    :returns: the symbolic (d−1)-form ⋆J
     """
     # Symbolic marker; real exterior-algebra structure deferred to session 2.
     return sp.Function('HodgeDual')(

@@ -38,6 +38,10 @@ def build_free_scalar_example(signature: str = 'mostly_minus') -> Tuple[Lagrangi
     """
     Construct the Lagrangian and a single translation symmetry (ν = 0, time).
     Returns (L, symmetry, context_dict).
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: (Lagrangian, Symmetry, context dict)
+    :raises ValueError: the signature is unknown
     """
     coords = sp.symbols('t x y z', real=True)
     phi = Field(name='phi', field_type='real_scalar', coords=coords)
@@ -91,6 +95,9 @@ def run_free_scalar_example(signature: str = 'mostly_minus') -> Dict:
     """
     Build the free-scalar example, derive the conserved current for time
     translation, and return the full result with verification.
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: the derivation result with its verification
     """
     L, S, ctx = build_free_scalar_example(signature=signature)
 

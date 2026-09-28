@@ -110,6 +110,9 @@ class Field:
 
         For scalar fields, returns ∂_μ φ. For multi-component fields, returns
         a list of ∂_μ φ_i (one per component).
+
+        :param mu: coordinate index
+        :returns: ∂_μ φ, or a list of ∂_μ φᵢ for a multi-component field
         """
         if self.field_type == 'algebra_valued':
             return [sp.diff(comp, self.coords[mu]) for comp in self.components]

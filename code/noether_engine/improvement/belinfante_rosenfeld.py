@@ -26,6 +26,13 @@ from ..switches import UnsupportedCombinationError
 
 
 def belinfante_rosenfeld_improvement(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError naming the switch combination.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Switch combination (improvement=belinfante_rosenfeld) not yet "
         "supported — reason: spin-current machinery scheduled for session 2. "

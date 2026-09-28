@@ -70,6 +70,7 @@ class NoetherModule(EquationModule):
                 params=['psi_norms', 'g', 'algebra'],
                 compute=None,
                 display_options=['text', 'complex_plane'],
+                process='∂_μJ^μ — full Noether conservation check',
             ),
             Equation(
                 name='violation_scan',
@@ -81,6 +82,7 @@ class NoetherModule(EquationModule):
                 params=['psi_norms', 'g'],
                 compute=None,
                 display_options=['text', '3d_cartesian'],
+                process='Violation scan across all algebra strata',
             ),
             Equation(
                 name='resonance_artifacts',
@@ -92,6 +94,7 @@ class NoetherModule(EquationModule):
                 params=['n_steps', 'g', 'algebra'],
                 compute=None,
                 display_options=['text', 'complex_plane'],
+                process='Resonance artifact detection (J history)',
             ),
             Equation(
                 name='blockchain_record',
@@ -103,6 +106,7 @@ class NoetherModule(EquationModule):
                 params=['algebra', 'violation', 'g'],
                 compute=None,
                 display_options=['text'],
+                process='Record violation to NoetherLedger (blockchain)',
             ),
             Equation(
                 name='blockchain_verify',
@@ -114,6 +118,7 @@ class NoetherModule(EquationModule):
                 params=[],
                 compute=lambda: get_ledger().verify(),
                 display_options=['text'],
+                process='Verify NoetherLedger chain integrity',
             ),
             Equation(
                 name='blockchain_summary',
@@ -125,6 +130,7 @@ class NoetherModule(EquationModule):
                 params=[],
                 compute=lambda: get_ledger().summary(),
                 display_options=['text'],
+                process='NoetherLedger summary',
             ),
         ]
 

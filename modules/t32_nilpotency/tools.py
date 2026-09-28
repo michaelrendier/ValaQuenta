@@ -62,6 +62,7 @@ class T32NilpotencyModule(EquationModule):
                 params=['primes'],
                 compute=lambda primes=None: prime_nilpotency_report(primes or _DEFAULT_PRIMES),
                 display_options=['text'],
+                process='Nilpotency status of a set of primes in T32/GF(2)',
             ),
         ]
 

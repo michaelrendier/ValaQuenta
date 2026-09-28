@@ -3,12 +3,6 @@ ValaQuenta.modules.emerger.maths
 ================================
 THE EMERGER -- Sedenion Bracketing & Firing Order.
 
-::
-
-    "the grouping of what sedenion operators creates what different domains
-     ... which by need give the emergence a priority in a particular order"
-                                    -- Cody Michael Allison, 2026-09-01
-
 A dynamic permutative bracketer. It works only in the COMPLEX/imaginary
 domain -- the real component e_0 is the tilt to the i axis: it is never
 bracketed, it is the fixed anchor that every group is paired against so

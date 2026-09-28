@@ -78,6 +78,7 @@ class InversionModule(EquationModule):
                 params=['r', 'theta_rad'],
                 compute=lambda r, theta_rad: InversionMap().apply(r, theta_rad),
                 display_options=['complex_plane', '3d_cartesian', 'text'],
+                process='(I|O) Inversion Map J_N',
             ),
             Equation(
                 name='derive_horizon_rotation',
@@ -89,6 +90,7 @@ class InversionModule(EquationModule):
                 params=[],
                 compute=lambda: derive_horizon_rotation(),
                 display_options=['text'],
+                process='Horizon rotation pi/2, derived not assumed',
             ),
             Equation(
                 name='involution_check',
@@ -100,6 +102,7 @@ class InversionModule(EquationModule):
                 params=['r', 'theta_rad'],
                 compute=lambda r, theta_rad: InversionMap().is_involution(r, theta_rad),
                 display_options=['text'],
+                process='(I|O) Involution: J_N applied twice',
             ),
             Equation(
                 name='gradient_flow',
@@ -111,6 +114,7 @@ class InversionModule(EquationModule):
                 params=['r0', 'max_steps'],
                 compute=lambda r0, max_steps=1000: GradientFlow().flow(r0, max_steps),
                 display_options=['complex_plane', '3d_cartesian', 'text'],
+                process='Gradient flow: r=1 to phi attractor',
             ),
             Equation(
                 name='phi_crossing_step',
@@ -122,6 +126,7 @@ class InversionModule(EquationModule):
                 params=[],
                 compute=lambda: RecursionAttractor().phi_crossing_step(),
                 display_options=['text'],
+                process='phi-crossing step = H/4 = (pi/2) hbar_NN',
             ),
             Equation(
                 name='d_star_gap',
@@ -133,6 +138,7 @@ class InversionModule(EquationModule):
                 params=[],
                 compute=lambda: RecursionAttractor().d_star_gap(),
                 display_options=['text'],
+                process='d* x ln(10) vs OMEGA_ZS',
             ),
             Equation(
                 name='four_horizons',
@@ -144,6 +150,7 @@ class InversionModule(EquationModule):
                 params=[],
                 compute=lambda: InversionMap().four_horizons(),
                 display_options=['text'],
+                process='(I|O) unifies four physical horizons',
             ),
         ]
 

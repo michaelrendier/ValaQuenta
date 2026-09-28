@@ -5,14 +5,6 @@ Spectral Representation of the Primes -- the spin/wobble decomposition of
 the Riemann-Siegel theta-spiral (``RiemannHypothesisProof/ADDENDUM_toroidal_theta_structure_2026-09-25.md``),
 formalized as an engine.
 
-Born 2026-09-26 from a live conversation walking the theta(t)-rotation
-construction through: two spirals (carrier vs trajectory) -> spin (major
-loop, theta'(t), non-resonant) vs wobble (minor loop, resonant at the
-primes) -> "primes are the spin... and wobble" -> corrected: primes are
-the wobble's genuine spectral content (classical Weil/von Mangoldt), not
-an artifact of it -> the crossing of the Real Tilt (the real-axis domain,
-not Re(z)) and the Axis (the central t-axis of the helix).
-
 FOUR RESULTS, ALL COMPUTED, ONE OF THEM NEGATIVE -- reported as found,
 per this framework's Chase Every Anomaly rule:
 

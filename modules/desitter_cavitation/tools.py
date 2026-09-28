@@ -73,6 +73,7 @@ class DeSitterCavitationModule(EquationModule):
                 'one radian of de Sitter expansion phase: tau = 1/H_dS = r_s/c',
                 'THEORETICAL', True, [],
                 lambda: full_desitter_cavitation(), ['text'],
+                process='The whole engine: Holcus + no-singularity check + mass-class table + partition + cosmic budget',
             ),
             Equation(
                 'kretschmann_core',
@@ -91,6 +92,7 @@ class DeSitterCavitationModule(EquationModule):
                         kretschmann_core(M_kg) - kretschmann_core_closed(M_kg)
                     ) <= 1e-6 * kretschmann_core(M_kg),
                 }, ['text'],
+                process='HOLCUS — core curvature is the de Sitter Kretschmann at L_dS = r_s',
             ),
             Equation(
                 'no_singularity_check',
@@ -100,6 +102,7 @@ class DeSitterCavitationModule(EquationModule):
                 'finite curvature at every scale; no radian of the metric runs to infinity',
                 'THEORETICAL', True, [],
                 lambda: no_singularity_check(), ['text'],
+                process='Consistency scorecard: finite, M^-4, sub-Planckian; Schwarzschild K->inf is the denied artifact',
             ),
             Equation(
                 'mass_class_table',
@@ -109,6 +112,7 @@ class DeSitterCavitationModule(EquationModule):
                 'per class: tau_interior in radians of expansion phase',
                 'ESTABLISHED', True, [],
                 lambda: mass_class_table(), ['text'],
+                process='Engineering table: kugelblitz / stellar / IMBH / SMBH — r_s, tau_interior, T_H, t_evap, bounce, K_core, echo',
             ),
             Equation(
                 'interior_timescales',
@@ -128,6 +132,7 @@ class DeSitterCavitationModule(EquationModule):
                     't_bounce_exterior_s': t_bounce_exterior(M_kg),
                     'echo_delay_s': echo_delay(M_kg),
                 }, ['text'],
+                process='Interior BANG time, de Sitter / Hawking temperatures, exterior bounce, ringdown echo',
             ),
             Equation(
                 'energy_partition',
@@ -138,6 +143,7 @@ class DeSitterCavitationModule(EquationModule):
                 'CONJECTURE', True, ['M_kg'],
                 lambda M_kg, space_fraction=None: energy_partition(M_kg, space_fraction),
                 ['text'],
+                process='SECONDARY — stiff-space vs stiff-matter release; default split 1 - d* : d*',
             ),
             Equation(
                 'stiff_matter_ceiling',
@@ -147,6 +153,7 @@ class DeSitterCavitationModule(EquationModule):
                 'sound cone opens to exactly one radian of the light cone',
                 'ESTABLISHED', True, [],
                 lambda: stiff_matter_ceiling(), ['text'],
+                process="The incompressibility ceiling: p = rho c^2 (Zel'dovich), sound speed = c",
             ),
             Equation(
                 'cosmic_cavitation_budget',
@@ -157,6 +164,7 @@ class DeSitterCavitationModule(EquationModule):
                 'CONJECTURE', True, [],
                 lambda omega_bh=1.0e-5, space_fraction=None:
                     cosmic_cavitation_budget(omega_bh, space_fraction), ['text'],
+                    process='SECONDARY — naive Omega_cav = Omega_BH (1 - d*) vs Omega_Lambda; expected to fall short (dark-flow, not dark-energy magnitude)',
             ),
         ]
 

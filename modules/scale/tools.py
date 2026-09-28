@@ -102,6 +102,7 @@ class ScaleModule(EquationModule):
                 params=[],
                 compute=lambda: verify_polar_round_trip(),
                 display_options=['text', 'complex_plane'],
+                process='recompose(*decompose(Z)) == Z, exactly',
             ),
             Equation(
                 name='scale_invariance_under_self_rescale',
@@ -113,6 +114,7 @@ class ScaleModule(EquationModule):
                 params=['Z'],
                 compute=lambda Z: scale_invariance_under_self_rescale(Z),
                 display_options=['text', 'complex_plane'],
+                process='theta is unchanged as Z is rescaled by any positive real',
             ),
             Equation(
                 name='scale_factor',
@@ -124,6 +126,7 @@ class ScaleModule(EquationModule):
                 params=['Z', 'Z0'],
                 compute=lambda Z, Z0: scale_factor(Z, Z0),
                 display_options=['text', 'complex_plane'],
+                process='|dGamma/dZ|, exact',
             ),
             Equation(
                 name='verify_no_caustic',
@@ -135,6 +138,7 @@ class ScaleModule(EquationModule):
                 params=[],
                 compute=lambda: verify_no_caustic(),
                 display_options=['text'],
+                process="the fold's derivative never vanishes, only diverges at one pole",
             ),
             Equation(
                 name='cross_ratio_is_scale_blind',
@@ -146,6 +150,7 @@ class ScaleModule(EquationModule):
                 params=[],
                 compute=lambda: verify_cross_ratio_is_scale_blind(),
                 display_options=['text', 'complex_plane'],
+                process='cross-ratio survives every anchor; the angle does not',
             ),
             Equation(
                 name='two_ring_point',
@@ -157,6 +162,7 @@ class ScaleModule(EquationModule):
                 params=['ring1', 'ring2', 'Z0'],
                 compute=lambda ring1, ring2, Z0: two_ring_point(ring1, ring2, Z0),
                 display_options=['text', 'complex_plane'],
+                process='any pair of readings, folded',
             ),
             Equation(
                 name='fold_unfold_round_trip',
@@ -169,6 +175,7 @@ class ScaleModule(EquationModule):
                 params=[],
                 compute=lambda: verify_fold_unfold_round_trip(),
                 display_options=['text', 'complex_plane'],
+                process='Gamma=tanh(log(Z/Z0)/2), exact, any complex Z',
             ),
             Equation(
                 name='locally_square',
@@ -181,6 +188,7 @@ class ScaleModule(EquationModule):
                 params=['Z', 'Z0'],
                 compute=lambda Z, Z0: verify_locally_square(Z, Z0),
                 display_options=['text', 'complex_plane'],
+                process='any two rings give locally-square cells',
             ),
             Equation(
                 name='custom_ring_chart_demo',
@@ -192,6 +200,7 @@ class ScaleModule(EquationModule):
                 params=['obj', 'ring1_fn', 'ring2_fn', 'Z0'],
                 compute=lambda obj, ring1_fn, ring2_fn, Z0: custom_ring_chart(obj, ring1_fn, ring2_fn, Z0),
                 display_options=['text'],
+                process='any two functions of any object, folded',
             ),
             Equation(
                 name='rsa_pathway_control',
@@ -203,6 +212,7 @@ class ScaleModule(EquationModule):
                 params=[],
                 compute=lambda: _demo_rsa_pathway(),
                 display_options=['text'],
+                process='RSA CRT-decrypt, a genuine fan-out',
             ),
         ]
 

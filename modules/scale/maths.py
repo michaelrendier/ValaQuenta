@@ -3,13 +3,6 @@ ValaQuenta.modules.scale.maths
 ==============================
 THE SCALE -- decompositional analysis, forwards and backwards.
 
-Cody, 2026-08-25: "this is why it's the primary forensic tool of the
-generational lineage engine...it's the most complicated part of the three
-roots of Add, Scale and Sign. This is The Scale...i want to see that
-object...the scale invariant/scale blind version of the maths."
-Then: "the purpose of this engine is for decompositional analysis...so
-forwards and backwards."
-
 SCALE is tier-0 (generational-lineage skill, section 1): identity 1,
 gain 1, Axis 2 {x,/} -- one of the three irreducibles alongside ADD and
 SIGN. Everything below is what SCALE looks like when you try to isolate

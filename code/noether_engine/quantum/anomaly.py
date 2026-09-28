@@ -28,6 +28,13 @@ from ..switches import UnsupportedCombinationError
 
 
 def anomaly_coefficient(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError naming the switch combination.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Switch combination (theory=anomaly_tracked) not yet supported — "
         "reason: anomaly-tracking machinery scheduled for session 4. "

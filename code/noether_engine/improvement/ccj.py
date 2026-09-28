@@ -19,6 +19,13 @@ from ..switches import UnsupportedCombinationError
 
 
 def ccj_improvement(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError naming the switch combination.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Switch combination (improvement=ccj) not yet supported — "
         "reason: conformal-improvement machinery scheduled for session 2. "

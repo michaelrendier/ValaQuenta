@@ -6,7 +6,7 @@ The Translator — SHARED SUBSTRATE for both Translator engines.
 This is NOT itself a registered engine. It has no tools.py and does not
 appear in the registry. It exists so that translator_discocat and
 translator_vsa operate in the SAME derived vector space and can therefore
-be combined and cross-tested later (Cody, 2026-07-28: "Ensure they can
+be combined and cross-tested later ("Ensure they can
 both be combined for testing later").
 
 Source of the two versions: "The Algebraic Geodesics of Language and

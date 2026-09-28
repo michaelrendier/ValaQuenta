@@ -26,6 +26,7 @@ from ..switches import UnsupportedCombinationError
 
 
 class CurvedSpacetime:
+    """Curved spacetime. Not implemented: constructing it raises UnsupportedCombinationError."""
     def __init__(self, *args, **kwargs):
         raise UnsupportedCombinationError(
             "Switch combination (spacetime=curved) not yet supported — "

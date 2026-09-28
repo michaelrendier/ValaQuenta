@@ -70,6 +70,7 @@ class UnitsModule(EquationModule):
                 params=['a', 'b', 'op'],
                 compute=lambda a, b, op='mul': (unit_mul(a, b) if op == 'mul' else unit_div(a, b)),
                 display_options=['text'],
+                process='multiply/divide as exponent-vector add/subtract',
             ),
             Equation(
                 name='lineage_table_verified',
@@ -81,6 +82,7 @@ class UnitsModule(EquationModule):
                 params=[],
                 compute=lambda: verify_lineage_table(),
                 display_options=['text'],
+                process='named compounds trace exactly back to the 7 leaves',
             ),
             Equation(
                 name='cancellation_demo',
@@ -92,6 +94,7 @@ class UnitsModule(EquationModule):
                 params=[],
                 compute=lambda: verify_cancellation(),
                 display_options=['text'],
+                process='mol/L * L cancels back to mol exactly',
             ),
             Equation(
                 name='equation_index',
@@ -106,6 +109,7 @@ class UnitsModule(EquationModule):
                 compute=lambda exponents: {'exponents': tuple(exponents),
                                            'candidates': equation_index_lookup(exponents)},
                 display_options=['text'],
+                process='a dimension signature narrows the candidate laws',
             ),
         ]
 

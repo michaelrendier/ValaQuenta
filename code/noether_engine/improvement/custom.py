@@ -41,6 +41,12 @@ def apply_custom_improvement(
     Returns: a new Current with improved components.
 
     Raises: ValueError if theta is not antisymmetric.
+
+    :param current: the original current
+    :param theta: antisymmetric 4×4 tensor Θ^{νμ}
+    :param L: the Lagrangian; supplies the coordinates
+    :returns: a new Current with components J^μ + ∂_ν Θ^{νμ}
+    :raises ValueError: theta is not antisymmetric
     """
     n = len(L.coords)
     theta_mat = sp.Matrix(theta)

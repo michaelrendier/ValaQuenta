@@ -169,6 +169,10 @@ def build_smnnip_gauge_example(stratum: str = 'C') -> Tuple[Lagrangian, Symmetry
     stratum : 'C', 'H'. 'O' is implemented but the returned symmetry is
               one generator of G_2; run multiple times with different
               generators for the full 7-component current.
+
+    :param stratum: 'C' or 'H'; 'O' builds one G₂ generator (run it once per generator for the full 7-component current)
+    :returns: (Lagrangian, Symmetry, context dict)
+    :raises ValueError: the stratum is unknown
     """
     if stratum == 'C':
         return build_smnnip_gauge_example_C_stratum()
@@ -192,6 +196,10 @@ def build_smnnip_gauge_example_O_stratum(
 
     generator_index ∈ {1, ..., 7} selects which of the seven octonion-
     imaginary generators to use.
+
+    :param generator_index: which octonion imaginary generator, 1..7
+    :returns: (Lagrangian, Symmetry, context dict)
+    :raises ValueError: generator_index is outside 1..7
     """
     from ..algebra.cayley_dickson import octonion_generators
 
@@ -246,6 +254,9 @@ def build_smnnip_gauge_example_O_stratum(
 def run_smnnip_gauge_example(stratum: str = 'C') -> Dict:
     """
     Run the SMNNIP gauge example and return the result with verification.
+
+    :param stratum: 'C' or 'H'
+    :returns: the derivation result with its verification
     """
     L, S, ctx = build_smnnip_gauge_example(stratum=stratum)
 

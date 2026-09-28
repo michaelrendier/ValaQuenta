@@ -60,8 +60,7 @@ Read it as a machine and three facts fall out:
      x^sigma and drown every other tone. See amplitude_envelope() and
      the paper's section 6.4.
 
-SLOT CORRESPONDENCE (2026-08-04 -- supersedes the earlier "these two psi
-are unrelated, do not merge" note, which was true but undersold it).
+SLOT CORRESPONDENCE.
 
 Two psi are in play across these repos, and they are NOT the same object:
 
@@ -111,7 +110,7 @@ Two consequences, both load-bearing:
 ::
 
   * The main term x IS L, "the path of least primes" -- the phrase the
-    2026-07-31 context primer s4 carries without a formula. It is the
+    context primer s4 carries without a formula. It is the
     pole term: what psi would be if no zero contributed. The vacuum
     utterance, computed. See clean_path_L().
 
@@ -148,7 +147,7 @@ arithmetic. See splitting_type() and ramified_primes().
     resolution costs -- but that contour does not live in C, and its
     dispersion relation is not yet written.
 
-THE COMPOSITE SIDE (v0.2, 2026-08-05). psi counts only prime powers, so a
+THE COMPOSITE SIDE (v0.2). psi counts only prime powers, so a
 composite contributes nothing to it -- as first built this engine could name
 every prime and say nothing about any child. The leaf falls at gpf(N), not
 lpf(N): 14 = 2\*7 is struck at 2 but stays on the tree, and drops at 7. That
@@ -659,7 +658,7 @@ def clean_path_L(x: float) -> float:
 
     This is what chebyshev_psi would be if no zero contributed anything:
     the pole term alone, the vacuum, the flat-space answer. In the
-    L_(I\|O) dictionary (Ainulindale/wiki/52, wiki/83 s9, and the 2026-07-31
+    L_(I\|O) dictionary (Ainulindale/wiki/52, wiki/83 s9, and the
     context primer s4) L is called "the path of least primes". This
     function is that phrase, computed: L(x) = x.
 
@@ -686,7 +685,7 @@ def zero_sum(x: float, zeros: Optional[List[float]] = None,
 
     summed over conjugate pairs, u = ln x.
 
-    This object had no name in these repos until 2026-08-04. It existed
+    This object is named here. It existed
     only inline inside chebyshev_psi_explicit, which is precisely why the
     psi symbol collision looked like a naming accident instead of what it
     is -- see the SLOT CORRESPONDENCE block in this module's header.
@@ -1403,7 +1402,7 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
     ::
 
      modulus? or is that only using the prime numbers that have enough
-     digits to result in the RSA modulus?"   -- Cody, 2026-08-05
+     digits to result in the RSA modulus?"   -- Cody
 
     Neither. Answers both, in log2, for a balanced modulus of the given
     bit length. Every value is a COUNT, returned as its base-2 logarithm.

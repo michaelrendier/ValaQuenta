@@ -135,3 +135,11 @@ The Emerger is the general form of the sedenion-bracketing done ad hoc across
 | `hypercomplex_laplacian.py` | `Lₓ` IS the CD Laplacian; ZD pairs are its nodal lines; `dS/dn` across scales | the exact `left_matrix` / `mat_rank` here; the dynamic-lens sweep |
 | `udeo_crypto/maths.py` | 6 private-key-recovery methods, all scored vs control — **at chance except `d ≡ e (mod 4)`** | the multi-scale probes came back flat = a measurement of the modulus's depth-1 flatness |
 | `references/logistic_bifurcation_RSA.png` (v2) | where the factoring *methods* live — **the modulus is NOT a bifurcation** | `N = a² − b²`, depth-1; the erased coordinate is one number |
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> "the grouping of what sedenion operators creates what different domains
+>  ... which by need give the emergence a priority in a particular order"
+>                                 -- Cody Michael Allison, 2026-09-01

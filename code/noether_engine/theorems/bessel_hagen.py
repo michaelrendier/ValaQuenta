@@ -46,6 +46,11 @@ def check_quasi_invariance(
       'divK_simplified'    : simplified ∂_μ K^μ
       'residual'           : δℒ - ∂_μ K^μ, simplified
       'is_symmetry'        : bool — True iff residual simplifies to 0
+
+    :param v: the variation
+    :param L: the Lagrangian
+    :param expected_K: the supplied K^μ; None demands strict invariance (K^μ = 0)
+    :returns: dict with 'delta_L_simplified', 'divK_simplified', 'residual' and 'is_symmetry'
     """
     delta_L_simp = sp.simplify(v.delta_L)
 
@@ -74,13 +79,14 @@ def find_K_mu_symbolically(
     L: Lagrangian,
 ) -> Optional[Tuple[sp.Expr, ...]]:
     """
-    Attempt to find K^μ such that δℒ = ∂_μ K^μ.
+    Return None: no general K^μ finder is implemented.
 
-    Session 1 implementation: return None (not yet implemented).
-    Session 2: implement via Hodge decomposition / de Rham on the jet bundle.
+    Supply K^μ together with the symmetry. A general finder is a hard symbolic
+    problem (Hodge decomposition / de Rham on the jet bundle); packages such as
+    FieldsX and Olver's Maple implementation exist.
 
-    A general-purpose K^μ finder is a hard symbolic problem; several packages
-    exist (FieldsX, Olver's Maple implementation). For session 1 we expect
-    the user to supply K^μ along with the symmetry.
+    :param v: the variation
+    :param L: the Lagrangian
+    :returns: None
     """
     return None

@@ -256,3 +256,13 @@ Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`py
 
 
 Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> "how do we 'debug' the geometries / how do we watch the geometries
+> 
+> ::
+> 
+>  interact"   -- Cody Michael Allison, 2026-08-05

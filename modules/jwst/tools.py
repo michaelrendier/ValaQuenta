@@ -69,6 +69,7 @@ class JWSTModule(EquationModule):
                 params=['intensities'],
                 compute=None,
                 display_options=['text', 'fano', '3d_cartesian'],
+                process='8 NIRCam filters → 𝕆 element',
             ),
             Equation(
                 name='cd_spectral_address',
@@ -80,6 +81,7 @@ class JWSTModule(EquationModule):
                 params=['intensities', 'pixel_x', 'pixel_y'],
                 compute=None,
                 display_options=['text', '3d_cartesian'],
+                process='Cayley-Dickson spectral pixel address',
             ),
             Equation(
                 name='synthetic_hydrogen',
@@ -91,6 +93,7 @@ class JWSTModule(EquationModule):
                 params=[],
                 compute=lambda: synthetic_spectrum('hydrogen'),
                 display_options=['text', '3d_cartesian'],
+                process='Synthetic Paschen series spectrum (hydrogen)',
             ),
             Equation(
                 name='synthetic_stellar',
@@ -102,6 +105,7 @@ class JWSTModule(EquationModule):
                 params=[],
                 compute=lambda: synthetic_spectrum('stellar'),
                 display_options=['text', '3d_cartesian'],
+                process='Synthetic blackbody T=5000K spectrum',
             ),
             Equation(
                 name='lambda_to_r',
@@ -117,6 +121,7 @@ class JWSTModule(EquationModule):
                     'lambda_back': r_to_lambda(lambda_to_r(float(wavelength_nm))),
                 },
                 display_options=['text'],
+                process='λ (nm) → r ∈ (0,1) radial coordinate',
             ),
         ]
 

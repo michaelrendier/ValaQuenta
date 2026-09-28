@@ -73,6 +73,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text'],
                 compute=None,
                 display_options=['text'],
+                process='Horner base-97 bijection: text → integer address',
             ),
             Equation(
                 name='fano_encode',
@@ -84,6 +85,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text'],
                 compute=None,
                 display_options=['text'],
+                process='Fano base-7 octonion path address',
             ),
             Equation(
                 name='semantic_word',
@@ -95,6 +97,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text'],
                 compute=None,
                 display_options=['text', 'fano'],
+                process='SemanticWord — Horner + Fano + hash',
             ),
             Equation(
                 name='monad_address',
@@ -106,6 +109,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text', 'algebra'],
                 compute=None,
                 display_options=['text', '3d_cartesian', 'fano'],
+                process='Monad: word → algebra tower coordinates',
             ),
             Equation(
                 name='address_range',
@@ -117,6 +121,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text', 'n'],
                 compute=None,
                 display_options=['text'],
+                process='n consecutive Horner addresses from start_text',
             ),
             Equation(
                 name='fano_path',
@@ -128,6 +133,7 @@ class HyperWebsterModule(EquationModule):
                 params=['text'],
                 compute=None,
                 display_options=['text', 'fano'],
+                process='Fano generator path → nearest keyword',
             ),
         ]
 

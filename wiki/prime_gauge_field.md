@@ -79,3 +79,15 @@ prediction_check(2000)  # the honest sweep against the pre-registration
 - `Ainulindale/wiki/121_fast_inverse_square_root_of_the_two_trees.md` — the Weyl citation and the Wiener-attack sibling instance.
 - `Ainulindale/wiki/122_the_prime_gauge_field.md` — this engine's Ainulindale-side wiki page.
 - `.claude/scratchpad/2026-09-21_smith_apollonian_uft_probe/` — the origin experiment.
+
+## Provenance
+
+Moved from the module docstring: a docstring instructs the caller and holds no history; this section is the record.
+
+> Origin: the 2026-09-21 gauge-field experiment
+> (`.claude/scratchpad/2026-09-21_smith_apollonian_uft_probe/`) found
+> Gamma's Schwarzian derivative exactly zero -- a single, fixed, global
+> Mobius map correctly carries no classical gauge curvature. "Gauge" is
+> Weyl's own word (1918): he tried to unify gravity and electromagnetism by
+> making SCALE a LOCAL freedom rather than a global constant, and it is
+> THAT connection's curvature this module tests, not the global map's.

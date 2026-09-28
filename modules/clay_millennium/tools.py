@@ -72,6 +72,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=clay_summary,
                 display_options=[],
+                process='Summary of all Clay Millennium Problems and their Σ_RB connections.',
             ),
             Equation(
                 name='riemann_hypothesis',
@@ -83,6 +84,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=riemann_hypothesis,
                 display_options=['complex_plane'],
+                process='Riemann Hypothesis — master function.',
             ),
             Equation(
                 name='rh_proof_stone',
@@ -94,6 +96,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=rh_proof_stone,
                 display_options=[],
+                process="RH Proof I — Direct, via Stone's theorem on self-adjoint operators.",
             ),
             Equation(
                 name='rh_proof_wiles_conjugate',
@@ -105,6 +108,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=rh_proof_wiles_conjugate,
                 display_options=[],
+                process='RH Proof II — Conjugate, via Wiles and the Modularity Theorem.',
             ),
             Equation(
                 name='rh_noether_balance_scan',
@@ -116,6 +120,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=rh_noether_balance_scan,
                 display_options=[],
+                process='RH Numerical Verification — σ=½ is the minimum of |ζ(σ+iγ₁)|.',
             ),
             Equation(
                 name='rh_spectral_decomposition',
@@ -127,6 +132,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=rh_spectral_decomposition,
                 display_options=[],
+                process='RH Spectral Decomposition — explicit formula, BAO residue, mass gap.',
             ),
             Equation(
                 name='yang_mills_mass_gap',
@@ -138,6 +144,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=yang_mills_mass_gap,
                 display_options=[],
+                process='Yang-Mills Existence and Mass Gap Clay Problem #2.',
             ),
             Equation(
                 name='navier_stokes',
@@ -149,6 +156,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=navier_stokes_existence,
                 display_options=[],
+                process='Navier-Stokes Existence and Smoothness Clay Problem #3.',
             ),
             Equation(
                 name='p_vs_np',
@@ -160,6 +168,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=p_vs_np,
                 display_options=[],
+                process='P vs NP Clay Problem #4.',
             ),
             Equation(
                 name='hodge_conjecture',
@@ -171,6 +180,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=hodge_conjecture,
                 display_options=[],
+                process='Hodge Conjecture Clay Problem #5.',
             ),
             Equation(
                 name='birch_swinnerton_dyer',
@@ -182,6 +192,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=birch_swinnerton_dyer,
                 display_options=[],
+                process='Birch and Swinnerton-Dyer Conjecture (BSD) Clay Problem #6.',
             ),
             Equation(
                 name='poincare_conjecture',
@@ -193,6 +204,7 @@ class ClayMillenniumModule(EquationModule):
                 params=[],
                 compute=poincare_conjecture,
                 display_options=[],
+                process='Poincaré Conjecture Clay Problem #7.',
             ),
         ]
 

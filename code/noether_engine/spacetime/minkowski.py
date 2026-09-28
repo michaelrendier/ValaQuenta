@@ -28,6 +28,10 @@ def minkowski_metric_tensor(signature: str = 'mostly_minus') -> sp.Matrix:
 
     signature='mostly_minus'  →  η_μν = diag(+1, -1, -1, -1)  (particle physics)
     signature='mostly_plus'   →  η_μν = diag(-1, +1, +1, +1)  (relativity)
+
+    :param signature: 'mostly_minus' or 'mostly_plus'
+    :returns: the 4×4 metric η_μν
+    :raises ValueError: the signature is unknown
     """
     if signature == 'mostly_minus':
         return sp.Matrix([
@@ -76,13 +80,23 @@ class MinkowskiSpacetime:
         object.__setattr__(self, 'metric_inv', self.metric.inv())
 
     def lower_index(self, vector: Sequence[sp.Expr]) -> Tuple[sp.Expr, ...]:
-        """V_μ = η_μν V^ν — lower an upper index."""
+        """
+        V_μ = η_μν V^ν — lower an upper index.
+
+        :param vector: components V^ν
+        :returns: V_μ = η_μν V^ν
+        """
         V_up = sp.Matrix(vector)
         V_down = self.metric * V_up
         return tuple(V_down)
 
     def raise_index(self, covector: Sequence[sp.Expr]) -> Tuple[sp.Expr, ...]:
-        """V^μ = η^μν V_ν — raise a lower index."""
+        """
+        V^μ = η^μν V_ν — raise a lower index.
+
+        :param covector: components V_ν
+        :returns: V^μ = η^μν V_ν
+        """
         V_down = sp.Matrix(covector)
         V_up = self.metric_inv * V_down
         return tuple(V_up)
@@ -92,7 +106,13 @@ class MinkowskiSpacetime:
         A: Sequence[sp.Expr],
         B: Sequence[sp.Expr],
     ) -> sp.Expr:
-        """A_μ B^μ = η_μν A^ν B^μ."""
+        """
+        A_μ B^μ = η_μν A^ν B^μ.
+
+        :param A: components A^ν
+        :param B: components B^μ
+        :returns: A_μ B^μ = η_μν A^ν B^μ
+        """
         total = sp.Integer(0)
         for mu in range(self.dim):
             for nu in range(self.dim):

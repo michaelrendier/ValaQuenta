@@ -78,6 +78,7 @@ class DisCoCatTranslatorModule(EquationModule):
                 code_verified=True,
                 params=['atoms'],
                 display_options=['text'],
+                process='Pregroup type reduction x^(a) x^(a+1) -> 1',
             ),
             Equation(
                 name='grammaticality',
@@ -88,6 +89,7 @@ class DisCoCatTranslatorModule(EquationModule):
                 code_verified=True,
                 params=[],
                 display_options=['text'],
+                process='Transitive clause reduces to s',
             ),
             Equation(
                 name='functor_contraction',
@@ -99,6 +101,7 @@ class DisCoCatTranslatorModule(EquationModule):
                 code_verified=True,
                 params=['subject', 'verb', 'object'],
                 display_options=['text', 'complex_plane'],
+                process='Functor: reduction -> tensor contraction',
             ),
             Equation(
                 name='sentence_meaning',
@@ -111,6 +114,7 @@ class DisCoCatTranslatorModule(EquationModule):
                 code_verified=True,
                 params=['subject', 'verb', 'object'],
                 display_options=['text', 'complex_plane'],
+                process='Composed sentence vector in S (16-dim)',
             ),
             Equation(
                 name='word_order_sensitivity',
@@ -121,6 +125,7 @@ class DisCoCatTranslatorModule(EquationModule):
                 code_verified=True,
                 params=['subject', 'verb', 'object'],
                 display_options=['text'],
+                process='DOG BITES MAN vs MAN BITES DOG',
             ),
         ]
 

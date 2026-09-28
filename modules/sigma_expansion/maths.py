@@ -3,15 +3,6 @@ ValaQuenta.modules.sigma_expansion.maths
 ========================================
 Closed-form Taylor expansion of the J_red/J_blue balance around sigma=1/2.
 
-Origin: derived 2026-07-11, in the course of testing whether a quantum-
-state normalization argument (Science Asylum / Nick Lucid's "Quantum
-Superposition, Explained Without Woo Woo") applies to J_red(sigma),
-J_blue(sigma)=J_red(1-sigma). It does not normalize to a constant across
-sigma -- \|J_red(sigma)\|^2 + \|J_blue(sigma)\|^2 has a genuine minimum at
-sigma=1/2, not a flat quantum-probability-style conservation. That raw
-result is real and reported honestly; this module is what came out of
-asking a sharper question of the normalized version instead.
-
 P_red(sigma) = \|J_red(sigma)\|^2 / (\|J_red(sigma)\|^2 + \|J_blue(sigma)\|^2)
 
 ::
@@ -20,7 +11,7 @@ P_red(sigma) = \|J_red(sigma)\|^2 / (\|J_red(sigma)\|^2 + \|J_blue(sigma)\|^2)
 
 c1, c3 are DERIVED here in closed form from moments of the underlying
 Dirichlet-style projection, not fitted to data. Verified numerically
-2026-07-11 against three test strings: predicted curve matches the
+against three test strings: predicted curve matches the
 directly-computed curve to within ~1e-6 near sigma=1/2, residual growing
 smoothly toward the edges of the tested range exactly as expected for a
 third-order truncation (next term is O(d^5)).

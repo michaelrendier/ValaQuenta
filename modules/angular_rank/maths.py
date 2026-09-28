@@ -4,14 +4,6 @@ ValaQuenta.modules.angular_rank.maths
 THE 16D OSCILLOSCOPE -- angular content and subspace occupancy, measured
 on a FROZEN DATUM.
 
-"we don't remove items from a list while iterating over it... that's an
-
-::
-
- amateur move... that is definitely iterating over a field while modifying
- it. by the nature of code, that's going to drift and possibly seize the
- engine down the line"          -- Cody Michael Allison, 2026-08-15
-
 WHAT THIS INSTRUMENT IS
 -----------------------
 A signal arrives. It is embedded in the 16 sedenion dimensions. Three

@@ -2,22 +2,14 @@ r"""
 ValaQuenta.modules.oblique_gear.maths
 ========================================
 The Oblique Gear, tested across scale — does the black-hole-scale crank
-angle (h_rb_hat's `oblique_crank()`, arctan(d\*), the Witches Hat half-angle,
-2026-06-17) govern the galaxy-scale rotation curve (`ValaQuenta/
+angle (h_rb_hat's `oblique_crank()`, arctan(d\*), the Witches Hat half-angle) govern the galaxy-scale rotation curve (`ValaQuenta/
 galactic_cavity.py`'s Stokes-drift arctan profile, SPARC-confirmed
 p=0.794) as the SAME mechanism, or merely the same constant?
-
-Born 2026-09-26 from `FourthAgePapers/ChiralityBlackHole/README.md`'s
-second claim (Cody: "one is the witches hat, the other is a galaxy. the
-dependent structure is the oblique gearing"). That paper's own rule is
-strict: a claim is either shown running in code, or the paper isn't done.
-This module is that check, run honestly -- including where it fails.
 
 WHAT IS ALREADY ESTABLISHED (not re-derived here, only reused)::
 
   - Black-hole side: theta_crank = arctan(d*) ~ 13.82 deg, the Witches Hat
-    half-angle, "not a tuning parameter" (h_rb_hat/maths.py, ESTABLISHED
-    2026-06-17).
+    half-angle, "not a tuning parameter" (h_rb_hat/maths.py, ESTABLISHED).
   - Galaxy side: v(r) = v_flat * (2/pi) * arctan(r/r_t), r_t = d* * R_max,
     confirmed against 175 SPARC galaxies (galactic_cavity.py, mean 0.249
     vs prediction 0.246, p=0.794).
@@ -28,7 +20,7 @@ WHAT IS ALREADY ESTABLISHED (not re-derived here, only reused)::
     exactly the value h_rb_hat's own ESTABLISHED crank-angle result uses,
     not a separately-sourced copy.
 
-WHAT THIS MODULE ACTUALLY TESTS (new, 2026-09-26)::
+WHAT THIS MODULE ACTUALLY TESTS (new)::
 
   Is theta_crank the TANGENT ANGLE of the (dimensionless) galaxy rotation
   curve at its own transition point r=r_t, rather than merely a value both
@@ -36,7 +28,7 @@ WHAT THIS MODULE ACTUALLY TESTS (new, 2026-09-26)::
   twice, matching this paper's own bar for its first claim (Fano-plane
   orientation / Schwarzschild SIGN flip).
 
-RESULT (computed, sympy-verified, 2026-09-26): REFUTED as stated.
+RESULT (computed, sympy-verified): REFUTED as stated.
 
 ::
 

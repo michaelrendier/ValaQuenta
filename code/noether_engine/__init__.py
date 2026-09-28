@@ -130,11 +130,9 @@ class NoetherEngine:
         """
         Apply Noether's theorem and return the full result.
 
-        Parameters:
-          verify : if True, compute ∂_μ J^μ and check on-shell vanishing.
-
-        Returns: NoetherResult with current, charge (if output includes it),
-                 LaTeX (if format includes it), metadata, and verification.
+        :param verify: compute ∂_μ J^μ and check that it vanishes on-shell
+        :returns: a NoetherResult with the current, the charge and LaTeX (if the output settings include them), the metadata and the verification
+        :raises UnsupportedCombinationError: the switch combination is not implemented
         """
         theorem = self.settings.get('theorem')
         shell = self.settings.get('shell')

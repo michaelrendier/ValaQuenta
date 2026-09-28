@@ -63,9 +63,6 @@ Engines::
                                      vs the random-control population, and
                                      assigns an honest confidence tier per
                                      method based on the actual numbers.
-
-Author:  Claude, at Cody's direction — 2026-07-09
-Version: 0.100 — first pass, all three methods, all honestly scored
 """
 
 import math

@@ -54,6 +54,11 @@ def verify_conservation(
     divergence simplifies to 0 directly (the off-shell case, usually
     satisfied only for divergence-free currents or quasi-invariant symmetries
     with correctly-subtracted K^μ).
+
+    :param current: the current to check
+    :param L: the Lagrangian
+    :param use_equations_of_motion: substitute the E-L equations before testing; False tests the raw divergence
+    :returns: dict with 'divergence_raw', 'divergence_on_shell' and 'conserved'
     """
     div_raw = current.divergence(L)
     div_simplified = sp.simplify(div_raw)
@@ -135,6 +140,14 @@ def derive_first_theorem_current(
     Raises:
       ValueError if the specified invariance type requires K^μ but none was
       supplied on the Symmetry.
+
+    :param L: the Lagrangian
+    :param S: the symmetry, with optional K^μ for Bessel-Hagen
+    :param variation_convention: 'vertical' or 'total'
+    :param invariance: 'strict', 'divergence' or 'bessel_hagen'
+    :param verify: also check ∂_μ J^μ = 0 on-shell
+    :returns: the derivation result
+    :raises ValueError: a convention or invariance option is unknown
     """
     # Step 1: compute δℒ under the symmetry
     if variation_convention == 'vertical':

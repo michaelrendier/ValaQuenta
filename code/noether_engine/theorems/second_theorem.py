@@ -31,6 +31,13 @@ from ..switches import UnsupportedCombinationError
 
 
 def derive_second_theorem_identity(*args, **kwargs):
+    """
+    Not implemented: raises UnsupportedCombinationError naming the switch combination.
+
+    :param args: ignored
+    :param kwargs: ignored
+    :raises UnsupportedCombinationError: always
+    """
     raise UnsupportedCombinationError(
         "Switch combination (theorem=second or theorem=both) not yet "
         "supported — reason: second-theorem (local gauge) machinery "

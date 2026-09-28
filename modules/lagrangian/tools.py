@@ -74,6 +74,7 @@ class LagrangianModule(EquationModule):
                 params=['psi_norms', 'A_comps', 'beta_norms', 'algebra', 'layer'],
                 compute=None,
                 display_options=['text', '3d_cartesian'],
+                process='Full L_NN — polar integral',
             ),
             Equation(
                 name='L_kinetic',
@@ -85,6 +86,7 @@ class LagrangianModule(EquationModule):
                 params=['A_comps', 'g', 'algebra'],
                 compute=lambda A_comps, g, algebra: L_kinetic(A_comps, g, algebra),
                 display_options=['text', 'complex_plane'],
+                process='L_kin = -1/4 · F_μν^a · F^{μν,a}',
             ),
             Equation(
                 name='L_matter',
@@ -96,6 +98,7 @@ class LagrangianModule(EquationModule):
                 params=['psi_norms', 'A_comps', 'g', 'hbar_nn', 'algebra'],
                 compute=lambda psi_norms, A_comps, g, hbar_nn, algebra: L_matter(psi_norms, A_comps, g, hbar_nn, algebra),
                 display_options=['text'],
+                process='L_mat = i·Ψ̄·γ^μ·D_μ·Ψ',
             ),
             Equation(
                 name='L_bias',
@@ -107,6 +110,7 @@ class LagrangianModule(EquationModule):
                 params=['beta_norms', 'mu_sq', 'lam'],
                 compute=lambda beta_norms, mu_sq, lam: L_bias(beta_norms, mu_sq, lam),
                 display_options=['text', 'complex_plane'],
+                process='L_bias — Mexican hat / Higgs potential',
             ),
             Equation(
                 name='L_coupling',
@@ -118,6 +122,7 @@ class LagrangianModule(EquationModule):
                 params=['psi_norms', 'beta_norms', 'g'],
                 compute=lambda psi_norms, beta_norms, g: L_coupling(psi_norms, beta_norms, g),
                 display_options=['text'],
+                process='L_coup = -(1/φ)·Γ_ij·Ψ̄^L·β·Ψ^R (Yukawa)',
             ),
             Equation(
                 name='alpha_nn_running',
@@ -129,6 +134,7 @@ class LagrangianModule(EquationModule):
                 params=['g', 'hbar_nn', 'r'],
                 compute=lambda g, hbar_nn, r: alpha_nn_from_r(g, hbar_nn, r),
                 display_options=['text', 'complex_plane'],
+                process='α_NN(r) = g²/(4π·ħ_NN·ln(1/r)) running coupling',
             ),
             Equation(
                 name='rg_flow',
@@ -140,6 +146,7 @@ class LagrangianModule(EquationModule):
                 params=['alpha_0', 'hbar_0', 'algebra', 'max_layer'],
                 compute=None,
                 display_options=['text', '3d_cartesian', 'complex_plane'],
+                process='RG flow α_NN(l), ħ_NN(l) — all strata',
             ),
             Equation(
                 name='mastery_check',
@@ -151,6 +158,7 @@ class LagrangianModule(EquationModule):
                 params=['beta_norms', 'vev', 'hbar_nn'],
                 compute=lambda beta_norms, vev, hbar_nn: mastery_check(beta_norms, vev, hbar_nn),
                 display_options=['text'],
+                process='Mastery: vev_distance < ħ_NN/2',
             ),
         ]
 

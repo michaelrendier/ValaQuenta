@@ -68,6 +68,7 @@ class SigmaExpansionModule(EquationModule):
                 params=['text'],
                 compute=lambda text='O Captain My Captain': moments(text),
                 display_options=['text'],
+                process='M_n, L_n moments at sigma=1/2 (raw inputs to the derivation)',
             ),
             Equation(
                 name='taylor_coefficients',
@@ -79,6 +80,7 @@ class SigmaExpansionModule(EquationModule):
                 params=['text'],
                 compute=lambda text='O Captain My Captain': taylor_coefficients(text),
                 display_options=['text'],
+                process='c1, c3 — derived (not fitted) Taylor coefficients of P_red(sigma) at 1/2',
             ),
             Equation(
                 name='predict_P_red',
@@ -90,6 +92,7 @@ class SigmaExpansionModule(EquationModule):
                 params=['text', 'sigma'],
                 compute=lambda text='O Captain My Captain', sigma=0.6: predict_P_red(text, float(sigma)),
                 display_options=['text'],
+                process='Cheap closed-form P_red(sigma) prediction (no sigma-sweep needed)',
             ),
             Equation(
                 name='verify_against_actual',
@@ -101,6 +104,7 @@ class SigmaExpansionModule(EquationModule):
                 params=['text'],
                 compute=lambda text='O Captain My Captain': verify_against_actual(text),
                 display_options=['text'],
+                process='Error-check: predicted vs. directly-computed P_red(sigma), residuals',
             ),
         ]
 

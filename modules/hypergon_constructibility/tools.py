@@ -70,6 +70,7 @@ class HypergonConstructibilityModule(EquationModule):
                 params=[],
                 compute=sedenion_hypergon_sweep,
                 display_options=['text'],
+                process="THE comprehensive test across all 16 hyper-N-gons for the sedenion basis -- generalizes Phase 19's single '13-gon' example.",
             ),
             Equation(
                 name='verify_nilpotent_split_conjecture',
@@ -81,6 +82,7 @@ class HypergonConstructibilityModule(EquationModule):
                 params=[],
                 compute=verify_nilpotent_split_conjecture,
                 display_options=['text'],
+                process="Re-test Phase 22's corrected factorization conjecture (individual p, q nilpotency, not the earlier Fermat-midpoint a,b) against THREE datasets: close real factor…",
             ),
             Equation(
                 name='prime_definition_report',
@@ -92,6 +94,7 @@ class HypergonConstructibilityModule(EquationModule):
                 params=[],
                 compute=prime_definition_report,
                 display_options=['text'],
+                process="What 'prime' actually means, per what THIS engine has verified — dual definition, arithmetic and geometric, explicitly NOT unified by a working factoring mechanism…",
             ),
         ]
 
