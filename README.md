@@ -158,7 +158,7 @@ To add an engine, follow the six steps in the docstring of
 
 ### Building the documentation
 
-The per-function reference is built by Sphinx from the docstrings:
+The per-function reference is published at **https://michaelrendier.github.io/ValaQuenta/** (GitHub Pages, rebuilt on every push to `main`; `.github/workflows/docs.yml`). It is built by Sphinx from the docstrings:
 
 ```bash
 pip install -e ".[docs]"
@@ -166,7 +166,7 @@ python3 docs/gen_api.py                          # regenerate docs/api/ after ad
 sphinx-build -b html docs docs/_build/html       # open docs/_build/html/index.html
 ```
 
-`.readthedocs.yaml` builds the same tree for Read the Docs, with warnings treated
+`.readthedocs.yaml` builds the same tree for Read the Docs, and CI treats warnings
 as errors. The parts of the repository that are not importable package code
 (`code/`, `addenda/`, notebooks, the wiki) are listed with their locations on the
 docs page *Elsewhere in the repository*.
