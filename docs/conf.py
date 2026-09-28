@@ -18,3 +18,6 @@ intersphinx_mapping    = {'python': ('https://docs.python.org/3', None),
                           'numpy':  ('https://numpy.org/doc/stable/', None)}
 html_theme = 'alabaster'
 nitpicky   = False
+exclude_patterns = ['_build', 'gen_api.py']
+autodoc_mock_imports = ['PyQt5', 'vispy', 'sounddevice', 'qtermwidget']
+release = version = '0.159'

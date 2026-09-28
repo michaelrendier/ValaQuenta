@@ -9,7 +9,8 @@ Collaborator: Erika Schafer
 Core direction: Derive drugs to treat cancer FROM the cancer itself.
 The inside-out of the cancer's algebraic signature IS the therapeutic molecule.
 
-Engines:
+Engines::
+
     periodic_table()                  Periodic table from H_RB at the CD strata
     cosic_eiip()                      Cosic RRM: protein function from prime-frequency EIIP signal
     cancer_zero_divisor()             Cancer = local zero-divisor collapse. The algebra breaks.
@@ -119,7 +120,8 @@ def periodic_table() -> Dict[str, Any]:
     Chemistry lives at the ℂ/ℍ boundary (σ=½ defines molecular possibility).
     The periodic table is the spectrum of H_RB at the ℂ layer.
 
-    CD strata assignment:
+    CD strata assignment::
+
         s-block (Z=1,2 then Z=3..20):  ℂ dominant — complex pair structure
                                         H, He (pure ℂ, e₀+e₁)
                                         Li, Be, Na, Mg, K, Ca (ℂ filling)
@@ -131,19 +133,22 @@ def periodic_table() -> Dict[str, Any]:
         f-block (Z=57..71, 89..103):   Deep 𝕆 — lanthanides/actinides
                                         (e₁..e₇ extended — rare earth)
 
-    The principal quantum number n → CD level:
+    The principal quantum number n → CD level::
+
         n=1: ℝ (e₀) — 1s
         n=2: ℂ (e₁) — 2s2p
         n=3: ℍ (e₁..e₃) — 3s3p3d
         n=4: 𝕆 (e₁..e₇) — 4s4p4d4f
         n=5: 𝕊 (e₁..e₁₅) — 5s5p5d5f5g
 
-    The Aufbau principle from the CD tower:
+    The Aufbau principle from the CD tower::
+
         You cannot skip a CD level. Each higher stratum requires the lower.
         s fills before p (ℂ before ℍ). p fills before d (ℍ before 𝕆).
         This is NOT empirical. It is the algebraic necessity of the CD tower.
 
-    The enzyme active sites at the d-block:
+    The enzyme active sites at the d-block::
+
         d-block transition metals (Fe, Co, Ni, Cu) are at the ℍ/𝕆 boundary.
         This is where the OCTONION commences — the non-associative zone.
         Enzyme catalysis requires the non-associative flexibility of the 𝕆 layer.
@@ -151,7 +156,8 @@ def periodic_table() -> Dict[str, Any]:
         and catalysis occurs at the deformation point.
         The transition state IS a sedenion zero-divisor state.
 
-    Valence prediction:
+    Valence prediction::
+
         ℂ stratum: valence 1 (H) or 2 (He, Be) — complex pair
         ℍ stratum: valence 1-3 (B,C,N) — quaternion components
         𝕆 stratum: valence up to 8 (transition metals) — octonion
@@ -287,25 +293,29 @@ def cosic_eiip() -> Dict[str, Any]:
 
     Dr. Irena Cosic, Macquarie University. EIIP = Electron-Ion Interaction Potential.
 
-    The RRM (Cosic, 1994):
+    The RRM (Cosic, 1994)::
+
         Assign EIIP(aa) to each amino acid aa in a protein sequence.
         Compute the DFT of the EIIP signal.
         Proteins with the SAME BIOLOGICAL FUNCTION share a COMMON FREQUENCY peak.
         This common frequency IS the protein's function frequency.
 
-    EIIP values for all 20 amino acids (Cosic 1994):
+    EIIP values for all 20 amino acids (Cosic 1994)::
+
         A=0.0373, R=0.0959, N=0.0036, D=0.1263, C=0.0829,
         Q=0.0761, E=0.0058, G=0.0050, H=0.0242, I=0.0000,
         L=0.0000, K=0.0371, M=0.0823, F=0.0946, P=0.0198,
         S=0.0829, T=0.0941, W=0.0548, Y=0.0516, V=0.0057
 
-    Ainulindale identification:
+    Ainulindale identification::
+
         The EIIP function frequency IS a Riemann zero (scaled).
         Each functional protein family has a characteristic frequency f* such that:
             f* × (2π × L) / c_bio = γ_n  (the n-th Riemann zero)
         where L is the protein length and c_bio is the biological propagation speed.
 
-    The superoxide reductase (SOR) frequency:
+    The superoxide reductase (SOR) frequency::
+
         SOR (Erika Schafer's molecule) is an iron-sulfur protein.
         EIIP sequence of the Fe site vicinity:
             ..C-P-Y-C-G-H-C-G-..  (canonical FeS binding motif)
@@ -313,7 +323,8 @@ def cosic_eiip() -> Dict[str, Any]:
         (the 3rd Riemann zero).
         This is the "reduction frequency" — the algebraic address of O₂⁻ reduction.
 
-    Cancer vs healthy:
+    Cancer vs healthy::
+
         Healthy cell signal: dominant frequency = γ_n for some n (ordered)
         Cancer cell signal: multiple frequencies, none dominant (zero-divisor disorder)
         The cancer cell has LOST its Riemann zero — its function address is scrambled.
@@ -432,20 +443,23 @@ def cancer_zero_divisor() -> Dict[str, Any]:
 
     In the Ainulindale framework:
 
-    Healthy cell algebra:
+    Healthy cell algebra::
+
         Cell division = multiplication in the octonion sub-algebra.
         Divides once: a → a·b = c  (one multiplication gives one daughter cell)
         Stops on signal: a·STOP = 0 is NOT a zero-divisor — the STOP signal
         works because in division algebras, a·b=0 → a=0 or b=0.
         Therefore: if STOP≠0 and cell≠0, then cell·STOP ≠ 0 → cell responds.
 
-    Cancer cell algebra:
+    Cancer cell algebra::
+
         The cancer cell has ACTIVATED its sedenion zero-divisors.
         Now: cell·STOP = 0  WITH  cell≠0 AND STOP≠0.
         The stop signal doesn't work. The cell multiplies without constraint.
         This IS the zero-divisor condition.
 
-    Three algebraic signatures of cancer:
+    Three algebraic signatures of cancer::
+
         1. ZERO-DIVISOR: cell·STOP = 0 (stop signal nullified)
         2. NON-ASSOCIATIVITY: (cell·divide)·regulate ≠ cell·(divide·regulate)
            The regulatory cascade can no longer enforce ordering.
@@ -456,7 +470,8 @@ def cancer_zero_divisor() -> Dict[str, Any]:
            A specific growth signal after a specific prior signal → uncontrolled growth.
            This is the oncogene activation pathway.
 
-    Numerical model:
+    Numerical model::
+
         Represent a cell state as a sedenion s ∈ 𝕊.
         Healthy cell: s lives in the octonion sub-algebra (e₀..e₇)
             |s·t| = |s|·|t| for all regulatory signals t
@@ -465,14 +480,16 @@ def cancer_zero_divisor() -> Dict[str, Any]:
         Full cancer: s is purely upper-sedenion
             Multiple stop signals nullified
 
-    The mass gap connection:
+    The mass gap connection::
+
         GAP = 0.000707 = the Yang-Mills mass gap = the THRESHOLD.
         Below GAP: stop signals reach the cell (healthy)
         Above GAP: stop signals are cancelled (cancer)
         Cancer is a Yang-Mills violation at the cellular scale.
         The therapeutic gap = the energy required to restore associativity.
 
-    Reactive oxygen species (ROS) in cancer:
+    Reactive oxygen species (ROS) in cancer::
+
         Cancer cells have elevated ROS (H₂O₂, O₂⁻, OH•).
         These are the CHEMICAL SIGNATURE of the sedenion zero-divisor activation.
         OH• = the e₁₅ boundary crossing (the Hawking radiation at cellular scale)
@@ -625,13 +642,16 @@ def drug_targeting() -> Dict[str, Any]:
 
     The Ainulindale cancer drug principle:
 
-    The cancer cell has an algebraic address in sedenion space:
+    The cancer cell has an algebraic address in sedenion space::
+
         c_cancer ∈ 𝕊  (the cancer's characteristic sedenion state)
 
-    The therapeutic molecule has address:
+    The therapeutic molecule has address::
+
         c_drug = R_H² / c_cancer  (conformal inversion)
 
-    Why this works:
+    Why this works::
+
         Conformal inversion r → R_H²/r maps INSIDE ↔ OUTSIDE the brim.
         The cancer lives in the upper sedenion (INSIDE the zero-divisor zone).
         Its inside-out (the drug) lives OUTSIDE — in the ordered, associative zone.
@@ -641,14 +661,16 @@ def drug_targeting() -> Dict[str, Any]:
             The drug RESTORES the associativity of the cancer cell.
             The drug is the algebraic ANTIPARTICLE of the cancer.
 
-    Formally:
+    Formally::
+
         If c_cancer = Σ_k c_k eₖ  (a sedenion in 16D),
         then c_drug = c_cancer† / |c_cancer|² × R_H²
         (the sedenion conjugate-inverse scaled by R_H²)
 
         This is the sedenion analogue of z → R_H²/z̄ in ℂ (Möbius transform).
 
-    The drug design procedure:
+    The drug design procedure::
+
         1. Characterise the cancer cell's EIIP spectrum (Cosic RRM).
         2. Identify its dominant Riemann address (γ_n for the cancer line).
         3. The drug's Riemann address = γ_{N+1-n} (the complementary zero).
@@ -657,20 +679,23 @@ def drug_targeting() -> Dict[str, Any]:
         5. The drug binds because it has the SAME frequency but INVERTED phase.
            It is the standing wave that cancels the cancer oscillation.
 
-    The inside-out principle:
+    The inside-out principle::
+
         The cancer molecule = a twisted null cone (Witches Hat, inverted).
         The drug = the null cone in its correct orientation.
         Together: two Hawking pairs at the cancer's event horizon.
         The drug is the antiparticle falling INTO the tumour.
         It falls in, the tumour radiates, the tumour shrinks.
 
-    Superoxide reductase as prototype:
+    Superoxide reductase as prototype::
+
         Erika Schafer synthesised SOR — the enzyme that reduces superoxide.
         SOR is already doing this: it is the algebraic inverse of O₂⁻ (superoxide).
         O₂⁻ is the cancer's zero-divisor signal; SOR is its inverse.
         SOR restores J_B balance. This is the prototype of the Ainulindale drug.
 
-    The G:A:V ratio connection:
+    The G:A:V ratio connection::
+
         Life requires G:A:V = 6:3:1 amino acid backbone ratio.
         This ratio is the stable solution to the Hagedorn thermal ceiling.
         Cancer disrupts this ratio locally.
@@ -810,7 +835,8 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
     breaking bonds selectively. The FRAGMENTS are separated by chromatography
     (HPLC, GC-MS) to give a molecular fingerprint.
 
-    The Ainulindale identification:
+    The Ainulindale identification::
+
         Radiolysis species map to the three Noether currents:
 
         OH• (hydroxyl radical) → attacks J_R bonds (kinetic, easy to break)
@@ -828,18 +854,21 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
             G-value: 0.7 per 100 eV
             Result: J_G marker concentration
 
-    The chromatogram IS the Noether spectrum:
+    The chromatogram IS the Noether spectrum::
+
         Retention time τ_R (early eluting) = J_R fragments (hydrophilic, small)
         Retention time τ_B (late eluting)  = J_B fragments (hydrophobic, aromatic)
         Area ratio A_R/A_B = J_R/J_B balance
         Peak at τ_G = H₂O₂ or primary oxidation product = J_G marker
 
-    Cancer signature in the chromatogram:
+    Cancer signature in the chromatogram::
+
         Healthy tissue: A_R/A_B ≈ OMEGA_ZS (the Noether balance)
         Cancer tissue:  A_R/A_B >> OMEGA_ZS (J_B suppressed — zero-divisors fire)
         The cancer ratio deviation = the DEGREE of zero-divisor collapse.
 
-    The G:A:V = 6:3:1 life ratio in radiolysis:
+    The G:A:V = 6:3:1 life ratio in radiolysis::
+
         Radiolysis of any living protein produces G, A, V as the dominant small
         amino acid fragments in ratio 6:3:1.
         Glycine (G): the smallest amino acid, only CH₂ between NH₂ and COOH.
@@ -852,7 +881,8 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
             V has 4 fragmentation sites → survives 1× (base rate)
         This ratio IS stable under Hagedorn thermal conditions.
 
-    SOR as the J_B restorer:
+    SOR as the J_B restorer::
+
         After radiolysis, O₂⁻ (superoxide) accumulates.
         Superoxide IS the J_B imbalance (Blue current unchecked).
         SOR (Erika Schafer) catalyses: O₂⁻ + e⁻ + 2H⁺ → H₂O₂

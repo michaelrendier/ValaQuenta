@@ -2,8 +2,8 @@
 ValaQuenta.modules.spectral_primes.maths
 ===========================================
 Spectral Representation of the Primes -- the spin/wobble decomposition of
-the Riemann-Siegel theta-spiral (RiemannHypothesisProof/ADDENDUM_toroidal_
-theta_structure_2026-09-25.md), formalized as an engine.
+the Riemann-Siegel theta-spiral (``RiemannHypothesisProof/ADDENDUM_toroidal_theta_structure_2026-09-25.md``),
+formalized as an engine.
 
 Born 2026-09-26 from a live conversation walking the theta(t)-rotation
 construction through: two spirals (carrier vs trajectory) -> spin (major
@@ -15,6 +15,8 @@ not Re(z)) and the Axis (the central t-axis of the helix).
 
 FOUR RESULTS, ALL COMPUTED, ONE OF THEM NEGATIVE -- reported as found,
 per this framework's Chase Every Anomaly rule:
+
+::
 
   1. SPIN is non-resonant.  theta'(t) (the major loop, the smooth secular
      carrier rate) is strictly monotonic over the tested sample -- no
@@ -117,8 +119,8 @@ def spin_is_monotonic(theta_primes: Sequence[mp.mpf]) -> Dict[str, Any]:
 
 def wobble_series(t_values: Sequence[mp.mpf],
                    theta_primes: Sequence[mp.mpf]) -> List[mp.mpf]:
-    """
-    spacing - 2*pi/theta'(t) at each zero -- the minor-loop fluctuation.
+    r"""
+    spacing - 2\*pi/theta'(t) at each zero -- the minor-loop fluctuation.
     Classically, this is where the primes live (via the explicit formula,
     demonstrated concretely in psi_explicit_formula below).
 
@@ -163,10 +165,12 @@ def true_psi(x: float) -> float:
 
 def psi_explicit_formula(x: float, zero_imag_parts: Sequence[mp.mpf]
                           ) -> Tuple[mp.mpf, mp.mpf, mp.mpf]:
-    """
-    Truncated von Mangoldt explicit formula:
+    r"""
+    Truncated von Mangoldt explicit formula::
+
         psi(x) = x - sum_rho x^rho/rho - ln(2*pi) - (1/2)*ln(1 - x^-2)
-    summed over rho=1/2+i*gamma and its conjugate (real part doubled).
+
+    summed over rho=1/2+i\*gamma and its conjugate (real part doubled).
     Same zero set as spin_series/wobble_series -- one smooth term (x, NO
     zero information) plus one oscillatory term built ENTIRELY from the
     zeros. Returns (reconstructed, smooth_part, oscillatory_part).
@@ -283,15 +287,15 @@ def tilt_vs_wobble_correlation(tilt: Sequence[mp.mpf],
 
 def crossing_shape_at(gamma_n: mp.mpf, sigma_range: Sequence[mp.mpf]
                        ) -> List[Tuple[float, float, float, float]]:
-    """
+    r"""
     At fixed height t=gamma_n, scan sigma near 1/2. Returns
-    (sigma, Re, Im, |value|) for each sample -- the shape of the crossing
+    (sigma, Re, Im, \|value\|) for each sample -- the shape of the crossing
     of the Real Tilt (the trajectory's instantaneous position) against the
     Axis (Re=Im=0).
 
     :param gamma_n: zero height t = γₙ
     :param sigma_range: σ values to scan near ½
-    :returns: (σ, Re, Im, |value|) for each sample: the crossing of the Real Tilt against the Axis
+    :returns: (σ, Re, Im, \|value\|) for each sample: the crossing of the Real Tilt against the Axis
     """
     out = []
     for sigma in sigma_range:

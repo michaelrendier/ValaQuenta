@@ -4,10 +4,14 @@ telperion.py — The Swimming Engine  v0.100
 
 The Zero Lattice: Telperion
 "How an Addition EQUALS a Subtraction
+
+::
+
  or
  How the Inside EQUALS the Outside"
 
-The central claim:
+The central claim::
+
   Galaxies are jellyfish. The ZD crossing IS the bell stroke.
 
   Spiral galaxies:  active ZD crossing in progress — the bell is mid-stroke.
@@ -29,7 +33,8 @@ The central claim:
 
 Zero free parameters. No renormalization. Failed predictions stay in the data.
 
-Companion engines:
+Companion engines::
+
   zero_lattice.py  — the ZD structure (42 classes, 84 pairs, THE ANGLE)
   fixed_point.py   — the two fixed points (The Unit, T_256)
 """
@@ -76,8 +81,8 @@ L_PLANCK       = 1.616255e-35        # Planck length (m)
 
 # Time compression at distance eps above M87* horizon (infalling)
 def m87_compression(eps_m: float) -> float:
-    """
-    Gravitational time dilation factor at eps metres above M87* horizon.
+    r"""
+    Gravitational time dilation factor at eps metres above M87\* horizon.
 
     :param eps_m: height above the M87* horizon, in metres
     :returns: the gravitational time-dilation factor R_s / eps
@@ -409,10 +414,10 @@ def stellar_halo_profile_comparison() -> Dict:
 # ── BAO as CD tower levels ────────────────────────────────────────────────────
 
 def bao_tower_mapping(compression_factor: float = None) -> BaoTowerMapping:
-    """
+    r"""
     Return the BAO shells as the physical manifestation of the CD tower levels.
 
-    At 2.648 mm from the M87* horizon, 1 galaxy rotation = 1 watch-second.
+    At 2.648 mm from the M87\* horizon, 1 galaxy rotation = 1 watch-second.
     Each BAO crossing = 2.13 watch-seconds = one CD-level step, and 60
     watch-seconds = 13.8 billion years = the age of the universe.
 
@@ -482,12 +487,12 @@ def galactic_rotation_lock() -> Dict:
 # ── M87* axis ─────────────────────────────────────────────────────────────────
 
 def m87_axis() -> Dict:
-    """
-    The M87* spin axis = e₀ extended into physical space.
+    r"""
+    The M87\* spin axis = e₀ extended into physical space.
 
     e₀ is the identity element of the sedenion algebra — The Null Operator.
     It never participates in ZD crossings. It is the reference axis of the tower.
-    The M87 jet (5000 ly) is aligned with M87*'s spin axis.
+    The M87 jet (5000 ly) is aligned with M87\*'s spin axis.
     From 2.648mm above the horizon, this is the only preferred direction.
     All BAO shells appear stacked perpendicular to this axis.
     The jellyfish swim "up" = away from the singularity = toward The Unit.
@@ -523,12 +528,12 @@ def m87_axis() -> Dict:
 # ── Resonance coupling ────────────────────────────────────────────────────────
 
 def resonance_coupling() -> ResonanceCoupling:
-    """
+    r"""
     The coupled oscillator: spiral (active ZD) + elliptical/halo (completed ZD).
 
     The spiral's bell frequency (ω_bell) resonates with the halo's natural frequency
     (ω_halo) at the Lindblad condition. This creates directed thrust "up" along
-    the M87* axis through successive BAO shells.
+    the M87\* axis through successive BAO shells.
 
     The coupling node = Monster gap {e₁, e₁₁, e₁₅} — the shared element of all
     12 odd-sector ZD constellations (The Breathing Theorem).

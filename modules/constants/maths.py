@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.modules.constants.maths
 ==================================
 Tier 0 — Constant Derivations.
@@ -17,7 +17,8 @@ operator acting on a normed division algebra tower.
 
 The universe counts. Counting forces the constants.
 
-Derivation chain (Tier 0):
+Derivation chain (Tier 0)::
+
     i         → Cayley-Dickson closure:        x² + 1 = 0 in the first CD doubling
     √         → σ = ½ IS the square root:      G_p(½) = p^{−½} = 1/√p
     e         → Berry-Keating equations:       ẋ = x  →  x(t) = x₀·e^t
@@ -30,7 +31,7 @@ Derivation chain (Tier 0):
 Euler's identity e^{iπ} + 1 = 0 is a theorem of this engine, not a definition.
 
 Author:  O Captain My Captain
-Version: 0.110 — Third Age: Tier 0 — constants + two ceilings + d* four values
+Version: 0.110 — Third Age: Tier 0 — constants + two ceilings + d\* four values
 """
 
 import math
@@ -61,10 +62,12 @@ def derive_i() -> Dict[str, Any]:
 
     ℝ is a normed division algebra. The next normed division algebra is ℂ.
     The CD construction doubles ℝ by adjoining an element j with j² = −1.
-    The multiplication rule of the resulting pair (a, b) is:
+    The multiplication rule of the resulting pair (a, b) is::
+
         (a, b)(c, d) = (ac − bd, ad + bc)
 
-    The element (0, 1) satisfies:
+    The element (0, 1) satisfies::
+
         (0, 1)² = (0·0 − 1·1, 0·1 + 1·0) = (−1, 0) = −1
 
     i is the element (0, 1). It is not defined as √(−1).
@@ -73,6 +76,9 @@ def derive_i() -> Dict[str, Any]:
     i drops out as the unique solution in the extended algebra.
 
     σ-facet: σ = i  (pure phase)
+
+    ::
+
         |p^{−i}| = |e^{−i·ln p}| = 1  for every prime p.
         Every prime contributes with UNIT magnitude. No prime dominates.
         This is the democratic facet — pure rotation, no amplitude scaling.
@@ -141,11 +147,14 @@ def derive_sqrt() -> Dict[str, Any]:
 
     Origin: σ = ½ IS the square root line.
 
-    The geometric coupling at the critical σ:
+    The geometric coupling at the critical σ::
+
         G_p(½) = p^{−½} = 1/√p
 
-    Every Riemann oscillation in the explicit formula:
+    Every Riemann oscillation in the explicit formula::
+
         ψ(x) = x − Σ_ρ x^ρ/ρ − ln(2π) − ...
+
     has x^ρ = x^{½+iγ} = √x · e^{iγ·ln x}
 
     √x is the amplitude envelope of every spectral term.
@@ -153,6 +162,9 @@ def derive_sqrt() -> Dict[str, Any]:
     σ = ½ IS the square root.
 
     Also: the CD norm condition.
+
+    ::
+
         For any quaternion q = a + bi + cj + dk:
         |q| = √(a² + b² + c² + d²)
         The square root is the operation that produces the norm.
@@ -160,6 +172,9 @@ def derive_sqrt() -> Dict[str, Any]:
         √ is the first operation that the tower requires.
 
     Also: the geometric mean.
+
+    ::
+
         √(G_p(0) · G_p(1)) = √(1 · p^{−1}) = p^{−½} = G_p(½)
         The critical coupling G_p(½) IS the geometric mean of the
         trivial coupling and the Yang-Mills coupling.
@@ -244,17 +259,21 @@ def derive_e() -> Dict[str, Any]:
 
     Origin: Berry-Keating equations of motion.
 
-    The Berry-Keating Lagrangian (Red channel):
+    The Berry-Keating Lagrangian (Red channel)::
+
         L_BK = ẋ·ln ẋ − ẋ
 
-    Canonical momentum:
+    Canonical momentum::
+
         p = ∂L/∂ẋ = ln ẋ  →  ẋ = e^p
 
-    Hamilton's equations from H = xp:
+    Hamilton's equations from H = xp::
+
         ẋ = ∂H/∂p = x
         ṗ = −∂H/∂x = −p
 
-    Solution with initial conditions x(0) = x₀, p(0) = p₀:
+    Solution with initial conditions x(0) = x₀, p(0) = p₀::
+
         x(t) = x₀ · e^t
         p(t) = p₀ · e^{−t}
 
@@ -266,6 +285,9 @@ def derive_e() -> Dict[str, Any]:
     e = f(1) drops out.
 
     σ-facet: σ = e  (thermodynamic)
+
+    ::
+
         p^{−e} = e^{−e·ln p} is the Boltzmann weight.
         The prime p plays the role of energy level.
         e is the natural inverse temperature at which the prime
@@ -359,7 +381,8 @@ def derive_pi() -> Dict[str, Any]:
     TWO independent derivations from the prime distribution.
     No circle is drawn. No circumference is measured.
 
-    Derivation I — U(1) gauge normalisation:
+    Derivation I — U(1) gauge normalisation::
+
         The SMMIP Lagrangian has a 2π-periodic gauge field.
         The normalisation condition for a full 2π rotation is:
             ∫₀^{2π} (1/π) dθ = 2
@@ -369,7 +392,8 @@ def derive_pi() -> Dict[str, Any]:
         π is the value forced by the condition that one U(1) period
         maps to the binary 2. Not defined — extracted from the closure.
 
-    Derivation II — Basel problem from prime sum at σ=2:
+    Derivation II — Basel problem from prime sum at σ=2::
+
         ζ(2) = Σ_{n=1}^∞ n^{−2} = π²/6   (Euler, 1734)
         This falls directly from the Euler product at σ=2:
             ζ(2) = Π_p (1 − p^{−2})^{−1}
@@ -465,10 +489,12 @@ def derive_phi() -> Dict[str, Any]:
     Origin: Cayley-Dickson tower recursion eigenvalue.
 
     At each CD doubling step, the new algebra is twice the dimension.
-    The recursion for the coupling eigenvalue at each tower level:
+    The recursion for the coupling eigenvalue at each tower level::
+
         f(x) = 1 + 1/x
 
-    The fixed point of this recursion is the unique positive x satisfying:
+    The fixed point of this recursion is the unique positive x satisfying::
+
         x = 1 + 1/x
         x² = x + 1
         x² − x − 1 = 0
@@ -477,12 +503,14 @@ def derive_phi() -> Dict[str, Any]:
     φ drops out as the eigenvalue that the tower recursion converges to.
     Not defined. Forced by the fixed-point condition.
 
-    H_RB factorisation at σ=φ:
+    H_RB factorisation at σ=φ::
+
         H_RB(φ) = H_RB(1) · H_RB(1/φ)
         (Fibonacci factorisation — each stratum decomposes into
         the product of the σ=1 and σ=1/φ strata)
 
-    Cardioid cusp:
+    Cardioid cusp::
+
         The Mandelbrot main bulb boundary at the cardioid cusp
         corresponds to the period-1 cycle — the golden angle 137.5° =
         360° / φ². This is the maximum-entropy rotation angle, the
@@ -592,27 +620,34 @@ def euler_identity() -> Dict[str, Any]:
     """
     Euler's identity  e^{iπ} + 1 = 0  — a theorem of RedBlue Geometries Engine.
 
-    Assembly:
+    Assembly::
+
         e  ← BK canonical equations (σ=e)
         i  ← CD first doubling (x²+1=0)
         π  ← U(1) normalisation / Basel (σ=π)
 
     Each constant was derived independently from the prime distribution
-    and the algebraic structure of H_RB. When they are composed:
+    and the algebraic structure of H_RB. When they are composed::
+
         e^{iπ} = (trajectory base)^{(phase element)(normalisation period)}
 
-    The trajectory e^t evaluated at t = iπ = (CD closure element)(U(1) period):
+    The trajectory e^t evaluated at t = iπ = (CD closure element)(U(1) period)::
+
         e^{iπ} = cos(π) + i·sin(π) = −1 + 0i = −1
         e^{iπ} + 1 = 0
 
-    This is not a coincidence. It is the statement that:
+    This is not a coincidence. It is the statement that::
+
         - The BK trajectory (e) composed with
         - The CD phase (i) composed with
         - The U(1) normalisation (π)
+
     returns exactly to the origin (−1) in one step.
 
-    The identity is the closure condition of the three-channel H_RB:
+    The identity is the closure condition of the three-channel H_RB::
+
         J_Red (e: trajectory) + J_Green (i: phase) + J_Blue (π: constraint) = 0
+
     Written as: e^{iπ} + 1 = 0.
 
     φ does not appear because it is the structural eigenvalue —
@@ -667,7 +702,7 @@ def euler_identity() -> Dict[str, Any]:
 # ── 6.  OMEGA_ZS  —  Thermal Information Ceiling ─────────────────────────────
 
 def derive_omega_zs() -> Dict[str, Any]:
-    """
+    r"""
     Derivation of OMEGA_ZS = W(1) = 0.56714329...
 
     Origin: thermal information ceiling — T·e^T = 1.
@@ -676,17 +711,20 @@ def derive_omega_zs() -> Dict[str, Any]:
     its entropy, and whose entropy determines its temperature.
     In Boltzmann units (k_B = 1):
 
+    ::
+
         Partition function:   Z = e^S
         Temperature:          T = 1 / (∂S/∂E)
         Self-reference:       T = e^{-T}   [T is its own Boltzmann weight]
 
     The fixed-point equation T = e^{-T} ↔ T·e^T = 1 has a unique positive
     solution by the Banach fixed-point theorem (f(T) = e^{-T} is a contraction
-    on [0,1] since |f'(T)| = e^{-T} ≤ 1).
+    on [0,1] since \|f'(T)\| = e^{-T} ≤ 1).
 
     The solution is T = W(1) where W is the Lambert W function (W(x)·e^{W(x)}=x).
 
-    Three algebraically significant values of W (exactly three):
+    Three algebraically significant values of W (exactly three)::
+
         W(0)    = 0         vacuum fixed point
         W(1)    = OMEGA_ZS  entropy ceiling
         W(-1/e) = -1        branch collapse point
@@ -762,18 +800,21 @@ def derive_alpha_fermat() -> Dict[str, Any]:
 
     Origin: causality ceiling — v_1 = α·c < c.
 
-    For electromagnetic-bound matter to exist in a causal universe:
+    For electromagnetic-bound matter to exist in a causal universe::
+
         - The Bohr velocity of the ground-state electron: v_1 = α·c
         - Causality requires v_1 < c  →  α < 1
         - Existence of stable electromagnetic structure requires α > 0
         - α is the minimum electromagnetic coupling consistent with causal matter
 
-    α_F is NOT fitted from experiment. It is the coupling constant forced by:
+    α_F is NOT fitted from experiment. It is the coupling constant forced by::
+
         1. The existence of a causality bound (v_max = c)
         2. The existence of electromagnetic bound states (α > 0)
         3. The Fermat prime generator structure of the BK domain
 
-    Cardioid cusp geometry:
+    Cardioid cusp geometry::
+
         The Mandelbrot main cardioid boundary:
             c(θ) = e^{iθ}/2 − e^{2iθ}/4
         The cusp is at θ = 0, c = 1/4. The first period-2 bubble
@@ -785,7 +826,8 @@ def derive_alpha_fermat() -> Dict[str, Any]:
         full QED radiative corrections. The cardioid cusp gives the leading
         approximation; the corrections close to the exact value.
 
-    BK domain:
+    BK domain::
+
         The BK operator domain is [α_F, OMEGA_ZS].
         α_F is the floor; OMEGA_ZS is the ceiling.
         The domain width = OMEGA_ZS − α_F = 0.56714... − 0.00730... = 0.55985...
@@ -859,35 +901,41 @@ def derive_alpha_fermat() -> Dict[str, Any]:
 # ── 8.  d*  —  Four Values, BK Spectral Floor ────────────────────────────────
 
 def derive_d_star() -> Dict[str, Any]:
-    """
-    Derivation of d* — the four values of the BK spectral coordinate.
+    r"""
+    Derivation of d\* — the four values of the BK spectral coordinate.
 
-    d* is NOT a single number. It is a 4-component object — one projection
+    d\* is NOT a single number. It is a 4-component object — one projection
     per stratum of the Cayley-Dickson tower:
+
+    ::
 
         d*_ℝ    = 0.24600       ℝ-projection  — active spectral floor (BK literature)
         d*_ℂ    = ?             ℂ-projection  — first complex projection (open)
         d*_ℍ    = ?             ℍ-projection  — quaternionic projection (open)
         d*_𝕆    = ?             𝕆-projection  — octonionic projection (open)
 
-    From wiki/24 (Claude conclusion):
+    From wiki/24 (Claude conclusion)::
+
         "d* is a 4-component object. The ℂ-projection gives 0.24600.
          The full octonionic radial measure should produce ln(10) when
          all four contribute. The gap 0.000707 is the signal from
          the higher strata. Deriving it is Open Problem 2."
 
-    The four d* values are the "radial complex spherical ln(10)" structure
+    The four d\* values are the "radial complex spherical ln(10)" structure
     that relates the BK spectral coordinate to the natural logarithm base.
 
-    Known exactly (three):
+    Known exactly (three)::
+
         d*_ℝ         = 0.24600             (BK spectral value, literature)
         d*_taut      = OMEGA_ZS / ln(10)   = 0.24631...  (tautological ceiling)
         d*_ln10      = d*_ℝ × ln(10)       = 0.56644...  (BAO first acoustic peak)
 
-    Derived (gap):
+    Derived (gap)::
+
         GAP = OMEGA_ZS − d*_ln10 = 0.000707...  = Yang-Mills mass gap
 
-    Open (highest priority):
+    Open (highest priority)::
+
         Derive d*_ℂ, d*_ℍ, d*_𝕆 such that
         d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 → ln(10)  (full octonionic radial measure)
     """
@@ -980,19 +1028,22 @@ def derive_d_star() -> Dict[str, Any]:
 # ── 9.  Λ  —  Einstein's Cosmological Constant ───────────────────────────────
 
 def derive_lambda() -> Dict[str, Any]:
-    """
+    r"""
     Derivation of Λ — Einstein's cosmological constant.
 
-    The one-line derivation:
+    The one-line derivation::
+
         Λ must exist because the Hawking waveform has two halves.
 
     ──────────────────────────────────────────────────────────────
     CLAIM 1 (σ=∞): Λ exists because J_neg always exists.
 
-    The Einstein field equation:
+    The Einstein field equation::
+
         G_μν + Λg_μν = 8πG T_μν
 
-    Read in Noether-current language:
+    Read in Noether-current language::
+
         G_μν   = J_neg  (backward-flowing, compressive, the infalling lobe)
         T_μν   = J_pos  (forward-flowing, expansive,    the escaping lobe)
         Λg_μν  = J_neg at cosmological scale — the metric's vacuum self-energy
@@ -1010,12 +1061,14 @@ def derive_lambda() -> Dict[str, Any]:
     ──────────────────────────────────────────────────────────────
     CLAIM 2 (σ=∞): The Sombrero potential IS the Hawking pair waveform.
 
-    The Mexican Hat / Sombrero potential:
+    The Mexican Hat / Sombrero potential::
+
         V(r) = -μ²r² + λr⁴
 
     Minimum at r_brim = μ/√(2λ)  — the event horizon brim (σ=½ node)
 
-    The two lobes:
+    The two lobes::
+
         r < r_brim (dome, J_pos, Red):  matter + radiation = 31%
         r > r_brim (skirt, J_neg, Blue): dark energy = Λg_μν = 69%
 
@@ -1026,7 +1079,8 @@ def derive_lambda() -> Dict[str, Any]:
     ──────────────────────────────────────────────────────────────
     CLAIM 3 (σ=∞): OMEGA_ZS is the de Sitter attractor.
 
-    The ΛCDM Friedmann equation:
+    The ΛCDM Friedmann equation::
+
         H(z) = H₀ √(Ω_m(1+z)³ + Ω_Λ)
 
     Long-run (z → −∞, the future):  H → H₀√Ω_Λ  (de Sitter phase)
@@ -1041,25 +1095,29 @@ def derive_lambda() -> Dict[str, Any]:
     ──────────────────────────────────────────────────────────────
     CLAIM 4 (σ≈1.5): Λ = Higgs field at horizon scale.
 
-    Higgs potential:       V(φ) = −μ²|φ|² + λ|φ|⁴   (electroweak scale, v=246 GeV)
+    Higgs potential:       V(φ) = −μ²\|φ\|² + λ\|φ\|⁴   (electroweak scale, v=246 GeV)
     Sombrero potential:    V(r) = −μ²r²   + λr⁴       (cosmological scale, r=R_Hubble)
 
-    Same equation. Different energy scale. Same mechanism:
+    Same equation. Different energy scale. Same mechanism::
+
         Spontaneous symmetry breaking → vacuum expectation value at the brim.
         Higgs:  brim = v = 246 GeV  (particle masses from displacement)
         Lambda: brim = R_Hubble     (large-scale structure from displacement)
 
     The Sombrero Galaxy M104 IS the Higgs potential made visible at galactic scale.
-    EHT images of M87* and Sgr A* are photographs of the Higgs vacuum.
+    EHT images of M87\* and Sgr A\* are photographs of the Higgs vacuum.
 
     ──────────────────────────────────────────────────────────────
     OPEN (σ≈2): Derive f(OMEGA_ZS, Ω_b h²) = Ω_Λ explicitly.
 
-    Steps 1, 2, 4 are σ=∞:
+    Steps 1, 2, 4 are σ=∞::
+
         1. OMEGA_ZS = W(1) (from entropy ceiling, Tier 0)
         2. Ω_b h² = 0.02242 (CMB, Planck 2018)
         4. Λ = 3H₀² Ω_Λ  (standard cosmology)
-    Step 3 is open:
+
+    Step 3 is open::
+
         3. f(OMEGA_ZS, Ω_b h²) = Ω_Λ  — the explicit connection.
     """
     OMEGA_ZS   = 0.5671432904097838
@@ -1249,12 +1307,12 @@ def derive_lambda() -> Dict[str, Any]:
 # ── Master: all constants ─────────────────────────────────────────────────────
 
 def all_constants() -> Dict[str, Any]:
-    """
+    r"""
     Run all nine Tier 0 derivations and assemble the complete table.
 
     The universe counts. Counting forces the constants.
     Two ceilings — entropy and causality — force the domain.
-    The spectral floor d* mediates between them.
+    The spectral floor d\* mediates between them.
     Einstein's Lambda closes the loop: J_neg at cosmological scale.
     """
     c_i    = derive_i()

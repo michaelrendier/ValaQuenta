@@ -3,7 +3,8 @@ ValaQuenta.modules.bao_mass_gap.tools
 =====================================
 BaoMassGapModule — registry contract.
 
-Seven equations, in derivation order:
+Seven equations, in derivation order::
+
     summary                   the one-screen landing view
     gap_value                 Δ = Ω_ζΣ − D*·ln10
     spectral_residue          the BAO decomposition — why it is a residue
@@ -34,13 +35,13 @@ from .maths import (
 
 
 class BaoMassGapModule(EquationModule):
-    """
+    r"""
     The Mass Gap — spectral residue of BAO
 
     The mass gap as the residue of the BAO spectral decomposition. The explicit
     formula splits the prime distribution into a de Sitter ground state plus one
     standing wave per zero; read at the BAO scale that is the CMB acoustic
-    spectrum. What no standing wave absorbs between the acoustic floor D*·ln10
+    spectrum. What no standing wave absorbs between the acoustic floor D\*·ln10
     and the thermal ceiling Ω_ζΣ is the residue: Δ = 0.0007073575 = 1/(1000√2).
     Zero free parameters. Δ is consumed across the codebase as the
     compactification scale and spectral floor; this module is where it is

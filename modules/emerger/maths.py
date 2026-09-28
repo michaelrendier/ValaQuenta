@@ -3,6 +3,8 @@ ValaQuenta.modules.emerger.maths
 ================================
 THE EMERGER -- Sedenion Bracketing & Firing Order.
 
+::
+
     "the grouping of what sedenion operators creates what different domains
      ... which by need give the emergence a priority in a particular order"
                                     -- Cody Michael Allison, 2026-09-01
@@ -14,7 +16,8 @@ the relationship between a bracket and the real reference stays visible.
 
 Given a 2^k Cayley-Dickson algebra, a BRACKETING is an ordered partition
 of the imaginary basis indices {1 .. dim-1} into named groups. Each group
-G, paired with the anchor e_0, spans a sub-domain span({e_0} u G):
+G, paired with the anchor e_0, spans a sub-domain span({e_0} u G)::
+
     |G| = 1, closed        -> C   (complex)
     |G| = 3, closed        -> H   (quaternion)
     |G| = 7, closed        -> O   (octonion)
@@ -24,7 +27,8 @@ G, paired with the anchor e_0, spans a sub-domain span({e_0} u G):
 The ORDER in which the groups are approached is the FIRING ORDER. It is
 load-bearing: each bracket is conditioned on the ones fired before it
 (conj/norm from {1:15} must exist before {2:14} can read a ladder
-position, etc.). The firing order can be:
+position, etc.). The firing order can be::
+
     canonical  -- the dependency order
     sigma_rb   -- sigma_RB's tilt-phase rotates the entry point into the
                   12-step precession (4 d* faces : 3 Lambert-W faces)
@@ -38,7 +42,8 @@ reading).
 Pure Python 3.  Fraction arithmetic throughout; float only at the output
 boundary.  Every quantity here is CALCULATED and exactly reproducible.
 
-Cross-references (this engine sits among):
+Cross-references (this engine sits among)::
+
     modules/box_kite       -- the exact PSL(2,7) ZD geometry (NOT G_2;
                               G_2 is the continuous blow-up that forgets
                               the labelling)
@@ -121,9 +126,9 @@ def _sub(u, v): return tuple(x - y for x, y in zip(u, v))
 
 
 def coerce_vec(v, dim: int = SEDENION_DIM) -> Vec:
-    """
+    r"""
     Accept a length-dim sequence of numbers, or a name like 'e1+e10',
-    'e0', '2*e3-e11', '1.5+e2'.  Returns a tuple of Fraction.
+    'e0', '2\*e3-e11', '1.5+e2'.  Returns a tuple of Fraction.
 
     :param v: a length-dim sequence of numbers, or a name such as 'e1+e10', 'e0', '2*e3-e11' or '1.5+e2'
     :param dim: dimension
@@ -158,8 +163,8 @@ def norm_sq(x: Sequence[F]) -> F:
 
 
 def left_matrix(a: Sequence[F]) -> List[List[F]]:
-    """
-    L_a with  L_a . x == cd_mul(a, x).  Columns = a * e_k.
+    r"""
+    L_a with  L_a . x == cd_mul(a, x).  Columns = a \* e_k.
 
     :param a: coefficient vector
     :returns: the matrix L_a as rows of Fractions
@@ -197,8 +202,8 @@ def mat_rank(M: List[List[F]]) -> int:
 
 
 def is_zero_divisor(x: Sequence[F]) -> bool:
-    """
-    x != 0 has a partner y != 0 with x*y = 0  <=>  L_x is rank-deficient.
+    r"""
+    x != 0 has a partner y != 0 with x\*y = 0  <=>  L_x is rank-deficient.
 
     :param x: coefficient vector
     :returns: True if x has a nonzero partner y with x·y = 0
@@ -215,8 +220,10 @@ def is_zero_divisor(x: Sequence[F]) -> bool:
 
 def on_zd_equator(x: Sequence[F]) -> bool:
     """
-    Purely imaginary AND norm-balanced across the CD-double boundary:
+    Purely imaginary AND norm-balanced across the CD-double boundary::
+
         Re(a) = Re(b) = 0 ,  |a| = |b| ,  a,b != 0
+
     where x = (a, b), a = first half, b = second half.  This is the fixed
     set of the J_red <-> J_blue hemisphere swap -- the balance equator the
     zero divisors sit on.  (Sufficient for the basis assessor pairs; the
@@ -236,11 +243,15 @@ def on_zd_equator(x: Sequence[F]) -> bool:
 # ======================================================================
 
 def sigma_rb(x: Sequence[F]) -> Dict[str, object]:
-    """
+    r"""
     psi[k] = x[k] + i x[(k+8) mod 16].
-    s[k]   = psi[k] * conj(psi[k XOR 4])
+    s[k]   = psi[k] \* conj(psi[k XOR 4])
+
+    ::
+
         tilt[k] = Re s[k] = x[k] x[k^4]  +  x[k+8] x[(k^4)+8]
         axis[k] = Im s[k] = x[k+8] x[k^4]  -  x[k] x[(k^4)+8]
+
     T1 (Oblique-Gear): s[k^4] = conj s[k]  =>  Sigma_axis = 0 identically.
     tilt = Perfect Perturbation (Scale);  axis = Perfect Turbulent Flow.
     Sigma_tilt = 0  <=>  sigma = 1/2.
@@ -273,6 +284,9 @@ def firing_phase(sigma_tilt: F) -> Tuple[int, int]:
     """
     Rational squash of Sigma_tilt into the 12-step precession, then mod 5
     (gcd(12,5)=1 so the 12-phase clock cycles all five brackets).
+
+    ::
+
         s = St / (1 + |St|)  in (-1, 1) ;  u = (s+1)/2 in (0,1)
         step12 = floor(12 u) ;  entry bracket = step12 mod 5
 
@@ -383,7 +397,8 @@ def gain_class(x: Sequence[F]) -> str:
 def legal_orders() -> List[List[str]]:
     """
     Dependency-respecting permutations of the five canonical brackets.
-    Constraints:
+    Constraints::
+
         {1:15} before {2:14}, {8:8}, {4:8:4}
         {8:8}  before {4:4:4:4}
         {4:4:4:4} before {4:8:4}

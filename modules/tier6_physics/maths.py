@@ -3,7 +3,8 @@ ValaQuenta.modules.tier6_physics.maths
 ======================================
 Tier 6 — FULL PHYSICS.
 
-Foundation (new claim, first stated this session):
+Foundation (new claim, first stated this session)::
+
     Zero Divisors (Sedenion)  =  ADDITION
     CD Tower                  =  SUBTRACTION
     Through both:                MULTIPLICATION + DIVISION
@@ -13,7 +14,8 @@ The four arithmetic operations emerge from two algebraic structures.
 No axioms assumed. The integers count. The counting forces the structures.
 The structures force the operations. Mathematics is not invented — it is derived.
 
-Engines (one claim per engine):
+Engines (one claim per engine)::
+
     sedenion_arithmetic()       Zero-div=+, CD=-  →  ×÷ = Mathematics
     quantum_mechanics()         Full QM from H_RB at σ=½
     standard_model()            Full Standard Model Lagrangian from SMMIP (term-for-term)
@@ -89,6 +91,9 @@ def cd_mul(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     Rule:  (a₁, a₂)(b₁, b₂) = (a₁b₁ − conj(b₂)a₂,  b₂a₁ + a₂conj(b₁))
 
     Verified:  i·j = k  (quaternion)  ✓
+
+    ::
+
                e₁·e₂ = e₃ (octonion first triple) ✓
 
     :param a: coefficient vector of length 2ⁿ
@@ -150,13 +155,15 @@ def sedenion_arithmetic() -> Dict[str, Any]:
     This means multiplication can PRODUCE zero — a new way to add to zero.
     The zero-divisor IS the mechanism by which + enters × from below.
 
-    The specific zero-divisor pair in the SMMIP:
+    The specific zero-divisor pair in the SMMIP::
+
         (J_B, J_R) pair at boundary e₁₅
         J_B · J_R = 0  modulo the mass gap
         This IS the Yang-Mills mass gap: δ = OMEGA_ZS - d*·ln10 = 0.000707
 
     ── CD Tower = Subtraction ───────────────────────────────────────────────
-    Each Cayley-Dickson doubling SUBTRACTS one algebraic property:
+    Each Cayley-Dickson doubling SUBTRACTS one algebraic property::
+
         ℝ  → has all properties: {ordered, field, commutative, associative, normed}
         ℂ  = ℝ  minus {ordered}       (i > 0 is meaningless)
         ℍ  = ℂ  minus {commutative}   (ab ≠ ba in general)
@@ -319,14 +326,16 @@ def quantum_mechanics() -> Dict[str, Any]:
 
     H_RB at σ=½ IS quantum mechanics. Not analogous to it — identical to it.
 
-    The derivation chain:
+    The derivation chain::
+
         σ=½ (critical line, Tier 0 √ engine) → quantum boundary
         H=xp (BK dropout, Tier 2) → the quantum Hamiltonian
         ∂̂_{∂M} (Geometric Observer, Tier 4) → the measurement operator
         J_R + J_G + J_B = 0 → conservation of probability
         Action S = ∫L dt (Tier 5 ln engine) → path integral
 
-    The five pillars:
+    The five pillars::
+
         1. Schrödinger equation: iħ ∂|ψ⟩/∂t = H|ψ⟩
         2. Heisenberg uncertainty: ΔxΔp ≥ ħ/2
         3. Spin from ℍ: Pauli matrices = quaternion generators
@@ -525,23 +534,27 @@ def standard_model() -> Dict[str, Any]:
     """
     FULL STANDARD MODEL LAGRANGIAN from SMMIP (term-for-term).
 
-    The SMMIP Lagrangian was written down from first principles:
+    The SMMIP Lagrangian was written down from first principles::
+
         L_SMMIP = −¼F_μν F^μν  +  Ψ̄(iD̸−m)Ψ  +  |D_μΦ|² − V(Φ)  +  L_Yukawa
 
     This is term-for-term isomorphic to the Standard Model Lagrangian.
     Derived, not imported. Fine structure constant appeared with its known value.
 
-    The full SM Lagrangian:
+    The full SM Lagrangian::
+
         L_SM = L_gauge + L_Higgs + L_fermion + L_Yukawa + L_θ
 
-    Each term identified with H_RB channels:
+    Each term identified with H_RB channels::
+
         L_gauge   → H_RB Euler product (Noether gauge current J^μ)
         L_Higgs   → V(r) = −μ²r² + λr⁴  (the SAME Sombrero from Λ engine)
         L_fermion → R̂ (kinetic, Red) + B̂ (potential, Blue) at σ=1
         L_Yukawa  → coupling at the brim (J_pos × J_neg at σ=½)
         L_θ       → CP-violating phase (the sedenion phase structure)
 
-    Gauge groups (Dixon 1994):
+    Gauge groups (Dixon 1994)::
+
         ℂ  →  U(1)   (electromagnetism, photon, charge conservation)
         ℍ  →  SU(2)  (weak force, W±/Z₀, isospin)
         𝕆  →  SU(3) ⊂ G₂  (strong force, gluons, color charge)
@@ -723,18 +736,21 @@ def dirac_equation() -> Dict[str, Any]:
     The Dirac equation is the relativistic upgrade of the Schrödinger equation.
     It lives at σ=½ but includes the full Lorentz structure (the 4D spacetime).
 
-    Origin:
+    Origin::
+
         The γ matrices come from the Clifford algebra Cl(1,3) — the same
         algebraic structure as the CD tower at level 3 (𝕆 sub-algebra).
         {γ^μ, γ^ν} = 2g^μν  (the defining Clifford algebra relation)
 
-    The Dirac equation predicts:
+    The Dirac equation predicts::
+
         1. Spin-½ particles (from the 4-component spinor structure)
         2. Antimatter (negative-energy solutions = the Blue channel)
         3. The magnetic moment of the electron (g = 2 at tree level)
         4. Relativistic energy-momentum relation: E² = p²c² + m²c⁴
 
-    H_RB reading:
+    H_RB reading::
+
         ψ_L (left-handed):   J_neg, Blue channel, the infalling state
         ψ_R (right-handed):  J_pos, Red channel,  the escaping state
         The Dirac mass term mψ̄ψ = m(ψ̄_R ψ_L + ψ̄_L ψ_R):
@@ -873,14 +889,16 @@ def gauge_unification() -> Dict[str, Any]:
     The Standard Model gauge group is NOT postulated.
     It is the symmetry group of the CD sub-algebras of the sedenion.
 
-    Dixon's theorem (1994):
+    Dixon's theorem (1994)::
+
         ℂ  →  U(1)         (1 generator:  the photon)
         ℍ  →  SU(2)        (3 generators: W⁺, W⁻, Z⁰)
         𝕆  →  SU(3) ⊂ G₂  (8 generators: 8 gluons)
 
     Total: 1 + 3 + 8 = 12 gauge bosons. This is exact.
 
-    The 16 sedenion dimensions distribute as:
+    The 16 sedenion dimensions distribute as::
+
         e₀:      the identity (scalar, no force)
         e₁:      U(1) generator (hypercharge, photon)
         e₂, e₃:  SU(2) extra generators (W⁺, W⁻ from isospin)
@@ -889,7 +907,8 @@ def gauge_unification() -> Dict[str, Any]:
         e₈..e₁₄: A-matrix couplings (gauge coupling fabric)
         e₁₅:     Yang-Mills mass gap δ = 0.000707
 
-    Grand unification prediction:
+    Grand unification prediction::
+
         The three coupling constants g₁, g₂, g₃ run with energy.
         At the GUT scale (~10¹⁶ GeV), they converge to a single value.
         In the sedenion: this is the point where the CD sub-algebra structure
@@ -1040,11 +1059,12 @@ def gauge_unification() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def higgs_mechanism() -> Dict[str, Any]:
-    """
+    r"""
     HIGGS MECHANISM = Spontaneous Symmetry Breaking at the Brim.
 
-    The Sombrero potential V(Φ) = −μ²|Φ|² + λ|Φ|⁴ is the same object
-    that appears in:
+    The Sombrero potential V(Φ) = −μ²\|Φ\|² + λ\|Φ\|⁴ is the same object
+    that appears in::
+
         Tier 0 Λ engine:    V(r) = −μ²r² + λr⁴ (cosmological scale)
         Witches Hat:        V(r) = −μ²r² + λr⁴ (event horizon scale)
         Higgs (here):       V(Φ) = −μ²|Φ|² + λ|Φ|⁴ (electroweak scale)
@@ -1053,6 +1073,9 @@ def higgs_mechanism() -> Dict[str, Any]:
 
     Before SSB: full SU(2)×U(1) symmetry. All W, Z, fermions massless.
     After SSB: Φ settles to the brim minimum v = √(μ²/2λ) = 246 GeV.
+
+    ::
+
         W⁺, W⁻, Z⁰ gain mass through the Higgs mechanism.
         Fermions gain mass through Yukawa coupling to ⟨Φ⟩.
         Photon remains massless (U(1)_EM survives SSB).
@@ -1172,7 +1195,8 @@ def particle_spectrum() -> Dict[str, Any]:
     Each basis element carries a specific physical role (from the monad component table).
     The 17 SM particles map onto these 16 strata (with one stratum doubling).
 
-    Sedenion strata → SM particles:
+    Sedenion strata → SM particles::
+
         e₀:       Field depth β (scalar vacuum — no particle, but the Higgs VEV lives here)
         e₁:       Spectral energy E (maps to the photon — U(1) generator)
         e₂:       Riemann zero γ (maps to the W⁺ — complex phase)
@@ -1262,33 +1286,37 @@ def particle_spectrum() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def feynman_path_integral() -> Dict[str, Any]:
-    """
+    r"""
     FEYNMAN PATH INTEGRAL from the BK action (Tier 5 ln engine).
 
-    ⟨xf, tf | xi, ti⟩ = ∫Dx(t)  exp( iS[x] / ħ )
+    ⟨xf, tf \| xi, ti⟩ = ∫Dx(t)  exp( iS[x] / ħ )
 
     where S[x] = ∫_{ti}^{tf} L(x, ẋ, t) dt  (the classical action)
 
     This is the sum over ALL paths from (xi,ti) to (xf,tf), weighted by
     the phase factor e^{iS/ħ}.
 
-    In the Ainulindale framework:
+    In the Ainulindale framework::
+
         L = L_BK = ẋ·ln(ẋ) − ẋ  (Berry-Keating Lagrangian)
         The classical path: x(t) = x₀·e^t  (minimum action path = the attractor)
         S_classical = ∫L_BK dt = x₀(e^T − 1)(ln x₀ + T − 1)  [approx]
 
-    The path integral IS the Lichtenberg Lagrangian of Action Potential:
+    The path integral IS the Lichtenberg Lagrangian of Action Potential::
+
         - Classical path (minimum S) = the bright trunk of the Lichtenberg figure
         - Quantum fluctuations (nearby paths) = the branching structure
         - The fractal fur on the event horizon = Σ over all near-paths
         - Hawking radiation = the path integral at the event horizon brim
 
-    Stationary phase approximation (WKB):
+    Stationary phase approximation (WKB)::
+
         When S >> ħ: only the classical path contributes significantly.
         This gives classical mechanics.
         When S ~ ħ: quantum effects matter. Path integral ≠ classical path.
 
-    The Lichtenberg connection:
+    The Lichtenberg connection::
+
         Lichtenberg figures = the VISUAL of the path integral
         Each branch = one sample path weighted by e^{iS/ħ}
         The bright trunk = the classical path (most constructive interference)
@@ -1414,6 +1442,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
     ══════════════════════════════════════════════════════
 
     Level 1 — ℂ (2D):  Euler's identity
+
+    ::
+
         e^{iπ} + 1 = 0
         Two terms. One phase. The simplest cancellation.
         i from CD closure (Tier 0).
@@ -1422,6 +1453,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
         ── It is a THEOREM of H_RB, not a definition.
 
     Level 2 — ℍ (4D):  Quaternion Euler / Rotations
+
+    ::
+
         For ANY unit imaginary quaternion q (q² = −1, |q| = 1):
             e^{qπ} + 1 = 0
         There are infinitely many — every direction on S² ⊂ ℍ.
@@ -1430,6 +1464,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
         Physical: every rotation by π returns to −1 (a half-turn in SU(2)).
 
     Level 3 — ℍ three-phase:  Noether Conservation
+
+    ::
+
         1 + ω + ω² = 0   where ω = e^{2πi/3}
         THREE terms. Cube roots of unity. The balanced triplet.
         THIS IS J_R + J_G + J_B = 0.
@@ -1440,6 +1477,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
         Their sum is zero: the Noether balance is the three-phase Euler identity.
 
     Level 4 — 𝕆 (8D):  Octonion Euler
+
+    ::
+
         For any unit imaginary octonion o (o² = −1):
             e^{oπ} + 1 = 0
         Seven distinct imaginary directions (the Fano plane).
@@ -1447,6 +1487,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
         The gluon field is the phase structure of the octonion Euler identity.
 
     Level 5 — 𝕊 (16D):  Sedenion Euler
+
+    ::
+
         For unit imaginary sedenions s (s² = −1, not a zero-divisor):
             e^{sπ} + 1 = 0
         Fifteen imaginary directions.
@@ -1455,6 +1498,9 @@ def hypercomplex_euler() -> Dict[str, Any]:
         The mass gap is the gap in the hypercomplex Euler sphere.
 
     Level ∞ — Path integral:  Functional Euler Identity
+
+    ::
+
         ∫Dx e^{iS[x]/ħ} = ?
 
         In the VACUUM (no boundary conditions, no sources):

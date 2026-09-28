@@ -3,7 +3,8 @@ ValaQuenta.modules.hyperwebster.tools
 =====================================
 HyperWebsterModule — registry contract.
 
-Equations:
+Equations::
+
   1. horner_encode     base-97 Horner bijection
   2. fano_encode       base-7 octonion path address
   3. semantic_word     full SemanticWord record

@@ -7,7 +7,8 @@ Equation-derived audio. Every sound is a derivation.
 Radian transform made audible.
 fractions.Fraction throughout; float only at WAV render boundary.
 
-Particle-frequency table (just intonation, A=440 Hz):
+Particle-frequency table (just intonation, A=440 Hz)::
+
   Higgs     → A2 = 110 Hz   (cello, ground state)
   Photon    → A6 = 1760 Hz  (flute, massless)
   Electron  → C#5 = 550 Hz  (oboe)
@@ -16,7 +17,8 @@ Particle-frequency table (just intonation, A=440 Hz):
   Z0        → A1 = 55 Hz    (tuba, neutral massive)
   Gluon(1)  → A3 = 220 Hz   (percussion voice 1)
 
-Quasi-particle rests (exact integer samples):
+Quasi-particle rests (exact integer samples)::
+
   Phonon    = SR/4    (short decay)
   Gravinon  = SR × 144/89  (Fibonacci/phi convergent)
 
@@ -111,7 +113,8 @@ def omega_from_equation(equation_name: str,
     """
     Derive ω (angular frequency, rad/s) from an equation result.
 
-    Strategy:
+    Strategy::
+
       1. If result is a float, map it to a frequency via log-scaling
          relative to concert A = 440 Hz.
       2. If result is a dict, look for known keys: 'phi', 'r', 'alpha_nn',
@@ -170,7 +173,8 @@ def wavetable(name: str, n_samples: int = 512) -> Dict[str, Any]:
     """
     Generate a named wavetable.
 
-    Available:
+    Available::
+
       'sine'         pure sine
       'rydberg'      hydrogen Rydberg waveform (1/n² superposition)
       'higgs_hat'    Mexican hat oscillation (SSB potential)

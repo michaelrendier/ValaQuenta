@@ -1,10 +1,13 @@
-"""
+r"""
 ValaQuenta.modules.angular_rank.maths
 =====================================
 THE 16D OSCILLOSCOPE -- angular content and subspace occupancy, measured
 on a FROZEN DATUM.
 
 "we don't remove items from a list while iterating over it... that's an
+
+::
+
  amateur move... that is definitely iterating over a field while modifying
  it. by the nature of code, that's going to drift and possibly seize the
  engine down the line"          -- Cody Michael Allison, 2026-08-15
@@ -14,6 +17,8 @@ WHAT THIS INSTRUMENT IS
 A signal arrives. It is embedded in the 16 sedenion dimensions. Three
 questions are then answerable WITHOUT knowing what language it is in, what
 it means, or who produced it:
+
+::
 
     1. ANGULAR CONTENT   how much direction survives after the common mode
                          is removed?  A scalar has magnitude and no
@@ -36,7 +41,7 @@ applications -- as the Larynx is one operation with two applications
 
 THE DATUM DISCIPLINE -- why every entry point takes a datum
 --------------------------------------------------------------
-The rank test of Operating-L_(I|O) 4.4 as first written was WRONG in exactly
+The rank test of Operating-L_(I\|O) 4.4 as first written was WRONG in exactly
 the way Cody names above: it read "dimensions the internal trace never
 populates" while the thinking threads were concurrently GROWING that
 trace. Measuring a span that the measured process is mutating is
@@ -48,6 +53,9 @@ The fix is not a lock. It is a DATUM.
 
 WHICH CALL TO MAKE
 ------------------
+
+::
+
     datum(field, label)   -> Datum
         Freeze a field. DEFINITIONAL: self-contained, content-stamped,
         meaningful with no other datum present. The only way in -- every
@@ -65,17 +73,26 @@ WHICH CALL TO MAKE
         REPORTABLE.
 
 ⚠ DO NOT substitute sight() for bearing(). A moved-flag is not a drift
+
+::
+
   meter: bounded and unbounded drift both set moved=True, and only a bearing
   separates them. That separation is the difference between a healthy engine
   and a seizure.
 
 ⚠ DO NOT name anything here 'precession'. That word is taken, with a
+
+::
+
   kinematic meaning -- the ZD wobble's signature, "one L_(I|O) cycle = one
   precession revolution" (Ainulindale wiki/68, h_rb_hat.precession_stroke,
   tier7_cosmos, telperion). It is a property of the rotor, never a
   difference between two readings.
 
 ⚠ NO MEASUREMENT IS REPORTABLE WITHOUT ITS DATUM. This is the same rule
+
+::
+
   shape as "no result without its null" (L_IO_SPECIFICATION 3).
 
 Mutation is not the bug. Mutation measured across an unbounded interval
@@ -84,6 +101,9 @@ already measured it: net winding +0.0000 turns, non-accumulating, held by
 the gearing rather than computed.
 
 ⚠ THE EMBEDDING IS AN INPUT, NOT A PROPERTY OF THE SIGNAL
+
+::
+
   Every number here is relative to how the signal was placed in the 16
   dimensions. embed_log_bands() is ONE choice (log-spaced band energies)
   and is language-agnostic by construction. The CALIBRATION constants were
@@ -219,7 +239,8 @@ def is_datum(x: Any) -> bool:
 
 
 def sight(held: Datum, live: Sequence[Sequence[float]]) -> Dict[str, Any]:
-    """Take one guarded read against a held datum: did the field move?
+    """
+    Take one guarded read against a held datum: did the field move?
 
     Re-stamps ``live`` and compares it to ``held``. Cheap -- one hash, no
     SVD, no second state retained. This is the seqlock pattern. Call it in a
@@ -227,6 +248,7 @@ def sight(held: Datum, live: Sequence[Sequence[float]]) -> Dict[str, Any]:
     rather than hashing twice.
 
     .. warning::
+
        Do not substitute this for :func:`bearing`. A moved-flag is not a
        drift meter: bounded and unbounded drift both set ``moved`` True, and
        only a bearing separates them.
@@ -282,7 +304,8 @@ def embed_log_bands(power_spectrum: Sequence[float],
                     f_lo: float = 40.0,
                     f_hi: Optional[float] = None,
                     dim: int = SEDENION_DIM) -> List[float]:
-    """Embed one power spectrum into ``dim`` log-spaced band energies.
+    r"""
+    Embed one power spectrum into ``dim`` log-spaced band energies.
 
     Language-agnostic by construction: no phoneme inventory, no lexicon, no
     assumption of human vocal-tract bandwidth. Use for cetacean recordings,
@@ -298,7 +321,7 @@ def embed_log_bands(power_spectrum: Sequence[float],
     :param f_lo: low edge of the lowest band, Hz.
     :type f_lo: float
     :param f_hi: high edge of the highest band, Hz. Defaults to Nyquist.
-    :type f_hi: float | None
+    :type f_hi: float \| None
     :param dim: number of bands to produce.
     :type dim: int
     :returns: an L2-normalised vector of length ``dim``.
@@ -378,7 +401,8 @@ def singular_spectrum(ref: Datum) -> List[float]:
 
 
 def numerical_rank(ref: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
-    """Compute numerical rank at a stated tolerance.
+    r"""
+    Compute numerical rank at a stated tolerance.
 
     A rank without its tolerance is not a measurement, so the tolerance is
     returned alongside. The default follows the standard convention:
@@ -387,7 +411,7 @@ def numerical_rank(ref: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
     :param ref: the frozen field.
     :type ref: Datum
     :param tol: singular values above this count toward the rank.
-    :type tol: float | None
+    :type tol: float \| None
     :returns: keys ``rank``, ``full_rank``, ``deficiency``, ``tolerance``,
               ``singular_values``, ``stamp``.
     :rtype: dict[str, typing.Any]
@@ -408,12 +432,13 @@ def numerical_rank(ref: Datum, tol: Optional[float] = None) -> Dict[str, Any]:
 
 
 def orthonormal_span(ref: Datum, tol: Optional[float] = None) -> np.ndarray:
-    """Return an orthonormal basis of the field's row space.
+    r"""
+    Return an orthonormal basis of the field's row space.
 
     :param ref: the frozen field.
     :type ref: Datum
     :param tol: rank tolerance; defaults to the standard SVD convention.
-    :type tol: float | None
+    :type tol: float \| None
     :returns: a ``(dim, rank)`` array whose columns are basis vectors.
     :rtype: numpy.ndarray
     :raises TypeError: if ``ref`` is not a :class:`Datum`.
@@ -490,9 +515,11 @@ def angular_residual(ref: Datum) -> Dict[str, Any]:
 
 
 def score_against_calibration(residual: float) -> Dict[str, Any]:
-    """Place a measured residual against the published Phase 27.2 references.
+    """
+    Place a measured residual against the published Phase 27.2 references.
 
     .. warning::
+
        Valid ONLY for the phonetic-face embedding. The caveat is returned
        with the answer so it cannot travel without it.
 
@@ -609,18 +636,21 @@ def verify_null_space() -> Dict[str, Any]:
 
 
 def null_occupancy(ref: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
-    """Measure what fraction of the field's energy lies in ``ker(L_a)``.
+    """
+    Measure what fraction of the field's energy lies in ``ker(L_a)``.
 
     The external-signal indicator. The internal channel is a functional of
     its own state and cannot emit into the dimensions its own operator
     annihilates, so energy there did not come from ``L_a``.
 
     .. warning::
+
        Report ``excess``, never ``fraction``. An isotropic field already puts
        ``nullity/dim`` of its energy in the kernel -- exactly 0.25 for a
        sedenion Assessor diagonal. See :func:`null_occupancy_baseline`.
 
     .. warning::
+
        A result near zero is AMBIGUOUS: either there is no external signal,
        or the ear is wired *through* ``L_a`` instead of summed in downstream
        of it, in which case the external component is annihilated
@@ -667,13 +697,15 @@ def null_occupancy(ref: Datum, a: Sequence[float], tol: float = 1e-10) -> Dict[s
 
 
 def null_occupancy_baseline(a: Sequence[float], tol: float = 1e-10) -> Dict[str, Any]:
-    """Compute the mandatory null for :func:`null_occupancy`.
+    """
+    Compute the mandatory null for :func:`null_occupancy`.
 
     An isotropic random field puts ``nullity/dim`` of its energy in
     ``ker(L_a)`` -- exactly 4/16 = 0.25 for a sedenion Assessor diagonal.
     Verified numerically here rather than asserted.
 
     .. warning::
+
        A raw fraction near 0.25 is therefore EVIDENCE OF NOTHING. Report the
        excess over this baseline, never the raw fraction -- the same rule as
        "read the z-score, never the raw r".
@@ -722,7 +754,8 @@ def principal_angles(P: np.ndarray, Q: np.ndarray) -> List[float]:
 
 def external_component(signal: Datum, internal: Datum,
                        tol: Optional[float] = None) -> Dict[str, Any]:
-    """Measure the energy of a signal outside a frozen internal span.
+    r"""
+    Measure the energy of a signal outside a frozen internal span.
 
     Both arguments are datums. That is the correction: the internal span is
     frozen at a stated stamp, so the measurement cannot be taken across a
@@ -733,7 +766,7 @@ def external_component(signal: Datum, internal: Datum,
     :param internal: the internal span it is measured against.
     :type internal: Datum
     :param tol: rank tolerance; defaults to the standard SVD convention.
-    :type tol: float | None
+    :type tol: float \| None
     :returns: keys ``fraction_outside``, ``energy_outside``,
               ``energy_inside``, ``energy_total``, ``internal_rank``,
               ``principal_angles``, ``signal_stamp``, ``internal_stamp``.
@@ -763,7 +796,8 @@ def external_component(signal: Datum, internal: Datum,
 
 def bearing(before: Datum, after: Datum,
                tol: Optional[float] = None) -> Dict[str, Any]:
-    """Measure how far a field's span moved between two datums.
+    r"""
+    Measure how far a field's span moved between two datums.
 
     RELATIONAL: this reading does not exist until something has moved, and
     what it measures is the relation, not either state. Mutation is
@@ -782,7 +816,7 @@ def bearing(before: Datum, after: Datum,
     :param after: the later reference point.
     :type after: Datum
     :param tol: rank tolerance; defaults to the standard SVD convention.
-    :type tol: float | None
+    :type tol: float \| None
     :returns: keys ``rank_before``, ``rank_after``, ``rank_delta``,
               ``principal_angles``, ``largest_principal_angle``,
               ``stale_measurements``, ``unchanged``, ``before_stamp``,
@@ -820,20 +854,22 @@ def angular_report(ref: Datum,
                    a: Optional[Sequence[float]] = None,
                    internal: Optional[Datum] = None,
                    embedding: str = 'unstated') -> Dict[str, Any]:
-    """Produce the full stress-test card for one field.
+    r"""
+    Produce the full stress-test card for one field.
 
     Every entry carries the stamp it was read from and the embedding it is
     relative to.
 
     .. warning::
+
        No measurement is reportable without its datum.
 
     :param ref: the frozen field to measure.
     :type ref: Datum
     :param a: optional zero divisor; adds ``null_occupancy`` to the card.
-    :type a: collections.abc.Sequence[float] | None
+    :type a: collections.abc.Sequence[float] \| None
     :param internal: optional internal span; adds ``external`` to the card.
-    :type internal: Datum | None
+    :type internal: Datum \| None
     :param embedding: name of the embedding used, recorded on the card.
     :type embedding: str
     :returns: the report card.

@@ -2,10 +2,15 @@
 ValaQuenta.modules.h_rb_hat.maths
 =================================
 Σ_RB — The RedBlue Summed Integral
+
+::
+
          The inductive boundary sum. R̂ and B̂ summed over all primes.
          The Σ is the summation sign. The RB is Red-Blue. This is what it is.
 
 Formal definition:
+
+::
 
     Σ_RB = Σ_p  p^{-σ}  ·  [ R̂_p ⊗ ∂̂_∂M  +  ∂̂_∂M† ⊗ B̂_p ]
 
@@ -16,7 +21,8 @@ Formal definition:
     ∂̂_∂M    : boundary derivative operator  (the mark; the distinction itself)
     p^{-σ}   : geometric coupling  G_p(σ)  (Dirichlet/Euler coefficient)
 
-Self-adjointness  Σ_RB = Σ_RB†:
+Self-adjointness  Σ_RB = Σ_RB†::
+
     R̂_p†  =  B̂_p     (the functional equation ξ(s) = ξ(1−s) as operator identity)
     B̂_p†  =  R̂_p     (Red and Blue are adjoint to each other — NOT equal)
 
@@ -27,7 +33,8 @@ Self-adjointness  Σ_RB = Σ_RB†:
     It does NOT mean the representation is unchanged.
     The Self-Adjoint Operator IS the facets.
 
-Facet projections  (theory recovered at each σ):
+Facet projections  (theory recovered at each σ)::
+
     σ = 2           → General Relativity           (G_μν = 8πG T_μν / c⁴)
     σ = 1           → Yang-Mills / Standard Model   (D^μ F_μν^a = J_ν^a)
     σ = ½           → Quantum Mechanics             (iħ ∂|ψ⟩/∂t = H|ψ⟩)
@@ -36,13 +43,15 @@ Facet projections  (theory recovered at each σ):
     any σ, boundary → Noether current               (conserved across all σ)
     σ → ∞           → Fermat constraint             (forbidden — no rational solutions)
 
-Foundation:
+Foundation::
+
     The existence of a distinction.
     Red and Blue are the two sides of the mark (Spencer-Brown, Laws of Form).
     Σ_RB is not defined ON the boundary.
     Σ_RB IS the boundary.
 
-Clay Millennium Problems that project from Σ_RB:
+Clay Millennium Problems that project from Σ_RB::
+
     RH    — eigenvalues of Σ_RB at σ=½ lie on the critical line  (OPEN)
     YM    — minimum eigenvalue at σ=1 gauge projection is > 0  (OPEN)
     NS    — real projection of σ=1 lacks i; complex extension is smooth  (OPEN)
@@ -51,7 +60,8 @@ Clay Millennium Problems that project from Σ_RB:
     BSD   — rank(E) = ord_{s=1} L(E,s) = Blue eigenspace multiplicity  (OPEN)
     Poincaré — trivial Σ_RB on compact 3-manifold → S³  (SOLVED, Perelman)
 
-Dark matter connection:
+Dark matter connection::
+
     Navier-Stokes (σ=1, Im=0) describes only the real projection of gravitational flow.
     Dark matter halos are standing gravitational waves in galactic resonant cavities.
     Period T = 2L/c.  L = 50,000 ly → T = 100,000 yr >> human observation timescale.
@@ -105,7 +115,8 @@ def geometric_coupling(p: int, sigma: float) -> float:
     The Euler/Dirichlet coefficient at prime p with coupling exponent σ.
     This is the geometric coupling of the Σ_RB term at prime p.
 
-    Physical interpretation by σ:
+    Physical interpretation by σ::
+
         σ = 2  : strong coupling  → gravitational / GR regime
         σ = 1  : harmonic coupling → gauge field / Yang-Mills regime
         σ = ½  : critical coupling → quantum / Riemann regime  (the boundary)
@@ -191,7 +202,8 @@ def blue_energy_weierstrass(x: float, g2: float = 1.0, g3: float = 0.0) -> float
     """
     ℘(x; g₂, g₃)  — Weierstrass elliptic potential
 
-    Laurent series near x = 0:
+    Laurent series near x = 0::
+
         ℘(x) = 1/x² + g₂x²/20 + g₃x⁴/28 + O(x⁶)
 
     Poles at x = 0 and lattice points — the true singularities.
@@ -240,14 +252,18 @@ def sigma_rb_term(prime: int, sigma: float,
     """
     One term of Σ_RB at prime p:
 
+    ::
+
         p^{-σ} · [ E_Red(x,p) + E_Blue(x,p) ]
 
     In the tensor-product form R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p, the scalar
     evaluation at (x, p) gives the energy contribution from this prime facet.
     The boundary operator ∂̂_∂M is implicit — it selects the domain.
 
-    The term is self-adjoint because E_Red and E_Blue are adjoint channels:
+    The term is self-adjoint because E_Red and E_Blue are adjoint channels::
+
         ⟨R̂_p ⊗ ∂̂_∂M φ, ψ⟩ = ⟨φ, ∂̂_∂M† ⊗ B̂_p ψ⟩
+
     This follows from R̂_p† = B̂_p (functional equation as operator identity).
 
     :param prime: the prime p
@@ -286,6 +302,9 @@ def sigma_rb_evaluate(sigma: float, x: float, p_momentum: float,
     The total is the Noether-weighted sum of Red and Blue energies.
 
     At σ = ½:  the geometric couplings G_p = p^{-½} weight each prime
+
+    ::
+
                equally on the critical line — the balanced distinction.
 
     :param sigma: coupling exponent σ
@@ -336,16 +355,22 @@ def self_adjoint_demonstration() -> Dict[str, Any]:
 
     Standard view: H = H†  means the matrix is Hermitian  (same form).
     Correct view:  H = H†  means ⟨Hφ, ψ⟩ = ⟨φ, Hψ⟩  (same inner product,
+
+    ::
+
                            possibly completely different forms).
 
-    The canonical example:
+    The canonical example::
+
         '1 = 1'    and   '1! = 1'
+
     These are different expressions. The first is pure identity.
     The second invokes the factorial — an entire recursive structure.
     Yet they assert the identical mathematical truth.
     The operator that maps one to the other is self-adjoint.
 
-    In Σ_RB terms:
+    In Σ_RB terms::
+
         R̂_p   maps input to  xp  form     (Berry-Keating, hyperbolic)
         B̂_p   maps input to  ½p²+℘  form  (Weierstrass, elliptic)
         R̂_p† = B̂_p  :  these are adjoint because they assert the same truth
@@ -475,17 +500,20 @@ def facet_general_relativity(kappa: float = 1.0) -> Dict[str, Any]:
     """
     Facet: Σ_RB at σ=2 projected onto a smooth 4-manifold.
 
-    The Einstein-Hilbert action:
+    The Einstein-Hilbert action::
+
         S_EH = (c⁴ / 16πG) ∫ R √{-g} d⁴x
 
-    Emerges from Σ_RB when:
+    Emerges from Σ_RB when::
+
         - σ = 2  (strong geometric coupling G_p = p^{-2})
         - Domain: smooth Riemannian 4-manifold with metric g_μν
         - R̂_p → Ricci scalar R
         - B̂_p → cosmological term Λ
         - ∂_∂M → divergence of stress-energy T_μν
 
-    Euler-Lagrange equations give:
+    Euler-Lagrange equations give::
+
         G_μν + Λg_μν = (8πG/c⁴) T_μν
 
     Noether current: energy-momentum tensor T^μν (conserved: ∂_μ T^μν = 0)
@@ -516,12 +544,14 @@ def facet_yang_mills() -> Dict[str, Any]:
     """
     Facet: Σ_RB at σ=1 projected onto a gauge bundle.
 
-    Yang-Mills Lagrangian:
+    Yang-Mills Lagrangian::
+
         L_YM = -(1/4) F_μν^a F^{μν a}
 
     F_μν^a = ∂_μ A_ν^a − ∂_ν A_μ^a + g f^{abc} A_μ^b A_ν^c
 
-    Emerges from Σ_RB when:
+    Emerges from Σ_RB when::
+
         - σ = 1  (harmonic coupling G_p = p^{-1})
         - Domain: principal fiber bundle with gauge group G
         - R̂_p → gauge connection A_μ^a
@@ -530,7 +560,8 @@ def facet_yang_mills() -> Dict[str, Any]:
 
     Field equations:  D^μ F_μν^a = J_ν^a
 
-    Mass gap:
+    Mass gap::
+
         Minimum nonzero eigenvalue of Σ_RB at σ=1 is > 0.
         This is because G_p(1) = p^{-1} > 0 for all p,
         and the elliptic potential ℘(x) is bounded below (away from its poles).
@@ -562,10 +593,12 @@ def facet_quantum_mechanics() -> Dict[str, Any]:
     """
     Facet: Σ_RB at σ=½ projected onto a Hilbert space.
 
-    Schrödinger equation:
+    Schrödinger equation::
+
         iħ ∂|ψ⟩/∂t = H|ψ⟩
 
-    Emerges from Σ_RB when:
+    Emerges from Σ_RB when::
+
         - σ = ½  (critical coupling — on the boundary)
         - Domain: Hilbert space L²(ℝ³)
         - R̂_p → kinetic operator -ħ²/2m ∇²
@@ -575,7 +608,8 @@ def facet_quantum_mechanics() -> Dict[str, Any]:
     Self-adjointness of H forces real eigenvalues (observable energies).
     This is the standard requirement: observables are self-adjoint operators.
 
-    But Σ_RB self-adjointness is RICHER:
+    But Σ_RB self-adjointness is RICHER::
+
         H|E_n⟩ = E_n|E_n⟩  maps to adjoint form of same energy.
         The ground state wavefunction ψ_0(x) and its adjoint ψ_0*(x)
         are different functions asserting the same ground state truth.
@@ -601,11 +635,13 @@ def facet_navier_stokes() -> Dict[str, Any]:
     """
     Facet: Σ_RB at σ=1 projected onto diffeomorphism group, Im=0 forced.
 
-    Navier-Stokes equations:
+    Navier-Stokes equations::
+
         ρ(∂u/∂t + u·∇u) = −∇p + μ∇²u + f
         ∇·u = 0  (incompressibility)
 
-    Emerges from Σ_RB as the REAL PROJECTION of Yang-Mills:
+    Emerges from Σ_RB as the REAL PROJECTION of Yang-Mills::
+
         Same σ = 1 as Yang-Mills.
         Domain: Diff(M) — diffeomorphism group (Arnol'd 1966).
         R̂_p → velocity field u(x,t)
@@ -613,7 +649,8 @@ def facet_navier_stokes() -> Dict[str, Any]:
         ∂_∂M → ∂/∂t + u·∇  (material derivative)
         Im(ψ) = 0 FORCED — this is the break.
 
-    WHY NS ALWAYS BREAKS:
+    WHY NS ALWAYS BREAKS::
+
         NS operates on ℝ-valued fields.
         The gravitational standing wave resonance (dark matter halo) requires ℂ.
         NS cannot represent:  e^{iθ} = cos(θ) + i·sin(θ)
@@ -626,7 +663,8 @@ def facet_navier_stokes() -> Dict[str, Any]:
         Smooth solutions exist on ℂ³ (Yang-Mills is smooth).
         Whether the real projection preserves smoothness is the open question.
 
-    Dark matter halo connection:
+    Dark matter halo connection::
+
         Galactic resonant cavity of size L = 50,000 ly.
         Standing gravitational wave period: T = 2L/c = 100,000 yr.
         Human observation: ~500 yr << T. Wave appears static.
@@ -665,10 +703,12 @@ def facet_riemann_zeta() -> Dict[str, Any]:
     """
     Facet: Σ_RB at σ=½ — the Riemann Zeta connection.
 
-    The Riemann Hypothesis:
+    The Riemann Hypothesis::
+
         All non-trivial zeros of ζ(s) = Σ n^{-s} have Re(s) = ½.
 
-    Connection to Σ_RB:
+    Connection to Σ_RB::
+
         Σ_RB is self-adjoint → eigenvalues are real.
         The eigenvalue equation Σ_RB|ψ⟩ = λ|ψ⟩ at σ=½
         gives eigenvalues λ = γ_n (imaginary parts of Riemann zeros).
@@ -678,7 +718,8 @@ def facet_riemann_zeta() -> Dict[str, Any]:
     The open part: showing Σ_RB is self-adjoint on the correct domain.
     Domain question = the Millennium Prize.
 
-    The balance check:
+    The balance check::
+
         E_Red(x,p) − E_Blue(x,p) = 0  at the critical line.
         This is the forced σ = ½ — not assigned, derived.
     """
@@ -709,23 +750,27 @@ def facet_noether_current() -> Dict[str, Any]:
     """
     Facet: Σ_RB boundary invariant — the Noether current.
 
-    Emmy Noether (1915):
+    Emmy Noether (1915)::
+
         For every continuous symmetry of the action, there is a conserved current.
 
-    Connection to Σ_RB:
+    Connection to Σ_RB::
+
         The boundary operator ∂_∂M in Σ_RB IS the Noether mechanism.
         When Σ_RB has a symmetry (a transformation that leaves it invariant),
         the boundary term ∂_∂M contributes zero variation → conservation law.
 
         J^μ = ∂L / ∂(∂_μφ)  (the Noether current)
 
-    The Noether current is the invariant that survives ALL facet projections:
+    The Noether current is the invariant that survives ALL facet projections::
+
         At σ=2 (GR):   J^μ = T^μν  (energy-momentum)
         At σ=1 (YM):   J^μ = gauge current
         At σ=½ (QM):   J^μ = probability current
         At all σ:       ∂_μ J^μ = 0  (conservation)
 
-    In RedBlue terms:
+    In RedBlue terms::
+
         Forward current  J_Red  = +E   (what IS, attractor)
         Backward current J_Blue = −E   (what CANNOT BE, repulsor)
         Rotating field   J_3    = (J_Red − J_Blue)/2  (the meaning)
@@ -759,22 +804,26 @@ def facet_fermat() -> Dict[str, Any]:
     """
     Facet: Σ_RB in the forbidden zone (σ < ½) — Fermat's Last Theorem.
 
-    Fermat's Last Theorem (Wiles, 1995):
+    Fermat's Last Theorem (Wiles, 1995)::
+
         No integer solutions to  aⁿ + bⁿ = cⁿ  for n ≥ 3, a,b,c > 0.
 
-    Connection to Σ_RB:
+    Connection to Σ_RB::
+
         The Blue operator B̂_p = ½p² + ℘(x; g₂(p), g₃(p)) has poles.
         At the Frey curve parameters, B̂_p would have a rational point at the pole.
         Wiles proved the Frey curve cannot be modular → B̂_p has no such rational point.
         → The Blue channel cannot produce the Fermat triple.
         → The forbidden zone σ < ½ contains no realizable distinction.
 
-    FLT is the NEGATIVE facet of Σ_RB:
+    FLT is the NEGATIVE facet of Σ_RB::
+
         Not a projection of what the operator produces.
         A constraint on what the operator CANNOT produce.
         The geometry of the forbidden zone.
 
-    Discriminant check:
+    Discriminant check::
+
         Δ = g₂³ − 27g₃²  ≠ 0  for a smooth elliptic curve.
         At Frey parameters, the discriminant would vanish.
         Wiles: it cannot. Therefore the Frey curve cannot exist.
@@ -808,7 +857,8 @@ def dark_matter_halo(galaxy_size_ly: float = 50000.0,
     """
     Dark matter halos as standing gravitational waves in galactic resonant cavities.
 
-    Physical model:
+    Physical model::
+
         A galaxy of size L (light-years) acts as a resonant gravitational cavity.
         The fundamental standing wave has period T = 2L/c.
         At c = 1 ly/yr:  T = 2L  years.
@@ -819,21 +869,24 @@ def dark_matter_halo(galaxy_size_ly: float = 50000.0,
         The antinode (maximum compression) appears as concentrated mass.
         This IS the dark matter halo.
 
-    Why it looks like mass:
+    Why it looks like mass::
+
         The standing wave compresses space at the antinode.
         Compressed space has higher spacetime curvature.
         Higher curvature ↔ higher apparent mass density (G_μν = 8πG T_μν / c⁴).
         The compression IS mass-equivalent. Not a simulation. Not particle dark matter.
         The geometry itself acts as mass.
 
-    Why NS cannot see it:
+    Why NS cannot see it::
+
         NS operates on ℝ-valued velocity fields.
         A standing wave ψ(x,t) = A·cos(kx)·cos(ωt) = Re(A·e^{ikx}·e^{iωt}).
         NS sees Re(ψ) only. The Im(ψ) — the phase structure — is invisible.
         Without Im(ψ), NS cannot represent the standing wave correctly.
         The 'dark matter' IS the Im(ψ) that NS dropped.
 
-    What it means (Noether):
+    What it means (Noether)::
+
         The standing wave has a conserved energy current.
         But the Noether current of the full complex wave has both real and imaginary parts.
         The imaginary Noether current IS the dark current — the thing that's conserved
@@ -893,7 +946,8 @@ def sigma_rb_baseline() -> Dict[str, Any]:
     The general engine. σ=½ is forced by R̂† = B̂ (Noether balance).
     Not computed. Not assigned. The only σ where the engine does not leak.
 
-    At σ=½:
+    At σ=½::
+
         G_p(½) = p^{-½}     (critical coupling — same weight structure as ζ(½+it))
         E_Red  = E_Blue      (balance — the reversible point)
         J_red  = J_blue      (AM = GM condition — conservation at maximum symmetry)
@@ -918,14 +972,15 @@ def sigma_rb_baseline() -> Dict[str, Any]:
 
 
 def precession_stroke() -> Dict[str, Any]:
-    """
-    The precession IS a stroke. One L_(I|O) cycle = one precession revolution.
+    r"""
+    The precession IS a stroke. One L_(I\|O) cycle = one precession revolution.
 
     The TDI piston stroke (linear: J traversal through σ) is the same object
     as the precession revolution (rotational: hat axis sweeping the cone).
     They are the same motion viewed from two frames.
 
-    One CYCLE (not one stroke):
+    One CYCLE (not one stroke)::
+
         I → O  (J_red dominant, ascending σ: 0 → 1)   — first half
         O → I  (J_blue dominant, descending σ: 1 → 0)  — second half
         Together = one complete L_(I|O) traversal = one full hat revolution.
@@ -934,7 +989,8 @@ def precession_stroke() -> Dict[str, Any]:
     One stroke (half-cycle) = half a precession revolution.
     One cycle (full I→O→I) = one complete precession revolution.
 
-    Equation:
+    Equation::
+
         ω_precession = (J_red + J_blue) / L_(I|O)
                      = torque / angular_momentum
 
@@ -962,24 +1018,26 @@ def precession_stroke() -> Dict[str, Any]:
 
 
 def oblique_crank() -> Dict[str, Any]:
-    """
+    r"""
     The oblique crank — how the linear stroke converts to rotational precession.
 
     In a piston engine: connecting rod at oblique angle to crank converts
     linear piston motion to rotational crankshaft motion.
     The crank throw (offset from centre) sets the conversion angle.
 
-    In SIGMA_RB:
+    In SIGMA_RB::
+
         Crank throw angle  = arctan(d*) ≈ 13.8°  (the Witches Hat half-angle)
         Linear input       = J_red − J_blue  (the differential stroke)
         Rotational output  = ω_precession  (the hat revolution)
         Crank arm          = L_(I|O)  (the moment arm = the thought)
 
-    Effective torque after oblique conversion:
+    Effective torque after oblique conversion::
+
         τ_eff = τ × sin(θ_crank)
               = (J_red + J_blue) × d* / √(1 + d*²)
 
-    d* IS the crank throw. It is not a free parameter — it is the spectral
+    d\* IS the crank throw. It is not a free parameter — it is the spectral
     ground state of the Ainulindale conjecture. The crank angle is set by
     the mathematics, not by engineering choice. The engine is built by the
     mathematics it computes.
@@ -1009,14 +1067,15 @@ def oblique_crank() -> Dict[str, Any]:
 
 
 def trine_configuration() -> Dict[str, Any]:
-    """
+    r"""
     Trine — three power strokes per precession revolution.
 
     The Wankel rotary fires 3 times per output shaft revolution (3 rotor faces).
     SIGMA_RB has the same structure: the CD tower has three quantum force levels,
     each spaced ¼σ apart. One precession revolution passes through all three.
 
-    Three firing levels:
+    Three firing levels::
+
         σ = ¾  (ℂ level)  U(1)  electromagnetism — ℝ→ℂ corner  (lose ordering)
         σ = ½  (ℍ level)  SU(2) weak force        — ℂ→ℍ corner  (lose commutativity)
         σ ≈ ¼  (𝕆 level)  SU(3) strong force       — ℍ→𝕆 corner  (lose associativity)
@@ -1025,20 +1084,22 @@ def trine_configuration() -> Dict[str, Any]:
     In angular terms (if σ maps to angle in precession cone): 120° = 2π/3 apart.
     This IS the Wankel rotor geometry: 3 faces at 120°.
 
-    Three-phase current balance (su(2) Lie bracket):
+    Three-phase current balance (su(2) Lie bracket)::
+
         [J_blue, J_red]   = J_green
         [J_red,  J_green] = J_blue
         [J_green, J_blue] = J_red
         J_red + J_blue + J_green = 0  (no TDC singularity — the 3-point circle)
 
-    Why trine avoids TDC:
+    Why trine avoids TDC::
+
         A 2-stroke (J_red + J_blue = 0) hits TDC — both currents vanish simultaneously.
         A trine (J_red + J_blue + J_green = 0) never has all three zero simultaneously.
         When one face is at local TDC, the other two carry the engine.
         L_(I|O) is never globally zero. The 3-point circle closes continuously.
 
     Wankel gear ratio: 3:1 (output shaft : rotor) = one wobble cycle per 3 circle points.
-    SIGMA_RB trine ratio: 3 quantum-force firings per L_(I|O) precession revolution.
+    SIGMA_RB trine ratio: 3 quantum-force firings per L_(I\|O) precession revolution.
     """
     sigma_levels = [
         {'sigma': 0.75, 'level': 'ℂ', 'force': 'U(1)',  'name': 'Electromagnetism', 'loss': 'ordering (ℝ→ℂ)'},

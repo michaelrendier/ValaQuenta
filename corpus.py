@@ -8,7 +8,8 @@ No matter the language. No matter the alphabet.
 The prime preexists every surface form invented to point at it.
 The corpus reveals which surface forms share which primes.
 
-Processing pipeline per passage:
+Processing pipeline per passage::
+
     passage text  →  domain (from the passage itself)
     each word     →  read(word, domain)  →  gamma
     gamma + word  →  lexicon.record()
@@ -45,7 +46,8 @@ class CorpusProcessor:
     """
     Feed a text archive to the ValaQuenta.
 
-    For each passage in each file:
+    For each passage in each file::
+
         1. Create a SemanticDomain from the passage text
         2. Tokenize the passage
         3. process each token through read(token, domain)

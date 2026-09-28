@@ -1,7 +1,7 @@
-"""
+r"""
 ValaQuenta.modules.l_io_photon_path
 ===================================
-L_(I|O) Photon Path Engine (GR) module
+L_(I\|O) Photon Path Engine (GR) module
 
 Version: 0.2
 """

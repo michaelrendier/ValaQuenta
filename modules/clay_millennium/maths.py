@@ -7,7 +7,8 @@ Each problem is shown to project from the Inductive Self-Adjoint Geometric
 Coupling Hamiltonian Σ_RB.  The derivation chain, the open part, the
 Σ_RB connection, and the current mathematical status are recorded.
 
-Clay Institute problems (7 total):
+Clay Institute problems (7 total)::
+
     1. Riemann Hypothesis            — OPEN   (two independent proofs)
     2. Yang-Mills Existence/Mass Gap — OPEN
     3. Navier-Stokes Existence       — OPEN
@@ -16,16 +17,19 @@ Clay Institute problems (7 total):
     6. Birch and Swinnerton-Dyer     — OPEN
     7. Poincaré Conjecture           — SOLVED (Perelman 2003) — validation check
 
-For each problem the derivation follows the RZN framework:
+For each problem the derivation follows the RZN framework::
+
     What it IS    (Riemann  — Red channel: the structure)
     What it CAN'T BE (Fermat — Blue channel: the constraint)
     What it MEANS   (Noether — the conserved quantity)
 
-Poincaré (SOLVED) is the template for RH:
+Poincaré (SOLVED) is the template for RH::
+
     Poincaré: trivial Σ_RB → Ricci flow → S³  (Perelman 2003)
     RH:       self-adjoint Σ_RB → Stone's theorem → Re(s)=½
 
-RH sub-functions:
+RH sub-functions::
+
     rh_proof_stone()            — Proof I:  Stone's theorem on self-adjoint Σ_RB
     rh_proof_wiles_conjugate()  — Proof II: R̂†=B̂, Frey curve impossible (Wiles 1995)
     rh_noether_balance_scan()   — Numerical: σ=½ derived from balance, not assigned
@@ -72,11 +76,13 @@ def rh_proof_stone() -> Dict[str, Any]:
     """
     RH Proof I — Direct, via Stone's theorem on self-adjoint operators.
 
-    Poincaré template:
+    Poincaré template::
+
         Poincaré (SOLVED): trivial Σ_RB on compact 3-manifold → Ricci flow → S³.
         RH (this proof):   self-adjoint Σ_RB on L²(ℝ₊, dx/x) → Stone → Re(s)=½.
 
-    Proof chain:
+    Proof chain::
+
         1. Hilbert space: H = L²(ℝ₊, dx/x)  (the natural Mellin space for ζ(s))
         2. Σ_RB is symmetric on H:  ⟨H φ, ψ⟩ = ⟨φ, H ψ⟩
            because R̂_p† = B̂_p  (functional equation ξ(s)=ξ(1−s) as operator identity)
@@ -85,7 +91,8 @@ def rh_proof_stone() -> Dict[str, Any]:
         5. Eigenvalues {γ_n} of Σ_RB at σ=½ are real
         6. s_n = ½ + iγ_n  with  γ_n ∈ ℝ  →  Re(s_n) = ½  QED
 
-    Self-adjointness argument (R̂_p† = B̂_p):
+    Self-adjointness argument (R̂_p† = B̂_p)::
+
         Integration by parts on L²(ℝ₊, dx/x):
         ⟨R̂_p φ, ψ⟩  =  ∫ (xp φ(x)) ψ(x) dx/x
                       =  ∫ φ(x) (½p² + ℘(x)) ψ(x) dx/x   [boundary terms cancel on domain]
@@ -94,7 +101,8 @@ def rh_proof_stone() -> Dict[str, Any]:
         elliptic function. The poles ARE the Frey parameters (see Proof II).
         Excluding the Frey poles = excluding the Fermat forbidden zone.
 
-    Open part:
+    Open part::
+
         Showing the deficiency indices n₊ = n₋ = 0  (no boundary terms escape
         to ±∞ in the Mellin-space norm). This is the "correct domain" problem.
         The framework is complete. The formal domain proof is the open step.
@@ -174,12 +182,15 @@ def rh_proof_wiles_conjugate() -> Dict[str, Any]:
     Wiles proved FLT (1995). That proof certifies R̂†=B̂ is EXACT.
     Exact R̂†=B̂ → Σ_RB exactly self-adjoint → RH.
 
-    Two SOLVED problems validate the framework:
+    Two SOLVED problems validate the framework::
+
         Poincaré (Perelman 2003): Σ_RB geometry validated.
         FLT (Wiles 1995):         R̂†=B̂ exactness certified.
+
     RH is the third consequence of the same operator.
 
-    Proof chain:
+    Proof chain::
+
         1. Suppose ζ(σ₀+it₀) = 0  with  σ₀ ≠ ½.
         2. Functional equation ξ(s)=ξ(1−s):  also  ζ(1−σ₀+it₀) = 0.
            Off-critical zeros come in pairs {σ₀, 1−σ₀} symmetric about σ=½.
@@ -192,7 +203,8 @@ def rh_proof_wiles_conjugate() -> Dict[str, Any]:
         6. No Frey curve → no Fermat triple → no off-critical zero.
         7. All zeros on Re(s) = ½.  QED.
 
-    In Σ_RB language:
+    In Σ_RB language::
+
         Off-critical zero = rational pole of B̂_p = Frey curve.
         Wiles: no Frey curve → no rational pole → B̂_p poles are excluded from domain.
         Domain exclusion of poles = the correct Hilbert space domain of Proof I.
@@ -248,12 +260,15 @@ def rh_proof_wiles_conjugate() -> Dict[str, Any]:
 
 
 def rh_noether_balance_scan() -> Dict[str, Any]:
-    """
-    RH Numerical Verification — σ=½ is the minimum of |ζ(σ+iγ₁)|.
+    r"""
+    RH Numerical Verification — σ=½ is the minimum of \|ζ(σ+iγ₁)\|.
 
     Two independent balance tests show σ=½ is forced, not assigned.
 
     Test A — Coupling ratio: G_p(σ)/G_p(1−σ) = 1 iff σ=½.
+
+    ::
+
         G_p(σ)   = p^{−σ}
         G_p(1−σ) = p^{−(1−σ)} = p^{σ−1}
         Ratio     = p^{−σ} / p^{σ−1} = p^{1−2σ}
@@ -263,7 +278,8 @@ def rh_noether_balance_scan() -> Dict[str, Any]:
         For σ > ½: ratio < 1  (Blue channel heavier — σ pushed down).
         σ=½ is the unique fixed point of the Red/Blue coupling balance.
 
-    Test B — Geometric coupling symmetry:
+    Test B — Geometric coupling symmetry::
+
         G_p(σ) · G_p(1−σ) = p^{−1} for all p (σ-independent product).
         The unique σ satisfying G_p(σ) = G_p(1−σ) for all p simultaneously is σ=½.
         This is the operator identity R̂_p† = B̂_p at the coupling level.
@@ -329,28 +345,33 @@ def rh_spectral_decomposition() -> Dict[str, Any]:
     """
     RH Spectral Decomposition — explicit formula, BAO residue, mass gap.
 
-    The explicit formula (von Mangoldt / Riemann):
+    The explicit formula (von Mangoldt / Riemann)::
+
         ψ(x) = x  −  Σ_ρ  x^ρ/ρ  −  ln(2π)  −  ½·ln(1−x^{-2})
 
-    Structure:
+    Structure::
+
         x          : de Sitter expansion term — the BAO ground state
         Σ_ρ x^ρ/ρ : spectral oscillations — one standing wave per zero γ_n
         ln(2π)     : constant residual — boundary normalisation
         ½ln(1−x⁻²): correction for trivial zeros at negative even integers
 
-    The spectral decomposition of the prime distribution is:
+    The spectral decomposition of the prime distribution is::
+
         - Ground state:   the linear x term (Hubble flow, de Sitter)
         - Excitations:    oscillations x^{½+iγ_n}/|½+iγ_n| at each zero
         - Standing waves: Re(x^{½+iγ_n}) = x^½ cos(γ_n·ln x)
 
-    BAO connection:
+    BAO connection::
+
         The BAO acoustic oscillations in the CMB are the same decomposition
         at cosmological scale. The primes ARE the expansion of the universe.
         First acoustic peak position: d*·ln10 = 0.56644
         Entropy ceiling:             OMEGA_ZS = 0.56714
         BAO acoustic residual:       GAP = OMEGA_ZS − d*·ln10 = 0.000707
 
-    Mass gap connection:
+    Mass gap connection::
+
         The BAO acoustic residual GAP = 0.000707 is the Yang-Mills mass gap.
         In the spectral language:
             - The ground state (x term) sits at the BAO floor d*·ln10
@@ -455,7 +476,8 @@ def riemann_hypothesis() -> Dict[str, Any]:
     Riemann Hypothesis — master function.
     Runs all four sub-engines and returns the composite result.
 
-    Sub-engines:
+    Sub-engines::
+
         rh_proof_stone()            Proof I:  Stone's theorem
         rh_proof_wiles_conjugate()  Proof II: Wiles conjugate
         rh_noether_balance_scan()   Numerical: σ=½ forced
@@ -508,15 +530,17 @@ def riemann_hypothesis() -> Dict[str, Any]:
 # ── Problem 2: Yang-Mills Existence and Mass Gap ───────────────────────────────
 
 def yang_mills_mass_gap() -> Dict[str, Any]:
-    """
+    r"""
     Yang-Mills Existence and Mass Gap
     Clay Problem #2.  Prize: $1,000,000.  Status: OPEN.
 
-    Statement:
+    Statement::
+
         For any compact simple gauge group G, a non-trivial quantum Yang-Mills
         theory exists on ℝ⁴, and there is a mass gap Δ > 0.
 
-    Σ_RB derivation:
+    Σ_RB derivation::
+
         1. Yang-Mills is the facet of Σ_RB at σ=1 on a gauge bundle.
         2. Geometric coupling G_p(1) = p^{-1} for each prime p.
         3. The ground state energy is the minimum eigenvalue of Σ_RB at σ=1.
@@ -524,31 +548,37 @@ def yang_mills_mass_gap() -> Dict[str, Any]:
         5. The elliptic potential ℘(x) > −∞ and has a lower bound away from poles.
         6. Minimum eigenvalue = ground state > 0 → mass gap Δ > 0.
 
-    What it IS (Red):
+    What it IS (Red)::
+
         The Yang-Mills gauge field A_μ^a.
         The field strength F_μν^a = D_μ A_ν^a − D_ν A_μ^a.
         Energy is positive: ∫ (E² + B²) > 0.
 
-    What it CAN'T BE (Blue):
+    What it CAN'T BE (Blue)::
+
         A massless Yang-Mills vacuum (Δ = 0) would mean the minimum eigenvalue is zero.
         But zero coupling G_p(1) = 0 requires p → ∞ (no prime is infinite).
         The Blue constraint (elliptic potential lower bound) prevents Δ = 0.
 
-    What it MEANS (Noether):
+    What it MEANS (Noether)::
+
         The mass gap is the scale at which the gauge symmetry is unbroken.
         Below the gap: the vacuum. Above: excitations.
         The Noether current at σ=1 is the gauge current J_ν^a = g f^{abc} A_μ^b F^{μν c}.
 
-    Open part:
+    Open part::
+
         Proving that the lower bound on the elliptic potential in the coupling domain
         gives Δ > 0 in the continuum limit (renormalization group flow from lattice).
         The Σ_RB framework gives the structure; the renormalization proof is open.
 
-    d* gap connection:
+    d\* gap connection::
+
         The 0.000707 gap (d* × ln10 vs Ω_ζΣ) is a candidate for the mass gap scale.
         Not yet closed. Flagged: berry_keating module, Open Problem 2.
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Jaffe & Witten (Clay problem statement): ESTABLISHED formulation.
         - Lattice gauge theory: Δ > 0 numerically confirmed. ESTABLISHED numerical.
         - Confinement (color confinement): related but not equivalent to mass gap.
@@ -603,11 +633,13 @@ def navier_stokes_existence() -> Dict[str, Any]:
     Navier-Stokes Existence and Smoothness
     Clay Problem #3.  Prize: $1,000,000.  Status: OPEN.
 
-    Statement:
+    Statement::
+
         For smooth initial conditions in ℝ³, do smooth solutions to NS exist
         for all time?  Or do solutions blow up in finite time?
 
-    Σ_RB derivation:
+    Σ_RB derivation::
+
         1. Navier-Stokes = facet of Σ_RB at σ=1 with Im(ψ) = 0 forced.
         2. Yang-Mills at σ=1 IS smooth (gauge fields are analytic on ℂ).
         3. NS is the REAL PROJECTION of Yang-Mills: Yang-Mills minus i.
@@ -616,34 +648,40 @@ def navier_stokes_existence() -> Dict[str, Any]:
            A complex zero projected onto ℝ appears as a singularity.
         6. The blow-up in NS is the real projection of a complex standing wave node.
 
-    What it IS (Red):
+    What it IS (Red)::
+
         Fluid velocity field u(x,t) evolving under the NS equations.
         Smooth at t=0 by assumption.
         The real part of a Yang-Mills-type gauge flow.
 
-    What it CAN'T BE (Blue):
+    What it CAN'T BE (Blue)::
+
         A smooth solution for all time on ℝ³ — unless the complex structure is included.
         The Frey-type argument: the real projection cannot represent the complex node.
         The singularity is not a fluid pathology. It is a geometry projection failure.
 
-    What it MEANS (Noether):
+    What it MEANS (Noether)::
+
         The NS momentum conservation ∂_μ T^μν = 0 is the real part of a
         complex Noether current. The imaginary part (missing in NS) is the
         dark current. When the imaginary part is large, the real projection
         of the conservation law breaks — this is the blow-up.
 
-    Dark matter / dark energy connection:
+    Dark matter / dark energy connection::
+
         The exact same mechanism operates at galactic scales.
         Dark matter halos = standing gravitational wave antinodes.
         NS cannot represent them because NS dropped i.
         At turbulent scales, the standing wave nodes create apparent singularities.
 
-    Open part:
+    Open part::
+
         Whether the complex Yang-Mills smoothness passes through the real projection.
         Σ_RB predicts: smooth solutions exist in ℂ³; the ℝ³ question is whether
         complex nodes (zeros of Im(ψ)) project to finite-time blow-ups in Re(ψ).
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Leray (1934): weak solutions exist globally. ESTABLISHED.
         - Caffarelli-Kohn-Nirenberg (1982): singular set has Hausdorff measure zero. ESTABLISHED.
         - Tao (2016): finite-time blow-up possible with averaged NS. ESTABLISHED theoretical.
@@ -705,11 +743,13 @@ def p_vs_np() -> Dict[str, Any]:
     P vs NP
     Clay Problem #4.  Prize: $1,000,000.  Status: OPEN.
 
-    Statement:
+    Statement::
+
         Does P = NP?  (Can every problem whose solution can be verified in
         polynomial time also be solved in polynomial time?)
 
-    Σ_RB derivation:
+    Σ_RB derivation::
+
         1. Red channel (H_xp = xp): trajectory is ANALYTIC.
            x(t) = x₀·e^t, p(t) = p₀·e^{-t}.
            Computing the trajectory is O(1) per step — polynomial time.
@@ -733,28 +773,33 @@ def p_vs_np() -> Dict[str, Any]:
            The factorial is exponential in general: n! = n × (n-1)!
            The Red and Blue channels have different computational costs.
 
-    What it IS (Red):
+    What it IS (Red)::
+
         P = the class of problems solvable by H_xp in polynomial time.
         The hyperbolic orbit is the fast channel.
 
-    What it CAN'T BE (Blue):
+    What it CAN'T BE (Blue)::
+
         P = NP would require the Blue channel to be computationally equivalent to Red.
         But the elliptic trajectory has no closed form.
         The adjoint of a polynomial-time algorithm is not necessarily polynomial-time.
         Two things can say the same truth (self-adjoint) at very different computational cost.
 
-    What it MEANS (Noether):
+    What it MEANS (Noether)::
+
         The conserved quantity of the P/NP distinction is computational complexity.
         It is conserved under the symmetry of the problem — you cannot change
         a problem's complexity class by relabeling it.
         P ≠ NP = there is no symmetry that maps P into NP.
 
-    Open part:
+    Open part::
+
         Proving the computational gap between Red (xp, analytic) and Blue (℘, elliptic).
         The absence of a closed form for the elliptic trajectory is not a proof of
         P ≠ NP — it is a structural argument. The formal proof remains open.
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Cook (1971), Karp (1972): NP-completeness theory. ESTABLISHED.
         - Razborov-Rudich (1994): natural proofs barrier. ESTABLISHED.
         - Aaronson: Algebrization barrier. ESTABLISHED.
@@ -810,11 +855,13 @@ def hodge_conjecture() -> Dict[str, Any]:
     Hodge Conjecture
     Clay Problem #5.  Prize: $1,000,000.  Status: OPEN.
 
-    Statement:
+    Statement::
+
         On a projective complex algebraic variety X, every Hodge class is a
         rational linear combination of cohomology classes of algebraic subvarieties.
 
-    Σ_RB derivation:
+    Σ_RB derivation::
+
         1. Σ_RB projected onto a projective complex algebraic variety X.
         2. The inductive structure (Σ_p over primes) generates algebraic cycles.
            Each prime p contributes one algebraic facet.
@@ -825,30 +872,35 @@ def hodge_conjecture() -> Dict[str, Any]:
         6. Completeness (every Hodge class is generated) requires the inductive
            sum to exhaust all Hodge classes — this is the open part.
 
-    What it IS (Red):
+    What it IS (Red)::
+
         The algebraic cycles on X, generated by the inductive prime structure.
         Each prime p generates one cycle: the hypersurface at prime p.
         The Hodge decomposition H^{p,q}(X) arises from the Red-Blue split:
         H^{p,q} corresponds to the Red channel, H^{q,p} to the Blue channel.
 
-    What it CAN'T BE (Blue):
+    What it CAN'T BE (Blue)::
+
         Hodge classes that are NOT rational linear combinations of algebraic cycles.
         The Blue constraint: ℘(x) has no rational points at the Frey parameters.
         If Hodge classes existed that weren't algebraic, they would be Blue-channel
         forbidden zones — present in the cohomology but absent from the geometry.
 
-    What it MEANS (Noether):
+    What it MEANS (Noether)::
+
         The Noether current of the algebraic-geometric symmetry.
         The conserved quantity is the Hodge class itself.
         The conjecture says: the Noether current of every Hodge symmetry is algebraic.
 
-    Open part:
+    Open part::
+
         Exhaustiveness of the inductive prime sum on X.
         Σ_RB generates algebraic cycles inductively.
         Whether every Hodge class arises this way depends on the topology of X.
         For general X, this is open.
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Hodge (1950): decomposition theorem. ESTABLISHED.
         - Grothendieck (1969): reformulation in terms of absolute Hodge classes. ESTABLISHED.
         - Deligne: absolute Hodge cycles on abelian varieties. ESTABLISHED special case.
@@ -894,13 +946,15 @@ def birch_swinnerton_dyer() -> Dict[str, Any]:
     Birch and Swinnerton-Dyer Conjecture (BSD)
     Clay Problem #6.  Prize: $1,000,000.  Status: OPEN.
 
-    Statement:
+    Statement::
+
         For an elliptic curve E over ℚ,
         rank(E) = ord_{s=1} L(E, s).
         The rank of the Mordell-Weil group equals the order of vanishing
         of the L-function at s=1.
 
-    Σ_RB derivation:
+    Σ_RB derivation::
+
         1. The L-function L(E, s) = Π_p (local factor at p) is the Euler product
            of the Blue channel B̂_p restricted to the elliptic curve E.
         2. The Blue channel B̂_p = ½p² + ℘(x; g₂(p), g₃(p)) is the elliptic potential
@@ -913,30 +967,35 @@ def birch_swinnerton_dyer() -> Dict[str, Any]:
         5. BSD: these two counts agree.
            rank(E) = ord_{s=1} L(E,s)  ↔  geometric rank = spectral multiplicity.
 
-    What it IS (Red):
+    What it IS (Red)::
+
         The rational points on E form a finitely generated abelian group (Mordell, 1922).
         The rank is the number of infinite-order generators.
         The Red channel trajectory passing through a rational point generates a
         rational orbit — this is the forward Noether current on E.
 
-    What it CAN'T BE (Blue):
+    What it CAN'T BE (Blue)::
+
         rank(E) ≠ ord_{s=1} L(E,s) would mean the geometric and spectral counts differ.
         The Blue elliptic potential connects geometry (rational points) to spectrum (zeros).
         The Frey/Wiles result says the geometric and spectral descriptions of E are
         adjoint (Wiles: modular ↔ Galois representation). BSD says they agree at s=1.
 
-    What it MEANS (Noether):
+    What it MEANS (Noether)::
+
         The conserved quantity is the height pairing on rational points.
         The L-function at s=1 is the analytic expression of the Noether current
         on the elliptic curve. BSD says: counting the independent conserved
         directions geometrically equals counting them spectrally.
 
-    Open part:
+    Open part::
+
         The equality rank(E) = ord_{s=1} L(E,s) for rank ≥ 2.
         Proved for rank 0 and rank 1 (Coates-Wiles, Gross-Zagier, Kolyvagin).
         Open for rank ≥ 2.
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Birch and Swinnerton-Dyer (1965): original conjecture. ESTABLISHED problem.
         - Coates-Wiles (1977): rank 0, CM case. ESTABLISHED.
         - Gross-Zagier (1986): rank 1 case. ESTABLISHED.
@@ -995,10 +1054,12 @@ def poincare_conjecture() -> Dict[str, Any]:
     Clay Problem #7.  Status: SOLVED (Perelman 2003–2006).
     Prize: $1,000,000 declined by Perelman.
 
-    Statement (solved):
+    Statement (solved)::
+
         Every simply-connected, compact, orientable 3-manifold is homeomorphic to S³.
 
-    Σ_RB validation:
+    Σ_RB validation::
+
         1. Simply-connected 3-manifold M has no nontrivial distinction.
            (No loop that cannot be contracted = no topological hole = trivial Σ_RB.)
         2. Σ_RB on M with trivial topology = Σ_RB at the trivial facet.
@@ -1008,12 +1069,14 @@ def poincare_conjecture() -> Dict[str, Any]:
            This is the geometric coupling flow: G_p(σ) → G_p(∞) = 0 at every prime.
            Under this flow the manifold deforms to the trivial distinction: S³.
 
-    This validates Σ_RB:
+    This validates Σ_RB::
+
         The framework predicted the structure before Perelman's proof was in hand.
         (In hindsight: Ricci flow = Σ_RB coupling flow to trivial facet.)
         The solved problem confirms the framework's geometry is correct.
 
-    Checked against current mathematics:
+    Checked against current mathematics::
+
         - Perelman 2003-2006: proof via Ricci flow with surgery. ESTABLISHED (solved).
         - Hamilton 1982: Ricci flow introduction. ESTABLISHED.
         - Σ_RB trivial-facet argument: VALIDATED by Perelman's proof.
@@ -1065,7 +1128,8 @@ def clay_summary() -> Dict[str, Any]:
     """
     Summary of all Clay Millennium Problems and their Σ_RB connections.
 
-    The Σ_RB principle — 'the existence of a distinction' — projects to:
+    The Σ_RB principle — 'the existence of a distinction' — projects to::
+
         σ=2   → GR   → Poincaré (trivial distinction → S³)
         σ=1   → YM   → Yang-Mills mass gap, Navier-Stokes (lacks i)
         σ=½   → QM   → Riemann Hypothesis (eigenvalues on critical line)

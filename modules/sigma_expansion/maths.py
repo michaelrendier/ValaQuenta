@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.modules.sigma_expansion.maths
 ========================================
 Closed-form Taylor expansion of the J_red/J_blue balance around sigma=1/2.
@@ -7,12 +7,15 @@ Origin: derived 2026-07-11, in the course of testing whether a quantum-
 state normalization argument (Science Asylum / Nick Lucid's "Quantum
 Superposition, Explained Without Woo Woo") applies to J_red(sigma),
 J_blue(sigma)=J_red(1-sigma). It does not normalize to a constant across
-sigma -- |J_red(sigma)|^2 + |J_blue(sigma)|^2 has a genuine minimum at
+sigma -- \|J_red(sigma)\|^2 + \|J_blue(sigma)\|^2 has a genuine minimum at
 sigma=1/2, not a flat quantum-probability-style conservation. That raw
 result is real and reported honestly; this module is what came out of
 asking a sharper question of the normalized version instead.
 
-P_red(sigma) = |J_red(sigma)|^2 / (|J_red(sigma)|^2 + |J_blue(sigma)|^2)
+P_red(sigma) = \|J_red(sigma)\|^2 / (\|J_red(sigma)\|^2 + \|J_blue(sigma)\|^2)
+
+::
+
              ~ 1/2 + c1*(sigma-1/2) + c3*(sigma-1/2)^3 + O(d^5)
 
 c1, c3 are DERIVED here in closed form from moments of the underlying
@@ -22,7 +25,8 @@ directly-computed curve to within ~1e-6 near sigma=1/2, residual growing
 smoothly toward the edges of the tested range exactly as expected for a
 third-order truncation (next term is O(d^5)).
 
-Definitions (per prime channel p, over character positions k=1..N):
+Definitions (per prime channel p, over character positions k=1..N)::
+
     A_k   = c_k / 128                        (character amplitude, real)
     phi_k = exp(-i * 2*pi*k/p)                (fixed unit phase)
     w_k(sigma) = k^{-sigma}
@@ -31,15 +35,16 @@ Definitions (per prime channel p, over character positions k=1..N):
     J_red(sigma) = N(sigma) / D(sigma)
 
 Moments, evaluated once at sigma=1/2 (M_n channel-independent, L_n per
-channel):
+channel)::
+
     M_n = sum_k k^{-1/2} * (ln k)^n
     L_n = sum_k A_k * phi_k * k^{-1/2} * (ln k)^n
 
 Derivation method: Taylor-expand N(sigma), D(sigma) in d=sigma-1/2 via
-k^{-sigma} = k^{-1/2}*e^{-d ln k}, apply the product/quotient rule to
-F(sigma)=|N(sigma)|^2/D(sigma)^2 up to third derivative at sigma=1/2,
+k^{-sigma} = k^{-1/2}\*e^{-d ln k}, apply the product/quotient rule to
+F(sigma)=\|N(sigma)\|^2/D(sigma)^2 up to third derivative at sigma=1/2,
 then take the odd part of F(1/2+d) over twice the even part (since
-P_red - 1/2 = (F(sigma)-F(1-sigma)) / (2*(F(sigma)+F(1-sigma)))).
+P_red - 1/2 = (F(sigma)-F(1-sigma)) / (2\*(F(sigma)+F(1-sigma)))).
 Full algebra in wiki/sigma_expansion.md and Ainulindale/wiki/76.
 
 Version: 0.100
@@ -135,12 +140,12 @@ def moments(text: str) -> Dict[str, Any]:
 
 
 def taylor_coefficients(text: str) -> Dict[str, Any]:
-    """
+    r"""
     DERIVE c1, c3 in closed form (not fitted) via product/quotient-rule
-    differentiation of F(sigma)=|N(sigma)|^2/D(sigma)^2 at sigma=1/2,
+    differentiation of F(sigma)=\|N(sigma)\|^2/D(sigma)^2 at sigma=1/2,
     summed across all 16 prime channels.
 
-    P_red(sigma) - 1/2  ~  c1*d + c3*d^3      (d = sigma - 1/2)
+    P_red(sigma) - 1/2  ~  c1\*d + c3\*d^3      (d = sigma - 1/2)
 
     :param text: input string
     :returns: dict with the derived coefficients c1 and c3
@@ -178,8 +183,8 @@ def taylor_coefficients(text: str) -> Dict[str, Any]:
 
 
 def predict_P_red(text: str, sigma: float) -> float:
-    """
-    The closed-form prediction: 1/2 + c1*d + c3*d^3. Cheap -- one pass
+    r"""
+    The closed-form prediction: 1/2 + c1\*d + c3\*d^3. Cheap -- one pass
     over moments regardless of how many sigma values are queried, versus
     a fresh O(N) sweep per sigma for the actual computation.
 

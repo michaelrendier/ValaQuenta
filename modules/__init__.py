@@ -8,6 +8,9 @@ UI registration.
 
 Modules
 -------
+
+::
+
     inversion          — (I|O) map, gradient flow, phi attractor
 
     lagrangian         — L_NN, all four terms, running coupling
@@ -22,7 +25,6 @@ Modules
                          SIGMA_RB engine: stroke, oblique crank (d*), trine.
     clay_millennium    — All 7 Clay Millennium Problems derived from Σ_RB
                          RH, Yang-Mills, NS, P/NP, Hodge, BSD, Poincaré (SOLVED).
-
 
     sigma_expansion    — Closed-form Taylor expansion of P_red(sigma) around
                          sigma=1/2 (c1, c3 derived, not fitted). Raw
@@ -125,7 +127,6 @@ Modules
                          K_Planck independent of M. Engine for
                          FourthAgePapers/DeSitterCavitation. confidence
                          floor THEORETICAL.
-
 
     emerger            — THE EMERGER. Sedenion Bracketing & Firing Order. A
                          dynamic permutative bracketer over the imaginary

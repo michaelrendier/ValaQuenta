@@ -18,7 +18,7 @@ Format ([FORMAT.md](FORMAT.md)) that the derivation browser lists and runs.
 Public release preparation: the API: Code Reference. Every registered module has
 a manifest and a `maths.py` / `tools.py` split; docstrings are Sphinx reST field lists; the
 README is the index, the wiki holds the results and the record, the notebooks
-run the derivations, and Sphinx (`docs/`) will build the per-function reference.
+run the derivations, and Sphinx (`docs/`) builds the per-function reference.
 
 ## Quick start
 
@@ -155,6 +155,21 @@ To add an engine, follow the six steps in the docstring of
 [`engine/registry.py`](engine/registry.py) and validate it with
 `python3 -m ValaQuenta.engine.manifest validate` and
 `python3 -m ValaQuenta.engine.format validate`.
+
+### Building the documentation
+
+The per-function reference is built by Sphinx from the docstrings:
+
+```bash
+pip install -e ".[docs]"
+python3 docs/gen_api.py                          # regenerate docs/api/ after adding a module
+sphinx-build -b html docs docs/_build/html       # open docs/_build/html/index.html
+```
+
+`.readthedocs.yaml` builds the same tree for Read the Docs, with warnings treated
+as errors. The parts of the repository that are not importable package code
+(`code/`, `addenda/`, notebooks, the wiki) are listed with their locations on the
+docs page *Elsewhere in the repository*.
 
 ### Conventions
 

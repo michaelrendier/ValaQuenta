@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.modules.archimedes_screw.maths
 =========================================
 THE ARCHIMEDES SCREW -- the machine that does the work.
@@ -10,10 +10,14 @@ a turbine.
 
 That machine is the logarithm:
 
+::
+
     log(p * q) = log p + log q
 
 Multiplication on the wheel becomes addition on the tower. The working
 axis of this module is therefore
+
+::
 
     u = ln x          the screw axis (lift)
 
@@ -25,6 +29,8 @@ between them, plus the one equation that binds them.
 THE BINDING EQUATION (von Mangoldt / Riemann explicit formula, 1895 --
 ESTABLISHED, unconditional, not a new claim):
 
+::
+
     psi(e^u) = e^u
              - 2 e^(u/2) * SUM_k cos(gamma_k * u - arg(rho_k)) / |rho_k|
              - ln(2 pi)
@@ -34,6 +40,8 @@ ESTABLISHED, unconditional, not a new claim):
     psi(x) = SUM_{p^m <= x} ln p  is Chebyshev's function.
 
 Read it as a machine and three facts fall out:
+
+::
 
   1. Each zero gamma_k is a TONE of frequency gamma_k in the variable u.
      The zeta index k is literally the summation index -- entering the
@@ -57,6 +65,8 @@ are unrelated, do not merge" note, which was true but undersold it).
 
 Two psi are in play across these repos, and they are NOT the same object:
 
+::
+
     psi_Cheb(x)     ChebyshevS function, SUM ln p over prime powers <= x.
                     Domain R+, one-dimensional. A monotone STEP function.
                     Source is a discrete measure Lambda(n) on prime
@@ -76,23 +86,29 @@ and you cannot read a prime off a smooth field. Keep them itemised.
 BUT THE COLLISION IS NOT AN ACCIDENT. They sit ONE SLOT APART in the
 same equation. Line the two up:
 
+::
+
     lensing:   L_(I|O)  =  L   -  psi_Fermat
     primes:    psi_Cheb =  x   -  SUM_rho x^rho/rho   (- ln2pi - ...)
 
 Signs and arrangement match term for term, so:
+
+::
 
     psi_Cheb        <->  L_(I|O)      the ACTUAL, bent path
     x               <->  L            the CLEAN geodesic
     SUM_rho x^rho/rho <->  psi_Fermat   the POTENTIAL -- the bend
 
 Chebyshev psi is therefore NOT the counterpart of the Fermat potential.
-It is the counterpart of L_(I|O). The object that genuinely corresponds
+It is the counterpart of L_(I\|O). The object that genuinely corresponds
 to psi_Fermat is the ZERO SUM, which had no name in these repos at all
 until this revision -- it existed only inline inside
 chebyshev_psi_explicit, which is exactly why the collision read as a
 naming accident. It is now zero_sum().
 
 Two consequences, both load-bearing:
+
+::
 
   * The main term x IS L, "the path of least primes" -- the phrase the
     2026-07-31 context primer s4 carries without a formula. It is the
@@ -107,17 +123,19 @@ Two consequences, both load-bearing:
 
 l_io_decomposition() returns all three slots by role name so the
 correspondence is executable, not merely documented. This module still
-always writes chebyshev_psi_* in full -- the standard name is correct
+always writes ``chebyshev_psi_*`` in full -- the standard name is correct
 and any number theorist reading it expects it.
 
 THE N-SPECIFIC LEG (ramification). For the factoring thread the global
 formula above is twisted by the quadratic character chi_N, giving
-zeta_Q(sqrt N)(s) = zeta(s) * L(s, chi_N). Every rational prime then
+zeta_Q(sqrt N)(s) = zeta(s) \* L(s, chi_N). Every rational prime then
 splits, is inert, or RAMIFIES in Q(sqrt N), and the ramified primes are
-exactly those dividing the discriminant. For N = p*q squarefree the
+exactly those dividing the discriminant. For N = p\*q squarefree the
 ramified primes are exactly p and q -- the Euler factor DEGENERATES at
 precisely the factors. That is the leaf letting go, written in
 arithmetic. See splitting_type() and ramified_primes().
+
+::
 
     HONEST BOUND, stated not buried: knowing "the ramified primes are
     the factors" does not by itself factor N -- detecting ramification
@@ -133,7 +151,7 @@ arithmetic. See splitting_type() and ramified_primes().
 THE COMPOSITE SIDE (v0.2, 2026-08-05). psi counts only prime powers, so a
 composite contributes nothing to it -- as first built this engine could name
 every prime and say nothing about any child. The leaf falls at gpf(N), not
-lpf(N): 14 = 2*7 is struck at 2 but stays on the tree, and drops at 7. That
+lpf(N): 14 = 2\*7 is struck at 2 but stays on the tree, and drops at 7. That
 is the smoothness criterion the whole factoring literature runs on, its
 distribution is Dickman rho in the coordinate u = ln N/ln(gpf N), and the
 harvest at sieve step p is Psi(X/p, p) in closed form. See the WHEN THE LEAF
@@ -185,8 +203,8 @@ ZEROS_KNOWN: List[float] = [
 # --------------------------------------------------------------------------
 
 def lambert_w(x: float, tol: float = 1e-14, max_iter: int = 60) -> float:
-    """
-    Principal branch W_0(x), W(x) * exp(W(x)) = x, defined for x >= -1/e.
+    r"""
+    Principal branch W_0(x), W(x) \* exp(W(x)) = x, defined for x >= -1/e.
 
     Halley iteration. This is the gear ratio of the screw: it is the
     function that inverts "multiply by your own exponential", which is
@@ -354,6 +372,8 @@ def nth_prime_estimate(n: int) -> float:
     """
     Inverse of pi: the n-th prime, by the standard asymptotic
 
+    ::
+
         p_n ~ n (ln n + ln ln n - 1 + (ln ln n - 2)/ln n)
 
     Valid for n >= 6; below that the exact small primes are returned.
@@ -380,6 +400,8 @@ def zero_count_smooth(T: float) -> float:
     """
     Riemann-von Mangoldt smooth zero count up to height T:
 
+    ::
+
         N(T) = (T / 2pi) ln(T / 2pi e) + 7/8   (+ S(T), omitted here)
 
     S(T) is O(ln T) and oscillatory; it is what makes the smooth count
@@ -398,9 +420,12 @@ def zero_height_lambert(n: float) -> float:
     """
     THE LAMBERT INVERSE. Height of the n-th zero in closed form:
 
+    ::
+
         gamma_n ~ 2 pi n / W(n / e)
 
-    Derivation (exact algebra on the smooth count, no fitting):
+    Derivation (exact algebra on the smooth count, no fitting)::
+
         set N(T) = n with T = 2 pi v
         n = v (ln v - 1) = v ln(v/e)
         (v/e) ln(v/e) = n/e
@@ -591,13 +616,15 @@ def leaf_drops(x: float) -> List[Tuple[int, float]]:
 
 
 def tone(u: float, gamma: float, sigma: float = 0.5) -> float:
-    """
+    r"""
     A single tone of the explicit formula, at screw height u, from a zero
-    at rho = sigma + i*gamma:
+    at rho = sigma + i\*gamma:
+
+    ::
 
         2 * e^(sigma*u) * cos(gamma*u - arg rho) / |rho|
 
-    On the critical line sigma = 1/2 the envelope is 2*sqrt(x) for EVERY
+    On the critical line sigma = 1/2 the envelope is 2\*sqrt(x) for EVERY
     zero -- one shared amplitude. sigma is exposed as a parameter so the
     RH statement can be exhibited rather than asserted: see
     amplitude_envelope().
@@ -627,12 +654,12 @@ def tone_sum(u: float, zeros: Optional[List[float]] = None,
 
 
 def clean_path_L(x: float) -> float:
-    """
+    r"""
     L -- THE CLEAN PATH. The main term of the explicit formula: x.
 
     This is what chebyshev_psi would be if no zero contributed anything:
     the pole term alone, the vacuum, the flat-space answer. In the
-    L_(I|O) dictionary (Ainulindale/wiki/52, wiki/83 s9, and the 2026-07-31
+    L_(I\|O) dictionary (Ainulindale/wiki/52, wiki/83 s9, and the 2026-07-31
     context primer s4) L is called "the path of least primes". This
     function is that phrase, computed: L(x) = x.
 
@@ -653,6 +680,8 @@ def zero_sum(x: float, zeros: Optional[List[float]] = None,
     """
     THE PRIME-SIDE FERMAT POTENTIAL.
 
+    ::
+
         SUM_rho x^rho / rho  =  2 sqrt(x) SUM_k cos(gamma_k u - arg rho_k)/|rho_k|
 
     summed over conjugate pairs, u = ln x.
@@ -667,6 +696,8 @@ def zero_sum(x: float, zeros: Optional[List[float]] = None,
     departure of the actual prime staircase from the clean path L(x) = x.
 
     Sign convention matches the lensing side exactly:
+
+    ::
 
         L_(I|O) = L - psi_Fermat          (lensing)
         psi_Cheb = x - zero_sum(x) - ...  (primes)
@@ -683,12 +714,14 @@ def zero_sum(x: float, zeros: Optional[List[float]] = None,
 
 def l_io_decomposition(x: float, zeros: Optional[List[float]] = None
                        ) -> Dict[str, float]:
-    """
-    The explicit formula, split into its L_(I|O) slots.
+    r"""
+    The explicit formula, split into its L_(I\|O) slots.
 
     Returns the three terms by the NAME OF THE ROLE THEY PLAY, so the
     correspondence with modules/l_io_photon_path is executable rather
     than only documented:
+
+    ::
 
         L           the clean path, x            (= clean_path_L)
         psi_bend    the Fermat potential term    (= zero_sum)
@@ -697,11 +730,11 @@ def l_io_decomposition(x: float, zeros: Optional[List[float]] = None
 
     Identity held by construction:  L_IO = L - psi_bend + trivial
 
-    Reading it: chebyshev_psi sits in the L_(I|O) slot -- the ACTUAL,
+    Reading it: chebyshev_psi sits in the L_(I\|O) slot -- the ACTUAL,
     bent path. The main term x sits in the L slot -- the clean geodesic,
     "the path of least primes". zero_sum sits in the psi slot -- the bend.
     Chebyshev psi is NOT the counterpart of the lensing psi; it is the
-    counterpart of L_(I|O), one slot away.
+    counterpart of L_(I\|O), one slot away.
 
     :param x: positive real
     :param zeros: zero heights; None uses the tabulated set
@@ -722,6 +755,8 @@ def chebyshev_psi_explicit(x: float, zeros: Optional[List[float]] = None,
                            sigma: float = 0.5) -> float:
     """
     The explicit formula, evaluated:
+
+    ::
 
         psi(x) = x - SUM_tones - ln(2 pi) - 0.5 ln(1 - x^-2)
 
@@ -764,8 +799,8 @@ def interference_profile(x: float, zeros: Optional[List[float]] = None
 
 
 def amplitude_envelope(x: float, sigma: float = 0.5) -> float:
-    """
-    Envelope of a tone from a zero with real part sigma: 2 * x^sigma.
+    r"""
+    Envelope of a tone from a zero with real part sigma: 2 \* x^sigma.
 
     THE RH STATEMENT IN THE PRIME DOMAIN. Every tone shares one envelope
     if and only if every zero shares one real part. A single zero at
@@ -837,10 +872,10 @@ def kronecker(a: int, n: int) -> int:
 
 
 def fundamental_discriminant(N: int) -> int:
-    """
+    r"""
     Discriminant of Q(sqrt N) for squarefree N:  D = N if N = 1 mod 4,
     else 4N. The ramified primes are exactly the primes dividing D --
-    for N = p*q squarefree, exactly p and q.
+    for N = p\*q squarefree, exactly p and q.
 
     :param N: squarefree integer
     :returns: D = N if N ≡ 1 mod 4, else 4N
@@ -853,6 +888,8 @@ def fundamental_discriminant(N: int) -> int:
 def splitting_type(p: int, N: int) -> str:
     """
     Behaviour of the rational prime p in Q(sqrt N):
+
+    ::
 
         'split'    chi_N(p) = +1   Euler factor (1 - p^-s)^-2
         'inert'    chi_N(p) = -1   Euler factor (1 - p^-2s)^-1
@@ -919,6 +956,8 @@ def screw_coordinates(term: str, value: float) -> Dict[str, float]:
     Enter on any one of the four coordinates; leave on all of them.
     Everything routes through the screw axis u = ln x.
 
+    ::
+
         term = 'magnitude'   value = x       (a number)
         term = 'digits'      value = d       (decimal digit count)
         term = 'ordinal'     value = n       (the n-th prime)
@@ -969,7 +1008,8 @@ def shake_order(x: float, zeros: Optional[List[float]] = None) -> Dict[str, obje
     THE SHAKE ORDER: the sequence in which leaves come off the tree up to x,
     each with its drop height, alongside the tone reconstruction at that x.
 
-    Returns:
+    Returns::
+
         drops        [(n, ln p)] every leaf-drop event, in order
         psi_exact    the true accumulated lift at x
         psi_tones    the same lift rebuilt from the supplied zeros
@@ -1176,6 +1216,8 @@ def dickman_rho(u: float) -> float:
     """
     Dickman's function rho(u) -- THE FALL-TIME DISTRIBUTION.
 
+    ::
+
         Psi(x, x^(1/u)) ~ x * rho(u)
 
     i.e. rho(u) is the density of integers whose leaf has already fallen by
@@ -1246,12 +1288,14 @@ def psi_smooth(x: int, y: int) -> int:
 
 
 def harvest(X: int, p: int) -> int:
-    """
+    r"""
     THE HARVEST: how many leaves fall at sieve step p.
+
+    ::
 
         #{n <= X : gpf(n) = p}  =  Psi(X/p, p)
 
-    Closed form -- one smooth count, no search. n = p*m with m <= X/p and m
+    Closed form -- one smooth count, no search. n = p\*m with m <= X/p and m
     itself p-smooth, so the crop at step p is exactly the p-smooth numbers
     below X/p.
 
@@ -1288,6 +1332,8 @@ def semiprime_harvest(X: int, p: int) -> int:
     """
     Leaves with exactly two parents falling at step p:
 
+    ::
+
         #{N = q*p <= X : q prime, q <= p}  =  pi(min(p, X/p))
 
     Includes q = p (i.e. N = p^2, a prime square) by the standard semiprime
@@ -1307,18 +1353,20 @@ def semiprime_harvest(X: int, p: int) -> int:
 
 
 def fall_split(N: int) -> Dict[str, float]:
-    """
+    r"""
     The full birth record of a semiprime, in screw coordinates.
 
     Returns discovery (lpf) and fall (gpf) heights, their sum -- which is
     ln N exactly, the gematria identity made exact -- and the imbalance
 
+    ::
+
         delta = 0.5 * ln(gpf/lpf)
 
     delta is the ENTIRE hidden content of a semiprime: ln N is public, and
-    the pair is fixed by ln p = 0.5*ln N - delta, ln q = 0.5*ln N + delta.
+    the pair is fixed by ln p = 0.5\*ln N - delta, ln q = 0.5\*ln N + delta.
 
-    'collapse' = ln(gpf/lpf) = 2*delta is the separation between the two
+    'collapse' = ln(gpf/lpf) = 2\*delta is the separation between the two
     fall events. It vanishes for balanced N -- which is exactly why balanced
     RSA is hard: the two observables coincide at ln(N)/2 and there is no
     early event to catch.
@@ -1351,11 +1399,16 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
     THE PROJECTION LEDGER, baseline row.
 
     "the domain to check ... is that everything from 2 through the RSA
+
+    ::
+
      modulus? or is that only using the prime numbers that have enough
      digits to result in the RSA modulus?"   -- Cody, 2026-08-05
 
     Neither. Answers both, in log2, for a balanced modulus of the given
     bit length. Every value is a COUNT, returned as its base-2 logarithm.
+
+    ::
 
         all_integers        every integer 2..N
         integers_to_sqrt    every integer 2..sqrt(N)  -- the trial-division
@@ -1369,6 +1422,8 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
     a factor of exactly 2, not by orders of magnitude. Primes are
     top-heavy -- density 1/ln x barely moves across an octave (at 2^1024,
     ln x changes by 0.1% between x/2 and x), so
+
+    ::
 
         pi(x) - pi(x/2) ~ x/(2 ln x) ~ 0.5 * pi(x)
 
@@ -1458,11 +1513,11 @@ def domain_ladder(modulus_bits: int = 2048, gnfs_bits: float = 112.0
 
 
 def mobius(n: int) -> int:
-    """
+    r"""
     THE NEGATIVE-SPACE OPERATOR. mu(n) = 1 if n is a squarefree product of
     an even number of primes, -1 if odd, 0 if n has a squared factor.
 
-    The Dirichlet inverse of the constant function 1: SUM_{d|n} mu(d) is
+    The Dirichlet inverse of the constant function 1: SUM_{d\|n} mu(d) is
     1 at n=1 and 0 otherwise. This is the operator the sieve actually
     runs on -- inclusion-exclusion, not positive testing.
 
@@ -1514,14 +1569,14 @@ def mertens(x: int) -> int:
 
 
 def mertens_envelope(x: float, eps: float = 0.0) -> float:
-    """
+    r"""
     The RH bound on the exclusion side: x^(1/2 + eps).
 
     RH <=> M(x) = O(x^(1/2+eps)) for every eps > 0. Equivalently,
     1/zeta(s) = SUM mu(n)n^-s extends to Re(s) > 1/2.
 
     This is the SAME 1/2 as the critical line and the same 1/2 as the
-    shared tone envelope 2*sqrt(x) in amplitude_envelope() -- read on the
+    shared tone envelope 2\*sqrt(x) in amplitude_envelope() -- read on the
     negative side instead of the bulk. Two counting functions, one bound.
 
     :param x: positive real
@@ -1535,15 +1590,17 @@ def mertens_envelope(x: float, eps: float = 0.0) -> float:
 
 
 def sieve_extinction(N: int) -> Dict[str, object]:
-    """
+    r"""
     THE THREE-MOTION RECORD for a composite N.
+
+    ::
 
         grown       positioned by zeta at u = ln N
         extinct     struck by the sieve at u = ln(lpf N)   -- NEGATIVE space
         identified  named by its factors at u = ln(gpf N)  -- BULK
 
     'dead_but_unnamed' is the interval between extinction and
-    identification, ln(gpf/lpf) = 2*delta. It vanishes for balanced
+    identification, ln(gpf/lpf) = 2\*delta. It vanishes for balanced
     semiprimes, which is why all three observables coincide at ln(N)/2
     there and the tree gives up nothing early.
 

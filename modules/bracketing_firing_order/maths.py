@@ -17,6 +17,9 @@ are both CONSUMERS of it, not separate implementations.
 THREE TOOLS, KEPT SEPARATE ON PURPOSE:
 
 1. BRACKETING -- "how many unordered ways can these n things be grouped?"
+
+::
+
    Exact Bell-number count, always computable; exhaustive enumeration only
    when actually feasible (n small) -- an honest infeasibility report
    otherwise, never a silent truncation. `add_scale_sign`'s 3 generators:
@@ -24,6 +27,9 @@ THREE TOOLS, KEPT SEPARATE ON PURPOSE:
    astronomically large -- count it exactly, do not attempt to list it.
 
 2. FIRING ORDER -- "how many ways can these n things be SEQUENCED?" A
+
+::
+
    permutation, not a partition -- n! orderings, and applying one is a
    literal permutation action on the written/reference sequence. Verified
    worked example: firing order (3,1,2) applied to [Scale,Sign,Add] gives
@@ -31,6 +37,7 @@ THREE TOOLS, KEPT SEPARATE ON PURPOSE:
    resequencing, not by relabeling.
 
 3. SET MEMBERSHIP -- serves BOTH tools, two distinct jobs:
+
    (a) has a firing occurred before? (trajectory/collision detection --
        generalizes ASSWord.trajectory()/.collisions()/.would_collide()
        from a single-repo extension into a domain-independent tool any

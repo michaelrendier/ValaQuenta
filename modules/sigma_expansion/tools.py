@@ -3,7 +3,8 @@ ValaQuenta.modules.sigma_expansion.tools
 ========================================
 SigmaExpansionModule — registry contract.
 
-Equations:
+Equations::
+
   1. moments               M_0..M_3, L_0..L_3 per channel (the raw inputs)
   2. taylor_coefficients   derived c1, c3 (closed form, not fitted)
   3. predict_P_red         cheap closed-form P_red(sigma) prediction
@@ -21,13 +22,13 @@ from .maths import (
 
 
 class SigmaExpansionModule(EquationModule):
-    """
+    r"""
     Sigma Expansion — J_red/J_blue Balance Curve
 
     Closed-form Taylor expansion of
-    P_red(sigma)=|J_red|^2/(|J_red|^2+|J_blue|^2) around sigma=1/2. c1, c3
+    P_red(sigma)=\|J_red\|^2/(\|J_red\|^2+\|J_blue\|^2) around sigma=1/2. c1, c3
     derived (not fitted) from Dirichlet-projection moments. Verified to ~1e-6
-    near sigma=1/2 against direct computation. Raw |J_red|^2+|J_blue|^2 is NOT
+    near sigma=1/2 against direct computation. Raw \|J_red\|^2+\|J_blue\|^2 is NOT
     constant across sigma -- minimum at 1/2, not a flat quantum-probability-
     style conservation.
 

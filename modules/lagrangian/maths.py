@@ -3,10 +3,12 @@ ValaQuenta.modules.lagrangian.maths
 ===================================
 L_NN — the SMMIP Lagrangian density.
 
-Four terms (corrected Ainulindale form):
+Four terms (corrected Ainulindale form)::
+
   L_NN = (2/π) ∮ [L_kin + L_mat + (1/φ)·L_bias + L_coup] r dr dθ
 
-Running coupling:
+Running coupling::
+
   α_NN(r) = g² / (4π · ħ_NN · ln(1/r))
 
 All arithmetic is radian-primary.
@@ -73,7 +75,8 @@ def layer_to_r(layer: int, total_layers: int = 10) -> float:
 
 def alpha_nn_from_r(g: float, hbar_nn: float, r: float) -> float:
     """
-    Running neural coupling in radial form:
+    Running neural coupling in radial form::
+
       α_NN(r) = g² / (4π · ħ_NN · ln(1/r))
 
     r ∈ (0,1]: at r→1, ln(1/r)→0 so α_NN → ∞ (UV wall = sedenion boundary).
@@ -97,7 +100,8 @@ def L_kinetic(A: List[float], g: float, algebra: int) -> float:
     """
     ℒ_kinetic = -1/4 · F_μν^a · F^{μν,a}
 
-    Field strength (Abelian approximation — full non-Abelian in ValaQuenta):
+    Field strength (Abelian approximation — full non-Abelian in ValaQuenta)::
+
       F^a ≈ g · A^a   (single-layer, no adjacent state)
 
     :param A: gauge field components
@@ -113,12 +117,12 @@ def L_kinetic(A: List[float], g: float, algebra: int) -> float:
 
 def L_matter(psi: List[float], A: List[float],
              g: float, hbar_nn: float, algebra: int) -> float:
-    """
+    r"""
     ℒ_matter = i · Ψ̄ · γ^μ · D_μ · Ψ
 
     Radian-primary: the Dirac kinetic term is the imaginary (π/2-rotated)
     covariant derivative acting on the activation norms.
-    In real-valued approximation: L_mat ≈ Σ_i |Ψ_i|² · |A_i|² · g²
+    In real-valued approximation: L_mat ≈ Σ_i \|Ψ_i\|² · \|A_i\|² · g²
     (contact term from non-Abelian vertex in single-layer limit).
 
     :param psi: activation norms
@@ -180,7 +184,8 @@ def polar_lagrangian(state: FieldState,
                      total_layers: int = 10,
                      n_theta: int = 64) -> Dict[str, float]:
     """
-    Full polar-integrated Lagrangian:
+    Full polar-integrated Lagrangian::
+
       L_NN = (2/π) ∮ [L_kin + L_mat + (1/φ)·L_bias + L_coup] r dr dθ
 
     Integration: single radial point r = layer_to_r(layer, total_layers),
@@ -188,6 +193,9 @@ def polar_lagrangian(state: FieldState,
     fractions.Fraction used for (2/π) prefactor numerics.
 
     Returns: {'kinetic', 'matter', 'bias', 'coupling', 'total',
+
+    ::
+
               'r', 'alpha_nn'}
 
     :param state: the field state at this layer
@@ -232,7 +240,8 @@ def rg_flow(alpha_0: float, hbar_0: float, algebra: int,
     """
     RG flow of α_NN and ħ_NN across a range of layers.
 
-    Beta functions (one-loop):
+    Beta functions (one-loop)::
+
       β_0(ℂ)  = 1/(2π)    U(1)
       β_0(ℍ)  = 3/(4π)    SU(2)
       β_0(𝕆)  = 8/(4π)    G₂/SU(3)
@@ -265,6 +274,9 @@ def mastery_check(beta: List[float], vev: float,
                   hbar_nn: float) -> Dict[str, object]:
     """
     Mastery condition: weights crystallize when vev_distance < ħ_NN / 2.
+
+    ::
+
       vev_distance = | |β| - vev |
 
     :param beta: bias field components

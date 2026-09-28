@@ -7,7 +7,8 @@ The circle is primary. All equations have a radian-primary form.
 This module provides the transform from conventional to radian-primary,
 and the inverse.
 
-Philosophy:
+Philosophy::
+
     The (2/pi) normalization in the Lagrangian is not a correction factor.
     It is the equation written in its native coordinate system where
     the circle — not the line — is the primitive unit.
@@ -102,8 +103,8 @@ def apply_lagrangian_norm(value):
 # ── Inversion coordinate transform ──────────────────────────────────────────
 
 def inversion_transform(r, theta_rad):
-    """
-    Apply the (I|O) inversion (r, theta) -> (1/r, theta + pi/2).
+    r"""
+    Apply the (I\|O) inversion (r, theta) -> (1/r, theta + pi/2).
 
     This is the 2-stroke engine's compression stroke. Radian-primary.
 
@@ -121,8 +122,8 @@ def inversion_transform(r, theta_rad):
 
 
 def inversion_involution(r, theta_rad):
-    """
-    Apply the (I|O) inversion twice and check that it returns to the start.
+    r"""
+    Apply the (I\|O) inversion twice and check that it returns to the start.
 
     Verifies that the 2-stroke engine completes its cycle.
 

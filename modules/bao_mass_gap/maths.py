@@ -1,7 +1,9 @@
-"""
+r"""
 ValaQuenta.modules.bao_mass_gap.maths
 =====================================
 The Mass Gap — spectral residue of BAO.
+
+::
 
     Δ = Ω_ζΣ − D*·ln(10) = 0.0007073575 = 1/(1000√2)
 
@@ -16,15 +18,19 @@ WHY IT IS A RESIDUE
 The explicit formula decomposes the prime distribution into a ground state
 plus one standing wave per non-trivial zero:
 
+::
+
     ψ(x) = x − Σ_ρ x^ρ/ρ − ln(2π) − ½ln(1 − x⁻²)
            ▲   ▲
            │   └── spectral oscillations: one standing wave per γ_n
            └────── de Sitter expansion term: the ground state
 
 Read at the BAO scale this is the acoustic spectrum of the CMB. The ground
-state is the acoustic floor D*·ln(10). The ceiling of the same spectrum is
+state is the acoustic floor D\*·ln(10). The ceiling of the same spectrum is
 the thermal information bound Ω_ζΣ. What is left between floor and ceiling
 is absorbed by no standing wave — it is the residue of the decomposition.
+
+::
 
     floor    D*·ln(10)  = 0.5664359329   ground state / BAO acoustic floor
     ceiling  Ω_ζΣ       = 0.5671432904   thermal information ceiling
@@ -123,7 +129,7 @@ def gap_value() -> Dict[str, Any]:
 # ── 2. The closed form ───────────────────────────────────────────────────────
 
 def gap_identity() -> Dict[str, Any]:
-    """
+    r"""
     Δ = 1/(1000√2).
 
     1/√2 = sin(45°) = cos(45°) — maximum Red/Blue symmetry, where the forward
@@ -132,7 +138,7 @@ def gap_identity() -> Dict[str, Any]:
 
     Write it 1/(1000√2) or 1/√(2×10⁶). Not 1/√2000 — that is 31.6× too large.
 
-    D* is carried to 5 decimal places. The identity pins it to 0.2460001089,
+    D\* is carried to 5 decimal places. The identity pins it to 0.2460001089,
     which is 1.09×10⁻⁷ from the carried value — inside the last digit.
     """
     residual     = abs(GAP - GAP_IDENTITY)
@@ -170,15 +176,18 @@ def gap_identity() -> Dict[str, Any]:
 # ── 3. The spectral residue ──────────────────────────────────────────────────
 
 def spectral_residue(n_zeros: int = N_ZEROS_DEFAULT) -> Dict[str, Any]:
-    """
+    r"""
     The gap as the residue of the BAO spectral decomposition.
 
     The explicit formula decomposes ψ(x) into a ground state plus one standing
     wave per non-trivial zero:
 
+    ::
+
         ψ(x) = x − Σ_ρ x^ρ/ρ − ln(2π) − ½ln(1 − x⁻²)
 
-    Read at the BAO scale:
+    Read at the BAO scale::
+
         x term      → de Sitter expansion → the acoustic ground state
         Σ_ρ x^ρ/ρ   → the acoustic oscillations, one per Riemann zero
         residue     → what no standing wave absorbs → the gap
@@ -186,7 +195,7 @@ def spectral_residue(n_zeros: int = N_ZEROS_DEFAULT) -> Dict[str, Any]:
     The natural BAO coordinate is x_BAO = exp(1/Ω_ζΣ): the scale at which the
     information ceiling is exactly one nat. Standing waves are evaluated there.
 
-    Each zero contributes amplitude 1/|ρ| = 1/√(¼+γ²), strictly decreasing in
+    Each zero contributes amplitude 1/\|ρ\| = 1/√(¼+γ²), strictly decreasing in
     γ. The first zero γ₁ = 14.134725 sets the largest single excitation above
     the ground state — the first mode.
 
@@ -382,13 +391,13 @@ def mtheory_compactification() -> Dict[str, Any]:
 # ── 6. Validation ────────────────────────────────────────────────────────────
 
 def validate() -> Dict[str, Any]:
-    """
+    r"""
     Run every check in the module. Report pass/fail.
 
     1. Δ > 0
     2. Δ is in range (~7×10⁻⁴)
     3. Δ = 1/(1000√2) to 3 significant figures
-    4. the exact-Δ value of D* lies inside D*'s last carried digit
+    4. the exact-Δ value of D\* lies inside D\*'s last carried digit
     5. the spectral residue reproduces Δ exactly
     6. Δ is resolvable against the Planck 2018 acoustic scale
     7. the dimension count is exact (4 + 7 = 11)

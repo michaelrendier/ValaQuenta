@@ -7,7 +7,8 @@ Built on H = xp (Berry-Keating, 1999).
 A multidimensional context IS the word.
 The prime preexists every alphabet invented to point at it.
 
-Five operations:
+Five operations::
+
     Read       — surface form → candidate prime
     Listen     — acoustic signal → formant prime
     Ponder     — H = xp evolution → conserved prime
@@ -17,7 +18,8 @@ Five operations:
 No inference. No training data. No GPU. No eddy currents.
 Runs on a laptop.
 
-Usage:
+Usage::
+
     from ValaQuenta import Understand
 
     engine = Understand(tau=1.0)

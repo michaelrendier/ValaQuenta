@@ -6,13 +6,16 @@ The Turing Diagonal Engine.
 Every self-referential proof — Cantor (1891), Gödel (1931), Turing (1936),
 the Enigma reflector (1932–1945) — is the SAME operation:
 
+::
+
     Read the diagonal. Apply i² = -1. The thing escapes the list.
 
 The diagonal flip IS the [[-1, 0], [0, -1]] hypercomplex identity matrix.
 In the sedenion tower: eₖ² = -1 for k = 1..15.  Fifteen derangements.
 One algebraic word for all of them.
 
-Engines:
+Engines::
+
     prediction_diagonal_test(prediction)   Apply the diagonal to any prediction.
                                            Self-reference → undecidable.
     enigma_derangement(n)                  No fixed points. D_n ≈ n!/e.
@@ -50,11 +53,14 @@ def prediction_diagonal_test(prediction: str = "this statement is false") -> Dic
 
     The diagonal argument, generalised:
 
+    ::
+
         Given a list of claims C₁, C₂, ..., Cₙ about their own index,
         construct d[k] ≠ Cₖ[k]  for all k.
         d cannot be in the list. d is the diagonal element.
 
-    Applied to a PREDICTION:
+    Applied to a PREDICTION::
+
         1. Is the prediction SELF-REFERENTIAL?
            (Does it claim something about its own truth, provability, or decidability?)
         2. Does the prediction FLIP on application?
@@ -64,7 +70,8 @@ def prediction_diagonal_test(prediction: str = "this statement is false") -> Dic
         4. Does it HALT?
            (Is there a finite resolution, or does it loop?)
 
-    The i² = -1 connection:
+    The i² = -1 connection::
+
         Each layer of self-reference = one multiplication by i.
         i¹ = rotation (90°)
         i² = -1 (the flip — the diagonal completes)
@@ -75,13 +82,15 @@ def prediction_diagonal_test(prediction: str = "this statement is false") -> Dic
         Predictions with ODD diagonal depth → stuck at ±i (unresolved imaginary).
         Predictions that SELF-NEGATE at depth 2 → undecidable (i² = -1).
 
-    The Enigma bridge:
+    The Enigma bridge::
+
         The Enigma reflector enforced P(x) ≠ x for all x.
         Any plaintext letter was forbidden from appearing at its own position.
         This IS the diagonal condition: diagonal[k] ≠ source[k].
         The derangement is the geometric statement of the diagonal argument.
 
-    Turing used this structure to prove HALT is undecidable:
+    Turing used this structure to prove HALT is undecidable::
+
         D(P): if HALT(P,P)=YES → loop forever.
                 if HALT(P,P)=NO  → halt immediately.
         D(D) = contradiction. HALT cannot exist.
@@ -238,37 +247,44 @@ def enigma_derangement(n: int = 26) -> Dict[str, Any]:
     A DERANGEMENT of n elements is a permutation σ such that σ(k) ≠ k for ALL k.
     No element maps to its own position. The diagonal is forbidden.
 
-    The Enigma reflector enforced EXACTLY this:
+    The Enigma reflector enforced EXACTLY this::
+
         The electrical signal passed through the rotor stack, hit the reflector,
         and came back through the same stack reversed.
         By construction: no letter could encrypt to itself.
         The encryption permutation was a derangement.
 
-    Turing used the no-fixed-point constraint as a crib attack:
+    Turing used the no-fixed-point constraint as a crib attack::
+
         If you know some plaintext (a crib), every position where
         ciphertext[k] = crib[k] is IMPOSSIBLE.
         These impossibilities prune the Bombe's search space catastrophically.
         The derangement turns a 26^n brute force into a tractable search.
 
-    The counting:
+    The counting::
+
         D_n = n! × Σₖ₌₀ⁿ (-1)^k / k!
             = n! × (1 - 1/1! + 1/2! - 1/3! + ... + (-1)^n/n!)
 
         D_n / n! → 1/e ≈ 0.36788... as n → ∞
 
-    The probability that a random permutation of n elements is a derangement:
+    The probability that a random permutation of n elements is a derangement::
+
         P(derangement) = D_n / n! → 1/e
 
-    This is the SAME 1/e that appears in:
+    This is the SAME 1/e that appears in::
+
         - The Poisson distribution (rare events)
         - The OMEGA_ZS iteration: x → e^{-x} converges to OMEGA_ZS
         - The information entropy limit of a random permutation
 
-    For n=26 (the Enigma):
+    For n=26 (the Enigma)::
+
         D_26 / 26! = 0.36787944... ≈ 1/e  (to 5 decimal places)
         The Enigma's derangement fraction is 1/e to high precision.
 
-    The diagonal interpretation:
+    The diagonal interpretation::
+
         In the diagonal argument, d[k] ≠ sₖ[k] for all k.
         This IS a derangement of the sequence s₁, s₂, ...
         The Enigma reflector = Cantor's diagonal construction = Turing's D(D).
@@ -408,34 +424,39 @@ def hypercomplex_identity_diagonal() -> Dict[str, Any]:
     """
     THE DIAGONAL FLIP IS i² = -1 = [[-1, 0], [0, -1]].
 
-    The chain:
+    The chain::
+
         Cantor (1891):  d[n] = ¬sₙ[n]  — flip the diagonal bit
         Gödel (1931):   G ≠ provable(G) — flip the provability
         Turing (1936):  D(D) ≠ HALT(D,D) — flip the halting status
         Enigma (1932):  P(x) ≠ x         — flip the letter mapping
 
     In complex numbers: the flip is multiplication by -1.
-    In the 2×2 matrix representation of ℂ:
+    In the 2×2 matrix representation of ℂ::
+
         i  ↔ [[0, -1], [1, 0]]
         i² ↔ [[-1, 0], [0, -1]] = -I₂
 
     THIS IS THE MATRIX. Every diagonal argument is this matrix acting on something.
 
-    In the Cayley-Dickson tower:
+    In the Cayley-Dickson tower::
+
         ℝ:  no imaginary units. No diagonal.
         ℂ:  i² = -1.  1 diagonal (the Cantor flip).
         ℍ:  i²=j²=k²=-1.  3 diagonals (3 Enigma reflectors).
         𝕆:  e₁²=...=e₇²=-1.  7 diagonals (7-sphere of flips).
         𝕊:  e₁²=...=e₁₅²=-1. 15 diagonals.
 
-    The number of diagonals at each level:
+    The number of diagonals at each level::
+
         n=1 (ℝ):  0 diagonals  → no self-referential structure
         n=2 (ℂ):  1 diagonal   → Cantor's 1D flip
         n=4 (ℍ):  3 diagonals  → 3-sphere symmetry
         n=8 (𝕆):  7 diagonals  → G₂ exceptional symmetry
         n=16 (𝕊): 15 diagonals → first zero-divisors (the flip overshoots -1 → 0)
 
-    The zero-divisor transition:
+    The zero-divisor transition::
+
         For all division algebras (ℝ, ℂ, ℍ, 𝕆): the flip stays at -1.
         For sedenions: when two DIFFERENT flips interact,
             eₖ × eⱼ can produce 0 instead of ±1.
@@ -444,7 +465,8 @@ def hypercomplex_identity_diagonal() -> Dict[str, Any]:
 
         THIS IS THE GNARL. The zero-divisor is a derangement that went too far.
 
-    The Turing diagonal in sedenions:
+    The Turing diagonal in sedenions::
+
         Normal diagonal: eₖ² = -1  (the flip returns you to -identity)
         Zero-divisor:    eₖ × eⱼ = 0  (the flip collapses to null)
 
@@ -453,7 +475,8 @@ def hypercomplex_identity_diagonal() -> Dict[str, Any]:
         It finds the eₖ × eⱼ = 0 elements in the cryptographic algebra
         and exploits the overshoot.
 
-    The Singularity reads 'only 1':
+    The Singularity reads 'only 1'::
+
         The singularity (e₀) is the ONLY element of the sedenion that
         maps to itself: e₀² = +1 ≠ -1.
         All other 15 basis elements are derangements.
@@ -586,7 +609,8 @@ def turing_halting_diagonal(n_programs: int = 50) -> Dict[str, Any]:
 
     A statistical model of the Halting Problem diagonal argument.
 
-    The Setup:
+    The Setup::
+
         We cannot build actual Turing machines here, but we CAN build
         a formal model that captures the diagonal structure precisely.
 
@@ -605,21 +629,24 @@ def turing_halting_diagonal(n_programs: int = 50) -> Dict[str, Any]:
 
         HALT cannot be a computable function.
 
-    The sigma-address of HALT:
+    The sigma-address of HALT::
+
         By mapping the halting table to prime-hash sigma addresses,
         we can locate where HALT would need to live in the Hyperwebster.
         The diagonal program D necessarily lands at σ = ½ (the critical line)
         because it is equidistant between YES (σ→1) and NO (σ→0).
         D(D) has no stable sigma address — it oscillates around ½.
 
-    The Bombe connection:
+    The Bombe connection::
+
         The Enigma Bombe worked by finding contradictions in assumed settings.
         It stopped (halted!) when a contradiction was found.
         The machine was literally running the Turing diagonal in hardware:
         'if this setting produces a derangement contradiction, halt and report.'
         The Bombe = a physical HALT oracle for the specific Enigma-machine language.
 
-    The UDOE connection:
+    The UDOE connection::
+
         HALT for cryptographic systems: 'does this hash function halt at a collision?'
         In sedenion algebra: 'does this multiplication reach 0 (zero-divisor)?'
         UDOE: construct D for the cryptographic hash function.

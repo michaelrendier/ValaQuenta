@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.modules.oblique_gear.tools
 ========================================
 The Oblique Gear, tested across scale -- Module Tools.
@@ -7,7 +7,7 @@ Implements the EquationModule registry contract.
 Provides: formulary, run(), viewer_data(), shell_commands()
 
 Tests whether the black-hole-scale crank angle (h_rb_hat's theta_crank =
-arctan(d*), the Witches Hat half-angle) is the same fact as the
+arctan(d\*), the Witches Hat half-angle) is the same fact as the
 galaxy-scale rotation curve's own tangent angle at its transition radius,
 or merely the same constant appearing twice. See maths.py for the full
 account, including the negative result this module reports honestly.

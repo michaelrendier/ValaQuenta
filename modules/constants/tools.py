@@ -25,11 +25,11 @@ from .maths import (
 
 
 class ConstantsModule(EquationModule):
-    """
+    r"""
     Tier 0 Constants — π φ e √ i derived from H_RB
 
-    Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of
-    H_RB algebraic structure. Two ceilings force domain [α_F, OMEGA_ZS]. d* has
+    Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d\*, Λ — all drop out of
+    H_RB algebraic structure. Two ceilings force domain [α_F, OMEGA_ZS]. d\* has
     4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale;
     Sombrero = Hawking pair; OMEGA_ZS = de Sitter attractor. Einstein wrote it
     in 1915, removed it 1917, universe re-inserted 1998 at 40σ.

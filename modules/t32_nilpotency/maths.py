@@ -95,8 +95,8 @@ def is_zero_divisor_pair(a: int, b: int) -> bool:
 
 
 def is_nilpotent(a: int) -> bool:
-    """
-    a != 0 but a*a = 0 under T32 multiplication -- impossible in
+    r"""
+    a != 0 but a\*a = 0 under T32 multiplication -- impossible in
     ordinary arithmetic, a real signature of zero-divisor structure.
 
     :param a: T32 word

@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.modules.hypergon_constructibility.maths
 ==================================================
 The factorization engine, built purely: which sedenion basis positions
@@ -9,7 +9,7 @@ positive result, one real negative result, neither smoothed over.
 
 PART 1 -- Gauss-Wantzel constructibility (REAL, ESTABLISHED, 1796/1837):
 A regular n-gon is constructible with straightedge and compass if and
-only if n = 2^k * (product of DISTINCT Fermat primes), k >= 0. Only five
+only if n = 2^k \* (product of DISTINCT Fermat primes), k >= 0. Only five
 Fermat primes are known to exist, ever: 3, 5, 17, 257, 65537 (whether
 more exist is a genuine open problem in number theory). Applied uniformly
 across the 16 sedenion basis primes {2,3,5,7,11,13,17,19,23,29,31,37,

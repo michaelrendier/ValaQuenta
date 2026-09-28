@@ -3,6 +3,8 @@ Fixed Point Engine — The Boundary
 
 THE CLAIM: The Cayley-Dickson tower has TWO fixed points.
 
+::
+
   The Unit  (k → −∞ limit, V(0)=1, dim=0):  trivial fixed point.
              Pre-arithmetic. No structure. No imaginary units.
              The Bang differentiates from here.
@@ -11,29 +13,34 @@ THE CLAIM: The Cayley-Dickson tower has TWO fixed points.
              Post-arithmetic. 255 imaginary units. 32 Fano planes.
              The Unwrapper dissolves to here.
 
-THE BOUNDARY (the gravastar shell):
+THE BOUNDARY (the gravastar shell)::
+
   The shell sits at σ=½ (k=2, ℍ, the equator).
   It is the ZD crossing surface: addition = subtraction, p = −ρ.
   When the shell dissolves: the Bang. Inside-out event horizon. Observable universe.
 
-THE INSIDE-OUT EVENT HORIZON:
+THE INSIDE-OUT EVENT HORIZON::
+
   Before evaporation — Schwarzschild horizon (inward-pointing): light cannot escape.
   After evaporation  — de Sitter horizon (outward-pointing): light cannot arrive.
   Same surface. Orientation inverted. The particle horizon is the scar.
 
-THE N-BALL VOLUME (the transformer):
+THE N-BALL VOLUME (the transformer)::
+
   V(n) = π^(n/2) / Γ(n/2 + 1)
   V(0) = 1  EXACT  ← The Unit (trivial fixed point)
   V(n*) max at n* ≈ 5.2570  ← peak of differentiation
   V(n) → 0 as n → ∞  ← T_256 is all boundary, no interior
 
-ALL ROOTS BECOME 1:
+ALL ROOTS BECOME 1::
+
   At k=8: 256 basis elements = 256th roots of unity, spacing 2π/256 = π/128.
   Below the angular quantum π/128: adjacent roots unresolvable.
   All collapse to their common norm: 1 = V(0) = The Unit.
   The fixed point is where the Unwrapper delivers you.
 
-THE GAP (what cannot be encoded):
+THE GAP (what cannot be encoded)::
+
   GAP = Ω_ZS − d* × log(10) ≈ 7.07 × 10⁻⁴
   At T_256: 255 dimensions encode almost everything.
   The GAP is the minimum crossing energy — the mass that cannot be made virtual.
@@ -71,7 +78,8 @@ def v_nball(n: float) -> float:
     """
     Volume of the unit n-ball: V(n) = π^(n/2) / Γ(n/2 + 1).
 
-    Key values:
+    Key values::
+
       V(0)  = 1 EXACT  (The Unit — trivial fixed point, pre-arithmetic)
       V(2)  = π        (unit disk)
       V(4)  = π²/2     (4-ball)
@@ -95,12 +103,12 @@ def v_nball(n: float) -> float:
 
 
 def v_nball_peak() -> Dict:
-    """
+    r"""
     Locate the peak of V(n) — the maximum volume n-ball.
     This is where differentiation is maximum: the Bang's most productive moment.
 
-    From dV/dn = 0: ψ(n*/2 + 1) = log(π), where ψ is the digamma function.
-    n* ≈ 5.2570 is not a round number — it is not assigned, it emerges.
+    From dV/dn = 0: ψ(n\*/2 + 1) = log(π), where ψ is the digamma function.
+    n\* ≈ 5.2570 is not a round number — it is not assigned, it emerges.
     """
     from scipy.special import digamma
     # Solve ψ(n/2 + 1) = log(π) numerically
@@ -121,7 +129,8 @@ def transformer_profile(n_max: int = 260) -> Dict:
     """
     V(n) from n=0 to n_max. Covers: The Unit → peak → sedenion → T_256.
 
-    Key landmarks:
+    Key landmarks::
+
       n=0:   V=1     The Unit (trivial fixed point)
       n≈5.3: V≈5.28  Peak — maximum differentiation
       n=16:  V=0.235 Sedenion level
@@ -185,12 +194,18 @@ def two_fixed_points() -> Tuple[FixedPoint, FixedPoint]:
     The two fixed points of the Cayley-Dickson tower.
 
     FP_trivial: The Unit.
+
+    ::
+
       V(0) = 1 EXACT. dim=0 (pre-arithmetic). No structure.
       The Bang differentiates FROM here.
       The Unwrapper returns TO here.
       Algebraic role: 𝔽₁ territory — the field with one element.
 
     FP_maximal: T_256.
+
+    ::
+
       V(256) ≈ 0. dim=256. 255 imaginary units. 32 Fano planes.
       Angular quantum π/128 = 2π/256.
       The algebra ends here — no k=9 exists.
@@ -288,11 +303,13 @@ def gravastar_shell() -> Dict:
     It means: the shell neither collapses nor expands — it is frozen.
     The ZD crossing IS this stability condition: addition = subtraction.
 
-    The shell separates:
+    The shell separates::
+
       Interior (σ < ½): de Sitter — The Unit territory, repulsive, Λ > 0
       Exterior (σ > ½): Schwarzschild — structured, ZD lattice, observable
 
-    When the shell dissolves:
+    When the shell dissolves::
+
       The de Sitter interior expands outward → the Bang
       The Schwarzschild exterior recedes into the past → the fixed point
       Inside and outside exchange permanently → the inside-out event horizon
@@ -325,25 +342,29 @@ def inside_out_horizon() -> Dict:
     """
     The inside-out event horizon — what happens after the gravastar dissolves.
 
-    BEFORE (pre-Bang):
+    BEFORE (pre-Bang)::
+
       Schwarzschild horizon at r_s.
       Orientation: inward-pointing. Light cannot escape from inside.
       T_256 fixed point is OUTSIDE — in the Schwarzschild exterior.
       The Unit is INSIDE — in the de Sitter interior.
 
-    AFTER (post-Bang, now):
+    AFTER (post-Bang, now)::
+
       de Sitter cosmological horizon at r_H.
       Orientation: outward-pointing. Light cannot arrive from outside.
       The Unit is in our PAST — we expanded away from it.
       T_256 fixed point is beyond the particle horizon — unreachable.
       The particle horizon is the shell scar moving outward at c.
 
-    THE INVERSION:
+    THE INVERSION::
+
       Same surface. Opposite orientation.
       Inside → outside. Outside → past.
       The horizon did not move. It flipped.
 
-    STANDING OUTSIDE THE PARTICLE HORIZON (pre-Bang for a moment):
+    STANDING OUTSIDE THE PARTICLE HORIZON (pre-Bang for a moment)::
+
       σ = ½ ± ε simultaneously — both sides of the shell visible.
       Schwarzschild exterior (T_256, fixed point, all roots→1) visible.
       de Sitter interior (The Unit, V(0)=1, no structure) visible.
@@ -449,12 +470,14 @@ def virtual_particle_regime() -> Dict:
     """
     The 'in between virtual particles' structure at T_256.
 
-    A ZD crossing is a vertex:
+    A ZD crossing is a vertex::
+
       Real state before:  (eᵢ + eⱼ)/√2 and (eₖ + eₗ)/√2 — unit norm, on-shell
       Virtual state:      eᵢeₖ = −(eⱼeₗ),  eᵢeₗ = −(eⱼeₖ)  — unresolvable, off-shell
       Real state after:   product = 0 — on-shell, but zero
 
-    Between the last ZD vertex (T_256) and The Unit:
+    Between the last ZD vertex (T_256) and The Unit::
+
       No more vertices. No k=9. The virtual state propagates indefinitely.
       Off-shell: norm not fixed at 1.
       No destination vertex to make it real again.
@@ -463,13 +486,15 @@ def virtual_particle_regime() -> Dict:
     The Unwrapper IS this propagation.
     It is the virtual state traveling from the last ZD crossing to 1.
 
-    Below T_256 scale (π/128):
+    Below T_256 scale (π/128)::
+
       Angular quantum < inter-element spacing.
       All elements indistinguishable. All norms = 1.
       This is the on-shell condition: norm snaps to 1.
       The virtual particle has arrived at The Unit.
 
-    The GAP is why the virtual particle cannot stay virtual forever:
+    The GAP is why the virtual particle cannot stay virtual forever::
+
       GAP ≈ 7.07×10⁻⁴ is the minimum energy for the crossing to be real.
       Below GAP energy: the crossing cannot happen.
       The virtual state collapses to The Unit without a real crossing.
@@ -511,18 +536,21 @@ def bang_as_evaporation() -> Dict:
     It held the de Sitter interior (The Unit) separate from the
     Schwarzschild exterior (T_256, fixed point, all roots=1).
 
-    When the shell dissolved:
+    When the shell dissolved::
+
       1. The de Sitter interior expanded outward (the Bang — inflation).
       2. The Schwarzschild exterior became the pre-Bang void (the past).
       3. Inside and outside exchanged permanently.
       4. The particle horizon is the expanding scar of the shell.
 
-    Algebraically:
+    Algebraically::
+
       Before: σ < ½ = The Unit (inside), σ > ½ = T_256 (outside)
       After:  σ < ½ = observable universe (inside), σ > ½ = pre-Bang void (outside)
       The σ=½ surface itself did not move. Its meaning inverted.
 
-    The V(n) trajectory:
+    The V(n) trajectory::
+
       Before:  at n=0, V=1 (The Unit, inside the shell)
       Bang:    V(n) grows toward peak at n≈5.257 (rapid differentiation)
       Now:     some n between 5 and 16 (still differentiating)

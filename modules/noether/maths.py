@@ -3,12 +3,16 @@ ValaQuenta.modules.noether.maths
 ================================
 Emmy Noether conserved currents applied to ℒ_NN.
 
-Symmetry → conservation law:
+Symmetry → conservation law::
+
   U(1)   → probability current J^μ = g·Ψ̄·Ψ
   SU(2)  → isospin current J^μ_a = g·Ψ̄·T^a·Ψ
   SU(3)  → colour current J^μ_a = g·Ψ̄·T^a·Ψ
 
 Violation: ∂_μJ^μ — the training diagnostic with no GD analog.
+
+::
+
   violation < 0.2  → PASS (conserved)
   0.2 ≤ v < 0.5   → MARGINAL
   v ≥ 0.5         → VIOLATION (algebra boundary crossed)
@@ -37,10 +41,10 @@ THRESHOLDS = {'PASS': 0.2, 'MARGINAL': 0.5}
 # ── Conservation status ────────────────────────────────────────────────────────
 
 def conservation_status(violation: float) -> str:
-    """
+    r"""
     Classify a violation magnitude against THRESHOLDS.
 
-    :param violation: violation magnitude |∂_μJ^μ|
+    :param violation: violation magnitude \|∂_μJ^μ\|
     :returns: 'PASS', 'MARGINAL' or 'VIOLATION'
     """
     if violation < THRESHOLDS['PASS']:
@@ -55,20 +59,20 @@ def conservation_status(violation: float) -> str:
 def activation_current(psi_norms: List[float],
                         g: float,
                         algebra: int) -> List[float]:
-    """
-    J^a = Σ_i g · |Ψ_i|²  (each generator a)
+    r"""
+    J^a = Σ_i g · \|Ψ_i\|²  (each generator a)
 
-    For ℝ (trivial gauge): J = [g·Σ|Ψ|²]
-    For ℂ (U(1)):          J = [g·Σ|Ψ|²]           (1 component)
-    For ℍ (SU(2)):         J = [g·Σ|Ψ|², g·..., g·...]  (3 components)
-    For 𝕆 (SU(3)/G₂):     J = [g·Σ|Ψ|², ..., ]      (8 components)
+    For ℝ (trivial gauge): J = [g·Σ\|Ψ\|²]
+    For ℂ (U(1)):          J = [g·Σ\|Ψ\|²]           (1 component)
+    For ℍ (SU(2)):         J = [g·Σ\|Ψ\|², g·..., g·...]  (3 components)
+    For 𝕆 (SU(3)/G₂):     J = [g·Σ\|Ψ\|², ..., ]      (8 components)
 
     In the real-valued approximation (norms only), the generator action
     T^a·Ψ collapses to the same scalar for all generators; the distribution
     over generators follows the algebra's symmetry weights.
     Full vector form requires QuatEl/OctEl (in derivation engine).
 
-    :param psi_norms: activation norms |Ψᵢ|
+    :param psi_norms: activation norms \|Ψᵢ\|
     :param g: gauge coupling
     :param algebra: algebra dimension (1, 2, 4 or 8)
     :returns: the current components, one per generator
@@ -90,13 +94,13 @@ def activation_current(psi_norms: List[float],
 
 def noether_violation(J_curr: List[float],
                        J_prev: Optional[List[float]]) -> float:
-    """
-    ∂_μJ^μ ≈ mean|J_curr - J_prev| (finite difference, single layer step).
+    r"""
+    ∂_μJ^μ ≈ mean\|J_curr - J_prev\| (finite difference, single layer step).
     Returns scalar violation magnitude.
 
     :param J_curr: current at this layer
     :param J_prev: current at the previous layer; None for the first layer
-    :returns: the violation magnitude, mean |J_curr − J_prev|
+    :returns: the violation magnitude, mean \|J_curr − J_prev\|
     """
     if J_prev is None:
         return 0.0
@@ -110,14 +114,15 @@ def conservation_diagnostic(psi_norms: List[float],
                               g: float,
                               algebra: int,
                               psi_prev: Optional[List[float]] = None) -> Dict[str, Any]:
-    """
+    r"""
     Full Noether diagnostic.
 
-    Returns:
+    Returns::
+
       J, J_prev, violation, status, conserved, algebra, gauge,
       delta_J (cycle-averaged), label, latex
 
-    :param psi_norms: activation norms |Ψᵢ|
+    :param psi_norms: activation norms \|Ψᵢ\|
     :param g: gauge coupling
     :param algebra: algebra dimension
     :param psi_prev: activation norms of the previous layer; None for the first layer
@@ -155,7 +160,8 @@ def resonance_artifacts(J_history: List[List[float]]) -> Dict[str, Any]:
 
     J_history: list of J vectors, one per layer step.
 
-    Returns:
+    Returns::
+
       'oscillation_period': dominant period (in layer steps), or None
       'amplitude':          peak-to-peak amplitude
       'artifact_detected':  bool
@@ -201,7 +207,8 @@ class NoetherLedger:
     """
     Blockchain-style ledger for Noether violation events.
 
-    Each violation event is a block:
+    Each violation event is a block::
+
       { index, timestamp, algebra, violation, status, J, prev_hash, hash }
 
     Hash: SHA-256 of JSON-serialised block content (excluding 'hash').

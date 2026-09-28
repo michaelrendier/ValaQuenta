@@ -9,6 +9,8 @@ Part A.1 — Coecke, Clark & Grefenstette. Syntax is a pregroup grammar (a
 non-commutative algebraic structure); semantics lives in vector spaces;
 the pregroup reduction maps functorially onto tensor contraction.
 
+::
+
     Syntax:     word types over a pregroup. noun n, sentence s,
                 transitive verb n^r . s . n^l
     Semantics:  meanings are vectors / tensors
@@ -18,13 +20,28 @@ the pregroup reduction maps functorially onto tensor contraction.
 WHAT IS AND IS NOT ESTABLISHED HERE
 ────────────────────────────────────────────────────────────────────────────
 ESTABLISHED  pregroup type reduction. This is standard algebra (Lambek).
+
+::
+
              x^(a) x^(a+1) -> 1 is a theorem, not a claim of ours.
+
 ESTABLISHED  the functor: a reduction of type n.(n^r.s.n^l).n to s
+
+::
+
              corresponds to contracting an order-3 tensor against two
              vectors. Standard DisCoCat.
+
 ESTABLISHED  determinism/reproducibility of the concrete meaning tensors
+
+::
+
              (they are fixed functions of the token and the first 16 primes).
+
 OPEN         that the resulting sentence vector is "the meaning" in the
+
+::
+
              VAPMIP sense, or that this is The Translator. Not shown.
              Nothing in this module demonstrates translation.
 
@@ -120,6 +137,8 @@ def is_grammatical(subject_t: PregroupType,
     """
     A clause is grammatical iff its concatenated type reduces to s.
 
+    ::
+
         n . (n^r . s . n^l) . n  ->  s
 
     Returns the verdict AND the reduced type, so an ungrammatical input
@@ -186,6 +205,8 @@ class MeaningSpace:
         The two cancellations (n n^r) and (n^l n) become two tensor
         contractions, leaving a vector in S:
 
+        ::
+
             s_j = sum_i sum_k  subj_i * T[i][j][k] * obj_k
 
         :param subj: subject vector in N
@@ -214,6 +235,9 @@ class DisCoCatTranslator(TranslatorEngine):
     The Translator, version 1: DisCoCat.
 
     Pipeline:  tokens -> pregroup types -> reduction (grammaticality check)
+
+    ::
+
                -> functor -> tensor contraction -> sentence vector in S.
     """
 

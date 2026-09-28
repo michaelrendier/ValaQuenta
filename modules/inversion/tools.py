@@ -6,7 +6,8 @@ Inside-Out Inversion Engine — Module Tools
 Implements the EquationModule registry contract.
 Provides: formulary, run(), viewer_data(), shell_commands()
 
-Display modes supported:
+Display modes supported::
+
     complex_plane   — (r, theta) polar plot of inversion trajectory
     3d_cartesian    — 3D flow from r=1 to phi attractor
     text            — structured text output (always available)
@@ -26,10 +27,10 @@ from .maths import (
 
 
 class InversionModule(EquationModule):
-    """
+    r"""
     Inside-Out Inversion Engine module.
 
-    Contributes the (I|O) map and all derived quantities to the
+    Contributes the (I\|O) map and all derived quantities to the
     Ainulindale Derivation Engine.
     """
 

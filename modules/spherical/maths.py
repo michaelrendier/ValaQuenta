@@ -8,7 +8,8 @@ This period selects l = 1 in the spherical harmonic expansion on S².
 The fundamental mode Y₁⁰(θ,φ) = cos(θ) has its single node at θ = π/2.
 Under the zeta correspondence, θ = π/2 is Re(s) = ½.
 
-Standing wave chain:
+Standing wave chain::
+
   Chladni (1787)       — node lines of standing waves on 2D surfaces
   Courant (1923)       — k-th eigenfunction: at most k nodal domains
   Tesla (1899)         — Earth-ionosphere as spherical resonant cavity
@@ -84,14 +85,16 @@ def assoc_legendre(l: int, m: int, x: float) -> float:
 # ── Real spherical harmonics ──────────────────────────────────────────────────
 
 def Y_lm(l: int, m: int, theta: float, phi: float) -> float:
-    """
+    r"""
     Real spherical harmonic Y_l^m(θ, φ). Orthonormal on S².
+
+    ::
 
       m = 0:  Y_l^0  = √((2l+1)/4π) · P_l^0(cos θ)
       m > 0:  √2 · K_lm · P_l^m(cos θ) · cos(mφ)
       m < 0:  √2 · K_lm · P_l^|m|(cos θ) · sin(|m|φ)
 
-    where K_lm = √((2l+1)/4π · (l-|m|)!/(l+|m|)!)
+    where K_lm = √((2l+1)/4π · (l-\|m\|)!/(l+\|m\|)!)
 
     :param l: degree
     :param m: order
@@ -206,7 +209,8 @@ def j_n_mode_identification() -> Dict:
 
 def courant_check(k: int = 1) -> Dict:
     """
-    Courant nodal domain theorem (Courant-Hilbert 1953, §VI.6):
+    Courant nodal domain theorem (Courant-Hilbert 1953, §VI.6)::
+
       The k-th eigenfunction of the Laplace-Beltrami operator on S²
       partitions S² into at most k nodal domains.
 
@@ -244,10 +248,12 @@ def courant_check(k: int = 1) -> Dict:
 def schumann_frequencies(n_modes: int = 7,
                          radius_m: float = R_CAVITY_M) -> Dict:
     """
-    Schumann resonance eigenfrequencies for an ideal spherical cavity:
+    Schumann resonance eigenfrequencies for an ideal spherical cavity::
+
       f_n = (c / 2πR) · √(n(n+1))
 
-    Earth-ionosphere cavity:
+    Earth-ionosphere cavity::
+
       R = 6371 + 80 = 6451 km
       f₁ (ideal) ≈ 10.6 Hz
       f₁ (measured, Schumann 1952) = 7.83 Hz

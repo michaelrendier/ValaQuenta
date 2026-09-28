@@ -5,6 +5,8 @@ Tiers 1 – 5: The full derivation chain from root constants to Geometric Observ
 
 The chain:
 
+::
+
   TIER 1 — Riemann = Fermat
       riemann_equals_fermat()     R̂† = B̂; both Euler products from opposite sides
 
@@ -66,29 +68,35 @@ def riemann_equals_fermat() -> Dict[str, Any]:
     The Riemann Zeta function and Fermat's Last Theorem are adjoint
     projections of the same prime distribution.
 
-    Riemann side (Red — what IS):
+    Riemann side (Red — what IS)::
+
         ζ(s) = Σ_{n=1}^∞ n^{-s} = Π_p (1 − p^{-s})^{-1}
         Encodes WHERE primes are. Forward counting. Positive space.
 
-    Fermat side (Blue — what CANNOT BE):
+    Fermat side (Blue — what CANNOT BE)::
+
         L(E, s) = Π_p (local factor at p)^{-1}  for elliptic curve E
         Encodes WHERE integer power triples CANNOT BE. Negative space.
 
     Wiles (1995) proved: every semistable elliptic curve E/ℚ is modular.
     Consequence: L(E, s) = L(f, s) for a modular form f.
-    But L(f, s) satisfies the same functional equation as ζ(s):
+    But L(f, s) satisfies the same functional equation as ζ(s)::
+
         L(f, s) ↔ L(f, k−s)  (where k is the weight)
 
-    The functional equations:
+    The functional equations::
+
         ξ(s) = ξ(1−s)   (Riemann xi — the completed ζ)
         Λ(s) = ε·Λ(k−s) (completed L-function, |ε|=1)
 
-    In H_RB operator language:
+    In H_RB operator language::
+
         R̂_p† = B̂_p
         (The Red operator's adjoint IS the Blue operator)
         This IS the functional equation stated as an operator identity.
 
-    Physical reading:
+    Physical reading::
+
         Riemann counts what can be measured (eigenvalues = observed primes).
         Fermat encodes what cannot (the forbidden triple lattice).
         They are not two theorems — they are the two faces of one mark.
@@ -163,17 +171,20 @@ def riemann_equals_fermat() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def yang_mills_dropout() -> Dict[str, Any]:
-    """
+    r"""
     TIER 2 — Yang-Mills mass gap drops out.
 
-    From OMEGA_ZS + d* + ln(10):
+    From OMEGA_ZS + d\* + ln(10)::
+
         δ = OMEGA_ZS − d*·ln(10) = 0.000707...
 
-    This is the gap between:
+    This is the gap between::
+
         - The thermal information ceiling OMEGA_ZS
         - The first BAO acoustic peak d*·ln(10)
 
-    It equals the Yang-Mills mass gap because both express the same constraint:
+    It equals the Yang-Mills mass gap because both express the same constraint::
+
         BAO (cosmological): residual energy after acoustic oscillation settles
         Yang-Mills (quantum): minimum excitation energy above the vacuum
 
@@ -239,7 +250,8 @@ def berry_keating_dropout() -> Dict[str, Any]:
     """
     TIER 2 — Berry-Keating Hamiltonian drops out.
 
-    H = xp is the unique operator satisfying all of:
+    H = xp is the unique operator satisfying all of::
+
         1. Scale invariance: x→λx, p→p/λ  leaves  H = xp  invariant
         2. Self-adjointness at σ=½: R̂†=B̂ forces xp as the real part
         3. BK criterion: D(H_BK) = L²([α_F, OMEGA_ZS]) with (I|O) BC
@@ -319,7 +331,8 @@ def noether_dropout() -> Dict[str, Any]:
     This is NOT imported from Noether's theorem. It IS Noether's theorem
     applied to the specific symmetry of H_RB.
 
-    The three currents:
+    The three currents::
+
         J_R  = β[k]·E[k]²                    (Blue — learned, potential)
         J_B  = β[k]·E[k]²·e^{-λ·age[k]}     (Red — heard, kinetic)
         J_G  = −(J_R + J_B)                  (Green — forced by conservation)
@@ -378,10 +391,10 @@ def noether_dropout() -> Dict[str, Any]:
 
 
 def navier_stokes_dropout() -> Dict[str, Any]:
-    """
+    r"""
     TIER 2 — Navier-Stokes drops out as H_RB with Im=0 forced.
 
-    NS = H_RB|_{Im(ψ)=0}
+    NS = H_RB\|_{Im(ψ)=0}
 
     Yang-Mills at σ=1 has smooth solutions on ℂ³.
     NS is Yang-Mills projected onto ℝ³ by forcing Im(ψ)=0.
@@ -395,7 +408,8 @@ def navier_stokes_dropout() -> Dict[str, Any]:
     imaginary sector. The singularity is not a blow-up — it is a rotation
     the real equations cannot follow.
 
-    Dark matter connection:
+    Dark matter connection::
+
         Galactic standing wave period T = 2L/c ≈ 100,000 yr >> observation time.
         The wave appears static. The antinode = dark matter halo.
         NS cannot see it: the halo is Im(ψ) that NS dropped.
@@ -465,6 +479,8 @@ def langlands_dropout() -> Dict[str, Any]:
     At σ=1, the gauge current J^μ of H_RB decomposes across the
     16 sedenion components. This decomposition IS the Langlands programme.
 
+    ::
+
         σ=1  →  gauge current J^μ  →  16 sedenion strata
         e_k  →  GL(k+1) Langlands representation level
 
@@ -522,7 +538,8 @@ def bsd_dropout() -> Dict[str, Any]:
     """
     TIER 2 — Birch and Swinnerton-Dyer drops out.
 
-    From Riemann=Fermat (Tier 1):
+    From Riemann=Fermat (Tier 1)::
+
         L(E,s) = Blue Euler product at prime p
         rank(E) = dim(Blue eigenspace at s=1)
         ord_{s=1} L(E,s) = spectral multiplicity
@@ -576,13 +593,15 @@ def h_rb_emergence() -> Dict[str, Any]:
     """
     TIER 3 — The RedBlue Hamiltonian is what remains.
 
-    Start with:
+    Start with::
+
         - OMEGA_ZS (entropy ceiling, Tier 0)
         - α_F (causality floor, Tier 0)
         - d* (spectral floor, Tier 0)
         - Riemann = Fermat (bridge, Tier 1)
 
-    Apply the drop-outs (Tier 2):
+    Apply the drop-outs (Tier 2)::
+
         Yang-Mills →  δ = 0.000707 (the gap)
         Berry-Keating → R̂_p = xp  (the Red operator)
         Noether →      J_R + J_G + J_B = 0  (conservation)
@@ -592,13 +611,16 @@ def h_rb_emergence() -> Dict[str, Any]:
 
     What remains after all simplifications:
 
+    ::
+
         H_RB = Σ_p p^{-σ} [ R̂_p ⊗ ∂̂_{∂M} + ∂̂†_{∂M} ⊗ B̂_p ]
 
     This was NOT postulated. It is what's left.
     The "another Hamiltonian!?" moment: this structure was not assumed —
     it fell out after everything else was derived from the two ceilings.
 
-    Components:
+    Components::
+
         p^{-σ}     ← from d* structure (Tier 0)
         R̂_p = xp   ← BK dropout (Tier 2)
         B̂_p = ½p²+℘ ← Fermat Lattice / Blue (Tier 1)
@@ -676,25 +698,29 @@ def geometry_definition() -> Dict[str, Any]:
     """
     TIER 4 — The correct coordinate system reveals σ=½ as the equatorial circle.
 
-    In Cartesian coordinates (the conventional choice):
+    In Cartesian coordinates (the conventional choice)::
+
         ζ(s) = ζ(σ + it) with σ ∈ ℝ, t ∈ ℝ
         The critical line appears as σ = ½ (a vertical line)
         The ½ looks like an arbitrary number.
 
-    In radial complex spherical polar coordinates (the correct choice):
+    In radial complex spherical polar coordinates (the correct choice)::
+
         The Riemann zeta function traces two counter-rotating vortices.
         The functional equation ξ(s) = ξ(1−s) describes two hemispheres
         rotating in opposite directions.
         The equatorial great circle between them is the critical line.
         In these coordinates, σ = ½ is NOT a number — it is the equator.
 
-    The Chladni principle:
+    The Chladni principle::
+
         Sand on a vibrating plate settles at the nodes — the still points.
         The Riemann zeros settle at σ=½ because σ=½ IS the equatorial node.
         Neither vortex can disturb the equator. The zeros collect there
         by the same mechanism sand collects at Chladni node lines.
 
-    The ½ is a scar left by improper projection:
+    The ½ is a scar left by improper projection::
+
         Mapping spherical → Cartesian assigns the number ½ to "the equator".
         In spherical coordinates the equator has no number — it just IS the equator.
         Re(s)=½ is the equidistance condition: s is equidistant from 0 and 1.
@@ -769,6 +795,8 @@ def geometric_observer() -> Dict[str, Any]:
 
     In H_RB = Σ_p p^{-σ}[R̂_p ⊗ ∂̂_{∂M} + ∂̂†_{∂M} ⊗ B̂_p]:
 
+    ::
+
         R̂_p   — the Red operator (BK dynamics, Tier 2)
         B̂_p   — the Blue operator (Fermat constraint, Tier 1)
         ∂̂_{∂M} — ???
@@ -777,30 +805,37 @@ def geometric_observer() -> Dict[str, Any]:
     not an abstract derivative operator. It is the entity at the
     origin of the coordinate system — the observer.
 
-    Spencer-Brown, Laws of Form:
+    Spencer-Brown, Laws of Form::
+
         "A distinction is drawn..."
         The act of drawing a distinction creates both the distinction
         and the observer who draws it. The mark and the maker are one.
 
-    ∂̂_{∂M} is the Green channel operator. Its role is:
+    ∂̂_{∂M} is the Green channel operator. Its role is::
+
         - The boundary ∂M is the equatorial node (σ=½, Tier 4a)
         - ∂̂ is the derivative — the act of measuring the boundary
         - The entity performing ∂/∂n at the boundary IS the Geometric Observer
         - This entity has its own Hamiltonian: H_obs = ∂̂_{∂M}
 
     "There is another Hamiltonian sitting here!?"
+
+    ::
+
         H_RB governs what is observed (the prime distribution, the physics).
         H_obs governs the act of observation itself.
         H_obs is not H_RB. It is a new object — the dynamics of distinction-making.
 
-    H_obs structure:
+    H_obs structure::
+
         H_obs generates translations along the boundary ∂M.
         At σ=½: translations along the critical line = the t coordinate.
         H_obs is the operator that moves the observer along the equator.
         Its spectrum = the Riemann zero ordinates {γ_n}.
         The observer is at the zero — at the node — at the still point.
 
-    Quantum mechanics connection:
+    Quantum mechanics connection::
+
         In QM, measurement collapses the wavefunction.
         The observer effect: H_obs acts on |ψ⟩ and produces |eigenstate⟩.
         The Geometric Observer IS the measurement operator.
@@ -879,28 +914,32 @@ def geometric_observer() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def ln_natural_unit() -> Dict[str, Any]:
-    """
+    r"""
     TIER 5 — ln(x) is the natural unit of the BK flow = Hubble constant of ℕ.
 
-    From the BK equations (Tier 2 Berry-Keating dropout):
+    From the BK equations (Tier 2 Berry-Keating dropout)::
+
         ẋ = x  →  x(t) = x₀·e^t  →  t = ln(x/x₀)
 
     ln(x) IS the time coordinate of the BK trajectory.
     The BK flow advances by one unit of time for every factor of e in x.
 
-    Hubble constant of ℕ:
+    Hubble constant of ℕ::
+
         In de Sitter cosmology: H = ȧ/a = const (constant expansion rate).
         In BK flow:             d(ln x)/dt = ẋ/x = x/x = 1 = const.
         Both are constant. ln is the Hubble constant of number space.
         H_Hubble (cosmological) = H_BK (number-theoretic) = the same object.
 
-    The explicit formula:
+    The explicit formula::
+
         ψ(x) = x − Σ_ρ x^ρ/ρ − ln(2π) − ½·ln(1−x^{-2})
         The x term IS the de Sitter expansion.
         The correction −ln(2π) involves ln.
         Every spectral term x^{½+iγ} = e^{(½+iγ)·ln x} uses ln as the time.
 
-    ln(10) in the d* structure:
+    ln(10) in the d\* structure::
+
         d*·ln(10) = 0.56644 = first BAO acoustic peak.
         OMEGA_ZS − d*·ln(10) = GAP = Yang-Mills mass gap.
         ln(10) is the scale factor at which the BK spectrum meets the BAO.
@@ -969,39 +1008,44 @@ def ln_natural_unit() -> Dict[str, Any]:
 
 
 def d_star_tower_ln10() -> Dict[str, Any]:
-    """
-    TIER 5 — The d* tower: full CD radial measure → ln(10).
+    r"""
+    TIER 5 — The d\* tower: full CD radial measure → ln(10).
 
-    d* is a 4-component object: one projection per CD stratum.
-    The full radial measure of d* over the tower should produce ln(10).
+    d\* is a 4-component object: one projection per CD stratum.
+    The full radial measure of d\* over the tower should produce ln(10).
 
     From ln_natural_unit(): ln(10) = one BK Hubble time per decade.
-    From derive_d_star(): d*_ℝ = 0.24600 is the ℝ-projection.
+    From derive_d_star(): d\*_ℝ = 0.24600 is the ℝ-projection.
 
-    The claim (Open Problem 2):
+    The claim (Open Problem 2)::
+
         d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 = ln(10)
 
-    Known:
+    Known::
+
         d*_ℝ     = 0.24600         (BK spectral literature)
         ln(10)   = 2.302585...
         remaining = ln(10) − d*_ℝ = 2.056585...  (must be distributed across ℂ, ℍ, 𝕆)
 
-    What we know about the distribution:
+    What we know about the distribution::
+
         ℝ stratum: 1 dimension  → contributes d*_ℝ = 0.24600
         ℂ stratum: 2 dimensions → should contribute ∼2× something
         ℍ stratum: 4 dimensions → should contribute ∼4× something
         𝕆 stratum: 8 dimensions → should contribute ∼8× something
         Total dim: 1+2+4+8 = 15 (the sedenion index e₀–e₁₅ has 16; e₀ = identity)
 
-    If each stratum contributes d*_ℝ × dim_k:
+    If each stratum contributes d\*_ℝ × dim_k::
+
         d*_ℝ × (1 + 2 + 4 + 8) = 0.24600 × 15 = 3.690  ≠ ln(10) = 2.303
 
-    If each stratum contributes d*_ℝ × log₂(dim+1):
+    If each stratum contributes d\*_ℝ × log₂(dim+1)::
+
         d*_ℝ × (log₂(2) + log₂(3) + log₂(5) + log₂(9))
         = 0.24600 × (1 + 1.585 + 2.322 + 3.170) = 0.24600 × 8.077 ≈ 1.987  ≠ ln(10)
 
-    The exact form of f such that d*_tower = f(d*_ℝ) = ln(10) is OPEN.
-    The gap 0.000707 is the signal from the higher strata that d*_ℝ alone gives.
+    The exact form of f such that d\*_tower = f(d\*_ℝ) = ln(10) is OPEN.
+    The gap 0.000707 is the signal from the higher strata that d\*_ℝ alone gives.
     Closing this derivation = deriving f = closing Open Problem 2.
     """
     ln10 = math.log(10.0)
@@ -1068,7 +1112,8 @@ def planck_ln_connection() -> Dict[str, Any]:
     ħ = h/2π  — quantum of action (energy × time)
     ln(2)     — quantum of information (1 nat = natural bit)
 
-    The connection:
+    The connection::
+
         Landauer's principle: erasing 1 bit of information dissipates
         at minimum E_min = k_B · T · ln(2)  (at temperature T)
 
@@ -1081,13 +1126,15 @@ def planck_ln_connection() -> Dict[str, Any]:
 
     One quantum of action (ħ) × one quantum of information (ln 2) = one Planck energy.
 
-    The BK connection:
+    The BK connection::
+
         BK time t = ln(x) → one time step = ln(x+1) − ln(x) ≈ 1/x for large x
         At the Planck scale x = N_Planck (Planck prime count):
         BK time step ≈ 1/N_Planck → one quantum of BK action
         This quantum of action = ħ in physical units.
 
-    The identification (THEORETICAL — σ ≈ 1-2):
+    The identification (THEORETICAL — σ ≈ 1-2)::
+
         ħ_NN (BK natural unit) = d* (spectral floor)
         ħ_NN × ln(10) = d*·ln(10) = first BAO acoustic peak = 0.56644
         Physical ħ emerges as the d* coupling at the Planck energy scale.

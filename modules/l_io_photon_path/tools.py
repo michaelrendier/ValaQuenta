@@ -1,20 +1,20 @@
-"""
+r"""
 ValaQuenta.modules.l_io_photon_path.tools
 =========================================
-L_(I|O) Photon Path Engine (GR) — Module Tools
+L_(I\|O) Photon Path Engine (GR) — Module Tools
 
 Implements the EquationModule registry contract.
 Provides: formulary, run(), viewer_data(), shell_commands()
 
 This is the GR-grounded companion to modules/inversion (the abstract
-(I|O) coordinate map). Where inversion.InversionMap implements the
+(I\|O) coordinate map). Where inversion.InversionMap implements the
 geometric J_N: (r,theta) -> (1/r, theta+pi/2), this module implements
 the physical statement wiki/52 actually makes: a real photon's path is
-bent by real mass, and that bending IS the L_(I|O) - L difference.
+bent by real mass, and that bending IS the L_(I\|O) - L difference.
 Requires real (gamma1, gamma2) shear data as input -- see
 BulletCluster/optical/jwst/pixel_vector_field.py for the source.
 
-Boundary role (2026-07-21): (I|O)_RB (renamed from H_hat_RB) defines a
+Boundary role (2026-07-21): (I\|O)_RB (renamed from H_hat_RB) defines a
 boundary/degenerate locus; this module is the general template for
 crossing one -- see maths.py's module docstring addendum for the k=0
 zeroing convention and the (flagged, not established) zeta-pole
@@ -34,7 +34,7 @@ from .maths import (
 
 
 class LIOPhotonPathModule(EquationModule):
-    """L_(I|O) Photon Path Engine — GR light bending from real shear."""
+    r"""L_(I\|O) Photon Path Engine — GR light bending from real shear."""
 
     @property
     def name(self):

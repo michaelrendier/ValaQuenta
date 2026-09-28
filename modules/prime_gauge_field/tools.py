@@ -3,7 +3,8 @@ ValaQuenta.modules.prime_gauge_field.tools
 ==========================================
 THE PRIME GAUGE FIELD -- Module Tools.
 
-Implements the EquationModule registry contract:
+Implements the EquationModule registry contract::
+
     formulary(), run(), viewer_data(), shell_commands()
 
 See maths.py for the full derivation and the origin (the 2026-09-21

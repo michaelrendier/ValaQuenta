@@ -3,7 +3,8 @@ ValaQuenta.modules.lagrangian.tools
 ===================================
 LagrangianModule — registry contract implementation.
 
-Equations:
+Equations::
+
   1. polar_lagrangian        full L_NN polar integral
   2. L_kinetic               -1/4 · F²
   3. L_matter                i·Ψ̄·D·Ψ kinetic

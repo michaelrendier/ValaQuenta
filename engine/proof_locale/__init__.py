@@ -7,6 +7,8 @@ translations are handled with a locale catalog.
 One JSON catalog per engine: `proof_locale/<engine>.json`. NO narrative — just
 operator details, in order:
 
+::
+
     descriptive   one line: what the engine does, process-only
     operators     the operators the engine is TUNED on -- symbol, english, role, tier
     ordering      the derivation steps, IN ORDER -- op + english, no connective prose

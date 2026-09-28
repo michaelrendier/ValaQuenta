@@ -1,4 +1,4 @@
-"""
+r"""
 PrimeGate — the Boundary-Crossing Alarm
 
 The engine's purpose is the alarm itself, not a test of any dataset:
@@ -6,6 +6,8 @@ The engine's purpose is the alarm itself, not a test of any dataset:
 everything except whether the crossing happened. Same primitive whether the
 boundary is "is prime" or "reached sigma=1/2" -- the Holcus FIRING signal
 (Ainulindale wiki/44) and pi(x) are the same alarm, run on different streams.
+
+::
 
   ALARM  pi(x)             — BoundaryAlarm(is_prime) over the integers.
                               Fires once per prime. Blind to spacing by
@@ -16,17 +18,19 @@ boundary is "is prime" or "reached sigma=1/2" -- the Holcus FIRING signal
                               A separate query, only pulled in if spacing
                               matters for the task at hand.
 
-Two spirals built on the ALARM channel, kept distinct on purpose:
+Two spirals built on the ALARM channel, kept distinct on purpose::
+
   ordinal_spiral  T(n)   = n   * e^{i d* ln n}    address = COUNT
                                                     (matches the P1 hash
                                                     convention in monad.py:
                                                     word -> prime -> pi(p)
                                                     ordinal index -> zero)
   value_spiral    T(p_n) = p_n * e^{i d* ln p_n}   address = MAGNITUDE
+
 These are NOT the same curve. Using the ordinal form discards gap information
 by the same design choice as the alarm itself.
 
-d* = 0.24600 (BK spectral floor, ValaQuenta/modules/berry_keating/maths.py
+d\* = 0.24600 (BK spectral floor, ValaQuenta/modules/berry_keating/maths.py
 D_STAR_SPEC) -- reproduced locally, matching hamiltonian.py's convention of
 self-contained top-level engines.
 
@@ -182,7 +186,7 @@ class PrimeGateEngine:
     # ── Two spirals on the ALARM channel ────────────────────────────────
 
     def ordinal_spiral(self) -> List[Tuple[float, float]]:
-        """T(n) = n * e^{i d* ln n} -- address = count. Gap-blind by design."""
+        r"""T(n) = n \* e^{i d\* ln n} -- address = count. Gap-blind by design."""
         out = []
         for n in range(1, len(self.primes) + 1):
             phase = self.d_star * log(n)
@@ -190,7 +194,7 @@ class PrimeGateEngine:
         return out
 
     def value_spiral(self) -> List[Tuple[float, float]]:
-        """T(p_n) = p_n * e^{i d* ln p_n} -- address = magnitude."""
+        r"""T(p_n) = p_n \* e^{i d\* ln p_n} -- address = magnitude."""
         out = []
         for p in self.primes:
             phase = self.d_star * log(p)

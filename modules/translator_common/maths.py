@@ -11,7 +11,8 @@ both be combined for testing later").
 
 Source of the two versions: "The Algebraic Geodesics of Language and
 Interfacial Physics", Part A — two suggested formal frameworks for mapping
-prime concepts into syntactically valid sentences:
+prime concepts into syntactically valid sentences::
+
     version 1  DisCoCat  (Coecke/Clark/Grefenstette) -> translator_discocat
     version 2  VSA/HDC   (Kanerva)                   -> translator_vsa
 
@@ -23,6 +24,8 @@ normalised to hit a target. Every vector is a deterministic function of the
 input string and the first 16 primes. There are no free parameters.
 
 In particular, the dimensions are DERIVED, not chosen:
+
+::
 
     N_CHANNELS = 16     the sedenion basis e0..e15 — the framework's own
                         algebra, already the carrier in layer_spectrograph.py
@@ -44,7 +47,8 @@ we do NOT raise it to please the citation. If quasi-orthogonality is too
 weak at 4096, that is a real result about this construction and must be
 REPORTED, not fixed by enlarging D (Prime Directive #2).
 
-Confidence:
+Confidence::
+
     prime-channel encoding is deterministic and reproducible: ESTABLISHED
     pregroup reduction (translator_discocat): ESTABLISHED (standard algebra)
     VSA bind/bundle/permute algebra (translator_vsa): ESTABLISHED (standard)
@@ -80,6 +84,8 @@ def channel_signature(token: str) -> List[float]:
     """
     The 16-dimensional prime-channel signature of a token.
 
+    ::
+
         x_k = sum_i  c_i * i^(-1/2) * cos(2*pi*i / p_k)
 
     where c_i is the codepoint of the i-th character (i is 1-indexed) and
@@ -104,6 +110,8 @@ def channel_signature(token: str) -> List[float]:
 def hypervector(token: str) -> List[float]:
     """
     The 4096-dimensional harmonic extension of channel_signature().
+
+    ::
 
         j = h * 16 + k        k = prime channel, h = harmonic 0..255
         x_j = sum_i c_i * i^(-1/2) * cos(2*pi*(h+1)*i / p_k)

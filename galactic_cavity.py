@@ -4,7 +4,8 @@ galactic_cavity.py — Galactic Particle Derivation Engine
 
 H_hat_RB at σ=2 (GR face) applied to the galactic cavity.
 
-The central claim:
+The central claim::
+
   Dark matter is not a particle. It is the quantum potential of the
   galactic standing wave — the pilot wave (de Broglie-Bohm) of the
   galaxy as a Bohmian particle in the cosmological field.
@@ -13,13 +14,15 @@ The central claim:
   curve is the Stokes drift profile of the l=0 dissipative cavity mode.
   No DM particles. No DM mass. Only wave amplitude gradient.
 
-The four-way identity:
+The four-way identity::
+
   Pilot Wave Theory    ↔    Holcus Engine    ↔    Galaxy    ↔    H_hat_RB σ=2
   Continuity ∂_μJ^μ=0 ↔    Noether current  ↔    wave conservation
   Guidance v = ∇S/m   ↔    buoyancy select  ↔    Stokes drift
   Quantum potential Q  ↔    J_ambient        ↔    wave pressure
 
-SMMIP constants:
+SMMIP constants::
+
   d*       = 0.24600  — transition fraction (P1: r_t = d* × r_max_baryonic)
   OMEGA_ZS = 0.5671432904097838  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
 
@@ -48,10 +51,10 @@ H0_SI    = 72.0 * KMS / (1e6 * PC_M)  # Hubble constant (SI)
 
 @dataclass
 class CavityMode:
-    """
+    r"""
     State of the dissipative galactic cavity standing wave.
 
-    The open cavity (energy leaks into the Lichtenberg zone at D*=1)
+    The open cavity (energy leaks into the Lichtenberg zone at D\*=1)
     has absorbing boundary conditions. The mode shape is the Green's
     function of the dissipative Helmholtz equation — which gives the
     arctan rotation curve profile, not a Bessel function profile.
@@ -94,8 +97,8 @@ class CavityMode:
         return math.exp(-gr) * (math.sin(kr) / kr if kr > 1e-9 else 1.0)
 
     def dm_density(self, r_kpc: float) -> float:
-        """
-        ρ_DM(r) ∝ |Ψ(r)|²  — DM density IS the wave intensity.
+        r"""
+        ρ_DM(r) ∝ \|Ψ(r)\|²  — DM density IS the wave intensity.
         Normalised to 1.0 at r=0.
 
         :param r_kpc: galactocentric radius, in kpc
@@ -213,8 +216,8 @@ class CavityMode:
     # ── Wave period ───────────────────────────────────────────────────────────
 
     def wave_period_gyr(self, c_eff_kms: float | None = None) -> float:
-        """
-        T = 2π × R_cavity / (d* × c_eff)
+        r"""
+        T = 2π × R_cavity / (d\* × c_eff)
 
         Period of the galactic standing wave in gigayears.
         For typical galaxies: T ~ 100–500 Gyr >> age of universe (13.8 Gyr).
@@ -253,19 +256,19 @@ class CavityMode:
     # ── Baryonic energy partition ─────────────────────────────────────────────
 
     def predicted_baryonic_fraction(self) -> float:
-        """
-        P2: v_bar² / v_total² = d* at the flat rotation regime.
+        r"""
+        P2: v_bar² / v_total² = d\* at the flat rotation regime.
 
         This is derived from the Witches Hat geometry: the baryons live in the
-        Mexican Hat trough (fraction d* of total energy). The DM wave lives in
-        the Lichtenberg cone (fraction 1-d*).
+        Mexican Hat trough (fraction d\* of total energy). The DM wave lives in
+        the Lichtenberg cone (fraction 1-d\*).
 
         Confirmed against SPARC data: mean 0.249 vs prediction 0.246, p=0.794.
         """
         return D_STAR
 
     def predicted_dm_fraction(self) -> float:
-        """v_DM² / v_total² = 1 − d* at the flat rotation regime."""
+        r"""v_DM² / v_total² = 1 − d\* at the flat rotation regime."""
         return 1.0 - D_STAR
 
     # ── Summary report ────────────────────────────────────────────────────────
@@ -323,7 +326,8 @@ class CosmologicalSMIG:
     """
     Supermassive Inverted Galaxy — pilot wave of the observable Universe.
 
-    The SMIG is the Witches Hat at cosmological scale:
+    The SMIG is the Witches Hat at cosmological scale::
+
       Vacuum (pressure maximum) at centre — NOT a mass concentration.
       Matter pushed outward by Stokes drift of the SMIG wave.
       Accelerating expansion = cosmological Stokes drift.
@@ -341,22 +345,23 @@ class CosmologicalSMIG:
         self.r_t  = D_STAR * self.R_H  # cosmological transition radius (Mpc)
 
     def hubble_drift(self, r_Mpc: float) -> float:
-        """
+        r"""
         v_Hubble(r) = H0 × r  (observed)
 
         In the SMIG model: this IS the Stokes drift of the cosmological wave.
         v_Stokes(r) ≈ H0 × r for r << R_H (linear Hubble flow = near-field Stokes)
         v_Stokes(r) → c for r ~ R_H (Hubble radius = cavity brim)
 
-        The Hubble constant H0 IS the damping coefficient of the SMIG wave:
+        The Hubble constant H0 IS the damping coefficient of the SMIG wave::
+
           H0 = γ_SMIG × c_eff
           γ_SMIG = 1/r_t = 1/(D_STAR × R_H)
           H0 = c / (D_STAR × R_H)
 
-        This is a prediction: H0 × R_H / c = 1/d* = 4.065.
+        This is a prediction: H0 × R_H / c = 1/d\* = 4.065.
         Observed: H0 × R_H / c = (72 km/s/Mpc × 4285 Mpc) / c = 72×4285/3e5 ≈ 1.03
-        The factor 1/d* = 4.07 vs observed 1.03 — a factor of 4 discrepancy.
-        This IS the Hubble tension. The SMIG predicts H0 is off by 1/d* in the
+        The factor 1/d\* = 4.07 vs observed 1.03 — a factor of 4 discrepancy.
+        This IS the Hubble tension. The SMIG predicts H0 is off by 1/d\* in the
         standard flat-universe assumption. The correct geometry is NOT flat.
 
         :param r_Mpc: distance in Mpc
@@ -365,19 +370,19 @@ class CosmologicalSMIG:
         return self.H0 * r_Mpc  # km/s
 
     def dark_energy_fraction(self) -> float:
-        """
+        r"""
         The dark energy density fraction Ω_Λ in the SMIG model.
-        Dark energy = SMIG wave energy = (1 - d*) × total energy density.
-        Observed Ω_Λ ≈ 0.68 ~ 1 - d* = 0.754.
+        Dark energy = SMIG wave energy = (1 - d\*) × total energy density.
+        Observed Ω_Λ ≈ 0.68 ~ 1 - d\* = 0.754.
         Offset: 0.754 - 0.68 = 0.074. Next-order correction from wave geometry.
         """
         return 1.0 - D_STAR  # prediction: 0.754; observed: ~0.68
 
     def matter_fraction(self) -> float:
-        """
-        Ω_m in the SMIG model = d* × total.
-        Observed Ω_m ≈ 0.31 vs d* = 0.246.
-        The residual 0.31 - 0.246 = 0.064 = baryonic component within d*.
+        r"""
+        Ω_m in the SMIG model = d\* × total.
+        Observed Ω_m ≈ 0.31 vs d\* = 0.246.
+        The residual 0.31 - 0.246 = 0.064 = baryonic component within d\*.
         """
         return D_STAR  # prediction: 0.246; observed: ~0.31
 

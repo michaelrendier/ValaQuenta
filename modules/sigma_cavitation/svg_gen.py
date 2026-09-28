@@ -1,22 +1,28 @@
-"""
+r"""
 sigma_cavitation.svg_gen
 ========================
 Generate σ-parameterised sedenion cavitation SVG.
 
 SVG encodes the dual Riemann/Fermat structure:
 
+::
+
   <text>   nodes  = Riemann zeros (causal events, quantised, Riemann)
   <path C> curves = Fermat geodesics (causal constraints, geometric, Fermat)
   <path L> line   = Mind's Eye caustic (connected amplitude tips = meaning)
   <circle> void   = cavitation radius ∝ |σ − ½|
 
-σ controls the cavitation geometry and Bézier curvature:
+σ controls the cavitation geometry and Bézier curvature::
+
   σ → ½   minimal void, nearly-straight paths  (QM / fixed point)
   σ = 1   void grows, paths bow outward         (Yang-Mills / pole)
   σ = 2   compact clusters, tight void          (GR / mass)
   σ < ½   inward-bowing paths, no zero labels   (Fermat forbidden)
 
-Output: ~/.ptolemy/images/sedenion_cavitation_s{sigma*100:03.0f}_{ts}.svg
+Output: ~/.ptolemy/images/sedenion_cavitation_s{sigma\*100:03.0f}_{ts}.svg
+
+::
+
         also copied to Ainulindale/wiki/images/ if the repo is reachable.
 """
 
@@ -93,10 +99,10 @@ def _xml_escape(s: str) -> str:
 
 def generate(sigma: float, prompt: str, v: list,
              output_dir: str = None) -> str:
-    """
+    r"""
     :param sigma:      coupling exponent — determines cavitation geometry
     :param prompt:     label shown at top of SVG
-    :param v:          16 normalised amplitudes (signed; sum |v[k]| ≤ 1)
+    :param v:          16 normalised amplitudes (signed; sum \|v[k]\| ≤ 1)
     :param output_dir: override output directory (default ~/.ptolemy/images/)
     :returns:          absolute path of written SVG file
     """

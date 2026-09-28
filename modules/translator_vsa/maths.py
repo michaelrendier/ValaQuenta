@@ -8,6 +8,8 @@ Source: "The Algebraic Geodesics of Language and Interfacial Physics",
 Part A.2 — Pentti Kanerva. Concepts are high-dimensional vectors; structure
 is built by three operations:
 
+::
+
     Bind    (x)   pairs role with filler, NON-COMMUTATIVELY
                   e.g. ROLE_SUBJECT (x) CONCEPT_DOG
     Bundle  (+)   superposes bound pairs into one vector of the same size,
@@ -18,15 +20,23 @@ is built by three operations:
 WHAT IS AND IS NOT ESTABLISHED HERE
 ────────────────────────────────────────────────────────────────────────────
 ESTABLISHED  the bind/bundle/permute algebra and its stated identities
+
+::
+
              (permutation is orthogonal, bind distributes over bundle).
              Standard VSA.
+
 THEORETICAL  that bundling preserves constituents recoverably AT THIS
+
+::
+
              DIMENSION with THESE vectors. Kanerva's guarantees assume
              quasi-orthogonal (typically random) hypervectors at ~10,000
              dimensions. Ours are neither random nor 10,000-dimensional —
              they are deterministic prime-channel projections at 4096.
              capacity_probe() and unbind_probe() MEASURE this. If they come
              back poor, that is a finding about this construction.
+
 OPEN         that this constitutes The Translator. Not shown.
 
 PRIME DIRECTIVE #1: no fitted parameters, and specifically NO RANDOM SEED.
@@ -72,6 +82,8 @@ def permute(v: Sequence[float], shift: int = 1) -> List[float]:
 def bind(a: Sequence[float], b: Sequence[float]) -> List[float]:
     """
     Bind (x): NON-COMMUTATIVE role-filler pairing.
+
+    ::
 
         a (x) b  =  P(a) . b        (elementwise product after permuting a)
 
@@ -132,6 +144,8 @@ def fold_to_channels(v: Sequence[float]) -> List[float]:
     Project a 4096-dim hypervector onto the 16 prime channels by summing
     over the 256 harmonics of each channel:
 
+    ::
+
         s_k = sum_h v[h*16 + k]
 
     Parameter-free, and it is the adjoint of the harmonic expansion that
@@ -160,6 +174,9 @@ class VSATranslator(TranslatorEngine):
     The Translator, version 2: VSA / hyperdimensional computing.
 
     Pipeline:  tokens -> filler hypervectors -> bind with role vectors
+
+    ::
+
                -> bundle into one 4096-dim sentence hypervector
                -> fold to the shared 16-dim sentence space.
     """
@@ -238,7 +255,8 @@ class VSATranslator(TranslatorEngine):
 def verify_vsa_identities(tokens: Sequence[str] = ('dog', 'bites', 'man'),
                           tol: float = 1e-9) -> Dict[str, Any]:
     """
-    Check the algebraic identities VSA actually guarantees:
+    Check the algebraic identities VSA actually guarantees::
+
       1. permute is invertible:            P^-1(P(a)) == a
       2. permutation preserves norm:       |P(a)| == |a|
       3. bind is NON-commutative:          a (x) b != b (x) a
@@ -270,7 +288,7 @@ def verify_vsa_identities(tokens: Sequence[str] = ('dog', 'bites', 'man'),
 
 
 def capacity_probe(tokens: Sequence[str]) -> Dict[str, Any]:
-    """
+    r"""
     Measure quasi-orthogonality of the DERIVED (non-random) hypervectors.
 
     Kanerva's capacity guarantees rest on distinct concepts being nearly
@@ -278,7 +296,7 @@ def capacity_probe(tokens: Sequence[str]) -> Dict[str, Any]:
     an open empirical question, not an assumption. Reports the full cosine
     distribution between distinct tokens.
 
-    A large mean |cosine| means this construction crowds its concepts
+    A large mean \|cosine\| means this construction crowds its concepts
     together and bundling will not be recoverable. That is a REAL RESULT
     about deriving hypervectors instead of drawing them. It must be
     reported as such — not repaired by switching to a PRNG.

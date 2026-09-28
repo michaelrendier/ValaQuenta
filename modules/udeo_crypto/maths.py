@@ -19,7 +19,8 @@ Honest Scope) is the standard these engines are held to: no working
 attack against a live RSA system is claimed by this file. What is
 claimed is exactly what the numbers below show, no more.
 
-Engines:
+Engines::
+
     method1_zero_divisor_shadow()   Cody's method 1: cancel e out of the
                                      equation via the kernel of left-mult
                                      by e_s in S^16; test whether d_s
@@ -448,12 +449,12 @@ def rsa_control_baseline() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════
 
 def method1_zero_divisor_shadow(dim: int = 16) -> Dict[str, Any]:
-    """
+    r"""
     Cody's method 1: 'zero-divisor-ing out the private key into the
     geometry and recovering it from the shape of the hole it left behind.'
 
     Literal implementation: e_s = embedding of the PUBLIC exponent e.
-    Left-multiplication by e_s, L_{e_s}: S^dim -> S^dim, x -> e_s * x, is
+    Left-multiplication by e_s, L_{e_s}: S^dim -> S^dim, x -> e_s \* x, is
     a genuine linear operator (cd_mul is bilinear). Its smallest singular
     directions are the closest thing e_s has to an annihilator ('the
     hole') even when e_s is not an exact zero-divisor (exact ZD pairs are
@@ -524,11 +525,11 @@ def method1_zero_divisor_shadow(dim: int = 16) -> Dict[str, Any]:
 
 
 def ptolemy_null_partner(x_s: np.ndarray) -> np.ndarray:
-    """
+    r"""
     The actual NULL operator (modules/singularity_null/maths.py,
     circle_null_modes()): the Ptolemy inversion z -> R_H^2 / z-bar, applied
     in x_s's own dominant 2D subspace -- the same construction
-    circle_null_modes() and drug_targeting's c_drug = R_H^2 * conj(c)/|c|^2
+    circle_null_modes() and drug_targeting's c_drug = R_H^2 \* conj(c)/\|c\|^2
     both use. Note this is the CONFORMAL inverse (x_s . partner = R_H^2,
     not 0) -- the actual code in singularity_null verifies pre-known ZD
     pairs rather than deriving b from a by a general zero-divisor formula;
@@ -764,7 +765,7 @@ def method2_j2_involution_t256(dim: int = 256) -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════
 
 def sigma_face_metric(sigma: float) -> float:
-    """
+    r"""
     g(sigma) per wiki/34's sigma-face table: g=1 at sigma=1/2 (flat,
     reference), g grows as sigma moves toward the boundary, g -> infinity
     at the degenerate/zero-divisor limit.
@@ -774,7 +775,7 @@ def sigma_face_metric(sigma: float) -> float:
     in this codebase produces sigma in (0,1) (a hash-derived pseudo-address,
     not the same sigma). This function treats hash-sigma's interval
     boundaries (0 and 1) as the HSR degeneracy limit, and hash-sigma=1/2 as
-    the flat reference point — a deliberate reuse of the *shape* of the
+    the flat reference point — a deliberate reuse of the \*shape\* of the
     wiki/34 metric, not a claim that these are the same sigma. That
     reinterpretation is this engine's choice, not something wiki/34 states.
 
@@ -867,9 +868,13 @@ def method3_spectral_relativity(dim: int = 16) -> Dict[str, Any]:
 def method4_content_public_private_hash(dim: int = 16, search_pool: int = 500) -> Dict[str, Any]:
     """
     Cody's equation:  Content + Public + Private = Hash
+
+    ::
+
                        Content + Public - Hash     = 1/Private   (his framing)
 
-    Literal build, mapped onto RSA quantities:
+    Literal build, mapped onto RSA quantities::
+
         Public  = e   (public exponent)
         Private = d   (private exponent)
         Content = n   (the modulus — the only other per-key public quantity)
@@ -1063,14 +1068,14 @@ def path_angular_distance(path_a: Dict, path_b: Dict) -> float:
 
 
 def mod4_identity_theorem() -> Dict[str, Any]:
-    """
+    r"""
     PROVEN, not conjectured: d = e (mod 4) for every RSA key with odd
     primes p, q.
 
     Proof: phi(n) = (p-1)(q-1) is a product of two even numbers, so
-    4 | phi(n). e*d = 1 (mod phi(n)) therefore forces e*d = 1 (mod 4).
-    The group (Z/4Z)* = {1, 3} has exponent 2 (1*1=1, 3*3=9=1 mod 4) --
-    every element is its own inverse. So e*d = 1 (mod 4) forces
+    4 \| phi(n). e\*d = 1 (mod phi(n)) therefore forces e\*d = 1 (mod 4).
+    The group (Z/4Z)\* = {1, 3} has exponent 2 (1\*1=1, 3\*3=9=1 mod 4) --
+    every element is its own inverse. So e\*d = 1 (mod 4) forces
     d = e^{-1} = e (mod 4).
 
     This is why Method 5's path test showed e and d landing in the same

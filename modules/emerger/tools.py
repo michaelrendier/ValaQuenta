@@ -3,7 +3,8 @@ ValaQuenta.modules.emerger.tools
 ================================
 THE EMERGER -- Sedenion Bracketing & Firing Order.  Module Tools.
 
-Implements the EquationModule registry contract:
+Implements the EquationModule registry contract::
+
     formulary(), run(), viewer_data(), shell_commands()
 
 A dynamic permutative bracketer over the imaginary part of a Cayley-Dickson

@@ -28,7 +28,11 @@ class SemanticWord:
 
     surface          — the coordinate (any language, any script)
     prime            — the node line = the observer = complex(0.5, γ)
+
+    ::
+
                        Re is always 1/2. Im is the semantic zero γ.
+
     magnitude        — E = xp, the conserved energy (how strong the prime is)
     projections      — the faces: {context → projection value}
     noether_forward  — what it IS  (Riemann current: the attractor)

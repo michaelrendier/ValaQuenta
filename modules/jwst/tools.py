@@ -3,7 +3,8 @@ ValaQuenta.modules.jwst.tools
 =============================
 JWSTModule — registry contract.
 
-Equations:
+Equations::
+
   1. spectral_to_octonion   8 filter intensities → 𝕆 element
   2. cd_spectral_address    full Cayley-Dickson pixel address
   3. synthetic_hydrogen     Paschen series test spectrum

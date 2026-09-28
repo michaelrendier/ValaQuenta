@@ -21,6 +21,9 @@ TWO SEPARATE FORWARD/BACKWARD PAIRS, NOT ONE -- kept distinct because
 they answer different questions:
 
 1. POLAR DECOMPOSE/RECOMPOSE -- scale extracted from ONE point.
+
+::
+
    Z = r * e^{i theta}. r is the scale (always real, non-negative,
    ordinal -- comparable). theta is scale-blind under real-positive
    rescaling of Z BY ITSELF (arg(lambda*Z) = arg(Z) for lambda>0, exact,
@@ -29,6 +32,9 @@ they answer different questions:
    self-test, not asserted.
 
 2. CROSS-RATIO -- the invariant found AFTER a two-ring/Mobius fold is
+
+::
+
    applied, which is a DIFFERENT and harder question. FIRST CANDIDATE,
    TESTED AND REJECTED, kept in the record: theta (from #1) does NOT
    survive folding through Gamma=(Z-Z0)/(Z+Z0) -- the fold has its own
@@ -42,6 +48,9 @@ they answer different questions:
    point, a property of a RELATIONSHIP among four.
 
 3. PROCESS DECOMPOSITION (pathway_decompose) -- the same forward/backward
+
+::
+
    discipline applied to an ALGORITHM instead of a number: a real
    dependency graph of named operators, each one's own real-world stage,
    with a designated real output. Forwards is running the graph;
@@ -79,9 +88,9 @@ SED_DIM = 16
 # ── 1. Polar decompose/recompose -- scale extracted from ONE point ─────────
 
 def polar_decompose(Z: complex) -> Tuple[float, float]:
-    """
-    Z -> (r, theta). r = |Z| (the scale, real, ordinal). theta = arg(Z)
-    (scale-blind: arg(lambda*Z) = arg(Z) for any real lambda>0). Exact,
+    r"""
+    Z -> (r, theta). r = \|Z\| (the scale, real, ordinal). theta = arg(Z)
+    (scale-blind: arg(lambda\*Z) = arg(Z) for any real lambda>0). Exact,
     not approximate -- Python's cmath.polar to full float precision.
 
     :param Z: complex number
@@ -91,9 +100,9 @@ def polar_decompose(Z: complex) -> Tuple[float, float]:
 
 
 def polar_recompose(r: float, theta: float) -> complex:
-    """
+    r"""
     (r, theta) -> Z. The exact inverse of polar_decompose -- the
-    return path. recompose(*decompose(Z)) == Z for every Z, checked in
+    return path. recompose(\*decompose(Z)) == Z for every Z, checked in
     verify_polar_round_trip().
 
     :param r: modulus
@@ -161,8 +170,8 @@ def mobius_fold(Z: complex, Z0: complex) -> complex:
 
 
 def scale_factor(Z: complex, Z0: complex) -> float:
-    """
-    |dGamma/dZ| = |2*Z0/(Z+Z0)^2| -- the fold's own derivative, exact.
+    r"""
+    \|dGamma/dZ\| = \|2\*Z0/(Z+Z0)^2\| -- the fold's own derivative, exact.
     The local area-scaling of the conformal map: how much a small patch
     near Z is stretched or compressed once folded. Never zero for finite
     Z (checked in verify_no_caustic below) -- the map has no true
@@ -170,7 +179,7 @@ def scale_factor(Z: complex, Z0: complex) -> float:
 
     :param Z: complex point
     :param Z0: complex anchor
-    :returns: |dΓ/dZ| = |2·Z0/(Z + Z0)²|
+    :returns: \|dΓ/dZ\| = \|2·Z0/(Z + Z0)²\|
     """
     return abs(2 * Z0) / abs(Z + Z0) ** 2
 
@@ -238,8 +247,8 @@ def verify_cross_ratio_is_scale_blind(
 
 
 def two_ring_point(ring1: float, ring2: float, Z0: complex) -> Dict[str, Any]:
-    """
-    The general two-ring instrument: Z = ring1 + i*ring2, folded
+    r"""
+    The general two-ring instrument: Z = ring1 + i\*ring2, folded
     through mobius_fold. ring1/ring2 mean whatever the caller defines --
     resistance/reactance is one choice among many, not a constraint.
 
@@ -325,8 +334,8 @@ def custom_ring_chart_series(objs: Sequence[Any], ring1_fn: Callable[[Any], floa
 # unbound-then-exp, exactly, in full generality (not just the real axis) ───
 
 def fold_is_log_tanh(Z: complex, Z0: complex) -> Dict[str, Any]:
-    """
-    Gamma = tanh( (1/2) * ln(Z/Z0) ), EXACTLY, for ANY complex Z, Z0 --
+    r"""
+    Gamma = tanh( (1/2) \* ln(Z/Z0) ), EXACTLY, for ANY complex Z, Z0 --
     not a special case of the real axis. Checked directly against
     mobius_fold(), not asserted from the real-axis identity alone.
 
@@ -341,8 +350,8 @@ def fold_is_log_tanh(Z: complex, Z0: complex) -> Dict[str, Any]:
 
 
 def unfold_is_arctanh_exp(G: complex, Z0: complex) -> Dict[str, Any]:
-    """
-    Z = Z0 * exp(2 * arctanh(Gamma)), EXACTLY -- the mirror operation.
+    r"""
+    Z = Z0 \* exp(2 \* arctanh(Gamma)), EXACTLY -- the mirror operation.
     Checked as a genuine round trip: fold a real Z, then unfold the
     result back, and confirm you recover the ORIGINAL Z, via both the
     rational inverse AND this log/exp path independently.

@@ -3,6 +3,8 @@ Forward and backward Noether currents from one symmetry.
 
 The same Noether armature generates both:
 
+::
+
   Forward current  (Riemann / Red):  what the word IS. The attractor, the
   equator, what settles.  L_R = ẋ log ẋ − ẋ
 
@@ -78,6 +80,8 @@ class NoetherCurrents:
         The field is the interaction of the forward and backward currents. It is
         the meaning: not forward, not backward, but their rotation.
 
+        ::
+
             J_3 = (J_forward − J_backward) / 2
 
         :param word: the word whose two currents are combined
@@ -113,10 +117,14 @@ class NoetherCurrents:
         F(σ) = B(σ). Both are strictly positive, so take logs and the balance
         condition is LINEAR:
 
+        ::
+
             -σE  =  -(1-σ)E     ⟺     E·(1 - 2σ) = 0     ⟺     σ = ½   (E ≠ 0)
 
         Newton on h(σ) = ln F − ln B = E(1-2σ) has h'(σ) = -2E, so one step
         reaches ½ exactly from any real σ₀ (E cancels):
+
+        ::
 
             σ ← σ - h(σ)/h'(σ) = σ + (1 - 2σ)/2 = ½
 

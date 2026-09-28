@@ -1,11 +1,12 @@
-"""
+r"""
 ValaQuenta.modules.inversion.maths
 ==================================
 Inside-Out Inversion Engine — Mathematics
 
-The (I|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2)
+The (I\|O) inversion map J_N: (r, theta) -> (1/r, theta + pi/2)
 
-This is the 2-stroke engine of the SMMIP framework:
+This is the 2-stroke engine of the SMMIP framework::
+
     Compression stroke: r -> 1/r  (exterior folds inside)
     Expansion stroke:   1/r -> r  (interior releases)
     Top dead center:    r = 1     (the fixed point, the horizon)
@@ -13,7 +14,8 @@ This is the 2-stroke engine of the SMMIP framework:
 The sedenion is where the compression stroke completes but the
 expansion stroke fails. Zero-divisors = the engine seized.
 
-Status of claims:
+Status of claims::
+
     (I|O) map definition and fixed points: ESTABLISHED
     Unification of 4 physical horizons: Cases 1,3,4 ESTABLISHED; Case 2 THEORETICAL
     d* = 0.24600: THEORETICAL (numerically confirmed)
@@ -63,8 +65,8 @@ from ...engine.units import inversion_transform, inversion_involution
 # other, unjustified angle. Do not double-count this alongside Basel.
 
 def derive_horizon_rotation(n_terms: int = 200000) -> Dict[str, Any]:
-    """
-    Derive the (I|O) horizon's rotation angle phi = pi/2 from Hurwitz's
+    r"""
+    Derive the (I\|O) horizon's rotation angle phi = pi/2 from Hurwitz's
     proven 4-division-algebra fact plus the Basel-derived value of pi,
     rather than assuming phi as a bare input.
 
@@ -144,16 +146,18 @@ def get_observer() -> _ObserverSingleton:
 # ── Inversion map ────────────────────────────────────────────────────────────
 
 class InversionMap:
-    """
+    r"""
     J_N: (r, theta) -> (1/r, theta + pi/2)
 
-    The (I|O) map. Single source of all horizon physics in the framework.
+    The (I\|O) map. Single source of all horizon physics in the framework.
 
-    Fixed points of J_N:
+    Fixed points of J_N::
+
         r = 1 for any theta  (unit circle)
         These are the BK domain boundary points at A_PI and OMEGA_ZS.
 
-    The recursion attractor (separate from the inversion fixed point):
+    The recursion attractor (separate from the inversion fixed point)::
+
         phi = (1 + sqrt(5)) / 2  ~= 1.6180
         d*  = 0.24600  (spectral fixed point)
     """
@@ -233,8 +237,8 @@ class InversionMap:
             return "exterior (Dilator primary, r > Omega_H)"
 
     def four_horizons(self) -> List[Dict[str, str]]:
-        """
-        The four physical instances of (I|O) unified by J_N.
+        r"""
+        The four physical instances of (I\|O) unified by J_N.
         Three ESTABLISHED, one THEORETICAL.
         """
         return [
@@ -280,7 +284,8 @@ class RecursionAttractor:
     These are different. The gradient flow from r=1 to phi is the
     open derivation connecting the inversion boundary to the recursion.
 
-    The phi-crossing step:
+    The phi-crossing step::
+
         Confirmed numerically: step = H/4 = (pi/2) * hbar_NN
         Formal derivation from first principles: OPEN
     """
@@ -306,9 +311,9 @@ class RecursionAttractor:
         return trajectory
 
     def phi_crossing_step(self) -> Dict[str, float]:
-        """
+        r"""
         The step size at the phi fixed point crossing.
-        Confirmed: H/4 = (pi/2) * hbar_NN
+        Confirmed: H/4 = (pi/2) \* hbar_NN
         Status: ESTABLISHED numerically. Formal proof OPEN.
         """
         step_h4 = C.H_NN / 4.0
@@ -322,8 +327,8 @@ class RecursionAttractor:
         }
 
     def d_star_gap(self) -> Dict[str, float]:
-        """
-        The gap between d* x ln(10) and OMEGA_ZS.
+        r"""
+        The gap between d\* x ln(10) and OMEGA_ZS.
         Gap = 0.00070. HIGHEST PRIORITY OPEN DERIVATION.
         """
         d_star_log = self.D_STAR * math.log(10.0)
@@ -353,10 +358,10 @@ class GradientFlow:
         self.att = RecursionAttractor()
 
     def step(self, r: float, hbar: float = None) -> float:
-        """
+        r"""
         Step toward φ by the recursion r → 1 + 1/r.
 
-        The fixed point r* = 1 + 1/r* is φ exactly, reached from any r > 0 in
+        The fixed point r\* = 1 + 1/r\* is φ exactly, reached from any r > 0 in
         O(log(1/ε)) steps.
 
         :param r: current value; must be positive

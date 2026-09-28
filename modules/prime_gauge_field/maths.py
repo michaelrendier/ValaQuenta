@@ -20,6 +20,8 @@ construction -- that is not evidence the local question is closed.
 THIS MODULE runs the local question. Two candidate connections, both
 built directly from Gamma (no new machinery invented beyond it):
 
+::
+
     log_potential_curvature(s)  --  A = grad(log|Gamma|)
         Forced to zero for ANY holomorphic scalar (Poincare lemma,
         d(d f) = 0 identically) -- this is the GENERAL reason the
@@ -66,8 +68,8 @@ def gamma(s: complex) -> complex:
 
 
 def dgamma(s: complex) -> complex:
-    """
-    Return dΓ/ds = 2/(s+1)², exact. It equals the local scale factor |dΓ/ds| of scale.py.
+    r"""
+    Return dΓ/ds = 2/(s+1)², exact. It equals the local scale factor \|dΓ/ds\| of scale.py.
 
     :param s: complex argument
     :returns: dΓ/ds
@@ -77,8 +79,8 @@ def dgamma(s: complex) -> complex:
 
 # ── candidate connection 1: the gradient reading -- provably always flat ──
 def log_potential_curvature(s: complex, h: float = 1e-5) -> float:
-    """
-    Return the curl of A = grad log|Γ|, which is zero for any scalar potential.
+    r"""
+    Return the curl of A = grad log\|Γ\|, which is zero for any scalar potential.
 
     The function makes that structural fact checkable in code; a nonzero
     result is not possible.
@@ -194,13 +196,26 @@ def prediction_check(n_samples: int = 2000, seed: int = 0) -> Dict[str, Any]:
 
 
 def verify() -> Dict[str, Any]:
-    """Self-check, three independent claims:
+    """
+    Self-check, three independent claims:
     1) curvature() (closed form) matches curvature_numeric() (finite
+
+    ::
+
        difference) -- the closed form is trustworthy.
+
     2) log_potential_curvature() is ~zero everywhere tested -- the
+
+    ::
+
        gradient reading really is structurally flat, not flat by luck.
+
     3) The zero-locus prediction matches on 2000 random points, not just
-       the two lines it was derived from."""
+
+    ::
+
+       the two lines it was derived from.
+    """
     rng = random.Random(1)
     max_err = 0.0
     max_log_curv = 0.0

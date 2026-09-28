@@ -4,7 +4,8 @@ Lexicon — The accumulated experience of the ValaQuenta.
 Maps Riemann zeros (primes) to the surface forms that point at them.
 Persists across sessions. Grows with every corpus processed.
 
-Structure:
+Structure::
+
     gamma → { surface_form → count }          (global)
     gamma → { domain → { surface_form → count } }  (domain-indexed)
 
@@ -33,7 +34,8 @@ class Lexicon:
     """
     Persistent map from Riemann zeros to surface forms.
 
-    Each entry:
+    Each entry::
+
         gamma  — the Riemann zero (the prime, the instrument)
         faces  — {surface_form: count}  (global, language-agnostic)
         domains — {domain_description: {surface_form: count}}

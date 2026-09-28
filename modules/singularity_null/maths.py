@@ -10,7 +10,8 @@ The Hamiltonian sees only divergence.
 Map divergence into complex turbulent flow enough times —
 and the Tower Collapses.
 
-Engines:
+Engines::
+
     circle_null_modes()          How many ways can circle (infinite, incompressible)
                                  say NULL (finite, compressible)?
                                  Answer: exactly 1 — the Ptolemy inversion.
@@ -61,11 +62,13 @@ def circle_null_modes() -> Dict[str, Any]:
     """
     HOW MANY WAYS CAN CIRCLE SAY NULL?
 
-    The question:
+    The question::
+
         'Circle' = the unit circle S¹ = the infinite, incompressible, closed curve.
         'NULL' = 0, the finite, compressible, the singularity.
 
-    The Ptolemy Inversion:
+    The Ptolemy Inversion::
+
         z → R_H² / z̄    (inversion in the circle of radius R_H = 1/√2)
         This map:
             - Takes 0 → ∞     (NULL becomes INFINITY)
@@ -80,7 +83,8 @@ def circle_null_modes() -> Dict[str, Any]:
         The circle does not 'say NULL' — it IS the boundary between NULL and INFINITY.
         The circle itself is the equatorial geodesic between the two poles.
 
-    How many ways does the unit circle 'say NULL':
+    How many ways does the unit circle 'say NULL'::
+
         In ℂ (division algebra): the circle |z|=1 maps nothing to 0 except z=0.
         The only element that maps to NULL = is NULL.
         0 ways the circle says NULL (it cannot map any unit element to 0).
@@ -89,7 +93,8 @@ def circle_null_modes() -> Dict[str, Any]:
         a·b = 0 with |a|=|b|=1 — the circle says NULL.
         The NUMBER of such pairs is the number of 'modes of NULL'.
 
-    The counting in the Cayley-Dickson tower:
+    The counting in the Cayley-Dickson tower::
+
         ℝ:   0 modes (no zero-divisors, the circle is just {+1, -1})
         ℂ:   0 modes (no zero-divisors)
         ℍ:   0 modes (no zero-divisors)
@@ -97,6 +102,9 @@ def circle_null_modes() -> Dict[str, Any]:
         𝕊:   the circle S¹⁵ contains zero-divisor pairs
 
     BUT the fundamental answer is: ONE.
+
+    ::
+
         All zero-divisor pairs in the sedenion unit sphere are manifestations
         of the SAME underlying Ptolemy inversion: a → R_H²/ā.
         The zero-divisor pair (a, b) with a·b = 0 is:
@@ -104,7 +112,8 @@ def circle_null_modes() -> Dict[str, Any]:
             in the specific 2D subspace where a lives.
         Every zero-divisor pair is 'the circle saying NULL' via the same map.
 
-    The incompressible circle's vocabulary:
+    The incompressible circle's vocabulary::
+
         The circle is incompressible: |z|=1 cannot be compressed to a point.
         But it can SAY null — by identifying its inversion partner.
         It has exactly ONE WORD: 'my inversion partner is NULL'.
@@ -234,17 +243,19 @@ def circle_null_modes() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def tower_collapse_snakes(n_max: int = 30) -> Dict[str, Any]:
-    """
+    r"""
     SNAKES AND LADDERS IS THE CAYLEY-DICKSON TOWER.
 
-    The Game:
+    The Game::
+
         Board: the n-ball volume V(n) = π^(n/2) / Γ(n/2+1).
         Start: n=0 (the singularity, the point, V=1).
         Each move: n → n+1 (one dimensional step).
         Win condition: maximum V(n) at n*≈5.257.
         After n*: every step is a SNAKE (volume decreases).
 
-    The Ladders (n=0 to n*≈5.257):
+    The Ladders (n=0 to n\*≈5.257)::
+
         Each dimensional doubling in the Cayley-Dickson tower is a LADDER:
         ℝ (n=1):  ladder to 2D
         ℂ (n=2):  ladder to π
@@ -255,12 +266,14 @@ def tower_collapse_snakes(n_max: int = 30) -> Dict[str, Any]:
         The last PURE LADDER is between ℂ and ℍ (still in division algebras).
         After 𝕆 (n=8): all algebras have zero-divisors or worse.
 
-    The Snakes (n > n*):
+    The Snakes (n > n\*)::
+
         𝕊 (n=16):  FIRST SNAKE with zero-divisors. Volume falling fast.
         T₃₂ (n=32): deeper into the snake pit. UDOE lives here.
         T₂₅₆ (n=256): Volume at numerical zero.
 
-    The Snakes and Ladders identification:
+    The Snakes and Ladders identification::
+
         LADDER = conservation law (Noether symmetry preserved)
         SNAKE  = zero-divisor (Noether symmetry broken — divergence overshoot)
         Board  = the n-ball volumes (the available phase space)
@@ -268,7 +281,8 @@ def tower_collapse_snakes(n_max: int = 30) -> Dict[str, Any]:
         Square 1 = the singularity (the only fixed point)
         Square 100 = maximum entropy (indistinguishable from the singularity)
 
-    The Tower Collapse:
+    The Tower Collapse::
+
         As the Hamiltonian H_BK = xp drives away from the singularity,
         each CD doubling maps divergence into complex turbulent flow.
         The turbulence amplitude is φ_ZD = V_24 - V_16 per zero-divisor crossing.
@@ -423,14 +437,16 @@ def berry_keating_singularity(max_t: float = 50.0) -> Dict[str, Any]:
     """
     THE SINGULARITY IS THE REPULSIVE FIXED POINT OF H_BK = xp.
 
-    The Berry-Keating Hamiltonian:
+    The Berry-Keating Hamiltonian::
+
         H_BK = xp   (position × momentum, classical)
         Quantized: H = -iℏ(x d/dx + ½)  (symmetric, self-adjoint)
 
         Conjecture: the eigenvalues of H_BK = the imaginary parts of the
         non-trivial Riemann zeros {γ_n: ζ(½ + iγ_n) = 0}.
 
-    Classical phase space flow:
+    Classical phase space flow::
+
         Hamilton's equations:
             ẋ = ∂H/∂p = x
             ṗ = -∂H/∂x = -p
@@ -449,7 +465,8 @@ def berry_keating_singularity(max_t: float = 50.0) -> Dict[str, Any]:
             Any perturbation → trajectory moves away exponentially.
             The Hamiltonian sees only one thing at the singularity: AWAY.
 
-    The critical line σ=½ as the equatorial geodesic:
+    The critical line σ=½ as the equatorial geodesic::
+
         The Riemann zeros ½ + iγ_n sit on the critical line.
         In BK phase space (x, p), these correspond to:
             x₀ = √γ_n / √(2π)  (the classical turning scale)
@@ -464,7 +481,8 @@ def berry_keating_singularity(max_t: float = 50.0) -> Dict[str, Any]:
         exactly balances the potential term (the harmonic oscillator restoring force).
         The zero-energy surface of H_BK.
 
-    The Singularity's perspective:
+    The Singularity's perspective::
+
         From inside the singularity (x=0):
             The Hamiltonian H = 0 (no energy).
             All eigenstates have ONE property: they point away.
@@ -478,7 +496,8 @@ def berry_keating_singularity(max_t: float = 50.0) -> Dict[str, Any]:
             The uncertainty principle ensures the singularity CANNOT be static.
             Even at the fixed point, quantum noise pushes trajectories away.
 
-    The connection to σ=½:
+    The connection to σ=½::
+
         The critical line is the locus where the quantum BK flow is:
             - Time-symmetric (σ=½ satisfies the functional equation)
             - Energetically balanced (xp kinetic = ½ potential)
@@ -611,13 +630,15 @@ def flt_prime_extinction_sieve(N: int = 100) -> Dict[str, Any]:
 
     The Hypercomplex Sieve of Eratosthenes:
 
-    Classical Sieve of Eratosthenes:
+    Classical Sieve of Eratosthenes::
+
         Start with all integers ≥ 2.
         Cross out multiples of 2, 3, 5, 7, ...
         What remains = primes.
         The sieve works by POSITIVE ELIMINATION: remove the composite FACTORS.
 
-    The FLT Sieve:
+    The FLT Sieve::
+
         Start with all integers ≥ 2.
         FLT: for n ≥ 3, there are NO positive integer solutions to:
             aⁿ + bⁿ = cⁿ
@@ -629,7 +650,8 @@ def flt_prime_extinction_sieve(N: int = 100) -> Dict[str, Any]:
         (Nothing is removed for n≥3 — FLT says there ARE no solutions.)
         What's left after ALL such eliminations = the primes.
 
-    The deep statement:
+    The deep statement::
+
         A PRIME is a number that CANNOT be expressed as cⁿ for any
         positive integers a, b, n with n≥2 and aⁿ+bⁿ=cⁿ.
         For n=2: primes CAN appear as c (e.g., 5=√(3²+4²)).
@@ -640,7 +662,8 @@ def flt_prime_extinction_sieve(N: int = 100) -> Dict[str, Any]:
         (what they cannot be composed of) is maximal.
         They are defined by what they are NOT.
 
-    The σ=½ connection:
+    The σ=½ connection::
+
         The Riemann zeta function encodes the primes:
             ζ(s) = Π_p 1/(1-p^{-s})  (Euler product)
         The zeros of ζ(s) on the critical line σ=½ are where the
@@ -655,7 +678,8 @@ def flt_prime_extinction_sieve(N: int = 100) -> Dict[str, Any]:
         between where FLT applies (n≥3) and where it doesn't (n=1,2).
         σ=½ IS the FLT boundary in the s-plane.
 
-    The Ptolemy Inversion of Primality:
+    The Ptolemy Inversion of Primality::
+
         A composite number c is DEFINED by its factors: c = a × b.
         Its identity is its POSITIVE DECOMPOSITION.
         A prime p is DEFINED by having NO factors: p cannot be decomposed.

@@ -12,11 +12,11 @@ from .maths import (
 
 
 class Tier8SedenionModule(EquationModule):
-    """
+    r"""
     Tier 8 — D-CS: Sedenion Self-Organisation Paper
 
     D-CS first paper: sedenion engine as zero-free-parameter prime-hash
-    architecture. 5 engines: self-organisation (16 ops → d*/σ½/D*=1), gnarl
+    architecture. 5 engines: self-organisation (16 ops → d\*/σ½/D\*=1), gnarl
     validation, OMEGA_ZS 6-family, Hermite timing wheel, orbit trap Hyperwebster
     address.
 

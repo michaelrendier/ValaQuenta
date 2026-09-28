@@ -5,12 +5,14 @@ JWST spectral pixel module.
 Cayley-Dickson addressing of spectral data.
 
 Each JWST pixel is a spectral measurement at a specific wavelength.
-The Cayley-Dickson tower provides a natural address space:
+The Cayley-Dickson tower provides a natural address space::
+
   λ (wavelength nm) → radial coordinate r ∈ (0,1)
   intensity         → algebra element norm
   8 JWST filters    → 8 octonion components (e0..e7)
 
-JWST NIRCam filters (approximate central wavelengths nm):
+JWST NIRCam filters (approximate central wavelengths nm)::
+
   F090W : 900 nm
   F115W : 1150 nm
   F150W : 1500 nm
@@ -76,19 +78,19 @@ def r_to_lambda(r: float) -> float:
 # ── Spectral pixel → octonion ──────────────────────────────────────────────────
 
 def spectral_to_octonion(intensities: List[float]) -> Dict[str, Any]:
-    """
+    r"""
     Map 8 JWST filter intensities to an 𝕆 element.
 
     intensities: list of 8 floats (one per NIRCam filter), in filter order.
     If fewer than 8 provided, remaining components are 0.
 
     The 𝕆 element: Ψ = Σ_k I_k · e_k  (k=0..7)
-    Norm: |Ψ| = sqrt(Σ I_k²)
+    Norm: \|Ψ\| = sqrt(Σ I_k²)
 
     Returns: components, norm, r_coords (radial addresses of each filter)
 
     :param intensities: up to 8 intensities, one per NIRCam filter in filter order; missing components are 0
-    :returns: dict with the octonion components, the norm |Ψ| = √ΣI² and the radial address of each filter
+    :returns: dict with the octonion components, the norm \|Ψ\| = √ΣI² and the radial address of each filter
     """
     comps = (list(intensities) + [0.0] * 8)[:8]
     norm  = math.sqrt(sum(c*c for c in comps))
@@ -128,7 +130,8 @@ def cd_spectral_address(intensities: List[float],
     """
     Full Cayley-Dickson address for a JWST spectral pixel.
 
-    The address encodes:
+    The address encodes::
+
       ℝ layer : mean intensity (scalar)
       ℂ layer : (mean_blue, mean_red) — short vs long wavelength
       ℍ layer : (I_0, I_2, I_4, I_6) — alternate filter components
@@ -179,7 +182,8 @@ def synthetic_spectrum(emission_type: str = 'hydrogen') -> Dict[str, Any]:
     """
     Generate a synthetic emission spectrum for testing.
 
-    emission_type:
+    emission_type::
+
       'hydrogen'   Balmer series (Hα at 656nm outside NIRCam, Pa-α at 1875nm etc.)
       'flat'       uniform across all filters
       'stellar'    blackbody-like declining with wavelength

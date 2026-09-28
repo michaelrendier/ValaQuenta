@@ -6,10 +6,12 @@ HyperWebster hypergallery — Horner bijection, SemanticWord datatype.
 The HyperWebster is a coordinate system, not a dictionary.
 Every word is an address. Every address is exact.
 
-Horner bijection (base-97):
+Horner bijection (base-97)::
+
   text_index = c0·97^{k-1} + c1·97^{k-2} + ... + c_{k-1}·97^0
 
-Fano index (base-7):
+Fano index (base-7)::
+
   fano_index = (char_idx % 7) for each char — octonion path address
 
 SemanticWord: a word with both a Horner address and a Fano address.
@@ -258,9 +260,9 @@ class HyperGallery:
             return None
 
     def fano_neighbours(self, word: SemanticWord, n: int = 5) -> List[SemanticWord]:
-        """
+        r"""
         Find words whose Fano index is closest to word's Fano index.
-        Distance = |fano_idx_a - fano_idx_b| (integer distance).
+        Distance = \|fano_idx_a - fano_idx_b\| (integer distance).
 
         :param word: the word to find neighbours of
         :param n: number of neighbours
@@ -312,7 +314,8 @@ def monad_address(text: str, algebra: int) -> Dict[str, Any]:
     """
     Monad: HyperWebster + Cayley-Dickson SMNNIP integrated.
 
-    Maps a SemanticWord to coordinates in the algebra tower:
+    Maps a SemanticWord to coordinates in the algebra tower::
+
       ℝ layer : horner_idx mod dim_R
       ℂ layer : (horner_idx mod dim_C^2) complex components
       ℍ layer : (fano_idx mod dim_H^4) quaternion components

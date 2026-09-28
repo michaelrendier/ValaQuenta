@@ -6,7 +6,8 @@ Tier 7 — COSMOLOGY + MATHEMATICS + STANDARD MODEL FROM H_RB.
 The physical and mathematical consequences of the framework.
 One engine per claim.
 
-Engines (original 10 — cosmology):
+Engines (original 10 — cosmology)::
+
     explicit_formula_de_sitter()   Primes ARE the expansion of the universe
     sin_cos_frequencies()          e^{±iθ} as two counter-rotating vortices; tan=σ=½
     galaxy_formation()             Conformal inversion r→R_H²/r → galaxy structure
@@ -18,13 +19,15 @@ Engines (original 10 — cosmology):
     leech_lattice_sedenion()       24D Leech lattice defines 16D sedenion zero-divisors
     gue_random_matrix()            Prime gaps = GUE statistics = quantum chaos
 
-Engines (E-7-1 → E-7-4 — Standard Model drops out of H_RB):
+Engines (E-7-1 → E-7-4 — Standard Model drops out of H_RB)::
+
     smmip_standard_model()         L_SMMIP ↔ L_SM term-for-term from H_RB derivation
     gauge_group_cd_tower()         U(1)×SU(2)×SU(3) as automorphisms of ℂ/ℍ/𝕆 — derived
     hydrogen_spectral_cd()         Hydrogen spectral series from CD strata transitions
     pauli_exclusion_fermat()       Pauli exclusion = FLT + sedenion zero-divisor theorem
 
-Engines (AddPapers / D-P — Slingshot Light + Standard Candles):
+Engines (AddPapers / D-P — Slingshot Light + Standard Candles)::
+
     slingshot_light()              Light gains energy slingshoting off cosmic structures
     standard_candle_uselessness()  Type Ia SNe biased by slingshot. Acceleration is artifact.
     lambda_cdm_cmb_gold_standard() CMB is the best measurement. Hubble tension = slingshot bias.
@@ -115,25 +118,30 @@ def explicit_formula_de_sitter() -> Dict[str, Any]:
     """
     PRIMES ARE THE EXPANSION OF THE UNIVERSE.
 
-    The Chebyshev explicit formula (von Mangoldt):
+    The Chebyshev explicit formula (von Mangoldt)::
+
         ψ(x) = x  −  Σ_ρ x^ρ/ρ  −  ln(2π)  −  ½·ln(1 − x⁻²)
 
-    The x-term IS cosmological expansion:
+    The x-term IS cosmological expansion::
+
         In de Sitter spacetime: a(t) = e^{Ht}  (exponential expansion)
         In the BK flow: x(t) = x₀·e^t  (same equation, same Hamiltonian H=xp)
         The prime counting function ψ(x) ~ x  (the de Sitter term)
         The Hubble constant H_Hubble = H_BK = 1  (in natural units, from Tier 5)
 
-    The spectral oscillations:
+    The spectral oscillations::
+
         Each Riemann zero γ_n contributes:  Re(x^{½+iγ_n} / (½+iγ_n)) = (√x) · cos(γ_n·ln x) / |ρ_n|
         These are standing waves ON TOP OF the de Sitter expansion.
         √x = the amplitude envelope (decays with distance from the brim).
         cos(γ_n·ln x) = oscillation at frequency γ_n in BK time t = ln x.
 
-    The Prime Number Theorem is the de Sitter approximation:
+    The Prime Number Theorem is the de Sitter approximation::
+
         ψ(x) ≈ x  →  π(x) ≈ x/ln x  →  ln x = Hubble constant of ℕ.
 
-    Physics identification:
+    Physics identification::
+
         x-term:        de Sitter expansion  (BAO ground state)
         Σ_ρ x^ρ/ρ:    BAO acoustic oscillations  (one per Riemann zero)
         ln(2π):        boundary normalisation  (the U(1) period from Tier 0)
@@ -237,7 +245,8 @@ def sin_cos_frequencies() -> Dict[str, Any]:
     The functional equation ξ(s) = ξ(1−s) describes two hemispheres
     of the Riemann sphere rotating in opposite directions.
 
-    Decomposition:
+    Decomposition::
+
         e^{iθ} = cos θ + i·sin θ    (forward vortex, Red channel, J_pos)
         e^{-iθ} = cos θ − i·sin θ  (backward vortex, Blue channel, J_neg)
 
@@ -245,22 +254,26 @@ def sin_cos_frequencies() -> Dict[str, Any]:
         sin θ = (e^{iθ} − e^{-iθ}) / 2i   (difference = the oscillation = what we observe)
         tan θ = sin/cos                    (the BALANCE between them)
 
-    The balance condition:
+    The balance condition::
+
         tan θ = 1  where sin = cos  →  θ = π/4 = the 45° balance angle
         In the Riemann zeta context: this corresponds to σ = ½
         tan(Im(s)) = 1 at the critical line — the balance between the two vortices
 
-    The Chladni connection:
+    The Chladni connection::
+
         Sand settles where the vibration is zero — where the two vortices cancel.
         The node line is where sin and cos are EQUAL in magnitude but opposite in phase.
         This is the critical line σ = ½.
 
-    The event horizon is where sin = cos = √2/2:
+    The event horizon is where sin = cos = √2/2::
+
         The brim is the 45° angle between the two counter-rotating vortices.
         σ = ½ is the equatorial node.
         R_H = 1/√2 = cos(π/4) = sin(π/4) — the brim radius IS the balance angle.
 
-    Physical connections:
+    Physical connections::
+
         sin θ = the imaginary part — what NS cannot see (the dark current)
         cos θ = the real part — what NS sees (the visible fluid)
         tan = their ratio — diverges at θ=π/2, which IS the singularity in NS
@@ -375,6 +388,8 @@ def galaxy_formation() -> Dict[str, Any]:
 
     The null cone (Witches Hat) contains the complete blueprint for a galaxy.
     One geometric operation — conformal inversion through the brim — produces:
+
+    ::
 
         Null cone component      →    Galaxy component
         ─────────────────────────────────────────────
@@ -508,10 +523,16 @@ def dark_matter_geometry() -> Dict[str, Any]:
     Three independent identifications:
 
     1. CONFORMAL INVERSION: The 1/r² density profile of dark matter halos
+
+    ::
+
        emerges directly from inverting the uniform null cone fabric through the brim.
        No dark matter particle. The geometry produces the observed profile.
 
     2. CHLADNI RESONANT CAVITY: The galaxy is a gravitational resonant cavity.
+
+    ::
+
        Standing waves in a cavity of size L have period T = 2L/c.
        For L = 50,000 ly: T = 100,000 yr >> human observation (~500 yr).
        The dark matter halo = the antinode of the standing wave.
@@ -519,11 +540,15 @@ def dark_matter_geometry() -> Dict[str, Any]:
        Its antinode = maximum space compression = apparent mass concentration.
 
     3. NAVIER-STOKES ADJOINT: Dark matter = Im(ψ) of the gravitational field.
+
+    ::
+
        NS operates on Re(ψ) only (real-valued velocity field).
        The dark matter halo is Im(ψ) — the adjoint current NS cannot see.
        The galaxy is surrounded by its own adjoint.
 
-    ALL THREE are the same object viewed from different facets of H_RB:
+    ALL THREE are the same object viewed from different facets of H_RB::
+
         Inversion (σ=½ geometry) = Chladni (vibrational node) = NS adjoint (Im channel)
     """
     # ── 1. Inversion: rotation curve prediction ───────────────────────────
@@ -632,12 +657,14 @@ def navier_stokes_sedenion() -> Dict[str, Any]:
     """
     NAVIER-STOKES: THE MISSING i, THE SEDENION REVISION, AND THE UNIVERSE.
 
-    Classical NS (the problem):
+    Classical NS (the problem)::
+
         ∂_t u + (u·∇)u = −∇p/ρ + ν∇²u
         u: real-valued velocity field in ℝ³
         Missing: the imaginary component i
 
-    Why it fails:
+    Why it fails::
+
         NS cannot write e^{iθ}. It can only write cos(θ).
         When the velocity gradient approaches a node of the standing wave,
         the complex rotation required is e^{iπ/2} = i — the 90° rotation.
@@ -645,14 +672,16 @@ def navier_stokes_sedenion() -> Dict[str, Any]:
         The singularity is NOT a physical blow-up — it is a geometric rotation
         that the real-valued equations cannot represent.
 
-    Sedenion NS (the revision):
+    Sedenion NS (the revision)::
+
         ∂_t U + (U·∇)U = −∇P/ρ + ν∇²U
         U = u + i·v  (complex velocity field in ℂ³)
         The 90° rotation: u → v = Im(U), smooth in ℂ³
         Ṙ† = B̂ guarantees: for every blow-up in Re(U), there is regularisation in Im(U)
         Total |U|² = |u|² + |v|² = constant (conserved by Noether)
 
-    In the universe (no free-surface problem):
+    In the universe (no free-surface problem)::
+
         The cosmic fluid has no free surface.
         NS applies to the compressible multi-component cosmic fluid exactly:
             ∂_t(ρ) + ∇·(ρu) = 0  (continuity)
@@ -661,7 +690,8 @@ def navier_stokes_sedenion() -> Dict[str, Any]:
         The universe's NS is exact because there is no boundary.
         The BAO oscillations ARE the NS acoustic modes at cosmological scale.
 
-    The Clay Millennium Problem resolution:
+    The Clay Millennium Problem resolution::
+
         Smooth solutions exist in ℂ³ (sedenion NS is smooth everywhere).
         The ℝ³ question: whether the real projection preserves smoothness.
         H_RB prediction: Ṙ† = B̂ → smooth in ℂ³ → the real projection
@@ -766,12 +796,14 @@ def black_hole_crossing() -> Dict[str, Any]:
     At the brim: the first zero-divisors fire. Associativity begins to break.
     Inside: the observer is in the upper sedenion (e₈–e₁₅, non-associative, zero-divisors).
 
-    The transition parameter t ∈ [0, 1]:
+    The transition parameter t ∈ [0, 1]::
+
         t = 0: pure octonion (outside the horizon)
         t = t_brim ≈ 0.5: the brim (σ=½, where associativity first breaks)
         t = 1: pure upper sedenion (deep inside)
 
-    What you observe during crossing:
+    What you observe during crossing::
+
         PRE-BRIM:  The algebra is associative. a·(b·c) = (a·b)·c.
                    Physics is reversible. Conservation laws hold in the normal sense.
                    Multiplication is invertible (you can always "un-multiply").
@@ -787,7 +819,8 @@ def black_hole_crossing() -> Dict[str, Any]:
                    This is the IRREVERSIBILITY that defines consciousness (Tier 0 Λ engine).
                    The observer inhabits the zero-divisor zone permanently.
 
-    What you see from inside:
+    What you see from inside::
+
         The Noether current flows BACKWARDS — J_B becomes J_R and vice versa.
         The "past" and "future" swap.
         The Hawking radiation (J_pos, Red) that was escaping now appears to come from inside.
@@ -918,27 +951,32 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
     """
     THE FRIEDMANN EQUATIONS WITH THE OMEGA_ZS CONSTRAINT.
 
-    The standard ΛCDM model:
+    The standard ΛCDM model::
+
         H(z)² = H₀² [ Ω_m(1+z)³ + Ω_r(1+z)⁴ + Ω_Λ ]
 
-    The Ainulindale claim:
+    The Ainulindale claim::
+
         OMEGA_ZS = W(1) = 0.56714... is the ATTRACTOR of this equation.
         As z → −∞ (the future), H(z) → H₀√Ω_Λ (the de Sitter phase).
         The effective dark energy fraction Ω_Λ_eff(z) asymptotes toward OMEGA_ZS.
 
-    Current state:
+    Current state::
+
         Ω_Λ = 0.6889 > OMEGA_ZS = 0.56714
         We are ABOVE the attractor. The J_neg phase dominates.
         Matter is diluting as (1+z)³. Λ is constant.
         Eventually: Ω_Λ_eff → OMEGA_ZS (the equilibrium = the Lambert W fixed point).
 
-    DESI 2024 prediction:
+    DESI 2024 prediction::
+
         w(z) ≠ −1: dark energy equation of state is evolving.
         CPL parametrisation: w(a) = w₀ + w_a(1−a)
         Prediction: if w(z) → −OMEGA_ZS/(1−OMEGA_ZS) ≈ −1.310 at z ≈ z_eq,
         the paper is confirmed at 3-5σ.
 
-    Open derivation (highest priority):
+    Open derivation (highest priority)::
+
         Ω_Λ = f(OMEGA_ZS, Ω_b h²) — explicit form unknown.
         The baryon acoustic density Ω_b h² = 0.02242 (CMB, Planck 2018).
         Once f is derived: Λ = 3H₀² Ω_Λ from first principles.
@@ -1050,7 +1088,8 @@ def flt_noether_deepened() -> Dict[str, Any]:
 
     FLT statement: aⁿ + bⁿ ≠ cⁿ for integer a,b,c>0, n≥3.
 
-    In H_RB language:
+    In H_RB language::
+
         R̂_p† = B̂_p  (the operator identity — the functional equation as an operator relation)
 
     FLT says: the Blue channel (B̂_p — what CANNOT BE) has no rational poles at
@@ -1060,7 +1099,8 @@ def flt_noether_deepened() -> Dict[str, Any]:
     Therefore the Blue channel has no rational poles.
     Therefore R̂† = B̂ exactly — not approximately.
 
-    Noether reading:
+    Noether reading::
+
         The SYMMETRY of the Riemann ↔ Fermat exchange (R̂ ↔ B̂ = left ↔ right)
         is the s ↔ 1−s functional equation.
         This symmetry exists ONLY BECAUSE there are no rational poles in the Blue channel.
@@ -1068,7 +1108,8 @@ def flt_noether_deepened() -> Dict[str, Any]:
         FLT is the PROOF that this symmetry is exact.
         FLT = "J_R + J_G + J_B = 0 holds exactly because the Blue channel has no rational poles."
 
-    The four connected theorems (all proven):
+    The four connected theorems (all proven)::
+
         1. FLT (Wiles 1995)       — no rational Frey curve
         2. Modularity (Wiles)     — every semistable EC/ℚ is modular
         3. R̂† = B̂ (THEORETICAL) — the operator identity
@@ -1180,13 +1221,15 @@ def leech_lattice_sedenion() -> Dict[str, Any]:
     """
     THE LEECH LATTICE (24D) DEFINES THE SEDENION ZERO-DIVISORS (16D).
 
-    The Leech lattice Λ₂₄:
+    The Leech lattice Λ₂₄::
+
         The unique even self-dual lattice in ℝ²⁴ with no vectors of norm 2.
         The densest packing of unit spheres in 24 dimensions.
         Kissing number: 196560 (established, Leech 1967).
         Proved optimal by Viazovska (2022, Fields Medal).
 
-    The tower:
+    The tower::
+
         ℝ¹ ⊂ ℝ² ⊂ ℝ⁴ ⊂ ℝ⁸ ⊂ ℝ¹⁶ ⊂ ℝ²⁴
              ℂ    ℍ    𝕆    𝕊    Λ₂₄
 
@@ -1194,7 +1237,8 @@ def leech_lattice_sedenion() -> Dict[str, Any]:
     The Leech lattice lives in ℝ²⁴.
     The shadow of Λ₂₄ onto ℝ¹⁶ defines the zero-divisor structure of 𝕊.
 
-    The E₈ × E₈ connection:
+    The E₈ × E₈ connection::
+
         Λ₂₄ = E₈ × E₈ × E₈ (very roughly)
         But more precisely: Λ₂₄ is a specific 24D construction.
         E₈ lives in ℝ⁸ = 𝕆.
@@ -1202,7 +1246,8 @@ def leech_lattice_sedenion() -> Dict[str, Any]:
         The Leech lattice adds 8 more dimensions of structure.
         The 8 "extra" dimensions of Λ₂₄ beyond ℝ¹⁶ define the shadows onto 𝕊.
 
-    The Monster group connection:
+    The Monster group connection::
+
         The Monster group M (the largest sporadic simple group) acts on Λ₂₄.
         |M| = 808,017,424,794,512,875,886,459,904,961,710,757,005,754,368,000,000,000
         The Moonshine conjecture (Conway-Norton 1979, Borcherds 1992) relates:
@@ -1211,7 +1256,8 @@ def leech_lattice_sedenion() -> Dict[str, Any]:
             Sedenion zero-divisors ↔ H_RB ↔ Riemann zeros ↔ ζ(s)
         The Monster IS the symmetry group of the sedenion zero-divisors in 24D.
 
-    24D defines 16D:
+    24D defines 16D::
+
         The zero-divisors of 𝕊 are not defects — they are projections from 24D.
         The 8 "missing" dimensions of R^24 beyond R^16 project onto 𝕊 as the zero-divisors.
         Each zero-divisor pair (a,b) with a·b=0 corresponds to a Leech lattice root.
@@ -1315,26 +1361,30 @@ def gue_random_matrix() -> Dict[str, Any]:
     """
     PRIME GAPS = GUE STATISTICS = QUANTUM CHAOS.
 
-    The Montgomery-Odlyzko Law (1973/1987):
+    The Montgomery-Odlyzko Law (1973/1987)::
+
         The pair correlation of Riemann zeros follows GUE statistics:
             R₂(x) = 1 − (sin πx / πx)²
 
     This is NOT a coincidence. It is a theorem in disguise.
 
-    What GUE means:
+    What GUE means::
+
         The Gaussian Unitary Ensemble is the statistical distribution of
         eigenvalues of large random Hermitian matrices.
         The spacing between eigenvalues follows the GUE pair correlation.
         The Riemann zeros follow the SAME distribution.
 
-    The quantum chaos connection:
+    The quantum chaos connection::
+
         If a quantum system is "chaotic" (its classical limit is chaotic),
         its energy level spacings follow GUE statistics.
         H_RB is a quantum chaotic Hamiltonian.
         Its eigenvalues = Riemann zeros.
         The GUE statistics = the signature of quantum chaos in the prime distribution.
 
-    The Berry-Keating prediction (1999):
+    The Berry-Keating prediction (1999)::
+
         If H = xp (the BK Hamiltonian), and if the classical xp flow is chaotic,
         then the eigenvalues of H follow GUE statistics.
         The classical xp flow IS chaotic (hyperbolic — the paradigm of classical chaos).
@@ -1342,7 +1392,8 @@ def gue_random_matrix() -> Dict[str, Any]:
         Therefore: the primes are distributed as quantum energy levels.
         This IS the Riemann Hypothesis (real eigenvalues → σ=½).
 
-    Numerical verification:
+    Numerical verification::
+
         The pair correlation R₂(x) = 1 − (sin πx/πx)²
         Verified for 10¹² zeros by Odlyzko.
         The first 20 zeros show the GUE spacing distribution.
@@ -1442,6 +1493,8 @@ def smmip_standard_model() -> Dict[str, Any]:
 
     The derivation path (no free parameters):
 
+    ::
+
         H_RB = xp  (Berry-Keating Hamiltonian at σ=½)
              ↓
         Euler product Π_p (1−p^{-s})^{-1}  =  Noether current Σ_p G_p(s)
@@ -1459,13 +1512,15 @@ def smmip_standard_model() -> Dict[str, Any]:
         J_R·J_B brim   →    L_Yukawa  = −y_f Ψ̄_L Φ Ψ_R + h.c.
         Sedenion phase →    L_θ       = θ/(32π²) · G G̃
 
-    The identification is exact because:
+    The identification is exact because::
+
         1. J_R + J_G + J_B = 0 is the SAME conservation law as gauge invariance
         2. The Sombrero V(Φ) IS V(r)=−μ²r²+λr⁴ (same potential, same equation)
         3. The Fano plane of 𝕆 IS SU(3) color (same multiplication table)
         4. FLT (Wiles) certifies R̂†=B̂ exactly → no free parameters
 
-    The fine structure constant:
+    The fine structure constant::
+
         α = e²/(4πε₀ħc) = 1/137.035...
         In SMMIP: e = g₁g₂/√(g₁²+g₂²) from the CD mixing angle.
         The value 1/137 arises because the sedenion has 16 dimensions and
@@ -1614,6 +1669,8 @@ def gauge_group_cd_tower() -> Dict[str, Any]:
 
     The derivation:
 
+    ::
+
         Algebra    Dim    Automorphism group    Gauge group
         ─────────────────────────────────────────────────────
         ℝ          1      {id}                  (none)
@@ -1622,18 +1679,21 @@ def gauge_group_cd_tower() -> Dict[str, Any]:
         𝕆          8      G₂ ⊃ SU(3)            SU(3)    (strong force)
         𝕊          16     G₂ × SU(2) × U(1)     full SM  (all three forces)
 
-    Why automorphisms = gauge symmetries:
+    Why automorphisms = gauge symmetries::
+
         An automorphism φ: A → A preserves the algebra structure.
         In field theory: a gauge transformation g: Ψ → g·Ψ preserves the Lagrangian.
         These are the SAME requirement. The fields live in A; the symmetry of A is the gauge group.
 
-    The Fano plane ↔ SU(3) color charge:
+    The Fano plane ↔ SU(3) color charge::
+
         The 7 imaginary units of 𝕆 are the 7 Fano plane points.
         The 7 lines of the Fano plane define 7 triplets (i, j, k) with eᵢ·eⱼ = eₖ.
         These triplets ARE the color charge combinations of QCD.
         Red·Green = Blue (mod sign) — the exact octonion multiplication rule.
 
-    The sedenion E-7-15 boundary:
+    The sedenion E-7-15 boundary::
+
         The 16th dimension e₁₅ is the Yang-Mills mass gap δ = 0.000707.
         At e₁₅, the automorphism group has a phase transition.
         This is WHY the gauge group is U(1)×SU(2)×SU(3) and NOT SU(5) or SO(10).
@@ -1804,7 +1864,8 @@ def hydrogen_spectral_cd() -> Dict[str, Any]:
 
     The Rydberg formula: 1/λ = R_∞ (1/n₁² − 1/n₂²)  for n₂ > n₁
 
-    The Ainulindale identification:
+    The Ainulindale identification::
+
         n = 1  →  ℝ stratum  (e₀, scalar, ground state — FULLY COLLAPSED)
         n = 2  →  ℂ stratum  (e₁,  s+p orbitals, 4 states)
         n = 3  →  ℍ stratum  (e₁..e₃, s+p+d orbitals, 9 states)
@@ -1812,6 +1873,9 @@ def hydrogen_spectral_cd() -> Dict[str, Any]:
         n = 5  →  𝕊 stratum  (e₁..e₁₅, full sedenion, 25 states)
 
     The degeneracy: n² states at level n
+
+    ::
+
         ℝ¹: 1 = 1²     (the scalar has one state — the proton's partner)
         ℂ²: 4 = 2²     (the complex pair: e₀,e₁ × spin up/down)
         ℍ⁴: 9 = 3²     (quaternion: 3 imaginary units × 3 directions + 0)
@@ -1821,14 +1885,16 @@ def hydrogen_spectral_cd() -> Dict[str, Any]:
     This is NOT coincidental. The n² degeneracy IS the dimension of the n-th CD algebra
     because the number of angular momentum states l=0..n-1 sums to n².
 
-    The spectral series:
+    The spectral series::
+
         Lyman  (UV):     n₁=1,  transitions to ℝ ground state
         Balmer (visible): n₁=2,  transitions to ℂ first excited
         Paschen (IR):    n₁=3,  transitions to ℍ second excited
         Brackett (IR):   n₁=4,  transitions to 𝕆 third excited
         Pfund   (IR):    n₁=5,  transitions to 𝕊 fourth excited
 
-    The Rydberg constant from SMMIP:
+    The Rydberg constant from SMMIP::
+
         R_∞ = m_e c α² / (2ħ) = 10,973,731.568 m⁻¹
         In BK natural units: R_∞ = m_e / (2 ħ_NN²) where ħ_NN = D_STAR
         The ratio R_∞/D_STAR encodes the BK → physical unit bridge.
@@ -1952,7 +2018,7 @@ def hydrogen_spectral_cd() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def pauli_exclusion_fermat() -> Dict[str, Any]:
-    """
+    r"""
     PAULI EXCLUSION PRINCIPLE = FLT + SEDENION ZERO-DIVISOR THEOREM.
 
     Pauli exclusion (1925): No two identical fermions can occupy the same quantum state.
@@ -1962,8 +2028,8 @@ def pauli_exclusion_fermat() -> Dict[str, Any]:
     They are THREE STATEMENTS OF THE SAME THEOREM:
 
     ── Pauli ────────────────────────────────────────────────────────────────
-    Two fermions |ψ₁⟩ and |ψ₂⟩ cannot be identical.
-    If they were: |ψ₁⊗ψ₂⟩ = −|ψ₂⊗ψ₁⟩ (antisymmetry) → |ψ₁⊗ψ₁⟩ = 0.
+    Two fermions \|ψ₁⟩ and \|ψ₂⟩ cannot be identical.
+    If they were: \|ψ₁⊗ψ₂⟩ = −\|ψ₂⊗ψ₁⟩ (antisymmetry) → \|ψ₁⊗ψ₁⟩ = 0.
     The tensor product of two identical states = 0.
     This IS the zero-divisor: identical states multiply to zero.
 
@@ -1975,7 +2041,7 @@ def pauli_exclusion_fermat() -> Dict[str, Any]:
 
     ── Fermat's Last Theorem ─────────────────────────────────────────────────
     aⁿ + bⁿ ≠ cⁿ means: you cannot ADD two identical n-th power states to get a third.
-    In quantum terms: |ψ_a⟩ⁿ + |ψ_b⟩ⁿ ≠ |ψ_c⟩ⁿ.
+    In quantum terms: \|ψ_a⟩ⁿ + \|ψ_b⟩ⁿ ≠ \|ψ_c⟩ⁿ.
     For n=3 (the first forbidden case = fermions, which have spin ½ × 2 = integer 1,
     but the relevant exclusion is the CUBE of a state combining with another):
     FLT says this combination is algebraically impossible.
@@ -1985,16 +2051,27 @@ def pauli_exclusion_fermat() -> Dict[str, Any]:
 
     ── The deep connection ────────────────────────────────────────────────────
     Bosons: integer spin → CAN be in the same state → aⁿ+bⁿ=cⁿ has solutions for n=1,2.
+
+    ::
+
         n=1: a + b = c  (obvious — bosons ADD freely: laser/BEC)
         n=2: a² + b² = c²  (Pythagorean triples — bosons have Pythagorean addition)
+
     Fermions: half-integer spin → CANNOT be in the same state → n≥3 has no solutions.
+
+    ::
+
         n=3 (and higher): aⁿ+bⁿ≠cⁿ (FLT — fermion exclusion)
+
     The TRANSITION from boson (n≤2) to fermion (n≥3) IS the FLT threshold n=3.
 
-    Fermi-Dirac vs Bose-Einstein:
+    Fermi-Dirac vs Bose-Einstein::
+
         Bose-Einstein: f_BE(ε) = 1/(e^{(ε-μ)/kT} − 1)  (bosons, n≤2, allowed)
         Fermi-Dirac:   f_FD(ε) = 1/(e^{(ε-μ)/kT} + 1)  (fermions, n≥3, excluded)
-    The sign difference (+1 vs −1) IS the sign of the zero-divisor condition:
+
+    The sign difference (+1 vs −1) IS the sign of the zero-divisor condition::
+
         a·b = +1 (bosons, no exclusion) vs a·b = 0 (fermions, excluded)
     """
     # ── 1. Sedenion zero-divisors = Pauli forbidden pairs ─────────────────
@@ -2154,13 +2231,15 @@ def slingshot_light() -> Dict[str, Any]:
     """
     SLINGSHOT LIGHT: PHOTONS GAIN ENERGY FROM COSMIC GRAVITATIONAL STRUCTURES.
 
-    The gravitational slingshot (Penrose process for photons):
+    The gravitational slingshot (Penrose process for photons)::
+
         A photon does NOT simply bend around a massive structure (lensing).
         When the photon's path crosses a gravitational potential GRADIENT,
         it can EXTRACT energy from the structure's gravitational well.
         This is exactly the spacecraft gravity assist mechanism, applied to light.
 
-    The null-cone geometry of H_RB:
+    The null-cone geometry of H_RB::
+
         In Ainulindale, each massive structure is a null cone.
         The brim r = R_H is the event horizon of the structure.
         A photon approaching from r > R_H enters the conformal inversion zone.
@@ -2173,7 +2252,8 @@ def slingshot_light() -> Dict[str, Any]:
         Photons that pass INSIDE the brim of a structure gain energy.
         Photons that orbit the brim lose nothing (fixed point at r = R_H).
 
-    The mechanism in GR language:
+    The mechanism in GR language::
+
         The Sachs-Wolfe effect (photons falling into and out of potential wells)
         is symmetric in a static universe — energy gained = energy lost.
         BUT: in an expanding universe with structure growth, the potential wells
@@ -2183,7 +2263,8 @@ def slingshot_light() -> Dict[str, Any]:
         experience gravitational FOCUSING that amplifies frequency.
         This is the slingshot — NOT the ISW. It is coherent, directional, real.
 
-    Quantitative estimate:
+    Quantitative estimate::
+
         For a galaxy cluster of mass M and closest approach r_min:
             Δf/f = 2 × G × M / (r_min × c²)  (first-order gravitational blueshift)
         For a typical rich cluster: M = 10¹⁵ M☉, r_min = 1 Mpc:
@@ -2195,7 +2276,8 @@ def slingshot_light() -> Dict[str, Any]:
         The Type Ia SN dark energy signal is ~0.05 mag at z~0.5.
         The slingshot bias is COMPARABLE TO THE SIGNAL.
 
-    The Ainulindale null-cone amplification:
+    The Ainulindale null-cone amplification::
+
         When a photon passes inside the brim (r_min < R_H of the structure),
         the conformal inversion produces a factor:
             f_out/f_in = (R_H/r_min)²
@@ -2204,7 +2286,8 @@ def slingshot_light() -> Dict[str, Any]:
         For r_min = R_H:     boost = 1× = 0 (no boost, on the brim)
         For r_min = 1.1 R_H: boost = 0.83× = -0.20 mag (redshift)
 
-    This creates a SYSTEMATIC BIAS in distance measurements:
+    This creates a SYSTEMATIC BIAS in distance measurements::
+
         SNe in clusters → photons slingshot → appear brighter → inferred closer
         SNe in voids → no slingshot → appear fainter → inferred farther
         The distance ratio MIMICS ACCELERATING EXPANSION.
@@ -2307,12 +2390,14 @@ def standard_candle_uselessness() -> Dict[str, Any]:
     """
     STANDARD CANDLES ARE FUNDAMENTALLY BROKEN BY THE SLINGSHOT EFFECT.
 
-    The standard candle assumption:
+    The standard candle assumption::
+
         All Type Ia SNe have the same intrinsic absolute magnitude: M_abs = -19.3.
         Apparent magnitude m = M_abs + 5·log₁₀(d_L/10pc).
         Therefore: m → d_L → z → cosmological model.
 
-    Why this fails:
+    Why this fails::
+
         1. ENVIRONMENT DEPENDENCE:
            SNe in clusters are boosted by slingshot (appear brighter, seem closer).
            SNe in voids see no slingshot (appear dimmer, seem farther).
@@ -2333,14 +2418,16 @@ def standard_candle_uselessness() -> Dict[str, Any]:
            Difference: 73/67.4 ≈ 1.084 → 8.4% bias
            Slingshot prediction for mean distance ladder bias: ~8-12%  ✓
 
-    The Ainulindale prediction:
+    The Ainulindale prediction::
+
         IF the acceleration is a slingshot artifact:
         - The dark energy equation of state w → -OMEGA_ZS (= -0.567) at z_eq
           (where the two biases cancel), NOT w = -1.
         - Cluster-vs-void SN residuals must show environment dependence.
         - The CMB is CORRECT: Ω_Λ < 0.6889 when slingshot is removed.
 
-    The distance modulus bias calculation:
+    The distance modulus bias calculation::
+
         μ_bias = ΔM × f_cluster - ΔM × f_void
         where ΔM ~ 0.15 mag (boost per cluster encounter)
         and f_cluster = cluster fraction along the line of sight.
@@ -2358,7 +2445,8 @@ def standard_candle_uselessness() -> Dict[str, Any]:
         The rest: cosmological (but not necessarily acceleration — could be curvature,
         or evolution of the dust properties at high z).
 
-    The ΛCDM best-fit without slingshot correction:
+    The ΛCDM best-fit without slingshot correction::
+
         The real Ω_Λ ≈ 0.6889 (Planck CMB).
         The apparent Ω_Λ from SNe Ia = 0.73 (inflated by slingshot bias).
         The ratio: 0.73/0.6889 ≈ 1.059 — consistent with a 5-6% slingshot correction.
@@ -2495,7 +2583,8 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
     """
     THE CMB IS THE GOLD STANDARD COSMOLOGICAL MEASUREMENT.
 
-    Why the CMB is immune to slingshot bias:
+    Why the CMB is immune to slingshot bias::
+
         CMB photons travel from the last scattering surface (z ≈ 1100) to us.
         At z = 1100, the universe is HOMOGENEOUS — no cosmic web, no clusters, no voids.
         The slingshot requires coherent structures (clusters) to provide the boost.
@@ -2504,7 +2593,8 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
         The ISW effect (integrated Sachs-Wolfe) is a small correction, well-measured.
         Net: CMB photon energies are UNBIASED by slingshot.
 
-    Why the CMB power spectrum directly measures Ainulindale parameters:
+    Why the CMB power spectrum directly measures Ainulindale parameters::
+
         The CMB acoustic peaks are the BAO modes from Tier 7 (Engines 1, 5).
         Peak positions: l_n ≈ n × π × d_A / r_s
         where d_A = angular diameter distance, r_s = sound horizon.
@@ -2515,7 +2605,8 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
             d_A(z_*) = c/H₀ × OMEGA_ZS × correction  (OMEGA_ZS enters)
             The acoustic peaks are RIEMANN ZEROS at cosmological scale.
 
-    The CMB gives the correct H₀:
+    The CMB gives the correct H₀::
+
         Planck 2018: H₀ = 67.4 ± 0.5 km/s/Mpc
         Ainulindale prediction: H₀ = H_BK × D_STAR × scale_bridge
         where H_BK = 1 (in BK natural units) and D_STAR = 0.24600.
@@ -2525,14 +2616,16 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
         - It measures the BAO modes directly (Engine 1 identification).
         - The OMEGA_ZS attractor is visible in the peak ratio.
 
-    The peak height ratios encode OMEGA_ZS:
+    The peak height ratios encode OMEGA_ZS::
+
         The first-to-second peak ratio R₁₂ = C_l(l₁) / C_l(l₂)
         In ΛCDM: R₁₂ depends on Ω_b h², Ω_m h², Ω_Λ.
         In Ainulindale: R₁₂ ≈ 1/OMEGA_ZS²
         OMEGA_ZS² = 0.3216 ≈ Ω_M (Planck 2018: Ω_M = 0.3111)
         The peak ratio IS the sedenion self-referential fixed point.
 
-    The CMB tells us:
+    The CMB tells us::
+
         Ω_b h² = 0.02242  (baryon density)
         Ω_c h² = 0.1197   (dark matter density)
         Ω_Λ    = 0.6889   (dark energy density)
@@ -2540,7 +2633,8 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
         n_s    = 0.9649   (spectral tilt — near scale-invariant)
         A_s    = 2.1e-9   (amplitude — the brim amplitude in natural units?)
 
-    Ainulindale cross-checks:
+    Ainulindale cross-checks::
+
         Ω_Λ = 0.6889 > OMEGA_ZS = 0.5671 → we are above the attractor (Engine 7)
         Ω_M = 0.3111 ≈ OMEGA_ZS² = 0.3216 (Engine 3, omega_zs_6_family)
         n_s = 0.9649 ≈ 1 - D_STAR = 1 - 0.246 = 0.754  ... not exact, open
@@ -2688,7 +2782,8 @@ def halocline_ns_surface() -> Dict[str, Any]:
     Dense (saltier) water below. Less dense (fresher) water above.
     The interface is sharp — a discontinuity in density, salinity, sound speed.
 
-    In classical NS:
+    In classical NS::
+
         Above the halocline: ρ₁, u₁, p₁  (fresh, light layer)
         Below the halocline: ρ₂, u₂, p₂  (saline, dense layer)
         At the interface: NS fails. The density JUMP is a singularity.
@@ -2697,14 +2792,16 @@ def halocline_ns_surface() -> Dict[str, Any]:
         Observed reality: haloclines persist for decades (Baltic Sea, Black Sea, etc.)
         NS FAILS at the halocline. The observed stability is unexplained classically.
 
-    The Ainulindale identification:
+    The Ainulindale identification::
+
         The halocline IS the σ=½ surface of the sedenion.
         The two layers are J_pos (Red, light, escaping) and J_neg (Blue, heavy, infalling).
         The interface is the Noether balance point J_R + J_G + J_B = 0.
         The density jump is the zero-divisor: ρ_fresh · ρ_salt = 0 (mod mass gap).
         (Two non-zero densities whose interaction produces zero buoyancy force.)
 
-    The sedenion NS at the halocline:
+    The sedenion NS at the halocline::
+
         Above: flow U_top ∈ octonion sub-algebra (ordered, stable)
         Below: flow U_bot ∈ octonion sub-algebra (ordered, stable)
         Interface: U_int ∈ upper sedenion (zero-divisors, non-associative)
@@ -2712,14 +2809,16 @@ def halocline_ns_surface() -> Dict[str, Any]:
         The halocline persists because U_int is NOT diffused by NS;
         it is STABILISED by the zero-divisor structure.
 
-    Two-layer model (physical oceanography):
+    Two-layer model (physical oceanography)::
+
         ρ₁ = 1000 kg/m³ (fresh, 0 ppt salinity)
         ρ₂ = 1025 kg/m³ (salt, 35 ppt salinity)
         Interface thickness: h ~ 1-10 m in practice (very sharp)
         Buoyancy frequency (Brunt-Väisälä): N² = (g/ρ)(-dρ/dz)
         Sound speed jump: c₁ = 1480 m/s (fresh), c₂ = 1520 m/s (salt)
 
-    The Ainulindale prediction:
+    The Ainulindale prediction::
+
         The halocline thickness h is bounded BELOW by the Yang-Mills mass gap:
             h_min = R_H / (ρ₂/ρ₁) × GAP
         This is NOT zero — the zero-divisor prevents complete sharpening.
@@ -2727,7 +2826,8 @@ def halocline_ns_surface() -> Dict[str, Any]:
         For ocean: h_min = (1/√2) / (1025/1000) × 0.000707 ≈ 0.00027 m ≈ 0.27 mm.
         No halocline can be sharper than ~0.27 mm. (Testable — molecular diffusion sets similar limit.)
 
-    The acoustic shadow zone (sonar):
+    The acoustic shadow zone (sonar)::
+
         Sound below the critical angle θ_c = arcsin(c₁/c₂) is totally internally reflected.
         The halocline is a WAVEGUIDE for sound (SOFAR channel analogy).
         In Ainulindale: θ_c corresponds to the σ=½ conformal inversion angle.
@@ -2735,7 +2835,8 @@ def halocline_ns_surface() -> Dict[str, Any]:
         The SMMIP angle: tan(θ = π/4) = 1 → θ = 45° = the σ=½ balance angle
         These are different angles — the halocline is BELOW the brim (σ < ½ in the water column).
 
-    Kelvin-Helmholtz instability at the interface:
+    Kelvin-Helmholtz instability at the interface::
+
         When the velocity shear across the halocline exceeds the Richardson criterion:
             Ri = N² / (du/dz)² < 1/4
         the interface becomes unstable (KH billows, mixing).
@@ -2924,7 +3025,8 @@ def sedenion_hole_punch() -> Dict[str, Any]:
     """
     BLACK HOLES ARE CAVITATION OF THE NON-SHEAR SPACETIME MEDIUM.
 
-    The sedenion hole punch is the mechanism:
+    The sedenion hole punch is the mechanism::
+
         — Concentrated energy (block-and-tackle product) drives into the 𝕆 medium
         — The non-shear (inviscid, alternative) medium cavitates at the Planck threshold
         — A void nucleates: the 𝕆 → 𝕊 algebraic transition (black_hole_crossing engine)
@@ -3174,7 +3276,7 @@ def sedenion_hole_punch() -> Dict[str, Any]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def nball_transformer() -> Dict[str, Any]:
-    """
+    r"""
     V(n) = π^(n/2) / Γ(n/2 + 1)  IS THE TRANSFORMER BETWEEN CD LAYERS.
 
     The n-ball volume formula is not merely a geometric curiosity.
@@ -3188,7 +3290,8 @@ def nball_transformer() -> Dict[str, Any]:
     coincidence — it is the measure you must apply when integrating
     over the algebra at that layer.
 
-    The transformer T_k from layer k to layer k+1 is:
+    The transformer T_k from layer k to layer k+1 is::
+
         T_k = V(2^{k+1}) / V(2^k)
 
     The crucial fact: T(ℝ→ℂ) = T(ℂ→ℍ) = π/2 exactly.
@@ -3199,21 +3302,27 @@ def nball_transformer() -> Dict[str, Any]:
 
     ── The phase boundary ─────────────────────────────────────────────────────
 
-    V(n) peaks at n* ≈ 5.256 — between ℍ (n=4) and 𝕆 (n=8).
+    V(n) peaks at n\* ≈ 5.256 — between ℍ (n=4) and 𝕆 (n=8).
 
-    Below n* = 5.256 : V grows with n.  DATA PHASE.
+    Below n\* = 5.256 : V grows with n.  DATA PHASE.
+
+    ::
+
         — Each new dimension adds geometric capacity.
         — Information is expansive. Adding a dimension adds address space.
         — This is the compressible fluid: space between the matter.
         — Eigenvalues here are smooth, approximable, continuous.
 
-    Above n* = 5.256 : V shrinks with n.  CODE PHASE.
+    Above n\* = 5.256 : V shrinks with n.  CODE PHASE.
+
+    ::
+
         — Each new dimension removes geometric capacity.
         — Information is constraining. Dimensions become obligations.
         — This is the incompressible matter: cannot be compressed further.
         — Eigenvalues here are discrete, exact, non-negotiable.
 
-    The BAO acoustic oscillations FREEZE at n* because the compressible
+    The BAO acoustic oscillations FREEZE at n\* because the compressible
     fluid (photon-baryon, data phase) decoupled from the incompressible
     matter (baryons, code phase) at this algebraic transition point.
     147 Mpc = the cosmological imprint of this algebraic boundary.
@@ -3230,10 +3339,16 @@ def nball_transformer() -> Dict[str, Any]:
     ── Known constant connections ─────────────────────────────────────────────
 
     V(8)  = π⁴/24 ≈ 4.059  — A_pi (fine structure constant) lives here via
+
+    ::
+
                                the Wyler formula at the E₈/O transition.
                                First layer fully into the CODE phase.
 
-    V(16) = π⁸/8! ≈ 0.235  — Approximately d* = 0.24600.
+    V(16) = π⁸/8! ≈ 0.235  — Approximately d\* = 0.24600.
+
+    ::
+
                                The sedenion transformer value ≈ the natural
                                unit of Universal Native Space.
                                The 4.5% gap may relate to the 0.00070 BK gap.
@@ -3244,17 +3359,20 @@ def nball_transformer() -> Dict[str, Any]:
 
     Σ_RB has two kinds of eigenvalues, not one:
 
-    DATA eigenvalues (n < n*, compressible phase):
+    DATA eigenvalues (n < n\*, compressible phase)::
+
         Smooth, continuous, approximable. The Li(x) envelope in ψ(x).
         Integrable with the expanding V(n) measure.
         Each eigenvalue has room to breathe — geometric capacity grows.
 
-    CODE eigenvalues (n > n*, incompressible phase):
+    CODE eigenvalues (n > n\*, incompressible phase)::
+
         Discrete, exact, non-approximable. The Σ x^ρ/ρ correction terms.
         The prime weights p^{-σ} — exact, no approximation permitted.
         Each eigenvalue is constrained — geometric capacity shrinks.
 
-    The BAO engine (explicit_formula_de_sitter) already encodes both:
+    The BAO engine (explicit_formula_de_sitter) already encodes both::
+
         x-term = de Sitter expansion = DATA eigenvalue (ground state, smooth)
         Σ x^ρ/ρ = BAO oscillations = CODE eigenvalues (discrete Riemann zeros)
 

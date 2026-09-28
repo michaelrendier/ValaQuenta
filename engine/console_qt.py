@@ -3,7 +3,8 @@ ValaQuenta.engine.console_qt
 ============================
 Qt viewer for the registry: a VisPy canvas, a module list and a shell.
 
-Layout:
+Layout::
+
     +-----------------------------+------------------+
     |  VisPy Canvas               |  MODULE LIST     |
     |  [fano/complex/3d/text/     |  equation sel    |
@@ -12,14 +13,16 @@ Layout:
     |  QTermWidget shell          |  OUTPUT / INFO   |
     +-----------------------------+------------------+
 
-Display modes:
+Display modes::
+
     complex_plane   polar plot of inversion trajectory
     3d_cartesian    3D flow (VisPy scatter/line)
     fano            Fano plane (G2 / octonion structure)
     sonification    audio display (waveform + play)
     text            structured text, always available
 
-Sonification note:
+Sonification note::
+
     Sonification is a display mode, not a separate module.
     Viewer calls module.viewer_data(eq, params, 'sonification').
     Module returns omega/frequency data; viewer renders and plays.

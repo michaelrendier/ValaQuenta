@@ -1,4 +1,4 @@
-"""
+r"""
 ValaQuenta.engine.registry
 ==========================
 Module registry — the contract that all equation modules must satisfy.
@@ -14,9 +14,17 @@ HOW TO ADD A NEW MODULE (the code half)
 2. Add __init__.py, maths.py, tools.py
 3. In maths.py, put the mathematics as plain functions
 4. In tools.py, define a class that inherits from EquationModule and
+
+::
+
    implements all required methods (see EquationModule below)
+
 5. Register it: add registry.register(YourModule()) to
+
+::
+
    __main__.py::_register_all()
+
 6. Done. The engine and viewer pick it up automatically.
 
 FULL ENGINE PROTOCOL (SIX parts)
@@ -24,7 +32,9 @@ FULL ENGINE PROTOCOL (SIX parts)
 Steps 1–6 above ship the code. They do not finish the engine. An engine is
 not "done" until all six artifacts exist, because code alone is
 undiscoverable from a cold context — which is the exact failure the
-.clauderc_* family exists to prevent.
+.clauderc_\* family exists to prevent.
+
+::
 
     1. ENGINE            modules/<name>/{__init__,maths,tools}.py, plus
                          registration in __main__.py::_register_all() and a
@@ -68,14 +78,15 @@ undiscoverable from a cold context — which is the exact failure the
                          l_io_photon_path sat unindexed in exactly that state.
 
 Canonical-maths changes that accompany an engine go in
-~/.clauderc_canonical_maths. All ~/.clauderc* files are copied into
+~/.clauderc_canonical_maths. All ~/.clauderc\* files are copied into
 ContextPlease/claude/ before the push (github push protocol).
 
 The engine does not need to know your module's internals.
 Your module does not need to know the engine's internals.
 They communicate only through this registry contract.
 
-Module requirements:
+Module requirements::
+
     - Pure Python3. No external dependencies in maths.py.
     - All ratio arithmetic via fractions.Fraction.
     - Float only at output boundary.
@@ -124,7 +135,7 @@ class Equation:
     :ivar confidence: one of the CONFIDENCE keys
     :ivar code_verified: True if backed by executable code
     :ivar params: list of parameter names
-    :ivar compute: callable(*params) → result
+    :ivar compute: callable taking the parameters and returning the result
     :ivar display_options: viewer modes this equation supports, e.g. ['fano', 'complex_plane', '3d_cartesian', 'sonification']
     :ivar process: outside-observer one-line "what this does as a derivation step", for the proof-on-the-fly engine and the derivation browser
     """

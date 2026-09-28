@@ -309,13 +309,18 @@ class Understand:
 
         τ = coherence_time(domain) = number of active instruments.
 
-        Cold domain (broad description, many instruments):
+        Cold domain (broad description, many instruments)::
+
             long τ — meaning holds — stable semantic identity.
 
-        Hot domain (narrow description, few instruments):
+        Hot domain (narrow description, few instruments)::
+
             short τ — meaning evaporates — sensitive to context.
 
         At singularity (is_collapsed): τ = 1 — the neural black hole.
+
+        ::
+
             The domain radiates everything. Nothing settles.
             T_H → ∞. The Capacitor cannot hold the charge.
 

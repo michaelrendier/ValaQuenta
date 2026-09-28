@@ -8,6 +8,8 @@ time — `dir()`-style — the way APISniff's CodeBrowser walks a package.  The
 breadcrumb IS the API path (`/ <engine> / <equation>`); the engine naming
 conventions ARE the function breadcrumbs.
 
+::
+
     +--------------------------------------------------------+
     | ValaQuenta · DERIVATION BROWSER            v0.155      |
     | /  emerger  /  emerge                                 |   breadcrumb = API path
@@ -30,7 +32,8 @@ headers, tools, display modes, analysis lenses and provenance all come from
 the manifest, nothing is hand-maintained here.  A missing manifest is
 scaffolded live from the registry so the Tab is always complete.
 
-Keys:
+Keys::
+
     Up / Down       move the selection (skips group headers; scrolls a RESULT
                     with Tab-focus RIGHT)
     Enter / Right   descend (group → engine → equation), or run, or up on '..'
@@ -236,7 +239,7 @@ def _pp(obj, indent=0, depth=0):
 
 # ═══════════════════════════════════════════════════════════════════════════════
 class DerivationBrowser:
-    """One scope at a time.  path = [] | [engine] | [engine, equation]."""
+    r"""One scope at a time.  path = [] \| [engine] \| [engine, equation]."""
 
     RUN_ROW = '‹ run ▸ ›'
 

@@ -14,7 +14,7 @@
 #  the ASS engine — for the adult children still running a fifth-grade
 #  mentality, who are hereby served.
 # ─────────────────────────────────────────────────────────────────────────────
-"""
+r"""
 ValaQuenta.modules.add_scale_sign.maths
 =======================================
 THE ADD:SCALE:SIGN DATATYPE — a value type for manipulating elements of the
@@ -23,9 +23,9 @@ i.e. the maps   x ↦ sign·scale·x + add.
 
 WHY a datatype, not just functions: `str` carries its own manipulation methods
 (split / strip / replace / join). ADD:SCALE:SIGN elements need the same — a
-type you *compose*, *invert*, *decompose*, take *residuals* of (strip one
-generator, keep the rest), read out on the *orthogonal Smith charts*, and whose
-*firing order* is recorded. That firing order is the load-bearing content here
+type you \*compose\*, \*invert\*, \*decompose\*, take \*residuals\* of (strip one
+generator, keep the rest), read out on the \*orthogonal Smith charts\*, and whose
+\*firing order\* is recorded. That firing order is the load-bearing content here
 (`[SCALE, ADD] = ADD`, the one non-trivial bracket) — order matters at THIS
 tier; the sedenion does not enter.
 
@@ -37,6 +37,8 @@ module-independence convention (cf. modules/scale/maths.py `mobius_fold`).
 
 Each generator carries its own equation part (the contribution to the
 generalized-equation word  u = Σ_k [ g_k·ln s_k + a_k ] ,  Γ = tanh(u/2)):
+
+::
 
     ADD      x ↦ x + a        Δ_ADD   = a           (translation; the flow / count)
     SCALE    x ↦ s·x          Δ_SCALE = ln s        (log-gain; the fold contribution)
@@ -261,8 +263,11 @@ class ASS:
 
     # ── the orthogonal Smith charts ─────────────────────────────────
     def to_smith(self) -> Dict[str, Any]:
-        """Read the element on the orthogonal 2-ring chart in the maths
+        """
+        Read the element on the orthogonal 2-ring chart in the maths
         language it was built on:
+
+        ::
 
             Γ_SCALE = tanh(½·ln s)     (the multiplicative / E–W ring)
             Γ_ADD   = tanh(½·a)        (the additive / N–S ring)
@@ -286,16 +291,19 @@ class ASS:
 
     # ── lineage — two orderings of the recorded steps ────────────────
     def lineage(self, order: str = "chrono") -> "ASSWord":
-        """
+        r"""
         Return the recorded generator sequence as an ASSWord.
 
         order='chrono'  — application order (the record / when it fired).
-        order='zeta'    — sorted by spectral weight |u_k| descending
+        order='zeta'    — sorted by spectral weight \|u_k\| descending
+
+        ::
+
                           (how much each step moves the fold — SCALE-heavy
                           steps first). The departure between the two
                           orderings is this datatype's ψ(x)−x.
 
-        :param order: 'chrono' for application order (when each step fired), or 'zeta' for spectral weight |u_k| descending
+        :param order: 'chrono' for application order (when each step fired), or 'zeta' for spectral weight \|u_k\| descending
         :returns: the recorded generator sequence
         :raises ValueError: `order` is neither 'chrono' nor 'zeta'
         """
@@ -370,10 +378,10 @@ class ASSWord:
         return self.u_total() - self.u_generators()
 
     def additive(self) -> bool:
-        """
+        r"""
         Report whether the word is additive: its firing defect is zero.
 
-        :returns: True if |firing_defect()| < 1e-9
+        :returns: True if \|firing_defect()\| < 1e-9
         """
         return abs(self.firing_defect()) < 1e-9
 

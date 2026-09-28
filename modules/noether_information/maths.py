@@ -3,10 +3,12 @@ ValaQuenta.modules.noether_information.maths
 ============================================
 Information current J_info — Noether current for information symmetry.
 
-Conserved under information-translation symmetry of L_NN:
+Conserved under information-translation symmetry of L_NN::
+
   J_info^μ = ∂ℒ/∂(∂_μΦ) · δΦ
 
-Key quantities:
+Key quantities::
+
   I_information : total information content of activation field
   Phi_flux      : information flux through algebra boundary
   t_e           : entropic time — layer step where I_info is maximal
@@ -34,12 +36,12 @@ ALG_DIM   = {ALG_R:1,   ALG_C:2,   ALG_H:4,   ALG_O:8}
 # ── Information measures ───────────────────────────────────────────────────────
 
 def shannon_information(psi_norms: List[float]) -> float:
-    """
+    r"""
     I_information = -Σ_i p_i · log₂(p_i)   (Shannon entropy in bits)
 
-    p_i = |Ψ_i|² / Σ_j|Ψ_j|²  (activation probability distribution)
+    p_i = \|Ψ_i\|² / Σ_j\|Ψ_j\|²  (activation probability distribution)
 
-    :param psi_norms: activation norms |Ψᵢ|
+    :param psi_norms: activation norms \|Ψᵢ\|
     :returns: the Shannon entropy in bits
     """
     norm_sq = sum(p * p for p in psi_norms)
@@ -50,13 +52,13 @@ def shannon_information(psi_norms: List[float]) -> float:
 
 
 def phi_flux(psi_norms: List[float], algebra: int) -> float:
-    """
-    Φ_flux = (dim of algebra) · |Ψ̄·Ψ| / n_neurons
+    r"""
+    Φ_flux = (dim of algebra) · \|Ψ̄·Ψ\| / n_neurons
 
     Information flux through an algebra boundary is proportional to
     the algebra dimension (the information capacity of that stratum).
 
-    :param psi_norms: activation norms |Ψᵢ|
+    :param psi_norms: activation norms \|Ψᵢ\|
     :param algebra: algebra dimension of the stratum
     :returns: Φ_flux
     """
@@ -69,16 +71,17 @@ def information_current(psi_norms: List[float],
                          algebra: int,
                          layer: int,
                          total_layers: int = 10) -> Dict[str, float]:
-    """
+    r"""
     J_info^μ — information current at a given layer.
 
-    Components:
+    Components::
+
       J_info^0   : temporal (layer) component = dI/dl  (entropic arrow)
       J_info^1   : spatial component = Φ_flux
       I_info     : total information (Shannon entropy, bits)
       t_e        : entropic time estimate = argmax I_info ~ layer/total_layers
 
-    :param psi_norms: activation norms |Ψᵢ|
+    :param psi_norms: activation norms \|Ψᵢ\|
     :param algebra: algebra dimension of the stratum
     :param layer: index of the layer
     :param total_layers: number of layers
@@ -148,15 +151,16 @@ def entropic_arrow(psi_history: List[List[float]],
 
 def delta_J_info(J_curr: Dict[str, float],
                   J_prev: Optional[Dict[str, float]]) -> float:
-    """
-    Cycle-averaged information current violation:
+    r"""
+    Cycle-averaged information current violation::
+
       ΔJ_info = |J_info^0_curr - J_info^0_prev|
 
     Zero → information current conserved (entropic symmetry unbroken).
 
     :param J_curr: information current of the current cycle
     :param J_prev: information current of the previous cycle; None for the first cycle
-    :returns: |J⁰_curr − J⁰_prev|
+    :returns: \|J⁰_curr − J⁰_prev\|
     """
     if J_prev is None:
         return 0.0

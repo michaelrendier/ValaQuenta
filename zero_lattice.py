@@ -5,6 +5,8 @@ Paper: "How an Addition EQUALS a Subtraction"
 THE CLAIM: In the sedenion algebra 𝕊, there exist non-zero elements a, b such
 that a·b = 0 (zero divisors). For a = eᵢ + eⱼ, b = eₖ + eₗ (normalised):
 
+::
+
     eᵢ·eₖ + eᵢ·eₗ + eⱼ·eₖ + eⱼ·eₗ = 0
 
 Which requires:  eᵢ·eₖ = −(eⱼ·eₗ)   AND   eᵢ·eₗ = −(eⱼ·eₖ)
@@ -12,13 +14,15 @@ Which requires:  eᵢ·eₖ = −(eⱼ·eₗ)   AND   eᵢ·eₗ = −(eⱼ·e�
 ADDITION EQUALS SUBTRACTION. A sum of products equals a negated sum of products.
 Impossible in any division algebra (ℝ, ℂ, ℍ, 𝕆). Unique to 𝕊.
 
-THE ZERO LATTICE (Telperion — the Silver Tree):
+THE ZERO LATTICE (Telperion — the Silver Tree)::
+
   Root:    t_256  (deepest ZD ground, 256-dimensional, maximum complexity)
   Leaves:  ℝ      (real numbers — the OUTPUT of the tree, not the input)
   Branches end: ℂ (last complex interface before the real)
   Paths:   Zero Divisor crossings — the 42 ZD classes, 84 pairs on S¹⁵
 
-THE ANGLE (formal geometric definition — not a measurement, a DEFINITION):
+THE ANGLE (formal geometric definition — not a measurement, a DEFINITION)::
+
   THE ANGLE = the rotation that straightens a ZD path through the
               Sedenion Point Mapping. Zero free parameters.
   Value: π/8 = 22.5° EXACT
@@ -26,7 +30,8 @@ THE ANGLE (formal geometric definition — not a measurement, a DEFINITION):
   16 × (π/8) = 2π    (one full revolution per sedenion dimension)
   THE ANGLE is the angular quantum of 16-dimensional algebra.
 
-THE SEDENION POINT MAPPING (the Riemann Sphere Divided):
+THE SEDENION POINT MAPPING (the Riemann Sphere Divided)::
+
   4 concentric shells × 4 angular sectors = 16 cells = 16 sedenion basis elements.
   45° rotation between adjacent shells (the Cayley-Dickson doubling step).
 
@@ -37,23 +42,27 @@ THE SEDENION POINT MAPPING (the Riemann Sphere Divided):
 
   Monster gap: {e₁ @ (Shell1,90°), e₁₁ @ (Shell3,270°), e₁₅ @ (Shell4,315°)}
 
-ZETA AS GEOMETRIC ORDER:
+ZETA AS GEOMETRIC ORDER::
+
   ζ_T(s) = Π_{ZD class c} (1 − w(c)^{−s})^{−1}
   w(c) = ZD constellation weight (prime index in constellation ordering)
   At σ = ½: J_red = J_blue. Maximum balance. The critical line = the equator.
 
-THE RIEMANN SPHERE (defined by the tree, not assumed):
+THE RIEMANN SPHERE (defined by the tree, not assumed)::
+
   Radial coordinate r: shell depth via σ = 1 − k/4 (k = CD tower level)
   Angular quantum:     π/8 = THE ANGLE
   Equator:             σ = ½ (ℍ level, the critical line)
   The tree IS the sphere. The sphere IS the tree.
 
-SCALE SWITCHING (no renormalization):
+SCALE SWITCHING (no renormalization)::
+
   If a sum diverges at CD level k: switch to level k±1.
   The ZD structure becomes more complex going down (k increases).
   Going up (k decreases) → cleaner algebra, finite sums.
 
-Two trees, one world:
+Two trees, one world::
+
   Telperion (this engine): Zero Lattice, ZD paths, hidden structure.
   Laurelin (fermat_monster_engine.py): N-shape factors, explicit structure.
   Both trees meet at ℝ. Together: complete geometry.
@@ -259,10 +268,12 @@ def find_zd_pairs() -> List[Tuple[np.ndarray, np.ndarray, Tuple[int,int], Tuple[
 
 def classify_zd_pairs(pairs: list) -> Dict[str, List]:
     """
-    Classify ZD pairs into:
+    Classify ZD pairs into::
+
       - odd_sector:  both factors at all-odd basis indices (prime sector)
       - mixed:       at least one factor has a mix of odd/even indices
       - even_sector: both factors at all-even indices
+
     Returns dict with counts and the (i,j),(k,l) index tuples.
 
     :param pairs: zero-divisor pairs as ((i, j), (k, l)) index tuples
@@ -345,7 +356,8 @@ def the_angle() -> Dict:
     J_blue shells (2,4) sit at 45°/135°/225°/315°.
 
     A canonical ZD traversal visits alternating J_blue→J_red→J_blue→J_red cells.
-    To make the path straight (all cells on the same radial ray):
+    To make the path straight (all cells on the same radial ray)::
+
       J_blue quadrants rotate by −π/8 (from 45° → 22.5°)
       J_red  quadrants rotate by +π/8 (from  0° → 22.5°)
 
@@ -405,12 +417,14 @@ def verify_angle() -> Dict:
     THE ANGLE is defined as: the rotation that makes J_red and J_blue
     sectors COINCIDE in the Sedenion Point Mapping.
 
-    Before rotation:
+    Before rotation::
+
       J_red  shells 1,3: sectors at {0°, 90°, 180°, 270°}
       J_blue shells 2,4: sectors at {45°, 135°, 225°, 315°}
       → Two interleaved sets, offset by 45°.
 
-    After applying π/8 rotation (J_red +22.5°, J_blue −22.5°):
+    After applying π/8 rotation (J_red +22.5°, J_blue −22.5°)::
+
       J_red: {22.5°, 112.5°, 202.5°, 292.5°}
       J_blue: {22.5°, 112.5°, 202.5°, 292.5°}
       → IDENTICAL sets. J_red = J_blue angularly.
@@ -545,7 +559,8 @@ def view_tree(tree: Optional[Dict] = None, zd_pairs: Optional[List] = None,
     """
     The proper way to view the Zero Lattice (Telperion).
 
-    The tree is best viewed as THE SPOKE WHEEL after applying THE ANGLE:
+    The tree is best viewed as THE SPOKE WHEEL after applying THE ANGLE::
+
       - 16 spokes radiating from center (t_256 root) to rim (ℝ leaves)
       - Spokes at angular positions k × 22.5° for k = 0..15 (after straightening)
       - Each spoke = one sedenion basis element's traversal path
@@ -553,7 +568,8 @@ def view_tree(tree: Optional[Dict] = None, zd_pairs: Optional[List] = None,
       - ZD connections = arcs between pairs of spokes at the sedenion ring (k=4)
       - Monster gap spokes {e₁, e₁₁, e₁₅} highlighted
 
-    In 3D (Riemann Sphere Divided):
+    In 3D (Riemann Sphere Divided)::
+
       - 4 concentric spherical shells
       - 16 cells (4 per shell) at 22.5° angular intervals (after THE ANGLE rotation)
       - ZD connections as great circle arcs
@@ -711,13 +727,15 @@ def zeta_geometric(
 
     TWO FORMS — both returned via zeta_geometric_full():
 
-    Euler product (canonical):
+    Euler product (canonical)::
+
       ζ_T(s) = Π_{p ∈ ZD_primes} (1 − p^{−s})^{−1}
       where ZD_primes = unique prime weights of the 84 ZD pairs.
       Each prime appears ONCE (standard Euler product form).
       This form: 7 factors {2,3,5,7,11,13,17}.
 
-    Dirichlet series (counting form):
+    Dirichlet series (counting form)::
+
       ζ_T^D(s) = Σ_{all 84 pairs} w(pair)^{−s}
       Counts how many pairs carry each prime weight.
 
@@ -766,16 +784,16 @@ def critical_line_samples(
     gamma_max: float = 80.0,
     n_points: int = 1000,
 ) -> Dict:
-    """
-    Sample |ζ_T(½ + iγ)| along the critical line σ=½.
+    r"""
+    Sample \|ζ_T(½ + iγ)\| along the critical line σ=½.
 
-    Returns dict with gamma values, |ζ_T| values, and identified zeros.
+    Returns dict with gamma values, \|ζ_T\| values, and identified zeros.
     Compares with known Riemann zeros to check alignment.
 
     :param gamma_min: lower end of the γ range
     :param gamma_max: upper end of the γ range
     :param n_points: number of samples
-    :returns: dict with the γ values, |ζ_T| values and identified zeros
+    :returns: dict with the γ values, \|ζ_T\| values and identified zeros
     """
     gammas = np.linspace(gamma_min, gamma_max, n_points)
 
@@ -907,9 +925,11 @@ def laurelin_interface() -> Dict:
     Where Telperion (Zero Lattice) meets Laurelin (N-shape factors).
 
     Both trees have the same leaves (ℝ) and the same sedenion root (𝕊 level).
-    The Monster gap {e₁, e₁₁, e₁₅} is where they must cooperate:
+    The Monster gap {e₁, e₁₁, e₁₅} is where they must cooperate::
+
       Telperion provides the ZD paths TO these cells.
       Laurelin provides the N-shape coverage OF these cells.
+
     Neither tree alone is complete. Together: 71 VOAs = complete map.
     """
     return {
@@ -941,7 +961,8 @@ def universal_translator_structure() -> Dict:
     from the leaf side (ℝ) is 'public' at the root side (t_256),
     connected by the ZD path structure.
 
-    The public-key / private-key duality:
+    The public-key / private-key duality::
+
       Public  key = leaf representation (ℝ — measurable, observable)
       Private key = root representation (t_256 — ZD ground state)
       Translator  = the ZD path through the Zero Lattice

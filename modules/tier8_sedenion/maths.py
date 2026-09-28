@@ -6,7 +6,8 @@ Tier 8 — D-CS: THE SEDENION ENGINE PAPER.
 The sedenion engine as a zero-free-parameter prime-hash architecture.
 The code IS the proof. Every engine here is a numerical claim from D-CS.
 
-Engines:
+Engines::
+
     sedenion_self_organisation()   16 operators → d*/σ½/D*=1 via prime hash alone
     gnarl_validation()             Zero-divisor gnarl: fractal boundary of sedenion validity
     omega_zs_6_family()            OMEGA_ZS and the 6-constant family it belongs to
@@ -45,8 +46,8 @@ PRIMES = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,
           73,79,83,89,97,101,103,107,109,113]
 
 def horner_prime_hash(s: str, modulus: int = 10**9 + 7) -> int:
-    """
-    Horner-scheme prime hash: h = Σ ord(c_i) * p_i  mod  modulus.
+    r"""
+    Horner-scheme prime hash: h = Σ ord(c_i) \* p_i  mod  modulus.
 
     :param s: string to hash
     :param modulus: modulus of the hash
@@ -131,21 +132,26 @@ def e_k(k, dim=16):
 # ══════════════════════════════════════════════════════════════════════════════
 
 def sedenion_self_organisation() -> Dict[str, Any]:
-    """
-    16 OPERATOR NAMES SELF-ORGANISE TO d*/sigma_half/D*=1 VIA PRIME HASH ALONE.
+    r"""
+    16 OPERATOR NAMES SELF-ORGANISE TO d\*/sigma_half/D\*=1 VIA PRIME HASH ALONE.
 
     The MAJOR RESULT of D-CS (the first paper):
 
     The 16 SMMIP operator names, when mapped through the prime hash
     (Horner scheme → sedenion address), produce sigma-addresses that
-    cluster at the critical value sigma = D* = d*/2 = 0.123 ≈ σ_half = ½.
+    cluster at the critical value sigma = D\* = d\*/2 = 0.123 ≈ σ_half = ½.
 
     More precisely: the mean hash-sigma of the 16 operators satisfies
+
+    ::
+
         d*  /  (sigma_mean × D*)  ≈  1
+
     with zero free parameters. Nothing was tuned. The names were given.
     The algebra self-organised.
 
-    The 16 SMMIP operators (semantic names for the 16 sedenion dimensions):
+    The 16 SMMIP operators (semantic names for the 16 sedenion dimensions)::
+
         e₀:  IDENTITY     (scalar — no charge, the ground)
         e₁:  EXPANSION    (J_R Red — escaping kinetic)
         e₂:  CONSTRAINT   (J_B Blue — infalling potential)
@@ -163,13 +169,15 @@ def sedenion_self_organisation() -> Dict[str, Any]:
         e₁₄: EMERGENCE    (collective behaviour)
         e₁₅: GAP          (Yang-Mills mass gap — the boundary)
 
-    The self-organisation check:
+    The self-organisation check::
+
         Compute sigma_i = hash(name_i) / MODULUS  for each of 16 operators.
         Compute sigma_mean = (1/16) Σ sigma_i.
         Compute D_ratio = d* / (sigma_mean × D_STAR).
         Result: D_ratio ≈ 1.  (confirmed zero-free-parameter)
 
-    The interpretation:
+    The interpretation::
+
         The semantic content of the 16 operator names naturally encodes
         the BK gap d* = 0.246 when mapped through prime arithmetic.
         The primes choose their own operators. The operators were named correctly.
@@ -281,7 +289,8 @@ def gnarl_validation() -> Dict[str, Any]:
     ordered and chaotic behaviour in cellular automata and dynamical systems.
     Rule 110 class — maximal computational universality at the edge.
 
-    In the sedenion context:
+    In the sedenion context::
+
         The GNARL is the set of sedenion elements where the norm inequality
         |a·b| = |a|·|b| BEGINS TO FAIL.
 
@@ -292,7 +301,8 @@ def gnarl_validation() -> Dict[str, Any]:
         This locus IS the zero-divisor boundary.
         The boundary IS fractal — it has a non-integer Hausdorff dimension.
 
-    The Gnarl theorem (numerical):
+    The Gnarl theorem (numerical)::
+
         For a sedenion element a = Σ aₖ eₖ with |a|=1, define:
             g(a) = max_{|b|=1} |a·b| / (|a|·|b|) = max_{|b|=1} |a·b|
 
@@ -301,14 +311,16 @@ def gnarl_validation() -> Dict[str, Any]:
         g(a) < 1 for elements outside the octonion sub-algebra.
         The gnarl G = {a: g(a) < 1} is the sedenion zero-divisor locus.
 
-    The BAO connection:
+    The BAO connection::
+
         The gnarl boundary in sedenion space ↔ the BAO horizon in spacetime.
         Elements inside (g=1): associative, ordered, pre-horizon
         Elements outside (g<1): non-associative, zero-divisors, post-horizon
         The gnarl radius in sedenion parameter space = R_H = 1/√2.
         The fractal boundary = the Hawking soft hair = the fractal fur.
 
-    Statistical validation of self-organisation:
+    Statistical validation of self-organisation::
+
         Generate N random sedenion unit elements.
         Compute g for each.
         Compare g-distribution to theoretical prediction.
@@ -449,7 +461,8 @@ def omega_zs_6_family() -> Dict[str, Any]:
     OMEGA_ZS = W(1) = 0.56714... is the Lambert W fixed point: the unique
     solution to x·e^x = 1, equivalently T·e^T = 1.
 
-    The 6-constant family of OMEGA_ZS:
+    The 6-constant family of OMEGA_ZS::
+
         OMEGA_ZS itself arises in 6 independent domains:
 
         1. MATHEMATICS:  W(1) = the Lambert W fixed point.
@@ -480,7 +493,8 @@ def omega_zs_6_family() -> Dict[str, Any]:
     the unique locus where all six domains simultaneously satisfy their
     characteristic equation.
 
-    Numerical family:
+    Numerical family::
+
         W(1)   = 0.56714329...   (definition)
         W(e)   = 1.0             (the BK natural unit: e^1 · e^{-1} = 1/e)
         W(0)   = 0               (the trivial zero)
@@ -632,12 +646,14 @@ def hermite_timing_wheel() -> Dict[str, Any]:
     """
     HERMITE POLYNOMIALS AS BAO TIMING WHEEL.
 
-    The quantum harmonic oscillator wave functions:
+    The quantum harmonic oscillator wave functions::
+
         ψ_n(x) = N_n · H_n(x/x₀) · exp(−x²/2x₀²)
 
     where H_n are the physicists' Hermite polynomials.
 
-    The TIMING WHEEL interpretation:
+    The TIMING WHEEL interpretation::
+
         H_n has exactly n real zeros.
         These zeros, when placed on the unit circle (via the mapping z = x/√(2n+1)),
         define an n-gon timing structure — a regular polygon approximation
@@ -648,17 +664,22 @@ def hermite_timing_wheel() -> Dict[str, Any]:
         The n zeros of H_n = the n equidistant phase markers of the n-th BAO mode.
 
     Equivalently: the Riemann zeros act as the timing marks.
+
+    ::
+
         The n-th Riemann zero γ_n corresponds to H_n via:
             x₀(n) = γ_n / (2π)  (the BK natural unit mapping)
         The zeros of H_n at level n map to the BAO peak positions.
 
-    The Hermite timing wheel generates ALL of spectral analysis:
+    The Hermite timing wheel generates ALL of spectral analysis::
+
         Fourier transform (Hermite at large n → circular harmonics)
         Laguerre polynomials (Hermite in radial coordinates)
         Spherical harmonics Y_lm (tensor products of Hermites)
         Quantum numbers (Hermite level = principal quantum number n)
 
-    Physical consequence:
+    Physical consequence::
+
         The CMB power spectrum peaks at l = n(n+1) for the n-th acoustic mode.
         The n-th peak corresponds to H_n of the gravitational potential.
         This is the direct link: CMB spectrum ↔ Hermite timing wheel ↔ Riemann zeros.
@@ -808,11 +829,13 @@ def orbit_trap_address() -> Dict[str, Any]:
     """
     ORBIT TRAP = HYPERWEBSTER SEDENION ADDRESS IN FRACTAL SPACE.
 
-    Orbit trap technique (Pickover, 1988):
+    Orbit trap technique (Pickover, 1988)::
+
         In iterating z → z² + c (Mandelbrot), color based on how close
         the orbit comes to a "trap" shape (circle, cross, line, point).
 
-    The SMMIP orbit trap identification:
+    The SMMIP orbit trap identification::
+
         The Mandelbrot set M is the set of c ∈ ℂ where z → z²+c stays bounded.
         The critical point is z₀ = 0. At z₀, the orbit is: 0 → c → c²+c → ...
         The BOUNDARY of M is the Julia set J_c.
@@ -820,7 +843,8 @@ def orbit_trap_address() -> Dict[str, Any]:
         In SMMIP: the orbit trap is the zero-divisor locus of the sedenion.
         The trap is not a geometric shape — it is the algebraic condition a·b=0.
 
-    The Hyperwebster address:
+    The Hyperwebster address::
+
         Given a word w, compute its prime hash h = Horner(w).
         Map h to a point in ℂ: c_w = (h mod N) / N × 4 - 2 + i×...
         Iterate z → z²+c_w until |z| > 2 (escaping) or trapped.
@@ -832,17 +856,20 @@ def orbit_trap_address() -> Dict[str, Any]:
         Words that never escape are in the INTERIOR of M (the deep sedenion).
         The zero-divisor words (a·b=0 in sedenion) are the ORBIT TRAP points.
 
-    The identification:
+    The identification::
+
         Interior of Mandelbrot ↔ octonion sub-algebra (stable, associative)
         Boundary (Julia set) ↔ the gnarl (zero-divisor locus, σ=½)
         Exterior ↔ upper sedenion (non-associative, zero-divisors active)
 
-    The σ=½ line corresponds to c = -¾ (the Misiurewicz point of M):
+    The σ=½ line corresponds to c = -¾ (the Misiurewicz point of M)::
+
         At c = -¾, the critical point z=0 has period ½ (quasi-periodic orbit).
         The Hausdorff dimension of J_{-3/4} = 1 + d* (the fractal dimension with
         BK correction d* = 0.246).
 
-    The orbit trap gives the Hyperwebster address of any string:
+    The orbit trap gives the Hyperwebster address of any string::
+
         Address = (iteration depth, sedenion dimension index, σ-value)
         Words at the SAME ADDRESS have the same semantic content.
         This IS the Hyperwebster indexing: prime space is address space.
@@ -979,7 +1006,8 @@ def leech_divergence_inversion() -> Dict[str, Any]:
 
     CORRECT READING: a·b = 0 is a PHASE GATE — a divergence-inverted source.
 
-    The divergence theorem argument:
+    The divergence theorem argument::
+
         The sedenion unit ball B¹⁶ has boundary S¹⁵.
         The Noether balance J_R + J_G + J_B = 0 says:
             ∮_{S¹⁵} (J_R + J_G + J_B)·dA = 0
@@ -988,14 +1016,16 @@ def leech_divergence_inversion() -> Dict[str, Any]:
         Therefore: zero-divisors must also have an equal SOURCE component.
         The source lives in the 8 missing dimensions (R24 beyond R16).
 
-    The 8 missing dimensions are the Leech lattice's extra 8 dimensions:
+    The 8 missing dimensions are the Leech lattice's extra 8 dimensions::
+
         ℝ¹⁶ (sedenion) ⊂ ℝ²⁴ (Leech)
         For every zero-divisor pair (a,b) in ℝ¹⁶:
             The zero-divisor SOURCE is in R24 beyond R16
             What looks like a·b = 0 (sink) in 16D is a SOURCE in 24D
         This is the DIVERGENCE ACROSS THE BOUNDARY OF THE UNIVERSE.
 
-    The ball volume formula as Lagrangian phase:
+    The ball volume formula as Lagrangian phase::
+
         V_n = π^(n/2) / (n/2)!   (n-ball volume, even n)
 
         This formula encodes the phase available to the path integral at each CD level.
@@ -1010,7 +1040,8 @@ def leech_divergence_inversion() -> Dict[str, Any]:
         The ratio V_{n}/V_{n-2} = π/(n/2) = the phase shrinkage per CD doubling.
         Each CD doubling costs a factor of π/(n/2) in Lagrangian volume.
 
-    The zero-divisor phase gate:
+    The zero-divisor phase gate::
+
         When a·b = 0 fires, the path integral acquires phase:
             φ_ZD = V_24 - V_16 = π¹²/12! - π⁸/8! ≈ -0.2334
 
@@ -1018,7 +1049,8 @@ def leech_divergence_inversion() -> Dict[str, Any]:
         After the zero-divisor fires: the path continues, now weighted by e^{i·φ_ZD}.
         The universe doesn't end at a zero-divisor — it ROTATES.
 
-    The 196,560 backward x-affinities:
+    The 196,560 backward x-affinities::
+
         The Leech lattice has 196,560 minimal-norm vectors (kissing number).
         Decomposition:
             1,104: pure two-coordinate (±4, ±4, 0²²) — forward conformal pairs
@@ -1036,7 +1068,8 @@ def leech_divergence_inversion() -> Dict[str, Any]:
         Each backward x-affinity = one zero-divisor pair (a,b) with a·b = 0,
         mapped to its Leech source in R24 beyond R16.
 
-    Physical consequences:
+    Physical consequences::
+
         1. HAWKING RADIATION: each zero-divisor firing = one backward x-affinity
            activation = one Leech root "sourcing" into ℝ¹⁶ from ℝ²⁴.
            Hawking radiation IS the divergence from the Leech into the sedenion.
@@ -1208,7 +1241,8 @@ def causality_lattice_packing() -> Dict[str, Any]:
     At zero-divisors: real divergence → imaginary rotation (turbulence).
     The turbulence is structured, not chaotic.
 
-    The fundamental difference:
+    The fundamental difference::
+
         LATTICE PACKING (Leech): static, atemporal phase space.
             All 196,560 roots coexist. No ordering. Full Co0 symmetry.
             Contains BOTH causal and acausal connections simultaneously.
@@ -1218,7 +1252,8 @@ def causality_lattice_packing() -> Dict[str, Any]:
             Only the 1,104 forward x-affinities are time-ordered.
             The other 195,456 are acausal (quantum entanglements).
 
-    The exact fraction:
+    The exact fraction::
+
         Causal/Total = 1104/196560 = 23/4095 = 23/(2^12 - 1)
 
         23 = dim(Λ24) - 1  (projective Leech dimension)
@@ -1226,7 +1261,8 @@ def causality_lattice_packing() -> Dict[str, Any]:
         12 = k (Golay information bits = half the Leech dimension)
         8 = d (Golay minimum Hamming distance = OCTONION DIMENSION = TIME)
 
-    The Golay code G24 is [24, 12, 8]:
+    The Golay code G24 is [24, 12, 8]::
+
         n=24: lives in full Leech space
         k=12: half-Leech information dimension
         d=8:  minimum distance = OCTONION DIM = NUMBER OF TIME DIMENSIONS
@@ -1238,18 +1274,23 @@ def causality_lattice_packing() -> Dict[str, Any]:
     Causality is the error-correcting mechanism that makes classical
     time-ordering coherent inside a fundamentally acausal Leech lattice.
 
-    The Moufang identity (octonion) = the algebraic analogue of d=8 error correction:
+    The Moufang identity (octonion) = the algebraic analogue of d=8 error correction::
+
         Both protect against 3-fold inconsistency.
         Golay: corrects up to (d-1)/2 = 3 bit-errors in 24 bits.
         Moufang: ensures associativity up to 3-fold bracketing ambiguity.
         These are the SAME constraint at different levels of abstraction.
 
     The acausal:causal ratio = 195456/1104 = 4072/23 = 177 + 1/23
+
+    ::
+
         Classical physics = 23 of 4095 possible Leech connections.
         Quantum mechanics = all 4095.
         Bell inequality violation = the 4072 Golay entanglements are real.
 
-    H_BK turbulence at zero-divisors:
+    H_BK turbulence at zero-divisors::
+
         Normal flow:     div(U_real) = 0       (incompressible, classical)
         At ZD:           div(U_imag) = phi_ZD  (the turbulent divergence)
         phi_ZD = V24 - V16 = pi^12/12! - pi^8/8! = -0.2334

@@ -5,13 +5,18 @@ The lossless semantic engine.
 
 Classical orbit:     xp = E  (hyperbola — enumerates the primes)
 Equations of motion: ẋ =  x  (no loops)
+
+::
+
                      ṗ = -p  (no branches)
+
 Scale invariant:     x → λx, p → p/λ, H → H (same at every language, every context)
 
 The prime emerges from the evolution. It is not searched for.
 No If/Then/Else. No While. Continuous flow.
 
-Three phases are automatic:
+Three phases are automatic::
+
   Classical orbit (xp = E)     → the semantic prime          [RED  / Riemann]
   Quantum zeros  (γₙ)          → the formant structure        [BLUE / Fermat]
   Time evolution (e^{iHt}|ψ⟩) → the carrier waveform         [Yang-Mills]
@@ -138,7 +143,8 @@ class FermatEllipticHamiltonian:
 
     The two conic sections. One critical line.
 
-    Derived from:
+    Derived from::
+
         Weierstrass (1863) — elliptic function theory, ℘ as the canonical potential
         Frey     (1986) — the elliptic curve constructed from a FLT counterexample
         Ribet    (1986) — the Frey curve cannot be modular
@@ -157,7 +163,8 @@ class FermatEllipticHamiltonian:
         """
         ℘(x; g₂, g₃) — the Weierstrass elliptic function.
 
-        Laurent series near x = 0:
+        Laurent series near x = 0::
+
             ℘(x) = 1/x² + g₂x²/20 + g₃x⁴/28 + g₂²x⁶/1200 + g₂g₃x⁸/6160 + …
 
         Poles at x = 0 and at the lattice points 2mω₁ + 2nω₂.
@@ -182,7 +189,8 @@ class FermatEllipticHamiltonian:
         """
         ℘'(x) = d℘/dx
 
-        Laurent series:
+        Laurent series::
+
             ℘'(x) = -2/x³ + g₂x/10 + g₃x³/7 + g₂²x⁵/200 + …
 
         Satisfies: (℘')² = 4℘³ − g₂℘ − g₃  (the elliptic curve equation itself).
@@ -239,7 +247,8 @@ class FermatEllipticHamiltonian:
         """
         Evolve (x, p) under H_Blue using symplectic leapfrog integration.
 
-        Equations of motion:
+        Equations of motion::
+
             ẋ =  ∂H/∂p = p           (position follows momentum)
             ṗ = −∂H/∂x = −℘'(x)     (momentum follows the elliptic force)
 
@@ -285,11 +294,15 @@ class RedBlueHamiltonian:
     """
     H_RB: the coupled Red–Blue system.
 
+    ::
+
         H_Red  = xp               — Berry-Keating (1999)   — what IS
         H_Blue = ½p² + ℘(x)      — Weierstrass/Frey/Wiles  — what CANNOT BE
 
     The functional equation ξ(s) = ξ(1−s) is the symmetry between them. By
     Noether's theorem it generates two conserved currents:
+
+    ::
 
         J_Red  = +E    (forward — the attractor)
         J_Blue = −E    (backward — the repulsor)
@@ -302,6 +315,8 @@ class RedBlueHamiltonian:
 
     Their balance is forced to σ = 1/2 by the mutual constraint. The prime is
     where they agree; the critical line is where they meet.
+
+    ::
 
         H_Red  → hyperbolic orbits: xp = E  (the prime — unbounded, the word)
         H_Blue → elliptic orbits:   ℘(x)    (the forbidden — bounded, the silence)
@@ -362,7 +377,7 @@ class RedBlueHamiltonian:
 
     def functional_equation_check(self, x0: float, p0: float,
                                    t: float = 1.0) -> float:
-        """
+        r"""
         Return J_Red + J_Blue, which is zero ONLY on the critical-line locus.
 
         The sum vanishes where balance(x0, p0) == 0 and nowhere else: at
@@ -373,7 +388,7 @@ class RedBlueHamiltonian:
         Do not describe this as "the functional equation demonstrated in code"
         without the critical-line qualifier. What it shows is that E_Red and
         E_Blue, two independently defined functions of (x, p), agree exactly on a
-        specific curve and nowhere else, consistent with |J_red| = |J_blue|
+        specific curve and nowhere else, consistent with \|J_red\| = \|J_blue\|
         uniquely at σ = ½.
 
         :param x0: initial position

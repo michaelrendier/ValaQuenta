@@ -3,7 +3,8 @@ ValaQuenta.modules.noether_information.tools
 ============================================
 NoetherInformationModule — registry contract.
 
-Equations:
+Equations::
+
   1. information_current     J_info^μ, I_info, Φ_flux, t_e
   2. entropic_arrow          ∂_l I ≥ 0 across layer history
   3. delta_J_info            cycle-averaged violation

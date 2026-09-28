@@ -1,7 +1,7 @@
-"""
+r"""
 ValaQuenta.modules.inversion
 ============================
-Inside-Out Inversion Engine — (I|O) module
+Inside-Out Inversion Engine — (I\|O) module
 
 Version: 0.111
 """

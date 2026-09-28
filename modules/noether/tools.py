@@ -3,7 +3,8 @@ ValaQuenta.modules.noether.tools
 ================================
 NoetherModule — registry contract implementation.
 
-Equations:
+Equations::
+
   1. conservation_diagnostic   full J^μ conservation check
   2. violation_scan            scan across algebra strata
   3. resonance_artifacts       oscillation detection
@@ -26,11 +27,11 @@ from .maths import (
 
 
 class NoetherModule(EquationModule):
-    """
+    r"""
     Noether Currents  ∂_μJ^μ = 0
 
     Emmy Noether theorem applied to L_NN. Symmetry → conserved current.
-    Violation = |∂_μJ^μ| — the training diagnostic with no GD analog. Blockchain
+    Violation = \|∂_μJ^μ\| — the training diagnostic with no GD analog. Blockchain
     ledger records every violation event. Resonance artifact detection
     identifies boundary oscillations.
 

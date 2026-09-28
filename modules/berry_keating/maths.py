@@ -1,24 +1,28 @@
-"""
+r"""
 ValaQuenta.modules.berry_keating.maths
 ======================================
-H_NN candidate operator, d* gap workbench, T coordinate scaffold.
+H_NN candidate operator, d\* gap workbench, T coordinate scaffold.
 
-Open Problems:
+Open Problems::
+
   Open Problem 2: d* gap — algebraic derivation of 0.00070 gap
   Open Problem 3: T coordinate map — xp Hamiltonian T scaffold
   RESOLVED — T_transform = Eichler-Shimura = Wiles 1995 (CLOSED Second Age)
 
-Berry-Keating spectral value:
+Berry-Keating spectral value::
+
   d* = 0.24600  (from xp Hamiltonian literature)
   d* × ln(10) = 0.56644
   Ω  = 0.56714329...
   gap = |Ω - d*×ln(10)| = 0.000707  (OPEN — no closed form known)
 
-H_NN candidate:
+H_NN candidate::
+
   H_NN = -i·ħ_NN·(x·∂_x + ∂_x·x) / 2   (symmetric xp operator)
   Eigenvalues: E_n = ħ_NN · (n + 1/2)   (harmonic oscillator spectrum)
 
-T coordinate map:
+T coordinate map::
+
   T: x → x·e^{i·d*·ln(x)}   (scaffolded — formal definition open)
 
 Version: 0.111
@@ -43,10 +47,11 @@ PI           = math.pi
 # ── d* gap workbench ───────────────────────────────────────────────────────────
 
 def d_star_gap_report() -> Dict[str, Any]:
-    """
-    Complete d* gap workbench.
+    r"""
+    Complete d\* gap workbench.
 
-    TWO d* VALUES — do not conflate:
+    TWO d\* VALUES — do not conflate::
+
       d*_spec  = 0.24600   (BK spectral, active)
       d*_taut  = Ω/ln(10)  (tautological reference — gap = 0 by construction)
 
@@ -95,22 +100,31 @@ def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
     From SF-QFT (Scale Factorized QFT), the two-loop running coupling in
     massless Yang-Mills is:
 
+    ::
+
         α_ρ = 2 / W(π/e · (8ρ / (m · (1 − 2/p)²)))
 
     Setting α_ρ = α_floor (SMIP domain floor) at ρ = Ω_ζΣ (domain ceiling),
     we solve for m:
 
+    ::
+
         W_arg = π/e · (8 · Ω / (m · (1 − 2/p)²))
         W_val = 2 / α_floor
         m = 8 · Ω · π / (e · (1 − 2/p)² · exp(W_val) / W_val)
 
-    The (1 − 2/p)² factor with p = 4/3 (holographic/unification exponent):
+    The (1 − 2/p)² factor with p = 4/3 (holographic/unification exponent)::
+
         (1 − 2/(4/3))² = (1 − 3/2)² = (−1/2)² = 1/4
 
     So:  W_arg = π/e · (32ρ/m)
+
+    ::
+
          W_val = 2/α_floor ≈ 274.07
 
-    Solving  W(x)·e^{W(x)} = x  with W(x) = W_val:
+    Solving  W(x)·e^{W(x)} = x  with W(x) = W_val::
+
          m = 32 · Ω · π / (e · W_val · exp(W_val))
 
     This m is an ultra-small number (exp(274) in denominator) — not the
@@ -176,7 +190,8 @@ def lambert_tsallis_Wq_candidate(q: float = 1.1,
 
     Approximation:  W_q(z) ≈ W(z) + (q-1)·correction(z) + O((q-1)²)
 
-    The first-order correction to W(z) at z = 1:
+    The first-order correction to W(z) at z = 1::
+
         W(1) = Ω_ζΣ ≈ 0.56714
         dW_q/dq |_{q=1} = ?   (not yet derived)
 
@@ -214,8 +229,8 @@ def lambert_tsallis_Wq_candidate(q: float = 1.1,
 
 
 def gap_candidates(d_star: float = D_STAR_SPEC) -> List[Dict[str, Any]]:
-    """
-    Generate candidate expressions for d* from elementary constants.
+    r"""
+    Generate candidate expressions for d\* from elementary constants.
     Each candidate is evaluated and gap from Ω computed.
 
     :param d_star: the d* the candidates are compared against
@@ -262,7 +277,8 @@ def h_nn_eigenvalues(hbar_nn: float, n_max: int = 10) -> Dict[str, Any]:
     """
     H_NN = -i·ħ_NN·(x·∂_x + ∂_x·x)/2   symmetric xp operator.
 
-    Eigenvalues (harmonic oscillator approximation):
+    Eigenvalues (harmonic oscillator approximation)::
+
       E_n = ħ_NN · (n + 1/2)   for n = 0, 1, 2, ...
 
     The Riemann zeros are conjectured to be eigenvalues of an operator
@@ -326,15 +342,16 @@ def xp_spectrum_discrete(hbar_nn: float, x_min: float = 0.1,
 # ── T coordinate map scaffold ─────────────────────────────────────────────────
 
 def T_map_scaffold(x: float, d_star: float = D_STAR_SPEC) -> Dict[str, Any]:
-    """
-    T: x → x · e^{i·d*·ln(x)}   (T coordinate scaffold)
+    r"""
+    T: x → x · e^{i·d\*·ln(x)}   (T coordinate scaffold)
 
-    In real-valued form:
+    In real-valued form::
+
       T_re(x) = x · cos(d* · ln(x))
       T_im(x) = x · sin(d* · ln(x))
 
     At x = 1:  T_re = 1, T_im = 0  (identity fixed point)
-    At x = e:  T_re = e·cos(d*), T_im = e·sin(d*)
+    At x = e:  T_re = e·cos(d\*), T_im = e·sin(d\*)
 
     Formal T map definition remains open (Open Problem 3).
     This is a scaffold — the architecture, not the proof.

@@ -82,12 +82,12 @@ def unit_pow(a: Dict[str, Any], n: float) -> Dict[str, Any]:
 
 
 def unit_lineage_decompose(u: Dict[str, Any], table: Dict[str, Dict]) -> Dict[str, Any]:
-    """
+    r"""
     Trace a named composite unit's generational lineage back to the 7 SI
     leaves, and verify the trace RECOMBINES to the exact same exponent
     vector declared directly. `lineage` entries are (parent_name, power)
     pairs -- a composite is built from a SIGNED exponent of each parent
-    (Joule = Newton^1 * metre^1; Watt = Joule^1 * second^-1), not from a
+    (Joule = Newton^1 \* metre^1; Watt = Joule^1 \* second^-1), not from a
     bare list of names summed as if every step were an addition (that was
     this function's own first draft in the sibling SFR port, caught by
     running it, not assumed correct: it failed all six named units before
@@ -153,8 +153,10 @@ def verify_lineage_table() -> Dict[str, Any]:
 
 
 def verify_cancellation() -> Dict[str, Any]:
-    """The chemistry case: mol/L * L must return EXACTLY to mol's own
-    vector -- not approximately, not via string diffing."""
+    r"""
+    The chemistry case: mol/L \* L must return EXACTLY to mol's own
+    vector -- not approximately, not via string diffing.
+    """
     MOL = unit_vector((0, 0, 0, 0, 0, 1, 0), name='mol')
     LITER = unit_vector((0, 3, 0, 0, 0, 0, 0), name='L')
     concentration = unit_div(MOL, LITER)

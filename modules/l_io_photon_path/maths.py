@@ -1,20 +1,24 @@
-"""
+r"""
 ValaQuenta.modules.l_io_photon_path.maths
 =========================================
-L_(I|O) as General Relativity: the actual (bent) photon path vs.
+L_(I\|O) as General Relativity: the actual (bent) photon path vs.
 the clean (stationary-action, flat-space) path — computed from real
 measured weak-lensing shear, not a toy model.
 
-Ainulindale/wiki/52 defines L_(I|O) philosophically: "Photons are not
+Ainulindale/wiki/52 defines L_(I\|O) philosophically: "Photons are not
 undisturbed paths... The light's path was not clean. The path was
-L_(I|O)." Two formal targets in that document were left open:
+L_(I\|O)." Two formal targets in that document were left open::
+
   (1) define L_(I|O) formally, distinguish it from L (stationary action)
   (4) formalize light bending/slingshot within L_(I|O)
+
 Claude's 2026-07-10 addendum to that file proposed a specific, testable
-hypothesis: L_(I|O) is not a different operator from L at all — it is L
+hypothesis: L_(I\|O) is not a different operator from L at all — it is L
 computed honestly with the REAL (curved) metric, where the curvature is
 sourced by real mass. This module tests that hypothesis directly using
 established weak-lensing GR, not a new formalism:
+
+::
 
     1. Kaiser & Squires (1993) shear->convergence inversion (EXACT linear
        transform of the real measured shear field, no fitting).
@@ -42,23 +46,23 @@ rescale to make the output look like a clean lens.
 
 Known, stated (not hidden) limitation of step 1: Kaiser-Squires
 convergence is defined only up to an additive constant and an overall
-sign/mass-sheet degeneracy (kappa -> lambda*kappa + (1-lambda) is
+sign/mass-sheet degeneracy (kappa -> lambda\*kappa + (1-lambda) is
 observationally indistinguishable from shear alone). This module reports
 kappa as reconstructed; it does not claim an absolute mass normalization.
 
 BOUNDARY ROLE (2026-07-21 addendum -- interpretive framing on established
-math, does not change any equation above): (I|O)_RB (renamed from
+math, does not change any equation above): (I\|O)_RB (renamed from
 H_hat_RB) defines WHERE a boundary/degenerate locus is -- the zero-divisor
 crossing, structurally the origin a pathway is measured outward from, not
 an endpoint. This module is the general TEMPLATE for HOW to actually get
-through such a boundary once (I|O)_RB has defined it: kaiser_squires_kappa's
+through such a boundary once (I\|O)_RB has defined it: kaiser_squires_kappa's
 `kappa_hat[0,0] = 0.0` is not a special-case patch, it is the general
 method -- at the transform's own degenerate point (k=0 here; a
 zero-divisor element in the sedenion case), do not let the direct formula
-blow up (1/|k|^2 -> inf) and do not silently exclude the point either;
+blow up (1/\|k\|^2 -> inf) and do not silently exclude the point either;
 assign the point's value EXPLICITLY, by a stated convention (here: the
 mean is not observable from shear alone), and say why. That is the
-reusable content of "L_(I|O) is how you get through the boundary" --
+reusable content of "L_(I\|O) is how you get through the boundary" --
 independent of gravitational lensing specifically.
 
 SLOT CORRESPONDENCE WITH THE PRIME SIDE (2026-08-04 addendum; naming and
@@ -73,6 +77,8 @@ two must be itemised separately, never merged.
 
 They are nevertheless ONE SLOT APART in the same equation:
 
+::
+
     here:      L_(I|O)  =  L   -  psi(theta)
     primes:    psi_Cheb =  x   -  SUM_rho x^rho/rho   (- ln2pi - ...)
 
@@ -82,8 +88,8 @@ They are nevertheless ONE SLOT APART in the same equation:
 
 So the counterpart of THIS module's psi is the prime side's ZERO SUM
 (archimedes_screw.zero_sum), not its Chebyshev psi. Chebyshev psi is the
-counterpart of L_(I|O) itself -- i.e. the prime side already had an
-L_(I|O) and was calling it psi. Correspondingly the explicit formula's
+counterpart of L_(I\|O) itself -- i.e. the prime side already had an
+L_(I\|O) and was calling it psi. Correspondingly the explicit formula's
 main term x is L, "the path of least primes"
 (archimedes_screw.clean_path_L).
 
@@ -216,9 +222,9 @@ def bounded_lensing_pipeline(gamma1: np.ndarray, gamma2: np.ndarray,
 # ── Step 1: Kaiser-Squires shear -> convergence (EXACT, no fitting) ──────────
 
 def kaiser_squires_kappa(gamma1: np.ndarray, gamma2: np.ndarray) -> np.ndarray:
-    """
-    kappa_hat(k) = D*(k) . gamma_hat(k)
-    D(k) = (k1^2 - k2^2 + 2i k1 k2) / |k|^2   (Kaiser & Squires 1993, eq. 2.2)
+    r"""
+    kappa_hat(k) = D\*(k) . gamma_hat(k)
+    D(k) = (k1^2 - k2^2 + 2i k1 k2) / \|k\|^2   (Kaiser & Squires 1993, eq. 2.2)
 
     Exact linear inversion of the real measured shear. k=0 mode (the
     additive mass-sheet degeneracy) is set to zero -- not fit, just the
@@ -247,8 +253,8 @@ def kaiser_squires_kappa(gamma1: np.ndarray, gamma2: np.ndarray) -> np.ndarray:
 # ── Step 2+3: Poisson solve for lensing potential, then deflection ───────────
 
 def lensing_potential(kappa: np.ndarray) -> np.ndarray:
-    """
-    nabla^2 psi = 2 kappa  ->  psi_hat(k) = -2 kappa_hat(k) / |k|^2
+    r"""
+    nabla^2 psi = 2 kappa  ->  psi_hat(k) = -2 kappa_hat(k) / \|k\|^2
     Exact FFT Poisson solve. No fitting.
 
     :param kappa: convergence field
@@ -290,8 +296,15 @@ def trace_photon(theta1: np.ndarray, theta2: np.ndarray,
                   alpha1: np.ndarray, alpha2: np.ndarray) -> Dict[str, np.ndarray]:
     """
     theta = apparent (observed) position -- the CLEAN path endpoint
+
+    ::
+
             (what an undeflected photon, alpha=0, would trace).
+
     beta  = theta - alpha(theta) -- the ACTUAL source position implied by
+
+    ::
+
             the real, deflected (L_(I|O)) path.
 
     Returns both so the deviation (beta - theta = -alpha) is explicit:
@@ -315,8 +328,8 @@ def trace_photon(theta1: np.ndarray, theta2: np.ndarray,
 # ── Step 5: L_(I|O) - L, the real Fermat-potential deficit ──────────────────
 
 def l_io_deficit(psi: np.ndarray) -> Dict[str, float]:
-    """
-    Report raw statistics of L_(I|O) − L := −ψ(θ), the Fermat potential term of standard GR lensing.
+    r"""
+    Report raw statistics of L_(I\|O) − L := −ψ(θ), the Fermat potential term of standard GR lensing.
 
     The field is reported as computed: no rescaling, no clipping to a typical
     range, no fit to a target. Shot noise from the discrete background

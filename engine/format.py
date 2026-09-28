@@ -1,13 +1,15 @@
-"""
+r"""
 ValaQuenta.engine.format
 ========================
 THE VALAQUENTA FORMAT — the plugin / extension contract.
 
 A ValaQuenta plugin is a directory (or a `.vqx` zip of one) carrying a
-`manifest.json` that conforms to schema id **`valaquenta.plugin/1`**, plus the
+`manifest.json` that conforms to schema id \*\*`valaquenta.plugin/1`\*\*, plus the
 Python entry module it names.  It is to PtolemyDesktop what a WebExtension is to
 Firefox: a declared manifest, a typed entry point, a permission list the host
 gates, and a discovery path.
+
+::
 
     plugin type   entry.class must implement
     ───────────   ─────────────────────────────────────────────────────────
@@ -17,14 +19,15 @@ gates, and a discovery path.
     tab           run_tab(scr) + act(query) -> str
 
 The current per-engine `modules/<name>/manifest.json` files
-(`valaquenta.engine-manifest/1`) are `format_version: 1` **engine** plugins with
+(`valaquenta.engine-manifest/1`) are `format_version: 1` \*\*engine\*\* plugins with
 `id` / `type` / `entry` / `license` implied — `normalise()` back-fills them on
 read, so nothing breaks and `upgrade(write=True)` writes them out.
 
 Full spec: `ValaQuenta/FORMAT.md`.  Machine schema:
 `ValaQuenta/schema/valaquenta-plugin-1.schema.json`.
 
-CLI:
+CLI::
+
     python3 -m ValaQuenta.engine.format schema
     python3 -m ValaQuenta.engine.format validate
     python3 -m ValaQuenta.engine.format discover

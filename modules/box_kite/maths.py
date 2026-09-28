@@ -4,6 +4,9 @@ ValaQuenta.modules.box_kite.maths
 THE BOX-KITE DEBUGGER -- making the zero-divisor geometry visible.
 
 "how do we 'debug' the geometries / how do we watch the geometries
+
+::
+
  interact"   -- Cody Michael Allison, 2026-08-05
 
 WHAT THE OBJECT IS, AND WHERE IT IS NOT
@@ -12,12 +15,16 @@ Moreno (1997) proved the sedenions' norm-one zero divisors are
 homeomorphic to the exceptional Lie group G2. That is TRUE and it is the
 WRONG PLACE TO BUILD. de Marrais (2000), whose paper is a direct response:
 
+::
+
     "Moreno discovered a homomorphism -- a 'blow-up' of an exact
      correspondence -- and the 'blow-ups' in the history of number theory
      have all entailed the loss of something."
 
 G2 is the CONTINUOUS SHADOW. It forgets which Fano line is which. The
 exact object is finite:
+
+::
 
     PSL(2,7),  order 168,  = Aut(Fano plane) = GL(3,2)
 
@@ -31,6 +38,8 @@ THE STRUCTURE, DERIVED NOT ASSERTED
 Everything below is computed from the Cayley-Dickson multiplication table
 in this file. Nothing is read in from de Marrais; agreement with his
 published counts is a CHECK, not an input. See verify_counts().
+
+::
 
     15 pure imaginaries      = the 15 points of PG(3,2)
                                35 lines of 3, 15 Fano planes
@@ -54,6 +63,8 @@ THE DISPERSION RELATION, CHART LEVEL
 ------------------------------------
 The octahedral graph Laplacian spectrum is closed form:
 
+::
+
     adjacency:  4, 0, 0, 0, -2, -2
     Laplacian:  0, 4, 4, 4, 6, 6      <- omega^2(k) on one box-kite
 
@@ -64,6 +75,8 @@ propagates nowhere -- which is exactly what a boundary GENERATOR should
 look like from inside the geometry it generates. This falls out of the
 graph; it is not put in by hand. It is the computational form of Cody's
 own question, answered:
+
+::
 
     "the 0_RB describes the geometries as its boundary generator... but
      it seems that it is NOT the geometries... am i correct in this one?"
@@ -76,6 +89,9 @@ and it is not the geometry.
 
 THE CURVATURE IS THE ASSOCIATOR
 -------------------------------
+
+::
+
     [a,b,c] = (ab)c - a(bc)
 
 Exact, pointwise, and the direct analogue of a curvature tensor: it
@@ -104,14 +120,16 @@ from typing import Dict, List, Tuple, Optional, Sequence
 
 def cd_multiplication_table(levels: int = 4) -> Tuple[Dict[Tuple[int, int],
                                                           Tuple[int, int]], int]:
-    """
+    r"""
     Basis multiplication table for the 2^levels-dimensional Cayley-Dickson
     algebra, built by doubling from the reals.
 
     Returns (table, dim) where table[(i, j)] = (sign, index), meaning
-    e_i * e_j = sign * e_index.
+    e_i \* e_j = sign \* e_index.
 
     Doubling rule, with conj(e_0)=e_0 and conj(e_k)=-e_k for k>0:
+
+    ::
 
         (a,0)(c,0) = (ac, 0)
         (a,0)(0,d) = (0, d a)
@@ -355,10 +373,10 @@ def box_kites() -> Dict[int, List[Tuple[int, int]]]:
 
 
 def zero_divisor_pairs() -> List[Tuple[Tuple[int, int, int], Tuple[int, int, int]]]:
-    """
+    r"""
     Every ordered pair of diagonals whose product vanishes.
 
-    A diagonal is (a, b, sign) meaning e_a + sign*e_{b+8}. Returns 336
+    A diagonal is (a, b, sign) meaning e_a + sign\*e_{b+8}. Returns 336
     pairs: 84 diagonals, each annihilating exactly 4 others.
     """
     diags = [(a, b, s) for a in range(1, 8) for b in range(1, 8) for s in (1, -1)]
@@ -515,6 +533,8 @@ def chart_spectrum(s: int) -> List[float]:
     THE DISPERSION RELATION on box-kite s: the octahedral Laplacian
     spectrum, omega^2(k).
 
+    ::
+
         {0, 4, 4, 4, 6, 6}
 
     One zero mode, a 3-fold degenerate mode at 4, a 2-fold at 6.
@@ -635,7 +655,7 @@ def fano_planes() -> List[Tuple[int, ...]]:
 
 
 def psl27_order() -> int:
-    """|PSL(2,7)| = |GL(3,2)| = 168 = the primitive unit zero-divisor count."""
+    r"""\|PSL(2,7)\| = \|GL(3,2)\| = 168 = the primitive unit zero-divisor count."""
     return 168
 
 
@@ -842,6 +862,8 @@ def energy_split(v: Sequence[float]) -> Dict[str, float]:
     """
     How an address's energy divides across the four structural blocks:
 
+    ::
+
         e_0        the fixed point (0_RB) -- in no Assessor
         e_8        the CD doubling generator -- in no Assessor
         e_1..e_7   lower imaginaries  (Assessor lower indices)
@@ -866,6 +888,8 @@ def energy_split(v: Sequence[float]) -> Dict[str, float]:
 def diagonal_amplitudes(v: Sequence[float], a: int, b: int) -> Tuple[float, float]:
     """
     Projections of an address onto the two diagonals of Assessor (a, b):
+
+    ::
 
         d+ = (v_a + v_{b+8}) / sqrt(2)
         d- = (v_a - v_{b+8}) / sqrt(2)
@@ -963,6 +987,8 @@ def chart_of(v: Sequence[float], check_zd: bool = True) -> Dict[str, object]:
     THE CHART OF ADDRESSES -- where a monad address sits in the atlas.
 
     Exhaustive report for one 16-vector:
+
+    ::
 
         norm, fixed_point_weight, energy_split
         peak_dim                 argmax component (matches the pkl's field)
@@ -1093,6 +1119,8 @@ def pg32_lines() -> List[Tuple[int, int, int]]:
 def pencil(r: int) -> List[Tuple[int, int]]:
     """
     THE PENCIL of relation r: the 7 ways to FACTOR r into two others.
+
+    ::
 
         pencil(1) == [(2,3), (4,5), (6,7), (8,9), (10,11), (12,13), (14,15)]
 

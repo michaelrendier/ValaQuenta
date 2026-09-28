@@ -3,7 +3,8 @@ ValaQuenta.modules.sonification.tools
 =====================================
 SonificationModule — registry contract.
 
-Equations:
+Equations::
+
   1. particle_tone      named particle → ω, frequency
   2. equation_tone      any equation result → ω
   3. wavetable_rydberg  hydrogen Rydberg waveform

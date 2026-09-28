@@ -3,6 +3,8 @@ bao_mass_gap.py — Yang-Mills Mass Gap
 
 Two constants. One operation. One result.
 
+::
+
     OMEGA_ZS = 0.56714329...   (Lambert W(1))
     D_STAR   = 0.24600
     LN10     = ln(10)
@@ -15,7 +17,8 @@ It is not a free parameter. It is not fitted to any data.
 It is the difference between two constants that were derived independently
 from opposite sides of the H_hat_RB operator.
 
-The code demonstrates that these numbers work:
+The code demonstrates that these numbers work::
+
     - GAP > 0  (a gap exists)
     - GAP ≈ 1/(1000√2)  (identity holds to 3 significant figures)
     - GAP is consistent with the BAO acoustic residual precision
@@ -156,7 +159,8 @@ def validate() -> dict:
     """
     Run all checks. Report pass/fail.
 
-    These numbers work if:
+    These numbers work if::
+
         1. GAP > 0
         2. GAP is in the expected range (~7×10⁻⁴)
         3. GAP ≈ 1/(1000√2) to 3 significant figures

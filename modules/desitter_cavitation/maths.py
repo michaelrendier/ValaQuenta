@@ -3,7 +3,8 @@ ValaQuenta.modules.desitter_cavitation.maths
 ============================================
 The De Sitter Cavitation engine — pure calculation, no simulation.
 
-CLAIM (Fourth Age paper "No Singularity"):
+CLAIM (Fourth Age paper "No Singularity")::
+
     The interior of a black hole is not a singularity.  It is a finite,
     sub-Planckian de Sitter core — the Abrikosov vortex core made
     gravitational: the arithmetic/spectral condensate goes to zero
@@ -12,7 +13,8 @@ CLAIM (Fourth Age paper "No Singularity"):
     releases stiff space (metric / Λ-signed) and stiff matter (radiative),
     and at evaporation it unwraps completely — the De Sitter Cavitation.
 
-HOLCUS PREDICTION (pre-registered):
+HOLCUS PREDICTION (pre-registered)::
+
     The maximum curvature inside any black hole is the de Sitter Kretschmann
     scalar evaluated at L_dS = r_s:
 
@@ -31,7 +33,8 @@ HOLCUS PREDICTION (pre-registered):
 This module is CALCULATION not SIMULATION: closed-form scalars, ratios and
 timescales.  No ODE integration, no field solve.
 
-Protocol requirements honoured:
+Protocol requirements honoured::
+
   - Pure Python 3, stdlib only (math, fractions).  No numpy in this file.
   - Exact ratios via fractions.Fraction; float only at the output boundary.
   - Every formulary entry carries a confidence tier and a radian-primary form
@@ -117,7 +120,11 @@ def H_desitter(M: float) -> float:
 def tau_interior(M: float) -> float:
     """
     Interior BANG time = one e-fold of the de Sitter core
+
+    ::
+
         τ = 1/H_dS = L_dS/c = r_s/c = 2 G M / c^3.
+
     The core cannot 'sit there': it doubles on a light-crossing time.
     ESTABLISHED (de Sitter kinematics).  Radian-primary: one radian of
     expansion phase.
@@ -136,6 +143,8 @@ def kretschmann_core(M: float) -> float:
     """
     HOLCUS.  Maximum curvature invariant inside the hole = the de Sitter
     Kretschmann scalar  R_abcd R^abcd = 24 / L^4  at L = L_dS = r_s:
+
+    ::
 
         K_core(M) = 24 / r_s^4 = (3/2) · c^8 / (G^4 M^4)          [m^-4]
 
@@ -188,7 +197,11 @@ def kretschmann_ratio_planck(M: float) -> float:
 def planck_mass_crossover() -> Dict[str, float]:
     """
     The single mass at which K_core = K_Planck.  Solve
+
+    ::
+
         (3/2) c^8 / (G^4 M^4) = c^6 / (ħ G)^2
+
     ⟹ M^4 = (3/2) ħ^2 c^2 / G^2  ⟹ M = (3/2)^{1/4} · m_Pl.
     Below this the core would be Planck-curved; every astrophysical and
     primordial hole is far above it.  ESTABLISHED (algebra).
@@ -223,8 +236,10 @@ def stiff_matter_ceiling() -> Dict[str, object]:
 
 def core_energy_density(M: float) -> float:
     """
-    Energy density of the de Sitter core (the stiff-space channel):
+    Energy density of the de Sitter core (the stiff-space channel)::
+
         ρ_dS c^2 = 3 c^4 / (8π G L_dS^2) = 3 c^8 / (32π G^3 M^2)   [J/m^3]
+
     Scales as M^-2.  ESTABLISHED (de Sitter).
 
     :param M: mass in kg
@@ -252,6 +267,8 @@ def energy_partition(M: float, space_fraction: float | None = None) -> Dict[str,
     mass-energy Mc^2 partitions into a stiff-space (metric / Λ-signed)
     channel and a stiff-matter (radiative) channel.  Default split is the
     Ainulindale boundary constant:
+
+    ::
 
         E_space  / E_total = 1 − d*  = 0.75400
         E_matter / E_total =     d*  = 0.24600
@@ -292,8 +309,10 @@ def T_hawking(M: float) -> float:
 
 def T_desitter(M: float) -> float:
     """
-    de Sitter temperature of the core horizon:
+    de Sitter temperature of the core horizon::
+
         T_dS = ħ H_dS / (2π k_B) = ħ c^3 / (4π G M k_B) = 2 · T_H(M).
+
     Both go as c^3/GM — the core inherits the hole's temperature scale,
     exactly doubled.  ESTABLISHED (Gibbons–Hawking 1977).
 
@@ -334,6 +353,8 @@ def echo_delay(M: float) -> float:
     Ringdown-echo delay for a reflective core at proper distance ~ℓ_Pl inside
     the light ring (Cardoso–Pani ECO estimate):
 
+    ::
+
         Δt_echo ≈ (2 r_s / c) · ln(r_s / ℓ_Pl)
 
     i.e. of order the interior light-crossing time τ_interior, log-enhanced.
@@ -356,11 +377,15 @@ def no_singularity_check(masses_kg: List[float] | None = None) -> Dict[str, obje
     THEORETICAL.  Verify, across a mass sweep, the three properties the
     no-singularity claim requires of K_core(M):
 
+    ::
+
       (a) FINITE     — K_core(M) < ∞ for every M > 0
       (b) M^-4       — K_core scales as M^-4 (ratio test between rungs)
       (c) SUB-PLANCK — K_core(M) < K_Planck for every M > m_Pl crossover
 
     and the contrast property:
+
+    ::
 
       (d) the Schwarzschild interior K(r) → ∞ as r → 0  (the thing the
           claim denies is realised)
@@ -461,13 +486,15 @@ def mass_class_table() -> List[Dict[str, object]]:
 
 def cosmic_cavitation_budget(omega_bh: float = 1.0e-5,
                              space_fraction: float | None = None) -> Dict[str, float]:
-    """
+    r"""
     SECONDARY (CONJECTURE, expected FALSIFIED-as-stated, kept in data).
 
     Naive accounting: if the present black-hole mass density is Ω_BH of the
-    critical density, and a fraction (1 − d*) of each hole's mass-energy is
+    critical density, and a fraction (1 − d\*) of each hole's mass-energy is
     eventually released into the stiff-space (Λ-signed) channel, the
     cumulative contribution to Ω_Λ is
+
+    ::
 
         Ω_cav ≈ Ω_BH · (1 − d*)
 

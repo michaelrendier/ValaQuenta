@@ -3,6 +3,8 @@ ValaQuenta.engine.manifest
 ==========================
 The ENGINE MANIFEST — the additional required class of engine data.  One JSON file per engine, carried BY the module:
 
+::
+
     modules/<engine>/manifest.json
 
 The module carries its own provenance, its environmental constants, and its
@@ -23,7 +25,10 @@ engine/format.py; `format.normalise()` upgrades a bare
 `valaquenta.engine-manifest/1` file on read.
 
 SCHEMA  (schema id: "valaquenta.engine-manifest/1")
---------------------------------------------------
+---------------------------------------------------
+
+::
+
     engine            str   — MUST equal module.name
     display           str   — module.display_name
     version           str   — tracks module.version
@@ -297,12 +302,14 @@ def menu_tree(registry: Any) -> Dict[str, Any]:
     """
     Procedural menu for the whole registry, grouped and ordered.
 
-    Returns:
+    Returns::
+
         {
           "groups": [ {group, order, engines:[entry,...]}, ... ],   # sorted
           "missing_manifest": [engine, ...],                        # scaffolded live
           "count": int,
         }
+
     where each `entry` is  {engine, display, summary, status, menu, tools,
     display_modes, analysis_lenses, proof, provenance, environment, desktop}.
 

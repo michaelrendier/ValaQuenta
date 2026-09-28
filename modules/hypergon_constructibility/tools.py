@@ -3,7 +3,8 @@ ValaQuenta.modules.hypergon_constructibility.tools
 ==================================================
 HypergonConstructibilityModule — registry contract.
 
-Equations:
+Equations::
+
   1. sedenion_hypergon_sweep            all 16 N-gons, Gauss-Wantzel test
   2. verify_nilpotent_split_conjecture  re-tested factorization mechanism
   3. prime_definition_report            synthesis (raw data included, not
