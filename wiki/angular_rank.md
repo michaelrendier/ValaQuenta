@@ -4,6 +4,9 @@
 
 Angular content and subspace occupancy, measured on a **frozen datum**.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/30_angular_rank.md) · API — [angular_rank](https://michaelrendier.github.io/ValaQuenta/api/modules/angular_rank.html). This page is the record; it holds no API.
+
 ---
 
 ## What it measures

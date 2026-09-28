@@ -6,6 +6,9 @@
 **Notebooks:** [core/12_clay_millennium.ipynb](../notebooks/core/12_clay_millennium.ipynb)  
 **Claim:** All seven Clay problems restated as facets of one operator Σ_RB at different values of σ. One is solved (Poincaré, by Perelman); six are open.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/12_clay_millennium.md) · API — [clay_millennium](https://michaelrendier.github.io/ValaQuenta/api/modules/clay_millennium.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

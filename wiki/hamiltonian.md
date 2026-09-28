@@ -4,6 +4,9 @@
 **Classes:** `HamiltonianXP`, `FermatEllipticHamiltonian`, `RedBlueHamiltonian`  
 **Claim:** H = xp generates scale-invariant hyperbolic flow. The prime E = xp is the conserved energy.
 
+
+**Reference:** API — [hamiltonian](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.hamiltonian). This page is the record; it holds no API.
+
 ---
 
 ## HamiltonianXP — H = xp

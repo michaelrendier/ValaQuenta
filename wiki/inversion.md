@@ -6,6 +6,9 @@
 **Notebooks:** [core/03_inversion.ipynb](../notebooks/core/03_inversion.ipynb)  
 **Claim:** The map J_N: (r,θ) → (1/r, θ+π/2) is an involution whose fixed point r=1 is simultaneously four physical horizons.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/07_inversion.md) · API — [inversion](https://michaelrendier.github.io/ValaQuenta/api/modules/inversion.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

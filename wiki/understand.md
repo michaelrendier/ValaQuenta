@@ -4,6 +4,9 @@
 **Class:** `Understand`  
 **Claim:** Read → Ponder → Calculate → Understand. Five operations. No AI. No eddy currents. Runs on a laptop.
 
+
+**Reference:** API — [understand](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.understand). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-06-13)

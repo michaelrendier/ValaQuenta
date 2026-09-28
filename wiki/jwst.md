@@ -6,6 +6,9 @@
 **Notebooks:** [core/10_jwst.ipynb](../notebooks/core/10_jwst.ipynb)  
 **Claim:** A JWST spectral pixel maps to an octonion, giving every pixel an address in the Cayley-Dickson tower.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/22_jwst.md) · API — [jwst](https://michaelrendier.github.io/ValaQuenta/api/modules/jwst.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

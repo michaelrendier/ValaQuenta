@@ -6,6 +6,9 @@
 **Notebooks:** [core/07_berry_keating.ipynb](../notebooks/core/07_berry_keating.ipynb)  
 **Claim:** d* is a spectral floor read off H=xp, not a fitted constant. d*·ln(10) lands near OMEGA_ZS and the residue is the mass gap.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/06_berry_keating.md) · API — [berry_keating](https://michaelrendier.github.io/ValaQuenta/api/modules/berry_keating.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

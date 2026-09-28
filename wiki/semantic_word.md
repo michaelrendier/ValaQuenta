@@ -4,6 +4,9 @@
 **Class:** `SemanticWord`  
 **Claim:** A word is not a string. A word is a prime in semantic space — a point on the critical line — with all its projections.
 
+
+**Reference:** API — [semantic_word](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.semantic_word). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-06-13)

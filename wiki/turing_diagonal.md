@@ -6,6 +6,9 @@
 **Notebooks:** [turing_diagonal/01_prediction_diagonal_test.ipynb](../notebooks/turing_diagonal/01_prediction_diagonal_test.ipynb), [turing_diagonal/02_enigma_derangement.ipynb](../notebooks/turing_diagonal/02_enigma_derangement.ipynb)  
 **Claim:** The diagonal flip i² = [[-1,0],[0,-1]] is one object appearing as Cantor, Gödel, Turing, the Enigma reflector and UDOE.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/13_turing_diagonal.md) · API — [turing_diagonal](https://michaelrendier.github.io/ValaQuenta/api/modules/turing_diagonal.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

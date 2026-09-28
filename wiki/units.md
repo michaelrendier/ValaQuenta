@@ -9,6 +9,9 @@ discipline: numbers ([[ring_theory]]'s side, factor_lineage), processes
 ([[scale]] §5's pathway_decompose), and now physical units — the 7 SI base
 dimensions as the irreducible leaves.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/32_units.md) · API — [units](https://michaelrendier.github.io/ValaQuenta/api/modules/units.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

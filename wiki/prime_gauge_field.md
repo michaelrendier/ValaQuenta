@@ -12,6 +12,9 @@ provably flat for structural reasons and one that genuinely is not — and
 the pre-registered prediction about where the second one goes flat is
 *partially* right, checked honestly rather than fitted after the fact.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/35_prime_gauge_field.md) · API — [prime_gauge_field](https://michaelrendier.github.io/ValaQuenta/api/modules/prime_gauge_field.html). This page is the record; it holds no API.
+
 ---
 
 ## Origin — the question the Schwarzian check didn't answer

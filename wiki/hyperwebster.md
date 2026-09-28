@@ -6,6 +6,9 @@
 **Notebooks:** [core/09_hyperwebster.ipynb](../notebooks/core/09_hyperwebster.ipynb)  
 **Claim:** Zipf's law and the Prime Number Theorem are the same statement. Every word has an exact integer address via a Horner bijection.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/15_hyperwebster.md) · API — [hyperwebster](https://michaelrendier.github.io/ValaQuenta/api/modules/hyperwebster.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

@@ -71,7 +71,7 @@ def test_parameterless_equations_run(registry):
                 continue
             try:
                 out = registry.run(f"{name}.{e.name}", {})
-                assert "result" in out or out
+                assert isinstance(out, dict) and "result" in out, "run() must return the contract dict"
             except Exception as exc:   # noqa: BLE001
                 failures.append(f"{name}.{e.name}: {type(exc).__name__}: {exc}")
     assert failures == []

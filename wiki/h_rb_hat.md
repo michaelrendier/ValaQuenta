@@ -6,6 +6,9 @@
 **Notebooks:** [h_rb_hat/01_fermat_riemann_dual_currents.ipynb](../notebooks/h_rb_hat/01_fermat_riemann_dual_currents.ipynb)  
 **Claim:** One summed integral Σ_RB, evaluated at different σ, reproduces GR (σ=2), Yang-Mills (σ=1), QM (σ=½) and Riemann (σ=½) as facets.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/05_h_rb_hat.md) · API — [h_rb_hat](https://michaelrendier.github.io/ValaQuenta/api/modules/h_rb_hat.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

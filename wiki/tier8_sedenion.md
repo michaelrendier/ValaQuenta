@@ -5,6 +5,9 @@
 **Confidence floor:** THEORETICAL  
 **Claim:** Sixteen SMMIP operators self-organise to d*, σ=½ and D*=1 by prime hash alone — zero free parameters.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/20_tier8_sedenion.md) · API — [tier8_sedenion](https://michaelrendier.github.io/ValaQuenta/api/modules/tier8_sedenion.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

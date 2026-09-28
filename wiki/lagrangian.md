@@ -6,6 +6,9 @@
 **Notebooks:** [core/04_lagrangian.ipynb](../notebooks/core/04_lagrangian.ipynb)  
 **Claim:** L_NN, the Ainulindale Lagrangian, assembled from kinetic, matter, bias and coupling terms over a Cayley-Dickson algebra.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/08_lagrangian.md) · API — [lagrangian](https://michaelrendier.github.io/ValaQuenta/api/modules/lagrangian.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

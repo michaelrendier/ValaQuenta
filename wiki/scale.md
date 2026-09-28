@@ -9,6 +9,9 @@ This module pulls it out of a quantity and names what is left over —
 both directions, at three different levels, with three different
 answers.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/31_scale.md) · API — [scale](https://michaelrendier.github.io/ValaQuenta/api/modules/scale.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

@@ -6,6 +6,9 @@
 **Notebooks:** [core/13_tier6_physics.ipynb](../notebooks/core/13_tier6_physics.ipynb)  
 **Claim:** QM and the full Standard Model as facets of H_RB at σ=½ — gauge groups from ℂ×ℍ×𝕆 by Dixon's theorem, not postulated.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/18_tier6_physics.md) · API — [tier6_physics](https://michaelrendier.github.io/ValaQuenta/api/modules/tier6_physics.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

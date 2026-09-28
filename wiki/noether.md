@@ -4,6 +4,9 @@
 **Class:** `NoetherCurrents`  
 **Claim:** The forward (Riemann) and backward (Fermat) Noether currents both derive from one symmetry. σ=½ is derived not assigned.
 
+
+**Reference:** API — [noether.py](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.noether) and [modules/noether](https://michaelrendier.github.io/ValaQuenta/api/modules/noether.html); every registry equation with its parameters — [toolbox](toolbox/09_noether.md). This page is the record; it holds no API.
+
 ---
 
 ## Results (re-run 2026-08-28 — the large-E defect is FIXED)

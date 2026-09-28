@@ -6,6 +6,9 @@
 **Ainulindale wiki:** `Ainulindale/wiki/83_the_archimedes_screw.md`
 **Claim:** ∅_RB is the *water*, not the machine. The machine is the **logarithm** — the helix that turns rotation into lift, one quantised pitch of ln p per prime, reversible as a turbine. All four of Cody's search terms are coordinates on the single axis u = ln x, bound by the von Mangoldt explicit formula (1895, unconditional). ψ jumps by **exactly** ln p at x = p: the leaf-drop magnitude *is* the prime.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/29_archimedes_screw.md) · API — [archimedes_screw](https://michaelrendier.github.io/ValaQuenta/api/modules/archimedes_screw.html). This page is the record; it holds no API.
+
 ---
 
 ## Origin

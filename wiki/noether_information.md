@@ -6,6 +6,9 @@
 **Notebooks:** [core/06_noether_information.ipynb](../notebooks/core/06_noether_information.ipynb)  
 **Claim:** An information current J_info accompanies the Noether currents, and its conservation defect gives the entropic arrow.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/10_noether_information.md) · API — [noether_information](https://michaelrendier.github.io/ValaQuenta/api/modules/noether_information.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

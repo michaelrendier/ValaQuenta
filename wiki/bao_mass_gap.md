@@ -17,6 +17,9 @@ Zero free parameters. 7/7 checks pass.
 
 Supersedes the standalone script `ValaQuenta/bao_mass_gap.py`.
 
+
+**Reference:** API — [bao_mass_gap.py](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.bao_mass_gap) and [modules/bao_mass_gap](https://michaelrendier.github.io/ValaQuenta/api/modules/bao_mass_gap.html); every registry equation with its parameters — [toolbox](toolbox/11_bao_mass_gap.md). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-07-30)

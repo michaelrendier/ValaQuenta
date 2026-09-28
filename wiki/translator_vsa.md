@@ -7,6 +7,9 @@
 
 Version 2 of two. Source: *The Algebraic Geodesics of Language and Interfacial Physics*, Part A.2 — Pentti Kanerva. See [translator_discocat.md](translator_discocat.md) for version 1.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/27_translator_vsa.md) · API — [translator_vsa](https://michaelrendier.github.io/ValaQuenta/api/modules/translator_vsa.html). This page is the record; it holds no API.
+
 ---
 
 ## The three operations

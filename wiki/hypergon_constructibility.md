@@ -4,6 +4,9 @@
 **Class:** `HypergonConstructibilityModule`
 **Claim:** Of the 16 sedenion basis primes, only 4 are geometrically constructible (Gauss-Wantzel). Phase 22's corrected factorization conjecture (nilpotent split of p,q) does NOT survive a magnitude-matched control — re-tested honestly, not assumed.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/33_hypergon_constructibility.md) · API — [hypergon_constructibility](https://michaelrendier.github.io/ValaQuenta/api/modules/hypergon_constructibility.html). This page is the record; it holds no API.
+
 ---
 
 ## Part 1 — Raw Result: All 16 Hyper-N-Gons

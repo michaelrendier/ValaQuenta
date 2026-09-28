@@ -4,6 +4,9 @@
 **Class:** `LIOPhotonPathModule`
 **Claim:** `L_(I|O) - L := -psi(theta)` — the real (curved-metric) light-travel-time functional differs from the flat-space one by exactly the lensing potential. Established weak-lensing GR (Kaiser & Squires 1993 shear inversion, exact FFT Poisson solve) — not a new operator, named to match `Ainulindale/wiki/52`'s language. Zero fitted parameters anywhere in the pipeline.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/34_l_io_photon_path.md) · API — [l_io_photon_path](https://michaelrendier.github.io/ValaQuenta/api/modules/l_io_photon_path.html). This page is the record; it holds no API.
+
 ---
 
 ## Origin

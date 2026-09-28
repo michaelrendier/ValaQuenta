@@ -4,6 +4,9 @@
 **Class:** `SemanticDomain`  
 **Claim:** The description creates the domain. The domain selects which Riemann zeros (instruments) can play. The music creates the instruments.
 
+
+**Reference:** API — [semantic_domain](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.semantic_domain). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-06-13)

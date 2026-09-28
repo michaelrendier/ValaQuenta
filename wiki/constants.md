@@ -6,6 +6,9 @@
 **Notebooks:** [core/01_constants.ipynb](../notebooks/core/01_constants.ipynb)  
 **Claim:** π, φ, e, √, i and Λ are each read as a facet of σ in one operator, with zero free parameters.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/03_constants.md) · API — [constants](https://michaelrendier.github.io/ValaQuenta/api/modules/constants.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

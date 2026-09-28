@@ -96,13 +96,12 @@ class TuringDiagonalModule(EquationModule):
         eq = next((e for e in self.formulary() if e.name == equation_name), None)
         if eq is None:
             raise KeyError(f"'{equation_name}' not in turing_diagonal")
-        if params:
-            return eq.compute(**params)
-        return eq.compute()
+        raw = eq.compute(**params) if params else eq.compute()
+        return {'equation': eq, 'params': params, 'result': raw, 'module': self.name}
 
     def viewer_data(self, equation_name: str, params: Dict[str, Any],
                     display_mode: str) -> Dict[str, Any]:
-        result = self.run(equation_name, params)
+        result = self.run(equation_name, params)['result']
         return {'mode': display_mode, 'module': self.name,
                 'equation': equation_name, 'data': result,
                 'text': json.dumps(result, indent=2, default=str)[:4000]}

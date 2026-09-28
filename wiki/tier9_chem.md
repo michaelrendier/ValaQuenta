@@ -5,6 +5,9 @@
 **Confidence floor:** THEORETICAL  
 **Claim:** Cancer as a zero-divisor signature; the drug as its algebraic adjoint. Healthy tissue sits at A_R/A_B = OMEGA_ZS.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/21_tier9_chem.md) · API — [tier9_chem](https://michaelrendier.github.io/ValaQuenta/api/modules/tier9_chem.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

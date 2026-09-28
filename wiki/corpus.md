@@ -4,6 +4,9 @@
 **Class:** `CorpusProcessor`  
 **Claim:** Feed any text archive to ValaQuenta: read files, split to passages, set the semantic domain from context, process every word, record every prime.
 
+
+**Reference:** API — [corpus](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.corpus). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

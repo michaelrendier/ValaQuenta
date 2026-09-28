@@ -6,6 +6,9 @@
 **Notebooks:** [core/02_derivation_chain.ipynb](../notebooks/core/02_derivation_chain.ipynb)  
 **Claim:** Tiers 1–5 form a single ordered chain: from Alpha_F + OMEGA_ZS to d*, to Riemann=Fermat, to the Tier-2 dropouts, to H_RB.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/04_derivation_chain.md) · API — [derivation_chain](https://michaelrendier.github.io/ValaQuenta/api/modules/derivation_chain.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

@@ -4,6 +4,9 @@
 **Version:** 0.1
 **Confidence floor:** ESTABLISHED
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/01_bracketing_firing_order.md) · API — [bracketing_firing_order](https://michaelrendier.github.io/ValaQuenta/api/modules/bracketing_firing_order.html). This page is the record; it holds no API.
+
 ---
 
 ## Why this engine exists

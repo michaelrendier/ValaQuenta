@@ -4,6 +4,9 @@
 **Class:** `SigmaExpansionModule`
 **Claim:** `P_red(sigma) - 1/2 ≈ c1·d + c3·d³` (d=sigma-1/2) is derivable in closed form — not fitted — from moments of the underlying Dirichlet-style projection. The raw `|J_red(sigma)|² + |J_blue(sigma)|²` is NOT constant across sigma; it has a genuine minimum at sigma=1/2, not a flat quantum-probability-style conservation.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/36_sigma_expansion.md) · API — [sigma_expansion](https://michaelrendier.github.io/ValaQuenta/api/modules/sigma_expansion.html). This page is the record; it holds no API.
+
 ---
 
 ## Origin (2026-07-11)

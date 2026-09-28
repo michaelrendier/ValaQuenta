@@ -7,6 +7,9 @@
 
 Version 1 of two. Source: *The Algebraic Geodesics of Language and Interfacial Physics*, Part A.1 — Coecke, Clark & Grefenstette. See [translator_vsa.md](translator_vsa.md) for version 2.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/26_translator_discocat.md) · API — [translator_discocat](https://michaelrendier.github.io/ValaQuenta/api/modules/translator_discocat.html). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-07-28)

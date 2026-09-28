@@ -4,6 +4,9 @@
 **Class:** `Lexicon`  
 **Claim:** Accumulated experience: maps Riemann zeros (primes) to the surface forms that point at them, persists across sessions, grows with every corpus.
 
+
+**Reference:** API — [lexicon](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.lexicon). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

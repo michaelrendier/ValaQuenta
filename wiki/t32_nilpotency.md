@@ -4,6 +4,9 @@
 **Class:** `T32NilpotencyModule`
 **Claim:** one verified-correct implementation of Hyperwebster address encoding + T32/GF(2) multiplication + nilpotency test, imported by `hypergon_constructibility` (ValaQuenta) and `fermat_monster_engine.py` (FourthAgePapers/FermatMonster, cross-repo), instead of being duplicated across both.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/37_t32_nilpotency.md) · API — [t32_nilpotency](https://michaelrendier.github.io/ValaQuenta/api/modules/t32_nilpotency.html). This page is the record; it holds no API.
+
 ---
 
 ## Why This Is Its Own Module

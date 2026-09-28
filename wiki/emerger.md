@@ -10,6 +10,9 @@ different domains (ℂ / ℍ / 𝕆 / fragment); the domains' prerequisites forc
 firing *order* of emergence; σ_RB's tilt-phase picks the entry point into that
 order. The ascent-dual of Generational Lineage.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/24_emerger.md) · API — [emerger](https://michaelrendier.github.io/ValaQuenta/api/modules/emerger.html). This page is the record; it holds no API.
+
 ---
 
 ## What it is

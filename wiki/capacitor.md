@@ -4,6 +4,9 @@
 **Class:** `Capacitor`  
 **Claim:** The semantic low-pass filter. High-frequency surface variation cancels. The DC component = the prime = the word.
 
+
+**Reference:** API — [capacitor](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.capacitor). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-06-13)

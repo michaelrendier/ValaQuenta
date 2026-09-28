@@ -5,6 +5,9 @@
 **Confidence floor:** THEORETICAL  
 **Claim:** Cosmology from H_RB: dark matter geometry, ΛCDM, black hole crossing, galaxy formation, and the hydrogen spectrum from the CD tower.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/19_tier7_cosmos.md) · API — [tier7_cosmos](https://michaelrendier.github.io/ValaQuenta/api/modules/tier7_cosmos.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

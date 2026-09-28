@@ -4,6 +4,9 @@
 **Class:** `CavityMode`  
 **Claim:** Dark matter = quantum potential of a galactic standing wave. The galaxy IS the Bohmian pilot wave. No particle.
 
+
+**Reference:** API — [galactic_cavity](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.galactic_cavity). This page is the record; it holds no API.
+
 ---
 
 ## Results (run 2026-06-13)

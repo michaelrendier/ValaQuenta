@@ -4,6 +4,9 @@
 **Class:** `FixedPoint`  
 **Claim:** The Cayley-Dickson tower has two fixed points — The Unit (V(0)=1) and T_256 — and the gap between them is the mass gap.
 
+
+**Reference:** API — [fixed_point](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.fixed_point). This page is the record; it holds no API.
+
 ---
 
 ## What it computes
@@ -55,7 +58,7 @@ failed to produce a result.
 
 ## Entry points
 
-`angular_quantum_sequence()`, `bang_as_evaporation()`, `gravastar_shell()`, `inside_out_horizon()`, `roots_of_unity_collapse()`, `run_all()`, `transformer_profile()`, `two_fixed_points()`, `v_nball()`, `v_nball_peak()`, `virtual_particle_regime()`
+See the [API reference](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.fixed_point).
 
 ## Open
 

@@ -41,6 +41,8 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [angular_rank.md](angular_rank.md) | `modules/angular_rank/` | ESTABLISHED | 16D oscilloscope; {4,8,4} reproduced as a CHECK; **isotropic kernel null = 4/16 exactly**; epoch discipline — no measurement without its stamp |
 | [scale.md](scale.md) | `modules/scale/` | ESTABLISHED | polar decompose/recompose exact round-trip; **cross-ratio survives every anchor, the raw angle does not** (rejected candidate kept); no true caustic (one isolated pole only); RSA CRT-decrypt as the process-decomposition control case |
 | [units.md](units.md) | `modules/units/` | ESTABLISHED | 11 named compounds (N,J,W,Pa,C,V,Ω,F,Wb,T,H) trace exactly to the 7 SI leaves; **cancellation is exact vector arithmetic** (mol/L*L=mol); EQUATION_INDEX narrows a dimension signature to its candidate physical laws — "word possibilities" for equations |
+| [prime_gate.md](prime_gate.md) | `prime_gate.py` | THEORETICAL | BoundaryAlarm: fires once per boundary crossing; π(x) is the alarm scanned over the integers |
+| [un_sieve.md](un_sieve.md) | `…/lineage.py` (sieve_lineage) | — | the sieve watches composites fall: generation(n) = π(spf(n)) |
 
 ## Foundations — Tiers 0 to 5
 
@@ -56,6 +58,8 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [three_ring_scale.md](three_ring_scale.md) | (proposal, `modules/scale/three_ring_chart`) | THEORETICAL | The Scale = a 3-ring Smith chart = the `(T,R)` section of a Penrose diagram; matched load `Γ=0` = the Cauchy "now"; `z→1/z` = `J_N` = time reversal; `{4:8:4}` sedenion grading as a spectral refinement of conformal infinity — **can't land at 4 (past/future), can land at 8 (now), for opposite reasons**: past = gain-0 = full but write-once (Hands / long-term memory), future = gain-√2 = empty & forward-divergent (Mind's Eye / working memory; geostrophic chaos), now = gain-1 = `𝕆 = CD(ℍ_past, ℍ_future)`, the merge into action; academic, offered to the conformal-infinity literature |
 | [spherical.md](spherical.md) | `modules/spherical/` | maths-only | J_N period 2π → l=1 → Y₁⁰ → Re(s)=½ |
 | [lagrangian.md](lagrangian.md) | `modules/lagrangian/` | THEORETICAL | L_NN; 6/8 equations parameterised |
+| [t32_nilpotency.md](t32_nilpotency.md) | `modules/t32_nilpotency/` | ESTABLISHED | Hyperwebster address + T32/GF(2) multiplication + nilpotency test, one implementation |
+| [prime_gauge_field.md](prime_gauge_field.md) | `modules/prime_gauge_field/` | THEORETICAL | Weyl-shaped local-scale connection from Γ(s) = (s−1)/(s+1); F = 2·Im(dΓ/ds), zero on the real axis and on σ = −1 |
 
 ## Currents and conservation
 
@@ -73,9 +77,12 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [turing_diagonal.md](turing_diagonal.md) | `modules/turing_diagonal/` | ESTABLISHED | i²=−1 = Cantor = Gödel = Enigma; D_n/n!→1/e |
 | [singularity_null.md](singularity_null.md) | `modules/singularity_null/` | THEORETICAL | Singularity IS identity; circle says NULL one way |
 | [hyperwebster.md](hyperwebster.md) | `modules/hyperwebster/` | THEORETICAL | Horner bijection exact; Zipf = PNT |
-| *(page pending)* | `modules/oblique_gear/` | OPEN | Black-hole crank angle vs galaxy tangent — REFUTED as stated, ~3.84° gap; shared d* survives |
-| *(page pending)* | `modules/spectral_primes/` | OPEN | Spin (non-resonant) vs wobble (carries the primes); crossing pinned at σ=0.500000 to machine precision |
+| [oblique_gear.md](oblique_gear.md) | `modules/oblique_gear/` | OPEN | Black-hole crank angle vs galaxy tangent — REFUTED as stated, ~3.84° gap; shared d* survives |
+| [spectral_primes.md](spectral_primes.md) | `modules/spectral_primes/` | OPEN | Spin (non-resonant) vs wobble (carries the primes); crossing pinned at σ=0.500000 to machine precision |
 | [bracketing_firing_order.md](bracketing_firing_order.md) | `modules/bracketing_firing_order/` | ESTABLISHED | Bell(16)=10,480,142,147; firing order (3,1,2) on [Scale,Sign,Add]→[Add,Scale,Sign]; set-membership generalizes Recamán |
+| [udeo_crypto.md](udeo_crypto.md) | `modules/udeo_crypto/` | OPEN | six mechanisms scored against a random-guess control: all at chance except where the Hash is exposed; d ≡ e (mod 4) is the one proven result (1 bit) |
+| [hypergon_constructibility.md](hypergon_constructibility.md) | `modules/hypergon_constructibility/` | OPEN | of the 16 sedenion basis primes, 4 are Gauss-Wantzel constructible; the nilpotent-split factoring conjecture does not survive a magnitude test |
+| [sigma_expansion.md](sigma_expansion.md) | `modules/sigma_expansion/` | THEORETICAL | P_red(σ) − ½ ≈ c₁d + c₃d³ derived in closed form, not fitted |
 
 ## Physics and cosmology
 
@@ -89,6 +96,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | [sigma_cavitation.md](sigma_cavitation.md) | `modules/sigma_cavitation/` | renderer | σ-cavitation → SVG; not a registered engine |
 | [desitter_cavitation.md](desitter_cavitation.md) | `modules/desitter_cavitation/` | THEORETICAL | **No singularity.** HOLCUS: K_core(M)=(3/2)c⁸/(G⁴M⁴)=24/r_s⁴ — M⁻⁴, sub-Planckian for M>1.107 m_Pl; no_singularity_check PASS; echo delay ~ r_s/c. Calculation not simulation. Fourth Age engine. |
 | [emerger.md](emerger.md) | `modules/emerger/` | THEORETICAL | Sedenion Bracketing & Firing Order. e₀ (real) is the fixed anchor — the tilt to the i axis, never bracketed. A bracketing = an ordered partition of {1..15}; each group + anchor spans ℂ/ℍ/𝕆/FRAGMENT by closure (fragment = where ZDs live). 5 canonical brackets ({1:15} grades; {2:14} the pointer plane carrying Ω_ZS; {8:8} the CD double + ZD equator + J₂; {4:4:4:4} four SU(2) phases + σ_RB tilt/axis, Σtilt=net work, =0⇔σ=½; {4:8:4} gain spectrum 0/1/√2). FIRING ORDER is load-bearing — canonical (dependency, 4 of 120 legal), σ_RB-phased (Σtilt rotates the entry into the 12-step precession, 4 d* : 3 Lambert-W), or any permutation. ZD tests exact (rank-deficiency of Lₓ). Ascent-dual of Generational Lineage. **FINDING:** a σ_RB phase can select a non-dependency-legal order. |
+| [l_io_photon_path.md](l_io_photon_path.md) | `modules/l_io_photon_path/` | THEORETICAL | L_(I\|O) − L = −ψ(θ): the lensing potential, from real weak-lensing shear (Kaiser-Squires) |
 
 ## Sound and language
 

@@ -6,6 +6,9 @@
 **Notebooks:** [core/08_sonification.ipynb](../notebooks/core/08_sonification.ipynb)  
 **Claim:** Every particle and stratum in the tower has a frequency. ω = pitch, exactly and without tuning.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/25_sonification.md) · API — [sonification](https://michaelrendier.github.io/ValaQuenta/api/modules/sonification.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes

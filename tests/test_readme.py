@@ -34,3 +34,20 @@ def test_readme_links_resolve():
         if not (ROOT / target).exists():
             missing.append(target)
     assert missing == []
+
+
+def test_wiki_has_a_page_for_every_module_and_links_resolve():
+    modules = ROOT / "modules"
+    names = {d.name for d in modules.iterdir() if d.is_dir() and (d / "__init__.py").exists()}
+    missing_pages = sorted(n for n in names if not (ROOT / "wiki" / f"{n}.md").exists())
+    assert missing_pages == []
+    broken = []
+    for page in (ROOT / "wiki").glob("*.md"):
+        text = re.sub(r"`[^`\n]*`", "", page.read_text())      # code spans are not links
+        for m in re.finditer(r"\]\(([^)#\s]+)(?:#[^)]*)?\)", text):
+            target = m.group(1)
+            if target.startswith(("http://", "https://", "mailto:")):
+                continue
+            if not (page.parent / target).exists():
+                broken.append(f"{page.name}: {target}")
+    assert broken == [], broken[:10]

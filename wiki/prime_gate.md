@@ -4,6 +4,9 @@
 **Classes:** `BoundaryAlarm`, `PrimeGateEngine`
 **Claim:** `BoundaryAlarm` is the reusable primitive — fires once per crossing of a boundary condition, blind to everything except that the crossing happened. π(x) is `BoundaryAlarm(is_prime)` scanned over the integers; the Holcus FIRING signal (Ainulindale wiki/44, a computation reaching σ=½) is the same primitive scanned over a σ-trajectory instead. The engine's purpose is the alarm — not a test of any dataset.
 
+
+**Reference:** API — [prime_gate](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.prime_gate). This page is the record; it holds no API.
+
 ---
 
 ## BoundaryAlarm — the reusable primitive

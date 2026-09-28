@@ -13,6 +13,9 @@ This page is the reference the skill did not carry: **what the three are, how
 they fit together as a group, and how to roll any named operation all the way
 down to the one it rests on.**
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/02_add_scale_sign.md) · API — [add_scale_sign](https://michaelrendier.github.io/ValaQuenta/api/modules/add_scale_sign.html). This page is the record; it holds no API.
+
 ---
 
 ## 1. The three

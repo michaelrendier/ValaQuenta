@@ -4,6 +4,9 @@
 **Class:** `BellPhase / LindbladMode / ResonanceCoupling`  
 **Claim:** Galactic bell geometry: the bar contracts to a Witches Hat and expands to a brim, and the bell never closes and never reaches the shell.
 
+
+**Reference:** API — [telperion](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.telperion). This page is the record; it holds no API.
+
 ---
 
 ## What it computes
@@ -77,7 +80,7 @@ failed to produce a result.
 
 ## Entry points
 
-`bao_tower_mapping()`, `bell_geometry()`, `bell_phases()`, `galactic_rotation_lock()`, `galaxy_types()`, `lindblad_modes()`, `m87_axis()`, `m87_compression()`, `predictions()`, `resonance_coupling()`, `run_all()`, `stellar_halo_profile_comparison()`, `the_angle_in_lindblad()`, `the_swimming_engine()`
+See the [API reference](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.telperion).
 
 ## Open
 

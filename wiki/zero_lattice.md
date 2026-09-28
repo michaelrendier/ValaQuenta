@@ -4,6 +4,9 @@
 **Class:** `ZLNode`  
 **Claim:** In 𝕊 there exist non-zero a, b with a·b = 0, and their lattice has exactly 84 directed / 42 unordered zero-divisor pairs.
 
+
+**Reference:** API — [zero_lattice](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.zero_lattice). This page is the record; it holds no API.
+
 ---
 
 ## What it computes
@@ -49,7 +52,7 @@ Telperion, the tree: ℝ is the leaf at σ=1, ℍ the equator at σ=½, 𝕊 the
 
 ## Entry points
 
-`basis_to_cell()`, `build_mul_table()`, `build_tree()`, `classify_zd_pairs()`, `critical_line_samples()`, `e_k()`, `find_zd_pairs()`, `laurelin_interface()`, `monster_gap_in_map()`, `multiply()`, `norm_sq()`, `run_all()`, `sedenion_point_map()`, `sphere_coordinates()`, `switch_scale()`, `the_angle()`, `universal_translator_structure()`, `verify_angle()`, `view_tree()`, `zd_path_coordinates()`, `zeta_dirichlet()`, `zeta_geometric()`
+See the [API reference](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.zero_lattice).
 
 ## Prediction P2 fails
 

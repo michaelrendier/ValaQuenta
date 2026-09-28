@@ -6,6 +6,9 @@
 **Notebooks:** [singularity_null/01_circle_null_and_tower_collapse.ipynb](../notebooks/singularity_null/01_circle_null_and_tower_collapse.ipynb), [singularity_null/02_bk_singularity_and_flt_primes.ipynb](../notebooks/singularity_null/02_bk_singularity_and_flt_primes.ipynb)  
 **Claim:** The Singularity IS identity. The circle says NULL exactly one way — the Ptolemy inversion — and the Cayley-Dickson tower collapses onto it.
 
+
+**Reference:** every equation with its parameters — [toolbox](toolbox/14_singularity_null.md) · API — [singularity_null](https://michaelrendier.github.io/ValaQuenta/api/modules/singularity_null.html). This page is the record; it holds no API.
+
 ---
 
 ## What it computes
