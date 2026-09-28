@@ -133,5 +133,5 @@ The Emerger is the general form of the sedenion-bracketing done ad hoc across
 | `wiki/ZD-locus-equatorial-geodesic-2026-09-01.md` | spinning Telperion sweeps `S¹⁴`; the ZD locus is its balance equator | the `{8:8}` bracket's `on_zd_equator` test |
 | `fermat_sedenion_test.py` | do the Fermat coords `a=(p+q)/2, b=(q−p)/2` land on T32 ZD pairs? | a `{8:8}` + equator query on an RSA embedding |
 | `hypercomplex_laplacian.py` | `Lₓ` IS the CD Laplacian; ZD pairs are its nodal lines; `dS/dn` across scales | the exact `left_matrix` / `mat_rank` here; the dynamic-lens sweep |
-| `udeo_crypto/UDEO_RSA_DEMO.py` | 6 private-key-recovery methods, all scored vs control — **at chance except `d ≡ e (mod 4)`** | the multi-scale probes came back flat = a measurement of the modulus's depth-1 flatness |
+| `udeo_crypto/maths.py` | 6 private-key-recovery methods, all scored vs control — **at chance except `d ≡ e (mod 4)`** | the multi-scale probes came back flat = a measurement of the modulus's depth-1 flatness |
 | `references/logistic_bifurcation_RSA.png` (v2) | where the factoring *methods* live — **the modulus is NOT a bifurcation** | `N = a² − b²`, depth-1; the erased coordinate is one number |

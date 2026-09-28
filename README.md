@@ -6,194 +6,167 @@
 Ainulindale (the Music) → ValaQuenta (the engines) → VAPMIP (the world)
 ```
 
----
+Version **0.159** · Python ≥ 3.9 · License **GPL-3.0-only** ([LICENSE](LICENSE))
 
-## Architecture
+ValaQuenta is a Python package of exact mathematical engines. Each engine is a
+module you can import and call, and each is also a plugin of the ValaQuenta
+Format ([FORMAT.md](FORMAT.md)) that the derivation browser lists and runs.
+38 engines are registered (321 equations); 41 module directories in all.
 
-ValaQuenta is a Python package. All engines import cleanly as `from ValaQuenta.X import Y`.
+## Current Repo Focus
 
-```
-ValaQuenta/
-├── bao_mass_gap.py      Yang-Mills mass gap (ESTABLISHED)
-├── hamiltonian.py       H=xp, Fermat elliptic, RedBlue
-├── noether.py           Ascending/descending Noether currents
-├── galactic_cavity.py   Dark matter = pilot wave (SPARC confirmed)
-├── telperion.py         Galactic bell geometry — 10/10 predictions confirmed
-├── fixed_point.py       The Unit + T_256 (Bang as inside-out horizon)
-├── capacitor.py         Semantic low-pass filter
-├── understand.py        Read → Ponder → Calculate → Understand
-│
-├── modules/             Domain engines (one module per Millennium problem / tier)
-│   ├── add_scale_sign/  THE TIER-0 DATATYPE — Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN)
-│   ├── berry_keating/   Riemann zeros, d*, Witches Hat, prime gaps
-│   ├── clay_millennium/ Yang-Mills, Navier-Stokes, P vs NP
-│   ├── constants/       OMEGA_ZS, d*, GAP, φ, π
-│   ├── derivation_chain/ Tier 0 → Tier 9 derivation registry
-│   ├── h_rb_hat/        SIGMA_RB baseline engine (general)
-│   ├── hyperwebster/    Zipf = Prime Number Theorem
-│   ├── inversion/       Circle inversion / L_(I|O) geometry
-│   ├── jwst/            BAO, CMB, cosmological engines
-│   ├── lagrangian/      VAPMIP Lagrangian — L_NN (rename pending)
-│   ├── noether/         Noether currents, conservation proofs
-│   ├── noether_information/ Information current, distillation
-│   ├── sigma_cavitation/ Bang = phase transition, BEC medium
-│   ├── singularity_null/ ZD lattice, 42/84/168 exact counts
-│   ├── sonification/    Schumann resonances, sound from primes
-│   ├── spherical/       N-ball transformer V(n), n* peak
-│   ├── tier6_physics/   Pilot wave, Bohmian mechanics
-│   ├── tier7_cosmos/    Galactic cavity, dark energy, BEC
-│   ├── tier8_sedenion/  16 operators, ZD structure
-│   ├── tier9_chem/      Cancer = ZD, drug = adjoint
-│   └── turing_diagonal/ Halting problem geometry
-│
-├── notebooks/           Derivation notebooks (70, all executing)
-│   ├── engines/         One per top-level engine (13)
-│   ├── core/            One per foundational module (14)
-│   ├── tier7/ tier8/ tier9/   Cosmology, sedenion, chemistry (29)
-│   └── translator/ h_rb_hat/ singularity_null/ turing_diagonal/
-├── ZeroLattice/         Telperion paper notebooks (4)
-├── code/                Standalone implementations
-│   ├── noether_engine/
-│   ├── sonification/
-│   └── wiles_modularity/
-├── wiki/                One page per engine — results (51)
-│
-├── requirements.txt     Dependencies, derived from actual imports
-├── install.sh           Linux installer
-├── install-macos.sh     macOS installer
-├── install.ps1          Windows installer
-└── verify_install.py    Checks the arithmetic, not just the imports
+Public release preparation: the API: Code Reference. Every registered module has
+a manifest and a `maths.py` / `tools.py` split; docstrings are Sphinx reST field lists; the
+README is the index, the wiki holds the results and the record, the notebooks
+run the derivations, and Sphinx (`docs/`) will build the per-function reference.
+
+## Quick start
+
+```bash
+git clone https://github.com/michaelrendier/ValaQuenta
+cd ValaQuenta
+bash install.sh                        # creates .venv, installs, verifies
+source .venv/bin/activate
+python3 verify_install.py              # recomputes the arithmetic, not just the imports
 ```
 
----
+A session at the registry. The prompt is a literal `>>>`; the output is what it
+printed.
 
-## Engines and Results
-
-### modules/add_scale_sign/ — the tier-0 datatype
-
-```
-ASS(add, scale, sign)  =  x ↦ sign·scale·x + add   —  an element of
-  Aff(1,ℝ) = ℝ ⋊ (ℝ_{>0} × ℤ/2) = ADD ⋊ (SCALE × SIGN)
-
-compose  A @ B        invert  ~A        residual  A.residual('SIGN')  (str.strip-style)
-decompose  A.lineage(order='chrono' | 'zeta')  →  ASSWord
-
-each generator's equation part:   ADD → a      SCALE → ln s      SIGN → g
-the generalized equation:         u = Σₖ [ gₖ·ln sₖ + aₖ ]      Γ = tanh(u/2)
-ground state a=0, s=1, g=+1  ⇒  u=0  ⇒  Γ=0  ⇒  the now
-
-firing order (the 3-phase camshaft):  SIGN → SCALE → ADD,  x ↦ ADD(SCALE(SIGN(x)))
-firing defect  u − (a + ln s) = (g−1)·ln s   (non-zero ⇔ SIGN flipped a non-trivial SCALE)
-orthogonal Smith charts:  Γ_SCALE = tanh(½·ln s)  ⟂  Γ_ADD = tanh(½·a),  parity g
-```
-
-Registered as `AddScaleSignModule` (6 code-verified equations; `python3 -m
-ValaQuenta --info`). The decomposition maths (the four-question test, roll-down)
-stays in `VAPMIP/add_scale_sign.py` — not duplicated. Also an engine + tool in
-the SFR decomposer suite (with the fast inverse square root as the worked
-example). Formal spec: [wiki/add_scale_sign.md](wiki/add_scale_sign.md) ·
-`Ainulindale/wiki/107_add_scale_sign_datatype.md`.
-
-### bao_mass_gap.py — Yang-Mills Mass Gap
-
-```
-Status: ESTABLISHED (all 5 checks pass)
-
-OMEGA_ZS = 0.5671432904097838  (Lambert W(1), exact)
-D_STAR   = 0.24600             (BK spectral, 5 sig figs)
-GAP      = 0.000707357533249   (OMEGA_ZS − D_STAR × ln(10))
-
-GAP ≈ 1/(1000√2)  [0.035% approximation]
-NOTE: 1/√2000 = 0.02236 — NOT the gap (31.6× larger)
+```python
+>>> from ValaQuenta.noether import NoetherCurrents
+>>> NoetherCurrents().forced_sigma(1000.0, sigma_0=-3.0)   # any E, any σ₀
+0.5
+>>> from ValaQuenta.hamiltonian import HamiltonianXP
+>>> HamiltonianXP().scale_check(2, 3, lam=2.0)             # H(λx, p/λ) = H(x, p)
+True
+>>> from ValaQuenta.__main__ import _register_all
+>>> registry = _register_all()
+>>> registry.list_equations('noether')
+['noether.conservation_diagnostic', 'noether.violation_scan',
+ 'noether.resonance_artifacts', 'noether.blockchain_record',
+ 'noether.blockchain_verify', 'noether.blockchain_summary']
+>>> out = registry.run('noether.conservation_diagnostic',
+...                    {'psi_norms': [0.5, 0.5, 0.7], 'g': 1.0, 'algebra': 2})
+>>> out['result']['status'], out['result']['conserved']
+('PASS', True)
 ```
 
-See [wiki/bao_mass_gap.md](wiki/bao_mass_gap.md)
+## API: Code Reference
 
-### hamiltonian.py — H = xp
+Two kinds of code. **Standalone engines** are single files you import by name.
+**Registry modules** live in `modules/<name>/` and share one contract; each has
+`maths.py` (the mathematics, plain functions), `tools.py` (the `EquationModule`
+class that publishes them as a formulary), and `manifest.json` (provenance and
+UI registration).
 
+### Standalone engines
+
+| Import | What it is | Public API | Results |
+|---|---|---|---|
+| `ValaQuenta.bao_mass_gap` | Yang-Mills Mass Gap | `gap_value`, `identity_check`, `bao_consistency`, `mtheory_geometry`, `validate` | [wiki](wiki/bao_mass_gap.md) |
+| `ValaQuenta.capacitor` | Capacitor — The semantic low-pass filter. | `Capacitor` | [wiki](wiki/capacitor.md) |
+| `ValaQuenta.corpus` | CorpusProcessor — Feed any text archive to the ValaQuenta. | `CorpusProcessor` | [wiki](wiki/corpus.md) |
+| `ValaQuenta.fixed_point` | Fixed Point Engine — The Boundary | `v_nball`, `v_nball_peak`, `transformer_profile`, `FixedPoint`, `two_fixed_points`, `angular_quantum_sequence` … | [wiki](wiki/fixed_point.md) |
+| `ValaQuenta.galactic_cavity` | Galactic Particle Derivation Engine | `CavityMode`, `CosmologicalSMIG` | [wiki](wiki/galactic_cavity.md) |
+| `ValaQuenta.hamiltonian` | HamiltonianXP — H = xp (Berry & Keating, 1999) | `HamiltonianXP`, `FermatEllipticHamiltonian`, `RedBlueHamiltonian` | [wiki](wiki/hamiltonian.md) |
+| `ValaQuenta.lexicon` | Lexicon — The accumulated experience of the ValaQuenta. | `Lexicon` | [wiki](wiki/lexicon.md) |
+| `ValaQuenta.noether` | Forward and backward Noether currents from one symmetry. | `NoetherCurrents` | [wiki](wiki/noether.md) |
+| `ValaQuenta.prime_gate` | PrimeGate — the Boundary-Crossing Alarm | `sieve`, `BoundaryAlarm`, `sigma_half_alarm`, `PrimeGateEngine` | [wiki](wiki/prime_gate.md) |
+| `ValaQuenta.semantic_domain` | SemanticDomain — The description bounds the semantic space. | `SemanticDomain` | [wiki](wiki/semantic_domain.md) |
+| `ValaQuenta.semantic_word` | SemanticWord — A word is its multidimensional context. | `SemanticWord` | [wiki](wiki/semantic_word.md) |
+| `ValaQuenta.telperion` | The Swimming Engine  v0.100 | `m87_compression`, `BellPhase`, `GalaxyType`, `LindbladMode`, `BaoTowerMapping`, `ResonanceCoupling` … | [wiki](wiki/telperion.md) |
+| `ValaQuenta.understand` | Understand — Read, Listen, Ponder, Calculate, Understand. | `Understand` | [wiki](wiki/understand.md) |
+| `ValaQuenta.zero_lattice` | Zero Lattice Engine — Telperion | `build_mul_table`, `multiply`, `norm_sq`, `e_k`, `find_zd_pairs`, `classify_zd_pairs` … | [wiki](wiki/zero_lattice.md) |
+
+### Registry modules
+
+`python3 -m ValaQuenta --info` prints this table from the live registry. Each
+module is imported as `from ValaQuenta.modules.<name> import <Class>`; its
+functions are in `ValaQuenta.modules.<name>.maths`. The **toolbox** page lists
+every equation with its parameters, confidence and a worked call.
+
+| Module | Engine | Equations | Confidence floor | Reference |
+|---|---|---|---|---|
+| `bao_mass_gap` | The Mass Gap — spectral residue of BAO | 7 | ESTABLISHED | [toolbox](wiki/toolbox/11_bao_mass_gap.md) · [wiki](wiki/bao_mass_gap.md) |
+| `inversion` | Inside-Out Inversion Engine (I\|O) | 7 | ESTABLISHED | [toolbox](wiki/toolbox/07_inversion.md) · [wiki](wiki/inversion.md) |
+| `lagrangian` | L_NN Ainulindale Lagrangian | 8 | THEORETICAL | [toolbox](wiki/toolbox/08_lagrangian.md) · [wiki](wiki/lagrangian.md) |
+| `noether` | Noether Currents ∂_μJ^μ = 0 | 6 | THEORETICAL | [toolbox](wiki/toolbox/09_noether.md) · [wiki](wiki/noether.md) |
+| `noether_information` | J_info Information Current | 4 | CONJECTURE | [toolbox](wiki/toolbox/10_noether_information.md) · [wiki](wiki/noether_information.md) |
+| `berry_keating` | H_NN Berry-Keating Operator | 6 | OPEN | [toolbox](wiki/toolbox/06_berry_keating.md) · [wiki](wiki/berry_keating.md) |
+| `sonification` | Sonification ω = pitch | 19 | ESTABLISHED | [toolbox](wiki/toolbox/25_sonification.md) · [wiki](wiki/sonification.md) |
+| `hyperwebster` | HyperWebster Horner Bijection | 6 | THEORETICAL | [toolbox](wiki/toolbox/15_hyperwebster.md) · [wiki](wiki/hyperwebster.md) |
+| `jwst` | JWST Spectral Pixel → 𝕆 | 5 | THEORETICAL | [toolbox](wiki/toolbox/22_jwst.md) · [wiki](wiki/jwst.md) |
+| `turing_diagonal` | Turing Diagonal Engine — i²=-1 = Cantor = Gödel = Enigma = UDOE | 5 | ESTABLISHED | [toolbox](wiki/toolbox/13_turing_diagonal.md) · [wiki](wiki/turing_diagonal.md) |
+| `singularity_null` | Singularity-NULL Engine — The Singularity IS Identity. Tower Collapses. | 5 | THEORETICAL | [toolbox](wiki/toolbox/14_singularity_null.md) · [wiki](wiki/singularity_null.md) |
+| `sigma_expansion` | Sigma Expansion — J_red/J_blue Balance Curve | 4 | THEORETICAL | [toolbox](wiki/toolbox/36_sigma_expansion.md) · [wiki](wiki/sigma_expansion.md) |
+| `t32_nilpotency` | T32 Nilpotency — Hyperwebster Address Primitives | 1 | ESTABLISHED | [toolbox](wiki/toolbox/37_t32_nilpotency.md) · [wiki](wiki/t32_nilpotency.md) |
+| `hypergon_constructibility` | Hypergon Constructibility — Gauss-Wantzel + Factorization Test | 3 | OPEN | [toolbox](wiki/toolbox/33_hypergon_constructibility.md) · [wiki](wiki/hypergon_constructibility.md) |
+| `l_io_photon_path` | L_(I\|O) Photon Path Engine (GR) | 6 | THEORETICAL | [toolbox](wiki/toolbox/34_l_io_photon_path.md) · [wiki](wiki/l_io_photon_path.md) |
+| `archimedes_screw` | The Archimedes Screw (Prime Coordinate Engine) | 29 | THEORETICAL | [toolbox](wiki/toolbox/29_archimedes_screw.md) · [wiki](wiki/archimedes_screw.md) |
+| `box_kite` | The Box-Kite Debugger (ZD Geometry) | 18 | ESTABLISHED | [toolbox](wiki/toolbox/28_box_kite.md) · [wiki](wiki/box_kite.md) |
+| `angular_rank` | The 16D Oscilloscope (Angular Rank) | 12 | ESTABLISHED | [toolbox](wiki/toolbox/30_angular_rank.md) · [wiki](wiki/angular_rank.md) |
+| `scale` | The Scale (Decompositional Analysis, Forwards and Backwards) | 10 | ESTABLISHED | [toolbox](wiki/toolbox/31_scale.md) · [wiki](wiki/scale.md) |
+| `units` | Units (The Equation Index) | 4 | ESTABLISHED | [toolbox](wiki/toolbox/32_units.md) · [wiki](wiki/units.md) |
+| `add_scale_sign` | ADD:SCALE:SIGN (the tier-0 datatype) | 6 | ESTABLISHED | [toolbox](wiki/toolbox/02_add_scale_sign.md) · [wiki](wiki/add_scale_sign.md) |
+| `desitter_cavitation` | De Sitter Cavitation Engine — No Singularity: the Abrikosov-Vortex Core | 8 | THEORETICAL | [toolbox](wiki/toolbox/23_desitter_cavitation.md) · [wiki](wiki/desitter_cavitation.md) |
+| `emerger` | The Emerger (Sedenion Bracketing & Firing Order) | 8 | THEORETICAL | [toolbox](wiki/toolbox/24_emerger.md) · [wiki](wiki/emerger.md) |
+| `constants` | Tier 0 Constants — π φ e √ i derived from H_RB | 11 | ESTABLISHED | [toolbox](wiki/toolbox/03_constants.md) · [wiki](wiki/constants.md) |
+| `derivation_chain` | Derivation Chain — Tiers 1–5 | 14 | THEORETICAL | [toolbox](wiki/toolbox/04_derivation_chain.md) · [wiki](wiki/derivation_chain.md) |
+| `h_rb_hat` | Σ_RB RedBlue Summed Integral | 16 | THEORETICAL | [toolbox](wiki/toolbox/05_h_rb_hat.md) · [wiki](wiki/h_rb_hat.md) |
+| `clay_millennium` | Clay Millennium Problems — Σ_RB derivations | 12 | THEORETICAL | [toolbox](wiki/toolbox/12_clay_millennium.md) · [wiki](wiki/clay_millennium.md) |
+| `tier6_physics` | Tier 6 — Full Physics: QM + Standard Model | 10 | THEORETICAL | [toolbox](wiki/toolbox/18_tier6_physics.md) · [wiki](wiki/tier6_physics.md) |
+| `tier7_cosmos` | Tier 7 — Cosmology + Mathematics + Standard Model from H_RB | 15 | THEORETICAL | [toolbox](wiki/toolbox/19_tier7_cosmos.md) · [wiki](wiki/tier7_cosmos.md) |
+| `tier8_sedenion` | Tier 8 — D-CS: Sedenion Self-Organisation Paper | 8 | THEORETICAL | [toolbox](wiki/toolbox/20_tier8_sedenion.md) · [wiki](wiki/tier8_sedenion.md) |
+| `tier9_chem` | Tier 9 — D-CHEM: Cancer Drugs from Algebraic Signature (Erika Schafer) | 6 | THEORETICAL | [toolbox](wiki/toolbox/21_tier9_chem.md) · [wiki](wiki/tier9_chem.md) |
+| `translator_discocat` | The Translator v1 — DisCoCat (pregroup . tensor) | 5 | OPEN | [toolbox](wiki/toolbox/26_translator_discocat.md) · [wiki](wiki/translator_discocat.md) |
+| `translator_vsa` | The Translator v2 — VSA / hyperdimensional (bind.bundle.permute) | 6 | OPEN | [toolbox](wiki/toolbox/27_translator_vsa.md) · [wiki](wiki/translator_vsa.md) |
+| `udeo_crypto` | UDEO RSA Key-Recovery — Five Candidate Mechanisms, Honestly Scored | 8 | OPEN | [toolbox](wiki/toolbox/38_udeo_crypto.md) · — |
+| `bracketing_firing_order` | Bracketing, Firing Order, and Set Membership | 7 | ESTABLISHED | [toolbox](wiki/toolbox/01_bracketing_firing_order.md) · [wiki](wiki/bracketing_firing_order.md) |
+| `oblique_gear` | The Oblique Gear Across Scale (Black Hole / Galaxy) | 6 | OPEN | [toolbox](wiki/toolbox/16_oblique_gear.md) · — |
+| `prime_gauge_field` | The Prime Gauge Field | 5 | THEORETICAL | [toolbox](wiki/toolbox/35_prime_gauge_field.md) · [wiki](wiki/prime_gauge_field.md) |
+| `spectral_primes` | Spectral Representation of the Primes (Spin / Wobble) | 5 | OPEN | [toolbox](wiki/toolbox/17_spectral_primes.md) · — |
+
+Library modules — mathematics only, not registered as engines:
+
+| Module | What it is | | | Reference |
+|---|---|---|---|---|
+| `spherical` | Spherical harmonics, Courant nodal domains, Schumann modes | — | — | [wiki](wiki/spherical.md) |
+| `sigma_cavitation` | σ-parameterised sedenion cavitation SVG renderer (`generate`) | — | — | [wiki](wiki/sigma_cavitation.md) |
+| `translator_common` | Shared vector space of the two Translator engines | — | — | [wiki](wiki/translator_common.md) |
+
+### The registry contract
+
+```python
+from ValaQuenta.engine.registry import EquationModule, Equation, get_registry, register
 ```
-HamiltonianXP:
-  scale_check(2,3,λ=2) → True
-  trajectory(1,1,t=1)  → x=e, p=1/e, E=xp=1.0 (conserved exactly)
-  zeros (BK, first 5)  → [14.1347, 21.0220, 25.0109, 30.4249, 32.9351]
 
-FermatEllipticHamiltonian (lemniscatic, g₂=1, g₃=0):
-  Discriminant Δ = 1.0 (valid elliptic curve)
-  ℘(1.0) = 1.05083333
+| Name | Role |
+|---|---|
+| `Equation` | One named equation: `name`, `display`, `latex`, `radian_form`, `confidence`, `code_verified`, `params`, `compute`, `process`. |
+| `EquationModule` | Base class of every `tools.py`: `name`, `display_name`, `version`, `description`, `confidence_floor`, `formulary()`, `run(equation_name, params)`, `viewer_data(equation_name, params, display_mode)`. |
+| `ModuleRegistry` | `register(module)`, `get_module(name)`, `get_equation('module.equation')`, `list_modules()`, `list_equations(module_name=None)`, `run('module.equation', params)`. |
 
-RedBlueHamiltonian:
-  Red(σ=½) = Blue(σ=½) = 0.707...  (balance at σ=½ ✓)
-```
+Confidence tiers, strongest first: `ESTABLISHED` · `THEORETICAL` · `CONJECTURE` ·
+`OPEN`. A tier is a claim about the mathematics, not about the code: the code
+runs at every tier.
 
-See [wiki/hamiltonian.md](wiki/hamiltonian.md)
+To add an engine, follow the six steps in the docstring of
+[`engine/registry.py`](engine/registry.py) and validate it with
+`python3 -m ValaQuenta.engine.manifest validate` and
+`python3 -m ValaQuenta.engine.format validate`.
 
-### noether.py — Ascending/Descending Noether Currents
+### Conventions
 
-```
-forced_sigma(E, σ₀=any) → 0.5   exactly, for any real σ₀ and any E
-
-FIXED (2026-08-28): the old softmax-weighted-average iteration converged to
-σ=½ only for E ≲ 10 (returned σ₀ unchanged above; OverflowError for σ₀<0).
-The balance F=B is, in logs, E(1−2σ)=0 — linear in σ — so it is now solved
-exactly in one Newton step from any σ₀, with no exp evaluated away from the
-balance point. See wiki/noether.md. (Notebook 03_noether.ipynb still shows
-the old behaviour and needs a re-run.)
-
-The boundary is ORIENTED: up (toward next CD shadow) / down (toward ZD).
-σ=½ is the shadow of the world above — projection of the next CD level.
-```
-
-See [wiki/noether.md](wiki/noether.md)
-
-### galactic_cavity.py — Galactic Pilot Wave
-
-```
-r_t    = 0.738 kpc   (dark matter threshold, d* × r_max_bar)
-v_flat = 220.0 km/s  (flat rotation, confirmed)
-Period = 22.7 Gyr    (frozen — exceeds universe age 13.8 Gyr)
-P1 (r_t = d* × r_max_bar): confirmed against SPARC 97-galaxy sample 2026-05-30
-```
-
-See [wiki/galactic_cavity.md](wiki/galactic_cavity.md)
-
-### capacitor.py — Semantic Low-Pass Filter
-
-```
-H(0) = 1.0  (DC gain — the prime passes through unattenuated)
-Pole at s = −1/τ  (stable, left half-plane)
-Transfer function: H(s) = 1/(1+sτ)
-```
-
-See [wiki/capacitor.md](wiki/capacitor.md)
-
-### understand.py — LSHS Pipeline
-
-```
-U.process("why is the mass gap 1 over root 2000")
-  prime = 0.5 + 48.0052j  (Riemann zero γ₉)
-  σ     = 0.5000000000    (derived, never assigned)
-  dc    = 0.50000000      (the prime, extracted)
-
-σ=½ is derived for every input. The mathematics forces it.
-```
-
-See [wiki/understand.md](wiki/understand.md)
-
----
-
-## Key Identity — What "1/root(2000)" Actually Means
-
-Do not write `GAP = 1/√2000`. Write `GAP ≈ 1/(1000√2)`:
-
-```
-1/√2000        = 0.022360...   ← NOT the gap
-1/(1000√2)     = 0.000707...   ← the approximate identity (0.035% error)
-1/√(2,000,000) = 0.000707...   ← same thing, unambiguous
-```
-
-The 1/√2 factor is explained (σ=½ symmetry, first CD doubling). The 10³ factor is an open question.
-
----
+- **Docstrings** are Sphinx reST field lists (`:param x:`, `:returns:`,
+  `:raises E:`), consumed by `sphinx.ext.autodoc`; types come from the
+  annotations. A docstring tells the caller what to do, not what happened. The
+  history of a result lives in the wiki.
+- **Arithmetic** is `fractions.Fraction` exact where the maths is exact; floats
+  appear only at an output boundary.
+- **Numbers that fail stay in the data.** Refuted results are reported as
+  refuted, with the number that refuted them.
+- **Plugins** declare a licence. Every built-in engine is `GPL-3.0-only`.
 
 ## Install
 
@@ -278,9 +251,9 @@ time, `dir()`-style, the way a package browser walks a package. The breadcrumb
   sympy guided derivation would consume (the seam is wired, the tour is TODO).
 - **`a`** opens the **analysis lenses** — run a tool *across any engine's
   mathematics, including its own*: `emerge` (sedenion bracketing & firing
-  order), `spectral` and `lineage` (`FactoralDecomposition`), `calibrate`
-  (the factoral decomposition of the current engine). Sibling repos are
-  imported lazily; a missing one is reported, not fatal.
+  order), `spectral` and `lineage` (`GenerationalLineage`), `calibrate`
+  (the generational-lineage decomposition of the current engine). Sibling
+  repos are imported lazily; a missing one is reported, not fatal.
 
 Keys: `↑↓` nav · `→/Enter` open·run · `←/⌫` up · `Tab` focus · `/` filter ·
 `d` display mode · `a` lenses · `p` proof inputs · `q` quit.
@@ -294,8 +267,12 @@ Keys: `↑↓` nav · `→/Enter` open·run · `←/⌫` up · `Tab` focus · `/
 | The top-level engines, worked | [notebooks/engines/](notebooks/engines/) |
 | One module per Millennium problem / tier | [notebooks/core/](notebooks/core/) |
 | What is known to be broken | [wiki/00_index.md](wiki/00_index.md) § Known defects |
+| What each engine printed when last run | [wiki/results_at_a_glance.md](wiki/results_at_a_glance.md) |
+| Every function, with parameters | [Code Reference](#api-code-reference) below, and `docs/` (Sphinx) |
 
-All 70 notebooks execute clean — 393/393 code cells, verified 2026-07-28.
+The 70 notebooks that existed on 2026-07-28 executed clean (393/393 code cells). `notebooks/` now holds 87; the 17 added since have not been re-run as a set. `python3 verify_install.py` checks the arithmetic they rely on.
+
+---
 
 ---
 
