@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "udeo_crypto",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.udeo_crypto",
+  "type": "engine",
+  "name": "udeo_crypto",
   "display": "UDEO RSA Key-Recovery — Five Candidate Mechanisms, Honestly Scored",
   "version": "0.100",
   "summary": "Tests five candidate RSA private-key-recovery mechanisms against known toy keys, each scored against a random-guess control (not just report",
   "confidence_floor": "OPEN",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.udeo_crypto",
+    "class": "UDEOCryptoModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -113,5 +123,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "udeo_crypto",
   "_scaffolded": true
 }

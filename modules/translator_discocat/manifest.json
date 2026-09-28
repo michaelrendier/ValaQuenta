@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "translator_discocat",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.translator_discocat",
+  "type": "engine",
+  "name": "translator_discocat",
   "display": "The Translator v1 — DisCoCat (pregroup . tensor)",
   "version": "0.111",
   "summary": "Version 1 of two Translator constructions.",
   "confidence_floor": "OPEN",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.translator_discocat",
+    "class": "DisCoCatTranslatorModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -107,5 +117,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "translator_discocat",
   "_scaffolded": true
 }

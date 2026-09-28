@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "tier9_chem",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.tier9_chem",
+  "type": "engine",
+  "name": "tier9_chem",
   "display": "Tier 9 — D-CHEM: Cancer Drugs from Algebraic Signature (Erika Schafer)",
   "version": "0.100",
   "summary": "D-CHEM paper (Erika Schafer collaboration).",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.tier9_chem",
+    "class": "Tier9ChemModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -99,5 +109,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "tier9_chem",
   "_scaffolded": true
 }

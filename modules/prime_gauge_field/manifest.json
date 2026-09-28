@@ -56,7 +56,9 @@
     ],
     "native_space": "complex s-plane, s = sigma + i*t (the zeta-argument coordinate)",
     "arithmetic": "complex float; closed forms verified against finite-difference numerics",
-    "requires_engines": ["scale"],
+    "requires_engines": [
+      "scale"
+    ],
     "external": []
   },
   "ui": {
@@ -79,28 +81,36 @@
         "equation": "report",
         "label": "Report",
         "desc": "one point, full readout: Gamma, the connection, both curvatures, the zero-locus check",
-        "params": ["s"]
+        "params": [
+          "s"
+        ]
       },
       {
         "name": "curvature",
         "equation": "curvature",
         "label": "Curvature",
         "desc": "F(s) = 2*Im(dGamma/ds), the connection that is NOT flat",
-        "params": ["s"]
+        "params": [
+          "s"
+        ]
       },
       {
         "name": "log_potential_curvature",
         "equation": "log_potential_curvature",
         "label": "Log-Potential Curvature",
         "desc": "A=grad(log|Gamma|) -- always zero, for any holomorphic scalar",
-        "params": ["s"]
+        "params": [
+          "s"
+        ]
       },
       {
         "name": "prediction_check",
         "equation": "prediction_check",
         "label": "Prediction Check",
         "desc": "the pre-registered flat-locus prediction, checked over a random sample",
-        "params": ["n_samples"]
+        "params": [
+          "n_samples"
+        ]
       }
     ],
     "display_modes": [

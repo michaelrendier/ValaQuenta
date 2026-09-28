@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "tier6_physics",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.tier6_physics",
+  "type": "engine",
+  "name": "tier6_physics",
   "display": "Tier 6 — Full Physics: QM + Standard Model",
   "version": "0.100",
   "summary": "Full QM and Standard Model from Ainulindale.",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.tier6_physics",
+    "class": "Tier6PhysicsModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -127,5 +137,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "tier6_physics",
   "_scaffolded": true
 }

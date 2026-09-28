@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "constants",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.constants",
+  "type": "engine",
+  "name": "constants",
   "display": "Tier 0 Constants — π φ e √ i derived from H_RB",
   "version": "0.120",
   "summary": "Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure.",
   "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.constants",
+    "class": "ConstantsModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -134,5 +144,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "constants",
   "_scaffolded": true
 }

@@ -122,6 +122,26 @@ CONFIDENCE = {
 }
 
 
+_TIER_ORDER = ('ESTABLISHED', 'THEORETICAL', 'CONJECTURE', 'OPEN')   # strongest first
+
+
+def weakest_tier(label: str) -> str:
+    """Reduce a confidence label to one CONFIDENCE tier, conservatively.
+
+    A label may name several tiers ("ESTABLISHED+THEORETICAL": the established
+    parts plus a theoretical operator identity). The equation is only as strong
+    as its weakest part, so the WEAKEST tier named is returned. A label that
+    names no tier is returned unchanged.
+
+    :param label: a tier name, or free text naming one or more tiers
+    :returns: the weakest tier named in `label`, else `label` itself
+    """
+    if label in CONFIDENCE:
+        return label
+    named = [t for t in _TIER_ORDER if t in label]
+    return named[-1] if named else label
+
+
 # ── Equation descriptor ──────────────────────────────────────────────────────
 
 class Equation:
@@ -132,7 +152,8 @@ class Equation:
     :ivar display: human-readable name
     :ivar latex: LaTeX string for viewer rendering
     :ivar radian_form: the equation rewritten in radian-primary units
-    :ivar confidence: one of the CONFIDENCE keys
+    :ivar confidence: one of the CONFIDENCE keys; the weakest tier named in the authored label
+    :ivar confidence_note: the confidence label exactly as authored (may name several tiers)
     :ivar code_verified: True if backed by executable code
     :ivar params: list of parameter names
     :ivar compute: callable taking the parameters and returning the result
@@ -147,7 +168,8 @@ class Equation:
         self.display        = display
         self.latex          = latex
         self.radian_form    = radian_form
-        self.confidence     = confidence
+        self.confidence_note = confidence          # the label as authored
+        self.confidence     = weakest_tier(confidence)
         self.code_verified  = code_verified
         self.params         = params
         self.compute        = compute
@@ -331,6 +353,7 @@ class ModuleRegistry:
     def __init__(self):
         self._modules: Dict[str, EquationModule] = {}
         self._formulary: Dict[str, Equation] = {}  # flat: name -> Equation
+        self.verbose = False                       # print one line per registered module
 
     def register(self, module: EquationModule) -> None:
         """
@@ -347,8 +370,9 @@ class ModuleRegistry:
             key = f"{module.name}.{eq.name}"
             self._formulary[key] = eq
         module.on_register(self)
-        print(f"  [registry] registered: {module.display_name} v{module.version} "
-              f"({len(module.formulary())} equations)")
+        if self.verbose:
+            print(f"  [registry] registered: {module.display_name} v{module.version} "
+                  f"({len(module.formulary())} equations)")
 
     def get_module(self, name: str) -> Optional[EquationModule]:
         """

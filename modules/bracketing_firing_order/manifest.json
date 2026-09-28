@@ -53,49 +53,69 @@
         "equation": "bell_number",
         "label": "Bell Number",
         "desc": "exact count of unordered groupings of n things  [process= not set]",
-        "params": ["n"]
+        "params": [
+          "n"
+        ]
       },
       {
         "name": "bracketing_report",
         "equation": "bracketing_report",
         "label": "Bracketing Report",
         "desc": "count always, list only when feasible (n<=12)  [process= not set]",
-        "params": ["items"]
+        "params": [
+          "items"
+        ]
       },
       {
         "name": "firing_order_count",
         "equation": "firing_order_count",
         "label": "Firing Order Count",
         "desc": "n! possible sequencings  [process= not set]",
-        "params": ["n"]
+        "params": [
+          "n"
+        ]
       },
       {
         "name": "apply_firing_order",
         "equation": "apply_firing_order",
         "label": "Apply Firing Order",
         "desc": "resequence a written order by a chosen permutation  [process= not set]",
-        "params": ["written", "firing_order"]
+        "params": [
+          "written",
+          "firing_order"
+        ]
       },
       {
         "name": "collisions",
         "equation": "collisions",
         "label": "Collisions",
         "desc": "has a firing recurred? Recaman's rule, generalized  [process= not set]",
-        "params": ["steps", "x0"]
+        "params": [
+          "steps",
+          "x0"
+        ]
       },
       {
         "name": "would_collide",
         "equation": "would_collide",
         "label": "Would Collide",
         "desc": "the flip test, checkable before committing  [process= not set]",
-        "params": ["steps_so_far", "candidate_next", "x0"]
+        "params": [
+          "steps_so_far",
+          "candidate_next",
+          "x0"
+        ]
       },
       {
         "name": "jurisdiction_violation",
         "equation": "jurisdiction_violation",
         "label": "Jurisdiction Violation",
         "desc": "did a bracketing use another jurisdiction's maths illegally?  [process= not set]",
-        "params": ["object_name", "requested_operation", "jurisdiction_map"]
+        "params": [
+          "object_name",
+          "requested_operation",
+          "jurisdiction_map"
+        ]
       }
     ],
     "display_modes": [

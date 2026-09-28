@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "tier7_cosmos",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.tier7_cosmos",
+  "type": "engine",
+  "name": "tier7_cosmos",
   "display": "Tier 7 — Cosmology + Mathematics + Standard Model from H_RB",
   "version": "0.110",
   "summary": "Cosmological + mathematical consequences of Ainulindale.",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.tier7_cosmos",
+    "class": "Tier7CosmosModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -162,5 +172,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "tier7_cosmos",
   "_scaffolded": true
 }

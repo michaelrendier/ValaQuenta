@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "h_rb_hat",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.h_rb_hat",
+  "type": "engine",
+  "name": "h_rb_hat",
   "display": "Σ_RB  RedBlue Summed Integral",
   "version": "0.120",
   "summary": "Σ_RB = Σ_p p^{-σ} [R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p].",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.h_rb_hat",
+    "class": "SigmaRBModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -187,5 +197,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "h_rb_hat",
   "_scaffolded": true
 }

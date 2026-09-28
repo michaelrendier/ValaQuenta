@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "clay_millennium",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.clay_millennium",
+  "type": "engine",
+  "name": "clay_millennium",
   "display": "Clay Millennium Problems — Σ_RB derivations",
   "version": "0.130",
   "summary": "All 7 Clay Millennium Problems derived from Σ_RB.",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.clay_millennium",
+    "class": "ClayMillenniumModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -141,5 +151,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "clay_millennium",
   "_scaffolded": true
 }

@@ -175,6 +175,7 @@ def main():
         return
 
     print("[ValaQuenta] loading modules...")
+    get_registry().verbose = True
     registry = _register_all()
 
     if args.info:

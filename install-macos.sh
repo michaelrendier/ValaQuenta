@@ -117,6 +117,18 @@ if ! "$PY" -m pip install "${PIP_TARGET[@]}" -r "$REQ"; then
   die "dependency installation failed"
 fi
 
+# ── The package itself ───────────────────────────────────────────────────────
+# Editable install, so `import ValaQuenta` works from any directory in this
+# environment (the repository root IS the package; without this it imports
+# only from the directory above the clone).
+if [ "$MODE" = "system" ]; then
+  warn "system mode: make the clone importable with  export PYTHONPATH=\"$(dirname "$REPO_DIR")\""
+else
+  say "Installing ValaQuenta (editable)"
+  "$PY" -m pip install "${PIP_TARGET[@]}" --no-deps -e . >/dev/null \
+    || die "could not install the package itself (pip install -e .)"
+fi
+
 # ── Verify ───────────────────────────────────────────────────────────────────
 say "Verifying"
 "$PY" verify_install.py || die "verification failed — see output above"

@@ -26,7 +26,9 @@
       "h_rb_hat"
     ],
     "citations": [
-      "Riemann 1859", "von Mangoldt", "Weil (explicit formula)"
+      "Riemann 1859",
+      "von Mangoldt",
+      "Weil (explicit formula)"
     ],
     "wiki": {
       "ainulindale": "",
@@ -40,7 +42,9 @@
     "native_space": "Riemann-Siegel theta / spiral (t as third axis)",
     "arithmetic": "mpmath, dps=30",
     "requires_engines": [],
-    "external": ["mpmath"]
+    "external": [
+      "mpmath"
+    ]
   },
   "ui": {
     "menu": {
@@ -55,35 +59,46 @@
         "equation": "spin_is_monotonic",
         "label": "Spin Is Monotonic",
         "desc": "theta'(t), the major loop — non-resonant  [process= not set]",
-        "params": ["n_zeros"]
+        "params": [
+          "n_zeros"
+        ]
       },
       {
         "name": "wobble_carries_primes_demo",
         "equation": "wobble_carries_primes_demo",
         "label": "Wobble Carries Primes",
         "desc": "psi(x) reconstruction from the minor loop's zero set  [process= not set]",
-        "params": ["n_zeros"]
+        "params": [
+          "n_zeros"
+        ]
       },
       {
         "name": "tilt_vs_wobble_correlation",
         "equation": "tilt_vs_wobble_correlation",
         "label": "Tilt vs Wobble Correlation",
         "desc": "REFUTED AS TESTED — correlation ~0.037  [process= not set]",
-        "params": ["n_zeros"]
+        "params": [
+          "n_zeros"
+        ]
       },
       {
         "name": "crossing_does_not_drift",
         "equation": "crossing_does_not_drift",
         "label": "The Crossing",
         "desc": "isolated, simple, pinned at sigma=1/2 — moves in t, not sigma  [process= not set]",
-        "params": ["n_zeros", "n_test"]
+        "params": [
+          "n_zeros",
+          "n_test"
+        ]
       },
       {
         "name": "full_report",
         "equation": "full_report",
         "label": "Full Report",
         "desc": "everything this module knows, in one call  [process= not set]",
-        "params": ["n_zeros"]
+        "params": [
+          "n_zeros"
+        ]
       }
     ],
     "display_modes": [

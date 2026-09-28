@@ -1,10 +1,20 @@
 {
-  "schema": "valaquenta.engine-manifest/1",
-  "engine": "derivation_chain",
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.derivation_chain",
+  "type": "engine",
+  "name": "derivation_chain",
   "display": "Derivation Chain — Tiers 1–5",
   "version": "0.100",
   "summary": "Full derivation chain from root constants to Geometric Observer.",
   "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.derivation_chain",
+    "class": "DerivationChainModule"
+  },
+  "permissions": [],
+  "dependencies": {},
   "provenance": {
     "origin": "",
     "authors": [
@@ -155,5 +165,6 @@
       "pgui_widgets": []
     }
   },
+  "engine": "derivation_chain",
   "_scaffolded": true
 }

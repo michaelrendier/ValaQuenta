@@ -71,14 +71,18 @@
         "equation": "stokes_dimensionless",
         "label": "Stokes Dimensionless",
         "desc": "y(x) = (2/pi)*atan(x), the galaxy curve  [process= not set]",
-        "params": ["x"]
+        "params": [
+          "x"
+        ]
       },
       {
         "name": "stokes_tangent_angle_deg",
         "equation": "stokes_tangent_angle_deg",
         "label": "Stokes Tangent Angle",
         "desc": "tangent angle of the galaxy curve at any x = r/r_t  [process= not set]",
-        "params": ["x"]
+        "params": [
+          "x"
+        ]
       },
       {
         "name": "crank_vs_galaxy_tangent_check",

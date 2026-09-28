@@ -126,6 +126,12 @@ if ($LASTEXITCODE -ne 0) {
     Die 'dependency installation failed'
 }
 
+# ── The package itself ───────────────────────────────────────────────────────
+# Editable install, so `import ValaQuenta` works from any directory in this
+# environment (the repository root IS the package).
+& $PyExe @($PyArgs + @('-m', 'pip', 'install') + $PipTarget + @('--no-deps', '-e', '.'))
+if ($LASTEXITCODE -ne 0) { Die 'could not install the package itself (pip install -e .)' }
+
 # ── Verify ───────────────────────────────────────────────────────────────────
 Say 'Verifying'
 & $PyExe @($PyArgs + @('verify_install.py'))
