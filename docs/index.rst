@@ -23,6 +23,7 @@ Install and the quick start are in the
 
    conventions
    api/index
+   listings
    locations
 
 Indices
