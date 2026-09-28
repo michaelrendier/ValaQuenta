@@ -48,6 +48,27 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'chrono': 'ASSWord[chrono]:  SCALE(8)  ∘  ADD(2)  ∘  SCALE(0.5)\n  u = -1·ln 4 + -1 = -2.38629    Γ = tanh(u/2) = -0.831552 ...', 'zeta': 'ASSWord[zeta]: ... (same element, ordered by |u_k| descending)', 'same_element': 'x ↦ -1·4·x + -2'}
 ```
 
+### Reading the Noether direction with this tool (2026-09-28)
+
+`camshaft_defect` is the probe for "does SIGN matter here?" — its `firing_defect`
+is `(g−1)·ln s`, so it is zero exactly when SIGN or SCALE is at its identity.
+Theory and tables: [`../add_scale_sign.md`](../add_scale_sign.md) § *SIGN and the
+direction of the Noether currents*.
+
+```python
+>>> for p in ({'add':0.0,'scale':2.0,'sign':-1}, {'add':0.0,'scale':1.0,'sign':-1}, {'add':0.0,'scale':2.0,'sign':1}):
+...     r = module.run('camshaft_defect', p)['result']
+...     print(p, r['u_total'], r['firing_defect'], r['order_matters'])
+{'add': 0.0, 'scale': 2.0, 'sign': -1}  -0.693147  -1.386294  True     # SIGN flipped a real SCALE
+{'add': 0.0, 'scale': 1.0, 'sign': -1}   0.0        0.0       False    # SCALE = 1: the flip does nothing
+{'add': 0.0, 'scale': 2.0, 'sign':  1}   0.693147   0.0       False    # SIGN = +1: nothing to flip
+```
+
+The Noether identity `ln F − ln B = E(1−2σ)` is `ASS(add=0, scale=2E, sign=−1)`
+applied to `σ − ½`; evaluate it with the `ASS` object directly
+(`ASS(0.0, 2*E, -1)(sigma - 0.5)`). Measured values: scratchpad
+`ContextPlease/claude/scratchpad/2026-09-28_sign_noether_direction/`.
+
 ### Shell commands (`shell_commands()`)
 
 Direct callables for the QTermWidget shell interface:

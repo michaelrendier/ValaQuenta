@@ -42,7 +42,7 @@ in the order found.
 | Page | Tool | Date | Covers |
 |------|------|------|--------|
 | [01_bracketing_firing_order.md](01_bracketing_firing_order.md) | Bracketing, Firing Order, Set Membership | 2026-09-27 | `modules/bracketing_firing_order/` |
-| [02_add_scale_sign.md](02_add_scale_sign.md) | ADD:SCALE:SIGN (the tier-0 datatype) | 2026-09-27 | `modules/add_scale_sign/` |
+| [02_add_scale_sign.md](02_add_scale_sign.md) | ADD:SCALE:SIGN (the tier-0 datatype) | 2026-09-28 | `modules/add_scale_sign/` |
 | [03_constants.md](03_constants.md) | Tier 0 Constants — π φ e √ i derived from H_RB | 2026-09-27 | `modules/constants/` |
 | [04_derivation_chain.md](04_derivation_chain.md) | Derivation Chain — Tiers 1–5 | 2026-09-27 | `modules/derivation_chain/` |
 | [05_h_rb_hat.md](05_h_rb_hat.md) | Σ_RB  RedBlue Summed Integral | 2026-09-27 | `modules/h_rb_hat/` |

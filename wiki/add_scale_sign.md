@@ -251,6 +251,113 @@ ValaQuenta --info`); also an **engine + tool** in the SFR decomposer suite
 (`engine/add_scale_sign.py`, `report_add_scale_sign()`). Scratchpad:
 `.claude/scratchpad/2026-08-28_add-scale-sign-datatype/`.
 
+## SIGN and the direction of the Noether currents (2026-09-28)
+
+*Question (Cody):* is SIGN the only part of ADD:SCALE:SIGN that matters to the
+direction of the Noether-current conversation, `J_red` versus `J_blue`?
+
+**Answer: no. SIGN is necessary, not sufficient.** It supplies the orientation
+(one bit, nothing between). The *size*, the *side of ½ you stand on*, and the
+*order things fire in* belong to the other two generators — and the "up/down"
+of the currents is a fact about the Cayley–Dickson tower, of which the tier-0
+sign bit is at most the trace.
+
+Provenance: everything in the tables below is a **CALCULATION** against the live
+code (`GenerationalLineage/engine/add_scale_sign.py` and the `forced_sigma`
+forms of `ValaQuenta/noether.py`); script and log:
+`ContextPlease/claude/scratchpad/2026-09-28_sign_noether_direction/sign_noether_direction.py` / `.log`. The **readings** are marked as such.
+
+### 1. What SIGN does supply
+
+The two currents are reflections of each other. `noether.py` defines
+`backward = −forward`, and the `forced_sigma` forms `F(σ) = e^(−σE)`,
+`B(σ) = e^(−(1−σ)E)` swap under `σ ↔ 1−σ` (an involution — order 2 — which is
+what a sign-type act is).
+
+### 2. The exact identity: the direction is `sign · scale · offset`
+
+    ln F − ln B  =  E·(1 − 2σ)  =  ASS(add=0, scale=2E, sign=−1) applied to (σ − ½)
+
+Checked over E ∈ {0.5, 2, 10} × σ ∈ {0, ¼, ½, ¾, 1}: maximum difference **0**.
+
+| E | σ | ln F − ln B | direction | F + B |
+|---:|---:|---:|:---:|---:|
+| 2 | 0.00 | +2.0000 | + | 1.13534 |
+| 2 | 0.25 | +1.0000 | + | 0.82966 |
+| 2 | 0.50 |  0.0000 | 0 | 0.73576 |
+| 2 | 0.75 | −1.0000 | − | 0.82966 |
+| 2 | 1.00 | −2.0000 | − | 1.13534 |
+
+*Reading* (an interpretation of an exact identity, not a further test): the
+three generators each take a different job.
+
+| generator | role in the identity | decides |
+|---|---|---|
+| **SCALE** `2E` | the gain | **how strongly** one current beats the other |
+| **ADD**-offset `σ − ½` | where you stand relative to balance | **which side** of ½ — the sign of the offset |
+| **SIGN** `g = −1` | the orientation convention | which current is called "red" |
+
+Because SCALE > 0 always, the net direction is the **product of two signs**:
+SIGN's `g` and the sign of the ADD offset. So the direction is not SIGN alone —
+it is SIGN acting on where ADD has put you.
+
+### 3. SIGN acts on ADD; it does not act on SCALE
+
+Composed elements `(add, scale, sign)`, with `ADD(3)`, `SCALE(2)`, `SIGN(−1)`:
+
+| pair | X∘Y | Y∘X | commute? |
+|---|---|---|:---:|
+| SIGN, SCALE | (0, 2, −1) | (0, 2, −1) | **yes** |
+| SIGN, ADD   | (−3, 1, −1) | (+3, 1, −1) | no — the offset is reflected |
+| SCALE, ADD  | (6, 2, +1) | (3, 2, +1) | no — the offset is dilated |
+
+Group commutators: `[ADD(3), SIGN(−1)] = (−6, 1, +1)` and `[ADD(3), SCALE(2)] =
+(−1.5, 1, +1)` — both **pure translations**; `[SCALE(2), SIGN(−1)] = identity`.
+The reflection `σ ↦ 1−σ` about ½ is exactly SIGN acting on the offset
+`x = σ − ½` (`x ↦ −x`). Order matters *only through ADD* (§2, `[SCALE, ADD] = ADD`),
+and SIGN is entangled with ADD in the same way.
+
+### 4. SIGN's effect on the fold is gated by SCALE
+
+`u = g·ln s + a`, so flipping SIGN changes `u` by `(g−1)·ln s = −2 ln s`:
+
+| scale | add | u (g=+1) | u (g=−1) | Δu | −2 ln s |
+|---:|---:|---:|---:|---:|---:|
+| 1.0 | 0 | 0.00000 | 0.00000 | **0** | 0 |
+| 1.0 | 2 | 2.00000 | 2.00000 | **0** | 0 |
+| 2.0 | 0 | 0.69315 | −0.69315 | −1.38629 | −1.38629 |
+| 0.5 | 1 | 0.30685 | 1.69315 | +1.38629 | +1.38629 |
+| 10  | 0 | 2.30259 | −2.30259 | −4.60517 | −4.60517 |
+
+At `s = 1` a sign flip does nothing to the fold (the firing defect of §5 above
+is zero). SIGN only matters where SCALE is non-trivial.
+
+### 5. What SIGN cannot say (readings, not tested here)
+
+- **Up/down is a tower fact.** `Ainulindale/wiki/61` corrected "forward/backward"
+  to **up/down in the Cayley–Dickson tower** (away from / toward the
+  zero-divisors). The tower's losses — commutativity, associativity, then zero
+  divisors (`r_lineage_is_order_of_operations`) — are order-of-operations
+  properties of *higher* tiers. The tier-0 SIGN bit can encode an orientation;
+  it cannot say *which level* the orientation is at.
+- **Red/blue is more than one bit.** `sigma.not_a_scalar` (lineage): two states
+  with identical `σ_self` differ in `σ_RB`, which carries 8 components (tilt and
+  axis). Reducing the balance to a red-or-blue flag discards that.
+
+### 6. Two cautions to keep with this
+
+1. **`backward = −forward` is a definition, not a derivation.** "SIGN is all
+   that matters" is true of that class *by construction*. What is derived is
+   that the two forms meet at σ = ½ (`forced_sigma`).
+2. **`F + B` is not conserved in σ** (E = 2: minimum 0.73576 at σ = ½, maximum
+   1.13534 at the ends). Three different conservation statements circulate and
+   should be named each time: `toolsets/noether.py` checks
+   `J_red + J_blue = const` (only on synthetic readings); `wiki/noether.md`
+   states `J_up + J_down + J_3 = E`; `sigma_expansion` finds the raw
+   `|J_red|² + |J_blue|²` has a minimum at ½. The `F`, `B` above are
+   `forced_sigma`'s model, **not** `sigma_expansion`'s Dirichlet-projected
+   currents — the two were not compared numerically.
+
 ## See also
 
 - [scale.md](scale.md) — SCALE pulled out of a quantity, both directions, three levels
