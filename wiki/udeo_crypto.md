@@ -21,7 +21,7 @@ Each method is scored as a percentile rank: how unusual the true d looks under t
 | 5 — Zero Lattice paths, public key only | 50.45 | at chance |
 | 6 — emergent rotation signature | 52.59 | at chance on 40 keys (the 6-key sample showed 31.2 and did not survive scale-up) |
 
-`mod4_identity_theorem` is proven, not statistical: d ≡ e (mod 4) for every RSA key with odd primes. It follows because 4 | φ(n), so ed ≡ 1 (mod 4), and (ℤ/4ℤ)\* has exponent 2. It removes one bit of the search space, has no connection to the sedenion framework, and is cryptographically insignificant at real key sizes (2000/2000 random keys satisfy it).
+`mod4_identity_theorem` is proven, not statistical: d ≡ e (mod 4) for every RSA key with odd primes. It follows because 4 | φ(n), so ed ≡ 1 (mod 4), and (ℤ/4ℤ)\* has exponent 2. It removes one bit of the search space, needs no sedenion machinery, and is cryptographically insignificant at real key sizes (2000/2000 random keys satisfy it).
 
 ## What this page records
 

@@ -50,7 +50,7 @@ Engines::
                                      scenario is at chance.
     mod4_identity_theorem()         d = e (mod 4) always, for any RSA key
                                      with odd primes. Proven classical
-                                     number theory, unrelated to sedenions.
+                                     number theory; it needs no sedenion machinery.
                                      The one ESTABLISHED-tier result here.
     rsa_control_baseline()          Positive-control sanity check: given
                                      the FULL known key (p,q,e,d), does the
@@ -1120,10 +1120,9 @@ def mod4_identity_theorem() -> Dict[str, Any]:
         'matches_proof_exactly': matches == n_trials,
         'practical_significance': 'Reduces private-key search space by exactly 1 bit (factor of 2). '
                                    'Cryptographically meaningless at real key sizes.',
-        'relation_to_sedenion_framework': 'None. This is classical number theory. It surfaced via the '
-                                           "Zero Lattice path test only because that geometry's angle "
-                                           'happens to encode x mod 4, not because of any zero-divisor '
-                                           'or CD-tower mechanism.',
+        'relation_to_sedenion_framework': 'Classical number theory. It surfaced via the Zero Lattice path test '
+                                           "because that geometry's angle encodes x mod 4; the theorem "
+                                           'itself needs no zero-divisor or CD-tower mechanism.',
         'confidence': 'ESTABLISHED',
     }
 
@@ -1476,8 +1475,8 @@ def compare_all_methods() -> Dict[str, Any]:
             '50 == indistinguishable from chance, matching the prior finding that the RSA '
             'cross-check control stayed at chance across all 5 Translator test rounds. '
             'The one genuinely ESTABLISHED result of this session is the mod4_theorem: '
-            'd = e (mod 4) always, proven by elementary number theory, unrelated to sedenions or '
-            'zero-divisors, and cryptographically insignificant (1 bit of search-space reduction). '
+            'd = e (mod 4) always, proven by elementary number theory, needing no sedenion or '
+            'zero-divisor machinery, and cryptographically insignificant (1 bit of search-space reduction). '
             'Methods 1, 2, 3, 5(public-key-only), 6 are AT CHANCE (Method 6 initially looked like a '
             'weak signal on 6 toy keys, did not survive a 40-key verification). Method 1b (the '
             'actual Ptolemy NULL operator from singularity_null) initially looked like a strong '

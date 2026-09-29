@@ -54,7 +54,7 @@ class UDEOCryptoModule(EquationModule):
             Equation('mod4_identity_theorem',
                      'd = e (mod 4) always — proven, classical number theory',
                      r'4\mid\varphi(n)\Rightarrow ed\equiv1\ (\mathrm{mod}\ 4)\Rightarrow d\equiv e\ (\mathrm{mod}\ 4)',
-                     'The one ESTABLISHED result. Unrelated to sedenions. Worth 1 bit.',
+                     'The one ESTABLISHED result. Needs no sedenion machinery. Worth 1 bit.',
                      'ESTABLISHED', True, [], mod4_identity_theorem, [],
                      process='PROVEN, not conjectured: d = e (mod 4) for every RSA key with odd primes p, q.'),
             Equation('rsa_control_baseline',

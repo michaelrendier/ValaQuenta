@@ -27,6 +27,7 @@ Output: ~/.ptolemy/images/sedenion_cavitation_s{sigma\*100:03.0f}_{ts}.svg
 """
 
 import math
+import os
 import time
 import shutil
 from pathlib import Path
@@ -66,7 +67,8 @@ _OP_NAMES = [
 _ZD_ORDER = [11, 7, 3, 1, 0, 2, 6, 10, 8, 13, 15, 12, 9, 4, 5, 14]
 
 _PTOLEMY_IMAGES = Path('~/.ptolemy/images').expanduser()
-_WIKI_IMAGES    = Path('/home/rendier/Projects/Ptol/Ainulindale/wiki/images')
+# Optional mirror directory: set VALAQUENTA_WIKI_IMAGES to also copy each SVG there.
+_WIKI_IMAGES    = Path(os.environ.get('VALAQUENTA_WIKI_IMAGES', ''))
 
 
 def _coupling(p: int, sigma: float) -> float:
@@ -290,7 +292,7 @@ def generate(sigma: float, prompt: str, v: list,
     dest.write_text(svg_text, encoding='utf-8')
 
     # ── Mirror to Ainulindale wiki/images/ ────────────────────────────────────
-    if _WIKI_IMAGES.exists():
+    if os.environ.get('VALAQUENTA_WIKI_IMAGES') and _WIKI_IMAGES.is_dir():
         shutil.copy2(dest, _WIKI_IMAGES / fname)
 
     return str(dest)

@@ -46,7 +46,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VQ_ROOT   = Path("/home/rendier/Projects/ThePlace/ValaQuenta")
+VQ_ROOT   = Path(__file__).resolve().parent.parent
 VQ_PY     = VQ_ROOT / ".venv" / "bin" / "python"
 LEDGER    = VQ_ROOT / "tools" / "venv_sync_ledger.jsonl"
 
