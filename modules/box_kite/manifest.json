@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-08-05. Claim as recorded in the wiki: The sedenion zero-divisor geometry is exactly enumerable, and its object is PSL(2,7) (order 168, Aut(Fano) = GL(3,2)) — not G₂. Seven box-kites, each an octahedron, six Assessors apiece, 42 in all. Chart-level dispersion relation {0,4,4,4,6,6}. The associator is the curvature.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-08-05",
     "status_label": "ESTABLISHED",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/box_kite.md"
     },
     "notebook": "ValaQuenta/notebooks/engines/15_box_kite.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

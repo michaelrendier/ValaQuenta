@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: All seven Clay problems restated as facets of one operator Σ_RB at different values of σ. One is solved (Poincaré, by Perelman); six are open.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-06-28",
     "status_label": "THEORETICAL",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/clay_millennium.md"
     },
     "notebook": "ValaQuenta/notebooks/core/12_clay_millennium.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

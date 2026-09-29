@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: The map J_N: (r,θ) → (1/r, θ+π/2) is an involution whose fixed point r=1 is simultaneously four physical horizons.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-06-28",
     "status_label": "ESTABLISHED",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/inversion.md"
     },
     "notebook": "ValaQuenta/notebooks/core/03_inversion.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

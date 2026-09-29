@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-08-30. Claim as recorded in the wiki: The black-hole interior is a finite, sub-Planckian de Sitter core — not a singularity.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-08-30",
     "status_label": "THEORETICAL",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/desitter_cavitation.md"
     },
     "notebook": "ValaQuenta/notebooks/engines/18_desitter_cavitation.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

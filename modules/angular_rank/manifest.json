@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-08-15. Claim as recorded in the wiki: Measures three things about any signal embedded in the 16 sedenion dimensions, without knowing its language, its meaning, or its author: ANG",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-08-15",
     "status_label": "ESTABLISHED",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/angular_rank.md"
     },
     "notebook": "ValaQuenta/notebooks/engines/16_angular_rank.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

@@ -16,20 +16,21 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-07-31. Claim as recorded in the wiki: whether a sedenion / zero-divisor / Zero-Lattice mechanism recovers an RSA private exponent d from the public key (n, e).",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-07-31",
     "status_label": "OPEN",
     "predecessors": [],
     "citations": [],
     "wiki": {
       "ainulindale": "",
-      "valaquenta": ""
+      "valaquenta": "ValaQuenta/wiki/udeo_crypto.md"
     },
     "notebook": "",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

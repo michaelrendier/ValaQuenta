@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-07-31. Claim as recorded in the wiki: L_(I|O) - L := -psi(theta) — the real (curved-metric) light-travel-time functional differs from the flat-space one by exactly the lensing potential. Established weak-lensing GR (Kaiser & Squires 1993 shear inversion, exact FFT Poisson solve) — not a new operator, named to match Ainulindale/wiki/52's language. Zero fitted parameters anywhere in the pipeline.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-07-31",
     "status_label": "THEORETICAL",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/l_io_photon_path.md"
     },
     "notebook": "ValaQuenta/notebooks/core/18_l_io_photon_path.ipynb",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],

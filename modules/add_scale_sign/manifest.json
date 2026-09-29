@@ -16,11 +16,11 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "",
+    "origin": "First committed to this repository on 2026-08-28. Claim as recorded in the wiki: A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add.",
     "authors": [
       "Cody Michael Allison"
     ],
-    "created": "",
+    "created": "2026-08-28",
     "status_label": "ESTABLISHED",
     "predecessors": [],
     "citations": [],
@@ -29,7 +29,8 @@
       "valaquenta": "ValaQuenta/wiki/add_scale_sign.md"
     },
     "notebook": "",
-    "proof_locale": ""
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
   },
   "environment": {
     "constants": [],
