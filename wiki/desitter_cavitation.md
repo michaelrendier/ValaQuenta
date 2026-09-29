@@ -5,7 +5,7 @@
 **Version:** 0.100
 **Confidence floor:** THEORETICAL
 **Notebook:** [notebooks/engines/18_desitter_cavitation.ipynb](../notebooks/engines/18_desitter_cavitation.ipynb)
-**Fourth Age paper:** [`FourthAgePapers/DeSitterCavitation/`](../../FourthAgePapers/DeSitterCavitation/)
+**Fourth Age paper:** [`FourthAgePapers/DeSitterCavitation/`](https://github.com/michaelrendier/FourthAgePapers/tree/desitter-cavitation/DeSitterCavitation)
 **Claim:** The black-hole interior is a finite, sub-Planckian de Sitter core — not a singularity.
 
 

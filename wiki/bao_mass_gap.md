@@ -3,7 +3,7 @@
 **Module:** `ValaQuenta/modules/bao_mass_gap` — `maths.py` + `tools.py`
 **Registry name:** `bao_mass_gap` **Version:** 0.131 **Equations:** 7
 **Notebook:** [notebooks/core/19_bao_mass_gap.ipynb](../notebooks/core/19_bao_mass_gap.ipynb)
-**Ainulindale wiki:** [50_bao_mass_gap_engine.md](../../Ainulindale/wiki/50_bao_mass_gap_engine.md)
+**Ainulindale wiki:** [50_bao_mass_gap_engine.md](https://github.com/michaelrendier/Ainulindale/blob/main/wiki/50_bao_mass_gap_engine.md)
 
 **Claim:** The mass gap is the residue of the BAO spectral decomposition — the
 band between the acoustic ground state and the thermal information ceiling that
