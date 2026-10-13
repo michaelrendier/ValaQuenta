@@ -188,6 +188,7 @@ acting through a Joukowsky / `J_N` deformation law, reconstructs all six
 Assessor coordinates from it. `w = 0` collapses the kite to the e₀ axis (σ→½,
 the shadow); `w = w*` is the regular octahedron; `w ≫ w*` tears it off the ZD
 surface. It is `e10`'s "writing fans it back out", with `w` the knob. THEORETICAL.
+**Update 2026-10-12:** on the paper's tension proxy `H = −cos(Σ ε_k φ_k)` exactly, with the sign patterns ε the Sylvester–Hadamard rows 0–3; struts 1, 3, 6 are pinned under any scalar wind and respond only to a station-unequal wind; the literal Joukowsky tear-off is not reproduced. See [pencil_hyperstring.md](pencil_hyperstring.md) § "Measured 2026-10-12".
 
 **Provenance** (full table on that page): the box kite, its sail/strut/vent
 vocabulary and the kite metaphor are **de Marrais** (arXiv:math/0011260, 2000);
