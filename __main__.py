@@ -62,6 +62,7 @@ from .modules.bracketing_firing_order import BracketingFiringOrderModule
 from .modules.oblique_gear import ObliqueGearModule
 from .modules.prime_gauge_field import PrimeGaugeFieldModule
 from .modules.spectral_primes import SpectralPrimesModule
+from .modules.addition_matrix import AdditionMatrixModule
 
 def _register_all():
     registry = get_registry()
@@ -102,6 +103,7 @@ def _register_all():
     register(BracketingFiringOrderModule())
     register(ObliqueGearModule())
     register(PrimeGaugeFieldModule())
+    register(AdditionMatrixModule())
     register(SpectralPrimesModule())
     return registry
 

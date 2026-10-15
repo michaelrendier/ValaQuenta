@@ -374,6 +374,16 @@ Modules
                          hypercomplex identity diagonal (eₖ²=-1 for k=1..15),
                          halting diagonal (D(D) → σ=½ oscillation).
 
+
+    addition_matrix    — Addition Matrix: columns as rotors, the law of the
+                         factor search. The addition matrix of long
+                         multiplication read modulo 10^k: exact column periods,
+                         the CRT split of x -> a x + b into Z/2^m and Z/5^m, the
+                         odometer's first return, a closed form (v2+1)(v5+1)
+                         phi(10^(c+1)) for the live states of digit-by-digit
+                         factor reconstruction, and the K = 0 overflow address
+                         of the true factorisation (unique, not isolated).
+
     udeo_crypto        — Tests five candidate RSA private-key-recovery
                          mechanisms against known toy keys, each scored against
                          a random-guess control (not just reported as working).

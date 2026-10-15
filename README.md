@@ -11,7 +11,7 @@ Version **0.159** · Python ≥ 3.9 · License **GPL-3.0-only** ([LICENSE](LICEN
 ValaQuenta is a Python package of exact mathematical engines. Each engine is a
 module you can import and call, and each is also a plugin of the ValaQuenta
 Format ([FORMAT.md](FORMAT.md)) that the derivation browser lists and runs.
-38 engines are registered (321 equations); 41 module directories in all.
+39 engines are registered (331 equations); 42 module directories in all.
 
 ## Current Repo Focus
 
@@ -128,6 +128,7 @@ every equation with its parameters, confidence and a worked call.
 | `spectral_primes` | Spectral Representation of the Primes (Spin / Wobble) | 5 | OPEN | [toolbox](wiki/toolbox/17_spectral_primes.md) · — |
 
 Library modules — mathematics only, not registered as engines:
+| `addition_matrix` | Addition Matrix: Columns as Rotors, the Law of the Factor Search | 10 | ESTABLISHED | [toolbox](wiki/toolbox/40_addition_matrix.md) · [wiki](wiki/addition_matrix.md) |
 
 | Module | What it is | | | Reference |
 |---|---|---|---|---|

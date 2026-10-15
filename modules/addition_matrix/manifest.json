@@ -1,0 +1,178 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "type": "engine",
+  "license": "GPL-3.0-only",
+  "permissions": [],
+  "dependencies": {},
+  "engine": "basile",
+  "id": "org.ainulindale.addition_matrix",
+  "name": "addition_matrix",
+  "display": "Addition Matrix: Columns as Rotors, the Law of the Factor Search",
+  "version": "1.0",
+  "summary": "The addition matrix of long multiplication read as arithmetic modulo 10^k: columns as rotors, the closed-form law of the digit-by-digit factor search, and the K = 0 address of the final answer.",
+  "confidence_floor": "ESTABLISHED",
+  "entry": {
+    "module": "ValaQuenta.modules.addition_matrix",
+    "class": "AdditionMatrixModule"
+  },
+  "provenance": {
+    "origin": "Written 2026-10-14 from the Multiplication Matrix Explorer (github.com/michaelrendier/MultiplicationMatrixExplorer), whose matrix_math.py and factor_reconstruction.py this engine reproduces and cross-checks. The Explorer's factor search had measured a x10 growth of live states per digit (2026-09-26); this engine states the count in closed form (units of Z/10^k, valuations of N at 2 and 5), and records that the address of the true factorisation (overflow K = 0) is unique among zero-overflow solutions but not isolated. Prompted by the Collatz parity-shift work (FourthAgePapers/CollatzShift) in which the odometer x -> x + 1 and the maps x -> a x + b on Z/2^n appear.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-10-14",
+    "status_label": "ESTABLISHED",
+    "predecessors": [
+      "basile"
+    ],
+    "citations": [
+      "Heninger_Shacham_2009_reconstructing_RSA_private_keys_from_random_key_bits"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/125_addition_matrix_rotors_and_the_factor_search_law.md",
+      "valaquenta": "ValaQuenta/wiki/addition_matrix.md"
+    },
+    "notebook": "ValaQuenta/notebooks/addition_matrix/01_matrix_and_rotors.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "none: exact integer arithmetic modulo 10^k",
+    "arithmetic": "exact integers; floats only for medians in reports",
+    "requires_engines": [],
+    "external": [
+      "MultiplicationMatrixExplorer (optional: tests/test_addition_matrix.py cross-checks against it when found; set MME_PATH)"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "Addition Matrix: Columns as Rotors, the Law of the Factor Search",
+      "group": "Primes · number theory",
+      "order": 120,
+      "blurb": "The addition matrix of long multiplication read as arithmetic modulo 10^k: columns as rotors, the closed-form law of the digit-by-digit factor search, and the K = 0 address of the final answer."
+    },
+    "tools": [
+      {
+        "name": "matrix_trace",
+        "equation": "matrix_trace",
+        "label": "Matrix Trace",
+        "desc": "Given two numbers, builds the addition matrix row by row, adds the rows one at a time, and compares the total ",
+        "params": [
+          "num1",
+          "num2"
+        ]
+      },
+      {
+        "name": "column_period",
+        "equation": "column_period",
+        "label": "Column Period",
+        "desc": "Given num1 and a column, computes the period by the formula and by testing every divisor of 10^(c+1) over a fu",
+        "params": [
+          "num1",
+          "c"
+        ]
+      },
+      {
+        "name": "crt_cycle_rule",
+        "equation": "crt_cycle_rule",
+        "label": "Crt Cycle Rule",
+        "desc": "Given a, b and m, computes the cycle type on Z/10^m directly and as the CRT combination of the types on Z/2^m ",
+        "params": [
+          "a",
+          "b",
+          "m"
+        ]
+      },
+      {
+        "name": "odometer_first_return",
+        "equation": "odometer_first_return",
+        "label": "Odometer First Return",
+        "desc": "Given m, builds the first-return map of x -> x + 1 on Z/10^m to the multiples of 10 and compares it with the o",
+        "params": [
+          "m"
+        ]
+      },
+      {
+        "name": "solenoid_cycles",
+        "equation": "solenoid_cycles",
+        "label": "Solenoid Cycles",
+        "desc": "Given a, b and n, computes the cycle type of x -> a x + b on Z/2^n and checks that every length is a power of ",
+        "params": [
+          "a",
+          "b",
+          "n"
+        ]
+      },
+      {
+        "name": "solution_count",
+        "equation": "solution_count",
+        "label": "Solution Count",
+        "desc": "Given N and k, computes the count by the closed form and by enumeration over the first factor",
+        "params": [
+          "N",
+          "k"
+        ]
+      },
+      {
+        "name": "live_state_law",
+        "equation": "live_state_law",
+        "label": "Live State Law",
+        "desc": "Given N and a digit count, runs the digit-by-digit search and compares each column's live-state count with the",
+        "params": [
+          "N",
+          "n_digits"
+        ]
+      },
+      {
+        "name": "torsor_structure",
+        "equation": "torsor_structure",
+        "label": "Torsor Structure",
+        "desc": "Given N and k with both valuations below k, reports the unit group order, the number of orbits, and their prod",
+        "params": [
+          "N",
+          "k"
+        ]
+      },
+      {
+        "name": "overflow_address",
+        "equation": "overflow_address",
+        "label": "Overflow Address",
+        "desc": "Given N and n, enumerates every unit solution mod 10^n, computes each overflow, and reports where K = 0 sits a",
+        "params": [
+          "N",
+          "n"
+        ]
+      },
+      {
+        "name": "lift_branching",
+        "equation": "lift_branching",
+        "label": "Lift Branching",
+        "desc": "Given N and k, lifts every unit solution mod 10^k to 10^(k+1) and counts the children of each",
+        "params": [
+          "N",
+          "k"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

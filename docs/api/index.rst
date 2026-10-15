@@ -19,6 +19,7 @@ Each module has ``maths.py`` (the mathematics as plain functions) and, when regi
    modules/angular_rank
    modules/archimedes_screw
    modules/bao_mass_gap
+   modules/addition_matrix
    modules/berry_keating
    modules/box_kite
    modules/bracketing_firing_order
