@@ -2,6 +2,8 @@
 
 **The derivation engine.** Pure mathematics. Runnable code. No physical substrate required.
 
+> **Documentation scope.** ValaQuenta is strictly API code reference documentation: file, class, parameters, return values, the results the code prints, a confidence table. Narrative and origin live in Ainulindale; paper listings live in the papers. New engines start at version 1.0 and are incremented each time they are touched.
+
 ```
 Ainulindale (the Music) → ValaQuenta (the engines) → VAPMIP (the world)
 ```
@@ -11,7 +13,7 @@ Version **0.159** · Python ≥ 3.9 · License **GPL-3.0-only** ([LICENSE](LICEN
 ValaQuenta is a Python package of exact mathematical engines. Each engine is a
 module you can import and call, and each is also a plugin of the ValaQuenta
 Format ([FORMAT.md](FORMAT.md)) that the derivation browser lists and runs.
-39 engines are registered (331 equations); 42 module directories in all.
+40 engines are registered (348 equations); 43 module directories in all.
 
 ## Current Repo Focus
 
@@ -126,9 +128,10 @@ every equation with its parameters, confidence and a worked call.
 | `oblique_gear` | The Oblique Gear Across Scale (Black Hole / Galaxy) | 6 | OPEN | [toolbox](wiki/toolbox/16_oblique_gear.md) · — |
 | `prime_gauge_field` | The Prime Gauge Field | 5 | THEORETICAL | [toolbox](wiki/toolbox/35_prime_gauge_field.md) · [wiki](wiki/prime_gauge_field.md) |
 | `spectral_primes` | Spectral Representation of the Primes (Spin / Wobble) | 5 | OPEN | [toolbox](wiki/toolbox/17_spectral_primes.md) · — |
+| `basile` | Basile: Invertible Location Maps (Library of Babel / Babelia) | 17 | ESTABLISHED | [toolbox](wiki/toolbox/39_basile.md) · [wiki](wiki/basile.md) |
+| `addition_matrix` | Addition Matrix: Columns as Rotors, the Law of the Factor Search | 10 | ESTABLISHED | [toolbox](wiki/toolbox/40_addition_matrix.md) · [wiki](wiki/addition_matrix.md) |
 
 Library modules — mathematics only, not registered as engines:
-| `addition_matrix` | Addition Matrix: Columns as Rotors, the Law of the Factor Search | 10 | ESTABLISHED | [toolbox](wiki/toolbox/40_addition_matrix.md) · [wiki](wiki/addition_matrix.md) |
 
 | Module | What it is | | | Reference |
 |---|---|---|---|---|

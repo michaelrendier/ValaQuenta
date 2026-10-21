@@ -79,6 +79,7 @@ in the order found.
 | [36_sigma_expansion.md](36_sigma_expansion.md) | Sigma Expansion — J_red/J_blue Balance Curve | 2026-09-27 | `modules/sigma_expansion/` |
 | [37_t32_nilpotency.md](37_t32_nilpotency.md) | T32 Nilpotency — Hyperwebster Address Primitives | 2026-09-27 | `modules/t32_nilpotency/` |
 | [38_udeo_crypto.md](38_udeo_crypto.md) | UDEO RSA Key-Recovery — Five Candidate Mechanisms | 2026-09-27 | `modules/udeo_crypto/` |
+| [39_basile.md](39_basile.md) | Basile — Invertible Location Maps (Library of Babel / Babelia) | 2026-09-30 | `modules/basile/` |
 | [40_addition_matrix.md](40_addition_matrix.md) | Addition Matrix: Columns as Rotors, the Law of the Factor Search | 2026-10-14 | `modules/addition_matrix/` |
 
 **Not carried here** (no `tools.py`, so no tool-level API to document —

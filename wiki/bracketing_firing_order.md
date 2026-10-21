@@ -148,3 +148,5 @@ Moved from the module docstring: a docstring instructs the caller and holds no h
 > arena." This module is that arena, built once, domain-independent --
 > `add_scale_sign` (3 generators) and the sedenion bracket (16 components)
 > are both CONSUMERS of it, not separate implementations.
+
+**Update 2026-10-21 — firing plans.** Brackets now carry firing orders: `(R I | 2 1)` fires the second child (the imaginary octonion of the two-octonion sedenion) first, the real octonion second, and a bracket runs as one operation inside its parent in its own order (`((A B | 2 1) C | 2 1)` fires `C B A`). Operator reading (matrix composition) is associative, so only the order changes the result; element reading (the sedenion product) is not, so the bracketing changes it too. Written-order binary plans reach 6, 22, 90 of 3!, 4!, 5! orders. Source and checks: `SedenionSpectralRelativity/firing_plan.py` (15 exact checks), `wiki/Bracketing-and-Firing-Plans.md`, notebook 02 there; standalone port `GenerationalLineage/engine/bracketing_firing_order.py` tool 4 (`wiki/Firing-Plans.md`). This module (`ValaQuenta/modules/bracketing_firing_order`) is not yet updated to carry plans.

@@ -27,7 +27,7 @@ HOW TO ADD A NEW MODULE (the code half)
 
 6. Done. The engine and viewer pick it up automatically.
 
-FULL ENGINE PROTOCOL (SIX parts)
+FULL ENGINE PROTOCOL (amended 2026-09-30: TOOLBOX part 6 added)
 ========================================================================
 Steps 1–6 above ship the code. They do not finish the engine. An engine is
 not "done" until all six artifacts exist, because code alone is
@@ -76,6 +76,30 @@ undiscoverable from a cold context — which is the exact failure the
                          An engine missing from that index is invisible to a
                          cold session no matter how complete its code is —
                          l_io_photon_path sat unindexed in exactly that state.
+
+    6. TOOLBOX           wiki/toolbox/NN_<name>.md + its row in wiki/toolbox/00_index.md
+                         (with the index repass). REQUIRED for every NEW TOOL:
+                         a new engine, and any new equation added to an existing
+                         engine's formulary(). The page is generated from the
+                         registry (signature, parameters, confidence, one run
+                         call per equation), so it cannot drift from the code.
+                         Amended 2026-09-30.
+
+DOCUMENTATION SCOPE (Cody, 2026-09-30): ValaQuenta is strictly API code
+reference documentation: file, class, parameters, return values, results the
+code prints, a confidence table. Narrative, origin and story belong in
+Ainulindale/wiki (part 3); paper listings belong in the paper, inline where the
+paper discusses them, not in ValaQuenta's docs.
+
+VERSIONING (Cody, 2026-09-30, forward only): every NEW engine starts at
+version 1.0 and is incremented each time it is touched. Engines that already
+exist keep their numbers until they are next touched; nothing is renumbered
+retroactively.
+
+LICENSING: all ValaQuenta code and maths are GPL-3.0-only. Third-party material
+is used only as its own licence allows: a file under a licence incompatible
+with GPL (e.g. CC BY-SA-NC) is never vendored; the engine reads a user-fetched
+local copy at run time and the copy is .gitignored.
 
 Canonical-maths changes that accompany an engine go in
 ~/.clauderc_canonical_maths. All ~/.clauderc\* files are copied into

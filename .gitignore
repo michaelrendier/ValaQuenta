@@ -50,3 +50,12 @@ tools/venv_sync_ledger.jsonl
 
 # Sphinx build output (2026-08-15)
 docs/_build/
+
+# Basile (Library of Babel / Babelia) work: personal reference, not load bearing anywhere (Cody, 2026-10-18).
+# The published files it studies are CC BY-SA-NC and are never vendored (see modules/basile docstrings).
+modules/basile/
+notebooks/basile/
+tests/test_basile.py
+docs/api/modules/basile.rst
+wiki/basile.md
+wiki/toolbox/39_basile.md

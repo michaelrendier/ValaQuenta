@@ -374,6 +374,25 @@ Modules
                          hypercomplex identity diagonal (eₖ²=-1 for k=1..15),
                          halting diagonal (D(D) → σ=½ oscillation).
 
+    basile             — Basile: Invertible Location Maps (Library of Babel /
+                         Babelia). A location is a number and the page or image
+                         is computed from it and back, nothing stored: an LCG
+                         followed by shift/XOR steps, inverted with the modular
+                         inverse and the shifts undone in reverse. The ordered
+                         (rank) address as the contrast case; a generic
+                         scrambler written from the published recipe and
+                         checked exhaustively on a toy library; the published
+                         Babelia engine run on its published constants (read
+                         from a local copy, never vendored; CC BY-SA-NC).
+                         Measured on those constants: the two programs share
+                         their constants, a times a-inverse is 1 modulo m, the
+                         masks are powers of two, and the image reads 17 fewer
+                         bit positions than the location space holds, so an
+                         image is shown at about 7e4 locations on average. The
+                         published Extended Euclid keeps 23 divisions in a
+                         fixed array; random 64-bit inputs need about 37. The
+                         text library's own algorithm is not published and is
+                         not reproduced. Confidence floor ESTABLISHED.
 
     addition_matrix    — Addition Matrix: columns as rotors, the law of the
                          factor search. The addition matrix of long

@@ -67,6 +67,7 @@ packages = [
     "ValaQuenta.modules.singularity_null",
     "ValaQuenta.modules.sonification",
     "ValaQuenta.modules.spectral_primes",
+    "ValaQuenta.modules.basile",
     "ValaQuenta.modules.spherical",
     "ValaQuenta.modules.t32_nilpotency",
     "ValaQuenta.modules.tier6_physics",
