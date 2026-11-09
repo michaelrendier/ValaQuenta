@@ -1,5 +1,7 @@
 # Engine: The Box-Kite Debugger — the ZD Geometry, Made Watchable
 
+> **Atlas note (2026-11-09):** "the atlas" in this document is the **Box-Kite Atlas** (the 42-vertex sedenion graph glued at e₀). It is not the Riemann–Fermat Atlas (RiemannHypothesisProof) nor the Abrikosov Atlases (AbrikosovTree). Registry: `ContextPlease/claude/ATLAS_REGISTRY.md`.
+
 **File:** `modules/box_kite/maths.py`
 **Class:** `BoxKiteModule`
 **Notebook:** `notebooks/engines/15_box_kite.ipynb`
