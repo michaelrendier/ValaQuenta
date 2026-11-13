@@ -128,6 +128,13 @@ Modules
                          FourthAgePapers/DeSitterCavitation. confidence
                          floor THEORETICAL.
 
+    ptycho_weak_lensing — PTYCHO-WEAK-LENSING. Weak lensing as a spin-2 inverse
+                         problem (κ→ψ→γ→g→ε; Kaiser–Squires, E/B, rotation and
+                         shuffle nulls, calibration), ptychographic ePIE over
+                         overlapping pointings (probe windows, B=0 object
+                         constraint, gaps filled), an intensity-only modulus
+                         variant, and polarization Q+iU through the same E/B.
+
     emerger            — THE EMERGER. Sedenion Bracketing & Firing Order. A
                          dynamic permutative bracketer over the imaginary
                          part of a Cayley-Dickson algebra; e_0 (real) is the

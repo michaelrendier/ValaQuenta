@@ -1,0 +1,157 @@
+{
+ "engine": "ptycho_weak_lensing",
+ "display": "Ptycho-Weak-Lensing — shear, mass map, pointings, polarization",
+ "descriptive": "Simulates a lens (a convergence map κ), observes it through galaxies with random intrinsic shapes, recovers κ by inverting the spin-2 shear field, checks the recovery against E/B, rotation and calibration nulls, and reconstructs κ from overlapping pointings by a ptychographic iteration; polarization Q+iU goes through the same E/B machinery.",
+ "operators": [
+  {
+   "symbol": "D(k)",
+   "english": "the spin-2 kernel (k₁²−k₂²+2ik₁k₂)/|k|²",
+   "role": "γ̂ = D κ̂ and κ̂ = D* γ̂; |D| = 1 for k ≠ 0, D(0) := 0 (the mass sheet is not measured)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "ψ",
+   "english": "the lensing potential, ∇²ψ = 2κ",
+   "role": "γ₁ = ½(ψ₁₁−ψ₂₂), γ₂ = ψ₁₂",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "g, μ",
+   "english": "reduced shear γ/(1−κ), magnification 1/((1−κ)²−|γ|²)",
+   "role": "what galaxies actually report; ε = (ε_s+g)/(1+g*ε_s)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "E, B",
+   "english": "Re and Im of D* applied to any spin-2 field",
+   "role": "lens signal is E; B is the systematics/null channel; same operator for polarization Q+iU",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "M_j, η_j",
+   "english": "pointing window × galaxy count, and source-plane efficiency D_ls/D_s",
+   "role": "the probe of pointing j and its lensing scale",
+   "tier": "THEORETICAL"
+  },
+  {
+   "symbol": "ePIE update",
+   "english": "κ ← κ + α Re[D* M_j (ε_j − η_j D κ)]/η_j",
+   "role": "Kaczmarz over pointings with the object constraint κ real (B = 0)",
+   "tier": "THEORETICAL"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "κ → ψ → γ",
+   "english": "build the convergence map, solve the Poisson equation by FFT with zero padding, take the second derivatives; the mean of κ drops out (mass sheet)."
+  },
+  {
+   "n": 2,
+   "op": "γ → g → ε",
+   "english": "divide by (1−κ) for the reduced shear, apply it exactly to each galaxy's random intrinsic ellipticity."
+  },
+  {
+   "n": 3,
+   "op": "catalogue → ε map",
+   "english": "bin and smooth the galaxies; the noise is σ_e/√N per smoothing area."
+  },
+  {
+   "n": 4,
+   "op": "ε map → κ_E, κ_B",
+   "english": "Kaiser–Squires with the reduced-shear iteration; κ_B and the 45° rotation are the controls."
+  },
+  {
+   "n": 5,
+   "op": "pointings → κ",
+   "english": "each pointing is a probe window; ePIE over the pointings with B = 0 fills the gaps the naive mosaic leaks into."
+  }
+ ],
+ "equations": {
+  "verify": {
+   "descriptive": "Exact self-checks against closed-form results; a mismatch is a code fault, not a result.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "|D| = 1",
+     "english": "unit modulus of the spin-2 kernel for every k ≠ 0."
+    },
+    {
+     "n": 2,
+     "op": "Gaussian halo",
+     "english": "γ_t(r) = κ̄(<r) − κ(r) against the closed form; γ_× vanishes."
+    },
+    {
+     "n": 3,
+     "op": "KS round trip",
+     "english": "γ → κ_E recovers κ up to the mass sheet; B ≈ 0."
+    },
+    {
+     "n": 4,
+     "op": "mass sheet",
+     "english": "adding a constant to κ leaves γ unchanged."
+    },
+    {
+     "n": 5,
+     "op": "pure-E polarization",
+     "english": "a spin-2 field built from a scalar potential has B = 0."
+    },
+    {
+     "n": 6,
+     "op": "calibration",
+     "english": "a known multiplicative bias is recovered within the statistical error."
+    }
+   ]
+  },
+  "ptycho": {
+   "descriptive": "Reconstructs κ from overlapping pointings and compares with naive stacking on the covered area.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "tile_windows",
+     "english": "place cosine-tapered square pointings with overlap; some are left unobserved (gaps)."
+    },
+    {
+     "n": 2,
+     "op": "simulate_pointings",
+     "english": "each pointing has its own window, galaxy density, efficiency and shape noise."
+    },
+    {
+     "n": 3,
+     "op": "naive_mosaic",
+     "english": "efficiency-rescaled count-weighted stack, then one Kaiser–Squires."
+    },
+    {
+     "n": 4,
+     "op": "ptycho_reconstruct",
+     "english": "Kaczmarz over pointings in random order with κ real; track χ² and the B-mode leak."
+    },
+    {
+     "n": 5,
+     "op": "compare",
+     "english": "correlation and rms against the truth on the covered area."
+    }
+   ]
+  },
+  "null_tests": {
+   "descriptive": "Standard nulls on one catalogue.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "signal",
+     "english": "κ_E against the truth."
+    },
+    {
+     "n": 2,
+     "op": "rotate 45°",
+     "english": "ε → iε moves the lens from E to B; κ_E must lose it."
+    },
+    {
+     "n": 3,
+     "op": "shuffle",
+     "english": "random orientations leave only noise."
+    }
+   ]
+  }
+ }
+}

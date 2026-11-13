@@ -1,0 +1,183 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.ptycho_weak_lensing",
+  "type": "engine",
+  "name": "ptycho_weak_lensing",
+  "display": "Ptycho-Weak-Lensing (shear, mass map, pointings, polarization)",
+  "version": "0.1",
+  "summary": "Weak lensing as a spin-2 inverse problem (Kaiser-Squires, E/B, nulls, calibration) plus a ptychographic reconstruction of kappa from overlapping pointings, an intensity-only variant, and polarization Q+iU through the same E/B machinery.",
+  "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.ptycho_weak_lensing",
+    "class": "PtychoWeakLensingModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-12: weak lensing 'may already be a type of implemented ptychography'; the experiment needs a calculated mass map to match against published shear/DM maps (control) and a polarization vector field as a separate image of the same experiment. Maths ESTABLISHED (Kaiser & Squires 1993; Seitz & Schneider 2001); the pointings-as-probes ePIE reading and the modulus variant are THEORETICAL.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-12",
+    "status_label": "THEORETICAL:CALCULATED",
+    "predecessors": [
+      "jwst",
+      "angular_rank"
+    ],
+    "citations": [
+      "Kaiser_Squires_1993",
+      "Seitz_Schneider_2001",
+      "Bartelmann_Schneider_2001",
+      "Bartelmann_1996_NFW",
+      "Maiden_Rodenburg_2009_ePIE"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/132_ptycho_weak_lensing.md",
+      "valaquenta": "ValaQuenta/wiki/ptycho_weak_lensing.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/21_ptycho_weak_lensing.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/ptycho_weak_lensing.json"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "sigma_e",
+        "role": "intrinsic ellipticity dispersion per component (shape noise)",
+        "value": 0.26,
+        "source": "engine default"
+      },
+      {
+        "symbol": "beta",
+        "role": "lensing efficiency D_ls/D_s scaling kappa and gamma",
+        "value": null,
+        "source": "engine (flat LCDM)"
+      }
+    ],
+    "native_space": "flat-sky tangent plane; spin-2 complex fields (gamma, epsilon, Q+iU)",
+    "arithmetic": "numpy float64 / complex128; FFT with zero padding; mass sheet (k=0) not measured",
+    "requires_engines": [],
+    "external": [
+      "numpy"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "Ptycho-Weak-Lensing (shear, mass map, pointings, polarization)",
+      "group": "Engines",
+      "order": 101,
+      "blurb": "Simulates a lens, observes it through overlapping pointings with shape noise, recovers the mass map by Kaiser-Squires and by a ptychographic iteration, and checks it against E/B, rotation, calibration"
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "Runs the exact self-checks of the lensing algebra against closed-form results",
+        "params": []
+      },
+      {
+        "name": "forward",
+        "equation": "forward",
+        "label": "Forward",
+        "desc": "Builds the projected NFW convergence and returns its tangential shear profile",
+        "params": [
+          "kappa_s",
+          "r_s",
+          "n"
+        ]
+      },
+      {
+        "name": "reconstruct",
+        "equation": "reconstruct",
+        "label": "Reconstruct",
+        "desc": "Draws shape-noise-limited galaxies from a synthetic merger, inverts, reports correlation and B-mode leak",
+        "params": [
+          "n_per_pix",
+          "smooth",
+          "seed"
+        ]
+      },
+      {
+        "name": "null_tests",
+        "equation": "null_tests",
+        "label": "Null Tests",
+        "desc": "Applies the standard null tests to one catalogue and reports each channel against the noise floor",
+        "params": [
+          "n_per_pix",
+          "smooth",
+          "seed"
+        ]
+      },
+      {
+        "name": "calibrate",
+        "equation": "calibrate",
+        "label": "Calibrate",
+        "desc": "Recovers a known multiplicative shear bias from a catalogue of random galaxies",
+        "params": []
+      },
+      {
+        "name": "ptycho",
+        "equation": "ptycho",
+        "label": "Ptycho",
+        "desc": "Observes the synthetic cluster through overlapping pointings, reconstructs by ePIE/Kaczmarz, compares with nai",
+        "params": [
+          "n_per_pix",
+          "gaps",
+          "n_iter",
+          "tile",
+          "step",
+          "seed"
+        ]
+      },
+      {
+        "name": "modulus",
+        "equation": "modulus",
+        "label": "Modulus",
+        "desc": "Phase retrieval of the lens from the shear modulus with different starting guesses",
+        "params": [
+          "n_iter"
+        ]
+      },
+      {
+        "name": "polarization",
+        "equation": "polarization",
+        "label": "Polarization",
+        "desc": "Builds a potential-born spin-2 polarization field, takes its E/B, and correlates it with the shear E-mode",
+        "params": [
+          "seed"
+        ]
+      },
+      {
+        "name": "efficiency",
+        "equation": "efficiency",
+        "label": "Efficiency",
+        "desc": "Returns the lensing efficiency of a source plane behind a lens",
+        "params": [
+          "z_l",
+          "z_s"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}
