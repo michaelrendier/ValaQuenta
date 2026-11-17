@@ -13,7 +13,7 @@ Version **0.159** · Python ≥ 3.9 · License **GPL-3.0-only** ([LICENSE](LICEN
 ValaQuenta is a Python package of exact mathematical engines. Each engine is a
 module you can import and call, and each is also a plugin of the ValaQuenta
 Format ([FORMAT.md](FORMAT.md)) that the derivation browser lists and runs.
-40 engines are registered (348 equations); 43 module directories in all.
+43 engines are registered (370 equations); 46 module directories in all.
 
 ## Current Repo Focus
 

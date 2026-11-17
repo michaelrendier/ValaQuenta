@@ -1,0 +1,104 @@
+{
+ "engine": "pi_derivations",
+ "display": "Pi Derivations — every route, labelled by what of the circle it holds",
+ "descriptive": "Computes π by each route the project meets without reading math.pi, and labels each route by circle_in: none, orbit, constructed, dual, path, library or identity. cos_zero (twice the first positive zero of the cosine power series) is the emergent π: it defines the circle's period before any circle is drawn.",
+ "operators": [
+  {
+   "symbol": "cos_zero",
+   "english": "π/2 = first positive zero of cos (power series)",
+   "role": "the emergent π",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "circle_in",
+   "english": "what of the circle the inputs already hold",
+   "role": "none / orbit / constructed / dual / path / library / identity",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "(2/π)·π = 2",
+   "english": "the project's U(1) normalisation",
+   "role": "holds for every value of π: an identity, not a derivation",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "route",
+   "english": "run the route from its own inputs."
+  },
+  {
+   "n": 2,
+   "op": "compare",
+   "english": "only then compare with math.pi."
+  },
+  {
+   "n": 3,
+   "op": "classify",
+   "english": "state what of the circle the route assumed."
+  }
+ ],
+ "equations": {
+  "verify": {
+   "descriptive": "Every route within tolerance; identity route returns no value.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "derive(k)",
+     "english": "run each and compare."
+    }
+   ]
+  },
+  "all_routes": {
+   "descriptive": "All routes.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "derive(k)",
+     "english": "for each route."
+    }
+   ]
+  },
+  "derive": {
+   "descriptive": "One route.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "ROUTES[name]",
+     "english": "run it."
+    }
+   ]
+  },
+  "emergent": {
+   "descriptive": "The emergent π with its disclosure.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "cos series",
+     "english": "sum the series."
+    },
+    {
+     "n": 2,
+     "op": "bisection",
+     "english": "find the first zero in [1,2]."
+    },
+    {
+     "n": 3,
+     "op": "×2",
+     "english": "double."
+    }
+   ]
+  },
+  "circle_audit": {
+   "descriptive": "Routes grouped by circle_in.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "ROUTES",
+     "english": "group by label."
+    }
+   ]
+  }
+ }
+}

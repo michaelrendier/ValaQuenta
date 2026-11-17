@@ -1,0 +1,150 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.circle_atlas",
+  "type": "engine",
+  "name": "circle_atlas",
+  "display": "The Circle Atlas (H_hat_RB and the Complete Shape of Mathematics)",
+  "version": "0.1",
+  "summary": "Runs the viewports, reports where each enters and leaves the circle, and lists what is not yet mapped.",
+  "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.circle_atlas",
+    "class": "CircleAtlasModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-16: 'The Circle Atlas: H_hat_RB and The Complete Shape of Mathematics'. A mapping algorithm, not a fit: every viewport is run to a circle (TO: enter fixed-point space) and from a circle (FROM: exit), the fibre of choices is measured, each carries a pi route. Built on the sedenion battery (FourthAgePapers/TheInterface/02, 03) and reuses tier8_sedenion, box_kite, hypergon_constructibility. Whether FROM maps and the fixed-point-space reading are the project's meaning is THEORETICAL; each viewport's closure is ESTABLISHED numerics.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-16",
+    "status_label": "THEORETICAL:CALCULATED",
+    "predecessors": [
+      "circle (GenerationalLineage toolset)",
+      "box_kite",
+      "tier8_sedenion",
+      "fixed_point",
+      "scale",
+      "emerger",
+      "add_scale_sign"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/137_the_circle_atlas.md",
+      "valaquenta": "ValaQuenta/wiki/circle_atlas.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/22_circle_atlas.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/circle_atlas.json"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "pi (emergent)",
+        "role": "2 x first positive zero of the cosine power series, via modules.pi_derivations",
+        "value": 3.141592653589793,
+        "source": "computed, not read"
+      }
+    ],
+    "native_space": "the unit circle in C and its images; sedenion imaginary axes",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [
+      "pi_derivations",
+      "tier8_sedenion",
+      "box_kite",
+      "hypergon_constructibility"
+    ],
+    "external": [
+      "numpy"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "The Circle Atlas (H_hat_RB and the Complete Shape of Mathematics)",
+      "group": "Engines",
+      "order": 102,
+      "blurb": "Runs the viewports, reports where each enters and leaves the circle, and lists what is not yet mapped."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "Runs all viewports and checks TO/FROM, the Wick transform of xp, the sign carriers and the emergent π",
+        "params": []
+      },
+      {
+        "name": "atlas",
+        "equation": "atlas",
+        "label": "Atlas",
+        "desc": "Runs every viewport and returns its TO/FROM results and pi route",
+        "params": []
+      },
+      {
+        "name": "entry",
+        "equation": "entry",
+        "label": "Entry",
+        "desc": "Runs one named viewport",
+        "params": [
+          "name"
+        ]
+      },
+      {
+        "name": "signposts",
+        "equation": "signposts",
+        "label": "Signposts",
+        "desc": "The table of entries and exits per viewport",
+        "params": []
+      },
+      {
+        "name": "gaps",
+        "equation": "gaps",
+        "label": "Gaps",
+        "desc": "Viewports without a pi route, viewports whose TO fails raw, and the named gaps",
+        "params": []
+      },
+      {
+        "name": "sign_carriers",
+        "equation": "sign_carriers",
+        "label": "Sign Carriers",
+        "desc": "Tests the doubling identity on every axis",
+        "params": []
+      },
+      {
+        "name": "census",
+        "equation": "census",
+        "label": "Census",
+        "desc": "Counts pi, trig, phase, circle and wave tokens in every Python file of the standing repository list",
+        "params": []
+      },
+      {
+        "name": "import_probe",
+        "equation": "import_probe",
+        "label": "Import Probe",
+        "desc": "Imports every ValaQuenta module and GenerationalLineage toolset and records failures",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

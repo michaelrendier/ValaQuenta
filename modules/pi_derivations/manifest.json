@@ -1,0 +1,115 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.pi_derivations",
+  "type": "engine",
+  "name": "pi_derivations",
+  "display": "Pi Derivations (every route to π, labelled by what of the circle it already holds)",
+  "version": "0.1",
+  "summary": "Runs a route to π from its own inputs, reports the value against math.pi (comparison only) and classifies what of the circle the route assum",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.pi_derivations",
+    "class": "PiDerivationsModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-16: 'a circle causes pi to be found, one way or the other. The pi that DEFINES a circle is the emergent pi'; a separate toolset beside the 0_RB toolset collecting every derivation of pi, extended with each new circle transform. Routes are ESTABLISHED mathematics; the circle_in classification is the engine's own bookkeeping.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-16",
+    "status_label": "ESTABLISHED:CALCULATED",
+    "predecessors": [
+      "constants (derive_pi)",
+      "h_rb_hat",
+      "fixed_point"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/138_the_pi_derivation_toolset.md",
+      "valaquenta": "ValaQuenta/wiki/pi_derivations.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/23_pi_derivations.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/pi_derivations.json"
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "the real line and C; no circle assumed unless circle_in says so",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [
+      "tier8_sedenion"
+    ],
+    "external": [
+      "numpy"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "Pi Derivations (every route to π, labelled by what of the circle it already holds)",
+      "group": "Engines",
+      "order": 103,
+      "blurb": "Runs a route to π from its own inputs, reports the value against math.pi (comparison only) and classifies what of the circle the route assumed."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "Runs every route and checks it against its tolerance; the identity route must return no value",
+        "params": []
+      },
+      {
+        "name": "all_routes",
+        "equation": "all_routes",
+        "label": "All Routes",
+        "desc": "Runs every route with default parameters",
+        "params": []
+      },
+      {
+        "name": "derive",
+        "equation": "derive",
+        "label": "Derive",
+        "desc": "Runs one named route",
+        "params": [
+          "name"
+        ]
+      },
+      {
+        "name": "emergent",
+        "equation": "emergent",
+        "label": "Emergent",
+        "desc": "Computes π from the series alone and states what it was computed from",
+        "params": []
+      },
+      {
+        "name": "circle_audit",
+        "equation": "circle_audit",
+        "label": "Circle Audit",
+        "desc": "Lists the routes under each circle_in label",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

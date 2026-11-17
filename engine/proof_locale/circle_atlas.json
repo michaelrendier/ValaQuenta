@@ -1,0 +1,156 @@
+{
+ "engine": "circle_atlas",
+ "display": "The Circle Atlas — viewports, TO and FROM, sign-posts, gaps",
+ "descriptive": "Runs every viewport through which the project's mathematics meets a circle. TO is the transformation that enters fixed-point space (and whether the result closes on |z| = 1); FROM is the transformation out, with the fibre of choices it needs (a relation, not an inverse). Each viewport names its π route. The census counts circle-bearing tokens across the repositories; the import probe records which modules do not load.",
+ "operators": [
+  {
+   "symbol": "TO",
+   "english": "enter fixed-point space",
+   "role": "viewport → circle; residual from |z| = 1 is the proof",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "FROM",
+   "english": "exit fixed-point space",
+   "role": "circle → viewport; the fibre lists what must be chosen",
+   "tier": "THEORETICAL"
+  },
+  {
+   "symbol": "fibre",
+   "english": "the set of choices FROM needs",
+   "role": "e.g. H = f(q²+p²) (a whole function), Möbius map (3 parameters), projection angle",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Wick",
+   "english": "t → it",
+   "role": "turns the real xp hyperbola into the circle x₀eⁱᵗ",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "SIGN",
+   "english": "θ → −θ, carried by e₈…e₁₅",
+   "role": "the doubling identity e_k x = x* e_k on the first octonion",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "run viewport",
+   "english": "build the viewport's own object (orbit, path, map, algebra)."
+  },
+  {
+   "n": 2,
+   "op": "TO",
+   "english": "apply the stated transformation and measure the residual from the circle; a failure is returned as a failure."
+  },
+  {
+   "n": 3,
+   "op": "FROM",
+   "english": "construct the way back and measure what had to be chosen."
+  },
+  {
+   "n": 4,
+   "op": "pi route",
+   "english": "compute π from that viewport's own data via modules.pi_derivations."
+  }
+ ],
+ "equations": {
+  "verify": {
+   "descriptive": "Every viewport's TO closes (Berry–Keating raw is a recorded failure), FROM ok, Wick closes, sign carriers = e₈…e₁₅.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "run all viewports."
+    },
+    {
+     "n": 2,
+     "op": "check",
+     "english": "compare each residual with its tolerance."
+    }
+   ]
+  },
+  "atlas": {
+   "descriptive": "All viewports with TO/FROM and π route.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "entry(k) for k",
+     "english": "run each viewport."
+    }
+   ]
+  },
+  "entry": {
+   "descriptive": "One viewport.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "VIEWPORTS[name]",
+     "english": "run it."
+    }
+   ]
+  },
+  "signposts": {
+   "descriptive": "Table of road in, road out, π route.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "reduce each entry to three phrases."
+    }
+   ]
+  },
+  "gaps": {
+   "descriptive": "What is not mapped.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "collect viewports without a π route or whose TO fails raw."
+    },
+    {
+     "n": 2,
+     "op": "GAPS",
+     "english": "append the named gaps."
+    }
+   ]
+  },
+  "sign_carriers": {
+   "descriptive": "Which axes satisfy e_k x = x* e_k for the whole first octonion.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "cd_mul",
+     "english": "test each axis against e₀…e₇."
+    }
+   ]
+  },
+  "census": {
+   "descriptive": "Token counts over the repositories (text census, not proof).",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "os.walk",
+     "english": "read every .py outside venvs and notebooks."
+    },
+    {
+     "n": 2,
+     "op": "regex",
+     "english": "count pi, trig, phase, circle, wave tokens."
+    }
+   ]
+  },
+  "import_probe": {
+   "descriptive": "Import every module and toolset, record failures.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "importlib",
+     "english": "import each; catch and record exceptions."
+    }
+   ]
+  }
+ }
+}

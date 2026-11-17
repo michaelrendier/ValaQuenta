@@ -65,6 +65,8 @@ from .modules.spectral_primes import SpectralPrimesModule
 from .modules.basile import BasileModule
 from .modules.addition_matrix import AdditionMatrixModule
 from .modules.ptycho_weak_lensing import PtychoWeakLensingModule
+from .modules.pi_derivations import PiDerivationsModule
+from .modules.circle_atlas import CircleAtlasModule
 
 def _register_all():
     registry = get_registry()
@@ -109,6 +111,8 @@ def _register_all():
     register(BasileModule())
     register(AdditionMatrixModule())
     register(PtychoWeakLensingModule())
+    register(PiDerivationsModule())
+    register(CircleAtlasModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

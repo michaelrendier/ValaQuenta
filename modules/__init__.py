@@ -135,6 +135,19 @@ Modules
                          constraint, gaps filled), an intensity-only modulus
                          variant, and polarization Q+iU through the same E/B.
 
+    circle_atlas       — THE CIRCLE ATLAS. Every viewport through which the
+                         mathematics meets a circle (waveform, Hamiltonian,
+                         Lagrangian, cardioid, Smith chart, inversion, Hopf
+                         fibre, the sedenion's 15 circles, prime wheels ...),
+                         each run as TO (enter fixed-point space) and FROM
+                         (exit it, with the fibre of choices), plus sign-posts,
+                         gaps, a repository census and an import probe.
+
+    pi_derivations     — THE PI DERIVATION TOOLSET, beside the 0_RB toolset.
+                         Every route to pi, none reading math.pi, each labelled
+                         by what of the circle its inputs already contain;
+                         cos_zero is the emergent pi.
+
     emerger            — THE EMERGER. Sedenion Bracketing & Firing Order. A
                          dynamic permutative bracketer over the imaginary
                          part of a Cayley-Dickson algebra; e_0 (real) is the
