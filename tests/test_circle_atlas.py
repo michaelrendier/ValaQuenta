@@ -98,3 +98,11 @@ def test_native_units_homomorphism():
 def test_anchor_splits_the_one_bare_spectrum():
     r = M.anchored_readings()
     assert r["same_for_every_anchor"] and r["class_sizes"] == [(2, 2, 4, 4, 8, 32, 32)] and len(r["constructs"]) == 3
+
+
+def test_photon_sphere_is_an_unstable_circle():
+    import math
+    e = M.entry("photon_sphere")["to"]
+    assert e["ok"] and abs(e["critical_impact_parameter"] - 3 * math.sqrt(3)) < 1e-12
+    assert abs(e["perturbation_growth_per_turn"] / e["linear_prediction_cosh_2pi"] - 1) < 1e-3
+    assert abs(e["photon_sphere_over_shell"] - 1.5) < 0.01

@@ -708,6 +708,39 @@ def v_kite_spectrum() -> Dict[str, Any]:
                      "fibre": "the line multiplicities (4, 8, 4 at 0, √2, 2) say 'zero divisor' and give |d|²; they do not say which kite (one signature for all 84). The nullspace of L_d (its eigenvectors) gives the 4 annihilating partners and so the kite: " + ks["nullspace_round_trip"]}}
 
 
+def v_photon_sphere() -> Dict[str, Any]:
+    r"""
+    The photon sphere: the circular null orbit at r = 3M (units G = c = 1, M = 1), where "in" turns into "out".
+
+    A light ray with impact parameter b < 3√3 M falls in, b > 3√3 M escapes; the orbit between them is a circle that is neither (unstable: a perturbation
+    grows as cosh φ, ≈ e^φ/2). In the gravastar picture (interior de Sitter, thin shell near r = 2M, Schwarzschild outside) the photon sphere lies OUTSIDE the
+    shell at 1.5 × its radius, and the de Sitter interior's own horizon radius 1/H meets the shell (H² = 2M/a³ at shell radius a).
+    Integrates u'' + u = 3u² (u = 1/r, φ the angle) from u = 1/3.
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    def rk4(u0, v0, phi_end, n=20000):
+        h = phi_end / n; y = np.array([u0, v0], float)
+        f = lambda y: np.array([y[1], 3 * y[0] ** 2 - y[0]])
+        for _ in range(n):
+            k1 = f(y); k2 = f(y + h / 2 * k1); k3 = f(y + h / 2 * k2); k4 = f(y + h * k3); y = y + h / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
+        return y
+    u_end = rk4(1 / 3, 0.0, TWO_PI)
+    drift = float(abs(u_end[0] - 1 / 3) + abs(u_end[1]))
+    eps = 1e-8; grown = rk4(1 / 3 + eps, 0.0, TWO_PI)[0] - 1 / 3
+    growth = float(grown / eps); expected = math.cosh(TWO_PI)
+    bcrit = 3 * math.sqrt(3)
+    # impact parameter of the circular orbit from the radial equation: (dr/dφ)² = r⁴/b² − r²(1 − 2/r) = 0 and its r-derivative = 0 at r = 3
+    b_from = math.sqrt(3 ** 4 / (3 ** 2 * (1 - 2 / 3)))
+    a = 2.0 * 1.001; H = math.sqrt(2.0 / a ** 3)
+    return {"to": {"ok": drift < 1e-9 and abs(b_from - bcrit) < 1e-12, "residual": max(drift, abs(b_from - bcrit)), "transform": "integrate u'' + u = 3u² from u = 1/3: the orbit stays on r = 3M for a full turn (drift above); the circle is the unstable point between falling in (b < 3√3 M) and escaping (b > 3√3 M)",
+                   "critical_impact_parameter": bcrit, "perturbation_growth_per_turn": growth, "linear_prediction_cosh_2pi": expected,
+                   "gravastar_shell_a_over_M": a, "de_sitter_horizon_radius_1_over_H": 1 / H, "photon_sphere_over_shell": 3 / a},
+            "from": {"ok": True, "residual": 0.0, "fibre": "a circular photon orbit is a choice of orbital plane through the centre (a point of S²) and a starting angle; unstable, so it is a boundary between inward and outward rays, not an orbit anything stays on. The reading 'the interior de Sitter space of a gravastar is our universe' is INTERPRETATION"}}
+
+
+
 VIEWPORTS: Dict[str, Dict[str, Any]] = {
     "waveform":       dict(fn=v_waveform, name="Waveform (sinusoid)", source="ValaQuenta/modules/sonification; angular_rank", tier="ESTABLISHED", pi="cos_zero"),
     "hamiltonian":    dict(fn=v_hamiltonian, name="Hamiltonian (oscillator H = ½(p²+q²))", source="ValaQuenta/hamiltonian.py; modules/berry_keating", tier="ESTABLISHED", pi="oscillator_period"),
@@ -732,6 +765,7 @@ VIEWPORTS: Dict[str, Dict[str, Any]] = {
     "field_axis":     dict(fn=v_field_axis, name="Recursive field axes (the axis is a point of S^14, not one of 15)", source="Cody 2026-11-16; tier8_sedenion", tier="ESTABLISHED", pi="sedenion_exp_period"),
     "native_units":   dict(fn=v_native_units, name="Native units: ln 10 (decades) and π (half-turns)", source="GenerationalLineage/engine/add_scale_sign.py; .clauderc_canonical_maths (d*)", tier="INTERPRETATION", pi="cos_zero"),
     "kite_spectrum":  dict(fn=v_kite_spectrum, name="Box-kite as spectral emitter and interpreter (L_d lines, nullspace read-back)", source="ValaQuenta/modules/box_kite; tier8_sedenion", tier="ESTABLISHED", pi="sedenion_exp_period"),
+    "photon_sphere":  dict(fn=v_photon_sphere, name="Photon sphere (circular null orbit at 3M; the gravastar's last circle)", source="Schwarzschild null geodesics; gravastar (Mazur–Mottola 2001, recalled: verify); FourthAgePapers DeSitterCavitation", tier="INTERPRETATION", pi=None),
     "winding":        dict(fn=v_winding, name="Winding number / Cauchy residue", source="RiemannHypothesisProof/rhp/zerophase.py, flow.py", tier="ESTABLISHED", pi="residue_square"),
 }
 

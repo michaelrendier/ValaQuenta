@@ -11,7 +11,7 @@
 ## API
 
 `VIEWPORTS`
-: dict id → {fn, name, source, tier, pi}; 24 viewports (19 + sphere, hypersphere, field_axis, native_units, kite_spectrum, added the same day).
+: dict id → {fn, name, source, tier, pi}; 25 viewports (19 + sphere, hypersphere, field_axis, native_units, kite_spectrum, added the same day).
 
 `entry(name)`
 : :param name: key of `VIEWPORTS`. :returns: dict id, name, source, tier, `to`, `from`, `pi_route`, `pi_value`, `pi_error`, `circle_in`.
@@ -72,3 +72,6 @@ Census (text): GenerationalLineage 100 files / 18,106 lines; ValaQuenta 228 / 63
 
 ## Gaps (kept, not hidden)
 No π route yet: `apollonian`, `inversion`, `bao_ring`, `retraction`. Named gaps: elliptic curves / modular forms, string-theory cardioid superstrings, wing/bell motions, the point that becomes a circle (the polar blow-up is a candidate, INTERPRETATION), 5:5:5 and 2:11:2 frames, BAO/CMB with data, gauge-theory U(1) circles.
+
+## Added 2026-11-17: `v_photon_sphere` (25th viewport)
+The circular null orbit of Schwarzschild at r = 3M (G = c = 1). Integrating u'' + u = 3u² from u = 1/3 over a full turn leaves the orbit on r = 3M to 9e-16; the critical impact parameter is 3√3 M = 5.196. It is **unstable**: a perturbation of 1e-8 grows by 267.75 per turn, cosh 2π = 267.747 by the linearisation. It is the circle where "in" turns into "out": rays with b < 3√3 M fall in, b > 3√3 M escape. In the gravastar picture (interior de Sitter, thin shell near r = 2M, Schwarzschild outside) the photon sphere sits outside the shell at 1.5 × its radius (1.4985 for a shell at 2.002 M), and the de Sitter interior's own horizon radius 1/H (2.003 M, from H² = 2M/a³) meets the shell. That the interior de Sitter space of a gravastar is our universe is the author's reading, `INTERPRETATION`; the photon sphere has no π route yet (listed in `gaps()`).
