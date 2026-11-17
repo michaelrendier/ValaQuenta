@@ -59,3 +59,42 @@ def test_census_counts_this_repository():
 def test_import_probe_records_without_raising():
     r = M.import_probe()
     assert len(r["ok"]) > 40 and isinstance(r["failed"], list)
+
+
+def test_second_pass_viewports_close():
+    for k in ("sphere", "hypersphere", "field_axis", "native_units", "kite_spectrum"):
+        e = M.entry(k)
+        assert e["to"]["ok"] and e["from"]["ok"], k
+
+
+def test_n_ball_peaks_and_recursion():
+    t = M.ball_table()
+    assert t["peak_volume_dim"] == 5 and t["peak_area_dim"] == 7 and t["recursion_residual"] < 1e-12
+
+
+def test_sedenion_sphere_is_not_closed_under_product():
+    d = M.entry("hypersphere")["to"]["norm_defect_of_unit_products"]
+    assert d[8] < 1e-12 and d[16] > 0.1
+
+
+def test_kite_spectrum_lines_and_read_back():
+    k = M.kite_spectrum()
+    assert k["kites"] == 7 and k["single_signature_for_all_zd"] and k["nullspace_round_trip"] == "84/84"
+    assert k["skew_residual_LT_plus_L"] == 0.0 and k["flow_is_periodic_zd"] is False
+
+
+def test_real_component_law():
+    assert M.real_component_effect()["all_laws_hold"]
+
+
+def test_native_units_homomorphism():
+    import cmath
+    z, w = 1.7 - 0.3j, -0.4 + 2.2j
+    a, b = M.native_coords(z * w); (a1, b1), (a2, b2) = M.native_coords(z), M.native_coords(w)
+    assert abs(a - a1 - a2) < 1e-13 and abs(abs(b - b1 - b2) % 2) < 1e-12 or abs(abs(b - b1 - b2) - 2) < 1e-12
+    assert abs(M.from_native(a1, b1) - z) < 1e-12
+
+
+def test_anchor_splits_the_one_bare_spectrum():
+    r = M.anchored_readings()
+    assert r["same_for_every_anchor"] and r["class_sizes"] == [(2, 2, 4, 4, 8, 32, 32)] and len(r["constructs"]) == 3

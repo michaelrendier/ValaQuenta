@@ -466,6 +466,83 @@ def u1_normalisation() -> float:
 
 
 # id -> (function, name, circle_in, what the route needs, tier)
+
+def ball3_lattice(n: int = 300) -> float:
+    """
+    π from the VOLUME of the unit 3-ball counted on a lattice: V₃ = 4π/3, so π = 3V₃/4. Counts cell centres of a grid of n³ cells inside |x| ≤ 1.
+
+    :param n: cells per axis over [−1, 1]
+    :type n: int
+    :returns: the estimate of π
+    :rtype: float
+    """
+    import numpy as np
+    c = (np.arange(n) + 0.5) / n * 2 - 1
+    x2 = c[:, None, None] ** 2 + c[None, :, None] ** 2 + c[None, None, :] ** 2
+    return 3 * (float(np.count_nonzero(x2 <= 1.0)) * (2.0 / n) ** 3) / 4
+
+
+def heegner_163(digits: int = 60) -> float:
+    """
+    π from the Heegner number 163: e^{π√163} = 640320³ + 744 − ε with ε ≈ 7.5·10⁻¹³ (the j-invariant of Z[(1+√−163)/2] is −640320³), so π = ln(640320³ + 744)/√163.
+
+    Uses mpmath's logarithm and square root only; the constant that makes it work is an integer (the modular j-invariant).
+
+    :param digits: working precision in decimal digits
+    :type digits: int
+    :returns: π as a float; :func:`heegner_error` gives the true error at ``digits`` precision
+    :rtype: float
+    """
+    import mpmath as mp
+    mp.mp.dps = digits
+    return float(mp.log(mp.mpf(640320) ** 3 + 744) / mp.sqrt(163))
+
+
+def heegner_error(digits: int = 60) -> Any:
+    """
+    The error of :func:`heegner_163` at full precision, compared with mpmath's π (comparison only).
+
+    :param digits: working precision
+    :type digits: int
+    :returns: the absolute error as an mpmath number
+    :rtype: mpmath.mpf
+    """
+    import mpmath as mp
+    mp.mp.dps = digits
+    return abs(mp.log(mp.mpf(640320) ** 3 + 744) / mp.sqrt(163) - mp.pi)
+
+
+def series_speed(d: int = 163, terms: int = 20) -> Dict[str, float]:
+    """
+    Digits gained per term by the Chudnovsky (d = 163) or Ramanujan 1103 (d = 58) series, against π√d / ln 10 (the decade coordinate of e^{π√d}).
+
+    The series are exact identities; what is measured is how fast the partial sums close, in decades per term.
+
+    :param d: 163 or 58
+    :type d: int
+    :param terms: terms to sum
+    :type terms: int
+    :returns: measured digits per term, π√d/ln 10, and their difference
+    :rtype: dict
+    """
+    import mpmath as mp
+    mp.mp.dps = 400; fact = mp.factorial
+    if d == 163:
+        def term(k): return mp.mpf(-1) ** k * fact(6 * k) * (13591409 + 545140134 * k) / (fact(3 * k) * fact(k) ** 3 * mp.mpf(640320) ** (3 * k))
+        const = 12 / mp.mpf(640320) ** mp.mpf(1.5)
+        val = lambda S: 1 / (const * S)
+    else:
+        def term(k): return fact(4 * k) * (1103 + 26390 * k) / (fact(k) ** 4 * mp.mpf(396) ** (4 * k))
+        const = 2 * mp.sqrt(2) / 9801
+        val = lambda S: 1 / (const * S)
+    errs = []; S = mp.mpf(0)
+    for k in range(terms):
+        S += term(k); errs.append(abs(val(S) - mp.pi))
+    slope = float(-(mp.log10(errs[-1]) - mp.log10(errs[8])) / (terms - 9))
+    cd = float(mp.pi * mp.sqrt(d) / mp.log(10))
+    return {"measured_digits_per_term": slope, "decade_coordinate_pi_sqrt_d": cd, "difference": cd - slope}
+
+
 ROUTES: Dict[str, Dict[str, Any]] = {
     "cos_zero":           dict(fn=cos_zero, name="First zero of the cosine power series (π/2)", circle_in="none", tier="ESTABLISHED",
                                needs="the power series of cos, nothing geometric. THE EMERGENT π: it defines the circle's period before any circle is drawn."),
@@ -495,6 +572,8 @@ ROUTES: Dict[str, Dict[str, Any]] = {
     "jacobi_conjugate_point": dict(fn=jacobi_conjugate_point, name="Lagrangian: first conjugate point of L = ½ẋ² − ½x² at T = π", circle_in="orbit", tier="ESTABLISHED", needs="the action's second variation; no circle, no angle"),
     "sedenion_exp_period": dict(fn=sedenion_exp_period, name="exp(θ·e₁₅) in the sedenion, first return to −1", circle_in="none", tier="ESTABLISHED", needs="the Cayley–Dickson product and the exponential series; a circle in every imaginary direction"),
     "ring_eigenvalue":    dict(fn=ring_eigenvalue, name="Lowest eigenvalue of the periodic second difference on a ring", circle_in="constructed", tier="ESTABLISHED", needs="periodic boundary conditions (the ring), no angle"),
+    "ball3_lattice":      dict(fn=ball3_lattice, name="Volume of the unit 3-ball by lattice count: π = 3V₃/4", circle_in="constructed", tier="ESTABLISHED", needs="the ball as the counting test; the sphere's own volume"),
+    "heegner_163":        dict(fn=heegner_163, name="π = ln(640320³ + 744)/√163 (Heegner number, modular j-invariant)", circle_in="none", tier="ESTABLISHED", needs="an integer that is a singular modulus of an elliptic curve with complex multiplication; log and sqrt"),
     "u1_normalisation":   dict(fn=u1_normalisation, name="(2/π)·π = 2 (the project's U(1) normalisation)", circle_in="identity", tier="OPEN", needs="nothing: an identity for any value of π, not a derivation"),
 }
 
@@ -565,11 +644,13 @@ def verify() -> Dict[str, Any]:
            "wallis": 1e-5, "viete": 1e-12, "basel": 1e-6, "euler_product": 1e-6, "coprime_probability": 5e-3, "gaussian_integral": 1e-9,
            "gamma_half": 1e-12, "stirling_ratio": 1e-8, "gauss_legendre": 1e-12, "ramanujan": 1e-12, "bbp": 1e-12,
            "grid_circle_area": 1e-3, "residue_square": 1e-3, "cardioid_area": 1e-6,
-           "smith_arc_length": 1e-4, "jacobi_conjugate_point": 1e-3, "sedenion_exp_period": 1e-12, "ring_eigenvalue": 1e-5}
+           "smith_arc_length": 1e-4, "jacobi_conjugate_point": 1e-3, "sedenion_exp_period": 1e-12, "ring_eigenvalue": 1e-5,
+           "ball3_lattice": 1e-3, "heegner_163": 1e-15}
     out: Dict[str, Any] = {}
     for k, t in tol.items():
         out[f"{k}: error ≤ {t:g}"] = derive(k)["error"] <= t
     chud = derive("chudnovsky")
     out["chudnovsky: 60 digits"] = chud["error"] < 1e-55
+    out["heegner_163: 30 digits at 60-digit precision"] = float(heegner_error(60)) < 1e-30
     out["u1_normalisation is an identity (value nan)"] = math.isnan(ROUTES["u1_normalisation"]["fn"]())
     return out

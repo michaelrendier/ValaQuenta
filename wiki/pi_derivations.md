@@ -11,7 +11,7 @@ Kept beside the 0_RB toolset (`modules/h_rb_hat`).
 ## API
 
 `ROUTES`
-: dict id → {fn, name, circle_in, tier, needs}; 26 routes.
+: dict id → {fn, name, circle_in, tier, needs}; 28 routes.
 
 `derive(name, **kw)`
 : :param name: key of `ROUTES`. :returns: dict id, name, value, error (against `math.pi`, comparison only), circle_in, needs, tier.
@@ -36,3 +36,13 @@ Route functions: `cos_zero`, `oscillator_period`, `archimedes`, `gregory_leibniz
 ## Measured (executed in notebook 23)
 All 25 value routes within tolerance (errors 0 … 9.5e-4 for the coprime probability, which converges slowly). **Emergent π** `cos_zero` 8.9e-16. Orbit: `oscillator_period` 3.2e-13, `jacobi_conjugate_point` 8.0e-6 (first conjugate point of the Lagrangian at T = π). Path: `residue_square` 3.3e-9 (∮dz/z round a square), `smith_arc_length`. `sedenion_exp_period` 1.8e-14 (exp(θ·e₁₅) by the project's own Cayley–Dickson product). `chudnovsky` 60 digits exact. **`u1_normalisation`: (2/π)·π = 2 holds for any π; the route returns no value and is classed `identity`.**
 Rule: the route bodies never read `math.pi` (a test greps the source).
+
+## Added 2026-11-16 (second pass): 28 routes
+`ball3_lattice(n)`
+: π = 3V₃/4 from counting cells of an n³ grid inside the unit 3-ball (n = 300: error 1.3e-4; `circle_in` constructed).
+
+`heegner_163(digits)`, `heegner_error(digits)`
+: π = ln(640320³ + 744)/√163, from the j-invariant of Z[(1+√−163)/2] (an integer). Error 2.2e-31 at 60 digits (the true error of the formula, from e^{π√163} = 640320³ + 744 − 7.5e-13).
+
+`series_speed(d, terms)`
+: digits gained per term by Chudnovsky (d = 163) and Ramanujan's 1103 series (d = 58), against π√d/ln 10 (the decade coordinate of e^{π√d}). Measured: 14.197 vs 17.419 − log₁₀ 1728 = 14.182; 7.998 vs 10.391 − log₁₀ 256 = 7.983. The series are exact identities (proved by the Borweins and Chudnovskys); the speed is the decade coordinate minus a fixed integer's decade count; the 0.015 residual is the slow correction from the factorial ratio, not analysed.

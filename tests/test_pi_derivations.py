@@ -36,3 +36,14 @@ def test_circle_audit_groups_every_route():
 
 def test_chudnovsky_digits():
     assert M.chudnovsky(60).startswith("3.14159265358979323846264338327950288419716939937510")
+
+
+def test_heegner_and_ball_routes():
+    assert M.derive("heegner_163")["error"] < 1e-15 and float(M.heegner_error(60)) < 1e-30
+    assert M.derive("ball3_lattice")["error"] < 1e-3
+
+
+def test_series_speed_tracks_decade_coordinate():
+    import math
+    s = M.series_speed(163)
+    assert abs(s["measured_digits_per_term"] - (s["decade_coordinate_pi_sqrt_d"] - math.log10(1728))) < 0.05

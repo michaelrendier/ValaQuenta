@@ -424,6 +424,290 @@ def v_winding() -> Dict[str, Any]:
             "from": {"ok": True, "residual": 0.0, "fibre": "any loop of the same class; the circle is the canonical representative (π enters as the residue of dz/z, route residue_square)"}}
 
 
+# ───────────────────── sphere, hypersphere, field axis, native units, kite spectrum (added 2026-11-16, second pass) ─────────────────────
+
+def ball_volume(n: int) -> float:
+    r"""
+    Volume of the unit n-ball, V_n = π^{n/2} / Γ(n/2 + 1).
+
+    :param n: dimension
+    :type n: int
+    :returns: V_n
+    :rtype: float
+    """
+    return math.pi ** (n / 2) / math.gamma(n / 2 + 1)
+
+
+def ball_table(dims: Optional[List[int]] = None) -> Dict[str, Any]:
+    """
+    The n-ball table: volume, surface area of S^{n−1}, ratio to the enclosing cube, the dimension of the peak, and the sedenion's place (n = 16).
+
+    :param dims: dimensions to tabulate
+    :type dims: list
+    :returns: rows, the peak dimension of V_n and of the surface area, and the recursion check V_n = (2π/n) V_{n−2}
+    :rtype: dict
+    """
+    dims = dims or [1, 2, 3, 4, 5, 6, 7, 8, 15, 16, 32]
+    rows = [{"n": n, "V": ball_volume(n), "S_{n-1}": n * ball_volume(n), "ball/cube": ball_volume(n) / 2 ** n} for n in dims]
+    recur = max(abs(ball_volume(n) - 2 * math.pi / n * ball_volume(n - 2)) for n in range(2, 40))
+    return {"rows": rows, "peak_volume_dim": int(max(range(1, 40), key=ball_volume)), "peak_area_dim": int(max(range(1, 40), key=lambda n: n * ball_volume(n))),
+            "recursion_residual": recur}
+
+
+def _sphere_great_circle(dim: int, seed: int = 5) -> float:
+    rng = np.random.default_rng(seed); worst = 0.0
+    for _ in range(200):
+        p = rng.normal(size=dim); p /= np.linalg.norm(p); q = rng.normal(size=dim); q -= (q @ p) * p; q /= np.linalg.norm(q)
+        t = _u(64); pts = np.cos(t)[:, None] * p + np.sin(t)[:, None] * q
+        worst = max(worst, float(np.max(np.abs(np.linalg.norm(pts, axis=1) - 1))), float(abs(pts[0] @ pts[-1] - np.cos(t[-1] - t[0]))))
+    return worst
+
+
+def v_sphere() -> Dict[str, Any]:
+    """
+    Sphere S²: every plane section is a circle (parallels, and great circles through any two points).
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    worst = 0.0
+    for z in np.linspace(-0.99, 0.99, 41):
+        r = math.sqrt(1 - z * z); t = _u(256); pts = np.stack([r * np.cos(t), r * np.sin(t), np.full_like(t, z)], 1)
+        worst = max(worst, float(np.max(np.abs(np.linalg.norm(pts, axis=1) - 1))))
+    gc = _sphere_great_circle(3)
+    return {"to": {"ok": worst < 1e-12 and gc < 1e-12, "residual": max(worst, gc), "transform": "intersect with a plane: every parallel z = const is a circle of radius √(1−z²); every pair of non-antipodal points lies on one great circle"},
+            "from": {"ok": True, "residual": 0.0, "fibre": "a circle gives S² by revolving it about an axis in R³ (choice: the axis, a point of S²) or by Hopf fibration (viewport hopf); sweeping a circle's radius through sin gives the parallels"}}
+
+
+def v_hypersphere() -> Dict[str, Any]:
+    r"""
+    Hypersphere S^{n}: any two points lie on a great circle, in every dimension; the unit sphere of the sedenion is S^15, which is not closed under the product.
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    gcs = {n + 1: _sphere_great_circle(n + 1) for n in (1, 3, 7, 15, 31)}
+    rng = np.random.default_rng(0); defect = {}
+    for dim in (2, 4, 8, 16):
+        d = 0.0
+        for _ in range(2000):
+            a = rng.normal(size=dim); a /= np.linalg.norm(a); b = rng.normal(size=dim); b /= np.linalg.norm(b)
+            d = max(d, abs(float(np.linalg.norm(cd_mul(a, b))) - 1))
+        defect[dim] = d
+    bt = ball_table()
+    return {"to": {"ok": max(gcs.values()) < 1e-12, "residual": max(gcs.values()), "great_circle_residual_by_ambient_dim": gcs,
+                   "transform": "the great circle through p, q: cos θ·p + sin θ·q′ (q′ = q made orthogonal to p); a circle in every dimension",
+                   "norm_defect_of_unit_products": defect,
+                   "n_ball": {"peak_volume_dim": bt["peak_volume_dim"], "peak_area_dim": bt["peak_area_dim"], "V_16": ball_volume(16), "recursion_residual": bt["recursion_residual"]}},
+            "from": {"ok": True, "residual": 0.0, "fibre": "a circle in R^{n+1} is a 2-plane through the origin plus a start point: the Grassmannian Gr(2, n+1) has dimension 2(n−1); for the sedenion (n = 15) that is 28, and the point on the circle one more",
+                     "note": "|ab| = |a||b| holds for dim 2, 4, 8 (S¹, S³, S⁷) to 1e-15 and fails for dim 16 (max defect measured above): S^15 is a sphere of circles but not a group"}}
+
+
+def _unit_axis(c: np.ndarray) -> np.ndarray:
+    u = np.zeros(16); u[1:] = c / np.linalg.norm(c); return u
+
+
+def v_field_axis() -> Dict[str, Any]:
+    r"""
+    Recursive field axes: the axis of a sedenion circle is any unit imaginary u ∈ S^14, a continuum; the 15 basis axes are one basis of that field.
+
+    exp(θu) = cos θ + u sin θ holds for every u with u² = −1, and the field of axes itself carries circles (a path u(s) on S^14).
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    rng = np.random.default_rng(11); worst = 0.0
+    for _ in range(200):
+        u = _unit_axis(rng.normal(size=15)); worst = max(worst, float(np.max(np.abs(cd_mul(u, u) + np.eye(16)[0]))))
+        th = rng.uniform(0, 7); term = np.eye(16)[0].copy(); tot = term.copy()
+        for j in range(1, 45):
+            term = cd_mul(term, th * u) / j; tot = tot + term
+        worst = max(worst, float(np.max(np.abs(tot - (math.cos(th) * np.eye(16)[0] + math.sin(th) * u)))))
+    a, b = rng.normal(size=15), rng.normal(size=15); b -= (b @ a) / (a @ a) * a
+    path = [_unit_axis(math.cos(s) * a / np.linalg.norm(a) + math.sin(s) * b / np.linalg.norm(b)) for s in _u(180)]
+    ax_worst = max(float(np.max(np.abs(cd_mul(p, p) + np.eye(16)[0]))) for p in path)
+    return {"to": {"ok": worst < 1e-11 and ax_worst < 1e-12, "residual": max(worst, ax_worst), "random_axes_tested": 200,
+                   "transform": "none: any u ∈ S^14 with u² = −1 gives the circle exp(θu); the axis can itself move along a circle of axes (a torus of circles)"},
+            "from": {"ok": True, "residual": 0.0, "fibre": "the axis is a point of S^14: a circle in the sedenion's imaginary part needs a choice from a 14-dimensional field of axes; 15 axes are the discrete basis picked out of it"}}
+
+
+def real_component_effect(theta: float = 0.7) -> Dict[str, Any]:
+    r"""
+    What each of the 15 imaginary axes does to the Real component: Re(exp(θe_k)·z) = r cos θ − y_k sin θ, where z = r + Σ y_j e_j.
+
+    L(e_k) squares to −1 on all 16 coordinates for every k (a complex structure); it pairs the Real axis with e_k and the other 14 axes into 7 planes.
+
+    :param theta: test angle
+    :type theta: float
+    :returns: per axis: residual of the Real-part law, L² + 1 residual, the partner pairs of the 7 other planes
+    :rtype: dict
+    """
+    E = np.eye(16); rng = np.random.default_rng(2); rows = []
+    for k in range(1, 16):
+        u = E[k]; worst = 0.0
+        for _ in range(50):
+            z = rng.normal(size=16); w = math.cos(theta) * E[0] + math.sin(theta) * u
+            worst = max(worst, abs(cd_mul(w, z)[0] - (z[0] * math.cos(theta) - z[k] * math.sin(theta))))
+        Lk = np.array([cd_mul(u, E[j]) for j in range(16)]).T
+        pairs = sorted({tuple(sorted((j, int(np.argmax(np.abs(Lk[:, j])))))) for j in range(16)})
+        rows.append({"axis": k, "real_part_law_residual": worst, "L_squared_plus_1": float(np.linalg.norm(Lk @ Lk + np.eye(16))), "planes": pairs})
+    return {"rows": rows, "all_laws_hold": all(r["real_part_law_residual"] < 1e-12 and r["L_squared_plus_1"] < 1e-12 for r in rows)}
+
+
+def native_coords(z: complex) -> Any:
+    r"""
+    Native polar coordinates with the two units named: a = log₁₀|z| in decades (unit ln 10), b = arg z / π in half-turns (unit π).
+
+    z = 10^a · e^{iπb}.  Multiplication adds both coordinates (SCALE adds a, SIGN adds b).
+
+    :param z: a non-zero complex number
+    :type z: complex
+    :returns: (a, b)
+    :rtype: tuple
+    """
+    return math.log(abs(z)) / math.log(10), math.atan2(z.imag, z.real) / math.pi
+
+
+def from_native(a: float, b: float) -> complex:
+    """
+    Inverse of :func:`native_coords`: 10^a · e^{iπb}.
+
+    :param a: decades
+    :type a: float
+    :param b: half-turns
+    :type b: float
+    :returns: the complex number
+    :rtype: complex
+    """
+    return math.exp(a * math.log(10)) * complex(math.cos(math.pi * b), math.sin(math.pi * b))
+
+
+def v_native_units() -> Dict[str, Any]:
+    """
+    The two native units, ln 10 (radial: decades) and π (angular: half-turns). The unit circle is the line a = 0, b ∈ [0, 2); a product adds coordinates.
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    rng = np.random.default_rng(4); worst = 0.0
+    for _ in range(500):
+        z = complex(*rng.normal(size=2)); w = complex(*rng.normal(size=2))
+        (a1, b1), (a2, b2) = native_coords(z), native_coords(w); (a3, b3) = native_coords(z * w)
+        worst = max(worst, abs(a3 - (a1 + a2)), abs(((b3 - (b1 + b2) + 1) % 2) - 1), abs(from_native(a1, b1) - z) / abs(z))
+    on_circle = max(abs(native_coords(complex(math.cos(t), math.sin(t)))[0]) for t in _u(360))
+    return {"to": {"ok": worst < 1e-12 and on_circle < 1e-12, "residual": max(worst, on_circle), "transform": "z → (log₁₀|z|, arg z/π): the unit circle is a = 0; one full turn is b = 2; product = sum of coordinates (ADD:SCALE:SIGN)"},
+            "from": {"ok": True, "residual": 0.0, "fibre": "(a = 0, b) → e^{iπb}; the period 2 in half-turns is the only length in the angular unit. In these units the unit circle has circumference 2 and the unit disc area 1: an identity of the unit choice, not a derivation of π",
+                     "independence": "ln 10 / π is transcendental (Baker, after Gelfond: the ratio of two logarithms of algebraic numbers, here ln 10 and ln(−1) = iπ, is rational or transcendental, and it is not rational): the two native units cannot be reduced to each other by any algebraic relation of that kind"}}
+
+
+def _lines(M: np.ndarray, tol: float = 1e-9) -> Dict[float, int]:
+    sv = np.round(np.linalg.svd(M, compute_uv=False), 6); out: Dict[float, int] = {}
+    for s in sv: out[float(s)] = out.get(float(s), 0) + 1
+    return out
+
+
+def kite_spectrum() -> Dict[str, Any]:
+    r"""
+    The spectrum a box-kite emits and what reading it back recovers.
+
+    EMIT: the left-multiplication operator L_d of a zero-divisor diagonal d = e_a ± e_{b+8} is real skew (L_dᵀ = −L_d, checked), so exp(tL_d) is a flow whose
+    frequencies are the singular values of L_d.  INTERPRET: from the emitted lines alone, then from the eigenvectors (the nullspace of L_d).
+
+    :returns: lines per class, whether the spectrum separates kites, the nullspace round trip, and the periodicity of the flow
+    :rtype: dict
+    """
+    E = np.eye(16)
+    def L(x): return np.array([cd_mul(x, E[j]) for j in range(16)]).T
+    pairs = zero_divisor_pairs(); zd = sorted({p[0] for p in pairs})
+    zd_lines: Dict[Any, int] = {}; skew = 0.0
+    for d in zd:
+        M = L(_diag(d)); skew = max(skew, float(np.max(np.abs(M + M.T)))); key = tuple(sorted(_lines(M).items())); zd_lines[key] = zd_lines.get(key, 0) + 1
+    non_zd = [(a, a, s) for a in range(1, 8) for s in (1, -1)]
+    nz_lines = {tuple(sorted(_lines(L(_diag(d))).items())) for d in non_zd}
+    # kites = connected components of the annihilation graph
+    parent = {d: d for d in zd}
+    def find(x):
+        while parent[x] != x: parent[x] = parent[parent[x]]; x = parent[x]
+        return x
+    for x, y in pairs: parent[find(x)] = find(y)
+    comp = {d: find(d) for d in zd}; kites = sorted({c for c in comp.values()}); kid = {c: i for i, c in enumerate(kites)}
+    ok = 0; partners = {d: [y for x, y in pairs if x == d] for d in zd}
+    for d in zd:
+        M = L(_diag(d)); U, S, Vt = np.linalg.svd(M); null = Vt[S < 1e-9]
+        found = [e for e in zd if abs(np.linalg.norm(null @ _diag(e)) - np.linalg.norm(_diag(e))) < 1e-9]   # diagonals lying inside the nullspace
+        ok += int(sorted(found) == sorted(partners[d]) and {kid[comp[e]] for e in found} == {kid[comp[d]]})
+    M = L(_diag(zd[0])); ev = np.linalg.eigvals(M); freqs = sorted({round(abs(e.imag), 6) for e in ev})
+    nz = [f for f in freqs if f > 0]
+    return {"zd_diagonals": len(zd), "kites": len(kites), "kite_sizes": sorted(sum(1 for d in zd if kid[comp[d]] == i) for i in range(len(kites))),
+            "skew_residual_LT_plus_L": skew,
+            "zd_line_signatures": [{"count": c, "lines": dict(k)} for k, c in zd_lines.items()],
+            "non_zd_line_signatures": [dict(s) for s in nz_lines],
+            "single_signature_for_all_zd": len(zd_lines) == 1,
+            "nullspace_round_trip": f"{ok}/{len(zd)}",
+            "flow_frequencies_zd": freqs, "flow_frequency_ratio": (nz[-1] / nz[0]) if len(nz) > 1 else None,
+            "flow_is_periodic_zd": bool(len(nz) > 1 and abs(nz[-1] / nz[0] - round(nz[-1] / nz[0])) < 1e-9)}
+
+
+KITE_CONSTRUCTS: List[Dict[str, str]] = [
+    {"name": "De Marrais box-kite", "what": "84 zero-divisor diagonals in 7 kites of 12 (6 assessors × 2 signs); static, symmetric under G2",
+     "reads": "from no vantage: one spectrum (0, √2, 2 with multiplicities 4, 8, 4) for all 84, so the bare spectrum cannot tell kites apart", "source": "De Marrais; ValaQuenta/modules/box_kite"},
+    {"name": "Scalar Boxkite (the author's)", "what": "discrete static object of 7 ordered pairs (3 axes, pivot, 3 shadows of the pencil(s)); the seven-factor product is read as Re",
+     "reads": "a string (Pencil/Flashlight) runs from the pivot/anchor to each tetrahedron: where the string is attached orients the kite; the anchored reading below is the De Marrais-kite analogue", "source": "feedback_scalar_vs_scaled_boxkite; VAPMIP/docs/wiki/Boxkite-Relational-Atlas.md"},
+    {"name": "Scaled Boxkite / Scaled Mind's Eye (the author's)", "what": "the De Marrais kite carried by G2 (14-parameter deformations), not 7 ordered pairs; the tetrahedra grab the anchor instead of the string grabbing the kite",
+     "reads": "a snapshot from the kite's chosen perspective; the string machinery of the scalar kite is not applied to it. Not computed in this module.", "source": "VAPMIP/Broca/docs/41_demarrais_deformation_battery_and_the_two_constructs.md"},
+]
+
+
+def anchored_readings() -> Dict[str, Any]:
+    r"""
+    Attach a string at an anchor: the reading of a diagonal b from an anchor a is the singular-value set of L_a L_b.
+
+    The bare spectrum of every zero-divisor diagonal is the same (see :func:`kite_spectrum`); from an anchor the 84 diagonals split into classes.
+    This is the De Marrais-kite analogue of the scalar kite's string, NOT the scaled (moving) kite, which is not computed here.
+
+    :returns: classes per anchor, the class sizes, whether every anchor gives the same sizes, and how many classes lie inside the anchor's own kite
+    :rtype: dict
+    """
+    E = np.eye(16); pairs = zero_divisor_pairs(); zd = sorted({p[0] for p in pairs})
+    Ls = {d: np.array([cd_mul(_diag(d), E[j]) for j in range(16)]).T for d in zd}
+    parent = {d: d for d in zd}
+    def find(x):
+        while parent[x] != x: parent[x] = parent[parent[x]]; x = parent[x]
+        return x
+    for x, y in pairs: parent[find(x)] = find(y)
+    sizes = set(); inside = set()
+    for a in zd:
+        cls: Dict[Any, List[Any]] = {}
+        for b in zd: cls.setdefault(tuple(np.round(np.linalg.svd(Ls[a] @ Ls[b], compute_uv=False), 4)), []).append(b)
+        sizes.add(tuple(sorted(len(v) for v in cls.values())))
+        inside.add(tuple(sorted(len(v) for v in cls.values() if all(find(b) == find(a) for b in v))))
+    return {"anchors": len(zd), "classes_from_an_anchor_vs_1_bare": [len(x) for x in sizes], "class_sizes": sorted(sizes), "same_for_every_anchor": len(sizes) == 1,
+            "classes_inside_anchor_kite": sorted(inside), "constructs": KITE_CONSTRUCTS}
+
+
+def _diag(d) -> np.ndarray:
+    v = np.zeros(16); a, b, s = d; v[a] = 1.0; v[b + 8] = float(s); return v
+
+
+def v_kite_spectrum() -> Dict[str, Any]:
+    """
+    Box-kite as spectral emitter and interpreter. The NUMBER d = (e_a ± e_{b+8})/√2 is a circle (exp(θd)); the OPERATOR L_d is a flow on 16 dimensions with lines at 0, |d|, √2|d|.
+
+    :returns: TO and FROM results
+    :rtype: dict
+    """
+    ks = kite_spectrum(); rs = []
+    for d in sorted({p[0] for p in zero_divisor_pairs()}):
+        x = _diag(d) / math.sqrt(2); th = 0.9; term = np.eye(16)[0].copy(); tot = term.copy()
+        for j in range(1, 40):
+            term = cd_mul(term, th * x) / j; tot = tot + term
+        rs.append(float(np.max(np.abs(tot - (math.cos(th) * np.eye(16)[0] + math.sin(th) * x)))))
+    return {"to": {"ok": max(rs) < 1e-12, "residual": max(rs), "transform": "the number d/|d| is a circle (84 zero-divisor circles); its operator L_d is not: its flow carries two incommensurate lines (ratio √2), a torus, not a circle",
+                   "operator_flow_is_a_circle": bool(ks["flow_is_periodic_zd"]), "lines": ks["zd_line_signatures"], "flow_frequency_ratio": ks["flow_frequency_ratio"]},
+            "from": {"ok": ks["nullspace_round_trip"].split("/")[0] == ks["nullspace_round_trip"].split("/")[1], "residual": 0.0,
+                     "fibre": "the line multiplicities (4, 8, 4 at 0, √2, 2) say 'zero divisor' and give |d|²; they do not say which kite (one signature for all 84). The nullspace of L_d (its eigenvectors) gives the 4 annihilating partners and so the kite: " + ks["nullspace_round_trip"]}}
+
+
 VIEWPORTS: Dict[str, Dict[str, Any]] = {
     "waveform":       dict(fn=v_waveform, name="Waveform (sinusoid)", source="ValaQuenta/modules/sonification; angular_rank", tier="ESTABLISHED", pi="cos_zero"),
     "hamiltonian":    dict(fn=v_hamiltonian, name="Hamiltonian (oscillator H = ½(p²+q²))", source="ValaQuenta/hamiltonian.py; modules/berry_keating", tier="ESTABLISHED", pi="oscillator_period"),
@@ -443,11 +727,16 @@ VIEWPORTS: Dict[str, Dict[str, Any]] = {
     "bao_ring":       dict(fn=v_bao_ring, name="BAO ring (constructed model, not data)", source="ValaQuenta/modules/bao_mass_gap", tier="THEORETICAL", pi=None),
     "polygon":        dict(fn=v_polygon, name="Archimedes polygons (the one construction method)", source="Cody 2026-11-16; hypergon_constructibility", tier="ESTABLISHED", pi="archimedes"),
     "retraction":     dict(fn=v_retraction, name="Fixed-point space: normalising retraction, and the origin's blow-up circle", source="ValaQuenta/fixed_point.py", tier="INTERPRETATION", pi=None),
+    "sphere":         dict(fn=v_sphere, name="Sphere S² (parallels, great circles)", source="ValaQuenta/modules/spherical; RiemannHypothesisProof/rhp/sphere.py", tier="ESTABLISHED", pi="ball3_lattice"),
+    "hypersphere":    dict(fn=v_hypersphere, name="Hypersphere S^n and the n-ball (S^15 is the sedenion's unit sphere)", source="ValaQuenta/modules/spherical; FourthAgePapers/NBallTransformer", tier="ESTABLISHED", pi="ball3_lattice"),
+    "field_axis":     dict(fn=v_field_axis, name="Recursive field axes (the axis is a point of S^14, not one of 15)", source="Cody 2026-11-16; tier8_sedenion", tier="ESTABLISHED", pi="sedenion_exp_period"),
+    "native_units":   dict(fn=v_native_units, name="Native units: ln 10 (decades) and π (half-turns)", source="GenerationalLineage/engine/add_scale_sign.py; .clauderc_canonical_maths (d*)", tier="INTERPRETATION", pi="cos_zero"),
+    "kite_spectrum":  dict(fn=v_kite_spectrum, name="Box-kite as spectral emitter and interpreter (L_d lines, nullspace read-back)", source="ValaQuenta/modules/box_kite; tier8_sedenion", tier="ESTABLISHED", pi="sedenion_exp_period"),
     "winding":        dict(fn=v_winding, name="Winding number / Cauchy residue", source="RiemannHypothesisProof/rhp/zerophase.py, flow.py", tier="ESTABLISHED", pi="residue_square"),
 }
 
 GAPS: List[Dict[str, str]] = [
-    {"viewport": "elliptic curves / modular forms", "needs": "C/Λ is a torus = two circles; the Ramanujan route to π lives here. A runnable TO map from a lattice to its two circles and the modular action τ → τ+1, −1/τ is not yet written."},
+    {"viewport": "elliptic curves / modular forms", "needs": "C/Λ is a torus = two circles. The π routes through it are now in pi_derivations (heegner_163, ramanujan, chudnovsky, series_speed); a runnable TO map from a lattice to its two circles and the modular action τ → τ+1, −1/τ is not yet written."},
     {"viewport": "String-theory cardioid 'jitter' superstrings", "needs": "a mapping of electron-orbital and string worldsheet modes to the epicycle series; the cardioid itself is mapped (viewport cardioid), the string side is not."},
     {"viewport": "wing / bell / flapping motions", "needs": "a mechanical orbit with an identified circle (the jellyfish / flapping simulations are not yet run)."},
     {"viewport": "the point that becomes a circle, still empty inside", "needs": "an operator from R⁰ to S¹ named in the project's own maths; the polar blow-up (viewport retraction) is a candidate, not a confirmation."},
