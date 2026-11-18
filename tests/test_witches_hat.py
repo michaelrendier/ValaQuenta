@@ -76,3 +76,33 @@ def test_snapshot_is_plain_data():
     s = M.snapshot("quartic", 4, n_psi=3, n_phi=4)
     assert isinstance(s["paths"], list) and set(s["paths"][0]) >= {"x", "y", "z", "W"}
     assert len(s["surface_r"]) == len(s["surface_z"])
+
+
+# ------------------------------------------------------------------ the two Lagrangians (Standard Model and VAPMIP/monad), kept separate and compared
+def test_vap_as_coded_is_a_bowl_and_ssb_is_a_hat():
+    assert M.lagrangian_vap(convention="as_coded")["brim_radius"] is None
+    v = M.lagrangian_vap(convention="ssb"); assert abs(v["brim_radius"] - math.sqrt(2)) < 1e-12
+    assert abs(M.compare()["code_default_vev_vs_brim"]["brim"] - 1.0) > 0.4          # recorded inconsistency: default vev 1.0 vs brim sqrt(2)
+
+
+def test_vap_without_coupling_is_isometric_to_the_standard_model_hat():
+    sm, vap = M.lagrangian_sm(), M.lagrangian_vap(g=0.0)
+    a, b = M.l_io_action(sm, np.linspace(0, 0.4, 5)), M.l_io_action(vap, np.linspace(0, 0.4, 5))
+    wa, wb = a["W"]/(sm["brim_radius"]*math.sqrt(sm["depth"])), b["W"]/(vap["brim_radius"]*math.sqrt(vap["depth"]))
+    assert np.max(abs(wa - wb)) < 1e-6
+
+
+def test_coupling_shifts_the_hilltop_the_aim_point():
+    v0 = M.hilltop(M.lagrangian_vap(g=0.0)); v1 = M.hilltop(M.lagrangian_vap(g=0.2, psi=(1.0, 0.0)))
+    assert np.hypot(*v0) < 1e-9 and np.hypot(*v1) > 0.1
+
+
+def test_plane_path_matches_the_radial_closest_approach_formula():
+    m = M.lagrangian_vap(g=0.0); R = m["brim_radius"]
+    p = M.trace_plane(m, (R, 0.0), M.hilltop(m), 0.1)
+    assert abs(p["closest"]/R - 0.2681) < 3e-3
+
+
+def test_action_is_nearly_independent_of_the_launch_angle():
+    m = M.lagrangian_sm(); L = M.l_io_action(m, [0.0, 0.1, 0.2]); R, D = m["brim_radius"], m["depth"]
+    w = L["W"]/(R*math.sqrt(D)); assert abs(w[0] - 0.8619) < 0.02 and abs(w[2] - w[0]) < 0.02

@@ -203,3 +203,104 @@ def shape_table(shapes=("quartic", "fermion1d", "fermion2d", "fermion3d", "dog")
         out.append({"shape": sh, "V(0)": float(V(0.0)), "V(1)": float(V(1.0)), "V(4)": float(V(4.0)), "resolution": r,
                     "matching_quartic_n": float(ns[np.argmin(abs(res - r))]), "outer_wall": bool(V(4.0) > V(1.0) + 0.5)})
     return out
+
+
+# ================================================================== the two Lagrangians, kept separate, compared after
+PHI = (1 + math.sqrt(5))/2
+
+def lagrangian_sm(mu2: float = None, lam: float = None, vev: float = None) -> dict:
+    """STANDARD MODEL hat, ESTABLISHED.  L = |D phi|^2 - V,  V(h) = -mu^2 h^2/2 + lam h^4/4 (h real, vev v).  Defaults: measured m_h, v."""
+    lam = LAM if lam is None else lam; mu2 = (lam*VEV**2 if mu2 is None else mu2)
+    v = math.sqrt(mu2/lam); return {"model": "standard_model", "mu2": mu2, "lam": lam, "brim_radius": v, "depth": lam*v**4/4,
+                                     "m_over_v": math.sqrt(2*mu2)/v, "tilt": 0.0, "scale": 1.0,
+                                     "V": lambda r, mu2=mu2, lam=lam: -0.5*mu2*np.asarray(r, float)**2 + 0.25*lam*np.asarray(r, float)**4}
+
+def lagrangian_vap(mu_sq: float = -1.0, lam: float = 0.5, g: float = 0.01, psi=(1.0, 0.0), convention: str = "ssb") -> dict:
+    """THE VAPMIP (monad) LAGRANGIAN, the author's L_NN (ValaQuenta/modules/lagrangian):
+        L = (2/pi) oint [ L_kin + L_mat + (1/phi) L_bias + L_coup ],
+        L_bias = (1/2) mu^2 beta^2 - (1/4) lam beta^4   (as coded),  L_coup = -(1/phi) g psi.beta  (Yukawa, 1/phi scaled).
+    Only L_bias and L_coup depend on the bias field beta, so the potential on the beta-plane is  V_vap = -( (1/phi) L_bias + L_coup ).
+    convention 'as_coded':  V = -(1/phi)(mu^2 b^2/2 - lam b^4/4) + (g/phi) psi.b : with the code's default mu^2 = -1 this is a plain bowl (no hat).
+    convention 'ssb' (the docstring's intent, 'mu^2 < 0 breaks the symmetry'): V = (1/phi)(mu^2 b^2/2 + lam b^4/4) + (g/phi) psi.b : a hat, brim at sqrt(-mu^2/lam).
+    The code's default vev = 1.0 against the brim sqrt(-mu^2/lam) = sqrt(2) at the defaults: a recorded inconsistency, not corrected here."""
+    psi = np.asarray(psi, float)
+    if convention == "as_coded": a, b = -0.5*mu_sq, 0.25*lam          # V/(1/phi) = -(mu^2/2) r^2 + (lam/4) r^4
+    else:                        a, b = 0.5*mu_sq, 0.25*lam
+    def V2(x, y, a=a, b=b):
+        r2 = np.asarray(x, float)**2 + np.asarray(y, float)**2
+        return (a*r2 + b*r2**2 + g*(psi[0]*np.asarray(x, float) + psi[1]*np.asarray(y, float)))/PHI
+    def grad(x, y, a=a, b=b):
+        r2 = x*x + y*y; f = (2*a + 4*b*r2)/PHI
+        return f*x + g*psi[0]/PHI, f*y + g*psi[1]/PHI
+    brim = math.sqrt(-a/(2*b)) if (a < 0 < b) else None
+    return {"model": "vapmip_" + convention, "mu_sq": mu_sq, "lam": lam, "g": g, "psi": psi, "convention": convention, "V2": V2, "grad": grad,
+            "brim_radius": brim, "depth": ((a*a/(4*b))/PHI if brim else None), "scale": 1/PHI,
+            "m_over_v": (math.sqrt(-4*a/PHI*1.0)/brim if brim else None), "tilt": g/PHI*float(np.hypot(*psi))}
+
+def model_plane(model: dict):
+    """(V2, grad) on the (beta1, beta2) plane for either model (the SM hat is rotationally symmetric)"""
+    if "V2" in model: return model["V2"], model["grad"]
+    mu2, lam = model["mu2"], model["lam"]
+    return (lambda x, y: -0.5*mu2*(np.asarray(x, float)**2 + np.asarray(y, float)**2) + 0.25*lam*(np.asarray(x, float)**2 + np.asarray(y, float)**2)**2,
+            lambda x, y: ((-mu2 + lam*(x*x + y*y))*x, (-mu2 + lam*(x*x + y*y))*y))
+
+def hilltop(model: dict):
+    """the local maximum of V near the origin (the point the paths aim at): origin for the symmetric hat, shifted by the coupling tilt"""
+    V2, grad = model_plane(model); p = np.zeros(2)
+    for _ in range(60):
+        g = np.array(grad(*p)); h = 1e-5
+        Hxx = (grad(p[0] + h, p[1])[0] - grad(p[0] - h, p[1])[0])/(2*h); Hyy = (grad(p[0], p[1] + h)[1] - grad(p[0], p[1] - h)[1])/(2*h)
+        p = p - g/np.array([Hxx if abs(Hxx) > 1e-12 else 1e-12, Hyy if abs(Hyy) > 1e-12 else 1e-12])
+    return p
+
+def trace_plane(model: dict, start, aim_point, aim: float = 0.0, E: float = None, steps: int = 4000, dt_scale: float = 0.01):
+    """leapfrog path in the beta-plane from `start` (on the brim) launched toward `aim_point` rotated by `aim`; unit mass, energy E
+    (default: V at the hilltop, the separatrix).  Returns x, y, z=V, W (cumulative abbreviated action = integral p.dq)."""
+    V2, grad = model_plane(model); top = np.array(aim_point, float)
+    E = float(V2(*top)) if E is None else E
+    pos = np.array(start, float); d = top - pos; d = d/np.linalg.norm(d)
+    c, s = math.cos(aim), math.sin(aim); d = np.array([c*d[0] - s*d[1], s*d[0] + c*d[1]])
+    sp = math.sqrt(max(2*(E - float(V2(*pos))), 0.0)); vel = sp*d
+    dt = dt_scale*float(np.linalg.norm(pos - top))/max(sp, 1e-12); out = [(pos[0], pos[1], float(V2(*pos)), 0.0)]; W = 0.0; rmin = np.hypot(*(pos - top)); back = 0
+    for _ in range(steps):
+        a = np.array(grad(*pos)); vel = vel - 0.5*dt*a; pos = pos + dt*vel; a = np.array(grad(*pos)); vel = vel - 0.5*dt*a
+        W += float(vel @ vel)*dt; out.append((pos[0], pos[1], float(V2(*pos)), W))
+        r = np.hypot(*(pos - top))
+        if r > rmin + 1e-9 and np.dot(pos - top, vel) > 0 and r < np.hypot(*(np.array(start) - top)): break
+        rmin = min(rmin, r)
+    a = np.array(out); return {"x": a[:, 0], "y": a[:, 1], "z": a[:, 2], "W": a[:, 3], "closest": float(rmin)}
+
+def snapshot_plane(model: dict, aim: float = 0.0, aims=(-0.3, -0.15, 0.0, 0.15, 0.3), n_start: int = 12, extent: float = 1.4, grid: int = 70) -> dict:
+    """a static 2-D snapshot for either Lagrangian: the surface z = V(beta1, beta2), the brim ring, the hilltop, and the bundle of paths
+    from n_start brim points x len(aims) aim offsets toward the hilltop.  Plain data."""
+    V2, _ = model_plane(model); R = model["brim_radius"]; top = hilltop(model); E = float(V2(*top))
+    xs = np.linspace(-extent*R, extent*R, grid); X, Y = np.meshgrid(xs, xs)
+    th = np.linspace(0, 2*math.pi, 200); ring = np.stack([R*np.cos(th), R*np.sin(th)], 1)
+    paths = []
+    for k in range(n_start):
+        a = 2*math.pi*k/n_start; st = (R*math.cos(a), R*math.sin(a))
+        for off in aims:
+            p = trace_plane(model, st, top, aim + off, E); p["aim"] = aim + off; paths.append(p)
+    return {"model": model["model"], "brim_radius": R, "depth": model["depth"], "hilltop": top, "E": E, "X": X, "Y": Y, "Z": V2(X, Y),
+            "ring": ring, "ring_z": V2(ring[:, 0], ring[:, 1]), "paths": paths}
+
+def l_io_action(model: dict, psis=None) -> dict:
+    """L_(I|O) read as the action of the actual path against the stationary straight one (the canonical form: L_(I|O) - L = -psi_Fermat,
+    the bent path's functional minus the straight one).  W(aim) = integral p.dq along the path to its closest approach to the hilltop;
+    dW = W(aim) - W(0).  This is the identification used here (THEORETICAL); J_red.J_blue is not separately defined in code."""
+    psis = np.linspace(0, 0.4, 9) if psis is None else np.asarray(psis); V2, _ = model_plane(model); top = hilltop(model); R = model["brim_radius"]
+    W = []
+    for a in psis:
+        p = trace_plane(model, (R, 0.0), top, float(a), None); W.append(p["W"][-1])
+    W = np.array(W); return {"aim": psis, "W": W, "dW": W - W[0]}
+
+def compare(sm=None, vap=None) -> dict:
+    """the two Lagrangians side by side, in their own units and in the normalised chart (brim radius 1, depth 1)"""
+    sm = sm or lagrangian_sm(); vap = vap or lagrangian_vap(convention="ssb")
+    out = {}
+    for m in (sm, vap):
+        out[m["model"]] = {k: m[k] for k in ("brim_radius", "depth", "m_over_v", "tilt", "scale")}
+        out[m["model"]]["focus_resolution"] = focus_resolution("quartic", 4)           # both are exact quartics: the normalised shape is identical
+    out["as_coded_is_a_bowl"] = lagrangian_vap(convention="as_coded")["brim_radius"] is None
+    out["code_default_vev_vs_brim"] = {"vev_default": 1.0, "brim": vap["brim_radius"]}
+    return out

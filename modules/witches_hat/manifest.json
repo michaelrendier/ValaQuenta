@@ -127,6 +127,33 @@
         "label": "Sm_Hat",
         "desc": "Standard Model hat numbers",
         "params": []
+      },
+      {
+        "name": "compare",
+        "equation": "compare",
+        "label": "Compare",
+        "desc": "Standard Model vs VAPMIP Lagrangians",
+        "params": []
+      },
+      {
+        "name": "vap_snapshot",
+        "equation": "vap_snapshot",
+        "label": "Vap_Snapshot",
+        "desc": "VAPMIP hat and paths",
+        "params": [
+          "g",
+          "psi_x",
+          "psi_y"
+        ]
+      },
+      {
+        "name": "l_io",
+        "equation": "l_io",
+        "label": "L_Io",
+        "desc": "L_(I|O) as the path action",
+        "params": [
+          "model"
+        ]
       }
     ],
     "display_modes": [

@@ -56,6 +56,12 @@ class WitchesHatModule(EquationModule):
                lambda shape="quartic", n=4.0: M.energy_regimes(shape, n), "Radial rays at energies below, at and above the hilltop."),
             eq("shapes", "SHAPES: resolution of every hat", r"V=-g_F(r)", "the exchange hole as a hat", "THEORETICAL", [], lambda: M.shape_table(),
                "Focus resolution and the matching quartic exponent for each shape."),
+            eq("compare", "COMPARE: Standard Model and VAPMIP Lagrangians", r"V_{SM}\ \text{vs}\ V_{vap}=-((1/\varphi)L_{bias}+L_{coup})", "kept separate, compared after", "THEORETICAL", [],
+               lambda: M.compare(), "Both hats in their own units and in the normalised chart; the recorded sign and vev inconsistencies of the coded VAPMIP bias term."),
+            eq("vap_snapshot", "VAPMIP SNAPSHOT: the monad Lagrangian's hat and paths", r"V_{vap}(\beta)", "g psi tilts the hat toward the information", "THEORETICAL", ["g", "psi_x", "psi_y"],
+               lambda g=0.2, psi_x=1.0, psi_y=0.0: M.snapshot_plane(M.lagrangian_vap(g=g, psi=(psi_x, psi_y))), "Plain-data snapshot on the beta-plane."),
+            eq("l_io", "L_(I|O) as the action of the actual path", r"W=\int p\,dq", "stationary: almost independent of the launch angle", "THEORETICAL", ["model"],
+               lambda model="sm": M.l_io_action(M.lagrangian_sm() if model == "sm" else M.lagrangian_vap()), "Action to the closest approach against the aim offset."),
             eq("sm_hat", "STANDARD MODEL HAT", r"V=-\mu^2h^2/2+\lambda h^4/4", "m_h = 125.25, v = 246.22 GeV", "ESTABLISHED", [], lambda: M.sm_hat(),
                "The Higgs-sector numbers."),
         ]
@@ -74,4 +80,4 @@ class WitchesHatModule(EquationModule):
 
     def shell_commands(self) -> Dict[str, Any]:
         return {"hat_snapshot": M.snapshot, "hat_focus": M.focus_resolution, "hat_defocus": M.defocus_curve, "hat_regimes": M.energy_regimes,
-                "hat_shapes": M.shape_table, "hat_sm": M.sm_hat, "hat_verify": M.verify}
+                "hat_shapes": M.shape_table, "hat_compare": M.compare, "hat_l_io": M.l_io_action, "hat_snapshot_plane": M.snapshot_plane, "hat_sm": M.sm_hat, "hat_verify": M.verify}

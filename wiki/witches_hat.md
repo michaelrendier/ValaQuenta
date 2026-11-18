@@ -22,5 +22,13 @@
 - Shape is the knob: resolution rises with the exponent n. The exchange-hole hats are craters (no outer wall) and match the quartic family only at n ≈ 2.1–2.3: the fermion hole is **not** the Standard-Model quartic hat (failed identification, kept).
 - The zeros of ζ: pair correlation within rms 0.066 of the 1-D fermion kernel 1 − sinc², against 0.36 for no correlation (3066 tabulated zeros).
 
+## The two Lagrangians (added 2026-11-18), kept separate and compared after
+`lagrangian_sm()`: the Standard-Model Higgs hat (ESTABLISHED). `lagrangian_vap(mu_sq, lam, g, psi, convention)`: the VAPMIP (monad) Lagrangian L_NN (`modules/lagrangian`), V_vap = −((1/φ)·L_bias + L_coup): the 1/φ-scaled Mexican-hat bias term plus the Yukawa coupling −(g/φ)ψ·β. `snapshot_plane(model)`: surface on the β-plane, brim ring, hilltop, path bundle; `trace_plane`, `hilltop`, `l_io_action`, `compare`.
+- **Isometric without coupling:** VAPMIP (g = 0) and Standard-Model hats give identical action and closest approaches in the normalised chart (tested). Both are the same quartic.
+- **The coupling is the aim:** the linear Yukawa term tilts the hat toward ψ and moves the hilltop (0.144 brim radii at g = 0.2).
+- **Two defects of the coded bias term, recorded not corrected:** with the default μ² = −1 the coded `L_bias = ½μ²β² − ¼λβ⁴` gives V = −L a bowl (no hat); and the default vev 1.0 differs from the brim √(−μ²/λ) = √2 at λ = 0.5.
+- **L_(I|O) read as the action of the actual path:** W = ∫p·dq to the closest approach, nearly independent of the launch angle (0.8619 → 0.8314, aim 0.01 → 0.4). An earlier simulator reported arc length as action; corrected.
+- Stills: `FourthAgePapers/WitchesHat/simulator/particle_views.html` (branch `witches-hat`).
+
 ## Related
 [circle_atlas.md](circle_atlas.md) · `FourthAgePapers/WitchesHat/simulator/` (the first renders) · `Ainulindale/wiki/29_witches_hat_paper.md`
