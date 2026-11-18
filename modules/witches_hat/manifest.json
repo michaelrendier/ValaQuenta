@@ -1,0 +1,152 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.witches_hat",
+  "type": "engine",
+  "name": "witches_hat",
+  "display": "The Witch's Hat Engine (virtual brim, hat potential, paths of action)",
+  "version": "0.1",
+  "summary": "Static snapshots of the virtual brim, the hat potential and the paths of action, adjustable by size and shape; focus, aim, defocus; plain data out.",
+  "confidence_floor": "THEORETICAL",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.witches_hat",
+    "class": "WitchesHatModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-17: 'the Standard Model Mexican hat potential actual maths simulation for a static snapshot of the virtual brim, the potential and the actual path of action, adjustable by the size and shape of the potential ... this core is the actual tooling; the rendering skills will use it to bridge to whatever rendering we decide'. Built on Ainulindale/wiki/29, ArdaQuenta/modes/witches_hat.py, FourthAgePapers/WitchesHat/simulator. The hat as the fermion exchange hole and the author's reading of the path bundle as the cone of dynamic action are THEORETICAL; the Higgs numbers, the path mechanics and the pair correlations are ESTABLISHED.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-17",
+    "status_label": "THEORETICAL:CALCULATED",
+    "predecessors": [
+      "circle_atlas",
+      "l_io_photon_path"
+    ],
+    "citations": [],
+    "wiki": {
+      "valaquenta": "ValaQuenta/wiki/witches_hat.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/24_witches_hat.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/witches_hat.json"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "m_h, v",
+        "role": "Higgs mass and vev (PDG), GeV",
+        "value": [
+          125.25,
+          246.22
+        ],
+        "source": "measured"
+      }
+    ],
+    "native_space": "the (r, V) plane of a central potential; the (x, p) plane",
+    "arithmetic": "float64",
+    "requires_engines": [],
+    "external": [
+      "numpy"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "The Witch's Hat Engine (virtual brim, hat potential, paths of action)",
+      "group": "Engines",
+      "order": 103,
+      "blurb": "Static snapshots of the virtual brim, the hat potential and the paths of action, adjustable by size and shape; focus, aim, defocus; plain data out."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "Closed form and Higgs numbers",
+        "params": []
+      },
+      {
+        "name": "snapshot",
+        "equation": "snapshot",
+        "label": "Snapshot",
+        "desc": "A snapshot as plain data",
+        "params": [
+          "shape",
+          "n",
+          "size",
+          "depth",
+          "E",
+          "aim",
+          "spread"
+        ]
+      },
+      {
+        "name": "focus",
+        "equation": "focus",
+        "label": "Focus",
+        "desc": "Resolution of the bundle",
+        "params": [
+          "shape",
+          "n",
+          "E"
+        ]
+      },
+      {
+        "name": "defocus",
+        "equation": "defocus",
+        "label": "Defocus",
+        "desc": "Ring caustic against aim",
+        "params": [
+          "shape",
+          "n",
+          "E"
+        ]
+      },
+      {
+        "name": "regimes",
+        "equation": "regimes",
+        "label": "Regimes",
+        "desc": "Energy regimes",
+        "params": [
+          "shape",
+          "n"
+        ]
+      },
+      {
+        "name": "shapes",
+        "equation": "shapes",
+        "label": "Shapes",
+        "desc": "Resolution of every hat",
+        "params": []
+      },
+      {
+        "name": "sm_hat",
+        "equation": "sm_hat",
+        "label": "Sm_Hat",
+        "desc": "Standard Model hat numbers",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

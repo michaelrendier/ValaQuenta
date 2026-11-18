@@ -1,0 +1,144 @@
+{
+ "engine": "witches_hat",
+ "display": "The Witch's Hat Engine: snapshot, focus, aim, defocus",
+ "descriptive": "Builds a static snapshot of the hat potential, the brim and the classical path bundle (adjustable size, depth, shape, energy, aim) and measures the focus. TO: the hat and its paths as plain data. The rendering is done elsewhere. Higgs numbers, path mechanics and pair correlations are ESTABLISHED; the fermion-hole hat and the cone of dynamic action are the author's THEORETICAL reading.",
+ "operators": [
+  {
+   "symbol": "V",
+   "english": "hat potential",
+   "role": "central potential, hilltop 0, brim -1",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "W",
+   "english": "abbreviated action",
+   "role": "integral of sqrt(2(E-V)) ds along a path",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "aim",
+   "english": "launch offset from the radial",
+   "role": "0 gives the point focus, otherwise a ring caustic",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "run viewport",
+   "english": "build the viewport's own object (orbit, path, map, algebra)."
+  },
+  {
+   "n": 2,
+   "op": "TO",
+   "english": "apply the stated transformation and measure the residual from the circle; a failure is returned as a failure."
+  },
+  {
+   "n": 3,
+   "op": "FROM",
+   "english": "construct the way back and measure what had to be chosen."
+  },
+  {
+   "n": 4,
+   "op": "pi route",
+   "english": "compute \u03c0 from that viewport's own data via modules.pi_derivations."
+  }
+ ],
+ "equations": {
+  "verify": {
+   "descriptive": "Every viewport's TO closes (Berry\u2013Keating raw is a recorded failure), FROM ok, Wick closes, sign carriers = e\u2088\u2026e\u2081\u2085.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "run all viewports."
+    },
+    {
+     "n": 2,
+     "op": "check",
+     "english": "compare each residual with its tolerance."
+    }
+   ]
+  },
+  "atlas": {
+   "descriptive": "All viewports with TO/FROM and \u03c0 route.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "entry(k) for k",
+     "english": "run each viewport."
+    }
+   ]
+  },
+  "entry": {
+   "descriptive": "One viewport.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "VIEWPORTS[name]",
+     "english": "run it."
+    }
+   ]
+  },
+  "signposts": {
+   "descriptive": "Table of road in, road out, \u03c0 route.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "reduce each entry to three phrases."
+    }
+   ]
+  },
+  "gaps": {
+   "descriptive": "What is not mapped.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "atlas()",
+     "english": "collect viewports without a \u03c0 route or whose TO fails raw."
+    },
+    {
+     "n": 2,
+     "op": "GAPS",
+     "english": "append the named gaps."
+    }
+   ]
+  },
+  "sign_carriers": {
+   "descriptive": "Which axes satisfy e_k x = x* e_k for the whole first octonion.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "cd_mul",
+     "english": "test each axis against e\u2080\u2026e\u2087."
+    }
+   ]
+  },
+  "census": {
+   "descriptive": "Token counts over the repositories (text census, not proof).",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "os.walk",
+     "english": "read every .py outside venvs and notebooks."
+    },
+    {
+     "n": 2,
+     "op": "regex",
+     "english": "count pi, trig, phase, circle, wave tokens."
+    }
+   ]
+  },
+  "import_probe": {
+   "descriptive": "Import every module and toolset, record failures.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "importlib",
+     "english": "import each; catch and record exceptions."
+    }
+   ]
+  }
+ }
+}
