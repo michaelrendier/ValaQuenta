@@ -398,6 +398,41 @@
     }
    ]
   },
+  "loops": {
+   "descriptive": "Each particle's one-loop (Coleman-Weinberg) term in the Higgs potential at h = v.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "particle_content_for_potential",
+     "english": "field-dependent masses m_i(h) and degrees of freedom n_i"
+    },
+    {
+     "n": 2,
+     "op": "coleman_weinberg",
+     "english": "n m^4/(64 pi^2) [ln(m^2/mu^2) - c]"
+    }
+   ]
+  },
+  "hat_temperature": {
+   "descriptive": "The hat at temperature T: brim radius and depth in the high-temperature expansion.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "D, E, T0",
+     "english": "from m_W, m_Z, m_t and v"
+    },
+    {
+     "n": 2,
+     "op": "V(h,T)",
+     "english": "D (T^2 - T0^2) h^2 - E T h^3 + lam_T h^4/4"
+    },
+    {
+     "n": 3,
+     "op": "minimise",
+     "english": "global minimum is the brim"
+    }
+   ]
+  },
   "hat": {
    "descriptive": "The SM Higgs hat as a model dict for the path-of-action tools.",
    "ordering": [

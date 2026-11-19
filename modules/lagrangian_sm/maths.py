@@ -479,6 +479,72 @@ def rge_top_higgs(mu_max: float = 1e19, n: int = 400) -> dict:
     return {"mu": mu, "g1": s.y[0], "g2": s.y[1], "g3": s.y[2], "yt": s.y[3], "lam": s.y[4], "lambda_zero_scale": (float(mu[neg[0]]) if len(neg) else None)}
 
 
+# ------------------------------------------------------------------ what each particle does to the hat
+def particle_content_for_potential() -> list:
+    """Field-dependent masses m_i(h) and degrees of freedom n_i (negative for fermions) of the particles that feed the one-loop effective potential of h.
+
+    m_W = g h/2 (n = 6), m_Z = sqrt(g^2 + g'^2) h/2 (n = 3), fermions m_f = y_f h/sqrt 2 (n = -4 N_c: top, bottom, charm -12; tau -4).  Goldstones and the Higgs
+    are handled in ``coleman_weinberg`` separately (their field-dependent masses go negative on the hilltop side).
+
+    :returns: list of dicts ``name, n, c (the MSbar constant), slope`` where ``m_i(h) = slope * h``.
+    :rtype: list
+    """
+    t = ew_tree(); y = yukawas()
+    return [{"name": "W", "n": 6, "c": 5/6, "slope": t["g"]/2}, {"name": "Z", "n": 3, "c": 5/6, "slope": math.sqrt(t["g"]**2 + t["gp"]**2)/2},
+            {"name": "top", "n": -12, "c": 3/2, "slope": y["t"]/math.sqrt(2)}, {"name": "bottom", "n": -12, "c": 3/2, "slope": y["b"]/math.sqrt(2)},
+            {"name": "charm", "n": -12, "c": 3/2, "slope": y["c"]/math.sqrt(2)}, {"name": "tau", "n": -4, "c": 3/2, "slope": y["tau"]/math.sqrt(2)}]
+
+
+def coleman_weinberg(h, mu: float = None) -> dict:
+    """One-loop (MSbar) correction to the Higgs hat from each particle: V_i(h) = n_i m_i(h)^4 / (64 pi^2) [ln(m_i^2(h)/mu^2) - c_i], per particle and in total.
+
+    ESTABLISHED (Coleman & Weinberg 1973).  The Higgs and Goldstone contributions use |m^2(h)| (their field-dependent masses go negative inside the brim) and are
+    reported separately as ``'higgs+goldstones'``; they need resummation and are shown only to display the shape.  Each particle adds a term of the form h^4 ln h^2 with
+    its own weight n_i m_i^4: bosons enter with n > 0 and fermions with n < 0, and the top dominates in magnitude (about 40 times the W). The sign of a given term at a given h depends
+    on the logarithm, that is on mu: only the total, with the running of the tree parameters, is scale independent.
+
+    :param h: array of field values in GeV.
+    :param mu: renormalisation scale in GeV (default v).
+    :returns: dict name -> array, plus ``'tree'`` and ``'sum_fermions_and_gauge'``.
+    :rtype: dict
+    """
+    h = np.asarray(h, float); v = fermi_vev(); mu = v if mu is None else mu; hs = higgs_sector(); lam, mu2 = hs["lam"], hs["mu2"]; out = {}
+    f = lambda m2, n, c: n*m2**2/(64*math.pi**2)*(np.log(np.maximum(np.abs(m2), 1e-12)/mu**2) - c)
+    tot = np.zeros_like(h)
+    for p in particle_content_for_potential():
+        m2 = (p["slope"]*h)**2; out[p["name"]] = f(m2, p["n"], p["c"]); tot += out[p["name"]]
+    out["higgs+goldstones"] = f(3*lam*h**2 - mu2, 1, 3/2) + f(lam*h**2 - mu2, 3, 3/2)
+    out["tree"] = -0.5*mu2*h**2 + 0.25*lam*h**4; out["sum_fermions_and_gauge"] = tot
+    return out
+
+
+def finite_temperature_hat(T: float, h=None) -> dict:
+    """The hat at temperature T in the standard high-temperature expansion of the one-loop potential (Dine et al. 1992; Quiros 1999):
+    V(h, T) = D (T^2 - T0^2) h^2 - E T h^3 + lambda_T h^4 / 4, with D = (2 m_W^2 + m_Z^2 + 2 m_t^2)/(8 v^2), E = (2 m_W^3 + m_Z^3)/(4 pi v^3),
+    T0^2 = (m_h^2 - 8 B v^2)/(4 D), B = 3 (2 m_W^4 + m_Z^4 - 4 m_t^4)/(64 pi^2 v^4).  ESTABLISHED as an approximation; it predicts a weak first-order transition
+    at m_h = 125 GeV where lattice calculations find a smooth crossover (the one-loop expansion fails near T_c: infrared problems of the Higgs).
+    VALIDITY: the expansion needs T well above the particle masses; below about 100 GeV the logarithm in lambda_T makes h_min exceed v (1.035 v at 50 GeV, an artifact).
+    Use the zero-temperature hat there.
+
+    :param T: temperature in GeV (T = 0 returns the zero-temperature hat).
+    :param h: optional array of field values at which to tabulate V.
+    :returns: dict ``D, E, T0, lam_T``, ``h_min`` (global minimum, the brim radius), ``depth`` = V(0) - V(h_min), and ``V`` when ``h`` is given.
+    :rtype: dict
+    """
+    v = fermi_vev(); mW, mZ, mt = pdg_mass("W+")[0], pdg_mass("Z0")[0], pdg_mass("t")[0]; hs = higgs_sector(); lam = hs["lam"]
+    D = (2*mW**2 + mZ**2 + 2*mt**2)/(8*v**2); E = (2*mW**3 + mZ**3)/(4*math.pi*v**3); B = 3*(2*mW**4 + mZ**4 - 4*mt**4)/(64*math.pi**2*v**4)
+    T0 = math.sqrt((hs["m_h"]**2 - 8*B*v**2)/(4*D))
+    if T <= 0:
+        lamT = lam; V = (lambda x: -0.5*hs["mu2"]*x**2 + 0.25*lam*x**4)
+    else:
+        lnaB, lnaF = 5.4076, 2.6351
+        lamT = lam - 3/(16*math.pi**2*v**4)*(2*mW**4*math.log(mW**2/(math.exp(lnaB)*T**2)) + mZ**4*math.log(mZ**2/(math.exp(lnaB)*T**2)) - 4*mt**4*math.log(mt**2/(math.exp(lnaF)*T**2)))
+        V = (lambda x: D*(T**2 - T0**2)*x**2 - E*T*x**3 + 0.25*lamT*x**4)
+    xs = np.linspace(0, 1.6*v, 4001); vs = V(xs); i = int(np.argmin(vs)); out = {"D": D, "E": E, "T0": T0, "lam_T": lamT, "h_min": float(xs[i]), "depth": float(vs[0] - vs[i])}
+    if h is not None: out["V"] = V(np.asarray(h, float))
+    return out
+
+
 # ------------------------------------------------------------------ bridge to the hat potential
 def hat_model() -> dict:
     """The Standard-Model Higgs hat as a model dict that the path-of-action tools accept (``witches_hat.maths.lagrangian_sm`` with this engine's lambda, mu^2).

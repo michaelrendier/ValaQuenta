@@ -5,7 +5,7 @@
 **Version:** 0.1 (2026-11-19)
 **Confidence floor:** ESTABLISHED
 **Notebook:** [notebooks/engines/25_lagrangian_sm.ipynb](../notebooks/engines/25_lagrangian_sm.ipynb) · **Proof locale:** `engine/proof_locale/lagrangian_sm.json`
-**Tests:** `Testing/test_lagrangian_sm.py` (20) · **Toolbox:** [toolbox/42_lagrangian_sm.md](toolbox/42_lagrangian_sm.md)
+**Tests:** `Testing/test_lagrangian_sm.py` (22) · **Toolbox:** [toolbox/42_lagrangian_sm.md](toolbox/42_lagrangian_sm.md)
 **Narrative:** `Ainulindale/wiki/139_three_lagrangians.md`
 **External packages:** `numpy`, `scipy`, `sympy`, `particle` (PDG tables, installed 2026-11-19 with `uncertainties`)
 
@@ -26,6 +26,7 @@ The engine builds the Standard Model Lagrangian from its gauge group and field c
 `ew_mass_matrix_symbolic()` → sympy quadratic form of `|D H|²`, its Hessian and eigenvalues (m_W², m_Z², 0). `higgs_potential_expansion()` → sympy coefficients of V(h); `m_h² = 2λv²`. `higgs_sector(m_h, v)` → λ, μ², depth, trilinear, quartic. `fermi_vev()` → `(√2 G_F)^(-1/2)`. `ew_tree()` → e, g, g′, tree m_W, m_Z against the PDG masses, ρ. `yukawas(v)` → `y = √2 m/v`.
 `ckm_matrix(...)`, `pmns_matrix()`, `jarlskog(V)`, `unitarity_residual(V)`. `z_couplings(sin2w)`. `vertex_inventory()`, `term_inventory()`.
 `gauge_initial()`, `rge_gauge(mu)` (analytic one loop), `gauge_crossings()`, `rge_top_higgs(mu_max, n)` (one-loop g1, g2, g3, y_t, λ; illustrative).
+`particle_content_for_potential()`, `coleman_weinberg(h, mu)` → each particle's one-loop term (W, Z, top, bottom, charm, tau, Higgs+Goldstones) and the sum. `finite_temperature_hat(T, h)` → D, E, T₀, λ_T, the brim radius and depth at T (high-T expansion, valid above ≈ 100 GeV).
 `hat_model()` → the SM hat as a model dict for `witches_hat.action`. `verify()`.
 
 ## `compare.py`
@@ -34,8 +35,8 @@ The engine builds the Standard Model Lagrangian from its gauge group and field c
 `bias_conventions()` → hat or bowl for μ² = ±1 as coded. `one_over_phi_on_bias()` → whether `polar_lagrangian` applies 1/φ to `L_bias`. `seagull_correspondence()` → ratio of the coded `L_matter` to the SM scalar-gauge seagull term (constant 8/n).
 `lio_integrand(E, n)` → J_red·J_blue over σ. `parameters_NN()`, `comparison_table()`.
 
-## Registered equations (19)
-`verify, fields, anomalies, hypercharges, su5, groups, parameters, ew_symbolic, higgs_symbolic, higgs, ew_tree, yukawas, ckm, zcouplings, vertices, running, compare, exponents, hat`
+## Registered equations (21)
+`verify, fields, anomalies, hypercharges, su5, groups, parameters, ew_symbolic, higgs_symbolic, higgs, ew_tree, yukawas, ckm, zcouplings, vertices, running, compare, exponents, loops, hat_temperature, hat`
 
 ## Measured results (2026-11-19, notebook 25)
 | result | value | tier |
@@ -49,6 +50,9 @@ The engine builds the Standard Model Lagrangian from its gauge group and field c
 | tree m_W, m_Z vs PDG | −0.16 %, +0.35 %; Δr = 0.0364 accounts for it | ESTABLISHED:CALCULATED |
 | CKM Jarlskog J | 3.1e-5; unitarity residual 1e-16 | ESTABLISHED:CALCULATED |
 | one-loop crossings | 1e13, 2e14, 1e17 GeV (spread 3.97 decades) | ESTABLISHED:CALCULATED |
+| hat against temperature | brim radius 0.99 v (100 GeV) → 0.74 (140) → 0.38 (160) → 0 above ≈ 164 GeV; D = 0.167, E = 0.0096, T₀ = 163 GeV | ESTABLISHED:CALCULATED (approximation; lattice says crossover) |
+| per-particle loop terms at h = v | top dominates (≈ 40 × W); bosons n > 0, fermions n < 0; sign depends on μ | ESTABLISHED:CALCULATED |
+| high-T expansion at T = 50 GeV | puts the brim at 1.035 v: an artifact, valid only above ≈ 100 GeV | recorded |
 | one-loop λ → 0 scale | swings from none below 1e19 to 1e5 GeV for y_t(M_Z) 0.92 → 1.00 | not quotable |
 
 ## Recorded findings on the other Lagrangians (measured on the code)

@@ -223,6 +223,22 @@
         "params": []
       },
       {
+        "name": "loops",
+        "equation": "loops",
+        "label": "Loops",
+        "desc": "What each particle does to the hat",
+        "params": []
+      },
+      {
+        "name": "hat_temperature",
+        "equation": "hat_temperature",
+        "label": "Hat_Temperature",
+        "desc": "The hat against temperature",
+        "params": [
+          "T"
+        ]
+      },
+      {
         "name": "hat",
         "equation": "hat",
         "label": "Hat",

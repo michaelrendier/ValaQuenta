@@ -75,6 +75,10 @@ class LagrangianSMModule(EquationModule):
             eq("compare", "COMPARE: L_SM, L_NN, L_(I|O), L_dynamic", "measured exponents and identities", "scaling by doubling the fields", "ESTABLISHED", [],
                lambda: C.comparison_table(), "The Lagrangians side by side, measured on the code."),
             eq("exponents", "COMPARE: degree of each term", "term ~ amplitude^n", "SM vs coded L_NN", "ESTABLISHED", [], lambda: C.measured_exponents(), "Which interaction each term is."),
+            eq("loops", "WHAT EACH PARTICLE DOES TO THE HAT", "V_i = n_i m_i⁴/64π² [ln(m_i²/μ²) - c_i]", "Coleman-Weinberg, per particle", "ESTABLISHED", [],
+               lambda: {k: float(v[0]) for k, v in S.coleman_weinberg(__import__("numpy").array([S.fermi_vev()])).items()}, "Each particle's one-loop term at h = v, in GeV⁴."),
+            eq("hat_temperature", "THE HAT AGAINST TEMPERATURE", "V(h,T) = D(T²-T0²)h² - E T h³ + λ_T h⁴/4", "high-T expansion, valid above about 100 GeV", "ESTABLISHED", ["T"],
+               lambda T=140.0: S.finite_temperature_hat(T), "Brim radius and depth at temperature T."),
             eq("hat", "THE HAT, for the path-of-action tools", "V(h) as a model dict", "feeds witches_hat", "ESTABLISHED", [], lambda: {k: v for k, v in S.hat_model().items() if k != "V"},
                "The Standard-Model Higgs hat with this engine's parameters."),
         ]
@@ -94,4 +98,4 @@ class LagrangianSMModule(EquationModule):
     def shell_commands(self) -> Dict[str, Any]:
         return {"sm_verify": S.verify, "sm_fields": S.field_content, "sm_anomalies": S.anomaly_check, "sm_groups": S.group_checks, "sm_parameters": S.parameter_count,
                 "sm_higgs": S.higgs_sector, "sm_ew_tree": S.ew_tree, "sm_yukawas": S.yukawas, "sm_ckm": S.ckm_matrix, "sm_running": S.gauge_crossings,
-                "sm_compare": C.comparison_table, "sm_exponents": C.measured_exponents, "sm_hat": S.hat_model}
+                "sm_loops": S.coleman_weinberg, "sm_hat_temperature": S.finite_temperature_hat, "sm_compare": C.comparison_table, "sm_exponents": C.measured_exponents, "sm_hat": S.hat_model}

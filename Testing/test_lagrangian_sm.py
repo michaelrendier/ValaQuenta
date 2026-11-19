@@ -144,8 +144,25 @@ def test_L_io_integrand_is_constant_in_sigma():
 
 
 def test_engine_is_registered_and_its_manifest_validates():
-    """The module appears in the registry with 19 equations, and its manifest and proof_locale pass validation."""
+    """The module appears in the registry with 21 equations, and its manifest and proof_locale pass validation."""
     from ValaQuenta.__main__ import _register_all
     from ValaQuenta.engine import manifest as MF
     reg = _register_all(); assert "lagrangian_sm" in reg.list_modules() and "witches_hat" in reg.list_modules()
-    m = reg.get_module("lagrangian_sm"); assert len(m.formulary()) == 19 and MF.validate("lagrangian_sm", m) == []
+    m = reg.get_module("lagrangian_sm"); assert len(m.formulary()) == 21 and MF.validate("lagrangian_sm", m) == []
+
+
+def test_each_particle_adds_its_own_loop_term_and_the_top_dominates():
+    """One-loop (Coleman-Weinberg) terms: bosons n > 0, fermions n < 0, each of the form n m^4 [ln(m^2/mu^2) - c]; at h = v the top is the largest in magnitude (about 40 times the W) and the
+    light fermions are negligible."""
+    v = S.fermi_vev(); cw = S.coleman_weinberg(np.array([v]))
+    mag = {k: abs(float(cw[k][0])) for k in ("W", "Z", "top", "bottom", "charm", "tau")}
+    assert mag["top"] == max(mag.values()) and 20 < mag["top"]/mag["W"] < 60 and mag["bottom"] < 1e-3*mag["top"]
+    assert {p["name"]: p["n"] for p in S.particle_content_for_potential()} == {"W": 6, "Z": 3, "top": -12, "bottom": -12, "charm": -12, "tau": -4}
+
+
+def test_the_hat_shrinks_with_temperature_and_flattens_to_a_bowl():
+    """Finite-temperature hat (high-T expansion): D = 0.167, E = 0.0096, T0 = 163 GeV; the brim radius falls monotonically between 100 and 165 GeV and the hat is a bowl (brim 0) above 170 GeV."""
+    r = S.finite_temperature_hat(100)
+    assert abs(r["D"] - 0.1666) < 1e-3 and abs(r["E"] - 0.00958) < 1e-4 and abs(r["T0"] - 163.4) < 0.5
+    hm = [S.finite_temperature_hat(T)["h_min"] for T in (100, 120, 140, 150, 160)]
+    assert all(b < a for a, b in zip(hm, hm[1:])) and S.finite_temperature_hat(170)["h_min"] == 0.0 and abs(S.finite_temperature_hat(0)["h_min"] - S.fermi_vev()) < 0.2        # grid spacing 0.1 GeV

@@ -140,6 +140,20 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'gauge kinetic': {'SM': {'A': 4.0}, 'NN': {'A': 2.0}}, 'matter (fermion-gauge)': {'SM': {'psi': 2.0, 'A': 1.0}, 'NN': {'psi': 2.0, 'A': 2.0}}, 'bias / Higgs potential':  ...
 ```
 
+**`loops`** — WHAT EACH PARTICLE DOES TO THE HAT
+  params: —  ·  confidence: `ESTABLISHED`  ·  signature: `()`
+```python
+>>> module.run('loops', {})['result']
+{'W': -1210852.324525662, 'Z': -936798.7548971752, 'top': 37269546.937645964, 'bottom': 56.28319995678607, 'charm': 0.6001637626616105, 'tau': 0.7173681389824492, 'higgs+ ...
+```
+
+**`hat_temperature`** — THE HAT AGAINST TEMPERATURE
+  params: `T`  ·  confidence: `ESTABLISHED`  ·  signature: `(T=140.0)`
+```python
+>>> module.run('hat_temperature', {})['result']
+{'D': 0.1666268864443308, 'E': 0.009575903455068362, 'T0': 163.36023613473924, 'lam_T': 0.0935141417373841, 'h_min': 181.9070702087668, 'depth': 21544421.741297968}
+```
+
 **`hat`** — THE HAT, for the path-of-action tools
   params: —  ·  confidence: `ESTABLISHED`  ·  signature: `()`
 ```python
@@ -149,7 +163,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 
 ### Shell commands
 
-`sm_verify` · `sm_fields` · `sm_anomalies` · `sm_groups` · `sm_parameters` · `sm_higgs` · `sm_ew_tree` · `sm_yukawas` · `sm_ckm` · `sm_running` · `sm_compare` · `sm_exponents` · `sm_hat`
+`sm_verify` · `sm_fields` · `sm_anomalies` · `sm_groups` · `sm_parameters` · `sm_higgs` · `sm_ew_tree` · `sm_yukawas` · `sm_ckm` · `sm_running` · `sm_loops` · `sm_hat_temperature` · `sm_compare` · `sm_exponents` · `sm_hat`
 
 
 ---
