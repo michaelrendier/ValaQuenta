@@ -18,125 +18,125 @@
   {
    "symbol": "aim",
    "english": "launch offset from the radial",
-   "role": "0 gives the point focus, otherwise a ring caustic",
+   "role": "0 gives the point focus at E = 0",
    "tier": "ESTABLISHED"
   }
  ],
  "ordering": [
   {
    "n": 1,
-   "op": "run viewport",
-   "english": "build the viewport's own object (orbit, path, map, algebra)."
+   "op": "hat_shape",
+   "english": "choose the potential"
   },
   {
    "n": 2,
-   "op": "TO",
-   "english": "apply the stated transformation and measure the residual from the circle; a failure is returned as a failure."
+   "op": "trace",
+   "english": "follow paths from the brim"
   },
   {
    "n": 3,
-   "op": "FROM",
-   "english": "construct the way back and measure what had to be chosen."
-  },
-  {
-   "n": 4,
-   "op": "pi route",
-   "english": "compute \u03c0 from that viewport's own data via modules.pi_derivations."
+   "op": "focus_resolution",
+   "english": "measure the closest approach"
   }
  ],
  "equations": {
   "verify": {
-   "descriptive": "Every viewport's TO closes (Berry\u2013Keating raw is a recorded failure), FROM ok, Wick closes, sign carriers = e\u2088\u2026e\u2081\u2085.",
+   "descriptive": "Checks the focus closed form and returns the Higgs-hat numbers.",
    "ordering": [
     {
      "n": 1,
-     "op": "atlas()",
-     "english": "run all viewports."
-    },
-    {
-     "n": 2,
-     "op": "check",
-     "english": "compare each residual with its tolerance."
+     "op": "verify",
+     "english": "Checks the focus closed form and returns the Higgs-hat numbers."
     }
    ]
   },
-  "atlas": {
-   "descriptive": "All viewports with TO/FROM and \u03c0 route.",
+  "snapshot": {
+   "descriptive": "A static snapshot as plain data.",
    "ordering": [
     {
      "n": 1,
-     "op": "entry(k) for k",
-     "english": "run each viewport."
+     "op": "snapshot",
+     "english": "A static snapshot as plain data."
     }
    ]
   },
-  "entry": {
-   "descriptive": "One viewport.",
+  "focus": {
+   "descriptive": "Median closest approach, units of the brim radius.",
    "ordering": [
     {
      "n": 1,
-     "op": "VIEWPORTS[name]",
-     "english": "run it."
+     "op": "focus",
+     "english": "Median closest approach, units of the brim radius."
     }
    ]
   },
-  "signposts": {
-   "descriptive": "Table of road in, road out, \u03c0 route.",
+  "defocus": {
+   "descriptive": "The hollow-cone radius against aim.",
    "ordering": [
     {
      "n": 1,
-     "op": "atlas()",
-     "english": "reduce each entry to three phrases."
+     "op": "defocus",
+     "english": "The hollow-cone radius against aim."
     }
    ]
   },
-  "gaps": {
-   "descriptive": "What is not mapped.",
+  "regimes": {
+   "descriptive": "Radial rays at energies below, at and above the hilltop.",
    "ordering": [
     {
      "n": 1,
-     "op": "atlas()",
-     "english": "collect viewports without a \u03c0 route or whose TO fails raw."
-    },
-    {
-     "n": 2,
-     "op": "GAPS",
-     "english": "append the named gaps."
+     "op": "energy regimes",
+     "english": "Radial rays at energies below, at and above the hilltop."
     }
    ]
   },
-  "sign_carriers": {
-   "descriptive": "Which axes satisfy e_k x = x* e_k for the whole first octonion.",
+  "shapes": {
+   "descriptive": "Focus resolution and the matching quartic exponent for each shape.",
    "ordering": [
     {
      "n": 1,
-     "op": "cd_mul",
-     "english": "test each axis against e\u2080\u2026e\u2087."
+     "op": "shapes",
+     "english": "Focus resolution and the matching quartic exponent for each shape."
     }
    ]
   },
-  "census": {
-   "descriptive": "Token counts over the repositories (text census, not proof).",
+  "compare": {
+   "descriptive": "Both hats in their own units and in the normalised chart; the recorded sign and vev inconsistencies of the coded VAPMIP bias term.",
    "ordering": [
     {
      "n": 1,
-     "op": "os.walk",
-     "english": "read every .py outside venvs and notebooks."
-    },
-    {
-     "n": 2,
-     "op": "regex",
-     "english": "count pi, trig, phase, circle, wave tokens."
+     "op": "compare",
+     "english": "Both hats in their own units and in the normalised chart; the recorded sign and vev inconsistencies of the coded VAPMIP bias term."
     }
    ]
   },
-  "import_probe": {
-   "descriptive": "Import every module and toolset, record failures.",
+  "vap_snapshot": {
+   "descriptive": "Plain-data snapshot on the beta-plane.",
    "ordering": [
     {
      "n": 1,
-     "op": "importlib",
-     "english": "import each; catch and record exceptions."
+     "op": "vapmip snapshot",
+     "english": "Plain-data snapshot on the beta-plane."
+    }
+   ]
+  },
+  "l_io": {
+   "descriptive": "Action to the closest approach against the aim offset.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "l_(i|o) as the action of the actual path",
+     "english": "Action to the closest approach against the aim offset."
+    }
+   ]
+  },
+  "sm_hat": {
+   "descriptive": "The Higgs-sector numbers.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "standard model hat",
+     "english": "The Higgs-sector numbers."
     }
    ]
   }

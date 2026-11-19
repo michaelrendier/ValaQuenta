@@ -81,6 +81,8 @@ in the order found.
 | [38_udeo_crypto.md](38_udeo_crypto.md) | UDEO RSA Key-Recovery — Five Candidate Mechanisms | 2026-09-27 | `modules/udeo_crypto/` |
 | [39_basile.md](39_basile.md) | Basile — Invertible Location Maps (Library of Babel / Babelia) | 2026-09-30 | `modules/basile/` |
 | [40_addition_matrix.md](40_addition_matrix.md) | Addition Matrix: Columns as Rotors, the Law of the Factor Search | 2026-10-14 | `modules/addition_matrix/` |
+| [41_witches_hat.md](41_witches_hat.md) | The Witch's Hat Engine (virtual brim, hat potential, paths of action) | 2026-11-19 | `modules/witches_hat/` |
+| [42_lagrangian_sm.md](42_lagrangian_sm.md) | L_SM: the Standard Model Lagrangian | 2026-11-19 | `modules/lagrangian_sm/` |
 
 **Not carried here** (no `tools.py`, so no tool-level API to document —
 see each one's own theory page for the maths): `hamiltonian.py`,

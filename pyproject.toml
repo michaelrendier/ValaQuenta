@@ -18,7 +18,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Mathematics",
 ]
-dependencies = ["numpy", "sympy", "mpmath", "scipy", "jsonschema"]
+dependencies = ["numpy", "sympy", "mpmath", "scipy", "jsonschema", "particle", "uncertainties"]
 
 [project.optional-dependencies]
 plots = ["matplotlib"]

@@ -67,6 +67,8 @@ from .modules.addition_matrix import AdditionMatrixModule
 from .modules.ptycho_weak_lensing import PtychoWeakLensingModule
 from .modules.pi_derivations import PiDerivationsModule
 from .modules.circle_atlas import CircleAtlasModule
+from .modules.witches_hat import WitchesHatModule
+from .modules.lagrangian_sm import LagrangianSMModule
 
 def _register_all():
     registry = get_registry()
@@ -113,6 +115,8 @@ def _register_all():
     register(PtychoWeakLensingModule())
     register(PiDerivationsModule())
     register(CircleAtlasModule())
+    register(WitchesHatModule())
+    register(LagrangianSMModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

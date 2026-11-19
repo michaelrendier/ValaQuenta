@@ -30,5 +30,13 @@
 - **L_(I|O) read as the action of the actual path:** W = ∫p·dq to the closest approach, nearly independent of the launch angle (0.8619 → 0.8314, aim 0.01 → 0.4). An earlier simulator reported arc length as action; corrected.
 - Stills: `FourthAgePapers/WitchesHat/simulator/particle_views.html` (branch `witches-hat`).
 
+## Path of action, mapped (`modules/witches_hat/action.py`, added 2026-11-19)
+Nothing aims. `discrete_action(model, q, T, signature)` gives S of any candidate path; `stationary_paths` finds every path with δS = 0 between two fixed events (and the Morse index, `morse_index`); `trial_variations` measures neighbouring paths (more work, less work); `ray_family` integrates every launch direction with the variational equation, `caustic_points` / `caustic_summary` read the caustics off, `closest_approach_profile` measures the funnel; `euclidean_radial_release` is the Wick-rotated bounce in −V. Signatures `'lorentzian'` (U = V) and `'euclidean'` (U = −V). Tests: `Testing/test_witches_hat_action.py` (11).
+- Harmonic closed form, free particle and the Euclidean twin match; the discrete error falls as 1/N² (ratios 3.99, 4.00, 4.00).
+- Past a conjugate point the Morse index counts the cheaper directions (two in a 2-D isotropic well).
+- On the real hat (μ² = λ = 1) between one pair of events there are three stationary paths (S = 0.7742 index 0, 0.7906 index 1, 10.88 index 2); the shot ray is the index-1 one.
+- Time-dependent hat (the original L_dynamic's setting, `moving_hat_exchange`): static hat conserves E to 1e-12; a hat moving at u = 0.6 exchanges energy by dE = ∫∂V/∂t dt (identity to 1e-11): the particle's energy rises 0.913 and ends +0.383 (borrowed, partly returned). Test `test_static_hat_conserves_energy_and_moving_hat_exchanges_it_by_the_identity`.
+- The unaimed family from a brim point at E = 0: closest approach to the hilltop ∝ (offset from the radial)^0.504 (closed form 0.5), coefficient 0.858 (0.841); the first caustics lie 0.51 brim radii from the hilltop. A funnel, not a point caustic.
+
 ## Related
 [circle_atlas.md](circle_atlas.md) · `FourthAgePapers/WitchesHat/simulator/` (the first renders) · `Ainulindale/wiki/29_witches_hat_paper.md`

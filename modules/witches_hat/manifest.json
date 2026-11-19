@@ -36,12 +36,15 @@
   "environment": {
     "constants": [
       {
-        "symbol": "m_h, v",
-        "role": "Higgs mass and vev (PDG), GeV",
-        "value": [
-          125.25,
-          246.22
-        ],
+        "symbol": "m_h",
+        "role": "Higgs mass (PDG), GeV",
+        "value": 125.25,
+        "source": "measured"
+      },
+      {
+        "symbol": "v",
+        "role": "Higgs vev (PDG), GeV",
+        "value": 246.22,
         "source": "measured"
       }
     ],

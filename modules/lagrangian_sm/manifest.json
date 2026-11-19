@@ -1,0 +1,253 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.lagrangian_sm",
+  "type": "engine",
+  "name": "lagrangian_sm",
+  "display": "L_SM: the Standard Model Lagrangian",
+  "version": "0.1",
+  "summary": "The Standard Model of particle physics as an engine: field content, anomaly cancellation, group structure, symbolic electroweak masses and Higgs expansion, the 19/26/28 parameter count, tree relations against PDG, mixing, running, and a measured comparison with the VAPMIP L_NN and with L_(I|O).",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.lagrangian_sm",
+    "class": "LagrangianSMModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-19: 'there is not an engine for the Standard Model of Particle Physics ... build a L_sm engine ... so that we can test all three lagrangians here and there as time goes on'. Built from the textbook construction (gauge group + field content + renormalisability + Higgs mechanism); measured inputs from the PDG tables (particle 1.1.1) and NuFIT. It is the control for L_NN (modules/lagrangian) and L_(I|O) (modules/l_io_photon_path). No framework constant is used. The comparison functions measure the coded L_NN, they do not argue it.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-19",
+    "status_label": "ESTABLISHED",
+    "predecessors": [
+      "lagrangian",
+      "witches_hat",
+      "l_io_photon_path"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/139_three_lagrangians.md",
+      "valaquenta": "ValaQuenta/wiki/lagrangian_sm.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/25_lagrangian_sm.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/lagrangian_sm.json"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "1/α(M_Z)",
+        "role": "inverse fine-structure constant, MSbar",
+        "value": 127.951,
+        "source": "PDG Review"
+      },
+      {
+        "symbol": "sin²θ_W",
+        "role": "weak mixing angle, MSbar at M_Z",
+        "value": 0.23122,
+        "source": "PDG Review"
+      },
+      {
+        "symbol": "α_s(M_Z)",
+        "role": "strong coupling",
+        "value": 0.118,
+        "source": "PDG Review"
+      },
+      {
+        "symbol": "G_F",
+        "role": "Fermi constant, GeV^-2",
+        "value": 1.1663788e-05,
+        "source": "PDG Review"
+      },
+      {
+        "symbol": "masses",
+        "role": "fermion, W, Z, Higgs masses",
+        "value": null,
+        "source": "PDG tables via the particle package"
+      }
+    ],
+    "native_space": "field space of the gauge group SU(3)×SU(2)×U(1); the (h, G) Higgs-doublet plane for the hat",
+    "arithmetic": "float64; fractions.Fraction for the anomaly sums; sympy for the symbolic derivations",
+    "requires_engines": [
+      "witches_hat",
+      "lagrangian"
+    ],
+    "external": [
+      "numpy",
+      "scipy",
+      "sympy",
+      "particle"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "L_SM: the Standard Model Lagrangian",
+      "group": "Engines",
+      "order": 104,
+      "blurb": "The Standard Model Lagrangian as an engine and the control for L_NN and L_(I|O): content, anomalies, masses, parameters, mixing, running, measured comparison."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "Closure checks",
+        "params": []
+      },
+      {
+        "name": "fields",
+        "equation": "fields",
+        "label": "Fields",
+        "desc": "Content and degrees of freedom",
+        "params": []
+      },
+      {
+        "name": "anomalies",
+        "equation": "anomalies",
+        "label": "Anomalies",
+        "desc": "Gauge anomaly sums",
+        "params": []
+      },
+      {
+        "name": "hypercharges",
+        "equation": "hypercharges",
+        "label": "Hypercharges",
+        "desc": "Hypercharges derived from anomaly cancellation",
+        "params": [
+          "n_colours"
+        ]
+      },
+      {
+        "name": "su5",
+        "equation": "su5",
+        "label": "Su5",
+        "desc": "SU(5) embedding: the source of the anomaly cancellation",
+        "params": []
+      },
+      {
+        "name": "groups",
+        "equation": "groups",
+        "label": "Groups",
+        "desc": "SU(2), SU(3) structure",
+        "params": []
+      },
+      {
+        "name": "parameters",
+        "equation": "parameters",
+        "label": "Parameters",
+        "desc": "19, 26 or 28",
+        "params": [
+          "neutrinos"
+        ]
+      },
+      {
+        "name": "ew_symbolic",
+        "equation": "ew_symbolic",
+        "label": "Ew_Symbolic",
+        "desc": "Electroweak masses, derived",
+        "params": []
+      },
+      {
+        "name": "higgs_symbolic",
+        "equation": "higgs_symbolic",
+        "label": "Higgs_Symbolic",
+        "desc": "Higgs potential expansion",
+        "params": []
+      },
+      {
+        "name": "higgs",
+        "equation": "higgs",
+        "label": "Higgs",
+        "desc": "Higgs sector numbers",
+        "params": [
+          "m_h",
+          "v"
+        ]
+      },
+      {
+        "name": "ew_tree",
+        "equation": "ew_tree",
+        "label": "Ew_Tree",
+        "desc": "Tree-level relations vs PDG",
+        "params": []
+      },
+      {
+        "name": "yukawas",
+        "equation": "yukawas",
+        "label": "Yukawas",
+        "desc": "Yukawa couplings",
+        "params": []
+      },
+      {
+        "name": "ckm",
+        "equation": "ckm",
+        "label": "Ckm",
+        "desc": "CKM and PMNS",
+        "params": []
+      },
+      {
+        "name": "zcouplings",
+        "equation": "zcouplings",
+        "label": "Zcouplings",
+        "desc": "Z couplings",
+        "params": []
+      },
+      {
+        "name": "vertices",
+        "equation": "vertices",
+        "label": "Vertices",
+        "desc": "Vertex inventory",
+        "params": []
+      },
+      {
+        "name": "running",
+        "equation": "running",
+        "label": "Running",
+        "desc": "Running and unification",
+        "params": []
+      },
+      {
+        "name": "compare",
+        "equation": "compare",
+        "label": "Compare",
+        "desc": "L_SM, L_NN, L_(I|O), L_dynamic",
+        "params": []
+      },
+      {
+        "name": "exponents",
+        "equation": "exponents",
+        "label": "Exponents",
+        "desc": "Degree of each term",
+        "params": []
+      },
+      {
+        "name": "hat",
+        "equation": "hat",
+        "label": "Hat",
+        "desc": "The hat for the path tools",
+        "params": []
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

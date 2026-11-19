@@ -28,6 +28,8 @@ matplotlib>=3.7        # tested 3.11.1   every notebook plots
 # ── Symbolic (code/noether_engine, code/io_polar.py) ─────────────────────────
 sympy>=1.12            # tested 1.14.0
 mpmath>=1.3            # tested 1.3.0    also RiemannHypothesisProof high-precision zeta
+particle>=1.1.1            # PDG particle tables (masses, widths) for the L_SM engine; installed 2026-11-19, pulls hepunits
+uncertainties>=3.2          # propagation of measurement errors (L_SM engine)
 
 # ── Notebooks ────────────────────────────────────────────────────────────────
 jupyterlab>=4.0        # tested 4.6.3
