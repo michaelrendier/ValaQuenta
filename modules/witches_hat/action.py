@@ -356,3 +356,133 @@ def moving_hat_exchange(model: dict, start, velocity, u, T: float, n: int = 2000
     E = 0.5*np.sum(v*v, 1) + np.array([float(V2(q[i, 0] - u[0]*ts[i], q[i, 1] - u[1]*ts[i])) for i in range(len(ts))])
     dE = E - E[0]
     return {"t": ts, "q": q, "E": E, "exchange": ex, "identity_residual": float(np.max(np.abs(dE - ex))), "dE_final": float(dE[-1]), "dE_max_excursion": float(np.max(np.abs(dE)))}
+
+
+# ------------------------------------------------------------------ the whole bundle from the brim, and the tip of the action cone
+def ray_bundle(model: dict, starts, velocities, T: float, n_steps: int = 1500, u=(0.0, 0.0), target=None, store_every: int = 10) -> dict:
+    """Integrate many paths at once (vectorised RK4) in the hat, which may drift with constant velocity u: V(q - u t).
+
+    Each path carries the Lagrangian action S = integral (|v|^2/2 - V) dt, the reduced action W = integral |v|^2 dt = integral p dq and the arc length s = integral |v| dt.
+    ``target`` (a point, fixed in the hat's frame) records each path's closest approach to it: distance, time, position (hat frame), W, S and s at that moment.
+
+    :param model: model dict.
+    :param starts: array ``(N, 2)`` of start positions (lab frame at t = 0).
+    :param velocities: array ``(N, 2)`` of initial lab-frame velocities.
+    :param T: duration.
+    :param n_steps: number of RK4 steps (dt = T/n_steps).
+    :param u: velocity of the hat.
+    :param target: hat-frame point whose closest approach is tracked (default the hilltop).
+    :param store_every: keep every this-many steps of the trajectory.
+    :returns: dict ``t, q (N, m, 2), W, S, s (N, m)`` (lab frame, sampled), ``closest`` with ``dist, t, q_rel, W, S, s`` (each of length N), ``E_final`` and ``E_initial`` (lab energy).
+    :rtype: dict
+    """
+    V2, grad = model_plane(model); target = hilltop(model) if target is None else np.asarray(target, float); u = np.asarray(u, float)
+    q = np.array(starts, float); v = np.array(velocities, float); N = len(q); dt = T/n_steps; S = np.zeros(N); W = np.zeros(N); s = np.zeros(N)
+    def acc(qq, t):
+        c = u*t; gx, gy = grad(qq[:, 0] - c[0], qq[:, 1] - c[1]); return -np.stack([np.asarray(gx, float), np.asarray(gy, float)], 1)
+    def Vq(qq, t):
+        c = u*t; return np.asarray(V2(qq[:, 0] - c[0], qq[:, 1] - c[1]), float)
+    best = np.full(N, np.inf); bt = np.zeros(N); bq = np.zeros((N, 2)); bW = np.zeros(N); bS = np.zeros(N); bs = np.zeros(N); E0 = 0.5*np.sum(v*v, 1) + Vq(q, 0.0)
+    m = n_steps//store_every + 1; Q = np.zeros((N, m, 2)); Wm = np.zeros((N, m)); Sm = np.zeros((N, m)); sm = np.zeros((N, m)); tm = np.zeros(m); Q[:, 0] = q
+    def note(i, t):
+        rel = q - u*t; d = np.hypot(rel[:, 0] - target[0], rel[:, 1] - target[1]); upd = d < best
+        best[upd] = d[upd]; bt[upd] = t; bq[upd] = rel[upd]; bW[upd] = W[upd]; bS[upd] = S[upd]; bs[upd] = s[upd]
+    note(0, 0.0)
+    for i in range(n_steps):
+        t = i*dt
+        def f(qq, vv, tt): return vv, acc(qq, tt), 0.5*np.sum(vv*vv, 1) - Vq(qq, tt), np.sum(vv*vv, 1), np.hypot(vv[:, 0], vv[:, 1])
+        k1 = f(q, v, t); k2 = f(q + 0.5*dt*k1[0], v + 0.5*dt*k1[1], t + 0.5*dt); k3 = f(q + 0.5*dt*k2[0], v + 0.5*dt*k2[1], t + 0.5*dt); k4 = f(q + dt*k3[0], v + dt*k3[1], t + dt)
+        q = q + dt/6*(k1[0] + 2*k2[0] + 2*k3[0] + k4[0]); v = v + dt/6*(k1[1] + 2*k2[1] + 2*k3[1] + k4[1])
+        S = S + dt/6*(k1[2] + 2*k2[2] + 2*k3[2] + k4[2]); W = W + dt/6*(k1[3] + 2*k2[3] + 2*k3[3] + k4[3]); s = s + dt/6*(k1[4] + 2*k2[4] + 2*k3[4] + k4[4])
+        note(i + 1, (i + 1)*dt)
+        if (i + 1) % store_every == 0:
+            j = (i + 1)//store_every; Q[:, j] = q; Wm[:, j] = W; Sm[:, j] = S; sm[:, j] = s; tm[j] = (i + 1)*dt
+    E1 = 0.5*np.sum(v*v, 1) + Vq(q, T)
+    return {"t": tm, "q": Q, "W": Wm, "S": Sm, "s": sm, "closest": {"dist": best, "t": bt, "q_rel": bq, "W": bW, "S": bS, "s": bs}, "E_initial": E0, "E_final": E1}
+
+
+def brim_bundle(model: dict, E: float = None, n_sources: int = 24, n_dirs: int = 1441, T: float = 6.0, n_steps: int = 1500, eps: float = 0.15, u=(0.0, 0.0), chunk: int = 6000) -> dict:
+    """The bundle of paths from every brim point in every launch direction at energy E (default: the value at the hilltop), and the part of it that reaches the tip.
+
+    Nothing is aimed: sources are equally spaced on the brim ring, directions equally spaced over the full circle, speeds fixed by E.  A path is *selected* by what it does
+    (it passes within ``eps`` brim radii of the hilltop), not by how it was launched.  Selected paths are returned truncated at their closest approach.
+
+    :param model: model dict with a ``brim_radius``.
+    :param E: energy (lab frame at t = 0).
+    :param n_sources: sources on the brim ring.
+    :param n_dirs: launch directions per source.
+    :param T: duration.
+    :param n_steps: RK4 steps.
+    :param eps: selection radius, in brim radii.
+    :param u: velocity of the hat.
+    :param chunk: number of paths integrated at once.
+    :returns: dict ``paths`` (list of dicts ``q, W, S, s, t`` truncated at the closest approach, plus ``source, direction, dist``), ``n_total``, ``n_selected``, ``r_min`` (all paths), ``E``, ``R``, ``hilltop``.
+    :rtype: dict
+    """
+    R = float(model["brim_radius"]); V2, _ = model_plane(model); top = hilltop(model); E = float(V2(*top)) if E is None else E
+    al = 2*math.pi*np.arange(n_sources)/n_sources; th = 2*math.pi*np.arange(n_dirs)/n_dirs
+    st = np.stack([R*np.cos(al), R*np.sin(al)], 1); S0 = np.repeat(st, n_dirs, 0); V0 = np.asarray(V2(S0[:, 0], S0[:, 1]), float); sp = np.sqrt(np.maximum(2*(E - V0), 0.0))
+    vel = np.stack([sp*np.tile(np.cos(th), n_sources), sp*np.tile(np.sin(th), n_sources)], 1); src = np.repeat(np.arange(n_sources), n_dirs); dirn = np.tile(np.arange(n_dirs), n_sources)
+    paths = []; rmins = []
+    for a in range(0, len(S0), chunk):
+        b = min(a + chunk, len(S0)); r = ray_bundle(model, S0[a:b], vel[a:b], T, n_steps, u=u, target=top); cl = r["closest"]; rmins.append(cl["dist"]/R)
+        for k in np.where(cl["dist"] < eps*R)[0]:
+            m = int(np.searchsorted(r["t"], cl["t"][k])) + 1; m = max(2, min(m, len(r["t"])))
+            paths.append({"q": r["q"][k, :m], "W": r["W"][k, :m], "S": r["S"][k, :m], "s": r["s"][k, :m], "t": r["t"][:m], "source": int(src[a + k]), "direction": int(dirn[a + k]), "dist": float(cl["dist"][k]/R),
+                          "closest": {kk: (vv[k] if np.ndim(vv) else vv) for kk, vv in cl.items()}})
+    return {"paths": paths, "n_total": len(S0), "n_selected": len(paths), "r_min": np.concatenate(rmins), "E": E, "R": R, "hilltop": top}
+
+
+def natural_units(model: dict) -> dict:
+    """The hat's own units for putting energy and action on one vertical scale: R (brim radius), V_0 (depth), tau_0 = R / sqrt(2 V_0) (the crossing time at the brim speed of the untilted
+    hat), the brim level (the ring average of V, exact for a linear tilt) and the function z_V(q) = (V(q) - brim level)/V_0, which is 0 on the brim and 1 at the symmetric hilltop.
+    A path's action cone stands at z = z_V(start) + W/(V_0 tau_0).
+
+    :param model: model dict with ``brim_radius`` and ``depth``.
+    :returns: dict ``R, depth, tau, level, zV``.
+    :rtype: dict
+    """
+    V2, _ = model_plane(model); R = float(model["brim_radius"]); depth = float(model["depth"]); a = np.linspace(0, 2*math.pi, 256, endpoint=False)
+    level = float(np.mean(V2(R*np.cos(a), R*np.sin(a)))); tau = R/math.sqrt(2*depth)
+    return {"R": R, "depth": depth, "tau": tau, "level": level, "zV": (lambda q: (np.asarray(V2(np.asarray(q, float)[..., 0], np.asarray(q, float)[..., 1]), float) - level)/depth)}
+
+
+def tip_report(model: dict, bundle: dict) -> dict:
+    """Where the selected paths meet and how high the action cone stands there, sheet by sheet.
+
+    The reduced action W is multivalued at the tip: paths that arrive directly, and paths that first go out and are turned back by the outer wall, reach the same point with different W
+    (measured on the SM hat at E = 0: 0.4310 and 0.9025 = 0.4310 + 2 x 0.2357).  The selected paths are grouped into sheets by gaps in W; the lowest sheet is the cone.  Heights use the
+    natural units of ``natural_units``: each path's cone starts on the surface at its source and rises by W/(V_0 tau_0); the hilltop stands at z_V(top) (1 for a symmetric hat); ``gap`` is
+    the mean height of the lowest sheet's tip above the hilltop, in units of the depth.  The convention is stated because action and energy differ by a time.
+
+    :param model: model dict.
+    :param bundle: result of ``brim_bundle``.
+    :returns: dict ``tip_xy``, ``offset`` (tip to hilltop, brim radii), ``spread`` (rms of the closest-approach points about the tip, brim radii), ``W_tip``, ``W_spread``, ``z_tip``,
+              ``z_tip_spread`` (across the sources: zero for a level brim), ``gap``, ``arc_tip``, ``n`` (paths on the lowest sheet), ``sheets`` (list of ``{'W', 'n'}``), ``sheet_of``, ``units``.
+    :rtype: dict
+    """
+    U = natural_units(model); R = U["R"]; top = bundle["hilltop"]; P = bundle["paths"]
+    if not P: return {"n": 0}
+    qs = np.array([p["closest"]["q_rel"] for p in P]); Ws = np.array([p["closest"]["W"] for p in P]); ss = np.array([p["closest"]["s"] for p in P]); z0 = np.array([float(U["zV"](p["q"][0])) for p in P])
+    order = np.argsort(Ws); cut = 0.15*float(np.median(Ws)); sheet = np.zeros(len(Ws), int); k = 0
+    for a, b in zip(order[:-1], order[1:]):
+        if Ws[b] - Ws[a] > cut: k += 1
+        sheet[b] = k
+    sheets = [{"W": float(Ws[sheet == i].mean()), "n": int((sheet == i).sum())} for i in range(k + 1)]; low = sheet == 0
+    tip = qs[low].mean(0); zt = z0[low] + Ws[low]/(U["depth"]*U["tau"]); ztop = float(U["zV"](top))
+    return {"tip_xy": tip, "offset": float(np.hypot(*(tip - top))/R), "spread": float(np.sqrt(np.mean(np.sum((qs[low] - tip)**2, 1)))/R), "W_tip": float(Ws[low].mean()), "W_spread": float(Ws[low].std()),
+            "z_tip": float(zt.mean()), "z_tip_spread": float(zt.std()), "z_top": ztop, "gap": float(zt.mean() - ztop), "arc_tip": float(ss[low].mean()), "n": int(low.sum()), "sheets": sheets, "sheet_of": sheet, "units": {k_: v for k_, v in U.items() if k_ != "zV"}}
+
+
+def cone_tip_height(model: dict, E: float = None) -> dict:
+    """The action cone of the radial family in a symmetric hat, exactly: W_tip = integral_0^R sqrt(2 (E - V(r))) dr (E at or above the hilltop value so the tip is reached), the momentum
+    at the tip, the natural-unit height and the gap above the hilltop.
+
+    :param model: model dict with ``brim_radius`` and ``depth`` (rotationally symmetric).
+    :param E: energy (default the hilltop value).
+    :returns: dict ``W_tip``, ``p_tip``, ``z_tip`` (= W/(V_0 tau_0) + z at the brim), ``gap`` (above the hilltop), ``depth``, ``tau``.
+    :rtype: dict
+    """
+    U = natural_units(model); V2, _ = model_plane(model); R = U["R"]; v = lambda r: float(V2(r, 0.0)); E = v(0.0) if E is None else E
+    W = integrate.quad(lambda r: math.sqrt(max(2*(E - v(r)), 0.0)), 0, R, epsabs=1e-13, epsrel=1e-13, limit=400)[0]; z = W/(U["depth"]*U["tau"]); ztop = (v(0.0) - U["level"])/U["depth"]
+    return {"W_tip": W, "p_tip": math.sqrt(max(2*(E - v(0.0)), 0.0)), "depth": U["depth"], "tau": U["tau"], "z_tip": z, "gap": z - ztop}

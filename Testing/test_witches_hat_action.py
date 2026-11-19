@@ -127,3 +127,22 @@ def test_static_hat_conserves_energy_and_moving_hat_exchanges_it_by_the_identity
     assert r0["dE_max_excursion"] < 1e-8 and r0["identity_residual"] < 1e-8
     r = A.moving_hat_exchange(SM, (1.0, 0.0), (0.0, 0.7), (0.6, 0.0), 20.0)
     assert r["identity_residual"] < 1e-8 and abs(r["dE_final"]) > 0.1 and r["dE_max_excursion"] > 1.5*abs(r["dE_final"])
+
+
+def test_ray_bundle_agrees_with_the_variational_integrator():
+    """The vectorised bundle and the single-source integrator (``ray_family``) give the same paths, reduced action and arc length for the same launch."""
+    fam = A.ray_family(SM, (1.0, 0.0), E=0.0, n_theta=5, t_max=2.0, n_t=201)
+    th = fam["theta"]; sp = math.sqrt(2*(0.0 - float(M.lagrangian_sm(mu2=1.0, lam=1.0)["V"](1.0)))); vel = np.stack([sp*np.cos(th), sp*np.sin(th)], 1)
+    b = A.ray_bundle(SM, np.tile([[1.0, 0.0]], (5, 1)), vel, 2.0, n_steps=2000, store_every=20)
+    assert np.max(np.abs(b["q"][:, -1] - fam["q"][:, -1])) < 1e-6 and np.max(np.abs(b["W"][:, -1] - fam["W"][:, -1])) < 1e-6
+    assert np.max(np.abs(b["E_final"] - b["E_initial"])) < 1e-9
+
+
+def test_the_action_cone_tip_is_the_closed_form_and_the_bundle_finds_it_without_aiming():
+    """Radial family at E = 0: W_tip = (2/3)[(1 - r^2/2)^(3/2)] from r = 1 to 0 = 0.43096 (mu = lambda = 1), natural-unit height 1.2192 (gap 0.2192 above the hilltop).  The brim bundle (every source, every direction,
+    selected only by passing within 0.15 of the hilltop) places its tip on the hilltop and reproduces that height."""
+    c = A.cone_tip_height(SM, 0.0)
+    assert abs(c["W_tip"] - (2/3)*(1 - 0.5**1.5)) < 1e-9 and abs(c["gap"] - 0.2192) < 1e-3 and c["p_tip"] == 0.0
+    b = A.brim_bundle(SM, n_sources=8, n_dirs=721, T=6.0, n_steps=1200, eps=0.15); r = A.tip_report(SM, b)
+    assert b["n_selected"] > 20 and r["offset"] < 0.02 and abs(r["W_tip"] - c["W_tip"]) < 0.01
+    assert len(r["sheets"]) == 2 and abs(r["sheets"][1]["W"] - (c["W_tip"] + 2*0.23572)) < 0.01         # the second sheet: out to the wall and back (2 x the action from the brim to r = sqrt 2)
