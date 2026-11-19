@@ -39,5 +39,8 @@ Nothing aims. `discrete_action(model, q, T, signature)` gives S of any candidate
 - Time-dependent hat (the original L_dynamic's setting, `moving_hat_exchange`): static hat conserves E to 1e-12; a hat moving at u = 0.6 exchanges energy by dE = ∫∂V/∂t dt (identity to 1e-11): the particle's energy rises 0.913 and ends +0.383 (borrowed, partly returned). Test `test_static_hat_conserves_energy_and_moving_hat_exchanges_it_by_the_identity`.
 - The unaimed family from a brim point at E = 0: closest approach to the hilltop ∝ (offset from the radial)^0.504 (closed form 0.5), coefficient 0.858 (0.841); the first caustics lie 0.51 brim radii from the hilltop. A funnel, not a point caustic.
 
+## Length and time (`modules/witches_hat/length_time.py`, 2026-11-19; Ainulindale wiki 140)
+`speed(model, E, r)`, `tortoise(model, E, r)` (the transit ruler ρ = ∫dr/v), `radial_worldline` (ρ + t constant along a radial path), `conjugacy` (t = ∂W/∂E on a bent path), `barrier_conjugacy` (∂B/∂E = −τ across the swap), `two_rulers` (least action against least time; `invert=True` exchanges them), `hilltop_clock` (ρ ~ ln r, W finite), `wall_transit` (ln(1 + √2)), `compactifications` (Wick tanh ↔ tan, Gudermannian, Smith map), `signature_map`. Tests: `Testing/test_witches_hat_length_time.py` (8).
+
 ## Related
 [circle_atlas.md](circle_atlas.md) · `FourthAgePapers/WitchesHat/simulator/` (the first renders) · `Ainulindale/wiki/29_witches_hat_paper.md`

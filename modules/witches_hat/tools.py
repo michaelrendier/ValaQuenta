@@ -10,6 +10,7 @@ from typing import Dict, List, Any
 from ...engine.registry import EquationModule, Equation
 from . import maths as M
 from . import action as AC
+from . import length_time as LT
 
 
 class WitchesHatModule(EquationModule):
@@ -84,4 +85,5 @@ class WitchesHatModule(EquationModule):
                 "hat_shapes": M.shape_table, "hat_compare": M.compare, "hat_l_io": M.l_io_action, "hat_snapshot_plane": M.snapshot_plane, "hat_sm": M.sm_hat, "hat_verify": M.verify,
                 "hat_action": AC.discrete_action, "hat_stationary_paths": AC.stationary_paths, "hat_morse_index": AC.morse_index, "hat_trial_variations": AC.trial_variations,
                 "hat_rays": AC.ray_family, "hat_caustics": AC.caustic_points, "hat_caustic_summary": AC.caustic_summary, "hat_closest_approach": AC.closest_approach_profile,
-                "hat_euclidean_release": AC.euclidean_radial_release}
+                "hat_euclidean_release": AC.euclidean_radial_release,
+                "hat_tortoise": LT.tortoise, "hat_conjugacy": LT.conjugacy, "hat_two_rulers": LT.two_rulers, "hat_hilltop_clock": LT.hilltop_clock, "hat_signature": LT.signature_map}
