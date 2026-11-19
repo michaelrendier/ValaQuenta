@@ -215,3 +215,23 @@ def signature_map(model: dict, E: float, radii) -> list:
     for r in radii:
         v2 = 2*(E - V(r)); out.append((float(r), v2, "Lorentzian" if v2 > 1e-12 else ("null (cone closes)" if abs(v2) <= 1e-12 else "Euclidean")))
     return out
+
+
+def zero_of_the_conversion_field(v, r_h: float, side: int = 1, eps=(1e-2, 1e-3, 1e-4, 1e-5)) -> dict:
+    """Classify a zero of a conversion field v(r) at r_h by how the transit time to it grows.
+
+    A SIMPLE zero, v ~ kappa |r - r_h|, is at infinite transit time: rho ~ (1/kappa) ln|r - r_h| (the log slope per e-fold is 1/kappa).  This is the horizon property (the tortoise coordinate of
+    Schwarzschild diverges the same way, with kappa the surface gravity).  A SQUARE-ROOT zero, v ~ sqrt|r - r_h|, is at finite transit time (a turning point, a mirror).
+
+    :param v: callable, the conversion field (positive on the side being approached).
+    :param r_h: the zero.
+    :param side: +1 approach from above (r > r_h), -1 from below.
+    :param eps: distances from the zero at which rho is read.
+    :returns: dict ``log_slope`` (drho / d ln distance between the last two distances), ``kappa`` (1 / slope: dv/dr at the zero; for v = f of a metric -f dt^2 + dr^2/f the surface gravity is half of it), ``finite`` (the slope dies away: rho converges), ``slopes``, ``rho``.
+    :rtype: dict
+    """
+    ref = r_h + side*0.1
+    def rho(d): return integrate.quad(lambda x: 1.0/v(x), ref, r_h + side*d, epsabs=1e-13, epsrel=1e-13, limit=500)[0]
+    vals = [abs(rho(d)) for d in eps]; slopes = [(vals[i + 1] - vals[i])/(math.log(1.0/eps[i + 1]) - math.log(1.0/eps[i])) for i in range(len(eps) - 1)]
+    s = slopes[-1]; finite = bool(slopes[-1] < 0.1*slopes[0])          # a simple zero keeps a constant log slope; a square-root zero's slope dies away
+    return {"log_slope": s, "kappa": (1.0/s if not finite else float("inf")), "finite": finite, "slopes": slopes, "rho": vals}

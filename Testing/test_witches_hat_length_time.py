@@ -62,3 +62,12 @@ def test_the_optical_signature_swaps_at_the_turning_circle():
 def test_penrose_arctan_and_smith_tanh_are_one_map_under_the_swap():
     """tanh(i x/2) = i tan(x/2); 2 arctan(tanh(x/2)) = arctan(sinh x) (Gudermannian); the Smith map (s - 1)/(s + 1) = tanh(ln(s)/2): all to rounding."""
     c = LT.compactifications(); assert max(c.values()) < 1e-12
+
+
+def test_simple_zero_is_at_infinite_time_and_square_root_zero_at_finite_time():
+    """The horizon property classified: v ~ kappa (r - r_h) gives rho ~ (1/kappa) ln distance (infinite transit time): the hat's E = 0 hilltop has kappa = 1 and Schwarzschild's f = 1 - 2M/r (M = 1)
+    has kappa = 1/(2M) = 0.5; a square-root zero (the turning circle) has finite transit time."""
+    V = lambda r: -0.5*r*r + 0.25*r**4
+    hill = LT.zero_of_the_conversion_field(lambda r: math.sqrt(max(-2*V(r), 0.0)), 0.0, side=1); schw = LT.zero_of_the_conversion_field(lambda r: 1 - 2.0/r, 2.0, side=1)
+    wall = LT.zero_of_the_conversion_field(lambda r: math.sqrt(max(-2*V(r), 1e-300)), math.sqrt(2), side=-1)
+    assert abs(hill["kappa"] - 1.0) < 0.01 and abs(schw["kappa"] - 0.5) < 0.01 and wall["finite"]
