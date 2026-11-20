@@ -1,0 +1,418 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.relativity",
+  "type": "engine",
+  "name": "relativity",
+  "display": "Relativity: Minkowski, curved, tangent and metric spaces",
+  "version": "0.1",
+  "summary": "Einstein's special and general relativity as four spaces, each with its own jurisdiction (the set of legal operations): Minkowski, curved spacetime, the tangent space, the space of metrics; the crossings between them; measured numbers (Mercury, light deflection, GPS clocks, the binary pulsar, gravitational waves).",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.relativity",
+    "class": "RelativityModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Cody, 2026-11-19: 'i need a Full Engine Protocol for Einstein's Relativity, general and special' and, on the first layout, 'relativity is a different space isn't it? different jurisdictions...it should not be following a L_SM layout at all'. Organised as four spaces, each declared with the eight fields of the spatial-simulation skill and a legal-operation set (the test of bracketing_firing_order.jurisdiction_violation, reused). Built from the textbook theory (Einstein 1905, 1915; Minkowski 1908; Schwarzschild 1916; Friedmann 1922; Peters 1964); no framework constant used. The bridge file states ESTABLISHED arithmetic and INTERPRETATION separately.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-19",
+    "status_label": "ESTABLISHED",
+    "predecessors": [
+      "witches_hat",
+      "desitter_cavitation",
+      "bracketing_firing_order",
+      "lagrangian_sm"
+    ],
+    "citations": [],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/143_relativity_four_spaces.md",
+      "valaquenta": "ValaQuenta/wiki/relativity.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/26_relativity.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/relativity.json"
+  },
+  "environment": {
+    "constants": [
+      {
+        "symbol": "c",
+        "role": "speed of light, exact",
+        "value": 299792458.0,
+        "source": "SI definition"
+      },
+      {
+        "symbol": "G",
+        "role": "gravitational constant",
+        "value": 6.6743e-11,
+        "source": "CODATA 2018"
+      },
+      {
+        "symbol": "GM_sun",
+        "role": "solar mass parameter, m^3 s^-2",
+        "value": 1.32712440018e+20,
+        "source": "IAU nominal"
+      },
+      {
+        "symbol": "GM_earth",
+        "role": "Earth mass parameter",
+        "value": 398600441800000.0,
+        "source": "IAU/EGM2008"
+      },
+      {
+        "symbol": "R_sun",
+        "role": "solar radius, m",
+        "value": 695700000.0,
+        "source": "IAU nominal"
+      }
+    ],
+    "native_space": "four spaces: Minkowski R^{1,3}; a Lorentzian manifold; the tangent space at an event; the space of metrics (minisuperspace slices)",
+    "arithmetic": "float64; fractions.Fraction for the prime boosts; sympy for the curvature and the variational derivations",
+    "requires_engines": [
+      "bracketing_firing_order"
+    ],
+    "external": [
+      "numpy",
+      "scipy",
+      "sympy"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "Relativity: four spaces",
+      "group": "Engines",
+      "order": 105,
+      "blurb": "Special and general relativity as Minkowski, curved, tangent and metric spaces with their own jurisdictions, the crossings between them, and measured checks."
+    },
+    "tools": [
+      {
+        "name": "verify",
+        "equation": "verify",
+        "label": "Verify",
+        "desc": "VERIFY: numeric checks across all four spaces",
+        "params": []
+      },
+      {
+        "name": "verify_symbolic",
+        "equation": "verify_symbolic",
+        "label": "Verify Symbolic",
+        "desc": "VERIFY: symbolic checks",
+        "params": []
+      },
+      {
+        "name": "spaces",
+        "equation": "spaces",
+        "label": "Spaces",
+        "desc": "SPACES: the four declarations",
+        "params": []
+      },
+      {
+        "name": "jurisdiction",
+        "equation": "jurisdiction",
+        "label": "Jurisdiction",
+        "desc": "JURISDICTION: is an operation legal in a space?",
+        "params": [
+          "space",
+          "operation"
+        ]
+      },
+      {
+        "name": "crossings",
+        "equation": "crossings",
+        "label": "Crossings",
+        "desc": "CROSSINGS: operations legal in one space and illegal in another",
+        "params": []
+      },
+      {
+        "name": "mink_boost",
+        "equation": "mink_boost",
+        "label": "Mink Boost",
+        "desc": "MINKOWSKI: the boost",
+        "params": [
+          "beta"
+        ]
+      },
+      {
+        "name": "mink_rapidity",
+        "equation": "mink_rapidity",
+        "label": "Mink Rapidity",
+        "desc": "MINKOWSKI: velocity addition is addition of rapidities",
+        "params": [
+          "b1",
+          "b2"
+        ]
+      },
+      {
+        "name": "mink_interval",
+        "equation": "mink_interval",
+        "label": "Mink Interval",
+        "desc": "MINKOWSKI: the interval",
+        "params": [
+          "dt",
+          "dx"
+        ]
+      },
+      {
+        "name": "mink_lightcone",
+        "equation": "mink_lightcone",
+        "label": "Mink Lightcone",
+        "desc": "MINKOWSKI: a boost is a dilation of the light-cone coordinates",
+        "params": [
+          "beta"
+        ]
+      },
+      {
+        "name": "mink_thomas_wigner",
+        "equation": "mink_thomas_wigner",
+        "label": "Mink Thomas Wigner",
+        "desc": "MINKOWSKI: the Thomas-Wigner rotation",
+        "params": [
+          "beta1",
+          "beta2"
+        ]
+      },
+      {
+        "name": "mink_algebra",
+        "equation": "mink_algebra",
+        "label": "Mink Algebra",
+        "desc": "MINKOWSKI: the Lorentz algebra so(3,1)",
+        "params": []
+      },
+      {
+        "name": "mink_threshold",
+        "equation": "mink_threshold",
+        "label": "Mink Threshold",
+        "desc": "MINKOWSKI: fixed-target threshold",
+        "params": [
+          "m_beam",
+          "m_target",
+          "m_products"
+        ]
+      },
+      {
+        "name": "mink_trip",
+        "equation": "mink_trip",
+        "label": "Mink Trip",
+        "desc": "MINKOWSKI: a trip at constant proper acceleration",
+        "params": [
+          "distance_ly",
+          "a_g"
+        ]
+      },
+      {
+        "name": "mink_em",
+        "equation": "mink_em",
+        "label": "Mink Em",
+        "desc": "MINKOWSKI: the electromagnetic invariants",
+        "params": []
+      },
+      {
+        "name": "mink_derivation",
+        "equation": "mink_derivation",
+        "label": "Mink Derivation",
+        "desc": "MINKOWSKI: the boost derived from the interval",
+        "params": []
+      },
+      {
+        "name": "curved_solutions",
+        "equation": "curved_solutions",
+        "label": "Curved Solutions",
+        "desc": "CURVED: the standard solutions and the Bianchi identity",
+        "params": []
+      },
+      {
+        "name": "curved_orbit",
+        "equation": "curved_orbit",
+        "label": "Curved Orbit",
+        "desc": "CURVED: perihelion advance",
+        "params": [
+          "p",
+          "e"
+        ]
+      },
+      {
+        "name": "curved_mercury",
+        "equation": "curved_mercury",
+        "label": "Curved Mercury",
+        "desc": "CURVED: Mercury",
+        "params": []
+      },
+      {
+        "name": "curved_deflection",
+        "equation": "curved_deflection",
+        "label": "Curved Deflection",
+        "desc": "CURVED: light deflection",
+        "params": [
+          "b"
+        ]
+      },
+      {
+        "name": "curved_solar_deflection",
+        "equation": "curved_solar_deflection",
+        "label": "Curved Solar Deflection",
+        "desc": "CURVED: grazing the Sun",
+        "params": []
+      },
+      {
+        "name": "curved_clocks",
+        "equation": "curved_clocks",
+        "label": "Curved Clocks",
+        "desc": "CURVED: GPS clock offsets",
+        "params": [
+          "r_orbit"
+        ]
+      },
+      {
+        "name": "curved_tidal",
+        "equation": "curved_tidal",
+        "label": "Curved Tidal",
+        "desc": "CURVED: the tidal tensor",
+        "params": []
+      },
+      {
+        "name": "curved_horizons",
+        "equation": "curved_horizons",
+        "label": "Curved Horizons",
+        "desc": "CURVED: horizon, photon sphere, ISCO",
+        "params": [
+          "solar_masses"
+        ]
+      },
+      {
+        "name": "curved_kerr",
+        "equation": "curved_kerr",
+        "label": "Curved Kerr",
+        "desc": "CURVED: Kerr horizons",
+        "params": [
+          "M",
+          "a"
+        ]
+      },
+      {
+        "name": "curved_binary_pulsar",
+        "equation": "curved_binary_pulsar",
+        "label": "Curved Binary Pulsar",
+        "desc": "CURVED: orbital decay of a binary pulsar",
+        "params": []
+      },
+      {
+        "name": "curved_gw",
+        "equation": "curved_gw",
+        "label": "Curved Gw",
+        "desc": "CURVED: gravitational waves in vacuum",
+        "params": []
+      },
+      {
+        "name": "tangent_equivalence",
+        "equation": "tangent_equivalence",
+        "label": "Tangent Equivalence",
+        "desc": "TANGENT: the equivalence principle",
+        "params": [
+          "r0"
+        ]
+      },
+      {
+        "name": "tangent_tidal",
+        "equation": "tangent_tidal",
+        "label": "Tangent Tidal",
+        "desc": "TANGENT: the tidal ellipsoid",
+        "params": [
+          "r"
+        ]
+      },
+      {
+        "name": "metric_friedmann",
+        "equation": "metric_friedmann",
+        "label": "Metric Friedmann",
+        "desc": "METRIC: the Friedmann equation as a lapse constraint",
+        "params": []
+      },
+      {
+        "name": "metric_gauge",
+        "equation": "metric_gauge",
+        "label": "Metric Gauge",
+        "desc": "METRIC: gauge invariance of the linearised curvature",
+        "params": []
+      },
+      {
+        "name": "cross_newton",
+        "equation": "cross_newton",
+        "label": "Cross Newton",
+        "desc": "CROSSING curved -> Newton: the weak field",
+        "params": []
+      },
+      {
+        "name": "cross_euclid",
+        "equation": "cross_euclid",
+        "label": "Cross Euclid",
+        "desc": "CROSSING curved -> Euclidean: horizon smoothness",
+        "params": []
+      },
+      {
+        "name": "cross_conversion_field",
+        "equation": "cross_conversion_field",
+        "label": "Cross Conversion Field",
+        "desc": "CROSSING: the conversion field of the Witch's Hat as a 1+1 spacetime",
+        "params": []
+      },
+      {
+        "name": "cross_flat",
+        "equation": "cross_flat",
+        "label": "Cross Flat",
+        "desc": "CROSSING curved -> Minkowski: the flat limit",
+        "params": []
+      },
+      {
+        "name": "bridge_prime_boost",
+        "equation": "bridge_prime_boost",
+        "label": "Bridge Prime Boost",
+        "desc": "BRIDGE: the boost with Doppler factor p",
+        "params": [
+          "p"
+        ]
+      },
+      {
+        "name": "bridge_compose",
+        "equation": "bridge_compose",
+        "label": "Bridge Compose",
+        "desc": "BRIDGE: composing prime boosts",
+        "params": [
+          "p",
+          "q"
+        ]
+      },
+      {
+        "name": "bridge_factorise",
+        "equation": "bridge_factorise",
+        "label": "Bridge Factorise",
+        "desc": "BRIDGE: factor a boost into prime boosts",
+        "params": [
+          "num",
+          "den"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

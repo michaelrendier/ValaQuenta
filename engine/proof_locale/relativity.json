@@ -1,0 +1,449 @@
+{
+ "engine": "relativity",
+ "display": "Relativity: Minkowski, curved, tangent and metric spaces",
+ "descriptive": "Builds the four spaces of relativity, checks each against measured numbers and symbolic identities, and tests which operations are legal in which space. TO: the spaces, their invariants and their legal operations as plain data.",
+ "operators": [
+  {
+   "symbol": "eta",
+   "english": "the Minkowski metric diag(-1,1,1,1)",
+   "role": "the Minkowski metric diag(-1,1,1,1)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "L",
+   "english": "a Lorentz transformation",
+   "role": "a Lorentz transformation",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "g",
+   "english": "the metric of a curved spacetime",
+   "role": "the metric of a curved spacetime",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Gamma",
+   "english": "the connection",
+   "role": "the connection",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "R",
+   "english": "the curvature",
+   "role": "the curvature",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "G_ab",
+   "english": "the Einstein tensor",
+   "role": "the Einstein tensor",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "S[g]",
+   "english": "the Einstein-Hilbert action on the space of metrics",
+   "role": "the Einstein-Hilbert action on the space of metrics",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "legal(space)",
+   "english": "the set of operations legal in a space",
+   "role": "the set of operations legal in a space",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "choose the space",
+   "english": "Minkowski, curved, tangent or metric"
+  },
+  {
+   "n": 2,
+   "op": "check its jurisdiction",
+   "english": "which operations are legal there"
+  },
+  {
+   "n": 3,
+   "op": "compute",
+   "english": "invariants, geodesics, curvature, actions"
+  },
+  {
+   "n": 4,
+   "op": "cross",
+   "english": "hand over to another space by a stated limit"
+  }
+ ],
+ "equations": {
+  "verify": {
+   "descriptive": "Fast numeric checks; the symbolic ones are in verify_symbolic.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "verify",
+     "english": "Fast numeric checks; the symbolic ones are in verify_symbolic."
+    }
+   ]
+  },
+  "verify_symbolic": {
+   "descriptive": "The slower symbolic derivations (tens of seconds).",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "verify",
+     "english": "The slower symbolic derivations (tens of seconds)."
+    }
+   ]
+  },
+  "spaces": {
+   "descriptive": "What each space is.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "spaces",
+     "english": "What each space is."
+    }
+   ]
+  },
+  "jurisdiction": {
+   "descriptive": "The legal-operation test, and whether the space names it illegal.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "jurisdiction",
+     "english": "The legal-operation test, and whether the space names it illegal."
+    }
+   ]
+  },
+  "crossings": {
+   "descriptive": "Where using one space's language in another is the error.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "crossings",
+     "english": "Where using one space's language in another is the error."
+    }
+   ]
+  },
+  "mink_boost": {
+   "descriptive": "Boost along x and what it does to clocks and rods.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Boost along x and what it does to clocks and rods."
+    }
+   ]
+  },
+  "mink_rapidity": {
+   "descriptive": "Composition of collinear boosts.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Composition of collinear boosts."
+    }
+   ]
+  },
+  "mink_interval": {
+   "descriptive": "Causal kind of the separation of two events.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Causal kind of the separation of two events."
+    }
+   ]
+  },
+  "mink_lightcone": {
+   "descriptive": "Boosts as scalings of u and v (the Doppler factor).",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Boosts as scalings of u and v (the Doppler factor)."
+    }
+   ]
+  },
+  "mink_thomas_wigner": {
+   "descriptive": "Two perpendicular boosts compose to a boost and a rotation.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Two perpendicular boosts compose to a boost and a rotation."
+    }
+   ]
+  },
+  "mink_algebra": {
+   "descriptive": "Closure of the six generators.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Closure of the six generators."
+    }
+   ]
+  },
+  "mink_threshold": {
+   "descriptive": "Minimum beam kinetic energy.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Minimum beam kinetic energy."
+    }
+   ]
+  },
+  "mink_trip": {
+   "descriptive": "Proper time of the traveller.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "Proper time of the traveller."
+    }
+   ]
+  },
+  "mink_em": {
+   "descriptive": "The two scalars of the field tensor.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "The two scalars of the field tensor."
+    }
+   ]
+  },
+  "mink_derivation": {
+   "descriptive": "From invariance of the interval.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "minkowski",
+     "english": "From invariance of the interval."
+    }
+   ]
+  },
+  "curved_solutions": {
+   "descriptive": "Vacuum, de Sitter, FLRW, Bianchi.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Vacuum, de Sitter, FLRW, Bianchi."
+    }
+   ]
+  },
+  "curved_orbit": {
+   "descriptive": "Integrates u'' + u = M/L^2 + 3Mu^2.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Integrates u'' + u = M/L^2 + 3Mu^2."
+    }
+   ]
+  },
+  "curved_mercury": {
+   "descriptive": "The measured anomaly.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "The measured anomaly."
+    }
+   ]
+  },
+  "curved_deflection": {
+   "descriptive": "Null geodesic against the formula.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Null geodesic against the formula."
+    }
+   ]
+  },
+  "curved_solar_deflection": {
+   "descriptive": "The 1919 number.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "The 1919 number."
+    }
+   ]
+  },
+  "curved_clocks": {
+   "descriptive": "Gravitational and velocity terms.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Gravitational and velocity terms."
+    }
+   ]
+  },
+  "curved_tidal": {
+   "descriptive": "Curvature seen as separation of free fallers.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Curvature seen as separation of free fallers."
+    }
+   ]
+  },
+  "curved_horizons": {
+   "descriptive": "Characteristic radii and the Hawking temperature.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Characteristic radii and the Hawking temperature."
+    }
+   ]
+  },
+  "curved_kerr": {
+   "descriptive": "Horizons and ergosphere.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Horizons and ergosphere."
+    }
+   ]
+  },
+  "curved_binary_pulsar": {
+   "descriptive": "Energy lost to gravitational waves.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "Energy lost to gravitational waves."
+    }
+   ]
+  },
+  "curved_gw": {
+   "descriptive": "The wave equation from the field equations.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "curved",
+     "english": "The wave equation from the field equations."
+    }
+   ]
+  },
+  "tangent_equivalence": {
+   "descriptive": "The connection can be removed at a point; the curvature cannot.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "tangent",
+     "english": "The connection can be removed at a point; the curvature cannot."
+    }
+   ]
+  },
+  "tangent_tidal": {
+   "descriptive": "What is left of gravity inside a freely falling lab.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "tangent",
+     "english": "What is left of gravity inside a freely falling lab."
+    }
+   ]
+  },
+  "metric_friedmann": {
+   "descriptive": "The action on the (a, N) slice of the space of metrics.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "metric",
+     "english": "The action on the (a, N) slice of the space of metrics."
+    }
+   ]
+  },
+  "metric_gauge": {
+   "descriptive": "A diffeomorphism does not change linearised curvature.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "metric",
+     "english": "A diffeomorphism does not change linearised curvature."
+    }
+   ]
+  },
+  "cross_newton": {
+   "descriptive": "Poisson's equation from the field equations.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "crossing curved -> newton",
+     "english": "Poisson's equation from the field equations."
+    }
+   ]
+  },
+  "cross_euclid": {
+   "descriptive": "Why the horizon has a temperature.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "crossing curved -> euclidean",
+     "english": "Why the horizon has a temperature."
+    }
+   ]
+  },
+  "cross_conversion_field": {
+   "descriptive": "Reads wiki 140's conversion field v(q) as a metric: the hilltop zero is horizon-like with kappa = 1.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "crossing",
+     "english": "Reads wiki 140's conversion field v(q) as a metric: the hilltop zero is horizon-like with kappa = 1."
+    }
+   ]
+  },
+  "cross_flat": {
+   "descriptive": "How the curved space hands over to the flat one.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "crossing curved -> minkowski",
+     "english": "How the curved space hands over to the flat one."
+    }
+   ]
+  },
+  "bridge_prime_boost": {
+   "descriptive": "ESTABLISHED arithmetic; the reading in terms of the Null Operator's prime shifts is INTERPRETATION.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "bridge",
+     "english": "ESTABLISHED arithmetic; the reading in terms of the Null Operator's prime shifts is INTERPRETATION."
+    }
+   ]
+  },
+  "bridge_compose": {
+   "descriptive": "Lorentz composition along a line is multiplication of Doppler factors.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "bridge",
+     "english": "Lorentz composition along a line is multiplication of Doppler factors."
+    }
+   ]
+  },
+  "bridge_factorise": {
+   "descriptive": "Rapidity = sum e_p ln p.",
+   "ordering": [
+    {
+     "n": 1,
+     "op": "bridge",
+     "english": "Rapidity = sum e_p ln p."
+    }
+   ]
+  }
+ }
+}

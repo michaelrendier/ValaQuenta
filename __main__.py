@@ -69,6 +69,7 @@ from .modules.pi_derivations import PiDerivationsModule
 from .modules.circle_atlas import CircleAtlasModule
 from .modules.witches_hat import WitchesHatModule
 from .modules.lagrangian_sm import LagrangianSMModule
+from .modules.relativity import RelativityModule
 
 def _register_all():
     registry = get_registry()
@@ -117,6 +118,7 @@ def _register_all():
     register(CircleAtlasModule())
     register(WitchesHatModule())
     register(LagrangianSMModule())
+    register(RelativityModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────
