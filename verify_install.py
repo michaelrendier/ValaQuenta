@@ -109,7 +109,7 @@ for name, why in OPTIONAL.items():
 # ── 3. Engines ───────────────────────────────────────────────────────────────
 print('\n[3] Top-level engines')
 TOPLEVEL = [
-    'bao_mass_gap', 'capacitor', 'corpus', 'fixed_point', 'galactic_cavity',
+    'capacitor', 'corpus', 'fixed_point', 'galactic_cavity',
     'hamiltonian', 'lexicon', 'noether', 'semantic_domain', 'semantic_word',
     'telperion', 'understand', 'zero_lattice',
 ]
@@ -135,10 +135,10 @@ for name in MODULES:
 # ── 5. The arithmetic actually runs ──────────────────────────────────────────
 print('\n[5] Known results')
 try:
-    from ValaQuenta import bao_mass_gap as bmg
+    from ValaQuenta.modules.inductive_onset_residual import maths as bmg
 
     # Recompute from the definition instead of trusting the stored value.
-    gap = bmg.OMEGA_ZS - bmg.D_STAR * bmg.LN10
+    gap = bmg.OMEGA_ZS - bmg.D_STAR_RUN * bmg.LN10
     if abs(gap - 0.000707357533248576) < 1e-15:
         ok(f'GAP recomputed = {gap!r}')
     else:
@@ -152,7 +152,7 @@ try:
     else:
         bad(f'OMEGA_ZS fails its defining equation, residual {residual:.2e}')
 except Exception:
-    bad('bao_mass_gap constants', traceback.format_exc(limit=2).strip())
+    bad('inductive_onset_residual constants', traceback.format_exc(limit=2).strip())
 
 try:
     from ValaQuenta import zero_lattice as zl
@@ -188,7 +188,7 @@ print(f'{GREEN}All checks passed.{RESET}'
          if warnings else ''))
 print("""
 Next:
-    python3 -c "from ValaQuenta.bao_mass_gap import validate; validate()"
+    python3 -c "from ValaQuenta.modules.inductive_onset_residual.maths import validate; validate()"
     python3 -m ValaQuenta --info
     jupyter lab notebooks/
 

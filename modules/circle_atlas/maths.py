@@ -757,7 +757,7 @@ VIEWPORTS: Dict[str, Dict[str, Any]] = {
     "add_scale_sign": dict(fn=v_add_scale_sign, name="ADD:SCALE:SIGN as angle operations", source="GenerationalLineage/engine/add_scale_sign.py; ValaQuenta/modules/add_scale_sign", tier="ESTABLISHED", pi="cos_zero"),
     "prime_wheels":   dict(fn=v_prime_wheels, name="Prime wheels p^{−it} / Euler product (Telperion)", source="RiemannHypothesisProof/rhp/wheel65.py, epicycles.py", tier="ESTABLISHED", pi="euler_product"),
     "ring":           dict(fn=v_ring, name="Ring / standing wave / orbital condition", source="ValaQuenta/modules/spherical", tier="ESTABLISHED", pi="ring_eigenvalue"),
-    "bao_ring":       dict(fn=v_bao_ring, name="BAO ring (constructed model, not data)", source="ValaQuenta/modules/bao_mass_gap", tier="THEORETICAL", pi=None),
+    "bao_ring":       dict(fn=v_bao_ring, name="BAO ring (constructed model, not data)", source="ValaQuenta/modules/inductive_onset_residual", tier="THEORETICAL", pi=None),
     "polygon":        dict(fn=v_polygon, name="Archimedes polygons (the one construction method)", source="Cody 2026-11-16; hypergon_constructibility", tier="ESTABLISHED", pi="archimedes"),
     "retraction":     dict(fn=v_retraction, name="Fixed-point space: normalising retraction, and the origin's blow-up circle", source="ValaQuenta/fixed_point.py", tier="INTERPRETATION", pi=None),
     "sphere":         dict(fn=v_sphere, name="Sphere S² (parallels, great circles)", source="ValaQuenta/modules/spherical; RiemannHypothesisProof/rhp/sphere.py", tier="ESTABLISHED", pi="ball3_lattice"),

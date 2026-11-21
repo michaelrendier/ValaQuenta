@@ -173,7 +173,7 @@ _GROUP_HINTS = {
     "scale": "Decomposition · The Scale",
     "add_scale_sign": "Decomposition · The Scale",
     "units": "Decomposition · The Scale",
-    "bao_mass_gap": "Cosmology · physics",
+    "inductive_onset_residual": "Cosmology · physics",
     "desitter_cavitation": "Cosmology · physics",
     "sigma_cavitation": "Cosmology · physics",
     "tier6_physics": "Cosmology · physics",

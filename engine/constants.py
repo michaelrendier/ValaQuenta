@@ -50,8 +50,10 @@ OMEGA_H   = math.exp(math.pi)           # Hagedorn ceiling — e^pi ~ 23.1407
 #   d* x ln(10) = 0.56644 vs OMEGA_ZS = 0.56714 — gap = 0.00070
 #   HIGHEST PRIORITY OPEN: derive d* from RG flow independently
 #   Status: THEORETICAL — numerically confirmed, algebraic derivation open
-D_STAR    = 0.24600
-D_STAR_GAP = abs(OMEGA_ZS - D_STAR * math.log(10))  # 0.00070
+D_STAR    = 0.24600                          # the value the code runs with (written in ~120 code files across the repositories)
+D_STAR_SPEC     = D_STAR                     # same number under its measured name
+D_STAR_BOUNDARY = OMEGA_ZS / math.log(10)    # 0.2463072015: the digits gained per step of the induction x -> exp(-x)
+D_STAR_GAP = abs(OMEGA_ZS - D_STAR * math.log(10))  # 0.00070 = ln10 * (D_STAR_BOUNDARY - D_STAR)
 
 # ── Neural constants ────────────────────────────────────────────────────────
 # H_NN: neural Planck constant (analog of h)

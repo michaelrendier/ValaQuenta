@@ -1,0 +1,147 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.inductive_onset_residual",
+  "type": "engine",
+  "name": "inductive_onset_residual",
+  "display": "Inductive onset residual",
+  "version": "0.2",
+  "summary": "W(1) by induction (digits per step = d*), the d* the code runs with, the residual between them, the 0_RB hub weight, the couplings p^(-sigma), a live d* census.",
+  "confidence_floor": "OPEN",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.inductive_onset_residual",
+    "class": "InductiveOnsetResidualModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Replaces bao_mass_gap (first committed 2026-07-31) on 2026-11-21. Name from the Inductive Self-Adjoint Geometric Coupling Hamiltonian. The BAO, Yang-Mills and compactification readings are recorded in maths.interpretations() as readings.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-21",
+    "status_label": "OPEN",
+    "predecessors": [
+      "bao_mass_gap"
+    ],
+    "citations": [],
+    "wiki": {
+      "valaquenta": "ValaQuenta/wiki/inductive_onset_residual.md"
+    },
+    "notebook": "ValaQuenta/notebooks/core/19_inductive_onset_residual.ipynb",
+    "proof_locale": "",
+    "_draft": "origin and created are machine-drafted from git history and the wiki claim; the author has not yet reviewed them"
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
+  },
+  "ui": {
+    "menu": {
+      "label": "Inductive onset residual",
+      "group": "Cosmology · physics",
+      "order": 100,
+      "blurb": "W(1) by induction (digits per step = d*), the d* the code runs with, the residual between them, the 0_RB hub weight, the couplings p^(-sigma), a live d* census."
+    },
+    "tools": [
+      {
+        "name": "summary",
+        "equation": "summary",
+        "label": "Summary",
+        "desc": "summary",
+        "params": []
+      },
+      {
+        "name": "induction",
+        "equation": "induction",
+        "label": "Induction",
+        "desc": "induction",
+        "params": []
+      },
+      {
+        "name": "running_value",
+        "equation": "running_value",
+        "label": "Running Value",
+        "desc": "running value",
+        "params": []
+      },
+      {
+        "name": "onset_residual",
+        "equation": "onset_residual",
+        "label": "Onset Residual",
+        "desc": "onset residual",
+        "params": []
+      },
+      {
+        "name": "hub_fiber",
+        "equation": "hub_fiber",
+        "label": "Hub Fiber",
+        "desc": "hub fiber",
+        "params": [
+          "depth"
+        ]
+      },
+      {
+        "name": "couplings",
+        "equation": "couplings",
+        "label": "Couplings",
+        "desc": "couplings",
+        "params": []
+      },
+      {
+        "name": "explicit_formula",
+        "equation": "explicit_formula",
+        "label": "Explicit Formula",
+        "desc": "explicit formula",
+        "params": [
+          "x",
+          "n_zeros"
+        ]
+      },
+      {
+        "name": "census",
+        "equation": "census",
+        "label": "Census",
+        "desc": "census",
+        "params": []
+      },
+      {
+        "name": "symbols",
+        "equation": "symbols",
+        "label": "Symbols",
+        "desc": "symbols",
+        "params": []
+      },
+      {
+        "name": "validate",
+        "equation": "validate",
+        "label": "Validate",
+        "desc": "validate",
+        "params": []
+      }
+    ],
+    "display_modes": [],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "inductive_onset_residual",
+  "_scaffolded": true
+}

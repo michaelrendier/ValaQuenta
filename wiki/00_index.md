@@ -73,7 +73,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 
 | Page | Engine | Floor | Key Result |
 |------|--------|-------|-----------|
-| [bao_mass_gap.md](bao_mass_gap.md) | `modules/bao_mass_gap/` | ESTABLISHED | **Δ=0.0007073575=1/(1000√2)** NOT 1/√2000; residue of BAO decomposition; invariant in n; 7/7 checks, 0 free params |
+| [inductive_onset_residual.md](inductive_onset_residual.md) | `modules/inductive_onset_residual/` | ESTABLISHED | **Δ=0.0007073575=1/(1000√2)** NOT 1/√2000; residue of BAO decomposition; invariant in n; 7/7 checks, 0 free params |
 | [clay_millennium.md](clay_millennium.md) | `modules/clay_millennium/` | THEORETICAL | 7 problems mapped; **1 solved, 6 open** |
 | [turing_diagonal.md](turing_diagonal.md) | `modules/turing_diagonal/` | ESTABLISHED | i²=−1 = Cantor = Gödel = Enigma; D_n/n!→1/e |
 | [singularity_null.md](singularity_null.md) | `modules/singularity_null/` | THEORETICAL | Singularity IS identity; circle says NULL one way |
@@ -138,7 +138,7 @@ Engines where this convention is load-bearing:
 
 | Question | Location |
 |----------|----------|
-| Why 10³ in GAP ≈ 1/(1000√2)? | bao_mass_gap.md |
+| Why 10³ in GAP ≈ 1/(1000√2)? | inductive_onset_residual.md |
 | Why up/down not forward/backward? | noether.md; Ainulindale wiki/61 |
 | Corpus and lexicon engines (untested — no binary corpus loaded) | corpus.md, lexicon.md |
 | Prime-channel encoder has ~85% common mode; concepts do not separate | translator_discocat.md; translator_vsa.md |

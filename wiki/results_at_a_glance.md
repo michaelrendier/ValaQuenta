@@ -30,20 +30,9 @@ the SFR decomposer suite (with the fast inverse square root as the worked
 example). Formal spec: [wiki/add_scale_sign.md](add_scale_sign.md) ·
 `Ainulindale/wiki/107_add_scale_sign_datatype.md`.
 
-## bao_mass_gap.py — Yang-Mills Mass Gap
+## inductive_onset_residual — W(1) by induction and the d* residual
 
-```
-Status: ESTABLISHED (all 5 checks pass)
-
-OMEGA_ZS = 0.5671432904097838  (Lambert W(1), exact)
-D_STAR   = 0.24600             (BK spectral, 5 sig figs)
-GAP      = 0.000707357533249   (OMEGA_ZS − D_STAR × ln(10))
-
-GAP ≈ 1/(1000√2)  [0.035% approximation]
-NOTE: 1/√2000 = 0.02236 — NOT the gap (31.6× larger)
-```
-
-See [wiki/bao_mass_gap.md](bao_mass_gap.md)
+Iterating x → e^(−x) gains −log₁₀ W(1) = W(1)/ln 10 = 0.2463072015 digits per step (d*, Boundary). The code runs d* = 0.24600; Δ = W(1) − 0.24600·ln 10 = 0.000707357533 = ln 10·(d*_induced − d*_running). See [wiki/inductive_onset_residual.md](inductive_onset_residual.md). (Replaces the retired `bao_mass_gap`.)
 
 ## hamiltonian.py — H = xp
 

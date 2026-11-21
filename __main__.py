@@ -40,7 +40,7 @@ from .modules.hypergon_constructibility import HypergonConstructibilityModule
 from .modules.l_io_photon_path import LIOPhotonPathModule
 from .modules.archimedes_screw import ArchimedesScrewModule
 from .modules.box_kite import BoxKiteModule
-from .modules.bao_mass_gap import BaoMassGapModule
+from .modules.inductive_onset_residual import InductiveOnsetResidualModule
 from .modules.angular_rank import AngularRankModule
 from .modules.scale import ScaleModule
 from .modules.units import UnitsModule
@@ -73,7 +73,7 @@ from .modules.relativity import RelativityModule
 
 def _register_all():
     registry = get_registry()
-    register(BaoMassGapModule())   # headline result — first in the module list
+    register(InductiveOnsetResidualModule())   # headline result — first in the module list
     register(InversionModule())
     register(LagrangianModule())
     register(NoetherModule())

@@ -5,13 +5,13 @@ import pytest
 
 
 def test_gap_is_recomputed_not_looked_up():
-    from ValaQuenta import bao_mass_gap as b
-    assert abs((b.OMEGA_ZS - b.D_STAR * b.LN10) - 0.000707357533248576) < 1e-15
+    from ValaQuenta.modules.inductive_onset_residual import maths as b
+    assert abs((b.OMEGA_ZS - b.D_STAR_RUN * b.LN10) - 0.000707357533248576) < 1e-15
     assert b.validate()["all_pass"]
 
 
 def test_omega_is_lambert_w_of_one():
-    from ValaQuenta import bao_mass_gap as b
+    from ValaQuenta.modules.inductive_onset_residual import maths as b
     assert abs(b.OMEGA_ZS * math.exp(b.OMEGA_ZS) - 1.0) < 1e-15
 
 

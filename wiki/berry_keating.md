@@ -54,7 +54,7 @@ is the line on which the functional-equation reflection is amplitude-perfect
 (`|ξ(s)| = |ξ(1−s)|`), making the field a **pure standing wave** whose nodes are
 the zeros — a Chladni figure. The **mass gap `Δ`** is then the width of the
 first band above that nodal line: the first stroke of the same engine, the
-ignition impulse of recombination (`wiki/bao_mass_gap.md` §"The gap is the first
+ignition impulse of recombination (`wiki/inductive_onset_residual.md` §"The gap is the first
 motion"). Third bearing on `Re(s) = ½`, alongside Courant `Y₁⁰` and the
 vanishing Noether current — none closes C1.
 

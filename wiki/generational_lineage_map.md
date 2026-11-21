@@ -75,7 +75,7 @@ Physical quantity · spectral property · data transform · named result:
 
 | engine | job |
 |---|---|
-| **bao_mass_gap** | the mass-gap residue Δ — cosmology / spectral. |
+| **inductive_onset_residual** | W(1) by induction, the running d*, the residual between them; the 0_RB hub; the d* census. |
 | **berry_keating** | the `xp` operator; the spectral route to σ = ½. |
 | **sigma_expansion** | Taylor expansion of `P_red(σ)` around σ = ½. |
 | **l_io_photon_path** | GR lensing — Kaiser–Squires shear → convergence, Poisson solve. |

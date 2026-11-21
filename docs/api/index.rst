@@ -18,7 +18,7 @@ Each module has ``maths.py`` (the mathematics as plain functions) and, when regi
    modules/add_scale_sign
    modules/angular_rank
    modules/archimedes_screw
-   modules/bao_mass_gap
+   modules/inductive_onset_residual
    modules/basile
    modules/addition_matrix
    modules/berry_keating

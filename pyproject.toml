@@ -41,7 +41,7 @@ packages = [
     "ValaQuenta.modules.add_scale_sign",
     "ValaQuenta.modules.angular_rank",
     "ValaQuenta.modules.archimedes_screw",
-    "ValaQuenta.modules.bao_mass_gap",
+    "ValaQuenta.modules.inductive_onset_residual",
     "ValaQuenta.modules.berry_keating",
     "ValaQuenta.modules.box_kite",
     "ValaQuenta.modules.bracketing_firing_order",

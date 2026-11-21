@@ -66,7 +66,7 @@ UI registration).
 
 | Import | What it is | Public API | Results |
 |---|---|---|---|
-| `ValaQuenta.bao_mass_gap` | Yang-Mills Mass Gap | `gap_value`, `identity_check`, `bao_consistency`, `mtheory_geometry`, `validate` | [wiki](wiki/bao_mass_gap.md) |
+| `ValaQuenta.modules.inductive_onset_residual` | Inductive onset residual | `induction`, `onset_residual`, `hub_fiber`, `couplings`, `explicit_formula`, `census`, `validate` | [wiki](wiki/inductive_onset_residual.md) |
 | `ValaQuenta.capacitor` | Capacitor — The semantic low-pass filter. | `Capacitor` | [wiki](wiki/capacitor.md) |
 | `ValaQuenta.corpus` | CorpusProcessor — Feed any text archive to the ValaQuenta. | `CorpusProcessor` | [wiki](wiki/corpus.md) |
 | `ValaQuenta.fixed_point` | Fixed Point Engine — The Boundary | `v_nball`, `v_nball_peak`, `transformer_profile`, `FixedPoint`, `two_fixed_points`, `angular_quantum_sequence` … | [wiki](wiki/fixed_point.md) |
@@ -90,7 +90,7 @@ every equation with its parameters, confidence and a worked call.
 
 | Module | Engine | Equations | Confidence floor | Reference |
 |---|---|---|---|---|
-| `bao_mass_gap` | The Mass Gap — spectral residue of BAO | 7 | ESTABLISHED | [toolbox](wiki/toolbox/11_bao_mass_gap.md) · [wiki](wiki/bao_mass_gap.md) |
+| `inductive_onset_residual` | Inductive onset residual | 10 | OPEN | [toolbox](wiki/toolbox/11_inductive_onset_residual.md) · [wiki](wiki/inductive_onset_residual.md) |
 | `inversion` | Inside-Out Inversion Engine (I\|O) | 7 | ESTABLISHED | [toolbox](wiki/toolbox/07_inversion.md) · [wiki](wiki/inversion.md) |
 | `lagrangian` | L_NN Ainulindale Lagrangian | 8 | THEORETICAL | [toolbox](wiki/toolbox/08_lagrangian.md) · [wiki](wiki/lagrangian.md) |
 | `noether` | Noether Currents ∂_μJ^μ = 0 | 6 | THEORETICAL | [toolbox](wiki/toolbox/09_noether.md) · [wiki](wiki/noether.md) |
@@ -263,7 +263,7 @@ the system libraries some entries imply.
 ## Run
 
 ```bash
-python3 -c "from ValaQuenta.bao_mass_gap import validate; validate()"
+python3 -c "from ValaQuenta.modules.inductive_onset_residual.maths import validate; validate()"
 python3 -c "from ValaQuenta.understand import Understand; u=Understand(); print(u.process('the prime'))"
 python3 -m ValaQuenta --info        # registry summary
 python3 -m ValaQuenta --curses      # THE DERIVATION BROWSER, no Qt needed

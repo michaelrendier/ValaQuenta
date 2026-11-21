@@ -264,16 +264,10 @@ Modules
                          [SCALE, ADD] = ADD bites. No sedenion here; order
                          matters at THIS tier.
 
-    bao_mass_gap       — The mass gap as the residue of the BAO spectral
-                         decomposition. The explicit formula splits the prime
-                         distribution into a de Sitter ground state plus one
-                         standing wave per zero; read at the BAO scale that is
-                         the CMB acoustic spectrum. What no standing wave
-                         absorbs between the acoustic floor D*·ln10 and the
-                         thermal ceiling Ω_ζΣ is the residue: Δ = 0.0007073575 =
-                         1/(1000√2). Zero free parameters. Δ is consumed across
-                         the codebase as the compactification scale and spectral
-                         floor; this module is where it is computed.
+    inductive_onset_residual — W(1) built by induction (digits gained per step = d*), the d*
+                         the code runs with, the residual between them, the 0_RB hub weight,
+                         the couplings p^(-sigma), and a live census of the d* values.
+                         Replaces bao_mass_gap (2026-11-21).
 
     constants          — Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F,
                          d*, Λ — all drop out of H_RB algebraic structure. Two

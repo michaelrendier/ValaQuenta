@@ -51,7 +51,7 @@ in the order found.
 | [08_lagrangian.md](08_lagrangian.md) | L_NN  Ainulindale Lagrangian | 2026-09-27 | `modules/lagrangian/` |
 | [09_noether.md](09_noether.md) | Noether Currents  ∂_μJ^μ = 0 | 2026-09-27 | `modules/noether/` |
 | [10_noether_information.md](10_noether_information.md) | J_info  Information Current | 2026-09-27 | `modules/noether_information/` |
-| [11_bao_mass_gap.md](11_bao_mass_gap.md) | The Mass Gap — spectral residue of BAO | 2026-09-27 | `modules/bao_mass_gap/` |
+| [11_inductive_onset_residual.md](11_inductive_onset_residual.md) | The Mass Gap — spectral residue of BAO | 2026-09-27 | `modules/inductive_onset_residual/` |
 | [12_clay_millennium.md](12_clay_millennium.md) | Clay Millennium Problems — Σ_RB derivations | 2026-09-27 | `modules/clay_millennium/` |
 | [13_turing_diagonal.md](13_turing_diagonal.md) | Turing Diagonal Engine — i²=-1 = Cantor = Gödel = Enigma = UDOE | 2026-09-27 | `modules/turing_diagonal/` |
 | [14_singularity_null.md](14_singularity_null.md) | Singularity-NULL Engine — the singularity IS identity | 2026-09-27 | `modules/singularity_null/` |

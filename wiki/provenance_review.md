@@ -13,7 +13,7 @@ Set the label in the manifest (`provenance.status_label`), delete `_draft` and `
 | `add_scale_sign` | 2026-08-28 | ESTABLISHED | Noether, Smith, Bell, Legendre, Möbius, Cayley, Dickson | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
 | `angular_rank` | 2026-08-15 | ESTABLISHED | Cayley, Dickson | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
 | `archimedes_screw` | 2026-08-04 | THEORETICAL | von Mangoldt, Dickman, Kronecker, Euler, Legendre, Lambert, Fermat, Mertens | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
-| `bao_mass_gap` | 2026-07-31 | ESTABLISHED | Lambert, Cayley, Dickson | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
+| `inductive_onset_residual` | 2026-07-31 | ESTABLISHED | Lambert, Cayley, Dickson | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
 | `berry_keating` | 2026-06-28 | OPEN | Berry, Keating, Noether, Wiles, Courant, Lambert | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
 | `box_kite` | 2026-08-05 | ESTABLISHED | de Marrais, Moreno, Noether, Smith, Möbius, Cayley, Dickson, Fano | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
 | `bracketing_firing_order` | 2026-09-27 | ESTABLISHED | Bell, Recam | ☐ ESTABLISHED ☐ OURS ☐ FIRST STATED HERE |
