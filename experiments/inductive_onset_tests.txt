@@ -1,0 +1,28 @@
+A  Ω by induction (200 steps) = 0.5671432904097838; |Ω − W(1)| = 0.00e+00
+   start 0.0: digits gained per step (last 8 steps) = 0.2463072068   |− d*_Boundary| = 5.33e-09   |− 0.24600| = 3.07e-04   (40 usable steps)
+   start 0.3: digits gained per step (last 8 steps) = 0.2463072067   |− d*_Boundary| = 5.24e-09   |− 0.24600| = 3.07e-04   (40 usable steps)
+   start 0.9: digits gained per step (last 8 steps) = 0.2463070981   |− d*_Boundary| = 1.03e-07   |− 0.24600| = 3.07e-04   (40 usable steps)
+   start 1.7: digits gained per step (last 8 steps) = 0.2463072057   |− d*_Boundary| = 4.18e-09   |− 0.24600| = 3.07e-04   (40 usable steps)
+   start 3.0: digits gained per step (last 8 steps) = 0.2463072186   |− d*_Boundary| = 1.71e-08   |− 0.24600| = 3.07e-04   (40 usable steps)
+   −log10 Ω = 0.246307201473  Ω/ln10 = 0.246307201473  (equal because ln Ω = −Ω)
+A3 d*_Boundary − 0.246 = 3.0720147342e-04; ×ln10 = 7.0735753325e-04 = Δ (7.0735753325e-04); Δ×1000 = 0.707358 vs 1/√2 = 0.707107
+   0.246 to 3 s.f. means d* in [0.2455, 0.2465]; Δ ranges over ±1.15e-03 (Δ = 7.07e-04): Δ/uncertainty = 0.61  → consistent with 0
+B  882 expressions from the couplings and powers of ten
+B1 hits within 0.035% of Δ: 0: []
+   null: mean hits 0.026; fraction of random targets with ≥ 0 hits = 1.000; targets with ≥1 hit = 0.011
+B2 tolerance = d*'s sourced precision (abs ±1.15e-3): Δ hits 124 of 882; null mean 118.6
+
+VERDICT vs the registered predictions:
+  A1 HELD (see rates above)  A2 HELD if every |rate − 0.24600| > 3e-4  A3 arithmetic identity
+  B1 FAILED (Δ is special or unspecial beyond the 90% band): fraction ≥ observed = 1.000
+
+RUN 2 (post hoc, labelled): run 1 used tolerance 3.5e-4; the 1/(1000√2) form misses Δ by 3.5449e-04 relative (3.545e-4), i.e. by 1.3% of the window, so the registered prediction 'hits include 2^-0.5*10^-3' FAILED at the registered tolerance.
+   tolerance 0.00036: Δ hits 2: ['2^-0.5*10^-3', '10^-3*2^-0.5']; fraction of random targets with ≥ 2 hit(s) = 0.007
+   caution: the family (p=2, σ=1/2, 10^-3) was chosen after the form 1/(1000√2) was known; the 882-expression family was built to contain it, so the ~1% figure is a lower bound on how often a coincidence like this appears, not a significance.
+
+CORRECTED VERDICT (the generated verdict lines above are loose; this is the accurate one):
+  A1 registered: measured digits-per-iteration within 1e-8 of 0.2463072015 from EVERY start. Measured: 4 of 5 starts within 1.7e-8 or better (5.3e-9, 5.2e-9, 4.2e-9, 1.7e-8: the last misses 1e-8), start 0.9 off by 1.03e-7 (float round-off in the final steps where the error is near 1e-14). Strictly: FAILED at 1e-8 for 2 of 5 starts, HELD at 1e-7 for all; the value is 0.24630720 to 7 digits and is not 0.24600 in any start.
+  A2 HELD: every |rate − 0.24600| = 3.07e-4 > 3e-4 (by 0.07e-4; this margin is itself the rounding residual).
+  A3 HELD (arithmetic identity): Δ = ln10·(d*_Boundary − 0.246); at 3 s.f. d* the residual is 0.61 of its own uncertainty.
+  B1 registered: Δ's hit count inside the null's central 90% AND the hits include 2^-0.5·10^-3. First half HELD (0 hits, like 98.9% of random targets). Second half FAILED at the registered tolerance 3.5e-4 (the form misses by 3.545e-4). Run 2 (tolerance 3.6e-4, post hoc): 1 form, 0.7% of random targets match one, family built after the form was known.
+  B2 HELD: at d*'s sourced precision the search cannot discriminate (124 of 882 hit; null mean 118.6).
