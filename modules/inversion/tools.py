@@ -130,15 +130,15 @@ class InversionModule(EquationModule):
             ),
             Equation(
                 name='d_star_gap',
-                display='d* x ln(10) vs OMEGA_ZS  [OPEN — gap = 0.00070]',
+                display='d* x ln(10) vs A_PI  [OPEN — gap = 0.00070]',
                 latex=r'd^* \times \ln(10) \approx \Omega_{\zeta\Sigma} \quad \text{gap: } 0.00070',
-                radian_form='d* x ln(10) = 0.56644  vs  OMEGA_ZS = 0.56714',
+                radian_form='d* x ln(10) = 0.56644  vs  A_PI = 0.56714',
                 confidence='OPEN',
                 code_verified=True,
                 params=[],
                 compute=lambda: RecursionAttractor().d_star_gap(),
                 display_options=['text'],
-                process='d* x ln(10) vs OMEGA_ZS',
+                process='d* x ln(10) vs A_PI',
             ),
             Equation(
                 name='four_horizons',
@@ -230,7 +230,7 @@ class InversionModule(EquationModule):
                 'cartesian':   points,
                 'fixed_point': (1.0, 0.0),
                 'phi':         (C.PHI, 0.0),
-                'domain':      (C.A_PI, C.OMEGA_ZS),
+                'domain':      (C.ALPHA_FS, C.A_PI),
             }
         elif equation_name == 'gradient_flow':
             flow = result['result']
@@ -281,4 +281,4 @@ class InversionModule(EquationModule):
     def on_register(self, registry) -> None:
         observer = get_observer()
         assert observer.is_in_domain(C.D_STAR), \
-            f"d* = {C.D_STAR} outside BK domain [{C.A_PI}, {C.OMEGA_ZS}]"
+            f"d* = {C.D_STAR} outside BK domain [{C.ALPHA_FS}, {C.A_PI}]"

@@ -63,9 +63,9 @@ def load_maths(tier):
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
     return m
 
-OMEGA_ZS = 0.5671432904097838
+A_PI = 0.5671432904097838
 D_STAR   = 0.24600
-GAP      = OMEGA_ZS - D_STAR * math.log(10)
+GAP      = A_PI - D_STAR * math.log(10)
 R_H      = 1.0 / math.sqrt(2.0)
 RIEMANN_ZEROS = [14.134725, 21.022040, 25.010858, 30.424876, 32.935062,
                  37.586178, 40.918719, 43.327073, 48.005151, 49.773832]
@@ -221,21 +221,21 @@ Omega_L_eff = [Omega_L / h if h > 0 else 0 for h in H_sq]
 
 ax = axes[0]
 ax.plot(z_range, Omega_L_eff, 'b-', lw=2, label='Ω_Λ_eff(z)')
-ax.axhline(OMEGA_ZS, color='r', ls='--', lw=2, label=f'OMEGA_ZS = {OMEGA_ZS:.4f}')
+ax.axhline(A_PI, color='r', ls='--', lw=2, label=f'A_PI = {A_PI:.4f}')
 ax.axhline(Omega_L, color='purple', ls=':', alpha=0.7, label=f'Current Ω_Λ = {Omega_L}')
 ax.axvline(0, color='gray', ls='-', alpha=0.4)
 ax.set_xlabel('Redshift z'); ax.set_ylabel('Ω_Λ effective')
-ax.set_title('OMEGA_ZS = de Sitter Attractor'); ax.legend(fontsize=9); ax.grid(alpha=0.3)
+ax.set_title('A_PI = de Sitter Attractor'); ax.legend(fontsize=9); ax.grid(alpha=0.3)
 ax.set_xlim(-0.9, 3); ax.set_ylim(0, 1.1)
 
-# Right: Lambert W iteration converging to OMEGA_ZS
+# Right: Lambert W iteration converging to A_PI
 x_iter = [0.9]
 for _ in range(30): x_iter.append(math.exp(-x_iter[-1]))
 ax2 = axes[1]
 ax2.plot(x_iter, 'steelblue', lw=2, marker='o', ms=3)
-ax2.axhline(OMEGA_ZS, color='r', ls='--', lw=2, label=f'OMEGA_ZS = {OMEGA_ZS:.6f}')
+ax2.axhline(A_PI, color='r', ls='--', lw=2, label=f'A_PI = {A_PI:.6f}')
 ax2.set_xlabel('Iteration'); ax2.set_ylabel('x')
-ax2.set_title('x → e^{-x} Converges to OMEGA_ZS from Any x₀'); ax2.legend(); ax2.grid(alpha=0.3)
+ax2.set_title('x → e^{-x} Converges to A_PI from Any x₀'); ax2.legend(); ax2.grid(alpha=0.3)
 plt.tight_layout(); plt.show()
 """,
 
@@ -285,7 +285,7 @@ for name in ops:
 ax = axes[0]
 colors = ['red' if abs(s-0.5)<0.1 else 'steelblue' for s in sigmas]
 ax.barh(range(16), sigmas, color=colors, alpha=0.8)
-ax.axvline(OMEGA_ZS, color='r', ls='--', lw=2, label=f'OMEGA_ZS={OMEGA_ZS:.4f}')
+ax.axvline(A_PI, color='r', ls='--', lw=2, label=f'A_PI={A_PI:.4f}')
 ax.axvline(D_STAR, color='g', ls='--', lw=2, label=f'D*={D_STAR}')
 ax.set_yticks(range(16)); ax.set_yticklabels(ops, fontsize=8)
 ax.set_xlabel('Prime hash σ-address'); ax.set_title('16 Operator Names → σ-Addresses')
@@ -358,16 +358,16 @@ print(f"Backward x-affinities: {97152+98304:,} of {196560:,} Leech roots")
 'omega_zs_6_family': """
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
-# Left: 6 domains where OMEGA_ZS appears
+# Left: 6 domains where A_PI appears
 domains = ['Math\\nW(1)=Ω', 'Primes\\n|ζ|² mean', 'Cosmology\\nΩ_Λ attractor',
            'Yang-Mills\\nGAP residual*', 'Sedenion\\n⟨g⟩ mean', 'Information\\nS(σ=½)']
-S_info = -(OMEGA_ZS*math.log(OMEGA_ZS) + (1-OMEGA_ZS)*math.log(1-OMEGA_ZS))
-values = [OMEGA_ZS, OMEGA_ZS, OMEGA_ZS, OMEGA_ZS, OMEGA_ZS, S_info]
+S_info = -(A_PI*math.log(A_PI) + (1-A_PI)*math.log(1-A_PI))
+values = [A_PI, A_PI, A_PI, A_PI, A_PI, S_info]
 
 ax = axes[0]
 bars = ax.bar(domains, values, color=['#3498DB','#E74C3C','#2ECC71','#F39C12','#9B59B6','#1ABC9C'], alpha=0.85)
-ax.axhline(OMEGA_ZS, color='r', ls='--', lw=2, label=f'OMEGA_ZS = {OMEGA_ZS:.6f}')
-ax.set_title('OMEGA_ZS = W(1) in 6 Independent Domains'); ax.legend(); ax.grid(alpha=0.3)
+ax.axhline(A_PI, color='r', ls='--', lw=2, label=f'A_PI = {A_PI:.6f}')
+ax.set_title('A_PI = W(1) in 6 Independent Domains'); ax.legend(); ax.grid(alpha=0.3)
 ax.set_ylim(0, 0.8)
 for bar, val in zip(bars, values):
     ax.text(bar.get_x()+bar.get_width()/2, val+0.01, f'{val:.4f}', ha='center', fontsize=8)
@@ -378,10 +378,10 @@ x = np.linspace(0, 1, 400)
 y_iter = [0.9]
 for _ in range(60): y_iter.append(math.exp(-y_iter[-1]))
 ax2.plot(y_iter, 'steelblue', lw=2, label='x_{n+1} = e^{-x_n}')
-ax2.axhline(OMEGA_ZS, color='r', ls='--', label=f'OMEGA_ZS = {OMEGA_ZS:.4f}')
-ax2.axhline(OMEGA_ZS**2, color='g', ls=':', label=f'OMEGA_ZS² = {OMEGA_ZS**2:.4f} ≈ Ω_M = 0.3111')
+ax2.axhline(A_PI, color='r', ls='--', label=f'A_PI = {A_PI:.4f}')
+ax2.axhline(A_PI**2, color='g', ls=':', label=f'OMEGA_ZS² = {A_PI**2:.4f} ≈ Ω_M = 0.3111')
 ax2.set_xlabel('Iteration n'); ax2.set_ylabel('x_n')
-ax2.set_title('Fixed-Point Iteration: x → e^{-x} → OMEGA_ZS'); ax2.legend(fontsize=8); ax2.grid(alpha=0.3)
+ax2.set_title('Fixed-Point Iteration: x → e^{-x} → A_PI'); ax2.legend(fontsize=8); ax2.grid(alpha=0.3)
 plt.tight_layout(); plt.show()
 """,
 
@@ -451,7 +451,7 @@ plt.tight_layout(); plt.show()
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
 # Left: healthy vs cancer stop-response
-GAP_val = OMEGA_ZS - D_STAR*math.log(10)
+GAP_val = A_PI - D_STAR*math.log(10)
 upper_fracs = np.linspace(0, 1, 50)
 np.random.seed(42)
 responses = []
@@ -480,12 +480,12 @@ ax.set_title('Cancer Onset: Zero-Divisor Collapse'); ax.legend(fontsize=8); ax.g
 
 # Right: cancer staging from J_R/J_B
 stages = ['Healthy', 'Stage I', 'Stage II', 'Stage III', 'Stage IV']
-jr_jb = [OMEGA_ZS, OMEGA_ZS*1.5, OMEGA_ZS*2.0, OMEGA_ZS*2.5, OMEGA_ZS*3.0]
+jr_jb = [A_PI, A_PI*1.5, A_PI*2.0, A_PI*2.5, A_PI*3.0]
 h2o2  = [0.01, 0.05, 0.12, 0.25, 0.50]
 colors_s = ['green','yellowgreen','yellow','orange','red']
 ax2 = axes[1]
 bars = ax2.bar(stages, jr_jb, color=colors_s, alpha=0.85)
-ax2.axhline(OMEGA_ZS, color='b', ls='--', lw=2, label=f'Healthy = OMEGA_ZS = {OMEGA_ZS:.4f}')
+ax2.axhline(A_PI, color='b', ls='--', lw=2, label=f'Healthy = A_PI = {A_PI:.4f}')
 ax2.set_ylabel('J_R/J_B ratio (radiolysis chromatogram)')
 ax2.set_title('Cancer Staging from Noether Balance'); ax2.legend(fontsize=9); ax2.grid(alpha=0.3)
 for bar, h in zip(bars, h2o2):
@@ -505,12 +505,12 @@ def chrom(t, jr_jb):
     JB = 1.0 * np.exp(-(t-15)**2/4)
     return JR+JG+JB
 
-healthy = chrom(t, OMEGA_ZS)
-cancer  = chrom(t, OMEGA_ZS*2.5)
+healthy = chrom(t, A_PI)
+cancer  = chrom(t, A_PI*2.5)
 
 ax = axes[0]
-ax.plot(t, healthy, 'g-', lw=2, label=f'Healthy (J_R/J_B={OMEGA_ZS:.3f} = OMEGA_ZS)')
-ax.plot(t, cancer,  'r-', lw=2, label=f'Cancer Stage III (J_R/J_B={OMEGA_ZS*2.5:.3f})')
+ax.plot(t, healthy, 'g-', lw=2, label=f'Healthy (J_R/J_B={A_PI:.3f} = A_PI)')
+ax.plot(t, cancer,  'r-', lw=2, label=f'Cancer Stage III (J_R/J_B={A_PI*2.5:.3f})')
 ax.axvspan(0, 7.5, alpha=0.08, color='red', label='J_R region (τ<7.5)')
 ax.axvspan(7.5, 11, alpha=0.08, color='gold')
 ax.axvspan(15, 25, alpha=0.08, color='blue', label='J_B region (τ>15)')
@@ -650,7 +650,7 @@ for _ in range(N):
 ax=axes[0]
 ax.hist(oct_gs,bins=30,alpha=0.7,color='green',label=f'Octonion sub-algebra (mean={np.mean(oct_gs):.3f})')
 ax.hist(full_gs,bins=30,alpha=0.7,color='red',label=f'Full sedenion (mean={np.mean(full_gs):.3f})')
-ax.axvline(OMEGA_ZS,color='b',ls='--',lw=2,label=f'OMEGA_ZS={OMEGA_ZS:.4f}')
+ax.axvline(A_PI,color='b',ls='--',lw=2,label=f'A_PI={A_PI:.4f}')
 ax.set_xlabel('g(a) = max_{|b|=1} |ab|'); ax.set_ylabel('Count')
 ax.set_title('Gnarl: g Distribution — Octonion vs Sedenion'); ax.legend(fontsize=8); ax.grid(alpha=0.3)
 
@@ -670,9 +670,9 @@ for uf in fracs:
         gs.append(mx)
     g_means_frac.append(float(np.mean(gs)))
 ax2.plot(fracs, g_means_frac,'steelblue',lw=2,marker='o')
-ax2.axhline(OMEGA_ZS,color='r',ls='--',label='OMEGA_ZS')
+ax2.axhline(A_PI,color='r',ls='--',label='A_PI')
 ax2.set_xlabel('Upper sedenion fraction'); ax2.set_ylabel('Mean g(a)')
-ax2.set_title('g → OMEGA_ZS as algebra spans full sedenion'); ax2.legend(); ax2.grid(alpha=0.3)
+ax2.set_title('g → A_PI as algebra spans full sedenion'); ax2.legend(); ax2.grid(alpha=0.3)
 plt.tight_layout(); plt.show()
 """,
 
@@ -793,7 +793,7 @@ ENGINES = [
    r'r\to R_H^2/r,\;\rho(r)=\rho_0 R_H^2/r^2', 'tier7'),
   (7,'dark_matter_geometry',
    'Dark Matter as Geometric Shadow',
-   'Dark matter = inversion shadow = Chladni antinode = Im(ψ). V_flat = OMEGA_ZS × V_max.',
+   'Dark matter = inversion shadow = Chladni antinode = Im(ψ). V_flat = A_PI × V_max.',
    r'\rho_{\rm DM}=\rho_0 R_H^2/r^2,\;V_{\rm flat}=\Omega_{\zeta\Sigma}V_{\max}', 'tier7'),
   (7,'navier_stokes_sedenion',
    'Navier-Stokes: Classical Failure → Sedenion Revision',
@@ -804,8 +804,8 @@ ENGINES = [
    'Algebraic phase transition: octonion→sedenion at brim. Associativity breaks. Time arrow emerges.',
    r'[a,b,c]=0\;(t<t_{\rm brim})\to[a,b,c]\neq0\;(t>t_{\rm brim})', 'tier7'),
   (7,'lambda_cdm_omega_zs',
-   'ΛCDM + OMEGA_ZS Attractor',
-   'OMEGA_ZS = de Sitter attractor. We are above it. DESI prediction: w → -1.31.',
+   'ΛCDM + A_PI Attractor',
+   'A_PI = de Sitter attractor. We are above it. DESI prediction: w → -1.31.',
    r'H^2=H_0^2[\Omega_m(1+z)^3+\Omega_\Lambda],\;\Omega_\Lambda\to\Omega_{\zeta\Sigma}', 'tier7'),
   (7,'flt_noether_deepened',
    'Fermat Last Theorem = Noether Conservation Law',
@@ -858,11 +858,11 @@ ENGINES = [
    r'd^*/\bar\sigma\cdot D^*=1', 'tier8'),
   (8,'gnarl_validation',
    'Gnarl Validation: Fractal Sedenion Boundary',
-   'Mean g(a) = OMEGA_ZS over unit sedenion sphere. Octonion: g=1. Upper sedenion: g<1.',
+   'Mean g(a) = A_PI over unit sedenion sphere. Octonion: g=1. Upper sedenion: g<1.',
    r'\langle g\rangle_{S^{15}}=\Omega_{\zeta\Sigma},\;\dim_H(\text{Gnarl})=14+d^*', 'tier8'),
   (8,'omega_zs_6_family',
-   'OMEGA_ZS 6-Family: One Constant, Six Domains',
-   'W(1) = OMEGA_ZS appears in mathematics, primes, cosmology, Yang-Mills, sedenion, information.',
+   'A_PI 6-Family: One Constant, Six Domains',
+   'W(1) = A_PI appears in mathematics, primes, cosmology, Yang-Mills, sedenion, information.',
    r'\Omega_{\zeta\Sigma}=W(1)=e^{-\Omega_{\zeta\Sigma}},\;\Omega_{\zeta\Sigma}^2\approx\Omega_M', 'tier8'),
   (8,'hermite_timing_wheel',
    'Hermite Timing Wheel: BAO Acoustic Modes',
@@ -895,7 +895,7 @@ ENGINES = [
    r'c_{\rm drug}=R_H^2 c^\dagger/|c|^2,\;c_{\rm drug}\cdot c_{\rm cancer}=R_H^2 e_0', 'tier9'),
   (9,'hydro_radiolysis_chromatography',
    'Hydro-Radiolysis Chromatography: Noether Diagnostic',
-   'OH•→J_R, eaq⁻→J_B, H₂O₂→J_G. Healthy A_R/A_B=OMEGA_ZS. G:A:V=6:3:1. SOR restores balance.',
+   'OH•→J_R, eaq⁻→J_B, H₂O₂→J_G. Healthy A_R/A_B=A_PI. G:A:V=6:3:1. SOR restores balance.',
    r'A_R/A_B=\Omega_{\zeta\Sigma}\;(\text{healthy}),\;G:A:V=6:3:1', 'tier9'),
 ]
 

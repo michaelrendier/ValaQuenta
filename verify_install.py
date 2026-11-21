@@ -138,19 +138,19 @@ try:
     from ValaQuenta.modules.inductive_onset_residual import maths as bmg
 
     # Recompute from the definition instead of trusting the stored value.
-    gap = bmg.OMEGA_ZS - bmg.D_STAR_RUN * bmg.LN10
+    gap = bmg.A_PI - bmg.D_STAR_RUN * bmg.LN10
     if abs(gap - 0.000707357533248576) < 1e-15:
         ok(f'GAP recomputed = {gap!r}')
     else:
         bad(f'GAP = {gap!r}, expected 0.000707357533248576')
 
-    # OMEGA_ZS is W(1): it must satisfy W*exp(W) = 1.
+    # A_PI is W(1): it must satisfy W*exp(W) = 1.
     import math
-    residual = abs(bmg.OMEGA_ZS * math.exp(bmg.OMEGA_ZS) - 1.0)
+    residual = abs(bmg.A_PI * math.exp(bmg.A_PI) - 1.0)
     if residual < 1e-15:
-        ok(f'OMEGA_ZS satisfies W*e^W = 1  (residual {residual:.2e})')
+        ok(f'A_PI satisfies W*e^W = 1  (residual {residual:.2e})')
     else:
-        bad(f'OMEGA_ZS fails its defining equation, residual {residual:.2e}')
+        bad(f'A_PI fails its defining equation, residual {residual:.2e}')
 except Exception:
     bad('inductive_onset_residual constants', traceback.format_exc(limit=2).strip())
 

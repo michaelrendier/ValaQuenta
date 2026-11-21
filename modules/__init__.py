@@ -39,7 +39,7 @@ Modules
                          formula. psi jumps by exactly ln p at x = p —
                          the leaf-drop magnitude IS the prime. Lambert-W
                          inverse of the zero count (same W whose fixed
-                         point W(1)=Ω_ZS pins σ=½). RH as the shared
+                         point W(1)=A_π pins σ=½). RH as the shared
                          amplitude envelope 2√x. Ramification leg:
                          the Euler factor degenerates at exactly the
                          factors of N in ℚ(√N).
@@ -158,7 +158,7 @@ Modules
                          fragment is where zero divisors live). Five
                          canonical brackets: {1:15} grades the algebra;
                          {2:14} is the (e_0,e_8) pointer plane carrying
-                         Omega_ZS; {8:8} is the CD double (J_red/J_blue, the
+                         A_π; {8:8} is the CD double (J_red/J_blue, the
                          ZD equator, J_2 = L vs R); {4:4:4:4} is four SU(2)
                          phases + sigma_RB tilt/axis (Sigma_tilt = net work,
                          = 0 iff sigma=1/2); {4:8:4} is the gain spectrum
@@ -269,11 +269,11 @@ Modules
                          the couplings p^(-sigma), and a live census of the d* values.
                          Replaces bao_mass_gap (2026-11-21).
 
-    constants          — Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F,
+    constants          — Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F,
                          d*, Λ — all drop out of H_RB algebraic structure. Two
-                         ceilings force domain [α_F, OMEGA_ZS]. d* has 4 values
+                         ceilings force domain [α_F, A_PI]. d* has 4 values
                          (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological
-                         scale; Sombrero = Hawking pair; OMEGA_ZS = de Sitter
+                         scale; Sombrero = Hawking pair; A_PI = de Sitter
                          attractor. Einstein wrote it in 1915, removed it 1917,
                          universe re-inserted 1998 at 40σ.
 
@@ -342,7 +342,7 @@ Modules
     tier8_sedenion     — D-CS first paper: sedenion engine as zero-free-
                          parameter prime-hash architecture. 5 engines: self-
                          organisation (16 ops → d*/σ½/D*=1), gnarl validation,
-                         OMEGA_ZS 6-family, Hermite timing wheel, orbit trap
+                         A_PI 6-family, Hermite timing wheel, orbit trap
                          Hyperwebster address.
 
     tier9_chem         — D-CHEM paper (Erika Schafer collaboration). 5 engines:

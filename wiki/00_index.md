@@ -50,7 +50,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 | Page | Engine | Floor | Key Result |
 |------|--------|-------|-----------|
 | [add_scale_sign.md](add_scale_sign.md) | `add_scale_sign.py` (VAPMIP) + `…/lineage.py` (SFR) | ESTABLISHED | tier-0 floor = ADD ⋊ (SCALE × SIGN); ZD spectrum {0,1,√2} measured; roll-down of any named op to its root |
-| [constants.md](constants.md) | `modules/constants/` | ESTABLISHED | π φ e √ i Λ as σ-facets; OMEGA_ZS=W(1) |
+| [constants.md](constants.md) | `modules/constants/` | ESTABLISHED | π φ e √ i Λ as σ-facets; A_PI=W(1) |
 | [derivation_chain.md](derivation_chain.md) | `modules/derivation_chain/` | THEORETICAL | Tiers 1–5; the dropouts; **read this first** |
 | [h_rb_hat.md](h_rb_hat.md) | `modules/h_rb_hat/` | THEORETICAL | GR σ=2, YM σ=1, QM σ=½, Riemann σ=½ |
 | [berry_keating.md](berry_keating.md) | `modules/berry_keating/` | OPEN | d*=0.24600; gap candidates enumerated |
@@ -73,7 +73,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 
 | Page | Engine | Floor | Key Result |
 |------|--------|-------|-----------|
-| [inductive_onset_residual.md](inductive_onset_residual.md) | `modules/inductive_onset_residual/` | ESTABLISHED | **Δ=0.0007073575=1/(1000√2)** NOT 1/√2000; residue of BAO decomposition; invariant in n; 7/7 checks, 0 free params |
+| [inductive_onset_residual.md](inductive_onset_residual.md) | `modules/inductive_onset_residual/` | ESTABLISHED | **Δ=0.0007073575=1/(1000√2)** NOT 1/√2000; residual between the induction rate and the running d*; invariant in n; 7/7 checks, 0 free params |
 | [clay_millennium.md](clay_millennium.md) | `modules/clay_millennium/` | THEORETICAL | 7 problems mapped; **1 solved, 6 open** |
 | [turing_diagonal.md](turing_diagonal.md) | `modules/turing_diagonal/` | ESTABLISHED | i²=−1 = Cantor = Gödel = Enigma; D_n/n!→1/e |
 | [singularity_null.md](singularity_null.md) | `modules/singularity_null/` | THEORETICAL | Singularity IS identity; circle says NULL one way |
@@ -93,7 +93,7 @@ The engines README leads with. Notebooks: [notebooks/engines/](../notebooks/engi
 |------|--------|-------|-----------|
 | [tier6_physics.md](tier6_physics.md) | `modules/tier6_physics/` | THEORETICAL | QM + SM; gauge from ℂ×ℍ×𝕆 (Dixon) |
 | [tier7_cosmos.md](tier7_cosmos.md) | `modules/tier7_cosmos/` | THEORETICAL | ΛCDM, dark matter, Balmer Hα 656.3nm |
-| [tier8_sedenion.md](tier8_sedenion.md) | `modules/tier8_sedenion/` | THEORETICAL | OMEGA_ZS in 6 independent domains |
+| [tier8_sedenion.md](tier8_sedenion.md) | `modules/tier8_sedenion/` | THEORETICAL | A_PI in 6 independent domains |
 | [tier9_chem.md](tier9_chem.md) | `modules/tier9_chem/` | THEORETICAL | cancer = ZD; **no clinical data loaded** |
 | [jwst.md](jwst.md) | `modules/jwst/` | THEORETICAL | pixel → octonion; **synthetic spectra only** |
 | [sigma_cavitation.md](sigma_cavitation.md) | `modules/sigma_cavitation/` | renderer | σ-cavitation → SVG; not a registered engine |
@@ -146,7 +146,7 @@ Engines where this convention is load-bearing:
 | Is d*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 = ln(10) derivable, or coincidence? | derivation_chain.md (`d_star_tower_ln10`, OPEN) |
 | Is d* = 0.24600 exact, or an approximation to something else? | berry_keating.md |
 | 17 Standard Model particles onto 16 sedenion strata — the count does not match | tier6_physics.md (`particle_spectrum`) |
-| Is A_R/A_B = OMEGA_ZS in healthy tissue? Untested against any assay | tier9_chem.md |
+| Is A_R/A_B = A_PI in healthy tissue? Untested against any assay | tier9_chem.md |
 | The 7 box-kite charts have **zero cross-strut edges** — mutually disconnected under ZD adjacency. Are the transition maps the PSL(2,7) action on struts, or is there genuinely no global medium? | box_kite.md; Ainulindale wiki/84 |
 | What is the dispersion relation ω(k) on the zero-divisor surface? Without it the argument-principle contour still lives in ℂ and pays ℂ's price (~√N) — the same wall Fermat hits. This is the single named open item of `archimedes_screw`. | archimedes_screw.md; Ainulindale wiki/83 |
 | **P2 (Monster gap in ALL odd-sector pairs) is FALSE.** 10/12 directed odd-sector pairs meet MONSTER_GAP={1,11,15}; exactly one unordered class, `{(3,9),(7,13)}`, does not. Either the prediction needs weakening to "almost all", or that class is significant. | ZeroLattice/03_results.ipynb; zero_lattice.md |

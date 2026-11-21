@@ -58,7 +58,7 @@
         "name": "riemann_hypothesis",
         "equation": "riemann_hypothesis",
         "label": "Riemann Hypothesis",
-        "desc": "RH — two proofs + spectral decomp + BAO residue  [OPEN]  [process= not set]",
+        "desc": "RH — two proofs + spectral decomp + onset residual  [OPEN]  [process= not set]",
         "params": []
       },
       {
@@ -86,7 +86,7 @@
         "name": "rh_spectral_decomposition",
         "equation": "rh_spectral_decomposition",
         "label": "Rh Spectral Decomposition",
-        "desc": "RH Spectral — explicit formula, BAO residue, mass gap  [process= not set]",
+        "desc": "RH Spectral — explicit formula, onset residual  [process= not set]",
         "params": []
       },
       {

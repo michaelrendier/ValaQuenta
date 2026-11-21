@@ -8,7 +8,7 @@
 
 `clay_millennium` · v0.130 · confidence floor **THEORETICAL**
 
-All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent proofs (Stone / Wiles conjugate), Noether balance scan, spectral decomposition + BAO residue / mass gap. Poincaré (SOLVED) and FLT (Wiles 1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP, Hodge, BSD.
+All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent proofs (Stone / Wiles conjugate), Noether balance scan, spectral decomposition + onset residual. Poincaré (SOLVED) and FLT (Wiles 1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP, Hodge, BSD.
 
 ### Equations (`formulary()`)
 
@@ -21,7 +21,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'total': 7, 'open': 6, 'solved': 1, 'problems': [{'number': 1, 'name': 'Riemann Hypothesis', 'status': 'OPEN — two independent proofs, numerical verification', 'confidence': 'THEORETICAL — framework complete; domain proofs open.', 'sigma': 'varies', 'h_rb_key': 'Spectrum of self-adjoint Σ_RB at ...
 ```
 
-**`riemann_hypothesis`** — RH — two proofs + spectral decomp + BAO residue  [OPEN]
+**`riemann_hypothesis`** — RH — two proofs + spectral decomp + onset residual  [OPEN]
   params: `—`  ·  confidence: `THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('riemann_hypothesis', {})['result']
@@ -49,7 +49,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'test_A_method': 'G_p(σ)/G_p(1−σ) = p^{1−2σ}; ratio = 1 iff σ=½', 'scan_A': [{'sigma': 0.1, 'ratio_G_fwd/G_bwd': 1.741101, 'distance_from_unity': 0.741101}, {'sigma': 0.15, 'ratio_G_fwd/G_bwd': 1.624505, 'distance_from_unity': 0.624505}, {'sigma': 0.2, 'ratio_G_fwd/G_bwd': 1.515717, 'distance_fr...
 ```
 
-**`rh_spectral_decomposition`** — RH Spectral — explicit formula, BAO residue, mass gap
+**`rh_spectral_decomposition`** — RH Spectral — explicit formula, onset residual
   params: `—`  ·  confidence: `THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('rh_spectral_decomposition', {})['result']

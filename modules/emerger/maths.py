@@ -323,7 +323,7 @@ BRACKET_ROLE = {
     "{1:15}":    ("DERIVED",     "the CD grading",
                   "Re, N=|x|^2, conj, inverse -- grades the algebra"),
     "{2:14}":    ("THEORETICAL", "{1:15} (needs Re)",
-                  "the pointer z = x0 + i x8; |z|; |z| - Omega_ZS -- read head"),
+                  "the pointer z = x0 + i x8; |z|; |z| - A_π -- read head"),
     "{8:8}":     ("DERIVED",     "{1:15} (needs conj/norm)",
                   "|a|-|b| (dist. from ZD equator); sheet; J_2 (L vs R)"),
     "{4:4:4:4}": ("DERIVED",     "{8:8} (refines the halves)",
@@ -485,7 +485,7 @@ def emerge(x: Sequence[F], mode: str = "sigma_rb") -> Dict[str, object]:
             re_z, im_z = float(x[0]), float(x[8])
             step["pointer_z"] = (re_z, im_z)
             step["|z|"] = (re_z * re_z + im_z * im_z) ** 0.5
-            step["|z|_minus_Omega_ZS"] = step["|z|"] - 0.5671432904097838
+            step["|z|_minus_A_π"] = step["|z|"] - 0.5671432904097838
         elif name == "{8:8}":
             h = len(x) // 2
             na = float(norm_sq(x[:h])) ** 0.5

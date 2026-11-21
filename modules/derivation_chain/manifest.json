@@ -16,7 +16,7 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: Tiers 1–5 form a single ordered chain: from Alpha_F + OMEGA_ZS to d, to Riemann=Fermat, to the Tier-2 dropouts, to H_RB.",
+    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: Tiers 1–5 form a single ordered chain: from Alpha_F + A_PI to d, to Riemann=Fermat, to the Tier-2 dropouts, to H_RB.",
     "authors": [
       "Cody Michael Allison"
     ],
@@ -65,7 +65,7 @@
         "name": "yang_mills_dropout",
         "equation": "yang_mills_dropout",
         "label": "Yang Mills Dropout",
-        "desc": "T2 — Yang-Mills: δ = OMEGA_ZS − d*·ln10 = 0",
+        "desc": "T2 — Yang-Mills: δ = A_PI − d*·ln10 = 0",
         "params": []
       },
       {

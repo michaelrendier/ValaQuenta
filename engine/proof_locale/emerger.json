@@ -22,7 +22,7 @@
 
   "ordering": [
     {"n": 1, "op": "{1:15} -- the CD grading", "english": "grade x into the scalar e0 and the 15 imaginary units; this is what makes Re, the norm N = |x|^2, conjugation and the inverse well-defined. Everything after this step needs it."},
-    {"n": 2, "op": "{2:14} -- the (e0,e8) pointer plane", "english": "split off z = x0 + i x8, the doubling-ladder pointer, from the 14-dim G_2 side. |z| is the CD-scale; |z| - Omega_ZS is the residual to the fixed point of z -> e^{-z}. Requires step 1 (needs Re)."},
+    {"n": 2, "op": "{2:14} -- the (e0,e8) pointer plane", "english": "split off z = x0 + i x8, the doubling-ladder pointer, from the 14-dim G_2 side. |z| is the CD-scale; |z| - A_π is the residual to the fixed point of z -> e^{-z}. Requires step 1 (needs Re)."},
     {"n": 3, "op": "{8:8} -- the CD double O (+) O.e8", "english": "split x into a = x[0:8] and b = x[8:16] -- J_red / J_blue, the two trees. Report |a| - |b| (signed distance from the ZD equator), the sheet, and the J_2 asymmetry ||L_x - R_x||. Requires step 1 (needs conj / norm)."},
     {"n": 4, "op": "{4:4:4:4} -- four quaternion blocks", "english": "extract four SU(2) phases (the four d* faces) and compute sigma_RB: tilt, axis, Sigma_tilt (= net work around the 0->p->q->N loop), Sigma_axis (= 0). Sigma_tilt = 0 marks sigma = 1/2. Refines the halves of step 3."},
     {"n": 5, "op": "{4:8:4} -- the gain spectrum", "english": "project x onto the annihilator block (gain 0), the unit/NOW block (gain 1) and the amplifier block (gain sqrt2); the dominant block is x's multiplicative role. Needs the norms of step 1 and the gain split; the {4:8:4} index assignment is a reading, not derived here."}

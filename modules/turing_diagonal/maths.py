@@ -39,7 +39,7 @@ from typing import Dict, List, Any, Tuple
 # ── Ainulindale constants ──────────────────────────────────────────────────────
 SIGMA_HALF  = 0.5
 D_STAR      = 0.24600
-OMEGA_ZS    = 0.5671432904097838
+A_PI    = 0.5671432904097838
 E_RECIP     = 1.0 / math.e   # derangement probability limit
 
 
@@ -275,7 +275,7 @@ def enigma_derangement(n: int = 26) -> Dict[str, Any]:
     This is the SAME 1/e that appears in::
 
         - The Poisson distribution (rare events)
-        - The OMEGA_ZS iteration: x → e^{-x} converges to OMEGA_ZS
+        - The A_PI iteration: x → e^{-x} converges to A_PI
         - The information entropy limit of a random permutation
 
     For n=26 (the Enigma)::

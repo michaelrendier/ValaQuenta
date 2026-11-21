@@ -355,7 +355,7 @@ class WilesConjugate:
     """
 
     D_STAR   = 0.24600   # Natural unit of Native Space
-    OMEGA_ZS = 0.56714   # Lambert W(1) — domain ceiling
+    A_PI = 0.56714   # Lambert W(1) — domain ceiling
 
     def __init__(self, curve: EllipticCurve, form: ModularForm):
         self.E = curve
@@ -501,7 +501,7 @@ class WilesConjugate:
             'frobenius_angle_deg': math.degrees(theta_p),
             'normalised_ap': normalised,
             'd_star':        self.D_STAR,
-            'omega_zs':      self.OMEGA_ZS,
+            'omega_zs':      self.A_PI,
             'below_d_star':  normalised < self.D_STAR,
             'adjoint_holds': ae == af,
         }

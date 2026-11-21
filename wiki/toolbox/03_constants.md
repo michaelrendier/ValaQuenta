@@ -8,7 +8,7 @@
 
 `constants` · v0.120 · confidence floor **ESTABLISHED**
 
-Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure. Two ceilings force domain [α_F, OMEGA_ZS]. d* has 4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale; Sombrero = Hawking pair; OMEGA_ZS = de Sitter attractor. Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
+Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure. Two ceilings force domain [α_F, A_PI]. d* has 4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale; Sombrero = Hawking pair; A_PI = de Sitter attractor. Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
 
 ### Equations (`formulary()`)
 
@@ -70,25 +70,25 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'identity': 'e^{iπ} + 1 = 0', 'type': 'Theorem of RedBlue Geometries Engine', 'assembly': {'e': 'BK canonical equations: ẋ=x → x(t)=e^t', 'i': 'CD first doubling: x²+1=0', 'π': 'U(1) normalisation (2/π)·π=2 and Basel ζ(2)=π²/6', 'φ': 'Structural backbone (CD recursion eigenvalue) — not a channel...
 ```
 
-**`derive_omega_zs`** — Ω_ζΣ = W(1) — thermal information ceiling T·e^T=1
+**`derive_omega_zs`** — A_π = W(1) — thermal information ceiling T·e^T=1
   params: `—`  ·  confidence: `ESTABLISHED`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('derive_omega_zs', {})['result']
-{'constant': 'OMEGA_ZS  (Ω_ζΣ)', 'value': 0.5671432904097838, 'sigma_facet': 'Domain ceiling — prime distribution entropy bound', 'physical_layer': 'Thermodynamic ceiling — self-referential system equilibrium', 'algebraic_origin': 'T·e^T = 1  (self-referential Boltzmann fixed point)', 'derivation...
+{'constant': 'A_PI  (A_π)', 'value': 0.5671432904097838, 'sigma_facet': 'Domain ceiling — prime distribution entropy bound', 'physical_layer': 'Thermodynamic ceiling — self-referential system equilibrium', 'algebraic_origin': 'T·e^T = 1  (self-referential Boltzmann fixed point)', 'derivation...
 ```
 
 **`derive_alpha_fermat`** — α_F = 1/137... — causality ceiling v_1=α·c<c
   params: `—`  ·  confidence: `THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('derive_alpha_fermat', {})['result']
-{'constant': 'α_F  (Alpha_Fermat / fine structure constant)', 'value': 0.0072973525692838015, 'inverse': 137.035999, 'sigma_facet': 'BK domain floor — minimum coupling, causality floor', 'physical_layer': 'Electromagnetic / Causality — inertia floor', 'algebraic_origin': 'v_1 = α·c < c  (Bohr vel...
+{'constant': 'α_F  (α / fine structure constant)', 'value': 0.0072973525692838015, 'inverse': 137.035999, 'sigma_facet': 'BK domain floor — minimum coupling, causality floor', 'physical_layer': 'Electromagnetic / Causality — inertia floor', 'algebraic_origin': 'v_1 = α·c < c  (Bohr vel...
 ```
 
 **`derive_d_star`** — d* — 4 values: BK spectral floor, gap=0.000707, tower→ln(10) [OPEN]
   params: `—`  ·  confidence: `ESTABLISHED (d*_R); OPEN (full tower)`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('derive_d_star', {})['result']
-{'constant': 'd*  (BK spectral floor, 4 components)', 'value_real': 0.246, 'sigma_facet': 'Spectral floor of H_BK on [α_F, OMEGA_ZS]', 'physical_layer': 'BK operator domain — spectral coordinate', 'algebraic_origin': 'Berry-Keating spectral floor; 4 CD strata', 'derivation_chain': ['1. BK operato...
+{'constant': 'd*  (BK spectral floor, 4 components)', 'value_real': 0.246, 'sigma_facet': 'Spectral floor of H_BK on [α_F, A_PI]', 'physical_layer': 'BK operator domain — spectral coordinate', 'algebraic_origin': 'Berry-Keating spectral floor; 4 CD strata', 'derivation_chain': ['1. BK operato...
 ```
 
 ---

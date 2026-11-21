@@ -28,9 +28,9 @@ _trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in 
 from typing import Dict, List, Any, Tuple
 
 # ── Ainulindale constants ──────────────────────────────────────────────────────
-OMEGA_ZS  = 0.5671432904097838
+A_PI  = 0.5671432904097838
 D_STAR    = 0.24600
-GAP       = OMEGA_ZS - D_STAR * math.log(10.0)  # 0.000707
+GAP       = A_PI - D_STAR * math.log(10.0)  # 0.000707
 R_H       = 1.0 / math.sqrt(2.0)
 ALPHA     = 1.0 / 137.035999084
 
@@ -482,7 +482,7 @@ def cancer_zero_divisor() -> Dict[str, Any]:
 
     The mass gap connection::
 
-        GAP = 0.000707 = the Yang-Mills mass gap = the THRESHOLD.
+        GAP = 0.000707 = the onset residual = the THRESHOLD.
         Below GAP: stop signals reach the cell (healthy)
         Above GAP: stop signals are cancelled (cancer)
         Cancer is a Yang-Mills violation at the cellular scale.
@@ -586,7 +586,7 @@ def cancer_zero_divisor() -> Dict[str, Any]:
         'OH_radical' : {
             'algebraic': 'e₁₅ boundary crossing (Hawking-like radiation)',
             'cancer_role': 'DNA damage — randomises the Riemann address',
-            'sedenion_dim': 'e₁₅ (the mass gap boundary)',
+            'sedenion_dim': 'e₁₅ (the onset-residual boundary)',
         },
         'H2O2' : {
             'algebraic': 'Product of SOR reduction (balanced)',
@@ -759,8 +759,8 @@ def drug_targeting() -> Dict[str, Any]:
     # thermal stability at T_H (from the Hagedorn string boundary)
     life_ratio_entropy = -(6/10)*math.log(6/10) - (3/10)*math.log(3/10) - (1/10)*math.log(1/10)
 
-    # Compare to OMEGA_ZS: the entropy of the life ratio
-    life_entropy_vs_omega = abs(life_ratio_entropy - (-math.log(OMEGA_ZS)))
+    # Compare to A_PI: the entropy of the life ratio
+    life_entropy_vs_omega = abs(life_ratio_entropy - (-math.log(A_PI)))
 
     # ── 5. Cancer drug examples (algebraic) ──────────────────────────────
     drug_table = [
@@ -863,8 +863,8 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
 
     Cancer signature in the chromatogram::
 
-        Healthy tissue: A_R/A_B ≈ OMEGA_ZS (the Noether balance)
-        Cancer tissue:  A_R/A_B >> OMEGA_ZS (J_B suppressed — zero-divisors fire)
+        Healthy tissue: A_R/A_B ≈ A_PI (the Noether balance)
+        Cancer tissue:  A_R/A_B >> A_PI (J_B suppressed — zero-divisors fire)
         The cancer ratio deviation = the DEGREE of zero-divisor collapse.
 
     The G:A:V = 6:3:1 life ratio in radiolysis::
@@ -944,13 +944,13 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
     GAV_match = all(abs(GAV_computed[aa] - GAV_expected[aa]) < 1.0 for aa in ['G','A','V'])
 
     # ── 3. Healthy vs cancer chromatogram ─────────────────────────────────
-    # Healthy tissue: J_R/J_B ratio ≈ OMEGA_ZS
+    # Healthy tissue: J_R/J_B ratio ≈ A_PI
     # Actually in radiolysis: G(OH•)/G(eaq⁻) = 3.3/2.7 ≈ 1.22
-    # For the Noether-balanced tissue, A_R/A_B in chromatogram = OMEGA_ZS
-    # The discrepancy is the dose-correction factor: at σ=½, the factor is 3.3/2.7/OMEGA_ZS
+    # For the Noether-balanced tissue, A_R/A_B in chromatogram = A_PI
+    # The discrepancy is the dose-correction factor: at σ=½, the factor is 3.3/2.7/A_PI
 
-    healthy_AR_AB = OMEGA_ZS         # target ratio
-    cancer_AR_AB  = OMEGA_ZS * 2.5   # elevated J_R (oxidative stress), suppressed J_B
+    healthy_AR_AB = A_PI         # target ratio
+    cancer_AR_AB  = A_PI * 2.5   # elevated J_R (oxidative stress), suppressed J_B
 
     # Chromatogram model: three peaks
     def chromatogram_profile(time_vals, AR_AB, scale=1.0):
@@ -978,8 +978,8 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
         'cancer_JR_area'  : round(cancer_JR, 4),
         'cancer_JB_area'  : round(cancer_JB, 4),
         'cancer_ratio'    : round(cancer_JR/max(cancer_JB,1e-10), 4),
-        'OMEGA_ZS'        : round(OMEGA_ZS, 4),
-        'reading'         : f'Healthy J_R/J_B ≈ OMEGA_ZS. Cancer J_R/J_B elevated (oxidative stress).',
+        'A_PI'        : round(A_PI, 4),
+        'reading'         : f'Healthy J_R/J_B ≈ A_PI. Cancer J_R/J_B elevated (oxidative stress).',
     }
 
     # ── 4. SOR reaction in Noether terms ──────────────────────────────────
@@ -1013,11 +1013,11 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
     # Combined: a single scan diagnoses cancer type and stage algebraically.
 
     cancer_stages = [
-        {'stage': 'Healthy',   'JR_JB': round(OMEGA_ZS, 4),       'H2O2_mM': 0.01, 'GAV': '6:3:1'},
-        {'stage': 'Stage I',   'JR_JB': round(OMEGA_ZS*1.5, 4),   'H2O2_mM': 0.05, 'GAV': '5:3:1'},
-        {'stage': 'Stage II',  'JR_JB': round(OMEGA_ZS*2.0, 4),   'H2O2_mM': 0.12, 'GAV': '4:3:2'},
-        {'stage': 'Stage III', 'JR_JB': round(OMEGA_ZS*2.5, 4),   'H2O2_mM': 0.25, 'GAV': '3:3:3'},
-        {'stage': 'Stage IV',  'JR_JB': round(OMEGA_ZS*3.0, 4),   'H2O2_mM': 0.50, 'GAV': '2:3:4'},
+        {'stage': 'Healthy',   'JR_JB': round(A_PI, 4),       'H2O2_mM': 0.01, 'GAV': '6:3:1'},
+        {'stage': 'Stage I',   'JR_JB': round(A_PI*1.5, 4),   'H2O2_mM': 0.05, 'GAV': '5:3:1'},
+        {'stage': 'Stage II',  'JR_JB': round(A_PI*2.0, 4),   'H2O2_mM': 0.12, 'GAV': '4:3:2'},
+        {'stage': 'Stage III', 'JR_JB': round(A_PI*2.5, 4),   'H2O2_mM': 0.25, 'GAV': '3:3:3'},
+        {'stage': 'Stage IV',  'JR_JB': round(A_PI*3.0, 4),   'H2O2_mM': 0.50, 'GAV': '2:3:4'},
     ]
 
     return {
@@ -1036,8 +1036,8 @@ def hydro_radiolysis_chromatography() -> Dict[str, Any]:
         'cancer_staging'    : cancer_stages,
         'diagnostic'        : {
             'what_to_measure': 'J_R/J_B ratio = A_early_peak / A_late_peak in HPLC',
-            'healthy_value'  : round(OMEGA_ZS, 4),
-            'cancer_threshold': round(OMEGA_ZS * 1.5, 4),
+            'healthy_value'  : round(A_PI, 4),
+            'cancer_threshold': round(A_PI * 1.5, 4),
             'unit'           : 'Dimensionless (peak area ratio)',
             'instrument'     : 'HPLC after controlled γ-irradiation (10-50 Gy)',
         },

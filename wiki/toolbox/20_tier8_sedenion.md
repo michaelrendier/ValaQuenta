@@ -8,7 +8,7 @@
 
 `tier8_sedenion` · v0.100 · confidence floor **THEORETICAL**
 
-D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture. 5 engines: self-organisation (16 ops → d*/σ½/D*=1), gnarl validation, OMEGA_ZS 6-family, Hermite timing wheel, orbit trap Hyperwebster address.
+D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture. 5 engines: self-organisation (16 ops → d*/σ½/D*=1), gnarl validation, A_PI 6-family, Hermite timing wheel, orbit trap Hyperwebster address.
 
 ### Equations (`formulary()`)
 
@@ -24,18 +24,18 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'claim': '16 SMMIP operators self-organise to d*/σ½/D*=1 via prime hash. Zero free parameters.', 'operators': [{'e_k': 0, 'name': 'IDENTITY', 'hash': 8697, 'sigma': 8.7e-06, 'dim_idx': 9, 'at_brim': False}, {'e_k': 1, 'name': 'EXPANSION', 'hash': 10930, 'sigma': 1.093e-05, 'dim_idx': 2, 'at_brim...
 ```
 
-**`gnarl_validation`** — Gnarl = sedenion zero-divisor boundary. Mean g = OMEGA_ZS.
+**`gnarl_validation`** — Gnarl = sedenion zero-divisor boundary. Mean g = A_PI.
   params: `—`  ·  confidence: `ESTABLISHED+THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('gnarl_validation', {})['result']
-{'claim': 'Gnarl = zero-divisor boundary in 𝕊. Mean g = OMEGA_ZS. Fractal at dim 14+d*.', 'g_statistics': {'N': 500, 'mean': 1.153725, 'std': 0.0504, 'min': 1.045139, 'max': 1.312101, 'OMEGA_ZS': 0.567143, 'g_vs_OMEGA_ZS': 0.586582}, 'octonion_subspace': {'mean_g': 1.0, 'expected': 1.0, 'g_is_1':...
+{'claim': 'Gnarl = zero-divisor boundary in 𝕊. Mean g = A_PI. Fractal at dim 14+d*.', 'g_statistics': {'N': 500, 'mean': 1.153725, 'std': 0.0504, 'min': 1.045139, 'max': 1.312101, 'A_PI': 0.567143, 'g_vs_OMEGA_ZS': 0.586582}, 'octonion_subspace': {'mean_g': 1.0, 'expected': 1.0, 'g_is_1':...
 ```
 
-**`omega_zs_6_family`** — OMEGA_ZS = W(1) appears in 6 independent domains simultaneously.
+**`omega_zs_6_family`** — A_PI = W(1) appears in 6 independent domains simultaneously.
   params: `—`  ·  confidence: `ESTABLISHED+THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('omega_zs_6_family', {})['result']
-{'claim': 'OMEGA_ZS = W(1) appears in 6 independent domains simultaneously. It is the σ=½ signature.', 'lambert_w': {'W_1': 0.5671432904, 'verified': True, 'self_ref': True, 'self_ref_eq': 'OMEGA_ZS = e^{-OMEGA_ZS}'}, 'six_family': [{'domain': 'Mathematics (Lambert W)', 'constant': 'W(1) = Ω', 'v...
+{'claim': 'A_PI = W(1) appears in 6 independent domains simultaneously. It is the σ=½ signature.', 'lambert_w': {'W_1': 0.5671432904, 'verified': True, 'self_ref': True, 'self_ref_eq': 'A_PI = e^{-A_PI}'}, 'six_family': [{'domain': 'Mathematics (Lambert W)', 'constant': 'W(1) = Ω', 'v...
 ```
 
 **`hermite_timing_wheel`** — H_n has n zeros = n BAO timing marks. Riemann zeros = BK levels.

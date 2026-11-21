@@ -100,7 +100,7 @@
         "name": "lambda_cdm_omega_zs",
         "equation": "lambda_cdm_omega_zs",
         "label": "Lambda Cdm Omega Zs",
-        "desc": "OMEGA_ZS = de Sitter attractor",
+        "desc": "A_PI = de Sitter attractor",
         "params": []
       },
       {

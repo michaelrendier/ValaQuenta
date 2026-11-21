@@ -32,7 +32,7 @@ class ClayMillenniumModule(EquationModule):
 
     All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent
     proofs (Stone / Wiles conjugate), Noether balance scan, spectral
-    decomposition + BAO residue / mass gap. Poincaré (SOLVED) and FLT (Wiles
+    decomposition + onset residual. Poincaré (SOLVED) and FLT (Wiles
     1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP,
     Hodge, BSD.
 
@@ -52,7 +52,7 @@ class ClayMillenniumModule(EquationModule):
         return (
             'All 7 Clay Millennium Problems derived from Σ_RB. '
             'RH engine: two independent proofs (Stone / Wiles conjugate), '
-            'Noether balance scan, spectral decomposition + BAO residue / mass gap. '
+            'Noether balance scan, spectral decomposition + onset residual. '
             'Poincaré (SOLVED) and FLT (Wiles 1995) validate the framework. '
             '6 open problems: RH, Yang-Mills, NS, P/NP, Hodge, BSD.'
         )
@@ -76,7 +76,7 @@ class ClayMillenniumModule(EquationModule):
             ),
             Equation(
                 name='riemann_hypothesis',
-                display='RH — two proofs + spectral decomp + BAO residue  [OPEN]',
+                display='RH — two proofs + spectral decomp + onset residual  [OPEN]',
                 latex=r'\Sigma_{RB}^\dagger=\Sigma_{RB}\Rightarrow\mathrm{Re}(s)=\tfrac{1}{2},\;\delta=\Omega_{\zeta\Sigma}-D^*\ln10',
                 radian_form='Self-adjoint Σ_RB → real eigenvalues → all zeros on σ=½. BAO gap = mass gap.',
                 confidence='THEORETICAL',
@@ -124,15 +124,15 @@ class ClayMillenniumModule(EquationModule):
             ),
             Equation(
                 name='rh_spectral_decomposition',
-                display='RH Spectral — explicit formula, BAO residue, mass gap',
+                display='RH Spectral — explicit formula, onset residual',
                 latex=r'\psi(x)=x-\sum_\rho x^\rho/\rho-\ln2\pi,\;\delta=\Omega_{\zeta\Sigma}-D^*\ln10',
-                radian_form='ψ(x) = x (de Sitter) − spectral oscillations (zeros). GAP = BAO residual = mass gap.',
+                radian_form='ψ(x) = x (de Sitter) − spectral oscillations (zeros). GAP = onset residual = mass gap.',
                 confidence='THEORETICAL',
                 code_verified=True,
                 params=[],
                 compute=rh_spectral_decomposition,
                 display_options=[],
-                process='RH Spectral Decomposition — explicit formula, BAO residue, mass gap.',
+                process='RH Spectral Decomposition — explicit formula, onset residual.',
             ),
             Equation(
                 name='yang_mills_mass_gap',

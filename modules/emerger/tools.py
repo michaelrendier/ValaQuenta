@@ -81,7 +81,7 @@ class EmergerModule(EquationModule):
             "classified by closure as C / H / O / FRAGMENT (the fragment "
             "is where zero divisors live). Five canonical brackets: {1:15} "
             "grades the algebra (Re, N, conj, inverse); {2:14} is the "
-            "pointer plane (e_0, e_8) carrying Omega_ZS; {8:8} is the CD "
+            "pointer plane (e_0, e_8) carrying A_π; {8:8} is the CD "
             "double (J_red/J_blue, the ZD equator, the J_2 L-vs-R "
             "asymmetry); {4:4:4:4} is four SU(2) phases and the sigma_RB "
             "tilt/axis (Sigma_tilt = net work around the loop, = 0 iff "

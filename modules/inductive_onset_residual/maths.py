@@ -5,7 +5,7 @@ The onset residual of the Inductive Self-Adjoint Geometric Coupling Hamiltonian
 (Ĥ_RB). Machinery, not a claim: every function below runs and returns numbers.
 
 Symbols: in prose this module writes the Lambert fixed point as W(1) and d* as d*. The codebase calls W(1)
-OMEGA_ZS; the author (2026-11-21) calls d* Ω_RZ and W(1) A_Fermat. :func:`symbols` records every assignment.
+A_PI; the author (2026-11-21) calls d* Ω_RZ and W(1) A_Fermat. :func:`symbols` records every assignment.
 
 Three things are computed from the values the code runs with.
 
@@ -44,10 +44,10 @@ from ...engine import constants as C
 from ..box_kite import maths as bk
 from ..h_rb_hat.maths import RIEMANN_ZEROS
 
-OMEGA_ZS = C.OMEGA_ZS                       # Lambert W(1), 0.5671432904097838
+A_PI = C.A_PI                       # Lambert W(1), 0.5671432904097838
 LN10 = math.log(10.0)
 D_STAR_RUN = C.D_STAR                       # the value the code runs with (0.24600)
-D_STAR_BOUNDARY = OMEGA_ZS / LN10           # Ω/ln 10 = 0.246307201473…
+D_STAR_BOUNDARY = A_PI / LN10           # Ω/ln 10 = 0.246307201473…
 FIRST_PRIMES = (2, 3, 5, 7, 11, 13, 17, 19)
 SIGMA_FACETS = {'0': 0.0, '1/2': 0.5, '1': 1.0, '2': 2.0}
 SED_DIM = 16
@@ -113,7 +113,7 @@ def induction(starts: tuple = (0.0, 0.3, 0.9, 1.7, 3.0), steps: int = 200) -> Di
             *[f'Measured from start {k}: {v:.10f}.' for k, v in rates.items()],
         ],
         'omega_by_induction': omega,
-        'omega_lambert': OMEGA_ZS,
+        'omega_lambert': A_PI,
         'contraction_factor': omega,
         'digits_per_step_exact': exact,
         'digits_per_step_measured': rates,
@@ -141,15 +141,15 @@ def onset_residual() -> Dict[str, Any]:
 
     :returns: Δ, the identity Δ = ln 10·(d*_induced − d*_running), the agreeing decimals, Δ in units of 10^−k
     """
-    delta = OMEGA_ZS - D_STAR_RUN * LN10
-    ind = -math.log10(OMEGA_ZS)
+    delta = A_PI - D_STAR_RUN * LN10
+    ind = -math.log10(A_PI)
     k = 0
     while int(D_STAR_RUN * 10 ** (k + 1)) == int(ind * 10 ** (k + 1)):
         k += 1
     scaled = delta * 10 ** k
     return {
         'derivation': [
-            f'Ω = {OMEGA_ZS:.12f}; d* running = {D_STAR_RUN}; d* by induction = {ind:.12f}.',
+            f'Ω = {A_PI:.12f}; d* running = {D_STAR_RUN}; d* by induction = {ind:.12f}.',
             f'Δ = Ω − d*_running·ln 10 = {delta:.12f}.',
             f'ln 10·(d*_induced − d*_running) = {LN10 * (ind - D_STAR_RUN):.12f}.',
             f'The two d* agree on {k} decimals; the next differs.',
@@ -177,7 +177,7 @@ def hub_fiber(depth: float = 0.6) -> Dict[str, Any]:
     psi[2] = depth / math.sqrt(2.0)
     w = bk.fixed_point_weight(psi)
     table = {name: math.sqrt(1.0 - v) for name, v in
-             (('Omega', OMEGA_ZS), ('d_star_running', D_STAR_RUN), ('d_star_boundary', D_STAR_BOUNDARY), ('one_half', 0.5))}
+             (('Omega', A_PI), ('d_star_running', D_STAR_RUN), ('d_star_boundary', D_STAR_BOUNDARY), ('one_half', 0.5))}
     return {'depth': depth, 'fixed_point_weight': w, 'weight_expected': 1.0 - depth * depth,
             'depth_at_weight': table, 'hub_weight': bk.fixed_point_weight([1.0] + [0.0] * (SED_DIM - 1))}
 
@@ -277,7 +277,7 @@ def symbols() -> Dict[str, Any]:
     :returns: per source, the assignment of d* (0.2463…), W(1) (0.5671…) and 1/137.036, with the date and where it is written
     """
     return {
-        'values': {'d_star_boundary': D_STAR_BOUNDARY, 'lambert_w_fixed_point': OMEGA_ZS, 'inverse_137': 1.0 / 137.035999084},
+        'values': {'d_star_boundary': D_STAR_BOUNDARY, 'lambert_w_fixed_point': A_PI, 'inverse_137': 1.0 / 137.035999084},
         'author_2026_11_21': dict(
             Omega_RZ='d* (0.2463…)', A_Fermat='the Lambert W fixed point (0.5671…)',
             note='the author: "Omega_riemann_zeta was d*, A_fermat was the Lambert W fixed point: my Alpha and Omega, not to be '
@@ -289,7 +289,7 @@ def symbols() -> Dict[str, Any]:
                                           where='RiemannHypothesisProof/docs/four_dstar_2026-11-12.md'),
         'wiki_17_2026_11_13': dict(A_fermat='role: Fermat-side inertia constant; value OPEN (x = 1 endpoint or 1/137.036)',
                                    Omega_zeta_Sigma='W(1), born from entropy in the Riemann zeta function'),
-        'in_this_module': 'the Lambert fixed point is written W(1) in prose and OMEGA_ZS in code (the codebase constant name); d* is written d*',
+        'in_this_module': 'the Lambert fixed point is written W(1) in prose and A_PI in code (the codebase constant name); d* is written d*',
     }
 
 
@@ -324,8 +324,8 @@ def validate() -> Dict[str, Any]:
     ef = explicit_formula(10.5, 20)
     rates = [v for v in ind['digits_per_step_measured'].values() if v == v]
     checks = {
-        'omega_by_induction_equals_lambert_w1': abs(ind['omega_by_induction'] - OMEGA_ZS) < 1e-15,
-        'omega_satisfies_w_exp_w_equals_1': abs(OMEGA_ZS * math.exp(OMEGA_ZS) - 1.0) < 1e-15,
+        'omega_by_induction_equals_lambert_w1': abs(ind['omega_by_induction'] - A_PI) < 1e-15,
+        'omega_satisfies_w_exp_w_equals_1': abs(A_PI * math.exp(A_PI) - 1.0) < 1e-15,
         'ln_omega_equals_minus_omega': abs(ind['ln_omega_plus_omega']) < 1e-15,
         'measured_rate_equals_omega_over_ln10': all(abs(r - D_STAR_BOUNDARY) < 1e-7 for r in rates),
         'running_value_is_the_constants_file_value': D_STAR_RUN == C.D_STAR,

@@ -20,7 +20,7 @@ from typing import Dict, List, Any
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
 from .maths import (
-    D_STAR_SPEC, OMEGA_ZS, GAP,
+    D_STAR_SPEC, A_PI, GAP,
     d_star_gap_report, gap_candidates,
     h_nn_eigenvalues, xp_spectrum_discrete,
     T_map_scaffold, T_map_trajectory,

@@ -17,7 +17,7 @@ class Tier8SedenionModule(EquationModule):
 
     D-CS first paper: sedenion engine as zero-free-parameter prime-hash
     architecture. 5 engines: self-organisation (16 ops → d\*/σ½/D\*=1), gnarl
-    validation, OMEGA_ZS 6-family, Hermite timing wheel, orbit trap Hyperwebster
+    validation, A_PI 6-family, Hermite timing wheel, orbit trap Hyperwebster
     address.
 
     Registry module for ``tier8_sedenion``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.tier8_sedenion.maths`.
@@ -33,7 +33,7 @@ class Tier8SedenionModule(EquationModule):
         return (
             'D-CS first paper: sedenion engine as zero-free-parameter prime-hash architecture. '
             '5 engines: self-organisation (16 ops → d*/σ½/D*=1), gnarl validation, '
-            'OMEGA_ZS 6-family, Hermite timing wheel, orbit trap Hyperwebster address.'
+            'A_PI 6-family, Hermite timing wheel, orbit trap Hyperwebster address.'
         )
     @property
     def confidence_floor(self): return 'THEORETICAL'
@@ -53,17 +53,17 @@ class Tier8SedenionModule(EquationModule):
                      'ESTABLISHED+THEORETICAL', True, [], sedenion_self_organisation, [],
                      process='16 operator names → d*/σ½/D*=1 via prime hash. Zero free parameters.'),
             Equation('gnarl_validation',
-                     'Gnarl = sedenion zero-divisor boundary. Mean g = OMEGA_ZS.',
+                     'Gnarl = sedenion zero-divisor boundary. Mean g = A_PI.',
                      r'g(a)=\max_{|b|=1}|ab|,\;\langle g\rangle=\Omega_{\zeta\Sigma},\;\dim_H=14+d^*',
                      'Fractal boundary between octonion (g=1) and upper sedenion (g<1).',
                      'ESTABLISHED+THEORETICAL', True, [], gnarl_validation, [],
-                     process='Gnarl = sedenion zero-divisor boundary. Mean g = OMEGA_ZS.'),
+                     process='Gnarl = sedenion zero-divisor boundary. Mean g = A_PI.'),
             Equation('omega_zs_6_family',
-                     'OMEGA_ZS = W(1) appears in 6 independent domains simultaneously.',
+                     'A_PI = W(1) appears in 6 independent domains simultaneously.',
                      r'\Omega_{\zeta\Sigma}=W(1)=e^{-\Omega_{\zeta\Sigma}},\;\Omega_{\zeta\Sigma}^2\approx\Omega_M',
                      '6 domains: math, primes, cosmology, Yang-Mills, sedenion, information.',
                      'ESTABLISHED+THEORETICAL', True, [], omega_zs_6_family, [],
-                     process='OMEGA_ZS = W(1) appears in 6 independent domains simultaneously.'),
+                     process='A_PI = W(1) appears in 6 independent domains simultaneously.'),
             Equation('hermite_timing_wheel',
                      'H_n has n zeros = n BAO timing marks. Riemann zeros = BK levels.',
                      r'H_n\text{ zeros}=n\text{ BAO modes},\;x_0(n)=\gamma_n/2\pi',

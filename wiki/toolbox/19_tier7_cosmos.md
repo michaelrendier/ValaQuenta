@@ -59,11 +59,11 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'claim': 'Horizon crossing = algebraic phase transition: octonion → upper sedenion.', 'transition_data': [{'t': 0.0, 'assoc_norm': 1.63299316, '|a·b|': 1.0, 'phase': 'octonion', 'J_R': 0.0, 'J_B': 0.0}, {'t': 0.05, 'assoc_norm': 1.41261933, '|a·b|': 0.905831, 'phase': 'octonion', 'J_R': 0.0, 'J_...
 ```
 
-**`lambda_cdm_omega_zs`** — OMEGA_ZS = de Sitter attractor. DESI prediction: w→−1.31.
+**`lambda_cdm_omega_zs`** — A_PI = de Sitter attractor. DESI prediction: w→−1.31.
   params: `—`  ·  confidence: `ESTABLISHED+THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('lambda_cdm_omega_zs', {})['result']
-{'claim': 'OMEGA_ZS = de Sitter attractor. We are above it. Universe approaches it.', 'friedmann_survey': [{'z': -0.9, 'H/H0': 0.830187, 'Ω_Λ_eff': 0.999549, 'above_attractor': True, 'phase': 'future'}, {'z': -0.5, 'H/H0': 0.853105, 'Ω_Λ_eff': 0.946568, 'above_attractor': True, 'phase': 'future'}...
+{'claim': 'A_PI = de Sitter attractor. We are above it. Universe approaches it.', 'friedmann_survey': [{'z': -0.9, 'H/H0': 0.830187, 'Ω_Λ_eff': 0.999549, 'above_attractor': True, 'phase': 'future'}, {'z': -0.5, 'H/H0': 0.853105, 'Ω_Λ_eff': 0.946568, 'above_attractor': True, 'phase': 'future'}...
 ```
 
 **`flt_noether_deepened`** — FLT = Noether conservation law. Wiles proved R̂†=B̂ exactly.

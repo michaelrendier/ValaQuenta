@@ -12,10 +12,10 @@ from .modules.inductive_onset_residual import maths as _m
 
 warnings.warn("ValaQuenta.bao_mass_gap is renamed ValaQuenta.modules.inductive_onset_residual", DeprecationWarning, stacklevel=2)
 
-OMEGA_ZS = _m.OMEGA_ZS
+A_PI = _m.A_PI
 D_STAR = _m.D_STAR_RUN
 LN10 = _m.LN10
-GAP = OMEGA_ZS - D_STAR * LN10
+GAP = A_PI - D_STAR * LN10
 
 
 def validate() -> dict:

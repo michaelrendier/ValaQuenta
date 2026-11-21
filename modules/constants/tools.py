@@ -28,10 +28,10 @@ class ConstantsModule(EquationModule):
     r"""
     Tier 0 Constants — π φ e √ i derived from H_RB
 
-    Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d\*, Λ — all drop out of
-    H_RB algebraic structure. Two ceilings force domain [α_F, OMEGA_ZS]. d\* has
+    Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d\*, Λ — all drop out of
+    H_RB algebraic structure. Two ceilings force domain [α_F, A_PI]. d\* has
     4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale;
-    Sombrero = Hawking pair; OMEGA_ZS = de Sitter attractor. Einstein wrote it
+    Sombrero = Hawking pair; A_PI = de Sitter attractor. Einstein wrote it
     in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
 
     Registry module for ``constants``: :meth:`formulary` lists the equations, :meth:`run` executes one, and :meth:`viewer_data` formats a result for a viewer. The mathematics lives in :mod:`ValaQuenta.modules.constants.maths`.
@@ -48,10 +48,10 @@ class ConstantsModule(EquationModule):
     @property
     def description(self):
         return (
-            'Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — '
+            'Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — '
             'all drop out of H_RB algebraic structure. '
-            'Two ceilings force domain [α_F, OMEGA_ZS]. d* has 4 values (tower→ln(10) Open Prob 2). '
-            'Λ: J_neg at cosmological scale; Sombrero = Hawking pair; OMEGA_ZS = de Sitter attractor. '
+            'Two ceilings force domain [α_F, A_PI]. d* has 4 values (tower→ln(10) Open Prob 2). '
+            'Λ: J_neg at cosmological scale; Sombrero = Hawking pair; A_PI = de Sitter attractor. '
             'Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.'
         )
 
@@ -64,7 +64,7 @@ class ConstantsModule(EquationModule):
                 name='derive_lambda',
                 display='Λ — Einstein cosmological constant: J_neg at cosmological scale',
                 latex=r'G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi GT_{\mu\nu},\;\Lambda=J_{\rm neg},\;\Omega_\Lambda\to\Omega_{\zeta\Sigma}',
-                radian_form='Three-phase balance forces Λ. Sombrero=Hawking waveform. OMEGA_ZS=de Sitter attractor.',
+                radian_form='Three-phase balance forces Λ. Sombrero=Hawking waveform. A_PI=de Sitter attractor.',
                 confidence='σ=∞ (existence); σ>40 (Nobel 1998); OPEN (value from f)',
                 code_verified=True,
                 params=[],
@@ -158,7 +158,7 @@ class ConstantsModule(EquationModule):
             ),
             Equation(
                 name='derive_omega_zs',
-                display='Ω_ζΣ = W(1) — thermal information ceiling T·e^T=1',
+                display='A_π = W(1) — thermal information ceiling T·e^T=1',
                 latex=r'T=e^{-T}\Leftrightarrow T\cdot e^T=1\Rightarrow\Omega_{\zeta\Sigma}=W(1)=0.56714\ldots',
                 radian_form='Self-referential Boltzmann fixed point. Banach theorem → unique solution W(1).',
                 confidence='ESTABLISHED',
@@ -166,7 +166,7 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_omega_zs,
                 display_options=[],
-                process='Derivation of OMEGA_ZS = W(1) = 0.56714329...',
+                process='Derivation of A_PI = W(1) = 0.56714329...',
             ),
             Equation(
                 name='derive_alpha_fermat',
@@ -178,13 +178,13 @@ class ConstantsModule(EquationModule):
                 params=[],
                 compute=derive_alpha_fermat,
                 display_options=[],
-                process='Derivation of Alpha_Fermat = 1/137.035999...',
+                process='Derivation of α = 1/137.035999...',
             ),
             Equation(
                 name='derive_d_star',
                 display='d* — 4 values: BK spectral floor, gap=0.000707, tower→ln(10) [OPEN]',
                 latex=r'd^*=0.24600,\;\delta=\Omega_{\zeta\Sigma}-d^*\ln10=0.000707',
-                radian_form='BK spectral floor. GAP=Yang-Mills mass gap. Full tower d*_R+d*_C+d*_H+d*_O=ln(10) OPEN.',
+                radian_form='BK spectral floor. GAP=onset residual. Full tower d*_R+d*_C+d*_H+d*_O=ln(10) OPEN.',
                 confidence='ESTABLISHED (d*_R); OPEN (full tower)',
                 code_verified=True,
                 params=[],

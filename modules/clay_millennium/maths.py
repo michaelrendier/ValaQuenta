@@ -33,10 +33,10 @@ RH sub-functions::
     rh_proof_stone()            — Proof I:  Stone's theorem on self-adjoint Σ_RB
     rh_proof_wiles_conjugate()  — Proof II: R̂†=B̂, Frey curve impossible (Wiles 1995)
     rh_noether_balance_scan()   — Numerical: σ=½ derived from balance, not assigned
-    rh_spectral_decomposition() — Explicit formula, BAO residue, mass gap connection
+    rh_spectral_decomposition() — Explicit formula, onset residual
 
 Author:  O Captain My Captain
-Version: 0.130 — Third Age: RH two-proof engine + spectral decomposition + BAO residue
+Version: 0.130 — Third Age: RH two-proof engine + spectral decomposition + onset residual
 """
 
 import math
@@ -58,7 +58,7 @@ from ..h_rb_hat.maths import (
 #   rh_proof_stone()            Proof I:  Stone's theorem (self-adjoint → real spectrum)
 #   rh_proof_wiles_conjugate()  Proof II: R̂†=B̂, Frey curve impossible
 #   rh_noether_balance_scan()   Numerical: σ=½ derived, not assigned
-#   rh_spectral_decomposition() Explicit formula, BAO residue, mass gap
+#   rh_spectral_decomposition() Explicit formula, onset residual
 #   riemann_hypothesis()        Master function — runs all four, returns composite result
 #
 # Template: Poincaré (SOLVED, below) validates Σ_RB geometry.
@@ -66,10 +66,10 @@ from ..h_rb_hat.maths import (
 # Two solved problems = two certificates of the framework.
 # RH is the third consequence.
 
-OMEGA_ZS = 0.5671432904097838   # Lambert W(1) — thermal information ceiling
+A_PI = 0.5671432904097838   # Lambert W(1) — thermal information ceiling
 D_STAR   = 0.24600              # the boundary
 LN10     = math.log(10.0)       # 2.302585...
-GAP      = OMEGA_ZS - D_STAR * LN10   # 0.000707 — BAO acoustic residual = mass gap
+GAP      = A_PI - D_STAR * LN10   # 0.000707 — onset residual = mass gap
 
 
 def rh_proof_stone() -> Dict[str, Any]:
@@ -343,7 +343,7 @@ def rh_noether_balance_scan() -> Dict[str, Any]:
 
 def rh_spectral_decomposition() -> Dict[str, Any]:
     """
-    RH Spectral Decomposition — explicit formula, BAO residue, mass gap.
+    RH Spectral Decomposition — explicit formula, onset residual.
 
     The explicit formula (von Mangoldt / Riemann)::
 
@@ -367,16 +367,16 @@ def rh_spectral_decomposition() -> Dict[str, Any]:
         The BAO acoustic oscillations in the CMB are the same decomposition
         at cosmological scale. The primes ARE the expansion of the universe.
         First acoustic peak position: d*·ln10 = 0.56644
-        Entropy ceiling:             OMEGA_ZS = 0.56714
-        BAO acoustic residual:       GAP = OMEGA_ZS − d*·ln10 = 0.000707
+        Entropy ceiling:             A_PI = 0.56714
+        onset residual:       GAP = A_PI − d*·ln10 = 0.000707
 
     Mass gap connection::
 
-        The BAO acoustic residual GAP = 0.000707 is the Yang-Mills mass gap.
+        The onset residual GAP = 0.000707 is the onset residual.
         In the spectral language:
             - The ground state (x term) sits at the BAO floor d*·ln10
-            - The first excitation cannot start below OMEGA_ZS (entropy ceiling)
-            - The gap between them = OMEGA_ZS − d*·ln10 = 0.000707
+            - The first excitation cannot start below A_PI (entropy ceiling)
+            - The gap between them = A_PI − d*·ln10 = 0.000707
             - This is the energy cost of the first gluon excitation above the vacuum
         The mass gap is the spectral gap of the prime distribution at BAO scale.
     """
@@ -420,13 +420,13 @@ def rh_spectral_decomposition() -> Dict[str, Any]:
 
     # BAO spectral structure
     bao_ground  = D_STAR * LN10     # = 0.56644
-    bao_ceiling = OMEGA_ZS          # = 0.56714
+    bao_ceiling = A_PI          # = 0.56714
     bao_gap     = GAP               # = 0.000707
 
-    # Standing wave amplitude at BAO scale (x → exp(1/OMEGA_ZS))
-    # The sedenion field at x = e^(1/OMEGA_ZS) — the natural BAO coordinate
-    x_bao = math.exp(1.0 / OMEGA_ZS)
-    ln_xbao = 1.0 / OMEGA_ZS
+    # Standing wave amplitude at BAO scale (x → exp(1/A_PI))
+    # The sedenion field at x = e^(1/A_PI) — the natural BAO coordinate
+    x_bao = math.exp(1.0 / A_PI)
+    ln_xbao = 1.0 / A_PI
     standing_waves = []
     for gamma in RIEMANN_ZEROS[:8]:
         amplitude = 1.0 / math.sqrt(0.25 + gamma**2)  # 1/|ρ|
@@ -456,14 +456,14 @@ def rh_spectral_decomposition() -> Dict[str, Any]:
             'ground_d_star_ln10'  : round(bao_ground, 6),
             'ceiling_omega_zs'    : round(bao_ceiling, 6),
             'gap'                 : round(bao_gap, 6),
-            'gap_identity'        : 'GAP = OMEGA_ZS − D_STAR·ln10 = Yang-Mills mass gap',
+            'gap_identity'        : 'GAP = A_PI − D_STAR·ln10 = onset residual',
         },
         'standing_waves_at_bao' : standing_waves,
         'mass_gap_connection'   : (
-            'The BAO acoustic residual (0.000707) is the spectral gap of the '
+            'The onset residual (0.000707) is the spectral gap of the '
             'prime distribution between the de Sitter ground state and '
             'the first gluon excitation. '
-            'GAP = OMEGA_ZS − D_STAR·ln10 — derived, not fitted.'
+            'GAP = A_PI − D_STAR·ln10 — derived, not fitted.'
         ),
         'confidence'            : 'THEORETICAL — spectral identification; BAO-gap link open.',
         'latex'                 : (r'\psi(x)=x-\sum_\rho\frac{x^\rho}{\rho}-\ln2\pi'
@@ -481,7 +481,7 @@ def riemann_hypothesis() -> Dict[str, Any]:
         rh_proof_stone()            Proof I:  Stone's theorem
         rh_proof_wiles_conjugate()  Proof II: Wiles conjugate
         rh_noether_balance_scan()   Numerical: σ=½ forced
-        rh_spectral_decomposition() Spectral:  explicit formula, BAO residue
+        rh_spectral_decomposition() Spectral:  explicit formula, onset residual
     """
     proof_i    = rh_proof_stone()
     proof_ii   = rh_proof_wiles_conjugate()
@@ -498,8 +498,8 @@ def riemann_hypothesis() -> Dict[str, Any]:
         'what_it_cant_be'   : 'Off-critical zeros: forbidden by Stone (Proof I) and Frey/Wiles (Proof II).',
         'what_it_means'     : (
             'Noether conservation of prime distribution along the critical line. '
-            'The spectral gap GAP = OMEGA_ZS − D_STAR·ln10 = 0.000707 '
-            'is the BAO acoustic residual and the Yang-Mills mass gap. '
+            'The spectral gap GAP = A_PI − D_STAR·ln10 = 0.000707 '
+            'is the onset residual (no BAO measurement enters). '
             'The primes are the expansion of the universe. '
             'RH says the oscillations on that expansion are balanced.'
         ),
@@ -518,7 +518,7 @@ def riemann_hypothesis() -> Dict[str, Any]:
         'open_part'         : (
             'Proof I: deficiency indices n₊=n₋=0 on L²(ℝ₊,dx/x). '
             'Proof II: formal bijection Frey curve ↔ off-critical zero. '
-            'Spectral: explicit f(OMEGA_ZS, Ω_b h²) = Ω_Λ derivation.'
+            'Spectral: explicit f(A_PI, Ω_b h²) = Ω_Λ derivation.'
         ),
         'confidence'        : 'THEORETICAL — framework complete; domain proofs open.',
         'latex'             : (r'\Sigma_{RB}|\psi\rangle=\gamma_n|\psi\rangle,'
@@ -590,9 +590,9 @@ def yang_mills_mass_gap() -> Dict[str, Any]:
     G_sum    = sum(v for _, v in G_vals)
 
     # The mass gap candidate from d* gap
-    OMEGA_ZS = 0.56714329040978384
+    A_PI = 0.56714329040978384
     D_STAR   = 0.24600
-    gap_candidate = abs(OMEGA_ZS - D_STAR * math.log(10))   # = 0.000707
+    gap_candidate = abs(A_PI - D_STAR * math.log(10))   # = 0.000707
 
     return {
         'problem'           : 'Yang-Mills Existence and Mass Gap',

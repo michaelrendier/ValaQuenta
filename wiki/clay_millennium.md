@@ -13,7 +13,7 @@
 
 ## What it computes
 
-All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent proofs (Stone / Wiles conjugate), Noether balance scan, spectral decomposition + BAO residue / mass gap. Poincaré (SOLVED) and FLT (Wiles 1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP, Hodge, BSD.
+All 7 Clay Millennium Problems derived from Σ_RB. RH engine: two independent proofs (Stone / Wiles conjugate), Noether balance scan, spectral decomposition + onset residual. Poincaré (SOLVED) and FLT (Wiles 1995) validate the framework. 6 open problems: RH, Yang-Mills, NS, P/NP, Hodge, BSD.
 
 This module is a **map, not a proof**. `clay_summary` reports `solved: 1, open: 6` — the one solved problem is Poincaré, and it was solved by Perelman, not here. The module's value is that it states each problem in Σ_RB terms and names the σ facet it would live at.
 

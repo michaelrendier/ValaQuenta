@@ -87,10 +87,10 @@ CD_LEVELS     = 9                    # k = 0 (ℝ) through k = 8 (t_256)
 ZD_CLASSES    = 42                   # known canonical count on S¹⁵
 ZD_PAIRS      = 84                   # 2 per class
 
-OMEGA_ZS      = 0.5671432904097838   # Lambert W(1); verified W·e^W = 1 exactly
+A_PI      = 0.5671432904097838   # Lambert W(1); verified W·e^W = 1 exactly
 D_STAR        = 0.24600              # BK spectral d* (5 sig figs)
 SIGMA_HALF    = 0.5                  # the critical line, the equator
-GAP           = OMEGA_ZS - D_STAR * math.log(10.0)  # Yang-Mills mass gap ≈ 7.07×10⁻⁴
+GAP           = A_PI - D_STAR * math.log(10.0)  # onset residual ≈ 7.07×10⁻⁴
 
 # Shell assignments in the Sedenion Point Mapping
 SHELL_SIGMA = {1: 0.75, 2: 0.50, 3: 0.25, 4: 0.00}

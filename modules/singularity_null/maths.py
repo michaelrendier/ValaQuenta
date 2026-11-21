@@ -41,7 +41,7 @@ from typing import Dict, List, Any, Tuple, Optional
 # ── Ainulindale constants ──────────────────────────────────────────────────────
 SIGMA_HALF  = 0.5
 D_STAR      = 0.24600
-OMEGA_ZS    = 0.5671432904097838
+A_PI    = 0.5671432904097838
 R_H         = 1.0 / math.sqrt(2.0)
 PI_HALF     = math.pi / 2.0
 

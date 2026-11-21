@@ -936,7 +936,7 @@ def dark_matter_halo(galaxy_size_ly: float = 50000.0,
 # Added 2026-06-17 — precession-stroke / oblique-crank / trine identification.
 
 D_STAR   = 0.2460    # spectral ground state — crank throw
-OMEGA_ZS = 0.5671432904097838  # Lambert W(1) — velocity ceiling
+A_PI = 0.5671432904097838  # Lambert W(1) — velocity ceiling
 
 
 def sigma_rb_baseline() -> Dict[str, Any]:

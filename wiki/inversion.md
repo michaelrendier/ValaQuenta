@@ -30,7 +30,7 @@ J_N generates Z₄: four applications of a π/2 rotation is 2π, one full turn.
 | `involution_check` | ESTABLISHED | needs params |  |
 | `phi_crossing_step` | ESTABLISHED | ✓ | {'H_NN_over_4': 0.025, 'pi_over_2_times_hbar': 0.024999999999999998, 'match': True, 'sta… |
 | `four_horizons` | THEORETICAL | ✓ | [{'name': 'Schwarzschild horizon', 'mechanism': 'r < r_s: (t,r) coordinates exchange rol… |
-| `d_star_gap` | OPEN | ✓ | {'d_star': 0.246, 'd_star_x_ln10': 0.5664359328765353, 'OMEGA_ZS': 0.5671432904097838, '… |
+| `d_star_gap` | OPEN | ✓ | {'d_star': 0.246, 'd_star_x_ln10': 0.5664359328765353, 'A_PI': 0.5671432904097838, '… |
 
 *"needs params" means the equation takes arguments and was not called, not that it is broken. The module's own `shell_commands()` exercise these with its author's defaults.*
 

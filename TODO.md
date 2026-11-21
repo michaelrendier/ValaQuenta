@@ -14,12 +14,12 @@ The code now needs to be updated to reflect the ValaQuenta module structure.
 
 - [ ] Update all `engine/` imports to point to ValaQuenta package (not the local engine/ copy)
 - [ ] Add `bao_mass_gap.py` as a viewer mode:
-      - Show OMEGA_ZS, D_STAR, GAP values live
+      - Show A_PI, D_STAR, GAP values live
       - Run `validate()` and display status: ESTABLISHED
-      - Show the derivation chain: OMEGA_ZS − D_STAR × ln(10) = GAP
+      - Show the derivation chain: A_PI − D_STAR × ln(10) = GAP
 - [ ] Add `galactic_cavity.py` CavityMode as a viewer mode:
       - Input: r_max_bar, v_max, r_cavity, v_flat
-      - Display: r_t = D_STAR × r_max_bar, v_flat = OMEGA_ZS × v_max
+      - Display: r_t = D_STAR × r_max_bar, v_flat = A_PI × v_max
       - Plot: arctan rotation curve (Stokes drift)
       - Show: wave period (Gyr), Jeans ratio
 - [ ] Add `forced_sigma()` live visualisation mode:
@@ -34,7 +34,7 @@ The code now needs to be updated to reflect the ValaQuenta module structure.
       - Operator E-values overlaid (compose=0.9999, allocate=0.2148, etc.)
 - [ ] Wire ArdaQuenta to ValaQuenta/modules/ for full Clay Millennium display
       - Each module: problem, status, H_hat_RB derivation, confidence
-      - Yang-Mills mass gap: status = DERIVED (not OPEN)
+      - onset residual: status = DERIVED (not OPEN)
 - [ ] Schedule dedicated session — substantial Qt UI work
 
 ---
@@ -94,7 +94,7 @@ These wiki entries were identified in Ainulindale sessions and belong in ValaQue
 - [ ] wiki/69 — Add Extrapolator = Caustic Focuser (sc(i,j) = ∇²f/⟨|f|⟩ = 1 at conformal boundary)
 - [ ] wiki/70 — Circle vs Square: gravity on continuous circle; Bang/GR on circle; 3 forces at corners
 - [ ] wiki/70 — The Tower IS The Standard Model: σ=1−k/4 geodesic; three algebraic losses = three forces
-- [ ] wiki/70 — Yang-Mills and M-Theory: 𝕊(16)+𝕆(8)=24=Leech; I+O=2; 24+2=26; GAP>0=mass gap answer
+- [ ] wiki/70 — Yang-Mills and M-Theory: 𝕊(16)+𝕆(8)=24=Leech; I+O=2; 24+2=26; GAP>0 = the onset residual is nonzero
 - [ ] wiki/70 — Geodesic = Tower; d* < 1/4 PROVEN (GAP goes negative if d*=1/4); σ=¾=ℂ=U(1)=EM NAMED
 
 ---

@@ -67,7 +67,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
   params: `—`  ·  confidence: `THEORETICAL`  ·  signature: `()`
 ```python
 >>> module.run('lineage_report', {})['result']
-[{'bracket': '{1:15}', 'tier': 'DERIVED', 'descends_from': 'the CD grading', 'emerges': 'Re, N=|x|^2, conj, inverse -- grades the algebra'}, {'bracket': '{2:14}', 'tier': 'THEORETICAL', 'descends_from': '{1:15} (needs Re)', 'emerges': 'the pointer z = x0 + i x8; |z|; |z| - Omega_ZS -- read head'}...
+[{'bracket': '{1:15}', 'tier': 'DERIVED', 'descends_from': 'the CD grading', 'emerges': 'Re, N=|x|^2, conj, inverse -- grades the algebra'}, {'bracket': '{2:14}', 'tier': 'THEORETICAL', 'descends_from': '{1:15} (needs Re)', 'emerges': 'the pointer z = x0 + i x8; |z|; |z| - A_π -- read head'}...
 ```
 
 ### Shell commands (`shell_commands()`)

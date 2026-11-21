@@ -72,7 +72,7 @@
         "name": "omega_zs_6_family",
         "equation": "omega_zs_6_family",
         "label": "Omega Zs 6 Family",
-        "desc": "OMEGA_ZS = W(1) appears in 6 independent domains simultaneously",
+        "desc": "A_PI = W(1) appears in 6 independent domains simultaneously",
         "params": []
       },
       {

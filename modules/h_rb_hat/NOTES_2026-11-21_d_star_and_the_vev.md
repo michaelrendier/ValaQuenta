@@ -27,7 +27,7 @@ x → e^(−x) gains −log₁₀ W(1) = W(1)/ln 10 = 0.2463072015 digits per st
 - Dependents under the two values: the hat half-angle arctan(d*) is 13.8203° (0.24600) or 13.8369° (0.24631); every d*-scaled quantity (galactic r_t = d*·R, the oblique crank, σ_hat = 1 − d*) shifts by 0.125 %.
 
 ## Symbols (author, 2026-11-21)
-Ω_RZ = d*; A_Fermat (A_π) = the Lambert W fixed point; "not to be confused with the other Omega" (the standard omega constant W(1)), hence the RZ and PI subscripts. The codebase calls W(1) `OMEGA_ZS` (Ω_ζΣ) and A_π = 1/137.036. The RHP measurement puts d* on the Riemann/entropy side and W(1) on the Fermat/inertia side, which agrees with the author. See `inductive_onset_residual.symbols()`.
+Ω_RZ = d*; A_Fermat (A_π) = the Lambert W fixed point; "not to be confused with the other Omega" (the standard omega constant W(1)), hence the RZ and PI subscripts. The codebase calls W(1) `A_PI` (Ω_ζΣ) and A_π = 1/137.036. The RHP measurement puts d* on the Riemann/entropy side and W(1) on the Fermat/inertia side, which agrees with the author. See `inductive_onset_residual.symbols()`.
 
 ## The Clay statement and the 2026-11 news (from the Numberphile video "The Yang-Mills Problem (news)", transcript in ContextPlease/claude/scratchpad/youtube_ZCu5KGpCl68/; secondhand)
 - **What the Clay problem asks (two halves).** (1) Existence: a quantum Yang–Mills theory on R⁴ for a compact simple gauge group, with a unique Poincaré-invariant vacuum that is the lowest-energy state, sensible at all scales and in infinite volume, probabilities in [0, 1], matching the weak-coupling limit. (2) The mass gap: a finite energy gap above the vacuum (glueballs), which electromagnetism does not have.

@@ -45,7 +45,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'claim': 'Drug = conformal inversion of cancer sedenion address. c_drug × c_cancer = R_H².', 'inversion': {'c_cancer_upper_fraction': 0.9848, 'c_drug_upper_fraction': 0.4924, 'product_e0': 0.5, 'product_rest': 0.0, 'brim_restored': True, 'R_H_sq': 0.5, 'reading': 'Drug × Cancer = R_H² × e₀. The ...
 ```
 
-**`hydro_radiolysis_chromatography`** — Radiolysis probes J_R/J_B. Healthy A_R/A_B = OMEGA_ZS. Cancer elevated.
+**`hydro_radiolysis_chromatography`** — Radiolysis probes J_R/J_B. Healthy A_R/A_B = A_PI. Cancer elevated.
   params: `—`  ·  confidence: `ESTABLISHED+THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 
 ---

@@ -3,7 +3,7 @@
 **Module:** `modules/tier9_chem/`  
 **Version:** 0.100  
 **Confidence floor:** THEORETICAL  
-**Claim:** Cancer as a zero-divisor signature; the drug as its algebraic adjoint. Healthy tissue sits at A_R/A_B = OMEGA_ZS.
+**Claim:** Cancer as a zero-divisor signature; the drug as its algebraic adjoint. Healthy tissue sits at A_R/A_B = A_PI.
 
 
 **Reference:** every equation with its parameters — [toolbox](toolbox/21_tier9_chem.md) · API — [tier9_chem](https://michaelrendier.github.io/ValaQuenta/api/modules/tier9_chem.html). This page is the record; it holds no API.
@@ -16,7 +16,7 @@ D-CHEM paper (Erika Schafer collaboration). 5 engines: periodic table from CD st
 
 Like tier7_cosmos, this module was **unreachable through the registry** until 2026-07-28 for want of a `viewer_data` implementation. Now fixed; its 6 equations are reachable.
 
-`hydro_radiolysis_chromatography` gives the proposed experimental handle: radiolysis fragments probe J_R and J_B, and the healthy ratio A_R/A_B should equal OMEGA_ZS, with cancer elevated. That is a falsifiable prediction and the module states it as one.
+`hydro_radiolysis_chromatography` gives the proposed experimental handle: radiolysis fragments probe J_R and J_B, and the healthy ratio A_R/A_B should equal A_PI, with cancer elevated. That is a falsifiable prediction and the module states it as one.
 
 Attribution: the module names Erika Schafer.
 
@@ -35,7 +35,7 @@ Attribution: the module names Erika Schafer.
 
 ## Open
 
-- **No clinical or experimental data is loaded by this module.** Every result is a derivation from the algebra. The predicted A_R/A_B = OMEGA_ZS signature is untested against any assay.
+- **No clinical or experimental data is loaded by this module.** Every result is a derivation from the algebra. The predicted A_R/A_B = A_PI signature is untested against any assay.
 - Nothing here is medical advice or a treatment protocol, and the module should not be read as one.
 
 ---

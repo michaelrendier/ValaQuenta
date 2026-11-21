@@ -4,7 +4,7 @@
 **Version:** 0.100  
 **Confidence floor:** THEORETICAL  
 **Notebooks:** [core/02_derivation_chain.ipynb](../notebooks/core/02_derivation_chain.ipynb)  
-**Claim:** Tiers 1–5 form a single ordered chain: from Alpha_F + OMEGA_ZS to d*, to Riemann=Fermat, to the Tier-2 dropouts, to H_RB.
+**Claim:** Tiers 1–5 form a single ordered chain: from Alpha_F + A_PI to d*, to Riemann=Fermat, to the Tier-2 dropouts, to H_RB.
 
 
 **Reference:** every equation with its parameters — [toolbox](toolbox/04_derivation_chain.md) · API — [derivation_chain](https://michaelrendier.github.io/ValaQuenta/api/modules/derivation_chain.html). This page is the record; it holds no API.
@@ -15,7 +15,7 @@
 
 Full derivation chain from root constants to Geometric Observer. T1: Riemann=Fermat (R̂†=B̂). T2: Yang-Mills, BK, Noether, NS, Langlands, BSD all drop out. T3: H_RB is what remains. T4: Geometries defined → Geometric Observer (another Hamiltonian). T5: ln = Hubble constant of ℕ, d* tower → ln(10) [OPEN], ħ↔ln.
 
-The word **dropout** is load-bearing. A dropout is a result that falls out of the chain without being inserted: Yang-Mills mass gap, H=xp, Noether conservation, BSD. Four are ESTABLISHED; Navier-Stokes and Langlands are THEORETICAL and say so.
+The word **dropout** is load-bearing. A dropout is a result that falls out of the chain without being inserted: onset residual, H=xp, Noether conservation, BSD. Four are ESTABLISHED; Navier-Stokes and Langlands are THEORETICAL and say so.
 
 This is the module to read first. It is the index to every other engine.
 
@@ -30,8 +30,8 @@ This is the module to read first. It is the index to every other engine.
 | `h_rb_emergence` | ESTABLISHED | ✓ | {'tier': 3, 'emergence': 'H_RB = Σ_p p^{-σ}[R̂_p ⊗ ∂̂_{∂M} + ∂̂†_{∂M} ⊗ B̂_p]', 'not_pos… |
 | `ln_natural_unit` | ESTABLISHED | ✓ | {'tier': 5, 'claim': 'ln(x) is the natural unit — Hubble constant of ℕ = BK time coordin… |
 | `noether_dropout` | ESTABLISHED | ✓ | {'tier': 2, 'drops_out': 'J_R + J_G + J_B = 0 (Noether current conservation)', 'mechanis… |
-| `yang_mills_dropout` | ESTABLISHED | ✓ | {'tier': 2, 'drops_out': 'Yang-Mills mass gap δ = OMEGA_ZS − d*·ln10 = 0.000707', 'mecha… |
-| `full_derivation_chain` | THEORETICAL | ✓ | {'chain': 'Alpha_F + OMEGA_ZS → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Obs… |
+| `yang_mills_dropout` | ESTABLISHED | ✓ | {'tier': 2, 'drops_out': 'onset residual δ = A_PI − d*·ln10 = 0.000707', 'mecha… |
+| `full_derivation_chain` | THEORETICAL | ✓ | {'chain': 'Alpha_F + A_PI → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Obs… |
 | `geometric_observer` | THEORETICAL | ✓ | {'tier': 4, 'claim': '∂̂_{∂M} IS a Hamiltonian — the Geometric Observer.', 'discovery': … |
 | `langlands_dropout` | THEORETICAL | ✓ | {'tier': 2, 'drops_out': 'Langlands programme = J^μ at σ=1 over sedenion strata', 'mecha… |
 | `navier_stokes_dropout` | THEORETICAL | ✓ | {'tier': 2, 'drops_out': 'Navier-Stokes = H_RB\|_{Im=0} (Yang-Mills minus i)', 'mechanis… |

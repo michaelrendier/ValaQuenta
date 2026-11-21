@@ -66,9 +66,9 @@ RHO_PLANCK = C_LIGHT**5 / (H_BAR * G_NEWTON**2)           # J/m^3, ~4.6e113
 K_PLANCK   = C_LIGHT**6 / (H_BAR * G_NEWTON)**2           # m^-4, ~2.3e139
 
 # ── Ainulindale constants (provenance: ~/.clauderc_canonical_maths) ─────────
-OMEGA_ZS = 0.567_143_290_409_783_8        # Lambert W(1); W·e^W = 1 exactly
+A_PI = 0.567_143_290_409_783_8        # Lambert W(1); W·e^W = 1 exactly
 D_STAR   = 0.246_00                       # BK spectral d* (5 sig figs)
-GAP      = OMEGA_ZS - D_STAR * math.log(10.0)   # Yang-Mills gap ≈ 7.0736e-4
+GAP      = A_PI - D_STAR * math.log(10.0)   # Yang-Mills gap ≈ 7.0736e-4
 
 # ── QGP / deconfinement threshold (lattice QCD; Bazavov et al.) ────────────
 QGP_ENERGY_DENSITY = 1.6e35               # J/m^3  ≈ 1 GeV/fm^3
@@ -274,7 +274,7 @@ def energy_partition(M: float, space_fraction: float | None = None) -> Dict[str,
         E_matter / E_total =     d*  = 0.24600
 
     space_fraction overrides the split so 01_predictions.ipynb can test
-    alternatives (½, Ω_ZS, 1−Ω_ZS, …).
+    alternatives (½, A_π, 1−A_π, …).
 
     :param M: mass in kg
     :param space_fraction: fraction of Mc² in the stiff-space channel; None uses 1 − d*
@@ -552,7 +552,7 @@ def full_desitter_cavitation() -> Dict[str, object]:
         'constants': {
             'c': C_LIGHT, 'G': G_NEWTON, 'hbar': H_BAR, 'k_B': K_BOLTZ,
             'l_Planck': L_PLANCK, 't_Planck': T_PLANCK, 'm_Planck': M_PLANCK,
-            'K_Planck': K_PLANCK, 'OMEGA_ZS': OMEGA_ZS, 'D_STAR': D_STAR,
+            'K_Planck': K_PLANCK, 'A_PI': A_PI, 'D_STAR': D_STAR,
             'GAP': GAP,
         },
     }

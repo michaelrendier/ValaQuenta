@@ -18,7 +18,7 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
   params: `—`  ·  confidence: `THEORETICAL`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('full_derivation_chain', {})['result']
-{'chain': 'Alpha_F + OMEGA_ZS → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Observer → ln', 'tier_1': {'tier': 1, 'claim': 'Riemann = Fermat. R̂†=B̂. Both are Euler products from opposite sides.', 'riemann_side': {'function': 'ζ(s) = Π_p (1−p^{-s})^{-1}', 'encodes': 'WHERE primes ARE — p...
+{'chain': 'Alpha_F + A_PI → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Observer → ln', 'tier_1': {'tier': 1, 'claim': 'Riemann = Fermat. R̂†=B̂. Both are Euler products from opposite sides.', 'riemann_side': {'function': 'ζ(s) = Π_p (1−p^{-s})^{-1}', 'encodes': 'WHERE primes ARE — p...
 ```
 
 **`riemann_equals_fermat`** — T1 — Riemann = Fermat: R̂†=B̂, both Euler products
@@ -28,11 +28,11 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'tier': 1, 'claim': 'Riemann = Fermat. R̂†=B̂. Both are Euler products from opposite sides.', 'riemann_side': {'function': 'ζ(s) = Π_p (1−p^{-s})^{-1}', 'encodes': 'WHERE primes ARE — positive space', 'channel': 'Red / R̂_p', 'functional_eq': 'ξ(s) = ξ(1−s)'}, 'fermat_side': {'function': 'L(E,s)...
 ```
 
-**`yang_mills_dropout`** — T2 — Yang-Mills: δ = OMEGA_ZS − d*·ln10 = 0.000707
+**`yang_mills_dropout`** — T2 — Yang-Mills: δ = A_PI − d*·ln10 = 0.000707
   params: `—`  ·  confidence: `ESTABLISHED`  ·  signature: `() -> Dict[str, Any]`
 ```python
 >>> module.run('yang_mills_dropout', {})['result']
-{'tier': 2, 'drops_out': 'Yang-Mills mass gap δ = OMEGA_ZS − d*·ln10 = 0.000707', 'mechanism': 'OMEGA_ZS (entropy ceiling) − d*·ln10 (BAO first peak) = acoustic residual', 'bao': {'first_peak': 0.56643593, 'ceiling': 0.56714329, 'residual': 0.00070736, 'name': 'BAO acoustic residual'}, 'yang_mill...
+{'tier': 2, 'drops_out': 'onset residual δ = A_PI − d*·ln10 = 0.000707', 'mechanism': 'A_PI (Lambert fixed point) − d*·ln10 (the running d* read in nats) = rounding residual', 'bao': {'first_peak': 0.56643593, 'ceiling': 0.56714329, 'residual': 0.00070736, 'name': 'BAO acoustic residual'}, 'yang_mill...
 ```
 
 **`berry_keating_dropout`** — T2 — Berry-Keating: H=xp unique from scale inv + R̂†=B̂ + d*

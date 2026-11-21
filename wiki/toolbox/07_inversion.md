@@ -37,11 +37,11 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 {'H_NN_over_4': 0.025, 'pi_over_2_times_hbar': 0.024999999999999998, 'match': True, 'status': 'ESTABLISHED numerically — formal derivation OPEN'}
 ```
 
-**`d_star_gap`** — d* x ln(10) vs OMEGA_ZS  [OPEN — gap = 0.00070]
+**`d_star_gap`** — d* x ln(10) vs A_PI  [OPEN — gap = 0.00070]
   params: `—`  ·  confidence: `OPEN`  ·  signature: `()`
 ```python
 >>> module.run('d_star_gap', {})['result']
-{'d_star': 0.246, 'd_star_x_ln10': 0.5664359328765353, 'OMEGA_ZS': 0.5671432904097838, 'gap': 0.000707357533248576, 'status': 'OPEN — highest priority derivation'}
+{'d_star': 0.246, 'd_star_x_ln10': 0.5664359328765353, 'A_PI': 0.5671432904097838, 'gap': 0.000707357533248576, 'status': 'OPEN — highest priority derivation'}
 ```
 
 **`four_horizons`** — (I|O) unifies four physical horizons

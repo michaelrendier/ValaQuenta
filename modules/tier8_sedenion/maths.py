@@ -10,7 +10,7 @@ Engines::
 
     sedenion_self_organisation()   16 operators → d*/σ½/D*=1 via prime hash alone
     gnarl_validation()             Zero-divisor gnarl: fractal boundary of sedenion validity
-    omega_zs_6_family()            OMEGA_ZS and the 6-constant family it belongs to
+    omega_zs_6_family()            A_PI and the 6-constant family it belongs to
     hermite_timing_wheel()         Hermite polynomials as BAO timing wheel (n zeros = n modes)
     orbit_trap_address()           Orbit trap = Hyperwebster sedenion address in fractal space
     leech_divergence_inversion()   Zero-divisors are divergence-inverted. V_n=π^(n/2)/(n/2)!
@@ -27,9 +27,9 @@ _trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in 
 from typing import Dict, List, Any, Tuple
 
 # ── Ainulindale constants ──────────────────────────────────────────────────────
-OMEGA_ZS  = 0.5671432904097838   # W(1): Lambert W fixed point
+A_PI  = 0.5671432904097838   # W(1): Lambert W fixed point
 D_STAR    = 0.24600              # d*: BK mass gap
-GAP       = OMEGA_ZS - D_STAR * math.log(10.0)  # Yang-Mills mass gap = 0.000707
+GAP       = A_PI - D_STAR * math.log(10.0)  # onset residual = 0.000707
 R_H       = 1.0 / math.sqrt(2.0)
 SIGMA_HALF = 0.5
 
@@ -167,7 +167,7 @@ def sedenion_self_organisation() -> Dict[str, Any]:
         e₁₂: COMPRESSION  (information density)
         e₁₃: IGNITION     (the compression-ignition event)
         e₁₄: EMERGENCE    (collective behaviour)
-        e₁₅: GAP          (Yang-Mills mass gap — the boundary)
+        e₁₅: GAP          (onset residual — the boundary)
 
     The self-organisation check::
 
@@ -217,9 +217,9 @@ def sedenion_self_organisation() -> Dict[str, Any]:
     # The claim: this ratio ≈ 1 / SIGMA_HALF = 2
     # More precisely: d* / (sigma_mean * D*) = d*/D* * 1/sigma_mean = 1/sigma_mean
     # and sigma_mean should be close to 1 (the operators are spread across [0,1])
-    # The deep claim: the 16 operators' sigma_mean is OMEGA_ZS
+    # The deep claim: the 16 operators' sigma_mean is A_PI
     # (they naturally cluster at the Lambert W attractor)
-    sigma_mean_vs_OMEGA_ZS = abs(sigma_mean - OMEGA_ZS)
+    sigma_mean_vs_OMEGA_ZS = abs(sigma_mean - A_PI)
 
     # ── Dimensional self-organisation: dim_idx distribution ───────────────
     dim_counts = [0]*16
@@ -247,7 +247,7 @@ def sedenion_self_organisation() -> Dict[str, Any]:
         'operators'         : hash_data,
         'sigma_mean'        : round(sigma_mean, 8),
         'sigma_std'         : round(sigma_std, 8),
-        'OMEGA_ZS'          : round(OMEGA_ZS, 8),
+        'A_PI'          : round(A_PI, 8),
         'd_star'            : D_STAR,
         'sigma_mean_vs_OMEGA_ZS' : round(sigma_mean_vs_OMEGA_ZS, 6),
         'd_star_vs_sigma_mean'   : round(d_star_vs_sigma_mean, 6),
@@ -324,7 +324,7 @@ def gnarl_validation() -> Dict[str, Any]:
         Generate N random sedenion unit elements.
         Compute g for each.
         Compare g-distribution to theoretical prediction.
-        The mean ⟨g⟩ should converge to OMEGA_ZS as N → ∞.
+        The mean ⟨g⟩ should converge to A_PI as N → ∞.
     """
     # ── 1. Compute g(a) for random unit sedenions ─────────────────────────
     np.random.seed(20260601)
@@ -392,9 +392,9 @@ def gnarl_validation() -> Dict[str, Any]:
     upper_g_mean = float(np.mean(upper_g_vals))
     upper_below_1 = upper_g_mean < 0.95
 
-    # ── 4. Gnarl boundary vs OMEGA_ZS ────────────────────────────────────
-    # The mean g over ALL sedenion elements should be OMEGA_ZS
-    g_vs_omega = abs(g_mean - OMEGA_ZS)
+    # ── 4. Gnarl boundary vs A_PI ────────────────────────────────────
+    # The mean g over ALL sedenion elements should be A_PI
+    g_vs_omega = abs(g_mean - A_PI)
 
     # ── 5. Fractal dimension estimate (box-counting) ──────────────────────
     # For the gnarl boundary {a: g(a) < 0.5}, estimate the box-counting dim
@@ -408,14 +408,14 @@ def gnarl_validation() -> Dict[str, Any]:
     rule110_class = 'Class IV (Wolfram) — maximal computational complexity'
 
     return {
-        'claim'             : 'Gnarl = zero-divisor boundary in 𝕊. Mean g = OMEGA_ZS. Fractal at dim 14+d*.',
+        'claim'             : 'Gnarl = zero-divisor boundary in 𝕊. Mean g = A_PI. Fractal at dim 14+d*.',
         'g_statistics'      : {
             'N'             : N_samples,
             'mean'          : round(g_mean, 6),
             'std'           : round(g_std, 6),
             'min'           : round(g_min, 6),
             'max'           : round(g_max, 6),
-            'OMEGA_ZS'      : round(OMEGA_ZS, 6),
+            'A_PI'      : round(A_PI, 6),
             'g_vs_OMEGA_ZS' : round(g_vs_omega, 6),
         },
         'octonion_subspace' : {
@@ -444,50 +444,50 @@ def gnarl_validation() -> Dict[str, Any]:
         },
         'rule110_analogy'   : rule110_class,
         'wolfram_class'     : 'IV — the sedenion gnarl is maximally computationally complex',
-        'confidence'        : 'ESTABLISHED (norm inequality, zero-divisors) + THEORETICAL (g_mean=OMEGA_ZS)',
+        'confidence'        : 'ESTABLISHED (norm inequality, zero-divisors) + THEORETICAL (g_mean=A_PI)',
         'latex'             : (r'g(a)=max_{|b|=1}|ab|,;langle g\rangle_{S^{15}}=Omega_{zetaSigma},'
                                r';dim_H(\text{Gnarl})=14+d^*'),
     }
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ENGINE 3 — OMEGA_ZS 6-FAMILY
+# ENGINE 3 — A_PI 6-FAMILY
 # ══════════════════════════════════════════════════════════════════════════════
 
 def omega_zs_6_family() -> Dict[str, Any]:
     """
-    OMEGA_ZS AND THE 6-CONSTANT FAMILY.
+    A_PI AND THE 6-CONSTANT FAMILY.
 
-    OMEGA_ZS = W(1) = 0.56714... is the Lambert W fixed point: the unique
+    A_PI = W(1) = 0.56714... is the Lambert W fixed point: the unique
     solution to x·e^x = 1, equivalently T·e^T = 1.
 
-    The 6-constant family of OMEGA_ZS::
+    The 6-constant family of A_PI::
 
-        OMEGA_ZS itself arises in 6 independent domains:
+        A_PI itself arises in 6 independent domains:
 
         1. MATHEMATICS:  W(1) = the Lambert W fixed point.
                          The unique x s.t. x + ln(x) = 0.
                          The Omega constant: Ω = W(1).
 
-        2. PRIME NUMBERS: OMEGA_ZS = the mean frequency density of the primes
+        2. PRIME NUMBERS: A_PI = the mean frequency density of the primes
                           at the BAO scale. Σ_p p^{-σ} at σ=½ converges to
-                          a distribution with mean value OMEGA_ZS.
+                          a distribution with mean value A_PI.
 
-        3. DE SITTER COSMOLOGY: OMEGA_ZS = the asymptotic dark energy fraction
+        3. DE SITTER COSMOLOGY: A_PI = the asymptotic dark energy fraction
                                 Ω_Λ in the far future de Sitter phase.
                                 The Friedmann attractor value.
 
-        4. YANG-MILLS:   GAP = OMEGA_ZS - D_STAR·ln10 = 0.000707
-                         The Yang-Mills mass gap δ is the residual after
-                         subtracting the BK gap from OMEGA_ZS.
+        4. YANG-MILLS:   GAP = A_PI - D_STAR·ln10 = 0.000707
+                         The onset residual δ is the residual after
+                         subtracting the BK gap from A_PI.
 
-        5. SEDENION:     OMEGA_ZS = the mean of g(a) over all unit sedenions
+        5. SEDENION:     A_PI = the mean of g(a) over all unit sedenions
                          (the gnarl mean). The sedenion "average associativity."
 
-        6. INFORMATION:  OMEGA_ZS = the entropy density at the critical line σ=½.
-                         S = -Σ p log p at the critical partition = OMEGA_ZS.
+        6. INFORMATION:  A_PI = the entropy density at the critical line σ=½.
+                         S = -Σ p log p at the critical partition = A_PI.
                          This is the unique entropy that is self-referential:
-                         the entropy of OMEGA_ZS itself (via the Ω definition).
+                         the entropy of A_PI itself (via the Ω definition).
 
     The 6-fold appearance is not coincidence. It is the signature of σ=½:
     the unique locus where all six domains simultaneously satisfy their
@@ -499,7 +499,7 @@ def omega_zs_6_family() -> Dict[str, Any]:
         W(e)   = 1.0             (the BK natural unit: e^1 · e^{-1} = 1/e)
         W(0)   = 0               (the trivial zero)
         W(-1/e)= -1              (the branch point)
-        W(1/e) = 0.27846...      ≈ OMEGA_ZS × D_STAR / R_H² (structural)
+        W(1/e) = 0.27846...      ≈ A_PI × D_STAR / R_H² (structural)
         Ω²     = OMEGA_ZS² = 0.32164...  ≈ OMEGA_M (matter density Planck 2018)
     """
     # ── Lambert W function (Newton's method) ─────────────────────────────
@@ -518,18 +518,18 @@ def omega_zs_6_family() -> Dict[str, Any]:
             if abs(dw) < tol: break
         return w
 
-    # ── Verify W(1) = OMEGA_ZS ────────────────────────────────────────────
+    # ── Verify W(1) = A_PI ────────────────────────────────────────────
     w1 = lambert_w(1.0)
-    omega_check = abs(w1 - OMEGA_ZS) < 1e-10
+    omega_check = abs(w1 - A_PI) < 1e-10
     self_ref_check = abs(w1 * math.exp(w1) - 1.0) < 1e-12
 
     # ── 6-constant family ─────────────────────────────────────────────────
     w_e    = lambert_w(math.e)    # W(e) = 1
     w_0    = lambert_w(0.0)       # W(0) = 0
     w_1e   = lambert_w(1/math.e)  # W(1/e) ≈ 0.2785
-    omega_sq = OMEGA_ZS**2        # ≈ 0.3217 ≈ Omega_M
+    omega_sq = A_PI**2        # ≈ 0.3217 ≈ Omega_M
 
-    # OMEGA_ZS^2 vs Planck 2018 matter density
+    # A_PI^2 vs Planck 2018 matter density
     omega_m_planck = 0.3111
     omega_sq_vs_planck = abs(omega_sq - omega_m_planck)
 
@@ -544,37 +544,37 @@ def omega_zs_6_family() -> Dict[str, Any]:
         {
             'domain'        : 'Prime Numbers',
             'constant'      : 'lim_{T→∞} (1/T) ∫₀ᵀ |ζ(½+it)|² dt',
-            'value'         : round(OMEGA_ZS, 10),
-            'equation'      : 'Mean spectral density of ζ on critical line = OMEGA_ZS',
-            'significance'  : 'The mean value of |ζ|² on σ=½ is OMEGA_ZS. Zeros are balanced here.',
+            'value'         : round(A_PI, 10),
+            'equation'      : 'Mean spectral density of ζ on critical line = A_PI',
+            'significance'  : 'The mean value of |ζ|² on σ=½ is A_PI. Zeros are balanced here.',
         },
         {
             'domain'        : 'Cosmology (de Sitter)',
             'constant'      : 'Ω_Λ (asymptotic)',
-            'value'         : round(OMEGA_ZS, 10),
-            'equation'      : 'lim_{z→-∞} Ω_Λ_eff(z) = OMEGA_ZS',
-            'significance'  : 'The Friedmann attractor: the universe asymptotes to OMEGA_ZS dark energy.',
+            'value'         : round(A_PI, 10),
+            'equation'      : 'lim_{z→-∞} Ω_Λ_eff(z) = A_PI',
+            'significance'  : 'The Friedmann attractor: the universe asymptotes to A_PI dark energy.',
         },
         {
             'domain'        : 'Yang-Mills (mass gap)',
-            'constant'      : 'GAP = OMEGA_ZS - d*·ln10',
+            'constant'      : 'GAP = A_PI - d*·ln10',
             'value'         : round(GAP, 10),
-            'equation'      : 'δ_YM = OMEGA_ZS - D_STAR × ln(10)',
-            'significance'  : 'The Yang-Mills mass gap IS the residual of OMEGA_ZS after removing the BK scale.',
+            'equation'      : 'δ_YM = A_PI - D_STAR × ln(10)',
+            'significance'  : 'The onset residual IS the residual of A_PI after removing the BK scale.',
         },
         {
             'domain'        : 'Sedenion (gnarl mean)',
             'constant'      : '⟨g⟩_{S¹⁵}',
-            'value'         : round(OMEGA_ZS, 10),
-            'equation'      : 'Mean zero-divisor suppression over unit sedenion sphere = OMEGA_ZS',
-            'significance'  : 'The average sedenion is exactly OMEGA_ZS-associative. The algebra knows its own value.',
+            'value'         : round(A_PI, 10),
+            'equation'      : 'Mean zero-divisor suppression over unit sedenion sphere = A_PI',
+            'significance'  : 'The average sedenion is exactly A_PI-associative. The algebra knows its own value.',
         },
         {
             'domain'        : 'Information (critical entropy)',
             'constant'      : 'S(σ=½)',
-            'value'         : round(-OMEGA_ZS * math.log(OMEGA_ZS) - (1-OMEGA_ZS)*math.log(1-OMEGA_ZS), 8),
-            'equation'      : 'S = -OMEGA_ZS·ln(OMEGA_ZS) - (1-OMEGA_ZS)·ln(1-OMEGA_ZS)',
-            'significance'  : 'The binary entropy at probability OMEGA_ZS = the information content of σ=½.',
+            'value'         : round(-A_PI * math.log(A_PI) - (1-A_PI)*math.log(1-A_PI), 8),
+            'equation'      : 'S = -A_PI·ln(A_PI) - (1-A_PI)·ln(1-A_PI)',
+            'significance'  : 'The binary entropy at probability A_PI = the information content of σ=½.',
         },
     ]
 
@@ -588,34 +588,34 @@ def omega_zs_6_family() -> Dict[str, Any]:
         'Omega_M_Planck': omega_m_planck,
         'omega_sq_vs_M' : round(omega_sq_vs_planck, 6),
         'GAP'           : round(GAP, 10),
-        'GAP_formula'   : 'OMEGA_ZS - D_STAR × ln(10) = 0.56714 - 0.24600 × 2.30259',
+        'GAP_formula'   : 'A_PI - D_STAR × ln(10) = 0.56714 - 0.24600 × 2.30259',
         'D_STAR'        : D_STAR,
         'R_H'           : round(R_H, 8),
-        'OMEGA_ZS_times_sqrt2': round(OMEGA_ZS * math.sqrt(2), 8),
-        'note_on_R_H'   : 'OMEGA_ZS × √2 = 0.8018 (not R_H=0.7071; the bridge is open)',
+        'OMEGA_ZS_times_sqrt2': round(A_PI * math.sqrt(2), 8),
+        'note_on_R_H'   : 'A_PI × √2 = 0.8018 (not R_H=0.7071; the bridge is open)',
     }
 
     # ── Self-referential check ────────────────────────────────────────────
-    # OMEGA_ZS satisfies: Ω = e^{-Ω}  ↔  Ω·e^Ω = 1
-    e_minus_omega = math.exp(-OMEGA_ZS)
-    self_ref = abs(OMEGA_ZS - e_minus_omega) < 1e-10
+    # A_PI satisfies: Ω = e^{-Ω}  ↔  Ω·e^Ω = 1
+    e_minus_omega = math.exp(-A_PI)
+    self_ref = abs(A_PI - e_minus_omega) < 1e-10
 
-    # The iteration x → e^{-x} converges to OMEGA_ZS from any x₀ ∈ (0,1)
+    # The iteration x → e^{-x} converges to A_PI from any x₀ ∈ (0,1)
     x = 0.7
     iterates = [round(x, 8)]
     for _ in range(20):
         x = math.exp(-x)
         iterates.append(round(x, 8))
     converged_to = iterates[-1]
-    convergence = abs(converged_to - OMEGA_ZS) < 1e-8
+    convergence = abs(converged_to - A_PI) < 1e-8
 
     return {
-        'claim'             : 'OMEGA_ZS = W(1) appears in 6 independent domains simultaneously. It is the σ=½ signature.',
+        'claim'             : 'A_PI = W(1) appears in 6 independent domains simultaneously. It is the σ=½ signature.',
         'lambert_w'         : {
             'W_1'           : round(w1, 10),
             'verified'      : omega_check,
             'self_ref'      : self_ref_check,
-            'self_ref_eq'   : 'OMEGA_ZS = e^{-OMEGA_ZS}',
+            'self_ref_eq'   : 'A_PI = e^{-A_PI}',
         },
         'six_family'        : six_family,
         'structural_relations': structural,
@@ -624,7 +624,7 @@ def omega_zs_6_family() -> Dict[str, Any]:
             'first_10'      : iterates[:10],
             'converged_to'  : converged_to,
             'converges'     : convergence,
-            'reading'       : 'Any x₀ → e^{-x₀} → ... → OMEGA_ZS. The attractor claims every real.',
+            'reading'       : 'Any x₀ → e^{-x₀} → ... → A_PI. The attractor claims every real.',
         },
         'OMEGA_sq_Omega_M'  : {
             'OMEGA_ZS_sq'   : round(omega_sq, 6),
@@ -1063,7 +1063,7 @@ def leech_divergence_inversion() -> Dict[str, Any]:
         The 195,456 non-pure vectors are the backward x-affinities.
         They are the orbits of the conformal group acting with the MINUS sign.
         In sedenion space: the backward x-affinity takes e_k → -e_k (sign flip)
-        across the e₁₅ boundary (the Yang-Mills mass gap).
+        across the e₁₅ boundary (the onset residual).
 
         Each backward x-affinity = one zero-divisor pair (a,b) with a·b = 0,
         mapped to its Leech source in R24 beyond R16.
@@ -1219,7 +1219,7 @@ def leech_divergence_inversion() -> Dict[str, Any]:
             'hawking'        : 'Each ZD firing = one backward x-affinity = one Hawking pair sourced from Leech into 𝕊',
             'cmb'            : 'CMB = thermal spectrum of 195,456 × N_Planck backward activations',
             'cancer'         : 'Cancer = ZD fire without Leech source arrival. Energy unbalanced. Drug = the source.',
-            'dark_energy'    : 'Λ_bare renormalises to OMEGA_ZS via the Noether balance condition',
+            'dark_energy'    : 'Λ_bare renormalises to A_PI via the Noether balance condition',
         },
         'n_ball_formula'     : 'V_n = π^(n/2) / (n/2)!  for even n. This IS the Lagrangian phase at CD level n.',
         'confidence'         : 'ESTABLISHED (ball volumes, Leech kissing) + THEORETICAL (divergence-inversion identification)',

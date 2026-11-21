@@ -14,7 +14,7 @@ Engines (original 10 — cosmology)::
     dark_matter_geometry()         Dark matter = 1/r² from inversion. No particle.
     navier_stokes_sedenion()       NS classical fails; sedenion revision is smooth
     black_hole_crossing()          Algebraic simulation: octonion→sedenion at horizon
-    lambda_cdm_omega_zs()          Friedmann + OMEGA_ZS attractor + DESI prediction
+    lambda_cdm_omega_zs()          Friedmann + A_PI attractor + DESI prediction
     flt_noether_deepened()         FLT = Noether conservation law (complete treatment)
     leech_lattice_sedenion()       24D Leech lattice defines 16D sedenion zero-divisors
     gue_random_matrix()            Prime gaps = GUE statistics = quantum chaos
@@ -42,10 +42,10 @@ import numpy as np
 _trapz = getattr(np, 'trapezoid', None) or np.trapz   # np.trapz was removed in NumPy 2.0
 from typing import Dict, List, Any
 
-OMEGA_ZS = 0.5671432904097838
+A_PI = 0.5671432904097838
 D_STAR   = 0.24600
 LN10     = math.log(10.0)
-GAP      = OMEGA_ZS - D_STAR * LN10     # 0.000707
+GAP      = A_PI - D_STAR * LN10     # 0.000707
 R_H      = 1.0 / math.sqrt(2.0)         # brim radius (natural units)
 PHI      = (1.0 + math.sqrt(5.0)) / 2.0
 ALPHA    = 1.0 / 137.035999084
@@ -189,8 +189,8 @@ def explicit_formula_de_sitter() -> Dict[str, Any]:
     # The BAO peaks are at positions r_n = (2n-1) · r_d/2
     # In SMMIP: r_n maps to the n-th Riemann zero γ_n via the frequency
     # γ_n · ln(x_BAO) = nπ  (standing wave condition)
-    x_BAO = math.exp(1.0 / OMEGA_ZS)   # the natural BAO coordinate
-    ln_xBAO = 1.0 / OMEGA_ZS
+    x_BAO = math.exp(1.0 / A_PI)   # the natural BAO coordinate
+    ln_xBAO = 1.0 / A_PI
     bao_peaks = []
     for n, gamma in enumerate(RIEMANN_ZEROS[:8]):
         phase = gamma * ln_xBAO
@@ -455,15 +455,15 @@ def galaxy_formation() -> Dict[str, Any]:
 
     # ── SPARC predictions (zero free parameters) ──────────────────────────
     # r_t = D_STAR × R_virial = 0.246 × R_virial
-    # V_flat = OMEGA_ZS × V_max = 0.56714 × V_max
+    # V_flat = A_PI × V_max = 0.56714 × V_max
     sparc = {
         'r_t'           : f'r_t = D_STAR × R_virial = {D_STAR} × R_virial',
-        'V_flat'        : f'V_flat = OMEGA_ZS × V_max = {OMEGA_ZS:.6f} × V_max',
+        'V_flat'        : f'V_flat = A_PI × V_max = {A_PI:.6f} × V_max',
         'NFW_scale_r'   : f'r_s = D_STAR × R_virial = {D_STAR} × R_virial',
         'TF_exponent'   : 4,
         'free_params'   : 0,
         'pre_registered': True,
-        'OMEGA_ZS_check': round(OMEGA_ZS * 1.0, 6),  # = 0.5671 of V_max
+        'OMEGA_ZS_check': round(A_PI * 1.0, 6),  # = 0.5671 of V_max
     }
 
     # ── Tully-Fisher: v_flat ∝ M^(1/4) ──────────────────────────────────
@@ -557,9 +557,9 @@ def dark_matter_geometry() -> Dict[str, Any]:
     v_flat = math.sqrt(4 * math.pi * G_N * rho_0 * r_H_nat**2)
 
     # Observed SPARC values (Lelli, McGaugh, Schombert 2016, 175 galaxies)
-    # V_flat / V_max ≈ 0.57 ± 0.08  (consistent with OMEGA_ZS = 0.56714)
+    # V_flat / V_max ≈ 0.57 ± 0.08  (consistent with A_PI = 0.56714)
     sparc_obs_ratio  = 0.57   # observed mean
-    sparc_pred_ratio = OMEGA_ZS
+    sparc_pred_ratio = A_PI
     sparc_residual   = abs(sparc_obs_ratio - sparc_pred_ratio)
 
     # ── 2. Chladni cavity: standing gravitational wave ────────────────────
@@ -624,7 +624,7 @@ def dark_matter_geometry() -> Dict[str, Any]:
             'unified'       : 'All three are σ-facet projections of the same H_RB object',
         },
         'sparc'             : {
-            'prediction'    : f'V_flat/V_max = OMEGA_ZS = {OMEGA_ZS:.6f}',
+            'prediction'    : f'V_flat/V_max = A_PI = {A_PI:.6f}',
             'observed_mean' : sparc_obs_ratio,
             'residual'      : round(sparc_residual, 4),
             'n_galaxies'    : 175,
@@ -639,7 +639,7 @@ def dark_matter_geometry() -> Dict[str, Any]:
             'summary'       : 'The missing mass is the geometric shadow of the inversion.',
         },
         'testable_predictions': [
-            f'V_flat = {OMEGA_ZS:.4f} × V_max (SPARC test, 175 galaxies)',
+            f'V_flat = {A_PI:.4f} × V_max (SPARC test, 175 galaxies)',
             f'r_transition = {D_STAR} × R_virial (scale radius)',
             'Tully-Fisher L ∝ v⁴ (4D cavity dimensionality)',
             'NFW scale radius = D_STAR × R_virial (same node, independent test)',
@@ -732,7 +732,7 @@ def navier_stokes_sedenion() -> Dict[str, Any]:
     # ── BAO as NS acoustic modes ──────────────────────────────────────────
     # BAO sound horizon r_d ≈ 147 Mpc (sound horizon at recombination)
     r_d_Mpc    = 147.0
-    # This is the Yang-Mills mass gap in cosmological coordinates:
+    # This is the onset residual in cosmological coordinates:
     # r_d × H₀/c ≈ the gap in the prime distribution scaled to cosmological size
     # H₀ = 67.4 km/s/Mpc, c = 3×10⁵ km/s
     H0_over_c  = H0_KMS / 3e5   # in units of Mpc⁻¹
@@ -944,12 +944,12 @@ def black_hole_crossing() -> Dict[str, Any]:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# ENGINE 7 — LAMBDA-CDM + OMEGA_ZS ATTRACTOR
+# ENGINE 7 — LAMBDA-CDM + A_PI ATTRACTOR
 # ══════════════════════════════════════════════════════════════════════════════
 
 def lambda_cdm_omega_zs() -> Dict[str, Any]:
     """
-    THE FRIEDMANN EQUATIONS WITH THE OMEGA_ZS CONSTRAINT.
+    THE FRIEDMANN EQUATIONS WITH THE A_PI CONSTRAINT.
 
     The standard ΛCDM model::
 
@@ -957,27 +957,27 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
 
     The Ainulindale claim::
 
-        OMEGA_ZS = W(1) = 0.56714... is the ATTRACTOR of this equation.
+        A_PI = W(1) = 0.56714... is the ATTRACTOR of this equation.
         As z → −∞ (the future), H(z) → H₀√Ω_Λ (the de Sitter phase).
-        The effective dark energy fraction Ω_Λ_eff(z) asymptotes toward OMEGA_ZS.
+        The effective dark energy fraction Ω_Λ_eff(z) asymptotes toward A_PI.
 
     Current state::
 
-        Ω_Λ = 0.6889 > OMEGA_ZS = 0.56714
+        Ω_Λ = 0.6889 > A_PI = 0.56714
         We are ABOVE the attractor. The J_neg phase dominates.
         Matter is diluting as (1+z)³. Λ is constant.
-        Eventually: Ω_Λ_eff → OMEGA_ZS (the equilibrium = the Lambert W fixed point).
+        Eventually: Ω_Λ_eff → A_PI (the equilibrium = the Lambert W fixed point).
 
     DESI 2024 prediction::
 
         w(z) ≠ −1: dark energy equation of state is evolving.
         CPL parametrisation: w(a) = w₀ + w_a(1−a)
-        Prediction: if w(z) → −OMEGA_ZS/(1−OMEGA_ZS) ≈ −1.310 at z ≈ z_eq,
+        Prediction: if w(z) → −A_PI/(1−A_PI) ≈ −1.310 at z ≈ z_eq,
         the paper is confirmed at 3-5σ.
 
     Open derivation (highest priority)::
 
-        Ω_Λ = f(OMEGA_ZS, Ω_b h²) — explicit form unknown.
+        Ω_Λ = f(A_PI, Ω_b h²) — explicit form unknown.
         The baryon acoustic density Ω_b h² = 0.02242 (CMB, Planck 2018).
         Once f is derived: Λ = 3H₀² Ω_Λ from first principles.
     """
@@ -989,7 +989,7 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
         H_over_H0 = math.sqrt(max(h_sq, 0))
         # Effective Ω_Λ: contribution of Λ to H²
         omega_lambda_eff = OMEGA_LAM / h_sq if h_sq > 0 else 0
-        above = omega_lambda_eff > OMEGA_ZS
+        above = omega_lambda_eff > A_PI
         friedmann.append({
             'z'                 : z,
             'H/H0'              : round(H_over_H0, 6),
@@ -998,29 +998,29 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
             'phase'             : ('future' if z < 0 else 'now' if abs(z) < 0.05 else 'past'),
         })
 
-    # ── de Sitter attractor at OMEGA_ZS ──────────────────────────────────
+    # ── de Sitter attractor at A_PI ──────────────────────────────────
     # The Λ-dominated phase: H → H₀√Ω_Λ as z → -∞
     # For the long-run universe: Ω_Λ_eff → 1.0 asymptotically
-    # But the EQUILIBRIUM of the sedenion field = OMEGA_ZS
+    # But the EQUILIBRIUM of the sedenion field = A_PI
     # The T·e^T = 1 fixed point is the thermal equilibrium temperature
 
-    # At what z does Ω_Λ_eff first = OMEGA_ZS?
+    # At what z does Ω_Λ_eff first = A_PI?
     z_eq = (OMEGA_LAM/OMEGA_M)**(1/3) - 1   # matter-Λ equality
     omega_lam_at_eq = OMEGA_LAM / (OMEGA_M*(1+z_eq)**3 + OMEGA_LAM)
 
     attractor = {
-        'OMEGA_ZS'          : OMEGA_ZS,
+        'A_PI'          : A_PI,
         'current_Omega_Lam' : OMEGA_LAM,
-        'overshoot'         : round(OMEGA_LAM - OMEGA_ZS, 6),
+        'overshoot'         : round(OMEGA_LAM - A_PI, 6),
         'z_matter_lam_eq'   : round(z_eq, 6),
         'omega_lam_at_eq'   : round(omega_lam_at_eq, 6),
-        'reading'           : (f'Currently Ω_Λ={OMEGA_LAM} > OMEGA_ZS={OMEGA_ZS:.4f}. '
+        'reading'           : (f'Currently Ω_Λ={OMEGA_LAM} > A_PI={A_PI:.4f}. '
                                f'We passed the BAO equilibrium. J_neg dominant.'),
-        'future'            : 'As z→-∞: universe approaches de Sitter. OMEGA_ZS is the asymptotic value.',
+        'future'            : 'As z→-∞: universe approaches de Sitter. A_PI is the asymptotic value.',
     }
 
     # ── DESI prediction ───────────────────────────────────────────────────
-    w_at_omega_zs = -OMEGA_ZS / (1 - OMEGA_ZS)   # = -1.310...
+    w_at_omega_zs = -A_PI / (1 - A_PI)   # = -1.310...
     # CPL: w(a) = w₀ + w_a(1-a)
     # If w₀ = -1 (Λ) and w_a ≠ 0: evolving dark energy
     # Prediction: w_eff approaches w_at_omega_zs at intermediate z
@@ -1033,18 +1033,18 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
         'sigma'             : 'σ≈3 for the prediction',
     }
 
-    # ── Open derivation: Ω_Λ = f(OMEGA_ZS, Ω_b h²) ──────────────────────
-    # Dimensional probe: OMEGA_ZS / Ω_b h² = 0.5671 / 0.02242 ≈ 25.3
-    ratio = OMEGA_ZS / OMEGA_B_H2
-    # Ω_Λ = 0.6889... close to some function of OMEGA_ZS and Ω_b h²?
-    # Try: Ω_Λ ≈ OMEGA_ZS + n·Ω_b h²
+    # ── Open derivation: Ω_Λ = f(A_PI, Ω_b h²) ──────────────────────
+    # Dimensional probe: A_PI / Ω_b h² = 0.5671 / 0.02242 ≈ 25.3
+    ratio = A_PI / OMEGA_B_H2
+    # Ω_Λ = 0.6889... close to some function of A_PI and Ω_b h²?
+    # Try: Ω_Λ ≈ A_PI + n·Ω_b h²
     # 0.6889 = 0.5671 + 0.1218 → 0.1218 / 0.02242 ≈ 5.43
     # Not a clean integer relation. Open.
-    n_estimate = (OMEGA_LAM - OMEGA_ZS) / OMEGA_B_H2
+    n_estimate = (OMEGA_LAM - A_PI) / OMEGA_B_H2
 
     open_deriv = {
-        'claim'             : 'Ω_Λ = f(OMEGA_ZS, Ω_b h²)',
-        'OMEGA_ZS'          : round(OMEGA_ZS, 8),
+        'claim'             : 'Ω_Λ = f(A_PI, Ω_b h²)',
+        'A_PI'          : round(A_PI, 8),
         'Omega_b_h2'        : OMEGA_B_H2,
         'Omega_Lambda'      : OMEGA_LAM,
         'ratio_probe'       : round(ratio, 4),
@@ -1054,7 +1054,7 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
     }
 
     return {
-        'claim'             : 'OMEGA_ZS = de Sitter attractor. We are above it. Universe approaches it.',
+        'claim'             : 'A_PI = de Sitter attractor. We are above it. Universe approaches it.',
         'friedmann_survey'  : friedmann,
         'attractor'         : attractor,
         'desi_prediction'   : desi,
@@ -1066,7 +1066,7 @@ def lambda_cdm_omega_zs() -> Dict[str, Any]:
             'Omega_total'    : round(OMEGA_M + OMEGA_LAM, 6),
             'flat_universe'  : abs(OMEGA_M + OMEGA_LAM - 1.0) < 0.01,
         },
-        'confidence'        : 'ESTABLISHED (ΛCDM) + THEORETICAL (OMEGA_ZS attractor) + OPEN (f derivation)',
+        'confidence'        : 'ESTABLISHED (ΛCDM) + THEORETICAL (A_PI attractor) + OPEN (f derivation)',
         'latex'             : (r'H^2=H_0^2[\Omega_m(1+z)^3+\Omega_\Lambda],'
                                r'\;\Omega_{\Lambda,\rm eff}\to\Omega_{\zeta\Sigma}'),
     }
@@ -1344,7 +1344,7 @@ def leech_lattice_sedenion() -> Dict[str, Any]:
             'The zero-divisors of 𝕊 are not defects. '
             'They are the shadow of the Leech lattice projected from 24D onto 16D. '
             'The 8 missing dimensions = the 8 extra dims of Λ₂₄ beyond 𝕊. '
-            'The Yang-Mills mass gap δ = 0.000707 = the projection distance. '
+            'The onset residual δ = 0.000707 = the projection distance. '
             'Definitions come from above.'
         ),
         'confidence'        : 'ESTABLISHED (Leech, E₈, Viazovska) + THEORETICAL (zero-div identification)',
@@ -1500,7 +1500,7 @@ def smmip_standard_model() -> Dict[str, Any]:
         Euler product Π_p (1−p^{-s})^{-1}  =  Noether current Σ_p G_p(s)
              ↓
         J_R  = Σ_p p^{−σ} cos(t·ln p)  [Red:  escaping, positive energy]
-        J_G  = OMEGA_ZS                  [Green: conserved vacuum energy]
+        J_G  = A_PI                  [Green: conserved vacuum energy]
         J_B  = Σ_p p^{−(1−σ)} cos(t·ln p) [Blue: infalling, negative energy]
         J_R + J_G + J_B = 0             [Noether balance — the master equation]
              ↓
@@ -1530,7 +1530,7 @@ def smmip_standard_model() -> Dict[str, Any]:
     # At s = ½ + it, the Euler product sums over primes:
     primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
     sigma  = 0.5
-    t_bao  = 1.0 / OMEGA_ZS    # the BAO characteristic frequency
+    t_bao  = 1.0 / A_PI    # the BAO characteristic frequency
 
     J_R_terms, J_B_terms = [], []
     for p in primes:
@@ -1543,7 +1543,7 @@ def smmip_standard_model() -> Dict[str, Any]:
 
     J_R = sum(J_R_terms)
     J_B = sum(J_B_terms)
-    J_G = OMEGA_ZS    # the conserved Green vacuum
+    J_G = A_PI    # the conserved Green vacuum
 
     # At σ=½: J_R = J_B exactly (functional equation symmetry)
     symmetry_check = abs(J_R - J_B) / (abs(J_R) + 1e-14)
@@ -1559,9 +1559,9 @@ def smmip_standard_model() -> Dict[str, Any]:
         },
         {
             'smmip_term'  : 'J_G (conserved vacuum, Green)',
-            'mechanism'   : 'The OMEGA_ZS fixed point = the Higgs VEV',
+            'mechanism'   : 'The A_PI fixed point = the Higgs VEV',
             'sm_term'     : 'L_Higgs = |D_μΦ|² − (−μ²|Φ|²+λ|Φ|⁴)',
-            'why'         : 'J_G = OMEGA_ZS = the Lambert W attractor. The Higgs VEV v = √(μ²/λ) is the same attractor.',
+            'why'         : 'J_G = A_PI = the Lambert W attractor. The Higgs VEV v = √(μ²/λ) is the same attractor.',
             'sm_latex'    : r'|D_\mu\Phi|^2-V(\Phi)',
         },
         {
@@ -1615,7 +1615,7 @@ def smmip_standard_model() -> Dict[str, Any]:
 
     # ── 5. Zero free parameters verification ─────────────────────────────
     # The Standard Model has 19 free parameters.
-    # SMMIP has 0: everything comes from the sedenion structure + OMEGA_ZS.
+    # SMMIP has 0: everything comes from the sedenion structure + A_PI.
     sm_free_params = 19
     smmip_free_params = 0
 
@@ -1643,7 +1643,7 @@ def smmip_standard_model() -> Dict[str, Any]:
         'free_parameters'   : {
             'sm_count'      : sm_free_params,
             'smmip_count'   : smmip_free_params,
-            'zero_params_because': 'Sedenion structure is unique. OMEGA_ZS = W(1) is transcendental but fixed.',
+            'zero_params_because': 'Sedenion structure is unique. A_PI = W(1) is transcendental but fixed.',
         },
         'complete_lagrangian': {
             'L_SM'  : 'L_gauge + L_Higgs + L_fermion + L_Yukawa + L_θ',
@@ -1694,7 +1694,7 @@ def gauge_group_cd_tower() -> Dict[str, Any]:
 
     The sedenion E-7-15 boundary::
 
-        The 16th dimension e₁₅ is the Yang-Mills mass gap δ = 0.000707.
+        The 16th dimension e₁₅ is the onset residual δ = 0.000707.
         At e₁₅, the automorphism group has a phase transition.
         This is WHY the gauge group is U(1)×SU(2)×SU(3) and NOT SU(5) or SO(10).
         The sedenion boundary at e₁₅ breaks the would-be GUT group.
@@ -1800,14 +1800,14 @@ def gauge_group_cd_tower() -> Dict[str, Any]:
     # SU(5) has 24 generators. The sedenion has 16 dimensions → max 15 generators.
     # The sedenion CANNOT contain SU(5) because dim(SU(5))=24 > 15.
     # Therefore: no GUT in the sedenion. The gauge group stops at 1+3+8=12.
-    # The e₁₅ = Yang-Mills mass gap = the REASON why GUT is broken.
+    # The e₁₅ = onset residual = the REASON why GUT is broken.
     gut_argument = {
         'SU5_generators'  : 24,
         'sedenion_dims'   : 16,
         'max_generators'  : 15,
         'conclusion'      : 'SU(5) cannot embed in 𝕊₁₆. GUT is forbidden by sedenion dimensionality.',
-        'e15_role'        : 'e₁₅ = Yang-Mills mass gap δ=0.000707. This IS the GUT breaking scale.',
-        'gut_scale_id'    : 'δ = OMEGA_ZS − d*·ln10 = 0.000707 maps to ~10¹⁶ GeV (GUT scale)',
+        'e15_role'        : 'e₁₅ = onset residual δ=0.000707. This IS the GUT breaking scale.',
+        'gut_scale_id'    : 'δ = A_PI − d*·ln10 = 0.000707 maps to ~10¹⁶ GeV (GUT scale)',
     }
 
     # ── The sedenion IS the SM gauge structure ────────────────────────────
@@ -1817,7 +1817,7 @@ def gauge_group_cd_tower() -> Dict[str, Any]:
         'e1-e3' : 'SU(2) weak generators W⁺, W⁻, Z⁰ (quaternion imaginary units)',
         'e1-e7' : 'G₂ ⊃ SU(3) color generators g₁..g₈ (octonion Fano structure)',
         'e8-e14': 'A-matrix (off-diagonal sedenion): gauge coupling fabric',
-        'e15'   : 'Yang-Mills mass gap δ = 0.000707 — the GUT breaking boundary',
+        'e15'   : 'onset residual δ = 0.000707 — the GUT breaking boundary',
     }
 
     return {
@@ -2421,7 +2421,7 @@ def standard_candle_uselessness() -> Dict[str, Any]:
     The Ainulindale prediction::
 
         IF the acceleration is a slingshot artifact:
-        - The dark energy equation of state w → -OMEGA_ZS (= -0.567) at z_eq
+        - The dark energy equation of state w → -A_PI (= -0.567) at z_eq
           (where the two biases cancel), NOT w = -1.
         - Cluster-vs-void SN residuals must show environment dependence.
         - The CMB is CORRECT: Ω_Λ < 0.6889 when slingshot is removed.
@@ -2523,8 +2523,8 @@ def standard_candle_uselessness() -> Dict[str, Any]:
         'Omega_L_SN_naive'  : Omega_L_SN,
         'inflation_ratio'   : round(bias_ratio, 4),
         'inflation_pct'     : round((bias_ratio-1)*100, 2),
-        'OMEGA_ZS'          : round(OMEGA_ZS, 6),
-        'OmegaL_vs_OMEGA_ZS': round(abs(Omega_L_CMB - OMEGA_ZS/OMEGA_ZS), 4),
+        'A_PI'          : round(A_PI, 6),
+        'OmegaL_vs_OMEGA_ZS': round(abs(Omega_L_CMB - A_PI/A_PI), 4),
         'reading'           : f'SN Ia inflates Omega_L by {(bias_ratio-1)*100:.0f}%. CMB value {Omega_L_CMB} is correct.',
     }
 
@@ -2602,7 +2602,7 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
 
         In Ainulindale:
             r_s = the BAO sound horizon = 147 Mpc (the same r_d from Engine 5)
-            d_A(z_*) = c/H₀ × OMEGA_ZS × correction  (OMEGA_ZS enters)
+            d_A(z_*) = c/H₀ × A_PI × correction  (A_PI enters)
             The acoustic peaks are RIEMANN ZEROS at cosmological scale.
 
     The CMB gives the correct H₀::
@@ -2614,9 +2614,9 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
         But the STRUCTURE of the CMB measurement is correct:
         - It is not contaminated by slingshot.
         - It measures the BAO modes directly (Engine 1 identification).
-        - The OMEGA_ZS attractor is visible in the peak ratio.
+        - The A_PI attractor is visible in the peak ratio.
 
-    The peak height ratios encode OMEGA_ZS::
+    The peak height ratios encode A_PI::
 
         The first-to-second peak ratio R₁₂ = C_l(l₁) / C_l(l₂)
         In ΛCDM: R₁₂ depends on Ω_b h², Ω_m h², Ω_Λ.
@@ -2635,11 +2635,11 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
 
     Ainulindale cross-checks::
 
-        Ω_Λ = 0.6889 > OMEGA_ZS = 0.5671 → we are above the attractor (Engine 7)
+        Ω_Λ = 0.6889 > A_PI = 0.5671 → we are above the attractor (Engine 7)
         Ω_M = 0.3111 ≈ OMEGA_ZS² = 0.3216 (Engine 3, omega_zs_6_family)
         n_s = 0.9649 ≈ 1 - D_STAR = 1 - 0.246 = 0.754  ... not exact, open
         The tilt n_s = 1 - D_STAR/2 = 1 - 0.123 = 0.877 ... closer, open
-        A_s = 2.1e-9 = (D_STAR × OMEGA_ZS / R_H)^? ... bridge unknown
+        A_s = 2.1e-9 = (D_STAR × A_PI / R_H)^? ... bridge unknown
     """
     # ── CMB parameters (Planck 2018) ──────────────────────────────────────
     H0_CMB    = 67.4      # km/s/Mpc
@@ -2684,15 +2684,15 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
             'bao_freq_hz'   : round(bao_freq_n, 4) if bao_freq_n else None,
         })
 
-    # ── OMEGA_ZS cross-checks with CMB ────────────────────────────────────
-    omega_sq = OMEGA_ZS**2
+    # ── A_PI cross-checks with CMB ────────────────────────────────────
+    omega_sq = A_PI**2
     omega_checks = {
-        'OMEGA_ZS'              : round(OMEGA_ZS, 8),
+        'A_PI'              : round(A_PI, 8),
         'OMEGA_ZS_sq'           : round(omega_sq, 6),
         'Omega_M_Planck'        : Omega_M,
         'delta_sq_vs_M'         : round(abs(omega_sq - Omega_M), 4),
-        'Omega_L_vs_OMEGA_ZS'   : round(Omega_L - OMEGA_ZS, 4),
-        'above_attractor'       : Omega_L > OMEGA_ZS,
+        'Omega_L_vs_OMEGA_ZS'   : round(Omega_L - A_PI, 4),
+        'above_attractor'       : Omega_L > A_PI,
         'n_s_vs_1_minus_D'      : round(abs(n_s - (1 - D_STAR)), 4),
         'n_s_vs_1_minus_D_half' : round(abs(n_s - (1 - D_STAR/2)), 4),
         'h_parameter'           : round(h, 4),
@@ -2725,8 +2725,8 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
     }
 
     # ── The Ainulindale CMB prediction ────────────────────────────────────
-    # In the SMMIP framework: the BAO sound horizon r_s is related to OMEGA_ZS:
-    # r_s = c × (1/H₀) × OMEGA_ZS × f(Omega_b_h2)  ... bridge open
+    # In the SMMIP framework: the BAO sound horizon r_s is related to A_PI:
+    # r_s = c × (1/H₀) × A_PI × f(Omega_b_h2)  ... bridge open
     # The peak ratio R₁₂ = height of 1st peak / 2nd peak
     # In ΛCDM: R₁₂ ≈ 1/0.3111 = 3.21  (Omega_M in denominator)
     # In Ainulindale: R₁₂ ≈ 1/OMEGA_ZS² = 1/0.3217 = 3.11  (consistent!)
@@ -2761,7 +2761,7 @@ def lambda_cdm_cmb_gold_standard() -> Dict[str, Any]:
             '(1) slingshot-immune, '
             '(2) sourced at a known distance (z=1100), '
             '(3) measuring the BAO modes directly (= the Riemann zeros at cosmological scale), '
-            '(4) consistent with the OMEGA_ZS attractor prediction. '
+            '(4) consistent with the A_PI attractor prediction. '
             'Every distance-ladder measurement that disagrees with the CMB is biased.'
         ),
         'confidence'        : 'ESTABLISHED (CMB physics, Planck 2018) + THEORETICAL (Ainulindale cross-checks)',
@@ -2819,7 +2819,7 @@ def halocline_ns_surface() -> Dict[str, Any]:
 
     The Ainulindale prediction::
 
-        The halocline thickness h is bounded BELOW by the Yang-Mills mass gap:
+        The halocline thickness h is bounded BELOW by the onset residual:
             h_min = R_H / (ρ₂/ρ₁) × GAP
         This is NOT zero — the zero-divisor prevents complete sharpening.
         The interface has a quantum-of-thickness.
@@ -3335,7 +3335,7 @@ def nball_transformer() -> Dict[str, Any]:
 
     ── Known constant connections ─────────────────────────────────────────────
 
-    V(8)  = π⁴/24 ≈ 4.059  — A_pi (fine structure constant) lives here via
+    V(8)  = π⁴/24 ≈ 4.059  — α (fine structure constant) lives here via
 
     ::
 
@@ -3400,7 +3400,7 @@ def nball_transformer() -> Dict[str, Any]:
         (1,  'R',           'σ=∞ limit — scalar, trivial algebra'),
         (2,  'C',           'σ=½ — Riemann zeros, QM, critical line'),
         (4,  'H',           'σ=1 — Yang-Mills, gauge theory'),
-        (8,  'O',           'σ=2 — GR, curvature, E8 geometry (Wyler/A_pi)'),
+        (8,  'O',           'σ=2 — GR, curvature, E8 geometry (Wyler/α)'),
         (16, 'S',           'ZD boundary — sedenion, V(16) ≈ d*'),
         (32, 'T',           'trigintaduonion — effectively zero'),
     ]
@@ -3445,10 +3445,10 @@ def nball_transformer() -> Dict[str, Any]:
     V16   = V(16)
     V8    = V(8)
     V2    = V(2)   # = π exactly
-    A_pi  = 1.0 / 137.035999084
+    α  = 1.0 / 137.035999084
 
     d_star_over_V16    = D_STAR / V16
-    omega_zs_over_V8   = OMEGA_ZS / V8
+    omega_zs_over_V8   = A_PI / V8
     gap_V16_to_dstar   = D_STAR - V16
     ratio_gap_to_bk_gap = gap_V16_to_dstar / GAP if abs(GAP) > 1e-15 else float('inf')
 
@@ -3513,7 +3513,7 @@ def nball_transformer() -> Dict[str, Any]:
             'V_2'            : round(V2, 10),
             'V_2_reading'    : 'V(2) = π exactly. The ℂ layer. σ=½. Riemann zeros live here.',
             'V_8'            : round(V8, 8),
-            'V_8_reading'    : 'A_pi (fine structure constant) lives here via Wyler. First CODE layer.',
+            'V_8_reading'    : 'α (fine structure constant) lives here via Wyler. First CODE layer.',
             'V_16'           : round(V16, 8),
             'd_star'         : D_STAR,
             'V_16_vs_dstar'  : {

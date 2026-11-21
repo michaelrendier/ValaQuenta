@@ -224,7 +224,7 @@ python3 verify_install.py
 ```
 
 This does not merely check that imports succeed. It recomputes GAP from its two
-inputs, confirms OMEGA_ZS satisfies `W·e^W = 1`, counts the zero-divisor pairs
+inputs, confirms A_PI satisfies `W·e^W = 1`, counts the zero-divisor pairs
 (84), and checks that `H=xp` conserves energy. If the arithmetic is broken it
 will say so.
 

@@ -16,7 +16,7 @@
   "permissions": [],
   "dependencies": {},
   "provenance": {
-    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: d is a spectral floor read off H=xp, not a fitted constant. d·ln(10) lands near OMEGA_ZS and the residue is the mass gap.",
+    "origin": "First committed to this repository on 2026-06-28. Claim as recorded in the wiki: d is a spectral floor read off H=xp, not a fitted constant. d·ln(10) lands near A_PI and the residue is the mass gap.",
     "authors": [
       "Cody Michael Allison"
     ],

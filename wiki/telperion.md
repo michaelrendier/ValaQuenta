@@ -68,7 +68,7 @@ failed to produce a result.
 | `MPC_TO_LY` | 3262000.0 |
 | `MSUN_KG` | 1.989e+30 |
 | `OBS_MPC` | 14127.0 |
-| `OMEGA_ZS` | 0.5671432904097838 |
+| `A_PI` | 0.5671432904097838 |
 | `SIGMA_BRIM` | 0.5857864376269049 |
 | `SIGMA_HAT` | 0.754 |
 | `SIGMA_SHELL` | 0.5 |

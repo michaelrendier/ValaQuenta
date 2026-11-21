@@ -8,13 +8,13 @@ from ValaQuenta.modules.inductive_onset_residual import maths as m
 def test_induction_rate_is_omega_over_ln10_not_the_running_value():
     r = m.induction()
     for start, rate in r['digits_per_step_measured'].items():
-        assert abs(rate - C.OMEGA_ZS / math.log(10)) < 1e-6, start
+        assert abs(rate - C.A_PI / math.log(10)) < 1e-6, start
         assert abs(rate - C.D_STAR) > 2e-4, start
 
 
 def test_delta_is_ln10_times_the_rate_difference():
     o = m.onset_residual()
-    assert abs(o['delta'] - math.log(10) * (-math.log10(C.OMEGA_ZS) - C.D_STAR)) < 1e-15
+    assert abs(o['delta'] - math.log(10) * (-math.log10(C.A_PI) - C.D_STAR)) < 1e-15
     assert o['agreeing_decimals'] == 3
 
 

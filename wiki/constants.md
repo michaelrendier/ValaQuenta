@@ -13,11 +13,11 @@
 
 ## What it computes
 
-Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure. Two ceilings force domain [α_F, OMEGA_ZS]. d* has 4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale; Sombrero = Hawking pair; OMEGA_ZS = de Sitter attractor. Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
+Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure. Two ceilings force domain [α_F, A_PI]. d* has 4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale; Sombrero = Hawking pair; A_PI = de Sitter attractor. Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
 
 Each `derive_*` equation returns the constant together with the σ facet it corresponds to — σ=i is pure phase, σ=½ the critical line, σ=e thermodynamic, σ=π gauge normalisation, σ=φ the recursion eigenvalue.
 
-`derive_omega_zs` returns OMEGA_ZS = 0.5671432904097838, which is W(1), the Lambert W function at 1 — an exact special-function value, not a measurement.
+`derive_omega_zs` returns A_PI = 0.5671432904097838, which is W(1), the Lambert W function at 1 — an exact special-function value, not a measurement.
 
 ## Results — run 2026-07-28
 
@@ -28,12 +28,12 @@ Each `derive_*` equation returns the constant together with the σ facet it corr
 | `all_constants` | ESTABLISHED | ✓ | {'tier': 'Tier 0 — Root Constants + Ceilings + Domain + Λ', 'claim': 'All root constants… |
 | `derive_e` | ESTABLISHED | ✓ | {'constant': "e (Euler's number)", 'sigma_facet': 'σ = e (thermodynamic — Boltzmann part… |
 | `derive_i` | ESTABLISHED | ✓ | {'constant': 'i (imaginary unit)', 'sigma_facet': 'σ = i (pure phase — democratic)', 'ph… |
-| `derive_omega_zs` | ESTABLISHED | ✓ | {'constant': 'OMEGA_ZS (Ω_ζΣ)', 'value': 0.5671432904097838, 'sigma_facet': 'Domain ceil… |
+| `derive_omega_zs` | ESTABLISHED | ✓ | {'constant': 'A_PI (A_π)', 'value': 0.5671432904097838, 'sigma_facet': 'Domain ceil… |
 | `derive_phi` | ESTABLISHED | ✓ | {'constant': 'φ (golden ratio)', 'sigma_facet': 'σ = φ (recursion eigenvalue — structura… |
 | `derive_pi` | ESTABLISHED | ✓ | {'constant': 'π (circle constant)', 'sigma_facet': 'σ = π (gauge normalisation — U(1) la… |
 | `derive_sqrt` | ESTABLISHED | ✓ | {'constant': '√ (square root)', 'sigma_facet': 'σ = ½ (the critical line IS the square r… |
 | `euler_identity` | ESTABLISHED | ✓ | {'identity': 'e^{iπ} + 1 = 0', 'type': 'Theorem of RedBlue Geometries Engine', 'assembly… |
-| `derive_alpha_fermat` | THEORETICAL | ✓ | {'constant': 'α_F (Alpha_Fermat / fine structure constant)', 'value': 0.0072973525692838… |
+| `derive_alpha_fermat` | THEORETICAL | ✓ | {'constant': 'α_F (α / fine structure constant)', 'value': 0.0072973525692838… |
 | `derive_d_star` | ESTABLISHED (d*_R); OPEN (full tower) | ✓ | {'constant': 'd* (BK spectral floor, 4 components)', 'value_real': 0.246, 'sigma_facet':… |
 | `derive_lambda` | σ=∞ (existence); σ>40 (Nobel 1998); OPEN (value from f) | ✓ | {'constant': 'Λ (Einstein cosmological constant)', 'value_omega_lambda': 0.6889, 'sigma_… |
 
@@ -50,7 +50,7 @@ Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`py
 
 | object | central operation | tier · root | Two Trees | kind | verdict |
 |---|---|---|---|---|---|
-| π φ e √ i Λ as σ-facets; Ω_ZS = W(1) | derive each constant from the framework | 0 · SCALE | MINGLING | DEFINITIONAL | **CLEAN** |
+| π φ e √ i Λ as σ-facets; A_π = W(1) | derive each constant from the framework | 0 · SCALE | MINGLING | DEFINITIONAL | **CLEAN** |
 
 
 Calibration: this verdict agrees with the page's stated status (**ESTABLISHED**).

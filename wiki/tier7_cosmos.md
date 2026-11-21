@@ -36,7 +36,7 @@ This module could not be instantiated before 2026-07-28: it inherits `EquationMo
 | `gauge_group_cd_tower` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'U(1)×SU(2)×SU(3) = Aut(ℂ)×Aut(ℍ)×Aut(𝕆). Derived from automorphisms. Not post… |
 | `gue_random_matrix` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'Riemann zero spacings = GUE statistics = quantum chaotic eigenvalues.', 'mont… |
 | `hydrogen_spectral_cd` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'Hydrogen spectral series = transitions between CD strata. Rydberg from SMMIP.… |
-| `lambda_cdm_omega_zs` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'OMEGA_ZS = de Sitter attractor. We are above it. Universe approaches it.', 'f… |
+| `lambda_cdm_omega_zs` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'A_PI = de Sitter attractor. We are above it. Universe approaches it.', 'f… |
 | `leech_lattice_sedenion` | ESTABLISHED+THEORETICAL | ✓ | {'claim': '24D Leech lattice defines 16D sedenion zero-divisors. Definitions come from a… |
 | `pauli_exclusion_fermat` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'Pauli exclusion = sedenion zero-divisors = FLT. Three names for one theorem.'… |
 | `sin_cos_frequencies` | ESTABLISHED+THEORETICAL | ✓ | {'claim': 'e^{±iθ} = two counter-rotating vortices. sin/cos = their difference/sum. tan … |

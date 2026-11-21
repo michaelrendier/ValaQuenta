@@ -84,12 +84,12 @@ class DerivationChainModule(EquationModule):
             ),
             Equation(
                 name='yang_mills_dropout',
-                display='T2 — Yang-Mills: δ = OMEGA_ZS − d*·ln10 = 0.000707',
+                display='T2 — Yang-Mills: δ = A_PI − d*·ln10 = 0.000707',
                 latex=r'\delta=\Omega_{\zeta\Sigma}-d^*\ln10=0.000707>0',
                 radian_form='Mass gap drops out constructively from two root constants.',
                 confidence='ESTABLISHED',
                 code_verified=True, params=[], compute=yang_mills_dropout, display_options=[],
-                process='TIER 2 — Yang-Mills mass gap drops out.',
+                process='TIER 2 — onset residual drops out.',
             ),
             Equation(
                 name='berry_keating_dropout',

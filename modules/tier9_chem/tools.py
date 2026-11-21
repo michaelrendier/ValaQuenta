@@ -71,11 +71,11 @@ class Tier9ChemModule(EquationModule):
                      'THEORETICAL+ESTABLISHED', True, [], drug_targeting, [],
                      process='Drug = conformal inversion of cancer sedenion address. c_drug × c_cancer = R_H².'),
             Equation('hydro_radiolysis_chromatography',
-                     'Radiolysis probes J_R/J_B. Healthy A_R/A_B = OMEGA_ZS. Cancer elevated.',
+                     'Radiolysis probes J_R/J_B. Healthy A_R/A_B = A_PI. Cancer elevated.',
                      r'A_R/A_B=\Omega_{\zeta\Sigma}\;(\text{healthy}),\;G:A:V=6:3:1',
                      'OH• → J_R fragments. eaq⁻ → J_B. H₂O₂ → J_G. SOR restores balance.',
                      'ESTABLISHED+THEORETICAL', True, [], hydro_radiolysis_chromatography, [],
-                     process='Radiolysis probes J_R/J_B. Healthy A_R/A_B = OMEGA_ZS. Cancer elevated.'),
+                     process='Radiolysis probes J_R/J_B. Healthy A_R/A_B = A_PI. Cancer elevated.'),
         ]
 
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:

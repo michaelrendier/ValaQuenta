@@ -95,7 +95,7 @@
         "name": "d_star_gap",
         "equation": "d_star_gap",
         "label": "D Star Gap",
-        "desc": "d* x ln(10) vs OMEGA_ZS  [OPEN — gap = 0",
+        "desc": "d* x ln(10) vs A_PI  [OPEN — gap = 0",
         "params": []
       },
       {

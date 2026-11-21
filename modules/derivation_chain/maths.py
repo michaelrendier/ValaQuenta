@@ -11,7 +11,7 @@ The chain:
       riemann_equals_fermat()     R̂† = B̂; both Euler products from opposite sides
 
   TIER 2 — What Drops Out
-      yang_mills_dropout()        δ = OMEGA_ZS − d*·ln10 = 0.000707
+      yang_mills_dropout()        δ = A_PI − d*·ln10 = 0.000707
       berry_keating_dropout()     H=xp forced at d* by BK criterion
       noether_dropout()           J_R + J_G + J_B = 0 from R̂†=B̂ at σ=½
       navier_stokes_dropout()     NS = H_RB|_{Im=0} — the missing i
@@ -49,10 +49,10 @@ from ..h_rb_hat.maths import (
     SIGMA_GR, SIGMA_YANG_MILLS, SIGMA_CRITICAL,
 )
 
-OMEGA_ZS = 0.5671432904097838
+A_PI = 0.5671432904097838
 D_STAR   = 0.24600
 LN10     = math.log(10.0)
-GAP      = OMEGA_ZS - D_STAR * LN10      # 0.000707...
+GAP      = A_PI - D_STAR * LN10      # 0.000707...
 ALPHA_F  = 1.0 / 137.035999084
 PHI      = (1.0 + math.sqrt(5.0)) / 2.0
 
@@ -172,18 +172,18 @@ def riemann_equals_fermat() -> Dict[str, Any]:
 
 def yang_mills_dropout() -> Dict[str, Any]:
     r"""
-    TIER 2 — Yang-Mills mass gap drops out.
+    TIER 2 — onset residual drops out.
 
-    From OMEGA_ZS + d\* + ln(10)::
+    From A_PI + d\* + ln(10)::
 
-        δ = OMEGA_ZS − d*·ln(10) = 0.000707...
+        δ = A_PI − d*·ln(10) = 0.000707...
 
     This is the gap between::
 
-        - The thermal information ceiling OMEGA_ZS
+        - The thermal information ceiling A_PI
         - The first BAO acoustic peak d*·ln(10)
 
-    It equals the Yang-Mills mass gap because both express the same constraint::
+    It equals the onset residual because both express the same constraint::
 
         BAO (cosmological): residual energy after acoustic oscillation settles
         Yang-Mills (quantum): minimum excitation energy above the vacuum
@@ -191,10 +191,10 @@ def yang_mills_dropout() -> Dict[str, Any]:
     Both are the distance from the de Sitter ground state to the entropy ceiling.
     The primes are the expansion. The gap is the minimum price of an excitation.
 
-    δ = OMEGA_ZS − D_STAR × ln(10) = 0.000707...  — derived constructively.
+    δ = A_PI − D_STAR × ln(10) = 0.000707...  — derived constructively.
     Not fitted. Not measured. Falls out of the two root constants.
     """
-    gap = OMEGA_ZS - D_STAR * LN10
+    gap = A_PI - D_STAR * LN10
 
     # Sedenion component e₁₅: the zero-divisor floor
     # e₁₅ = GAP = the minimum product before zero-divisors activate
@@ -203,7 +203,7 @@ def yang_mills_dropout() -> Dict[str, Any]:
     # BAO identification
     bao = {
         'first_peak'   : round(D_STAR * LN10, 8),
-        'ceiling'      : round(OMEGA_ZS, 8),
+        'ceiling'      : round(A_PI, 8),
         'residual'     : round(gap, 8),
         'name'         : 'BAO acoustic residual',
     }
@@ -212,13 +212,13 @@ def yang_mills_dropout() -> Dict[str, Any]:
     ym = {
         'mass_gap'     : round(gap, 8),
         'positive'     : gap > 0,
-        'source'       : 'OMEGA_ZS − d* × ln(10)',
+        'source'       : 'A_PI − d* × ln(10)',
         'e15_component': round(gap, 8),
     }
 
     # Numerical: verify constructively
     verify = {
-        'OMEGA_ZS'     : round(OMEGA_ZS, 10),
+        'A_PI'     : round(A_PI, 10),
         'D_STAR'       : D_STAR,
         'LN10'         : round(LN10, 10),
         'D_STAR_LN10'  : round(D_STAR * LN10, 10),
@@ -228,18 +228,18 @@ def yang_mills_dropout() -> Dict[str, Any]:
 
     return {
         'tier'          : 2,
-        'drops_out'     : 'Yang-Mills mass gap δ = OMEGA_ZS − d*·ln10 = 0.000707',
-        'mechanism'     : 'OMEGA_ZS (entropy ceiling) − d*·ln10 (BAO first peak) = acoustic residual',
+        'drops_out'     : 'onset residual δ = A_PI − d*·ln10 = 0.000707',
+        'mechanism'     : 'A_PI (Lambert fixed point) − d*·ln10 (the running d* read in nats) = rounding residual',
         'bao'           : bao,
         'yang_mills'    : ym,
         'numerical'     : verify,
         'derivation'    : [
-            '1. OMEGA_ZS = W(1) = 0.56714... (thermal ceiling, Tier 0).',
+            '1. A_PI = W(1) = 0.56714... (thermal ceiling, Tier 0).',
             '2. d* = 0.24600 (BK spectral floor, Tier 0).',
             '3. d*·ln(10) = 0.56644... (first BAO acoustic peak).',
-            '4. GAP = OMEGA_ZS − d*·ln10 = 0.000707... (acoustic residual).',
-            '5. This residual = Yang-Mills mass gap: both are the vacuum energy cost.',
-            '6. Constructive: GAP > 0 proven since OMEGA_ZS > d*·ln10.',
+            '4. GAP = A_PI − d*·ln10 = 0.000707... (acoustic residual).',
+            '5. This residual = onset residual: both are the vacuum energy cost.',
+            '6. Constructive: GAP > 0 proven since A_PI > d*·ln10.',
         ],
         'confidence'    : 'ESTABLISHED — derived constructively from two root constants',
         'latex'         : r'\delta=\Omega_{\zeta\Sigma}-d^*\ln10=0.000707\ldots>0',
@@ -254,7 +254,7 @@ def berry_keating_dropout() -> Dict[str, Any]:
 
         1. Scale invariance: x→λx, p→p/λ  leaves  H = xp  invariant
         2. Self-adjointness at σ=½: R̂†=B̂ forces xp as the real part
-        3. BK criterion: D(H_BK) = L²([α_F, OMEGA_ZS]) with (I|O) BC
+        3. BK criterion: D(H_BK) = L²([α_F, A_PI]) with (I|O) BC
         4. Fixed point at d* = 0.24600 (the spectral coordinate)
 
     H = xp is NOT postulated. It falls out as the unique solution to
@@ -309,7 +309,7 @@ def berry_keating_dropout() -> Dict[str, Any]:
         'derivation'    : [
             '1. Scale invariance: x→λx, p→p/λ. Only xp is invariant.',
             '2. R̂†=B̂ at σ=½: functional equation forces xp as the real generator.',
-            '3. D(H_BK)=L²([α_F, OMEGA_ZS]) with (I|O) BC: domain forces self-adjointness.',
+            '3. D(H_BK)=L²([α_F, A_PI]) with (I|O) BC: domain forces self-adjointness.',
             '4. Fixed point x·p = d* = 0.24600: spectral floor at d*.',
             '5. H = xp is the unique solution. Not postulated — derived.',
         ],
@@ -595,7 +595,7 @@ def h_rb_emergence() -> Dict[str, Any]:
 
     Start with::
 
-        - OMEGA_ZS (entropy ceiling, Tier 0)
+        - A_PI (entropy ceiling, Tier 0)
         - α_F (causality floor, Tier 0)
         - d* (spectral floor, Tier 0)
         - Riemann = Fermat (bridge, Tier 1)
@@ -671,7 +671,7 @@ def h_rb_emergence() -> Dict[str, Any]:
         'H_eval'        : round(H_eval, 8),
         'remaining'     : remaining_component,
         'drop_out_summary': [
-            'OMEGA_ZS (entropy ceiling) ✓',
+            'A_PI (entropy ceiling) ✓',
             'α_F (causality floor) ✓',
             'd* (spectral floor) ✓',
             'Riemann = Fermat ✓',
@@ -941,7 +941,7 @@ def ln_natural_unit() -> Dict[str, Any]:
     ln(10) in the d\* structure::
 
         d*·ln(10) = 0.56644 = first BAO acoustic peak.
-        OMEGA_ZS − d*·ln(10) = GAP = Yang-Mills mass gap.
+        A_PI − d*·ln(10) = GAP = onset residual.
         ln(10) is the scale factor at which the BK spectrum meets the BAO.
         It is the natural unit of the decimal counting system:
             one decade in number space = one Hubble time in BK flow.
@@ -965,7 +965,7 @@ def ln_natural_unit() -> Dict[str, Any]:
         'd_star'        : D_STAR,
         'ln10'          : round(math.log(10.0), 8),
         'd_star_ln10'   : round(D_STAR * math.log(10.0), 8),
-        'omega_zs'      : round(OMEGA_ZS, 8),
+        'omega_zs'      : round(A_PI, 8),
         'gap'           : round(GAP, 8),
         'reading'       : 'One decade = one Hubble time in BK flow. ln(10) is the BAO scale factor.',
     }
@@ -1223,7 +1223,7 @@ def full_derivation_chain() -> Dict[str, Any]:
     t5c = planck_ln_connection()
 
     return {
-        'chain'     : 'Alpha_F + OMEGA_ZS → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Observer → ln',
+        'chain'     : 'Alpha_F + A_PI → d* → Riemann=Fermat → dropouts → H_RB → Geometries → Observer → ln',
         'tier_1'    : t1,
         'tier_2'    : {'yang_mills': t2a, 'berry_keating': t2b, 'noether': t2c,
                        'navier_stokes': t2d, 'langlands': t2e, 'bsd': t2f},

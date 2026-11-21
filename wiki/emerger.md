@@ -44,7 +44,7 @@ precession, 4 d\* faces : 3 Lambert-W faces, `lcm = 12`), or **any permutation**
 | bracket | groups | emerges | descends from |
 |---|---|---|---|
 | **{1:15}** | `[{1..15}]` | Re, `N=\|x\|²`, conj, inverse — *grades the algebra* | the CD grading |
-| **{2:14}** | `[{8}, rest]` | the pointer `z = x₀ + i·x₈`; `\|z\|`; `\|z\| − Ω_ZS` — *the read head* | {1:15} |
+| **{2:14}** | `[{8}, rest]` | the pointer `z = x₀ + i·x₈`; `\|z\|`; `\|z\| − A_π` — *the read head* | {1:15} |
 | **{8:8}** | `[{1..7}, {8..15}]` | `\|a\|−\|b\|` (distance from the ZD equator); sheet ±; `J₂` = L vs R | {1:15} |
 | **{4:4:4:4}** | four quaternion blocks | four SU(2) phases; σ_RB tilt/axis; **`Σtilt` = net work around the loop** (= 0 ⇔ σ = ½) | {8:8} |
 | **{4:8:4}** | gain blocks `{4..7}` / `{1,2,3,8..11}` / `{12..15}` | dominant gain class 0 / 1 / √2 — *multiplicative role* | {1:15} + {4:4:4:4} |
@@ -83,7 +83,7 @@ precession step 6/12 → entry bracket #1):
 
 | step | bracket | emergent |
 |---|---|---|
-| 1 | {2:14} | `z = 0`, `\|z\| − Ω_ZS = −0.56714` |
+| 1 | {2:14} | `z = 0`, `\|z\| − A_π = −0.56714` |
 | 2 | {8:8} | `\|a\|−\|b\| = 0`, **on_zd_equator = True**, **is_zero_divisor = True** |
 | 3 | {4:4:4:4} | `Σtilt = 0`, `Σaxis = 0`, σ = ½, T1 holds |
 | 4 | {4:8:4} | gain class = unit |
@@ -104,7 +104,7 @@ FRAGMENT. The subalgebra bracketings are rare — most groupings make fragments.
 | CD algebra, `domain_of`, `is_zero_divisor`, `on_zd_equator`, `Σaxis = 0` | **ESTABLISHED** | exact, from the CD table; matches `box_kite` / `zero_lattice` |
 | `Σtilt` = the σ_RB Scale detuning; `Σtilt = 0 ⇔ σ = ½` | **DERIVED** | Oblique-Gear T4 (`h_rb_hat`) |
 | `Σtilt` = "net work around the 0→p→q→N loop" | **THEORETICAL** | a reading; the to-and-from frequency difference |
-| the {2:14} pointer "carries Ω_ZS" | **THEORETICAL** | `16 − dim G₂ = 2`; `W(1)·e^{W(1)} = 1` lives on that ℂ line |
+| the {2:14} pointer "carries A_π" | **THEORETICAL** | `16 − dim G₂ = 2`; `W(1)·e^{W(1)} = 1` lives on that ℂ line |
 | the {4:8:4} gain-index assignment | **THEORETICAL** | a reading of the `{4:8:4}` canonical-maths note, not derived here |
 | the σ_RB tilt-phase → firing order map | **THEORETICAL** | the 12-step precession is `add_scale_sign`'s "firing order" defect at sedenion scale |
 

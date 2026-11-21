@@ -24,7 +24,7 @@ The four-way identity::
 SMMIP constants::
 
   d*       = 0.24600  — transition fraction (P1: r_t = d* × r_max_baryonic)
-  OMEGA_ZS = 0.5671432904097838  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
+  A_PI = 0.5671432904097838  — VEV / flat velocity ceiling (P2: v_bar²/v² = d*)
 
 Both confirmed against SPARC 97-galaxy high-quality sample.
 """
@@ -38,7 +38,7 @@ from typing import Callable
 # ── Constants ────────────────────────────────────────────────────────────────
 
 D_STAR   = 0.24600    # spectral ground state of Universal Native Space
-OMEGA_ZS = 0.5671432904097838    # Lambert W fixed point W(1) — VEV
+A_PI = 0.5671432904097838    # Lambert W fixed point W(1) — VEV
 G_SI     = 6.674e-11  # m³ kg⁻¹ s⁻²
 PC_M     = 3.086e16   # metres per parsec
 KPC_M    = 3.086e19   # metres per kiloparsec
@@ -65,7 +65,7 @@ class CavityMode:
     r_max_bar:  float   # radius of baryonic velocity peak (kpc)
     v_max:      float   # peak circular velocity (km/s)
     r_cavity:   float   # cavity radius = virial radius (kpc); fitted or estimated
-    v_flat:     float   # flat rotation velocity (km/s) = OMEGA_ZS × v_max
+    v_flat:     float   # flat rotation velocity (km/s) = A_PI × v_max
 
     # Derived on init
     r_t:        float = field(init=False)  # transition radius (kpc) = d* × r_max_bar
@@ -165,7 +165,7 @@ class CavityMode:
         (cavity χ²/dof median = 1.376 vs NFW = 5.143 over 97 galaxies).
 
         The physical meaning: stars are not orbiting a mass. They are riding
-        the gravitational pilot wave. The flat asymptote OMEGA_ZS × v_max
+        the gravitational pilot wave. The flat asymptote A_PI × v_max
         is the terminal Stokes drift speed of the l=0 mode.
 
         :param r_kpc: galactocentric radius, in kpc
@@ -298,7 +298,7 @@ class CavityMode:
             "SMMIP predictions (zero free parameters):",
             f"  P1: r_t = d* × r_max_bar = {D_STAR:.4f} × {self.r_max_bar:.2f} = {self.r_t:.3f} kpc",
             f"  P2: v_bar²/v²   = d*      = {D_STAR:.5f}  (DM fraction = {1-D_STAR:.5f})",
-            f"  v_flat = OMEGA_ZS × v_max = {OMEGA_ZS:.4f} × {self.v_max:.1f} = {self.v_flat:.1f} km/s",
+            f"  v_flat = A_PI × v_max = {A_PI:.4f} × {self.v_max:.1f} = {self.v_flat:.1f} km/s",
             "",
             "Pilot wave / Bohmian mechanics:",
             f"  Damping γ         = {self.gamma:.4f} kpc⁻¹  (= 1/r_t)",

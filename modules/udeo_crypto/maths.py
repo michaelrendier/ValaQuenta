@@ -72,7 +72,7 @@ from typing import Dict, List, Any, Tuple
 import numpy as np
 
 # ── Ainulindale constants (shared across the framework) ────────────────────
-OMEGA_ZS = 0.5671432904097838
+A_PI = 0.5671432904097838
 D_STAR   = 0.24600
 R_H      = 1.0 / math.sqrt(2.0)
 

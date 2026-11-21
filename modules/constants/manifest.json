@@ -6,7 +6,7 @@
   "name": "constants",
   "display": "Tier 0 Constants — π φ e √ i derived from H_RB",
   "version": "0.120",
-  "summary": "Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure.",
+  "summary": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure.",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",
   "entry": {
@@ -44,7 +44,7 @@
       "label": "Tier 0 Constants — π φ e √ i derived from H_RB",
       "group": "Reference",
       "order": 100,
-      "blurb": "Tier 0 Root Constants: π, φ, e, √, i, OMEGA_ZS, α_F, d*, Λ — all drop out of H_RB algebraic structure."
+      "blurb": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure."
     },
     "tools": [
       {
@@ -107,7 +107,7 @@
         "name": "derive_omega_zs",
         "equation": "derive_omega_zs",
         "label": "Derive Omega Zs",
-        "desc": "Ω_ζΣ = W(1) — thermal information ceiling T·e^T=1  [process= not set]",
+        "desc": "A_π = W(1) — thermal information ceiling T·e^T=1  [process= not set]",
         "params": []
       },
       {

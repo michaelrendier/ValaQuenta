@@ -52,9 +52,9 @@ A_BOHR    = 5.29177210903e-11   # m    (Bohr radius)
 E_RYDBERG = 13.605693122994     # eV   (Rydberg energy)
 
 # ── Ainulindale constants ──────────────────────────────────────────────────────
-OMEGA_ZS  = 0.5671432904097838
+A_PI  = 0.5671432904097838
 D_STAR    = 0.24600
-GAP       = OMEGA_ZS - D_STAR * math.log(10.0)   # 0.000707
+GAP       = A_PI - D_STAR * math.log(10.0)   # 0.000707
 
 # ── Particle masses (GeV) ──────────────────────────────────────────────────────
 PARTICLE_MASSES_GEV = {
@@ -159,7 +159,7 @@ def sedenion_arithmetic() -> Dict[str, Any]:
 
         (J_B, J_R) pair at boundary e₁₅
         J_B · J_R = 0  modulo the mass gap
-        This IS the Yang-Mills mass gap: δ = OMEGA_ZS - d*·ln10 = 0.000707
+        This IS the onset residual: δ = A_PI - d*·ln10 = 0.000707
 
     ── CD Tower = Subtraction ───────────────────────────────────────────────
     Each Cayley-Dickson doubling SUBTRACTS one algebraic property::
@@ -264,7 +264,7 @@ def sedenion_arithmetic() -> Dict[str, Any]:
         'division'      : {
             'source'    : 'Inverse of multiplication; possible in ℝ,ℂ,ℍ,𝕆 (division algebras)',
             'mechanism' : 'a/b = a · b⁻¹  where b⁻¹ = conj(b)/|b|²  (valid if b not zero-divisor)',
-            'bridge'    : 'Fails at zero-divisors of 𝕊 — which IS the Yang-Mills mass gap',
+            'bridge'    : 'Fails at zero-divisors of 𝕊 — which IS the onset residual',
         },
     }
 
@@ -905,7 +905,7 @@ def gauge_unification() -> Dict[str, Any]:
             with e₁ = U(1) ⊂ electroweak SU(2)×U(1)
         e₁..e₇:  𝕆 sub-algebra → G₂ ⊃ SU(3) (gluons from color)
         e₈..e₁₄: A-matrix couplings (gauge coupling fabric)
-        e₁₅:     Yang-Mills mass gap δ = 0.000707
+        e₁₅:     onset residual δ = 0.000707
 
     Grand unification prediction::
 
@@ -1047,7 +1047,7 @@ def gauge_unification() -> Dict[str, Any]:
             'e1-e3' : 'SU(2) isospin generators (quaternion)',
             'e1-e7' : 'G₂ ⊃ SU(3) color generators (octonion Fano)',
             'e8-e14': 'A-matrix gauge coupling fabric',
-            'e15'   : 'Yang-Mills mass gap δ = 0.000707',
+            'e15'   : 'onset residual δ = 0.000707',
         },
         'confidence'        : 'ESTABLISHED (Dixon 1994, SM physics) + THEORETICAL (sedenion map)',
         'latex'             : r'U(1)\times SU(2)\times SU(3)=\text{sym}(\mathbb{C})\times\text{sym}(\mathbb{H})\times\text{sym}(\mathbb{O})',
@@ -1208,7 +1208,7 @@ def particle_spectrum() -> Dict[str, Any]:
         e₈..e₁₄: A-matrix (co-occurrence fabric — 7 entries = 7 quarks? No: 6 quarks + gluon)
                   e₈=up, e₉=down, e₁₀=charm, e₁₁=strange, e₁₂=top, e₁₃=bottom
                   e₁₄=gluon (the gauge carrier of SU(3) color)
-        e₁₅:      Yang-Mills mass gap δ — the tau, the 3rd generation lepton
+        e₁₅:      onset residual δ — the tau, the 3rd generation lepton
                   (also: the 8 gluons distribute over e₈..e₁₄+e₁₅ phase structure)
 
     Note: The 17th particle (Higgs) lives at e₀ — the scalar field depth β —
@@ -1254,7 +1254,7 @@ def particle_spectrum() -> Dict[str, Any]:
         'heaviest'       : 'top quark: 172.76 GeV',
         'ratio'          : f'~{172.76 / 1e-11:.2e}  (17 orders of magnitude)',
         'sedenion_reading': 'Mass = coupling to the Higgs brim (e₀). Distance from e₀ in sedenion distance = mass.',
-        'gap_e15'        : f'e₁₅ = δ = {GAP:.6f} = Yang-Mills mass gap = gluon confinement scale',
+        'gap_e15'        : f'e₁₅ = δ = {GAP:.6f} = onset residual = gluon confinement scale',
     }
 
     # ── Three generations from CD doublings ───────────────────────────────
@@ -1493,7 +1493,7 @@ def hypercomplex_euler() -> Dict[str, Any]:
         For unit imaginary sedenions s (s² = −1, not a zero-divisor):
             e^{sπ} + 1 = 0
         Fifteen imaginary directions.
-        The Yang-Mills mass gap e₁₅ = δ = 0.000707 is the DEPARTURE from the
+        The onset residual e₁₅ = δ = 0.000707 is the DEPARTURE from the
         pure imaginary sphere — the zero-divisor zone where s·t = 0 (a,b ≠ 0).
         The mass gap is the gap in the hypercomplex Euler sphere.
 

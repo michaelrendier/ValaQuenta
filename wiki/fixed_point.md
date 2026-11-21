@@ -2,7 +2,7 @@
 
 **File:** `fixed_point.py`  
 **Class:** `FixedPoint`  
-**Claim:** The Cayley-Dickson tower has two fixed points — The Unit (V(0)=1) and T_256 — and the gap between them is the mass gap.
+**Claim:** The Cayley-Dickson tower has two fixed points — The Unit (V(0)=1) and T_256 — and the gap between them is the onset residual.
 
 
 **Reference:** API — [fixed_point](https://michaelrendier.github.io/ValaQuenta/api/engines.html#module-ValaQuenta.fixed_point). This page is the record; it holds no API.
@@ -52,7 +52,7 @@ failed to produce a result.
 | `D_STAR` | 0.246 |
 | `GAP` | 0.000707357533248576 |
 | `N_STAR` | 5.25694640446261 |
-| `OMEGA_ZS` | 0.5671432904097838 |
+| `A_PI` | 0.5671432904097838 |
 | `SIGMA_HALF` | 0.5 |
 | `UNIT_VOLUME` | 1.0 |
 

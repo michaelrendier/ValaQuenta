@@ -49,10 +49,10 @@ from typing import Dict, List, Tuple
 
 VERSION    = "0.100"
 D_STAR     = 0.24600                  # spectral ground state
-OMEGA_ZS   = 0.5671432904097838       # Lambert W fixed point W(1)
+A_PI   = 0.5671432904097838       # Lambert W fixed point W(1)
 THE_ANGLE  = math.pi / 8             # 22.5° — sedenion ZD angular quantum
 SILVER     = math.sqrt(2) - 1        # tan(THE_ANGLE) = √2−1
-GAP        = OMEGA_ZS - D_STAR * math.log(10.0)  # ≈ 7.07×10⁻⁴
+GAP        = A_PI - D_STAR * math.log(10.0)  # ≈ 7.07×10⁻⁴
 
 # Bell geometry
 HAT_HALF_ANGLE  = math.atan(D_STAR)  # contracted phase = 13.82°

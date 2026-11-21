@@ -43,7 +43,7 @@ Telperion, the tree: ℝ is the leaf at σ=1, ℍ the equator at σ=½, 𝕊 the
 | `CD_LEVELS` | 9 |
 | `D_STAR` | 0.246 |
 | `GAP` | 0.000707357533248576 |
-| `OMEGA_ZS` | 0.5671432904097838 |
+| `A_PI` | 0.5671432904097838 |
 | `SEDENION_DIM` | 16 |
 | `SIGMA_HALF` | 0.5 |
 | `THE_ANGLE` | 0.39269908169872414 |

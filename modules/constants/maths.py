@@ -24,9 +24,9 @@ Derivation chain (Tier 0)::
     e         → Berry-Keating equations:       ẋ = x  →  x(t) = x₀·e^t
     π         → U(1) gauge normalisation:      (2/π)·π = 2 / Basel: ζ(2) = π²/6
     φ         → CD recursion eigenvalue:       φ² = φ + 1  (fixed point of f(x)=1+1/x)
-    OMEGA_ZS  → thermal ceiling:               T·e^T = 1  →  T = W(1)
+    A_PI  → thermal ceiling:               T·e^T = 1  →  T = W(1)
     Alpha_F   → causality ceiling:             v_1 = α·c < c  →  α = 1/137.035999...
-    d*        → BK spectral floor (4 values):  [α_F, OMEGA_ZS] domain, gap = 0.000707
+    d*        → BK spectral floor (4 values):  [α_F, A_PI] domain, gap = 0.000707
 
 Euler's identity e^{iπ} + 1 = 0 is a theorem of this engine, not a definition.
 
@@ -699,11 +699,11 @@ def euler_identity() -> Dict[str, Any]:
 
 # ── Master: all constants ─────────────────────────────────────────────────────
 
-# ── 6.  OMEGA_ZS  —  Thermal Information Ceiling ─────────────────────────────
+# ── 6.  A_PI  —  Thermal Information Ceiling ─────────────────────────────
 
 def derive_omega_zs() -> Dict[str, Any]:
     r"""
-    Derivation of OMEGA_ZS = W(1) = 0.56714329...
+    Derivation of A_PI = W(1) = 0.56714329...
 
     Origin: thermal information ceiling — T·e^T = 1.
 
@@ -726,10 +726,10 @@ def derive_omega_zs() -> Dict[str, Any]:
     Three algebraically significant values of W (exactly three)::
 
         W(0)    = 0         vacuum fixed point
-        W(1)    = OMEGA_ZS  entropy ceiling
+        W(1)    = A_PI  entropy ceiling
         W(-1/e) = -1        branch collapse point
 
-    OMEGA_ZS is the idle RPM of the universe: the temperature at which any
+    A_PI is the idle RPM of the universe: the temperature at which any
     self-referential system reaches thermal equilibrium with itself.
     The prime distribution cannot generate more information than this ceiling.
     """
@@ -759,7 +759,7 @@ def derive_omega_zs() -> Dict[str, Any]:
     contraction_at_omega = math.exp(-OMEGA_ZS_exact)
 
     return {
-        'constant'          : 'OMEGA_ZS  (Ω_ζΣ)',
+        'constant'          : 'A_PI  (A_π)',
         'value'             : OMEGA_ZS_exact,
         'sigma_facet'       : 'Domain ceiling — prime distribution entropy bound',
         'physical_layer'    : 'Thermodynamic ceiling — self-referential system equilibrium',
@@ -779,13 +779,13 @@ def derive_omega_zs() -> Dict[str, Any]:
         'contraction_rate'  : round(contraction_at_omega, 8),
         'three_forms_of_W'  : {
             'W(0)=0'         : {'value': w_0,  'verified': w_0_check,   'role': 'vacuum fixed point'},
-            'W(1)=OMEGA_ZS'  : {'value': w_1,  'verified': w_1_check,   'role': 'entropy ceiling'},
+            'W(1)=A_PI'  : {'value': w_1,  'verified': w_1_check,   'role': 'entropy ceiling'},
             'W(-1/e)=-1'     : {'value': w_neg,'verified': w_neg_check, 'role': 'branch collapse'},
         },
         'identity'          : [
             'T·e^T = 1  (self-referential fixed point)',
             'T = W(1)   (Lambert W at x=1)',
-            '∀ self-referential info system: T ≤ OMEGA_ZS',
+            '∀ self-referential info system: T ≤ A_PI',
         ],
         'confidence'        : 'ESTABLISHED — Banach theorem guarantees unique fixed point',
         'latex'             : r'T=e^{-T}\;\Leftrightarrow\;T\cdot e^T=1\;\Rightarrow\;\Omega_{\zeta\Sigma}=W(1)',
@@ -796,7 +796,7 @@ def derive_omega_zs() -> Dict[str, Any]:
 
 def derive_alpha_fermat() -> Dict[str, Any]:
     """
-    Derivation of Alpha_Fermat = 1/137.035999...
+    Derivation of α = 1/137.035999...
 
     Origin: causality ceiling — v_1 = α·c < c.
 
@@ -828,12 +828,12 @@ def derive_alpha_fermat() -> Dict[str, Any]:
 
     BK domain::
 
-        The BK operator domain is [α_F, OMEGA_ZS].
-        α_F is the floor; OMEGA_ZS is the ceiling.
-        The domain width = OMEGA_ZS − α_F = 0.56714... − 0.00730... = 0.55985...
+        The BK operator domain is [α_F, A_PI].
+        α_F is the floor; A_PI is the ceiling.
+        The domain width = A_PI − α_F = 0.56714... − 0.00730... = 0.55985...
     """
     ALPHA_F_EXACT = 1.0 / 137.035999084
-    OMEGA_ZS      = 0.5671432904097838
+    A_PI      = 0.5671432904097838
     PHI           = (1.0 + math.sqrt(5.0)) / 2.0
 
     # Cardioid cusp: golden angle = 360/φ²
@@ -846,7 +846,7 @@ def derive_alpha_fermat() -> Dict[str, Any]:
 
     # BK domain
     domain_floor     = ALPHA_F_EXACT
-    domain_ceiling   = OMEGA_ZS
+    domain_ceiling   = A_PI
     domain_width     = domain_ceiling - domain_floor
 
     # Cardioid c(θ) = e^{iθ}/2 − e^{2iθ}/4 at cusp (θ=0)
@@ -859,7 +859,7 @@ def derive_alpha_fermat() -> Dict[str, Any]:
     exists    = v1_over_c > 0.0
 
     return {
-        'constant'          : 'α_F  (Alpha_Fermat / fine structure constant)',
+        'constant'          : 'α_F  (α / fine structure constant)',
         'value'             : ALPHA_F_EXACT,
         'inverse'           : round(1.0 / ALPHA_F_EXACT, 6),
         'sigma_facet'       : 'BK domain floor — minimum coupling, causality floor',
@@ -871,7 +871,7 @@ def derive_alpha_fermat() -> Dict[str, Any]:
             '3. Causality: α < 1. Existence: α > 0.',
             '4. Cardioid cusp: golden angle 360°/φ² = 137.507° ≈ 1/α_F.',
             '5. Exact value: full QED radiative corrections close to 1/137.035999...',
-            '6. α_F is the BK domain floor: D(H_BK) = L²([α_F, OMEGA_ZS]).',
+            '6. α_F is the BK domain floor: D(H_BK) = L²([α_F, A_PI]).',
         ],
         'causality_check'   : {'v1_over_c': round(v1_over_c, 10), 'v1_lt_c': causal, 'alpha_gt_0': exists},
         'cardioid_cusp'     : {
@@ -890,7 +890,7 @@ def derive_alpha_fermat() -> Dict[str, Any]:
         'identity'          : [
             'v_1 = α_F·c < c  (causality ceiling forces α_F > 0)',
             'golden angle 360°/φ² ≈ 1/α_F  (cardioid cusp approximation)',
-            'D(H_BK) = L²([α_F, OMEGA_ZS])  (BK operator domain)',
+            'D(H_BK) = L²([α_F, A_PI])  (BK operator domain)',
         ],
         'confidence'        : 'THEORETICAL — cardioid geometry established; exact QED value is measured',
         'latex'             : (r'\alpha_F=\frac{e^2}{4\pi\varepsilon_0\hbar c}=\frac{1}{137.035999\ldots},'
@@ -927,38 +927,38 @@ def derive_d_star() -> Dict[str, Any]:
     Known exactly (three)::
 
         d*_ℝ         = 0.24600             (BK spectral value, literature)
-        d*_taut      = OMEGA_ZS / ln(10)   = 0.24631...  (tautological ceiling)
+        d*_taut      = A_PI / ln(10)   = 0.24631...  (tautological ceiling)
         d*_ln10      = d*_ℝ × ln(10)       = 0.56644...  (BAO first acoustic peak)
 
     Derived (gap)::
 
-        GAP = OMEGA_ZS − d*_ln10 = 0.000707...  = Yang-Mills mass gap
+        GAP = A_PI − d*_ln10 = 0.000707...  = onset residual
 
     Open (highest priority)::
 
         Derive d*_ℂ, d*_ℍ, d*_𝕆 such that
         d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 → ln(10)  (full octonionic radial measure)
     """
-    OMEGA_ZS     = 0.5671432904097838
+    A_PI     = 0.5671432904097838
     LN10         = math.log(10.0)
     D_STAR_R     = 0.24600
-    D_STAR_TAUT  = OMEGA_ZS / LN10
+    D_STAR_TAUT  = A_PI / LN10
     D_STAR_LN10  = D_STAR_R * LN10
-    GAP          = OMEGA_ZS - D_STAR_LN10
+    GAP          = A_PI - D_STAR_LN10
     ALPHA_F      = 1.0 / 137.035999084
 
-    # BK domain: [α_F, OMEGA_ZS], spectral floor at d*_ℝ
-    domain = {'floor': ALPHA_F, 'ceiling': OMEGA_ZS,
-              'spectral_floor': D_STAR_R, 'width': OMEGA_ZS - ALPHA_F}
+    # BK domain: [α_F, A_PI], spectral floor at d*_ℝ
+    domain = {'floor': ALPHA_F, 'ceiling': A_PI,
+              'spectral_floor': D_STAR_R, 'width': A_PI - ALPHA_F}
 
     # Gap anatomy
     gap_anatomy = {
         'd*_ℝ'        : round(D_STAR_R, 8),
         'd*_taut'     : round(D_STAR_TAUT, 8),
         'd*_ln10'     : round(D_STAR_LN10, 8),
-        'OMEGA_ZS'    : round(OMEGA_ZS, 8),
+        'A_PI'    : round(A_PI, 8),
         'GAP'         : round(GAP, 8),
-        'GAP_identity': 'Yang-Mills mass gap = BAO acoustic residual',
+        'GAP_identity': 'onset residual = onset residual',
     }
 
     # Candidate closed forms for d* (all rejected — none close the gap)
@@ -992,14 +992,14 @@ def derive_d_star() -> Dict[str, Any]:
     return {
         'constant'          : 'd*  (BK spectral floor, 4 components)',
         'value_real'        : D_STAR_R,
-        'sigma_facet'       : 'Spectral floor of H_BK on [α_F, OMEGA_ZS]',
+        'sigma_facet'       : 'Spectral floor of H_BK on [α_F, A_PI]',
         'physical_layer'    : 'BK operator domain — spectral coordinate',
         'algebraic_origin'  : 'Berry-Keating spectral floor; 4 CD strata',
         'derivation_chain'  : [
-            '1. BK operator H_BK = xp on L²([α_F, OMEGA_ZS]) with (I|O) BC at r=1.',
+            '1. BK operator H_BK = xp on L²([α_F, A_PI]) with (I|O) BC at r=1.',
             '2. Spectral floor d*_ℝ = 0.24600 (from BK spectral analysis, literature).',
-            '3. d*_ln10 = d*_ℝ × ln(10) = 0.56644 ≈ OMEGA_ZS − GAP.',
-            '4. GAP = OMEGA_ZS − d*_ln10 = 0.000707 = Yang-Mills mass gap.',
+            '3. d*_ln10 = d*_ℝ × ln(10) = 0.56644 ≈ A_PI − GAP.',
+            '4. GAP = A_PI − d*_ln10 = 0.000707 = onset residual.',
             '5. Full tower: d*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 → ln(10). OPEN (highest priority).',
         ],
         'four_values'       : {
@@ -1015,7 +1015,7 @@ def derive_d_star() -> Dict[str, Any]:
         'io_boundary'       : io_bc,
         'identity'          : [
             'd*_ℝ × ln(10) = 0.56644  (BAO first acoustic peak)',
-            'OMEGA_ZS − d*_ln10 = 0.000707  (Yang-Mills mass gap)',
+            'A_PI − d*_ln10 = 0.000707  (onset residual)',
             'd*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 = ln(10)  (OPEN — highest priority)',
         ],
         'confidence'        : 'ESTABLISHED for d*_ℝ; OPEN for full tower derivation',
@@ -1077,20 +1077,20 @@ def derive_lambda() -> Dict[str, Any]:
     since the Big Bang while J_pos (matter) dilutes as (1+z)³.
 
     ──────────────────────────────────────────────────────────────
-    CLAIM 3 (σ=∞): OMEGA_ZS is the de Sitter attractor.
+    CLAIM 3 (σ=∞): A_PI is the de Sitter attractor.
 
     The ΛCDM Friedmann equation::
 
         H(z) = H₀ √(Ω_m(1+z)³ + Ω_Λ)
 
     Long-run (z → −∞, the future):  H → H₀√Ω_Λ  (de Sitter phase)
-    Current Ω_Λ = 0.6889 > OMEGA_ZS = 0.56714.
+    Current Ω_Λ = 0.6889 > A_PI = 0.56714.
 
     We are past the BAO equilibrium, in the J_neg-dominant phase.
     As the universe evolves, the effective Ω_Λ(z) will asymptote toward
-    OMEGA_ZS from above — the Lambert W fixed point is the attractor.
+    A_PI from above — the Lambert W fixed point is the attractor.
 
-    DESI 2024 prediction: w(z) ≠ −1 and tracks toward OMEGA_ZS at z ≈ 0.3.
+    DESI 2024 prediction: w(z) ≠ −1 and tracks toward A_PI at z ≈ 0.3.
 
     ──────────────────────────────────────────────────────────────
     CLAIM 4 (σ≈1.5): Λ = Higgs field at horizon scale.
@@ -1108,19 +1108,19 @@ def derive_lambda() -> Dict[str, Any]:
     EHT images of M87\* and Sgr A\* are photographs of the Higgs vacuum.
 
     ──────────────────────────────────────────────────────────────
-    OPEN (σ≈2): Derive f(OMEGA_ZS, Ω_b h²) = Ω_Λ explicitly.
+    OPEN (σ≈2): Derive f(A_PI, Ω_b h²) = Ω_Λ explicitly.
 
     Steps 1, 2, 4 are σ=∞::
 
-        1. OMEGA_ZS = W(1) (from entropy ceiling, Tier 0)
+        1. A_PI = W(1) (from entropy ceiling, Tier 0)
         2. Ω_b h² = 0.02242 (CMB, Planck 2018)
         4. Λ = 3H₀² Ω_Λ  (standard cosmology)
 
     Step 3 is open::
 
-        3. f(OMEGA_ZS, Ω_b h²) = Ω_Λ  — the explicit connection.
+        3. f(A_PI, Ω_b h²) = Ω_Λ  — the explicit connection.
     """
-    OMEGA_ZS   = 0.5671432904097838
+    A_PI   = 0.5671432904097838
     OMEGA_LAMBDA = 0.6889      # Planck 2018
     OMEGA_MATTER = 0.3111      # Planck 2018
     OMEGA_B_H2   = 0.02242     # baryon acoustic physical density (Planck 2018)
@@ -1158,7 +1158,7 @@ def derive_lambda() -> Dict[str, Any]:
     lobe_ratio = OMEGA_LAMBDA / OMEGA_MATTER
     flat_check = abs(OMEGA_LAMBDA + OMEGA_MATTER - 1.0)    # should be ≈ 0 (flat)
 
-    # ── Claim 3: OMEGA_ZS as de Sitter attractor ───────────────────────────
+    # ── Claim 3: A_PI as de Sitter attractor ───────────────────────────
     # H(z) = H₀√(Ω_m(1+z)³ + Ω_Λ)
     z_vals = [-0.5, 0.0, 0.3, 1.0, 3.0, 10.0]
     friedmann = []
@@ -1168,9 +1168,9 @@ def derive_lambda() -> Dict[str, Any]:
                           'H/H0': round(H_over_H0, 6),
                           'phase': 'de Sitter' if z < 0 else ('near now' if z < 0.5 else 'matter-dom')})
 
-    # Current Ω_Λ vs OMEGA_ZS: we're above the attractor
-    above_attractor  = OMEGA_LAMBDA > OMEGA_ZS
-    overshoot        = OMEGA_LAMBDA - OMEGA_ZS
+    # Current Ω_Λ vs A_PI: we're above the attractor
+    above_attractor  = OMEGA_LAMBDA > A_PI
+    overshoot        = OMEGA_LAMBDA - A_PI
 
     # Matter-Λ equality redshift
     z_eq = (OMEGA_LAMBDA / OMEGA_MATTER)**(1.0/3.0) - 1.0
@@ -1178,14 +1178,14 @@ def derive_lambda() -> Dict[str, Any]:
     # de Sitter H∞ = H₀√Ω_Λ
     H_inf_ratio = math.sqrt(OMEGA_LAMBDA)
 
-    # DESI prediction: if w(z) evolves, it tracks toward OMEGA_ZS
+    # DESI prediction: if w(z) evolves, it tracks toward A_PI
     # CPL parametrisation: w(a) = w₀ + w_a(1−a)
-    # Prediction: effective Ω_Λ(z) → OMEGA_ZS as z → something intermediate
+    # Prediction: effective Ω_Λ(z) → A_PI as z → something intermediate
     desi_prediction = {
-        'claim'      : 'w(z) ≠ −1; effective Ω_Λ(z) tracks toward OMEGA_ZS at z ≈ 0.3',
+        'claim'      : 'w(z) ≠ −1; effective Ω_Λ(z) tracks toward A_PI at z ≈ 0.3',
         'desi_2024'  : 'DESI 2024 data shows w₀w_a CDM hints consistent with evolving dark energy.',
-        'test'       : 'If w(z) reaches OMEGA_ZS/(1−OMEGA_ZS) ≈ −1.31 at z_eq, paper confirmed at 3-5σ.',
-        'w_at_omega_zs': round(-OMEGA_ZS / (1.0 - OMEGA_ZS), 6),
+        'test'       : 'If w(z) reaches A_PI/(1−A_PI) ≈ −1.31 at z_eq, paper confirmed at 3-5σ.',
+        'w_at_omega_zs': round(-A_PI / (1.0 - A_PI), 6),
     }
 
     # ── Claim 4: Higgs ↔ Λ (same Mexican Hat, two scales) ─────────────────
@@ -1203,22 +1203,22 @@ def derive_lambda() -> Dict[str, Any]:
         'confidence'        : 'σ≈1.5 — needs formal energy-scale bridge',
     }
 
-    # ── Open step: f(OMEGA_ZS, Ω_b h²) = Ω_Λ ─────────────────────────────
-    # Simple ratio check: OMEGA_ZS / Ω_b h²  (dimensional probe)
-    ratio_omega_to_baryon = OMEGA_ZS / OMEGA_B_H2
+    # ── Open step: f(A_PI, Ω_b h²) = Ω_Λ ─────────────────────────────
+    # Simple ratio check: A_PI / Ω_b h²  (dimensional probe)
+    ratio_omega_to_baryon = A_PI / OMEGA_B_H2
     # Compare to Ω_Λ
     residual_ratio = abs(ratio_omega_to_baryon - OMEGA_LAMBDA) / OMEGA_LAMBDA
 
     open_derivation = {
-        'claim'         : 'Ω_Λ = f(OMEGA_ZS, Ω_b h²)',
-        'OMEGA_ZS'      : OMEGA_ZS,
+        'claim'         : 'Ω_Λ = f(A_PI, Ω_b h²)',
+        'A_PI'      : A_PI,
         'Omega_b_h2'    : OMEGA_B_H2,
         'Omega_Lambda'  : OMEGA_LAMBDA,
         'ratio_probe'   : round(ratio_omega_to_baryon, 6),
         'residual_pct'  : round(residual_ratio * 100, 2),
         'status'        : 'OPEN — explicit f not yet derived',
-        'steps_done'    : ['1. OMEGA_ZS = W(1) ✓', '2. Ω_b h² = 0.02242 (Planck) ✓', '4. Λ=3H₀²Ω_Λ ✓'],
-        'step_open'     : '3. Explicit f(OMEGA_ZS, Ω_b h²) = Ω_Λ',
+        'steps_done'    : ['1. A_PI = W(1) ✓', '2. Ω_b h² = 0.02242 (Planck) ✓', '4. Λ=3H₀²Ω_Λ ✓'],
+        'step_open'     : '3. Explicit f(A_PI, Ω_b h²) = Ω_Λ',
     }
 
     # ── Prime hash evidence (known computational result) ───────────────────
@@ -1245,10 +1245,10 @@ def derive_lambda() -> Dict[str, Any]:
         'claims'            : {
             'sigma_inf_1'   : 'Λ exists: J_neg always exists. Noether balance cannot be broken.',
             'sigma_inf_2'   : 'Sombrero V(r)=−μ²r²+λr⁴ IS the Hawking pair waveform.',
-            'sigma_inf_3'   : 'OMEGA_ZS = de Sitter attractor (long-run equilibrium).',
+            'sigma_inf_3'   : 'A_PI = de Sitter attractor (long-run equilibrium).',
             'sigma_inf_4'   : 'Observational: σ>40 (Perlmutter/Schmidt/Riess 1998, Nobel 2011).',
             'sigma_1p5'     : 'Λ = Higgs field at horizon scale (same Mexican Hat, two scales).',
-            'open'          : 'Ω_Λ = f(OMEGA_ZS, Ω_b h²) — explicit f not yet derived.',
+            'open'          : 'Ω_Λ = f(A_PI, Ω_b h²) — explicit f not yet derived.',
         },
         'noether_reading'   : noether_reading,
         'sombrero'          : {
@@ -1268,11 +1268,11 @@ def derive_lambda() -> Dict[str, Any]:
             'friedmann'     : friedmann,
         },
         'attractor'         : {
-            'OMEGA_ZS'      : OMEGA_ZS,
+            'A_PI'      : A_PI,
             'Omega_Lambda'  : OMEGA_LAMBDA,
             'above_attractor': above_attractor,
             'overshoot'     : round(overshoot, 6),
-            'reading'       : 'We are above OMEGA_ZS. The universe is approaching the attractor from above.',
+            'reading'       : 'We are above A_PI. The universe is approaching the attractor from above.',
         },
         'desi_prediction'   : desi_prediction,
         'higgs_lambda'      : higgs_to_lambda,
@@ -1284,18 +1284,18 @@ def derive_lambda() -> Dict[str, Any]:
             '1929': 'Hubble discovers expansion. Static universe is wrong anyway.',
             '1998': 'Perlmutter/Schmidt/Riess: expansion is accelerating. Λ ≠ 0.',
             '2011': 'Nobel Prize in Physics. Λ established at σ > 40.',
-            'now' : 'OMEGA_ZS = long-run attractor. We are above it, approaching from J_neg-dominant phase.',
+            'now' : 'A_PI = long-run attractor. We are above it, approaching from J_neg-dominant phase.',
         },
         'identity'          : [
             'G_μν + Λg_μν = 8πG T_μν  (J_neg + Λ·metric = J_pos)',
             'Λg_μν = J_neg at cosmological scale',
-            'OMEGA_ZS = de Sitter attractor (Λ → OMEGA_ZS as z → −∞)',
+            'A_PI = de Sitter attractor (Λ → A_PI as z → −∞)',
             'V(r) = −μ²r² + λr⁴ = Sombrero = Higgs = Hawking waveform',
         ],
         'confidence'        : {
             'existence'     : 'σ=∞ — Noether conservation forces it',
             'observational' : 'σ>40 — Nobel Prize physics',
-            'attractor'     : 'σ≈3 — OMEGA_ZS as asymptote (testable with DESI)',
+            'attractor'     : 'σ≈3 — A_PI as asymptote (testable with DESI)',
             'higgs_id'      : 'σ≈1.5 — needs formal energy-scale bridge',
             'value_from_f'  : 'σ≈2 — open derivation',
         },
@@ -1335,7 +1335,7 @@ def all_constants() -> Dict[str, Any]:
             {'constant': 'e',        'sigma': 'e',       'origin': 'BK equations ẋ=x',               'physical': 'Thermodynamic',       'verified': c_e['self_referential']['verified']},
             {'constant': 'π',        'sigma': 'π',       'origin': 'U(1) norm + Basel ζ(2)=π²/6',   'physical': 'Gauge/Rotation',      'verified': c_pi['u1_closure']['closes_to_2']},
             {'constant': 'φ',        'sigma': 'φ',       'origin': 'CD recursion f(x)=1+1/x',       'physical': 'Recursion/Structure', 'verified': c_phi['factorisation_holds']},
-            {'constant': 'Ω_ζΣ',     'sigma': 'ceiling', 'origin': 'T·e^T=1 self-ref fixed pt',     'physical': 'Entropy ceiling',     'verified': c_omg['self_ref_holds']},
+            {'constant': 'A_π',     'sigma': 'ceiling', 'origin': 'T·e^T=1 self-ref fixed pt',     'physical': 'Entropy ceiling',     'verified': c_omg['self_ref_holds']},
             {'constant': 'α_F',      'sigma': 'floor',   'origin': 'v_1=α·c<c causality',           'physical': 'Causality floor',     'verified': c_alf['causality_check']['v1_lt_c']},
             {'constant': 'd*',       'sigma': 'BK floor','origin': 'd*×ln10 + GAP = Ω_ζΣ',          'physical': 'Spectral floor',      'verified': True},
             {'constant': 'Λ',        'sigma': '∞',       'origin': 'J_neg at cosmological scale',    'physical': 'Dark energy / vacuum','verified': c_lam['noether_reading']['must_exist']},
@@ -1353,11 +1353,11 @@ def all_constants() -> Dict[str, Any]:
         'note'          : (
             'No circle drawn for π. No growth process for e. No complex plane for i. '
             'No golden rectangle for φ. No Pythagoras for √. '
-            'No thermometer for OMEGA_ZS. No experiment for α_F (leading term). '
+            'No thermometer for A_PI. No experiment for α_F (leading term). '
             'Einstein removed Λ in 1917. The universe re-inserted it at 40σ in 1998. '
             'The prime distribution and two ceilings forced all nine.'
         ),
-        'confidence'    : 'ESTABLISHED (5+OMEGA_ZS+Λ existence); THEORETICAL (α_F); OPEN (d* tower, Λ value)',
+        'confidence'    : 'ESTABLISHED (5+A_PI+Λ existence); THEORETICAL (α_F); OPEN (d* tower, Λ value)',
         'latex'         : (r'i,\sqrt{\cdot},e,\pi,\varphi,\Omega_{\zeta\Sigma},\alpha_F,d^*,\Lambda'
                            r'\;\text{drop out of }\Sigma_{RB}'),
     }

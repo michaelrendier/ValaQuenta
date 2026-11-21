@@ -36,10 +36,10 @@ from typing import Dict, List, Any, Optional, Tuple
 # ── Constants ──────────────────────────────────────────────────────────────────
 
 D_STAR_SPEC  = 0.24600                        # BK spectral — ACTIVE
-OMEGA_ZS     = 0.56714329040978384            # Ω_ζΣ
+A_PI     = 0.56714329040978384            # A_π
 LN10         = math.log(10.0)
-D_STAR_TAUT  = OMEGA_ZS / LN10               # tautological — reference only
-GAP          = abs(OMEGA_ZS - D_STAR_SPEC * LN10)   # = 0.000707
+D_STAR_TAUT  = A_PI / LN10               # tautological — reference only
+GAP          = abs(A_PI - D_STAR_SPEC * LN10)   # = 0.000707
 PHI          = (1 + math.sqrt(5)) / 2
 PI           = math.pi
 
@@ -63,7 +63,7 @@ def d_star_gap_report() -> Dict[str, Any]:
         'd_star_spec'      : D_STAR_SPEC,
         'd_star_taut'      : D_STAR_TAUT,
         'ln_10'            : LN10,
-        'omega_zs'         : OMEGA_ZS,
+        'omega_zs'         : A_PI,
         'd_star_x_ln10'    : d_spec_x_ln10,
         'gap'              : GAP,
         'gap_taut'         : 0.0,
@@ -92,7 +92,7 @@ def lambert_W_approx(x: float) -> float:
 
 
 def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
-                                omega: float = OMEGA_ZS,
+                                omega: float = A_PI,
                                 p: float = 4.0 / 3.0) -> Dict[str, Any]:
     """
     Lambert W two-loop beta function path for mass gap m.
@@ -104,7 +104,7 @@ def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
 
         α_ρ = 2 / W(π/e · (8ρ / (m · (1 − 2/p)²)))
 
-    Setting α_ρ = α_floor (SMIP domain floor) at ρ = Ω_ζΣ (domain ceiling),
+    Setting α_ρ = α_floor (SMIP domain floor) at ρ = A_π (domain ceiling),
     we solve for m:
 
     ::
@@ -135,7 +135,7 @@ def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
     From Addendum IV §VI (Gemini deep-research synthesis).
 
     :param alpha_floor: α at the SMIP domain floor
-    :param omega: Ω_ζΣ, the domain ceiling
+    :param omega: A_π, the domain ceiling
     :param p: holographic/unification exponent
     :returns: dict with the candidate mass gap m and how far it sits from the target
     """
@@ -152,7 +152,7 @@ def two_loop_mass_gap_candidate(alpha_floor: float = 1.0 / 137.035999,
     ratio = abs(GAP / omega) if omega else 0.0
 
     # Alternative: solve for m such that the two-loop coupling at ρ = α_floor
-    # equals Ω_ζΣ. This gives a different (physically meaningful) m:
+    # equals A_π. This gives a different (physically meaningful) m:
     #   α_floor = 2 / W(32 · Ω / m)  →  W(32·Ω/m) = 2/α_floor
     #   32·Ω/m · exp(32·Ω/m) does not close simply.
     # The W-branch inversion:  32·Ω/m = W_val·exp(W_val) ≈ W_val·e^274
@@ -185,21 +185,21 @@ def lambert_tsallis_Wq_candidate(q: float = 1.1,
     W_q encodes broken statistical symmetry — relevant when the SMIP vacuum
     has non-extensive entropy (sedenion layer, zero-divisor boundary).
 
-    At q = 1.1, W_q(1) differs from W(1) = Ω_ζΣ by a correction term
+    At q = 1.1, W_q(1) differs from W(1) = A_π by a correction term
     that may encode the 0.00070 gap.
 
     Approximation:  W_q(z) ≈ W(z) + (q-1)·correction(z) + O((q-1)²)
 
     The first-order correction to W(z) at z = 1::
 
-        W(1) = Ω_ζΣ ≈ 0.56714
+        W(1) = A_π ≈ 0.56714
         dW_q/dq |_{q=1} = ?   (not yet derived)
 
     This is a candidate approach, not an evaluation.
     Source: Gemini deep-research synthesis.
 
     :param q: Tsallis index; q → 1 recovers the standard Lambert W
-    :param z: argument; None uses Ω_ζΣ
+    :param z: argument; None uses A_π
     :returns: dict with W_q(z) and the comparison with the target gap
     """
     z_val  = z if z is not None else math.e  # W(e) = 1 exactly
@@ -237,7 +237,7 @@ def gap_candidates(d_star: float = D_STAR_SPEC) -> List[Dict[str, Any]]:
     :returns: one dict per candidate expression, with its value and its distance from Ω
     """
     candidates = []
-    Ω = OMEGA_ZS
+    Ω = A_PI
     ln10 = LN10
 
     exprs = [

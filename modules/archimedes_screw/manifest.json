@@ -317,7 +317,7 @@
         "name": "lambert_w",
         "equation": "lambert_w",
         "label": "Lambert W",
-        "desc": "The screw gear ratio: W(x)e^{W(x)} = x, W(1) = OMEGA_ZS  [process= not set]",
+        "desc": "The screw gear ratio: W(x)e^{W(x)} = x, W(1) = A_PI  [process= not set]",
         "params": [
           "x"
         ]

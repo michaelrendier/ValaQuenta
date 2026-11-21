@@ -48,14 +48,14 @@
         "source": "engine"
       },
       {
-        "symbol": "Omega_ZS",
+        "symbol": "A_π",
         "role": "Lambert-W fixed point W(1); the 3 rotor faces of the 12-step precession",
         "value": 0.5671432904097838,
         "source": ".clauderc_canonical_maths"
       },
       {
         "symbol": "d_star",
-        "role": "the Zero Definer, Omega_ZS/ln(10); the 4 catastrophe/fold faces",
+        "role": "the Zero Definer, A_π/ln(10); the 4 catastrophe/fold faces",
         "value": 0.24631,
         "source": ".clauderc_canonical_maths"
       }

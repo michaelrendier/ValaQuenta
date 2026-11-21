@@ -19,7 +19,7 @@ Status of claims::
     (I|O) map definition and fixed points: ESTABLISHED
     Unification of 4 physical horizons: Cases 1,3,4 ESTABLISHED; Case 2 THEORETICAL
     d* = 0.24600: THEORETICAL (numerically confirmed)
-    d* x ln(10) = OMEGA_ZS: OPEN (gap = 0.00070, highest priority)
+    d* x ln(10) = A_PI: OPEN (gap = 0.00070, highest priority)
     phi as recursion attractor: ESTABLISHED (numerically confirmed)
     phi crossing step = H/4 = (pi/2) hbar_NN: CORRECTED, proof
       closed -- see derive_horizon_rotation() below. Previously this used
@@ -100,7 +100,7 @@ def derive_horizon_rotation(n_terms: int = 200000) -> Dict[str, Any]:
 class _ObserverSingleton:
     """
     The Observer: the r=0 destination point.
-    Holds only alpha (A_PI) and Omega (OMEGA_ZS).
+    Holds only alpha (ALPHA_FS) and Omega (A_PI).
     Cannot accumulate state — breaking gauge invariance.
     """
     _instance = None
@@ -114,8 +114,8 @@ class _ObserverSingleton:
     def __init__(self):
         if self._initialized:
             return
-        self.alpha = C.A_PI
-        self.omega = C.OMEGA_ZS
+        self.alpha = C.ALPHA_FS
+        self.omega = C.A_PI
         self._initialized = True
 
     def is_in_domain(self, coupling):
@@ -154,7 +154,7 @@ class InversionMap:
     Fixed points of J_N::
 
         r = 1 for any theta  (unit circle)
-        These are the BK domain boundary points at A_PI and OMEGA_ZS.
+        These are the BK domain boundary points at ALPHA_FS and A_PI.
 
     The recursion attractor (separate from the inversion fixed point)::
 
@@ -219,13 +219,13 @@ class InversionMap:
         :param r: radius
         :returns: which side of the horizon r is on
         """
-        if r < C.A_PI:
+        if r < C.ALPHA_FS:
             return "sub-BK-floor (unphysical)"
         elif r < 1.0:
             return "interior (Contractor primary, r < 1)"
         elif abs(r - 1.0) < 1e-10:
             return "horizon (r = 1, fixed point)"
-        elif r <= C.OMEGA_ZS:
+        elif r <= C.A_PI:
             return "BK domain interior"
         elif r <= C.D_STAR:
             return "d* zone"
@@ -292,7 +292,7 @@ class RecursionAttractor:
 
     PHI        = C.PHI
     D_STAR     = C.D_STAR
-    OMEGA_ZS   = C.OMEGA_ZS
+    A_PI   = C.A_PI
     D_STAR_GAP = C.D_STAR_GAP
 
     def iterate(self, r0: float, steps: int = 50) -> List[float]:
@@ -328,15 +328,15 @@ class RecursionAttractor:
 
     def d_star_gap(self) -> Dict[str, float]:
         r"""
-        The gap between d\* x ln(10) and OMEGA_ZS.
+        The gap between d\* x ln(10) and A_PI.
         Gap = 0.00070. HIGHEST PRIORITY OPEN DERIVATION.
         """
         d_star_log = self.D_STAR * math.log(10.0)
-        gap = abs(self.OMEGA_ZS - d_star_log)
+        gap = abs(self.A_PI - d_star_log)
         return {
             'd_star':          self.D_STAR,
             'd_star_x_ln10':   d_star_log,
-            'OMEGA_ZS':        self.OMEGA_ZS,
+            'A_PI':        self.A_PI,
             'gap':             gap,
             'status':          'OPEN — highest priority derivation',
         }

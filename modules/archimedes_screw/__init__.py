@@ -26,5 +26,5 @@ from .maths import (
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
     screw_coordinates, shake_order,
-    OMEGA_ZS, ZEROS_KNOWN,
+    A_PI, ZEROS_KNOWN,
 )

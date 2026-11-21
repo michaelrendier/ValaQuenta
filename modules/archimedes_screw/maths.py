@@ -175,9 +175,9 @@ from typing import Dict, List, Optional, Tuple
 TWO_PI = 2.0 * math.pi
 EULER_GAMMA = 0.5772156649015328606
 
-# Lambert W fixed point. Already canonical in ~/.clauderc as OMEGA_ZS.
+# Lambert W fixed point. Already canonical in ~/.clauderc as A_PI.
 # W(1) = Omega, Omega * e^Omega = 1.
-OMEGA_ZS = 0.5671432904097838
+A_PI = 0.5671432904097838
 
 # First 50 non-trivial zeros (imaginary parts), LMFDB / Odlyzko.
 # Established to far more precision than used here; the low-index zeros
@@ -209,7 +209,7 @@ def lambert_w(x: float, tol: float = 1e-14, max_iter: int = 60) -> float:
     function that inverts "multiply by your own exponential", which is
     exactly what unwrapping a helix requires.
 
-    W(1) = OMEGA_ZS = 0.5671432904... -- the constant already canonical
+    W(1) = A_PI = 0.5671432904... -- the constant already canonical
     in this project, and the same one that sets sigma = 1/2 in the
     paper's section 12.1.
 
@@ -433,7 +433,7 @@ def zero_height_lambert(n: float) -> float:
         T = 2 pi n / W(n/e)
 
     This is the structural point worth recording: the SAME Lambert W
-    whose fixed point W(1) = OMEGA_ZS pins sigma = 1/2 (the paper's
+    whose fixed point W(1) = A_PI pins sigma = 1/2 (the paper's
     section 12.1) is also the function that inverts the zero-counting
     function to give the heights. W supplies both coordinates of every
     zero -- the real part through its fixed point, the imaginary part

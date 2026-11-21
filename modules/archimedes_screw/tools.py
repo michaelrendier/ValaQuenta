@@ -36,7 +36,7 @@ from .maths import (
     kronecker, fundamental_discriminant, splitting_type,
     splitting_vector, ramified_primes,
     screw_coordinates, shake_order,
-    OMEGA_ZS, ZEROS_KNOWN,
+    A_PI, ZEROS_KNOWN,
 )
 
 
@@ -67,7 +67,7 @@ class ArchimedesScrewModule(EquationModule):
             "formula. Chebyshev psi jumps by exactly ln p at x = p -- the "
             "leaf-drop event's magnitude IS the prime. Includes the "
             "Lambert-W inverse of the zero-counting function (the same W "
-            "whose fixed point W(1) = OMEGA_ZS pins sigma = 1/2), the "
+            "whose fixed point W(1) = A_PI pins sigma = 1/2), the "
             "amplitude-envelope form of RH, and the N-specific "
             "ramification leg in Q(sqrt N) where the Euler factor "
             "degenerates at exactly the factors of N. Also carries the "
@@ -443,15 +443,15 @@ class ArchimedesScrewModule(EquationModule):
             ),
             Equation(
                 name='lambert_w',
-                display='The screw gear ratio: W(x)e^{W(x)} = x, W(1) = OMEGA_ZS',
+                display='The screw gear ratio: W(x)e^{W(x)} = x, W(1) = A_PI',
                 latex=r'W(x)e^{W(x)} = x,\quad W(1) = \Omega_{Z\Sigma} = 0.5671432904\ldots',
-                radian_form='lambert_w(x) by Halley iteration; W(1) = OMEGA_ZS',
+                radian_form='lambert_w(x) by Halley iteration; W(1) = A_PI',
                 confidence='ESTABLISHED',
                 code_verified=True,
                 params=['x'],
                 compute=lambda x: lambert_w(x),
                 display_options=['text'],
-                process='The screw gear ratio: W(x)e^{W(x)} = x, W(1) = OMEGA_ZS',
+                process='The screw gear ratio: W(x)e^{W(x)} = x, W(1) = A_PI',
             ),
         ]
 

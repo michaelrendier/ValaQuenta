@@ -4,7 +4,7 @@
 **Version:** 0.111  
 **Confidence floor:** OPEN  
 **Notebooks:** [core/07_berry_keating.ipynb](../notebooks/core/07_berry_keating.ipynb)  
-**Claim:** d* is a spectral floor read off H=xp, not a fitted constant. d*·ln(10) lands near OMEGA_ZS and the residue is the mass gap.
+**Claim:** d* is a spectral floor read off H=xp, not a fitted constant. d*·ln(10) lands near A_PI and the residue is the onset residual.
 
 
 **Reference:** every equation with its parameters — [toolbox](toolbox/06_berry_keating.md) · API — [berry_keating](https://michaelrendier.github.io/ValaQuenta/api/modules/berry_keating.html). This page is the record; it holds no API.
@@ -43,7 +43,7 @@ H_NN candidate xp operator. d* gap workbench (gap=0.000707). T coordinate map sc
 there is no external timing signal, the way a Wankel has no camshaft: port
 timing is a consequence of geometry. The timing structure is the **4 : 3**: the
 four faces of `d*` (Boundary / Stability / Flow / Translator) against the three
-of Lambert W (`Ω_ZS`, the rotor faces). `lcm(4,3) = 12` — the phase never
+of Lambert W (`A_π`, the rotor faces). `lcm(4,3) = 12` — the phase never
 repeats before twelve, so the semiclassical orbit precesses (the "flowers")
 instead of closing.
 
@@ -52,7 +52,7 @@ PAPER.md §6.3.1: `σ_RB` is the hypercomplex Riemann–Silberstein vector, so t
 RedBlue field is Maxwell (`i ∂_t F = c ∇×F`, `Re F` = E, `Im F` = cB). `σ = ½`
 is the line on which the functional-equation reflection is amplitude-perfect
 (`|ξ(s)| = |ξ(1−s)|`), making the field a **pure standing wave** whose nodes are
-the zeros — a Chladni figure. The **mass gap `Δ`** is then the width of the
+the zeros — a Chladni figure. The **onset residual `Δ`** is then the width of the
 first band above that nodal line: the first stroke of the same engine, the
 ignition impulse of recombination (`wiki/inductive_onset_residual.md` §"The gap is the first
 motion"). Third bearing on `Re(s) = ½`, alongside Courant `Y₁⁰` and the

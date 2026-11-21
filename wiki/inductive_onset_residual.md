@@ -29,3 +29,6 @@ BAO residual, Yang–Mills mass gap, M-theory compactification scale, "a point b
 from ValaQuenta.modules.inductive_onset_residual import maths as m
 m.summary(); m.induction(); m.onset_residual(); m.census(); m.validate()
 ```
+
+## Labels removed 2026-11-21 (tested, then stripped)
+`BAO` and `Yang–Mills mass gap` were names for Δ = A_π − d*·ln 10 in the wiki, notebooks and docstrings. `FourthAgePapers/DStar/bao_test.py` registered the prediction that no expression of {A_π, Ω_ζΣ, φ, π, e, ln 10, Δ} reproduces z_drag, z_*, θ_* or ℓ_A within Planck's errors more often than chance, and it held (0 hits on each target, against 0.05–0.13 expected). No engine line computes a BAO quantity. The names are removed from the wiki, notebooks and docstrings. `telperion.py` keeps `BAO_MPC = 150 Mpc` because that is the measured physical scale used for the watch-second calculation. The tier-7/8 statements "zeros = BAO frequencies" and "Hermite zeros = BAO timing marks" are separate claims, not covered by this test; they are listed in `wiki/STALENESS_CATALOG.md`.

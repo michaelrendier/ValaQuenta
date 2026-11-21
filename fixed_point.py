@@ -59,9 +59,9 @@ from dataclasses import dataclass, field
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-OMEGA_ZS    = 0.5671432904097838   # Lambert W(1); W·e^W = 1 exactly
+A_PI    = 0.5671432904097838   # Lambert W(1); W·e^W = 1 exactly
 D_STAR      = 0.24600              # BK spectral d* (5 sig figs)
-GAP         = OMEGA_ZS - D_STAR * math.log(10.0)  # Yang-Mills mass gap ≈ 7.07×10⁻⁴
+GAP         = A_PI - D_STAR * math.log(10.0)  # onset residual ≈ 7.07×10⁻⁴
 SIGMA_HALF  = 0.5                  # the equator — the gravastar shell position
 CD_MAX      = 8                    # k=8 = T_256 = maximal fixed point
 
