@@ -323,6 +323,134 @@ def custom_ring_chart_series(objs: Sequence[Any], ring1_fn: Callable[[Any], floa
             'readings': readings, 'cells': cells}
 
 
+# ── 2d. THE BROCA-WERNICKE RINGS SCALE ────────────────────────────────────
+# Cody, 2026-11-21: "use two custom rings for The Scale engine -- the vertical
+# rings are Broca, the horizontal rings are Wernicke." Broca = the scalar
+# boxkite's DISCRETE context reading; Wernicke = the scaled boxkite's
+# CONTINUOUS context reading. Z = wernicke + i*broca: the horizontal (real)
+# axis is Wernicke, the vertical (imaginary) axis is Broca. Both readings are
+# caller-supplied callables, as for every custom ring; nothing about words is
+# built in here (the engine stays word-blind, per module convention).
+#
+# [HYP, to be tested] two pathways through the same fold: one TO the centre and
+# one FROM it, each the inversion (impedance <-> admittance, Gamma -> -Gamma,
+# J_N) of the other; read as the J_red (Noether current) and J_blue (Noether
+# information current, reversed) forms. The balance Gamma + Gamma_inv = 0 is the
+# matched-load condition at the centre. The identity itself is exact; the
+# physics reading is a hypothesis.
+
+BW_CONVENTION: Dict[str, str] = {
+    'horizontal': 'Wernicke (real part, ring1): continuous context, the scaled boxkite',
+    'vertical': 'Broca (imaginary part, ring2): discrete context, the scalar boxkite',
+}
+
+
+def broca_wernicke_ring_chart(obj: Any, broca_fn: Callable[[Any], float],
+                              wernicke_fn: Callable[[Any], float], Z0: complex
+                              ) -> Dict[str, Any]:
+    """
+    The Broca-Wernicke Rings Scale for ONE object: fold
+    Z = wernicke_fn(obj) + i*broca_fn(obj). Horizontal = Wernicke,
+    vertical = Broca. A special case of custom_ring_chart with the ring
+    order and names fixed.
+
+    :param obj: the object under study
+    :param broca_fn: obj -> Broca (vertical, discrete-context) reading
+    :param wernicke_fn: obj -> Wernicke (horizontal, continuous-context) reading
+    :param Z0: complex anchor
+    :returns: dict with Z, Gamma, the scale factor, and the two readings
+    """
+    pt = custom_ring_chart(obj, wernicke_fn, broca_fn, Z0,
+                           ring1_name='wernicke (horizontal)',
+                           ring2_name='broca (vertical)')
+    pt['wernicke'] = pt['Z'].real
+    pt['broca'] = pt['Z'].imag
+    return pt
+
+
+def broca_wernicke_ring_series(objs: Sequence[Any], broca_fn: Callable[[Any], float],
+                               wernicke_fn: Callable[[Any], float], Z0: complex
+                               ) -> Dict[str, Any]:
+    """
+    The Broca-Wernicke Rings Scale over a collection, with the integer
+    cell bucketing of custom_ring_chart_series ((round(wernicke),
+    round(broca)) -> indices).
+
+    :param objs: the objects
+    :param broca_fn: obj -> Broca (vertical) reading
+    :param wernicke_fn: obj -> Wernicke (horizontal) reading
+    :param Z0: complex anchor
+    :returns: dict with the per-object charts and the cell buckets
+    """
+    return custom_ring_chart_series(objs, wernicke_fn, broca_fn, Z0,
+                                    ring1_name='wernicke (horizontal)',
+                                    ring2_name='broca (vertical)')
+
+
+def two_pathways(Z: complex, Z0: complex) -> Dict[str, Any]:
+    r"""
+    The two pathways through the fold: INWARD (to the centre) is
+    Gamma = mobius_fold(Z, Z0); OUTWARD (from the centre) is the inversion
+    Z -> Z0^2/Z (impedance <-> admittance), whose Gamma is exactly -Gamma.
+    Their sum is zero (the matched-load balance at the centre) and the
+    inversion is an involution. [HYP] inward = J_red, outward = J_blue
+    (the Noether current and the reversed Noether information current).
+
+    :param Z: complex point (wernicke + i*broca)
+    :param Z0: complex anchor, nonzero
+    :returns: dict with both Gammas, the inverted point, the balance and the involution check
+    """
+    G_in = mobius_fold(Z, Z0)
+    Z_out = Z0 * Z0 / Z
+    G_out = mobius_fold(Z_out, Z0)
+    return {'Z': Z, 'Z_inverted': Z_out, 'gamma_inward': G_in, 'gamma_outward': G_out,
+            'balance': G_in + G_out, 'balanced': abs(G_in + G_out) < 1e-12,
+            'involution': abs(Z0 * Z0 / Z_out - Z) < 1e-9 * max(1.0, abs(Z))}
+
+
+def spiral_similarity(Z: complex, lam: float, theta: float) -> complex:
+    """
+    The spiral similarity (dilative rotation) Z -> lam*e^{i*theta}*Z: scale
+    and rotate at once. With lam and theta constant, iterating it traces a
+    logarithmic (equiangular) spiral, which keeps its shape under scale and
+    rotation.
+
+    :param Z: complex point
+    :param lam: positive real scale factor
+    :param theta: rotation angle in radians
+    :returns: lam * e^{i theta} * Z
+    """
+    return lam * cmath.exp(1j * theta) * Z
+
+
+def verify_spiral_is_add_in_log_chart(Z: complex = 2.0 + 1.0j, lam: float = 0.37,
+                                      theta: float = 0.81) -> Dict[str, Any]:
+    r"""
+    In the log chart a spiral similarity is a pure ADD:
+    ln(lam e^{i theta} Z) = ln Z + (ln lam + i theta). The scale is the
+    real part, the rotation the imaginary part (the same r, theta that
+    polar_decompose returns). Checked directly, plus that n repetitions add
+    n times the same step (the logarithmic spiral).
+
+    :param Z: start point
+    :param lam: positive scale factor
+    :param theta: rotation angle
+    :returns: dict with the one-step and n-step errors and the verdict
+    """
+    w = spiral_similarity(Z, lam, theta)
+    step = complex(math.log(lam), theta)
+    err1 = abs((cmath.log(w) - cmath.log(Z)) - step)
+    # compare on the unwrapped angle: use the product form for n steps
+    n = 6
+    zn = Z
+    for _ in range(n):
+        zn = spiral_similarity(zn, lam, theta)
+    expect = Z * (lam ** n) * cmath.exp(1j * theta * n)
+    errn = abs(zn - expect) / max(1.0, abs(expect))
+    return {'step': step, 'one_step_error': err1, 'n_step_error': errn,
+            'holds': err1 < 1e-12 and errn < 1e-12}
+
+
 # ── 2c. THE MASTER IDENTITY -- folding IS log-then-bound, unfolding IS
 # unbound-then-exp, exactly, in full generality (not just the real axis) ───
 

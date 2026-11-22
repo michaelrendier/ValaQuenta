@@ -6,7 +6,7 @@
 
 ---
 
-`scale` · v0.1 · confidence floor **ESTABLISHED**
+`scale` · v0.2 · confidence floor **ESTABLISHED**
 
 SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions. polar_decompose/recompose is the exact forward/backward pair for ONE point (r=scale, theta=scale-blind under self-rescaling, verified round-trip). The two-ring Mobius fold (mobius_fold/scale_factor) has its OWN scale-blind object, a different and harder question: the raw angle does NOT survive the fold (a rejected candidate, kept in the record), but the cross-ratio of any four points is exactly invariant under every choice of anchor -- verified directly, not asserted. pathway_decompose applies the same forward/backward discipline to a real algorithm (RSA CRT-decrypt as the control case), representing genuine dependency fan-out rather than forcing a linear chain.
 
@@ -56,6 +56,23 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 
 **`custom_ring_chart_demo`** — USER-DEFINED RINGS: any two functions of any object, folded
   params: `obj, ring1_fn, ring2_fn, Z0`  ·  confidence: `ESTABLISHED`  ·  signature: `(obj, ring1_fn, ring2_fn, Z0)`
+
+**`broca_wernicke_rings`** — THE BROCA-WERNICKE RINGS SCALE: vertical = Broca, horizontal = Wernicke
+  params: `obj, broca_fn, wernicke_fn, Z0`  ·  confidence: `ESTABLISHED`  ·  signature: `(obj, broca_fn, wernicke_fn, Z0)`
+```python
+>>> module.run('broca_wernicke_rings', {'obj': {'w': 0.35, 'b': 4.0}, 'broca_fn': lambda o: o['b'], 'wernicke_fn': lambda o: o['w'], 'Z0': 1.0})['result']['Z']
+(0.35+4j)
+```
+
+**`two_pathways`** — TWO PATHWAYS: to the centre and from it, each the inversion of the other
+  params: `Z, Z0`  ·  confidence: `ESTABLISHED`  ·  signature: `(Z, Z0)`
+```python
+>>> module.run('two_pathways', {'Z': 0.35+4j, 'Z0': 1.0})['result']['balanced']
+True
+```
+
+**`spiral_similarity_is_add`** — SPIRAL SIMILARITY IS AN ADD IN THE LOG CHART: scale = real part, rotation = imaginary part
+  params: `—`  ·  confidence: `ESTABLISHED`  ·  signature: `()`
 
 **`rsa_pathway_control`** — PROCESS DECOMPOSITION CONTROL CASE: RSA CRT-decrypt, a genuine fan-out
   params: `—`  ·  confidence: `ESTABLISHED`  ·  signature: `()`

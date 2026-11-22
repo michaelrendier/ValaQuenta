@@ -108,7 +108,7 @@ every equation with its parameters, confidence and a worked call.
 | `archimedes_screw` | The Archimedes Screw (Prime Coordinate Engine) | 29 | THEORETICAL | [toolbox](wiki/toolbox/29_archimedes_screw.md) · [wiki](wiki/archimedes_screw.md) |
 | `box_kite` | The Box-Kite Debugger (ZD Geometry) | 18 | ESTABLISHED | [toolbox](wiki/toolbox/28_box_kite.md) · [wiki](wiki/box_kite.md) |
 | `angular_rank` | The 16D Oscilloscope (Angular Rank) | 12 | ESTABLISHED | [toolbox](wiki/toolbox/30_angular_rank.md) · [wiki](wiki/angular_rank.md) |
-| `scale` | The Scale (Decompositional Analysis, Forwards and Backwards) | 10 | ESTABLISHED | [toolbox](wiki/toolbox/31_scale.md) · [wiki](wiki/scale.md) |
+| `scale` | The Scale (Decompositional Analysis, Forwards and Backwards) | 13 | ESTABLISHED | [toolbox](wiki/toolbox/31_scale.md) · [wiki](wiki/scale.md) |
 | `units` | Units (The Equation Index) | 4 | ESTABLISHED | [toolbox](wiki/toolbox/32_units.md) · [wiki](wiki/units.md) |
 | `add_scale_sign` | ADD:SCALE:SIGN (the tier-0 datatype) | 6 | ESTABLISHED | [toolbox](wiki/toolbox/02_add_scale_sign.md) · [wiki](wiki/add_scale_sign.md) |
 | `desitter_cavitation` | De Sitter Cavitation Engine — No Singularity: the Abrikosov-Vortex Core | 8 | THEORETICAL | [toolbox](wiki/toolbox/23_desitter_cavitation.md) · [wiki](wiki/desitter_cavitation.md) |

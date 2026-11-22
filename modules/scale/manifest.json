@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "scale",
   "display": "The Scale (Decompositional Analysis, Forwards and Backwards)",
-  "version": "0.1",
+  "version": "0.2",
   "summary": "SCALE is tier-0 (ADD, SCALE, SIGN) -- this module pulls it out of a quantity and names what is left over, both directions.",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",

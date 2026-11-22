@@ -10,7 +10,7 @@ Decompositional analysis, forwards and backwards -- SCALE (tier-0,
 alongside ADD and SIGN) pulled out of a quantity and named as its own
 object. See maths.py for the full derivation and honest boundaries.
 
-Version: 0.1
+Version: 0.2
 """
 
 from typing import Any, Dict, List
@@ -22,6 +22,7 @@ from .maths import (
     mobius_fold, scale_factor, verify_no_caustic,
     cross_ratio, verify_cross_ratio_is_scale_blind,
     two_ring_point, custom_ring_chart,
+    broca_wernicke_ring_chart, two_pathways, verify_spiral_is_add_in_log_chart,
     fold_is_log_tanh, unfold_is_arctanh_exp, verify_fold_unfold_round_trip,
     verify_locally_square,
     ProcessOperator, pathway_decompose,
@@ -63,7 +64,7 @@ class ScaleModule(EquationModule):
 
     @property
     def version(self):
-        return "0.1"
+        return "0.2"
 
     @property
     def description(self):
@@ -165,6 +166,42 @@ class ScaleModule(EquationModule):
                 process='any pair of readings, folded',
             ),
             Equation(
+                name='broca_wernicke_rings',
+                display='THE BROCA-WERNICKE RINGS SCALE: vertical = Broca, horizontal = Wernicke',
+                latex=r'Z = W(\mathrm{obj}) + i\,B(\mathrm{obj}),\quad \Gamma = \mathrm{mobius\_fold}(Z, Z_0)',
+                radian_form='Wernicke (continuous context) on the real axis; Broca (discrete context) on the imaginary axis; both readings caller-supplied',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['obj', 'broca_fn', 'wernicke_fn', 'Z0'],
+                compute=lambda obj, broca_fn, wernicke_fn, Z0: broca_wernicke_ring_chart(obj, broca_fn, wernicke_fn, Z0),
+                display_options=['text'],
+                process='fold Z = wernicke + i*broca',
+            ),
+            Equation(
+                name='two_pathways',
+                display='TWO PATHWAYS: to the centre and from it, each the inversion of the other',
+                latex=r'\Gamma_{in} = \frac{Z-Z_0}{Z+Z_0},\quad \Gamma_{out} = \Gamma(Z_0^2/Z) = -\Gamma_{in}',
+                radian_form='balance Gamma_in + Gamma_out = 0 is the matched load at the centre; reading as J_red / J_blue is a hypothesis',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['Z', 'Z0'],
+                compute=lambda Z, Z0: two_pathways(Z, Z0),
+                display_options=['text', 'complex_plane'],
+                process='inward fold and its inversion',
+            ),
+            Equation(
+                name='spiral_similarity_is_add',
+                display='SPIRAL SIMILARITY IS AN ADD IN THE LOG CHART: scale = real part, rotation = imaginary part',
+                latex=r'\ln(\lambda e^{i\theta}Z) = \ln Z + (\ln\lambda + i\theta)',
+                radian_form='constant lambda and theta iterate to a logarithmic (equiangular) spiral',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=[],
+                compute=lambda: verify_spiral_is_add_in_log_chart(),
+                display_options=['text'],
+                process='scale and rotate = one ADD of (ln lambda, theta)',
+            ),
+            Equation(
                 name='fold_unfold_round_trip',
                 display='THE MASTER IDENTITY: Gamma=tanh(log(Z/Z0)/2), exact, any complex Z',
                 latex=r'\Gamma = \tanh\!\left(\tfrac{1}{2}\ln\tfrac{Z}{Z_0}\right),\quad '
@@ -261,6 +298,9 @@ class ScaleModule(EquationModule):
             'crblind':  lambda: verify_cross_ratio_is_scale_blind(),
             'tworing':  lambda r1, r2, Z0: two_ring_point(r1, r2, Z0),
             'custom':   lambda obj, r1fn, r2fn, Z0: custom_ring_chart(obj, r1fn, r2fn, Z0),
+            'bwrings':  lambda obj, bfn, wfn, Z0: broca_wernicke_ring_chart(obj, bfn, wfn, Z0),
+            'pathways': lambda Z, Z0: two_pathways(Z, Z0),
+            'spiral':   lambda: verify_spiral_is_add_in_log_chart(),
             'fold_log': lambda Z, Z0: fold_is_log_tanh(Z, Z0),
             'unfold_exp': lambda G, Z0: unfold_is_arctanh_exp(G, Z0),
             'roundtrip2': lambda: verify_fold_unfold_round_trip(),

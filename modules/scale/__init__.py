@@ -22,6 +22,8 @@ from .maths import (
     mobius_fold, scale_factor, verify_no_caustic,
     cross_ratio, verify_cross_ratio_is_scale_blind,
     two_ring_point, custom_ring_chart, custom_ring_chart_series,
+    BW_CONVENTION, broca_wernicke_ring_chart, broca_wernicke_ring_series,
+    two_pathways, spiral_similarity, verify_spiral_is_add_in_log_chart,
     fold_is_log_tanh, unfold_is_arctanh_exp, verify_fold_unfold_round_trip,
     verify_locally_square,
     ProcessOperator, pathway_decompose,
