@@ -198,7 +198,9 @@ two_pathways(pt['Z'], 1.0)    # inward Γ, outward Γ (its inversion), balance �
 
 **Spiral similarity.** `spiral_similarity(Z, λ, θ) = λe^{iθ}Z` scales and rotates at once; with λ and θ fixed, iteration traces a logarithmic (equiangular) spiral. `verify_spiral_is_add_in_log_chart` checks that in the log chart it is one ADD of (ln λ, θ): scale is the real part, rotation the imaginary part, the same (r, θ) as `polar_decompose`.
 
-Tests: `Testing/test_scale_broca_wernicke.py` (6). A worked WordNet reading of the two rings (γ_radial as the continuous reading; the 19-vector classes as the discrete one) and its measured neighbourhoods are in `VAPMIP/FourthAgePaper/ScalarContextPropagation/bench/wordnet_basins.txt`.
+Tests: `Testing/test_scale_broca_wernicke.py` (6).
+
+**Two experiments with the rings (2026-11-21/22):** (1) Broca–Wernicke on the context hash of all of WordNet: `VAPMIP/FourthAgePaper/ScalarContextPropagation/map/` (88% of synsets in one attractor basin; the Newton–Stirling basins barely separate the strip the points occupy). (2) Rings taken from the English field: `VAPMIP/docs/wiki/English-Field-Rings.md` (the stored A-matrix has out-degree equal to in-degree for every word: the production/comprehension pair is degenerate there; a directed model is not). A worked WordNet reading of the two rings (γ_radial as the continuous reading; the 19-vector classes as the discrete one) and its measured neighbourhoods are in `VAPMIP/FourthAgePaper/ScalarContextPropagation/bench/wordnet_basins.txt`.
 
 ---
 
