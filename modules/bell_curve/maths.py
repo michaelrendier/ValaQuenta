@@ -4,7 +4,7 @@ ValaQuenta.modules.bell_curve.maths
 THE BELL CURVE ENGINE -- one statistics, probability and statistical-mechanics
 machinery, for everywhere a probability, a spread or a gradient shows up.
 
-Version: 1.0   (2026-11-22)
+Version: 1.1   (2026-11-22; 1.1: ols handles n = 2)
 
 STATUS: ESTABLISHED. Every function here is textbook mathematics (references at
 each section). The engine's own claim is only that it is ONE implementation,
@@ -634,6 +634,9 @@ def ols(xs: Sequence[float], ys: Sequence[float], conf: float = 0.95) -> Dict[st
     a = my - b * mx
     sse = math.fsum((y - a - b * x) ** 2 for x, y in zip(xs, ys))
     sst = math.fsum((y - my) ** 2 for y in ys)
+    if n < 3:                                   # two points fit exactly: slope and intercept, no error estimate
+        return {'slope': b, 'intercept': a, 'r2': 1.0 if n == 2 else float('nan'), 'se_slope': float('nan'),
+                'p_slope': float('nan'), 'ci_slope': (float('nan'), float('nan')), 'n': n}
     s2 = sse / (n - 2)
     seb = math.sqrt(s2 / sxx)
     t = b / seb if seb else float('inf')

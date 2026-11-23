@@ -216,9 +216,14 @@ def test_circular_statistics():
 def test_registered_module_contract():
     from ValaQuenta.modules.bell_curve import BellCurveModule
     m = BellCurveModule()
-    assert m.name == 'bell_curve' and m.version == '1.0' and len(m.formulary()) >= 14
+    assert m.name == 'bell_curve' and m.version == '1.1' and len(m.formulary()) >= 14
     for e in m.formulary():
         assert e.confidence == 'ESTABLISHED' and e.process
     out = m.run('sigma_levels', {'sigma': 3.0})['result']
     assert close(out['p_two_sided'], 0.0026997960632602, 1e-9)
     assert 'bc_check' in m.shell_commands()
+
+
+def test_ols_two_points_is_exact_not_a_crash():
+    o = M.ols([0.0, 1.0], [1.0, 3.0])
+    assert o['slope'] == 2.0 and o['intercept'] == 1.0 and o['n'] == 2 and math.isnan(o['se_slope'])

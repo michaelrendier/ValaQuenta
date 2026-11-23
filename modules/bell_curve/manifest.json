@@ -2,7 +2,7 @@
   "schema": "valaquenta.engine-manifest/1",
   "engine": "bell_curve",
   "display": "The Bell Curve (Statistics, Probability, Statistical Mechanics)",
-  "version": "1.0",
+  "version": "1.1",
   "summary": "One statistics machinery for everywhere a probability, a spread or a gradient shows up: streaming mergeable moments, the normal/t/chi-square",
   "confidence_floor": "ESTABLISHED",
   "provenance": {

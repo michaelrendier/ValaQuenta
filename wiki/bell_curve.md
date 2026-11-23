@@ -2,10 +2,10 @@
 
 **Module:** `modules/bell_curve/` (`maths.py`, `tools.py`, `manifest.json`)
 **Class:** `BellCurveModule`
-**Version:** 1.0 (2026-11-22)
+**Version:** 1.1 (2026-11-22; 1.1: `ols` handles n = 2)
 **Confidence floor:** ESTABLISHED
 **Notebook:** [notebooks/engines/27_bell_curve.ipynb](../notebooks/engines/27_bell_curve.ipynb) · **Proof locale:** `engine/proof_locale/bell_curve.json`
-**Tests:** `Testing/test_bell_curve.py` (45, cross-checked against scipy 1.18) · **Toolbox:** [toolbox/44_bell_curve.md](toolbox/44_bell_curve.md)
+**Tests:** `Testing/test_bell_curve.py` (46, cross-checked against scipy 1.18) · **Toolbox:** [toolbox/44_bell_curve.md](toolbox/44_bell_curve.md)
 **Narrative:** `Ainulindale/wiki/144_bell_curve_statistics_engine.md`
 **External packages:** none to run (stdlib `math`, `random`); `scipy`, `numpy`, `scikit-learn` for the tests only
 

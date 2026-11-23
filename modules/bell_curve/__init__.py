@@ -8,7 +8,7 @@ mergeable moments, distributions (normal, t, chi-square, F, binomial, Poisson, b
 n-sigma and Six-Sigma, hypothesis tests, effect sizes, resampling, information measures, Bayes,
 the canonical ensemble (Z, U, S, F, Cv; softmax is one), and circular statistics for wheels.
 
-Version: 1.0
+Version: 1.1
 """
 from .maths import *  # noqa: F401,F403
 from .maths import Moments  # noqa: F401
