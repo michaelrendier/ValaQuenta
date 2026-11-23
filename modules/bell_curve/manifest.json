@@ -1,0 +1,222 @@
+{
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "bell_curve",
+  "display": "The Bell Curve (Statistics, Probability, Statistical Mechanics)",
+  "version": "1.0",
+  "summary": "One statistics machinery for everywhere a probability, a spread or a gradient shows up: streaming mergeable moments, the normal/t/chi-square",
+  "confidence_floor": "ESTABLISHED",
+  "provenance": {
+    "origin": "Requested by Cody, 2026-11-22: \"i need a full statistics and probability and statistical mechanics...i need one engine that becomes the statistics machinery used anywhere probabilities show up...or gradients etc. Mathematical, Academic standard issue statistics engine...give me The Bell Curve engine.\" Built first so the user-emotional-state battery (VAPMIP) has one verified statistics implementation to score against.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-22",
+    "status_label": "ESTABLISHED",
+    "predecessors": [],
+    "citations": [
+      "Welford 1962",
+      "Pebay 2008 SAND2008-6212",
+      "Press et al. Numerical Recipes 3e ch.6",
+      "Welch 1947",
+      "Mann & Whitney 1947",
+      "Holm 1979",
+      "Benjamini & Hochberg 1995",
+      "Shannon 1948",
+      "Gibbs 1902",
+      "Kramers & Wannier 1941",
+      "Mardia & Jupp 2000"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/144_bell_curve_statistics_engine.md",
+      "valaquenta": "ValaQuenta/wiki/bell_curve.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/27_bell_curve.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/bell_curve.json"
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "real line, finite level systems, the circle",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": [
+      "scipy (tests only)"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "The Bell Curve (Statistics, Probability, Statistical Mechanics)",
+      "group": "Engines",
+      "order": 100,
+      "blurb": "One statistics machinery for everywhere a probability, a spread or a gradient shows up: streaming mergeable moments, the normal/t/chi-square/F/binomial/Poisson/beta distributions, n-sigma and Six-Sigm"
+    },
+    "tools": [
+      {
+        "name": "moments",
+        "equation": "moments",
+        "label": "Moments",
+        "desc": "one-pass moments to the fourth",
+        "params": [
+          "xs"
+        ]
+      },
+      {
+        "name": "normal",
+        "equation": "normal",
+        "label": "Normal",
+        "desc": "normal density and tail",
+        "params": [
+          "x",
+          "mu",
+          "sigma"
+        ]
+      },
+      {
+        "name": "sigma_levels",
+        "equation": "sigma_levels",
+        "label": "Sigma Levels",
+        "desc": "sigma, p-value, defects per million",
+        "params": [
+          "sigma"
+        ]
+      },
+      {
+        "name": "welch_t",
+        "equation": "welch_t",
+        "label": "Welch T",
+        "desc": "difference of two means",
+        "params": [
+          "xs",
+          "ys"
+        ]
+      },
+      {
+        "name": "proportion",
+        "equation": "proportion",
+        "label": "Proportion",
+        "desc": "accuracy with an honest interval",
+        "params": [
+          "k",
+          "n"
+        ]
+      },
+      {
+        "name": "chi_square",
+        "equation": "chi_square",
+        "label": "Chi Square",
+        "desc": "association in a contingency table",
+        "params": [
+          "table"
+        ]
+      },
+      {
+        "name": "mann_whitney",
+        "equation": "mann_whitney",
+        "label": "Mann Whitney",
+        "desc": "does a score separate two groups",
+        "params": [
+          "xs",
+          "ys"
+        ]
+      },
+      {
+        "name": "kappa",
+        "equation": "kappa",
+        "label": "Kappa",
+        "desc": "agreement of a detector with a label",
+        "params": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "name": "multiple_testing",
+        "equation": "multiple_testing",
+        "label": "Multiple Testing",
+        "desc": "many tests at once",
+        "params": [
+          "ps"
+        ]
+      },
+      {
+        "name": "bootstrap",
+        "equation": "bootstrap",
+        "label": "Bootstrap",
+        "desc": "interval for any statistic",
+        "params": [
+          "xs"
+        ]
+      },
+      {
+        "name": "information",
+        "equation": "information",
+        "label": "Information",
+        "desc": "how far apart are two distributions",
+        "params": [
+          "p",
+          "q"
+        ]
+      },
+      {
+        "name": "bayes",
+        "equation": "bayes",
+        "label": "Bayes",
+        "desc": "belief about a rate after data",
+        "params": [
+          "successes",
+          "trials"
+        ]
+      },
+      {
+        "name": "canonical_ensemble",
+        "equation": "canonical_ensemble",
+        "label": "Canonical Ensemble",
+        "desc": "a gradient as a thermodynamic solution",
+        "params": [
+          "energies",
+          "T",
+          "kB"
+        ]
+      },
+      {
+        "name": "ising_1d",
+        "equation": "ising_1d",
+        "label": "Ising 1d",
+        "desc": "an exactly solvable interacting ensemble",
+        "params": [
+          "N",
+          "J",
+          "h",
+          "beta"
+        ]
+      },
+      {
+        "name": "circular",
+        "equation": "circular",
+        "label": "Circular",
+        "desc": "spread on a circle",
+        "params": [
+          "angles"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": true,
+      "academic": true
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  }
+}

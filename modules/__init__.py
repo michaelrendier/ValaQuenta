@@ -425,4 +425,14 @@ Modules
                          tier results from the sedenion/zero-divisor/Zero-
                          Lattice framework, none of which recover d from (n, e)
                          alone.
+
+    bell_curve         — THE BELL CURVE ENGINE (v1.0, 2026-11-22). One statistics,
+                         probability and statistical-mechanics machinery for
+                         everywhere a probability, a spread or a gradient shows
+                         up: streaming mergeable moments, the normal/t/chi-square/
+                         F/binomial/Poisson/beta/gamma distributions, n-sigma and
+                         Six Sigma, hypothesis tests, effect sizes, resampling,
+                         information measures, Bayes, the canonical ensemble
+                         (softmax is one) and circular statistics. Verified
+                         against scipy 1.18 (45 tests). ESTABLISHED.
 """

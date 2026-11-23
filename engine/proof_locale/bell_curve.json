@@ -1,0 +1,107 @@
+{
+ "engine": "bell_curve",
+ "display": "The Bell Curve: statistics, probability and statistical mechanics",
+ "descriptive": "Computes the spread, the tail probability, the test statistic and the ensemble of any list of numbers, and says how many sigma a result is. TO: a measured value with its uncertainty, its p-value, its effect size and its n-sigma.",
+ "operators": [
+  {
+   "symbol": "Moments",
+   "english": "streaming mean, variance, skew, kurtosis; mergeable",
+   "role": "streaming mean, variance, skew, kurtosis; mergeable",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Phi",
+   "english": "the normal cdf",
+   "role": "the normal cdf",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Phi^-1",
+   "english": "the normal quantile",
+   "role": "the normal quantile",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "n-sigma",
+   "english": "a p-value read as a number of standard deviations",
+   "role": "a p-value read as a number of standard deviations",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "t / chi2 / F",
+   "english": "the sampling distributions of the tests",
+   "role": "the sampling distributions of the tests",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "U",
+   "english": "the Mann-Whitney rank statistic (and the AUC)",
+   "role": "the Mann-Whitney rank statistic (and the AUC)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "kappa",
+   "english": "chance-corrected agreement",
+   "role": "chance-corrected agreement",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "H / KL / JS",
+   "english": "entropy and the divergences",
+   "role": "entropy and the divergences",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Z",
+   "english": "the canonical partition function",
+   "role": "the canonical partition function",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "F = -kT ln Z",
+   "english": "free energy",
+   "role": "free energy",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "S",
+   "english": "Gibbs entropy",
+   "role": "Gibbs entropy",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "R",
+   "english": "circular mean resultant length",
+   "role": "circular mean resultant length",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "accumulate",
+   "english": "stream the data into Moments (mergeable)"
+  },
+  {
+   "n": 2,
+   "op": "describe",
+   "english": "mean, spread, quantiles, shape"
+  },
+  {
+   "n": 3,
+   "op": "test",
+   "english": "p-value and n-sigma against a null"
+  },
+  {
+   "n": 4,
+   "op": "size",
+   "english": "effect size, interval, power"
+  },
+  {
+   "n": 5,
+   "op": "correct",
+   "english": "multiple testing"
+  }
+ ],
+ "equations": []
+}
