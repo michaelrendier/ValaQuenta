@@ -1,0 +1,81 @@
+{
+ "engine": "zeta_uns_path",
+ "display": "The Zeta Pathway in Universal Native Space",
+ "descriptive": "Computes the critical-line path of zeta as a rotation with a signed radius, in the UNS charts, and shows where the primes are on it. TO: path points, the driver Z'/Z, prime resonance heights, the prime spring and the zero spectrum with its prime-power spikes.",
+ "operators": [
+  {
+   "symbol": "zeta = e^{-i theta} Z",
+   "english": "Hardy: the path is a rotation by -theta(t) with a real, signed radius Z(t)",
+   "role": "Hardy: the path is a rotation by -theta(t) with a real, signed radius Z(t)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "-theta'(t)",
+   "english": "the rotation rate, about -(1/2) ln(t/2 pi)",
+   "role": "the rotation rate, about -(1/2) ln(t/2 pi)",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "Z'/Z",
+   "english": "the radial driver; the sum over the zeros of 2t/(t^2 - gamma^2) plus a smooth part",
+   "role": "the radial driver; the sum over the zeros of 2t/(t^2 - gamma^2) plus a smooth part",
+   "tier": "CALCULATED"
+  },
+  {
+   "symbol": "t ln p = 2 pi k",
+   "english": "the heights where prime p's phasor is back at angle 0",
+   "role": "the heights where prime p's phasor is back at angle 0",
+   "tier": "CALCULATED"
+  },
+  {
+   "symbol": "sum cos(gamma x)",
+   "english": "the zero spectrum; spikes at x = ln p^k",
+   "role": "the zero spectrum; spikes at x = ln p^k",
+   "tier": "CALCULATED"
+  },
+  {
+   "symbol": "UNS cylinder",
+   "english": "(rho = log10|zeta| + 3, phi = arg zeta, height = t): the spring; zeros on the axis",
+   "role": "(rho = log10|zeta| + 3, phi = arg zeta, height = t): the spring; zeros on the axis",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "theta",
+   "english": "rotation rate from the Riemann-Siegel theta"
+  },
+  {
+   "n": 2,
+   "op": "Z",
+   "english": "real radius by the Riemann-Siegel formula, checked against mpmath"
+  },
+  {
+   "n": 3,
+   "op": "path",
+   "english": "zeta = e^{-i theta} Z in the flat, cylinder and sphere charts"
+  },
+  {
+   "n": 4,
+   "op": "driver",
+   "english": "Z'/Z against the zero poles"
+  },
+  {
+   "n": 5,
+   "op": "primes",
+   "english": "prime resonance heights; the Euler path (one step per prime)"
+  },
+  {
+   "n": 6,
+   "op": "spectrum",
+   "english": "sum of cos(gamma x) over the zeros: spikes at ln p^k"
+  },
+  {
+   "n": 7,
+   "op": "equator",
+   "english": "crossings of |zeta| = 1"
+  }
+ ],
+ "equations": []
+}

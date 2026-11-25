@@ -1,0 +1,75 @@
+{
+ "engine": "aizawa_attractor",
+ "display": "The Aizawa Attractor",
+ "descriptive": "Computes the orbit of the Aizawa system and shows it is a rotation at constant rate d with a radius driven by dr/dt = (z-b) r. TO: the orbit, the exact cylindrical rates, the fixed points on the axis with eigenvalues, and the Lyapunov exponent.",
+ "operators": [
+  {
+   "symbol": "dr/dt = (z-b) r",
+   "english": "the radius grows or decays at a rate set by z; it never reaches 0",
+   "role": "the radius grows or decays at a rate set by z; it never reaches 0",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "dphi/dt = d",
+   "english": "the orbit turns about the z axis at a constant rate",
+   "role": "the orbit turns about the z axis at a constant rate",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "f = 0",
+   "english": "the system is axisymmetric: the 3-D orbit is the 2-D (r, z) flow swept round the axis",
+   "role": "the system is axisymmetric: the 3-D orbit is the 2-D (r, z) flow swept round the axis",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "x = y = 0",
+   "english": "every fixed point sits on the axis",
+   "role": "every fixed point sits on the axis",
+   "tier": "ESTABLISHED"
+  },
+  {
+   "symbol": "lambda_1",
+   "english": "the largest Lyapunov exponent; positive means chaos",
+   "role": "the largest Lyapunov exponent; positive means chaos",
+   "tier": "ESTABLISHED"
+  }
+ ],
+ "ordering": [
+  {
+   "n": 1,
+   "op": "field",
+   "english": "write the three equations"
+  },
+  {
+   "n": 2,
+   "op": "cylindrical",
+   "english": "change to (r, phi, z): the first two equations become dr/dt = (z-b) r, dphi/dt = d"
+  },
+  {
+   "n": 3,
+   "op": "axisymmetric",
+   "english": "set f = 0: (r, z) closes on itself"
+  },
+  {
+   "n": 4,
+   "op": "fixed",
+   "english": "x = y = 0, then c + a z - z^3/3 = 0 on the axis; eigenvalues (z-b) +- i d and a - z^2"
+  },
+  {
+   "n": 5,
+   "op": "orbit",
+   "english": "integrate with RK4 after a burn-in"
+  },
+  {
+   "n": 6,
+   "op": "lyapunov",
+   "english": "two-orbit renormalisation: lambda_1 > 0"
+  },
+  {
+   "n": 7,
+   "op": "layout",
+   "english": "positions (x, z, y), lineDistances i/n"
+  }
+ ],
+ "equations": []
+}

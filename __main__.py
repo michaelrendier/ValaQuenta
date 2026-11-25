@@ -71,6 +71,8 @@ from .modules.witches_hat import WitchesHatModule
 from .modules.lagrangian_sm import LagrangianSMModule
 from .modules.relativity import RelativityModule
 from .modules.bell_curve import BellCurveModule
+from .modules.aizawa_attractor import AizawaAttractorModule
+from .modules.zeta_uns_path import ZetaUNSPathModule
 
 def _register_all():
     registry = get_registry()
@@ -121,6 +123,8 @@ def _register_all():
     register(LagrangianSMModule())
     register(RelativityModule())
     register(BellCurveModule())
+    register(AizawaAttractorModule())
+    register(ZetaUNSPathModule())
     return registry
 
 # ── GUI routers ───────────────────────────────────────────────────────────────

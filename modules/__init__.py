@@ -435,4 +435,18 @@ Modules
                          information measures, Bayes, the canonical ensemble
                          (softmax is one) and circular statistics. Verified
                          against scipy 1.18 (45 tests). ESTABLISHED.
+
+    aizawa_attractor   — THE AIZAWA ATTRACTOR ENGINE (v1.0, 2026-11-24). The three-
+                         dimensional strange attractor read as a rotation about the z
+                         axis at the constant rate d with a radius driven by
+                         dr/dt = (z - b) r (exact cylindrical form; axisymmetric
+                         reduction at f = 0; fixed points on the axis; Lyapunov
+                         exponent; the JavaScript page's buffer layout). ESTABLISHED.
+
+    zeta_uns_path      — THE ZETA PATHWAY IN UNIVERSAL NATIVE SPACE (v1.0, 2026-11-24).
+                         zeta(1/2 + it) = exp(-i theta) Z as a rotation at -theta'(t)
+                         with a signed radius Z(t): Riemann-Siegel evaluation, the UNS
+                         cylinder and sphere charts, the driver Z'/Z as a sum over the
+                         zero poles, the prime spring, prime resonance heights and the
+                         zero spectrum whose spikes sit at ln p^k. ESTABLISHED / CALCULATED.
 """

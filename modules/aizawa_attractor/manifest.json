@@ -1,0 +1,122 @@
+{
+ "schema": "valaquenta.engine-manifest/1",
+ "engine": "aizawa_attractor",
+ "display": "The Aizawa Attractor (rotation with a radial driver)",
+ "version": "1.0",
+ "summary": "The Aizawa strange attractor as a rotation about the z axis at the constant rate d with a radius driven by dr/dt = (z-b) r: RK4 orbit, the e",
+ "confidence_floor": "ESTABLISHED",
+ "provenance": {
+  "origin": "Cody, 2026-11-24: \"get the core maths of this pathway from the aizawa attractor ... that is exactly what i see in my head as the riemann zeta path ... give me two Full Engine Protocol engines, one for the attractor and one for the riemann zeta path ... in python.\"",
+  "authors": [
+   "Cody Michael Allison"
+  ],
+  "created": "2026-11-24",
+  "status_label": "ESTABLISHED",
+  "predecessors": [],
+  "citations": [
+   "Aizawa (the attractor; original paper reference NOT verified this session)",
+   "Runge 1895",
+   "Kutta 1901",
+   "Benettin, Galgani, Giorgilli, Strelcyn 1980 (Meccanica 15)"
+  ],
+  "wiki": {
+   "ainulindale": "Ainulindale/wiki/145_aizawa_attractor.md",
+   "valaquenta": "ValaQuenta/wiki/aizawa_attractor.md"
+  },
+  "notebook": "ValaQuenta/notebooks/engines/28_aizawa_attractor.ipynb",
+  "proof_locale": "ValaQuenta/engine/proof_locale/aizawa_attractor.json"
+ },
+ "environment": {
+  "constants": [],
+  "native_space": "spherical complex radial polar",
+  "arithmetic": "fractions.Fraction exact; float only at output boundary",
+  "requires_engines": [],
+  "external": []
+ },
+ "ui": {
+  "menu": {
+   "label": "The Aizawa Attractor (rotation with a radial driver)",
+   "group": "Engines",
+   "order": 100,
+   "blurb": "The Aizawa strange attractor as a rotation about the z axis at the constant rate d with a radius driven by dr/dt = (z-b) r: RK4 orbit, the exact cylindrical form, the axisymmetric reduction (f = 0), t"
+  },
+  "tools": [
+   {
+    "name": "field",
+    "equation": "field",
+    "label": "Field",
+    "desc": "the field at a point",
+    "params": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "name": "cylindrical",
+    "equation": "cylindrical",
+    "label": "Cylindrical",
+    "desc": "rotation plus radial driver",
+    "params": [
+     "x",
+     "y",
+     "z"
+    ]
+   },
+   {
+    "name": "fixed_points",
+    "equation": "fixed_points",
+    "label": "Fixed Points",
+    "desc": "where the orbit cannot stay",
+    "params": []
+   },
+   {
+    "name": "orbit",
+    "equation": "orbit",
+    "label": "Orbit",
+    "desc": "the attractor size",
+    "params": [
+     "points",
+     "h"
+    ]
+   },
+   {
+    "name": "lyapunov",
+    "equation": "lyapunov",
+    "label": "Lyapunov",
+    "desc": "is the orbit chaotic",
+    "params": [
+     "steps"
+    ]
+   },
+   {
+    "name": "js_layout",
+    "equation": "js_layout",
+    "label": "Js Layout",
+    "desc": "the drawn geometry",
+    "params": [
+     "points"
+    ]
+   }
+  ],
+  "display_modes": [
+   "text"
+  ],
+  "analysis_lenses": [
+   "emerge",
+   "spectral",
+   "lineage",
+   "calibrate"
+  ],
+  "proof": {
+   "guided": false,
+   "academic": false
+  },
+  "desktop": {
+   "window": "PDesktopWindow",
+   "surface": "svg",
+   "opengl": true,
+   "pgui_widgets": []
+  }
+ }
+}
