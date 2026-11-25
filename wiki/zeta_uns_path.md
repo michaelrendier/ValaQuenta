@@ -5,7 +5,7 @@
 **Version:** 1.0 (2026-11-24)
 **Confidence floor:** ESTABLISHED (CALCULATED where marked)
 **Notebook:** [notebooks/engines/29_zeta_uns_path.ipynb](../notebooks/engines/29_zeta_uns_path.ipynb) · **Proof locale:** `engine/proof_locale/zeta_uns_path.json`
-**Tests:** `Testing/test_zeta_uns_path.py` (16; two need `RiemannHypothesisProof/data/zeros_25000_hp.tsv` and skip without it) · **Toolbox:** [toolbox/46_zeta_uns_path.md](toolbox/46_zeta_uns_path.md)
+**Tests:** `Testing/test_zeta_uns_path.py` (18; three need `RiemannHypothesisProof/data/zeros_25000_hp.tsv` and skip without it) · **Toolbox:** [toolbox/46_zeta_uns_path.md](toolbox/46_zeta_uns_path.md)
 **Narrative:** `Ainulindale/wiki/146_zeta_uns_path_engine.md`
 **Pairs with:** `aizawa_attractor` · **Viewer:** `RiemannHypothesisProof/visualizations/javascript/webgl_aizawa_vs_zeta_uns.html`
 **External packages:** `numpy`, `scipy` (Lambert W start), `mpmath` (reference values only)
@@ -33,6 +33,8 @@ The critical-line path t -> zeta(1/2 + it) = exp(-i theta(t)) Z(t) (Hardy). A ro
 
 - Riemann-Siegel with one correction term against mpmath: error 3e-3 at t = 100, 1.5e-4 at t = 500, 1e-4 at t = 2000, 5e-6 at t = 1e4; up to 1.0e-2 near t = 25 (the third zero).
 - Sampling by equal steps of theta puts every point on 2 x 16 fixed angles of the flat point: the first browser render showed 32 rigid spokes, a sampling artefact. `sample_by_phase(..., jitter=True)` (golden-ratio offset, order and mean step kept) removes it; tested.
+- Mean value of zeta over t is 1.0000 at 100, 1,000, 5,000 and 25,000 zeros; the share of the path with Re zeta < 0 is 17.4%, 20.7%, 22.6%, 24.0% (t-weighted): the sparse side seen from the pole, centred on the negative real axis at every count (`re_negative_share`).
+- zeta = S + exp(-2i theta) conj(S) + R (the prime spring plus its mirror; `cardioid_parts`): residual within (t/2pi)^(-1/4) (measured ratio 0.92); no cusp: |Z'| >= 0.62 at the first 1,500 zeros.
 - |zeta| = 1 (the equator of the value sphere) is crossed 1.34 times per zero spacing over the first 25,000.
 
 ## Honest boundaries

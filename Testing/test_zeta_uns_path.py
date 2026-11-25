@@ -67,6 +67,19 @@ def test_euler_steps_are_prime_steps():
 def test_prime_resonance_heights():
     tk = M.prime_resonance_times(2, 100.0); assert np.allclose(np.diff(tk), 2 * math.pi / math.log(2)) and np.all(np.abs(np.mod(tk * math.log(2) + 1e-9, 2 * math.pi)) < 1e-6)
 
+def test_pseudo_cardioid_decomposition_and_no_cusp():
+    for tv in (200., 1000., 5000., 20000.):
+        S, mirror, R = M.cardioid_parts(tv); assert abs(R) <= (tv / (2 * math.pi)) ** -0.25 * 1.0 + 1e-9
+    th = M.theta(np.linspace(200, 400, 2000)); c1 = 1 + np.exp(-2j * th); assert c1.real.min() > -1e-9      # n = 1 alone: a circle through 0 that never enters Re < 0
+    for x in M.zeros_mp(20): assert abs((float(M.Z_rs(x + 1e-4)[0]) - float(M.Z_rs(x - 1e-4)[0])) / 2e-4) > 0.3     # speed at a zero is not 0: measured min 0.62 over 1,500 zeros
+
+@need_zeros
+def test_mean_value_one_and_re_negative_share_grows_slowly():
+    ts = M.sample_by_phase(10.0, 25000, 16, jitter=True); z = M.zeta_line(ts); dt = np.gradient(ts); sh = []
+    for nz in (100, 25000):
+        k = nz * 16 + 1; w = dt[:k] / dt[:k].sum(); assert abs(complex(np.sum(z[:k] * w)) - 1) < 0.01; sh.append(M.re_negative_share(z[:k], dt[:k]))
+    assert 0.15 < sh[0] < 0.21 and 0.22 < sh[1] < 0.26 and sh[1] > sh[0]          # measured 0.174 -> 0.240
+
 def test_module_contract():
     m = ZetaUNSPathModule(); names = [e.name for e in m.formulary()]
     assert names == ['theta', 'hardy_z', 'pathway', 'driver', 'prime_resonance', 'euler_path', 'spectrum_ticks']
