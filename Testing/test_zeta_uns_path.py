@@ -80,6 +80,19 @@ def test_mean_value_one_and_re_negative_share_grows_slowly():
         k = nz * 16 + 1; w = dt[:k] / dt[:k].sum(); assert abs(complex(np.sum(z[:k] * w)) - 1) < 0.01; sh.append(M.re_negative_share(z[:k], dt[:k]))
     assert 0.15 < sh[0] < 0.21 and 0.22 < sh[1] < 0.26 and sh[1] > sh[0]          # measured 0.174 -> 0.240
 
+@need_zeros
+def test_landau_formula_converges_with_the_zeros():
+    g = zeros(); ns = [n for n in range(2, 60) if M.von_mangoldt(n) > 0]
+    d100 = np.mean([abs(M.landau_ratio(g[:100], n) - 1) for n in ns]); d25k = np.mean([abs(M.landau_ratio(g, n) - 1) for n in ns])
+    assert 0.05 < d100 < 0.25 and d25k < 0.01 and d25k < d100 / 20        # measured 0.138 -> 0.0019
+
+@need_zeros
+def test_zero_count_fluctuation_is_a_sum_of_prime_waves():
+    fit, r2 = M.prime_wave_fit(zeros(), 200)
+    assert r2 > 0.99                                                       # measured 0.996
+    for (p, k), tol in (((2, 1), 0.10), ((3, 1), 0.12), ((5, 1), 0.20)):
+        pred = -1 / (math.pi * k * p ** (k / 2)); assert fit[(p, k)] < 0 and abs(fit[(p, k)] / pred - 1) < tol   # 97%, 93%, 86% of the prediction
+
 def test_module_contract():
     m = ZetaUNSPathModule(); names = [e.name for e in m.formulary()]
     assert names == ['theta', 'hardy_z', 'pathway', 'driver', 'prime_resonance', 'euler_path', 'spectrum_ticks']
