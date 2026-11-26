@@ -333,12 +333,13 @@ L.lines($('c1'),ks.map(k=>({name:k,x:F[k].max_abs_tilt.map((_,i)=>i),y:F[k].max_
 L.lines($('c2'),ks.map(k=>({name:k,x:F[k].axis_norm.map((_,i)=>i),y:F[k].axis_norm})),{xlabel:'step',ylabel:'|axis|',title:'the axis is conserved on both branches',aspect:0.4});"""))
 
 # index
-GROUPS = [("The documented sigma_rb map: ψ (16) in, sigma_rb (16) out", ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9"]),
+GROUPS = [("Code flow chart", ["FC1"]), ("The documented sigma_rb map: ψ (16) in, sigma_rb (16) out", ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9"]),
           ("Exploratory lifts (my own definitions on 2026-11-25, NOT the documented map)", ["S1", "S2", "S3", "S4", "S5", "S6", "S7"]),
           ("A. The operator (scalar engine)", ["A2", "A3", "A4", "A5", "A6"]), ("B. J_red and J_blue", ["B1", "B2", "B3", "B4"]),
           ("C. Navier–Stokes against Ĥ_RB", ["C1", "C2"]), ("D. Chladni and the hypercomplex Laplacian", ["D1", "D2", "D3"]),
           ("F. Repository-wide", ["F1", "F2", "F3"]), ("Pending", ["—"])]
 byno = {n: (fn, t) for fn, n, t in P}
+byno["FC1"] = ("svg_flowchart_h_rb_hat.html", "Code flow chart: the h_rb_hat engine (derived from the source)")
 cards = ""
 for g, nos in GROUPS:
     cards += f"<h2>{html.escape(g)}</h2><div class='grid'>" + "".join(f"<div class='card'><span class='tag'>{n}</span><a href='{byno[n][0]}'>{html.escape(byno[n][1])}</a></div>" for n in nos) + "</div>"
