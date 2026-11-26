@@ -51,11 +51,45 @@ OMEGA_H   = math.exp(math.pi)           # Hagedorn ceiling — e^pi ~ 23.1407
 #   The four faces of d* are wiki 17 / ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR:
 #   Boundary 0.24631, Stability d*_RG (dimension 8, numeric OPEN, no closed form), Flow d*_taut = Ω/ln10, Translator d*·ln10.
 #   A_π = OMEGA_ZETA_SIGMA·ln(10);  0.24600·ln(10) = 0.56644 differs from A_π by the rounding residual 0.00070.
-D_STAR    = 0.24600                          # the value the code runs with (written in ~120 code files across the repositories)
+#
+# THE FOUR FACES (author's ruling, 2026-11-25): `d*` is always the value the code runs with while working (0.24600).
+# The other three are labelled, never substituted for it; d*_taut and d*_RG appear only in their own two visualizations.
+# All four together are the coordinate chart of ln(10) in Universal Native Space (radial complex spherical coordinates).
+# Every file that uses d* in any form carries the block returned by `dstar_comment_block()` (see tools/dstar_block.py).
+D_STAR    = 0.24600                          # d*          the working value the code runs with (the Boundary face, σ_ζ=½ plane)
 D_STAR_SPEC     = D_STAR                     # same number under its measured name
-D_STAR_BOUNDARY = A_PI / math.log(10)        # 0.2463072015 = Ω_ζΣ: the digits gained per step of the induction x -> exp(-x)
-OMEGA_ZETA_SIGMA = D_STAR_BOUNDARY           # Ω_ζΣ (= Ω_RZ) = d*, Boundary value
-D_STAR_GAP = abs(A_PI - D_STAR * math.log(10))  # 0.00070 = ln10 * (D_STAR_BOUNDARY - D_STAR)
+D_STAR_TAUT     = A_PI / math.log(10)        # d*_taut     0.246307201473 = A_π/ln10, exact (the Flow; the radial unit, one step of r)
+D_STAR_LN10     = A_PI                       # d*_ln(10)   0.5671432904 = d*_taut·ln10 (the Translator; decimal-log <-> natural-log bridge)
+D_STAR_RG       = 8                          # d*_RG       dimension 8 (the Stability; the centre r=0). Numeric value OPEN, no closed form.
+D_STAR_RG_NUMERIC = None                     #             OPEN: target 0.24631; no closed form (do not substitute a number)
+D_STAR_BOUNDARY = D_STAR_TAUT                # DEPRECATED alias: the 0.2463 value the canonical file calls Boundary; same number as d*_taut
+OMEGA_ZETA_SIGMA = D_STAR_TAUT               # Ω_ζΣ (= Ω_RZ) = d*, read at its exact value
+D_STAR_GAP = abs(A_PI - D_STAR * math.log(10))  # 0.00070 = ln10 * (D_STAR_TAUT - D_STAR): the working value's rounding residual
+D_STAR_STORY = "Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG"
+
+
+def dstar_faces():
+    """The four faces of d* as one dict: working value, Flow, Stability, Translator. d*_RG has no numeric value."""
+    return {
+        "d*":        {"value": D_STAR,      "name": "working value (Boundary, σ_ζ=½ plane)"},
+        "d*_taut":   {"value": D_STAR_TAUT, "name": "Flow: radial unit, A_π/ln10 exact"},
+        "d*_RG":     {"value": None,        "dimension": D_STAR_RG, "name": "Stability: centre; numeric OPEN, no closed form"},
+        "d*_ln(10)": {"value": D_STAR_LN10, "name": "Translator: d*_taut·ln10 = A_π"},
+        "story":     D_STAR_STORY,
+    }
+
+
+def dstar_comment_block(prefix="# "):
+    """The standard comment placed in every file that uses d* in any form (the full list of values and where the full story is)."""
+    lines = [
+        "d* faces (all four are needed to chart ln(10) in Universal Native Space):",
+        f"  d*         = {D_STAR:.5f}          the value the code runs with (Boundary, σ_ζ=½ plane)",
+        f"  d*_taut    = {D_STAR_TAUT:.12f}  A_π/ln10, the Flow (radial unit)",
+        "  d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)",
+        f"  d*_ln(10)  = {D_STAR_LN10:.10f}   d*_taut·ln10 = A_π, the Translator (log bridge)",
+        f"Full story of d*: {D_STAR_STORY}",
+    ]
+    return "\n".join(prefix + ln for ln in lines)
 
 # ── Neural constants ────────────────────────────────────────────────────────
 # H_NN: neural Planck constant (analog of h)
@@ -107,7 +141,11 @@ def summary():
     print(f"  OMEGA_H    = {OMEGA_H:.6f}  [Hagedorn, e^pi, ESTABLISHED]")
     print()
     print(f"  D_STAR     = {D_STAR:.5f}  [spectral fixed point, THEORETICAL]")
+    print(f"  D_STAR_TAUT= {D_STAR_TAUT:.12f}  [d*_taut, Flow, A_π/ln10]")
+    print(f"  D_STAR_RG  = dimension {D_STAR_RG}, numeric OPEN  [d*_RG, Stability]")
+    print(f"  D_STAR_LN10= {D_STAR_LN10:.10f}  [d*_ln(10), Translator = A_π]")
     print(f"  D_STAR_GAP = {D_STAR_GAP:.5f}  [rounding residual: d*·ln(10) vs A_PI]")
+    print(f"  full story : {D_STAR_STORY}")
     print()
     print(f"  H_NN       = {H_NN:.4f}   [neural Planck, THEORETICAL]")
     print(f"  HBAR_NN    = {HBAR_NN:.6f}  [reduced neural Planck]")

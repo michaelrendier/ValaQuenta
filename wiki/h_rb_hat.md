@@ -1,5 +1,13 @@
 # Engine: Σ_RB  RedBlue Summed Integral
 
+> d* faces (all four are needed to chart ln(10) in Universal Native Space):  
+>   d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)  
+>   d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)  
+>   d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)  
+>   d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)  
+> Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG  
+
+
 **Module:** `modules/h_rb_hat/`  
 **Version:** 0.120  
 **Confidence floor:** THEORETICAL  
@@ -51,47 +59,6 @@ The facet equations are the substance: each returns the σ it lives at and its c
 
 ---
 
-## Generational Lineage — calibration (2026-08-28)
+## Generational Lineage calibration
 
-Decomposed by `SedenionFactoralRelativity/engine/valaquenta_calibration.py` (`python3 -m engine.valaquenta_calibration`) as a check on the factoral decomposition itself — working, deliberately-designed machinery should decompose CLEAN.
-
-| object | central operation | tier · root | Two Trees | kind | verdict |
-|---|---|---|---|---|---|
-| Ĥ_RB and its σ-facets (GR σ=2, YM σ=1, QM/Riemann σ=½) | project Ĥ_RB at each σ | 0 · SIGN | TELPERION | DEFINITIONAL | **FLAGGED** — deficit: a rigorous self-adjoint domain for Ĥ_RB (⇒ real spectrum) |
-
-Calibration: this verdict agrees with the page's stated status (**THEORETICAL**).
-
-### Piece-by-piece — does the equation's shape match what 0_RB requires?
-
-`SedenionFactoralRelativity/engine/valaquenta_calibration.py :: decompose_h_rb_hat()`
-decomposes `Σ_RB = Σ_p p^{-σ}[R̂_p ⊗ ∂̂_∂M + ∂̂_∂M† ⊗ B̂_p]` against the tier‑0
-floor, then compares its shape to **0_RB** — the operator the geometries
-*require* ("read off all the geometric operators at once when each is empty but
-present").
-
-| piece | tier · root | Two Trees | reading |
-|---|---|---|---|
-| `Σ_p` | 0 · ADD | — | forward accumulation; the Dirichlet march |
-| `p^{-σ}` (G_p) | 0 · SCALE | — | `p⁰=1` at σ=0 (the identity); **σ is the real scalar that selects the facet** |
-| `R̂_p = xp` | 0 · SCALE | LAURELIN | Berry–Keating; Red; "what IS" — a product |
-| `B̂_p = ½p² + ℘(x;g₂,g₃)` | 2 · SIGN | TELPERION | Fermat–Weierstrass; Blue; "what CANNOT BE" — a fixed landscape; ℘ doubly-periodic = the lattice ± |
-| `∂̂_∂M` | 1 · SIGN | MINGLING | REFLECT — ∂M is a reflection locus; the seam between Red and Blue (J₃) |
-| `⊗` | 0 · SCALE | — | a product structure |
-| `†` (`R̂_p† = B̂_p`) | 0 · SIGN | MINGLING | the functional equation ξ(s)=ξ(1−s) as an involution — one bit, `†∘†=id` |
-| `+` | 0 · ADD | — | the two-term sum |
-| `Σ_RB = Σ_RB†` | 2 · SIGN | MINGLING | self-adjointness = the fixed set of `†` — **this IS the σ=½ locus** |
-
-**Shape match — YES.** Same tier‑0 floor: all of ADD·SCALE·SIGN present, same
-roles, weighted **2·ADD / 3·SCALE / 4·SIGN** — the operator is SIGN‑heavy, and
-correctly so: it is fundamentally a *reflection* (the functional equation, the
-boundary ∂̂, and self‑adjointness are all SIGN). Same Two‑Trees span (Telperion
-B̂ ⊕ Laurelin R̂ ⊕ Mingling ∂̂/†/σ=½ — the *whole tree*, which is the signature
-of 0_RB itself). Same **8 independent DOF** (the octonion core, `σ_RB[k]=σ_RB[k⊕4]`,
-engine e10). Same †‑fixed self‑adjoint structure.
-
-**The one divergence:** the equation carries **one import** the geometry does
-not — *"a dense domain on which Σ_RB is essentially self-adjoint (deficiency
-indices (0,0))"* (the OP‑4 / C1 open item). That single import **is** the gap
-between "the equation has the right shape" and "the equation is proven" — and
-it is the same *kind* of import RH carries (the zero‑set locus), which is
-consistent: they are the same operator (Σ_RB self‑adjoint ⇒ RH by Stone).
+The piece-by-piece decomposition of the equation against the tier-0 floor (shape match, the one divergence) is narrative and lives in [Ainulindale wiki 14 §9](https://github.com/michaelrendier/Ainulindale/blob/main/wiki/14_redblue_hamiltonian.md). Moved 2026-11-25.

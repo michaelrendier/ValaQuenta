@@ -1,5 +1,13 @@
 # Notes for Ĥ_RB, 2026-11-21: d*, the Lambert fixed point, the gap and the VEV (data points, from the record and the code)
 
+> d* faces (all four are needed to chart ln(10) in Universal Native Space):  
+>   d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)  
+>   d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)  
+>   d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)  
+>   d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)  
+> Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG  
+
+
 Saved at the author's request: "they are also data points". Everything here was read from the repositories or computed on 2026-11-21; `inductive_onset_residual` reproduces the numbers.
 
 ## Order in the record

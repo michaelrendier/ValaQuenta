@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gear rotation: the axis is invariant, the tilt is driven</title><link rel="icon" type="image/png" href="favicon.png"><style>
+:root{--bg:#f5f3ec;--fg:#16202c;--mut:#3a4656;--card:#fbfaf6;--line:#d6d1c3;--acc:#1f5fa8;--c1:#1f5fa8;--c2:#b5481a;--c3:#2a7d4f;--c4:#8a3fa0;--c5:#b08900;--c6:#157a85;--badge:#ffd34d;--badge-fg:#000}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--fg:#e8edf3;--mut:#b9c3d0;--card:#18202a;--line:#33404f;--acc:#8ec0ff;--c1:#8ec0ff;--c2:#ff9f6b;--c3:#6fd39b;--c4:#d59bff;--c5:#ffd34d;--c6:#6fe0ea}}
+:root[data-theme="dark"]{--bg:#10151c;--fg:#e8edf3;--mut:#b9c3d0;--card:#18202a;--line:#33404f;--acc:#8ec0ff;--c1:#8ec0ff;--c2:#ff9f6b;--c3:#6fd39b;--c4:#d59bff;--c5:#ffd34d;--c6:#6fe0ea}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,Segoe UI,sans-serif}
+.ct-bar{background:#0d1020;color:#cfd6ee;font:13px system-ui;padding:6px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}.ct-bar a,.ct-foot a{color:#9cc4ff}.ct-bar b{color:#e6e9f5}
+.ct-orcid{display:inline-block;width:14px;height:14px;border-radius:50%;background:#a6ce39;color:#fff;font:700 9px/14px sans-serif;text-align:center;margin-right:4px;vertical-align:-2px}.ct-sep{opacity:.4}
+header,main,footer{max-width:1200px;margin:0 auto;padding:0 16px}header{padding-top:18px}h1{margin:.1em 0 .2em;font-size:1.6rem}h2{font-size:1.15rem;margin:1.4em 0 .4em}
+p.lead{margin:.2em 0 1em;color:var(--mut);max-width:80ch}.nav a{color:var(--acc);margin-right:14px}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 20px;padding:12px;position:relative}.fig canvas{display:block;width:100%}
+.imgno{position:absolute;top:8px;right:8px;background:var(--badge);color:var(--badge-fg);font-weight:700;border-radius:6px;padding:1px 8px;font-size:.85rem}
+.cbar{color:var(--mut);font-size:.85rem;margin-top:4px}.note{color:var(--mut);font-size:.92rem;max-width:90ch}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid var(--line);padding:4px 8px;text-align:left}th{background:var(--card)}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:0 6px;font-size:.78rem;color:var(--mut);margin-right:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.card a{color:var(--acc);font-weight:600;text-decoration:none}
+pre.dstar{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.78rem;color:var(--mut);overflow:auto}
+.ct-foot{background:#0d1020;color:#cfd6ee;font:13px system-ui;padding:12px 16px;margin-top:30px}
+button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:5px 12px;font:inherit;cursor:pointer}input[type=range]{width:min(520px,90%)}
+@media(max-width:700px){h1{font-size:1.3rem}}
+</style></head><body><div class="ct-bar"><b>Michael Rendier</b><a href="mailto:the.wandering.god@gmail.com">✉ the.wandering.god@gmail.com</a><span class="ct-sep">·</span><a href="https://facebook.com/rendier" target="_blank" rel="noopener">Facebook</a><span class="ct-sep">·</span><a href="https://orcid.org/0009-0007-7239-6760" target="_blank" rel="noopener"><span class="ct-orcid">iD</span>ORCID 0009-0007-7239-6760</a></div>
+<header><div class="nav"><a href="index.html">← H_RB gallery</a><button onclick="hrbTheme('dark')">dark</button> <button onclick="hrbTheme('light')">light</button></div>
+<h1>Gear rotation: the axis is invariant, the tilt is driven</h1><p class="lead">Rotate one ⊕4 plane by θ. The axis of that pair does not change (it is what the gear turns around); the tilt follows cos2θ·tilt + ½ sin2θ·(|ψ_j|² − |ψ_{j⊕4}|²).</p></header><main>
+<div class="fig"><span class="imgno">R4</span><canvas id="c1"></canvas></div><p class="note">Solid: tilt computed from the rotated ψ. Dashed: the law. They coincide to 5×10⁻¹⁶ (test T3 of oblique_gear_test.py, ported to tests/test_h_rb_hat_oblique.py).</p>
+<h2>Sources and status</h2><p class="note">CALCULATED means this repository's code produced the number; a picture shows a space or a machinery, it is not evidence. The two lifts of sigma_rb are definitions, labelled OPEN. Sigma is never written bare: sigma_riemann (σ_ζ), sigma_rb (σ_RB), see <a href="https://github.com/michaelrendier/ValaQuenta/blob/main/wiki/DISAMBIGUATION_NOTES.md">DISAMBIGUATION_NOTES</a>.</p>
+<ul class="note"><li><a href="https://github.com/michaelrendier/ValaQuenta/blob/main/modules/h_rb_hat/maths.py" target="_blank" rel="noopener">modules/h_rb_hat/maths.py</a> — the scalar Ĥ_RB (facets, energies, σ_ζ sums)</li><li><a href="https://github.com/michaelrendier/ValaQuenta/blob/main/modules/h_rb_hat/sigma16.py" target="_blank" rel="noopener">modules/h_rb_hat/sigma16.py</a> — the 16-component sigma_rb lifts A and B</li><li><a href="https://github.com/michaelrendier/ValaQuenta/blob/main/gallery/hrb/experiments.py" target="_blank" rel="noopener">gallery/hrb/experiments.py</a> — every number on this page</li></ul><h2>Literature</h2><ul class="note"><li>Moreno, G. (1998). The zero divisors of the Cayley–Dickson algebras over the real numbers. Bol. Soc. Mat. Mexicana 4, 13–28.</li><li>Baez, J. C. (2002). The octonions. Bull. Amer. Math. Soc. 39, 145–205.</li><li>Schafer, R. D. (1966). An Introduction to Nonassociative Algebras. Academic Press.</li><li>Noether, E. (1918). Invariante Variationsprobleme. Nachr. Ges. Wiss. Göttingen, 235–257.</li></ul><pre class="dstar">d* faces (all four are needed to chart ln(10) in Universal Native Space):
+  d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)
+  d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)
+  d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)
+  d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)
+Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG</pre>
+</main><footer class="ct-foot"><div><b>Cody Michael Allison (Michael Rendier)</b></div><div>All repositories: <a href="https://github.com/michaelrendier" target="_blank" rel="noopener">github.com/michaelrendier</a> · <a href="https://michaelrendier.github.io/" target="_blank" rel="noopener">michaelrendier.github.io</a> · License GPL-3.0-only</div></footer>
+<script src="data/hrb_data.js"></script><script src="hrb.js"></script><script>
+const D=window.HRB, L=window.HRBLIB, $=(id)=>document.getElementById(id);
+const G=D.doc.gear;L.lines($('c1'),[{name:'tilt (computed)',x:G.theta,y:G.tilt_j},{name:'cos2θ·tilt + ½ sin2θ·Δ|ψ|²',x:G.theta,y:G.law,dash:[5,4]},{name:'axis (computed)',x:G.theta,y:G.axis_j}],{xlabel:'θ',ylabel:'pair 2',title:'one gear turned through 2π',aspect:0.5});
+</script></body></html>

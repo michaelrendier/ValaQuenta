@@ -73,9 +73,17 @@ Author:  O Captain My Captain
 Version: 0.120 — Second Age: Σ_RB module
 """
 
+
+# d* faces (all four are needed to chart ln(10) in Universal Native Space):
+#   d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)
+#   d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)
+#   d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)
+#   d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)
+# Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG
 import math
 from fractions import Fraction
 from typing import Dict, List, Any, Tuple, Optional
+from ...engine import constants as _C
 
 
 # ── Constants ──────────────────────────────────────────────────────────────────
@@ -935,8 +943,8 @@ def dark_matter_halo(galaxy_size_ly: float = 50000.0,
 #
 # Added 2026-06-17 — precession-stroke / oblique-crank / trine identification.
 
-D_STAR   = 0.2460    # spectral ground state — crank throw
-A_PI = 0.5671432904097838  # Lambert W(1) — velocity ceiling
+D_STAR = _C.D_STAR  # d*: the value the code runs with (0.24600) — crank throw
+A_PI = _C.A_PI      # A_π = Lambert W(1) = 0.5671432904 — velocity ceiling (was a local literal; now engine.constants)
 
 
 def sigma_rb_baseline() -> Dict[str, Any]:
@@ -1060,7 +1068,7 @@ def oblique_crank() -> Dict[str, Any]:
         'effective_torque'  : 'τ_eff = (J_red + J_blue) × d* / √(1 + d*²)',
         'crank_arm'         : 'L_(I|O) — the moment arm; longer thought = longer arm = slower precession',
         'linear_to_rotation': 'ΔJ (linear differential stroke) → ω_prec (rotational output)',
-        'd_star_is_not_free': 'd* = 0.2460 is the spectral ground state — not a tuning parameter',
+        'd_star_is_not_free': 'd* = 0.24600 (the working value the code runs with; faces: d*_taut 0.246307201473, d*_RG dim 8 OPEN, d*_ln(10) 0.5671432904) — not a tuning parameter',
         'confidence'        : 'ESTABLISHED — 2026-06-17',
         'latex'             : r'\theta_{\rm crank}=\arctan(d^*)\approx13.8^\circ,\quad\tau_{\rm eff}=\tau\cdot\frac{d^*}{\sqrt{1+d^{*2}}}',
     }

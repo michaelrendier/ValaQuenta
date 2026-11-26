@@ -59,3 +59,4 @@ tests/test_basile.py
 docs/api/modules/basile.rst
 wiki/basile.md
 wiki/toolbox/39_basile.md
+.propagate_last.log
