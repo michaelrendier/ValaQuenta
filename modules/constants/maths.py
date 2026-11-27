@@ -3,8 +3,12 @@ ValaQuenta.modules.constants.maths
 ==================================
 Tier 0 — Constant Derivations.
 
-π, φ, e, √, i  are NOT inputs to the RedBlue Geometries Engine.
-They are OUTPUTS.
+Reading status (Ainulindale wiki 22 §6, 2026-11-13): the identities below are ESTABLISHED mathematics.
+The framework's thesis that π, φ, e, √, i are OUTPUTS of the operator rather than inputs is THEORETICAL and is
+not demonstrated: in the engine π enters through the 2/π prefactor and the gauge period, i through the complex
+plane, e through the exponential flow, φ through the tower's recursion. Each derive_* function rewrites one of
+those inputs at its σ-facet; none removes it. The 'forced' / 'drops out' wording below is the programme's
+vocabulary for that rewriting.
 
 Each drops out of the algebraic structure at a distinct σ-facet.
 No circle is drawn for π. No growth process is specified for e.
@@ -26,19 +30,29 @@ Derivation chain (Tier 0)::
     φ         → CD recursion eigenvalue:       φ² = φ + 1  (fixed point of f(x)=1+1/x)
     A_PI  → thermal ceiling:               T·e^T = 1  →  T = W(1)
     Alpha_F   → causality ceiling:             v_1 = α·c < c  →  α = 1/137.035999...
-    d*        → BK spectral floor (4 values):  [α_F, A_PI] domain, gap = 0.000707
+    d*        → four named faces (Boundary, Flow, Stability, Translator), see engine.constants
 
-Euler's identity e^{iπ} + 1 = 0 is a theorem of this engine, not a definition.
+Euler's identity e^{iπ} + 1 = 0 is a theorem of complex analysis (ESTABLISHED); its place in the framework's vocabulary is a consistency, not a derivation from the primes.
 
 Author:  O Captain My Captain
-Version: 0.110 — Third Age: Tier 0 — constants + two ceilings + d\* four values
+Version: 0.130 — Tier 0: constants + two ceilings + d\* four faces
 """
 
+
+# d* faces (all four are needed to chart ln(10) in Universal Native Space):
+#   d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)
+#   d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)
+#   d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)
+#   d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)
+# Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG
 import math
 import cmath
 from fractions import Fraction
 from typing import Dict, List, Any
 
+from ...engine.constants import (
+    ALPHA_FS, A_PI, D_STAR, D_STAR_TAUT, D_STAR_GAP, dstar_faces,
+)
 from ..h_rb_hat.maths import (
     PRIMES, RIEMANN_ZEROS,
     geometric_coupling, euler_product,
@@ -134,7 +148,7 @@ def derive_i() -> Dict[str, Any]:
         'democratic_note'       : '|p^{−i}| = 1 for every prime. Pure rotation. No amplitude.',
         'euler_precheck'        : euler_check,
         'identity'              : ['x² + 1 = 0  (closure condition)', '|p^{−i}| = 1 ∀p  (democratic facet)'],
-        'confidence'            : 'ESTABLISHED — CD algebra is the derivation',
+        'confidence'            : 'ESTABLISHED (CD algebra: i² = −1); THEORETICAL (that the engine produces i rather than assuming the complex plane)',
         'latex'                 : r'i:=(0,1)\in\mathbb{C},\quad i^2=(0,1)^2=(-1,0)=-1,\quad x^2+1=0',
     }
 
@@ -366,7 +380,7 @@ def derive_e() -> Dict[str, Any]:
             'd/dt(e^t) = e^t  (self-referential — unique property of base e)',
             'p^{−e} = e^{−e·ln p}  (Boltzmann weight at σ=e)',
         ],
-        'confidence'            : 'ESTABLISHED — BK equations force e uniquely',
+        'confidence'            : 'ESTABLISHED (identities); THEORETICAL (that the BK flow forces e, not supplies it)',
         'latex'                 : (r'\dot{x}=x\;\Rightarrow\;x(t)=x_0 e^t,'
                                    r'\quad p=\ln\dot{x}\;\Rightarrow\;\dot{x}=e^p'),
     }
@@ -474,7 +488,7 @@ def derive_pi() -> Dict[str, Any]:
             'ζ(2) = π²/6  (Basel: primes at σ=2 encode π)',
             'e^{2πi} = 1  (full gauge rotation returns to identity)',
         ],
-        'confidence'            : 'ESTABLISHED — two independent derivations from prime distribution',
+        'confidence'            : 'ESTABLISHED (Basel / Euler product / U(1) identities); THEORETICAL (that they derive π from the primes)',
         'latex'                 : (r'\zeta(2)=\sum_{n=1}^\infty n^{-2}=\frac{\pi^2}{6},'
                                    r'\quad\frac{2}{\pi}\cdot\pi=2'),
     }
@@ -608,17 +622,17 @@ def derive_phi() -> Dict[str, Any]:
             'f(φ) = φ  where f(x) = 1 + 1/x  (CD recursion eigenvalue)',
             'H_RB(φ) = H_RB(1)·H_RB(1/φ)  (Fibonacci factorisation)',
         ],
-        'confidence'            : 'ESTABLISHED — CD recursion forces φ uniquely',
+        'confidence'            : 'ESTABLISHED (identities); THEORETICAL (that the CD recursion forces φ, not supplies it)',
         'latex'                 : (r'\varphi^2=\varphi+1,\quad\varphi=\tfrac{1+\sqrt{5}}{2},'
                                    r'\quad f(\varphi)=\varphi\text{ where }f(x)=1+1/x'),
     }
 
 
-# ── Euler's identity — theorem of the engine ─────────────────────────────────
+# ── Euler's identity — theorem of complex analysis ─────────────────────────────────
 
 def euler_identity() -> Dict[str, Any]:
     """
-    Euler's identity  e^{iπ} + 1 = 0  — a theorem of RedBlue Geometries Engine.
+    Euler's identity  e^{iπ} + 1 = 0  — a theorem of complex analysis (ESTABLISHED), read here at three σ-facets.
 
     Assembly::
 
@@ -671,7 +685,7 @@ def euler_identity() -> Dict[str, Any]:
 
     return {
         'identity'              : 'e^{iπ} + 1 = 0',
-        'type'                  : 'Theorem of RedBlue Geometries Engine',
+        'type'                  : 'Theorem of complex analysis; its reading as the J_R+J_G+J_B=0 conservation is THEORETICAL',
         'assembly'              : {
             'e'  : 'BK canonical equations: ẋ=x → x(t)=e^t',
             'i'  : 'CD first doubling: x²+1=0',
@@ -692,7 +706,7 @@ def euler_identity() -> Dict[str, Any]:
             'This is the three-channel conservation law J_R+J_G+J_B=0 '
             'written in the language of the three derived constants.'
         ),
-        'confidence'            : 'ESTABLISHED — theorem of CD+BK+U(1) structure',
+        'confidence'            : 'ESTABLISHED (the identity); THEORETICAL (the J_R+J_G+J_B reading)',
         'latex'                 : r'e^{i\pi}+1=0\;\Leftrightarrow\;J_R+J_G+J_B=0',
     }
 
@@ -741,7 +755,7 @@ def derive_omega_zs() -> Dict[str, Any]:
         trajectory.append(round(T, 8))
     omega_iterated = T
 
-    OMEGA_ZS_exact = 0.5671432904097838
+    OMEGA_ZS_exact = A_PI
     iteration_residual = abs(omega_iterated - OMEGA_ZS_exact)
 
     # Verify T·e^T = 1
@@ -832,8 +846,7 @@ def derive_alpha_fermat() -> Dict[str, Any]:
         α_F is the floor; A_PI is the ceiling.
         The domain width = A_PI − α_F = 0.56714... − 0.00730... = 0.55985...
     """
-    ALPHA_F_EXACT = 1.0 / 137.035999084
-    A_PI      = 0.5671432904097838
+    ALPHA_F_EXACT = ALPHA_FS
     PHI           = (1.0 + math.sqrt(5.0)) / 2.0
 
     # Cardioid cusp: golden angle = 360/φ²
@@ -898,130 +911,86 @@ def derive_alpha_fermat() -> Dict[str, Any]:
     }
 
 
-# ── 8.  d*  —  Four Values, BK Spectral Floor ────────────────────────────────
+# ── 8.  d*  —  the four faces ────────────────────────────────────────────────
 
 def derive_d_star() -> Dict[str, Any]:
     r"""
-    Derivation of d\* — the four values of the BK spectral coordinate.
-
-    d\* is NOT a single number. It is a 4-component object — one projection
-    per stratum of the Cayley-Dickson tower:
+    d\* — the four named faces, read from :mod:`ValaQuenta.engine.constants` (single source).
 
     ::
 
-        d*_ℝ    = 0.24600       ℝ-projection  — active spectral floor (BK literature)
-        d*_ℂ    = ?             ℂ-projection  — first complex projection (open)
-        d*_ℍ    = ?             ℍ-projection  — quaternionic projection (open)
-        d*_𝕆    = ?             𝕆-projection  — octonionic projection (open)
+        d*         = 0.24600           the value the code runs with (the Boundary, σ_ζ=½ plane)
+        d*_taut    = A_π / ln 10       = 0.246307201473 (the Flow: the radial unit, exact)
+        d*_RG      = dimension 8       the Stability (the centre r = 0); numeric value OPEN, no closed form
+        d*_ln(10)  = d*_taut · ln 10   = A_π = 0.5671432904 (the Translator: the log bridge)
 
-    From wiki/24 (Claude conclusion)::
+    The four are four shadows of one point, not four different values. d*_RG is never given a number here.
 
-        "d* is a 4-component object. The ℂ-projection gives 0.24600.
-         The full octonionic radial measure should produce ln(10) when
-         all four contribute. The gap 0.000707 is the signal from
-         the higher strata. Deriving it is Open Problem 2."
+    Superseded reading (kept as the record, per the failed-results rule): this function once called d\* a 4-component
+    Cayley-Dickson object d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 → ln 10, and labelled d*·ln 10 = 0.56644 "the BAO first acoustic peak".
+    Neither survives: the four faces above replace the tower sum, and the BAO label has no source. What remains
+    of the old arithmetic is the working value's rounding residual, ``A_π − d*·ln 10 = 0.000707`` (``D_STAR_GAP``).
 
-    The four d\* values are the "radial complex spherical ln(10)" structure
-    that relates the BK spectral coordinate to the natural logarithm base.
-
-    Known exactly (three)::
-
-        d*_ℝ         = 0.24600             (BK spectral value, literature)
-        d*_taut      = A_PI / ln(10)   = 0.24631...  (tautological ceiling)
-        d*_ln10      = d*_ℝ × ln(10)       = 0.56644...  (BAO first acoustic peak)
-
-    Derived (gap)::
-
-        GAP = A_PI − d*_ln10 = 0.000707...  = onset residual
-
-    Open (highest priority)::
-
-        Derive d*_ℂ, d*_ℍ, d*_𝕆 such that
-        d*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 → ln(10)  (full octonionic radial measure)
+    Returns:
+        dict: ``faces`` (from :func:`engine.constants.dstar_faces`), ``residual``, ``domain``, ``candidates_rejected``,
+        ``io_boundary``, ``superseded``, ``confidence``.
     """
-    A_PI     = 0.5671432904097838
-    LN10         = math.log(10.0)
-    D_STAR_R     = 0.24600
-    D_STAR_TAUT  = A_PI / LN10
-    D_STAR_LN10  = D_STAR_R * LN10
-    GAP          = A_PI - D_STAR_LN10
-    ALPHA_F      = 1.0 / 137.035999084
+    ln10 = math.log(10.0)
+    # BK domain: [α, A_π]; the working d* sits inside it
+    domain = {'floor': ALPHA_FS, 'ceiling': A_PI, 'working_d_star': D_STAR, 'width': A_PI - ALPHA_FS}
 
-    # BK domain: [α_F, A_PI], spectral floor at d*_ℝ
-    domain = {'floor': ALPHA_F, 'ceiling': A_PI,
-              'spectral_floor': D_STAR_R, 'width': A_PI - ALPHA_F}
-
-    # Gap anatomy
-    gap_anatomy = {
-        'd*_ℝ'        : round(D_STAR_R, 8),
-        'd*_taut'     : round(D_STAR_TAUT, 8),
-        'd*_ln10'     : round(D_STAR_LN10, 8),
-        'A_PI'    : round(A_PI, 8),
-        'GAP'         : round(GAP, 8),
-        'GAP_identity': 'onset residual = onset residual',
+    # Working value versus the exact Flow face
+    residual = {
+        'd*'                 : round(D_STAR, 8),
+        'd*_taut'            : round(D_STAR_TAUT, 8),
+        'd*_taut − d*'       : round(D_STAR_TAUT - D_STAR, 8),
+        'd*·ln10'            : round(D_STAR * ln10, 8),
+        'A_π − d*·ln10'      : round(D_STAR_GAP, 8),
+        'meaning'            : 'rounding residual of the 3-digit working value; ln10·(d*_taut − d*)',
     }
 
-    # Candidate closed forms for d* (all rejected — none close the gap)
+    # Candidate closed forms for d*_RG's target 0.24631 (all rejected; none is a derivation)
     candidates = [
-        {'expr': 'Ω/ln(10)',     'value': round(D_STAR_TAUT, 8), 'gap': 0.0,       'note': 'tautology — ceiling, not result'},
-        {'expr': '1/(π+φ)',      'value': round(1/(math.pi + _PHI), 8), 'gap': round(abs(1/(math.pi + _PHI) - D_STAR_R), 6), 'note': 'rejected'},
-        {'expr': 'ln(2)/e',      'value': round(math.log(2)/math.e, 8), 'gap': round(abs(math.log(2)/math.e - D_STAR_R), 6), 'note': 'rejected'},
-        {'expr': '1/(2φ²)',      'value': round(1/(2*_PHI**2), 8), 'gap': round(abs(1/(2*_PHI**2) - D_STAR_R), 6), 'note': 'rejected'},
+        {'expr': 'A_π/ln(10)', 'value': round(D_STAR_TAUT, 8), 'gap': 0.0, 'note': 'is d*_taut by definition (the Flow face), not a closed form for d*_RG'},
+        {'expr': '1/(π+φ)',    'value': round(1/(math.pi + _PHI), 8),   'gap': round(abs(1/(math.pi + _PHI) - D_STAR), 6),   'note': 'rejected'},
+        {'expr': 'ln(2)/e',    'value': round(math.log(2)/math.e, 8),   'gap': round(abs(math.log(2)/math.e - D_STAR), 6),   'note': 'rejected'},
+        {'expr': '1/(2φ²)',    'value': round(1/(2*_PHI**2), 8),        'gap': round(abs(1/(2*_PHI**2) - D_STAR), 6),        'note': 'rejected'},
     ]
 
-    # What the full tower should give (the open derivation)
-    tower_claim = {
-        'claim'         : 'd*_ℝ + d*_ℂ + d*_ℍ + d*_𝕆 → ln(10)',
-        'ln10'          : round(LN10, 8),
-        'd*_R'          : round(D_STAR_R, 8),
-        'remaining'     : round(LN10 - D_STAR_R, 8),
-        'three_strata'  : 'D*_ℂ + D*_ℍ + D*_𝕆 = ln(10) − 0.24600 = 2.05659... (OPEN)',
-        'status'        : 'OPEN — Open Problem 2, highest priority',
-    }
-
     # The (I|O) boundary condition at r=1 (Jacobi theta identity)
-    # θ(1/τ) = √τ · θ(τ) maps inside ↔ outside at τ=1
-    # This IS the functional equation ξ(s)=ξ(1-s) as a BC
     io_bc = {
         'condition'     : 'θ(1/τ) = √τ · θ(τ) at τ=1',
         'maps'          : 'inside unit circle ↔ outside (I|O)',
         'functional_eq' : 'This IS ξ(s)=ξ(1-s) stated as BC on D(H_BK)',
-        'r_equals_1'    : 'The fixed point r=1 is the σ=½ critical line',
+        'r_equals_1'    : 'The fixed point r=1 is the σ_ζ=½ critical line',
     }
 
     return {
-        'constant'          : 'd*  (BK spectral floor, 4 components)',
-        'value_real'        : D_STAR_R,
-        'sigma_facet'       : 'Spectral floor of H_BK on [α_F, A_PI]',
-        'physical_layer'    : 'BK operator domain — spectral coordinate',
-        'algebraic_origin'  : 'Berry-Keating spectral floor; 4 CD strata',
+        'constant'          : 'd*  (four faces)',
+        'value_real'        : D_STAR,
+        'sigma_facet'       : 'σ_ζ=½ plane (Boundary); radial unit (Flow); centre r=0 (Stability); log bridge (Translator)',
+        'process'           : 'Read the four faces from engine.constants; show the working value against the exact Flow face.',
+        'faces'             : dstar_faces(),
         'derivation_chain'  : [
-            '1. BK operator H_BK = xp on L²([α_F, A_PI]) with (I|O) BC at r=1.',
-            '2. Spectral floor d*_ℝ = 0.24600 (from BK spectral analysis, literature).',
-            '3. d*_ln10 = d*_ℝ × ln(10) = 0.56644 ≈ A_PI − GAP.',
-            '4. GAP = A_PI − d*_ln10 = 0.000707 = onset residual.',
-            '5. Full tower: d*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 → ln(10). OPEN (highest priority).',
+            '1. BK operator H_BK = xp on L²([α, A_π]) with (I|O) BC at r=1.',
+            '2. Boundary: d* = 0.24600, the working value (σ_ζ=½ plane).',
+            '3. Flow: d*_taut = A_π/ln10 = 0.246307201473, exact.',
+            '4. Translator: d*_ln(10) = d*_taut·ln10 = A_π.',
+            '5. Stability: d*_RG at dimension 8, numeric OPEN, no closed form.',
         ],
-        'four_values'       : {
-            'd*_ℝ'          : {'value': D_STAR_R,       'status': 'KNOWN',  'role': 'active spectral floor'},
-            'd*_taut'       : {'value': D_STAR_TAUT,    'status': 'KNOWN',  'role': 'tautological ceiling (NOT the result)'},
-            'd*_ln10'       : {'value': D_STAR_LN10,    'status': 'KNOWN',  'role': 'BAO first acoustic peak'},
-            'd*_𝕆/tower'    : {'value': 'OPEN',         'status': 'OPEN',   'role': 'full octonionic radial measure → ln(10)'},
-        },
-        'gap_anatomy'       : gap_anatomy,
+        'residual'          : residual,
         'domain'            : domain,
         'candidates_rejected': candidates,
-        'tower_claim'       : tower_claim,
         'io_boundary'       : io_bc,
+        'superseded'        : 'CD-tower sum d*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 → ln 10 and the "BAO first acoustic peak" label; see the docstring.',
         'identity'          : [
-            'd*_ℝ × ln(10) = 0.56644  (BAO first acoustic peak)',
-            'A_PI − d*_ln10 = 0.000707  (onset residual)',
-            'd*_ℝ+d*_ℂ+d*_ℍ+d*_𝕆 = ln(10)  (OPEN — highest priority)',
+            'd*_taut · ln(10) = A_π',
+            'A_π − d*·ln(10) = 0.000707  (rounding residual of the working value)',
         ],
-        'confidence'        : 'ESTABLISHED for d*_ℝ; OPEN for full tower derivation',
-        'latex'             : (r'd^*_{\mathbb{R}}=0.24600,'
-                               r'\;\delta=\Omega_{\zeta\Sigma}-d^*\ln10=0.000707,'
-                               r'\;\sum_{\text{CD}}d^*_k=\ln10\;(\text{open})'),
+        'confidence'        : 'ESTABLISHED for d*_taut and d*_ln(10); working value d* THEORETICAL; d*_RG numeric OPEN',
+        'latex'             : (r'd^*_{\mathrm{taut}}=\frac{A_\pi}{\ln 10},\;'
+                               r'd^*_{\ln 10}=d^*_{\mathrm{taut}}\ln 10=A_\pi,\;'
+                               r'd^*_{RG}\;(\dim 8,\ \text{numeric open})'),
     }
 
 
@@ -1120,7 +1089,6 @@ def derive_lambda() -> Dict[str, Any]:
 
         3. f(A_PI, Ω_b h²) = Ω_Λ  — the explicit connection.
     """
-    A_PI   = 0.5671432904097838
     OMEGA_LAMBDA = 0.6889      # Planck 2018
     OMEGA_MATTER = 0.3111      # Planck 2018
     OMEGA_B_H2   = 0.02242     # baryon acoustic physical density (Planck 2018)
@@ -1328,7 +1296,7 @@ def all_constants() -> Dict[str, Any]:
 
     return {
         'tier'          : 'Tier 0 — Root Constants + Ceilings + Domain + Λ',
-        'claim'         : 'All root constants and domain boundaries drop out of H_RB structure.',
+        'claim'         : 'Root constants and domain boundaries, each read at its σ-facet of Ĥ_RB (programme reading THEORETICAL; the identities ESTABLISHED).',
         'table'         : [
             {'constant': 'i',        'sigma': 'i',       'origin': 'CD closure x²+1=0',             'physical': 'Quantum/Phase',       'verified': c_i['closure_verified']},
             {'constant': '√',        'sigma': '½',       'origin': 'G_p(½)=1/√p, critical line',    'physical': 'Wave-particle bdry',  'verified': c_sqrt['sqrt_coupling_match']},
@@ -1337,7 +1305,7 @@ def all_constants() -> Dict[str, Any]:
             {'constant': 'φ',        'sigma': 'φ',       'origin': 'CD recursion f(x)=1+1/x',       'physical': 'Recursion/Structure', 'verified': c_phi['factorisation_holds']},
             {'constant': 'A_π',     'sigma': 'ceiling', 'origin': 'T·e^T=1 self-ref fixed pt',     'physical': 'Entropy ceiling',     'verified': c_omg['self_ref_holds']},
             {'constant': 'α_F',      'sigma': 'floor',   'origin': 'v_1=α·c<c causality',           'physical': 'Causality floor',     'verified': c_alf['causality_check']['v1_lt_c']},
-            {'constant': 'd*',       'sigma': 'BK floor','origin': 'd*×ln10 + GAP = Ω_ζΣ',          'physical': 'Spectral floor',      'verified': True},
+            {'constant': 'd*',       'sigma': 'BK floor','origin': 'four faces; d*_taut·ln10 = A_π',   'physical': 'Spectral floor',      'verified': abs(D_STAR_TAUT * math.log(10.0) - A_PI) < 1e-12},
             {'constant': 'Λ',        'sigma': '∞',       'origin': 'J_neg at cosmological scale',    'physical': 'Dark energy / vacuum','verified': c_lam['noether_reading']['must_exist']},
         ],
         'euler_identity': euler,
@@ -1351,13 +1319,12 @@ def all_constants() -> Dict[str, Any]:
         'd_star'        : c_dst,
         'lambda'        : c_lam,
         'note'          : (
-            'No circle drawn for π. No growth process for e. No complex plane for i. '
-            'No golden rectangle for φ. No Pythagoras for √. '
-            'No thermometer for A_PI. No experiment for α_F (leading term). '
+            'Each constant is read at a σ-facet; the supplied inputs are listed in Ainulindale wiki 22 §6. '
+            'A_π = W(1) is a special-function value, not a measurement. α here is the QED leading term 1/137.036. '
             'Einstein removed Λ in 1917. The universe re-inserted it at 40σ in 1998. '
-            'The prime distribution and two ceilings forced all nine.'
+            'Programme reading: the prime distribution and two ceilings account for all nine (THEORETICAL).'
         ),
-        'confidence'    : 'ESTABLISHED (5+A_PI+Λ existence); THEORETICAL (α_F); OPEN (d* tower, Λ value)',
-        'latex'         : (r'i,\sqrt{\cdot},e,\pi,\varphi,\Omega_{\zeta\Sigma},\alpha_F,d^*,\Lambda'
-                           r'\;\text{drop out of }\Sigma_{RB}'),
+        'confidence'    : 'ESTABLISHED (A_π, Λ existence, the identities); THEORETICAL (α_F, the outputs-not-inputs reading); OPEN (d*_RG numeric, Λ value)',
+        'latex'         : (r'i,\sqrt{\cdot},e,\pi,\varphi,A_\pi,\alpha,d^*,\Lambda'
+                           r'\;\text{read at the }\sigma\text{-facets of }\hat H_{RB}'),
     }

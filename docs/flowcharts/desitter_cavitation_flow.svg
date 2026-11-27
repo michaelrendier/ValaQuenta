@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="2270" viewBox="0 0 980 2270" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="980" height="2270" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">desitter_cavitation: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 23 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="646" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M364.0,1736.0 L336.0,1736.0 L336.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M490.0,2021.0 L490.0,2039.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,896.0 L336.0,896.0 L336.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L344.0,1820.0 L344.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1064.0 L332.0,1064.0 L332.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M490.0,341.0 L490.0,359.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L336.0,308.0 L336.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L336.0,308.0 L336.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L332.0,308.0 L332.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L332.0,308.0 L332.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L332.0,308.0 L332.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L344.0,308.0 L344.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M490.0,1937.0 L490.0,1955.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1148.0 L336.0,1148.0 L336.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L332.0,644.0 L332.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L344.0,644.0 L344.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L340.0,644.0 L340.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L340.0,644.0 L340.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L336.0,644.0 L336.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L344.0,644.0 L344.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L336.0,644.0 L336.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L344.0,644.0 L344.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L344.0,644.0 L344.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L332.0,644.0 L332.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L340.0,644.0 L340.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L336.0,728.0 L336.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L344.0,728.0 L344.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L336.0,728.0 L336.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L340.0,728.0 L340.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L336.0,728.0 L336.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1400.0 L340.0,1400.0 L340.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1652.0 L344.0,1652.0 L344.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">DeSitterCavitationModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">No Singularity — the Abrikosov-</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Vortex Core and De Sitter Cavit…</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_desitter_cavitation</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Run the whole formulary argument-free;</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">return the summary dict.</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cosmic_cavitation_budget</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">SECONDARY (CONJECTURE, expected</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">FALSIFIED-as-stated, kept in d…</text>
+<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">energy_partition</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">SECONDARY prediction (CONJECTURE).  Over</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">the full lifetime the</text>
+<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann_core_closed</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Same number via the closed form (3/2) c^8</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">/ (G^4 M^4) — cross-…</text>
+<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mass_class_table</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">ENGINEERING (ESTABLISHED — all closed</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">form).  One row per blac…</text>
+<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">no_singularity_check</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">THEORETICAL.  Verify, across a mass</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">sweep, the three propertie…</text>
+<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stiff_matter_ceiling</text>
+<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">The stiffest causal equation of state: p</text>
+<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">= ρ c^2, sound speed …</text>
+<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_desitter</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">de Sitter temperature of the core</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">horizon::</text>
+<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_hawking</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">T_H = ħ c^3 / (8π G M k_B).  ESTABLISHED</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">(Hawking 1975).</text>
+<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">echo_delay</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">Ringdown-echo delay for a reflective core</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">at proper distance ~…</text>
+<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann_ratio_planck</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">K_core(M) / K_Planck.  &lt; 1 ⟺ the core is</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">sub-Planckian (smooth…</text>
+<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann_schwarzschild</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild Kretschmann K(r) = 48 G^2</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">M^2 / (c^4 r^6).  Prov…</text>
+<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">planck_mass_crossover</text>
+<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">The single mass at which K_core =</text>
+<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">K_Planck.  Solve</text>
+<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">reheating_reaches_qgp</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Does the core's energy density reach the</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">quark–gluon deconfine…</text>
+<rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_bounce_exterior</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Exterior-frame delay before the</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">black→white bounce, τ ~ (M/m_P…</text>
+<rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_evaporation</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">Hawking evaporation time, t_evap = 5120π</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">G^2 M^3 / (ħ c^4)</text>
+<rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tau_interior</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">Interior BANG time = one e-fold of the de</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">Sitter core</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">H_desitter</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">Interior de Sitter Hubble rate H = c /</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">L_dS = c^3 / (2 G M).</text>
+<rect x="364.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">core_energy_density</text>
+<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">Energy density of the de Sitter core (the</text>
+<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">stiff-space channel)…</text>
+<rect x="364.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann_core</text>
+<text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">HOLCUS.  Maximum curvature invariant</text>
+<text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">inside the hole = the de …</text>
+<rect x="364.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">L_desitter</text>
+<text x="490.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">Interior de Sitter radius.  Gravastar</text>
+<text x="490.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">matching (Mazur–Mottola …</text>
+<rect x="364.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">r_schwarzschild</text>
+<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">r_s = 2 G M / c^2.  ESTABLISHED</text>
+<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">(Schwarzschild 1916).</text>
+<text x="40" y="2229" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="2244" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+</svg>

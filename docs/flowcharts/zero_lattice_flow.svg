@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="2270" viewBox="0 0 680 2270" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="680" height="2270" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">zero_lattice: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 23 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">zero_lattice.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M316.0,1904.0 L346.0,1904.0 L346.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1652.0 L32.0,1652.0 L32.0,1904.0 L64.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,224.0 L36.0,224.0 L36.0,1820.0 L64.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,224.0 L44.0,224.0 L44.0,1484.0 L64.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1820.0 L32.0,1820.0 L32.0,1988.0 L64.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1820.0 L44.0,1820.0 L44.0,2072.0 L64.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,896.0 L40.0,896.0 L40.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L40.0,392.0 L40.0,728.0 L64.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L44.0,392.0 L44.0,1652.0 L64.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L36.0,392.0 L36.0,1736.0 L64.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L40.0,392.0 L40.0,1820.0 L64.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L40.0,392.0 L40.0,812.0 L64.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L32.0,392.0 L32.0,896.0 L64.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L44.0,392.0 L44.0,980.0 L64.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L44.0,392.0 L44.0,1064.0 L64.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L32.0,392.0 L32.0,1148.0 L64.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L44.0,392.0 L44.0,1232.0 L64.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L32.0,392.0 L32.0,1316.0 L64.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L44.0,392.0 L44.0,1400.0 L64.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,392.0 L32.0,392.0 L32.0,1484.0 L64.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,980.0 L36.0,980.0 L36.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,476.0 L44.0,476.0 L44.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1232.0 L36.0,1232.0 L36.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1316.0 L40.0,1316.0 L40.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1316.0 L40.0,1316.0 L40.0,1652.0 L64.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1316.0 L32.0,1316.0 L32.0,1736.0 L64.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,1316.0 L36.0,1316.0 L36.0,1820.0 L64.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M64.0,644.0 L32.0,644.0 L32.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">critical_line_samples</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Sample |ζ_T(½ + iγ)| along the critical</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">line σ=½.</text>
+<rect x="64.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">norm_sq</text>
+<text x="190.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Return the squared Euclidean norm of a</text>
+<text x="190.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">sedenion vector.</text>
+<rect x="64.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">run_all</text>
+<text x="190.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">Run the full Zero Lattice derivation.</text>
+<rect x="64.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sphere_coordinates</text>
+<text x="190.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Map basis element eₖ to 3D sphere</text>
+<text x="190.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">coordinates (r, theta, phi).</text>
+<rect x="64.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">switch_scale</text>
+<text x="190.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">Scale switching — no renormalization.</text>
+<rect x="64.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zd_path_coordinates</text>
+<text x="190.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Return the Sedenion Point Mapping</text>
+<text x="190.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">coordinates for a ZD constel…</text>
+<rect x="64.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">build_mul_table</text>
+<text x="190.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Build the 16×16 sedenion basis</text>
+<text x="190.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">multiplication table.</text>
+<rect x="64.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">laurelin_interface</text>
+<text x="190.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Where Telperion (Zero Lattice) meets</text>
+<text x="190.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">Laurelin (N-shape factors…</text>
+<rect x="64.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">monster_gap_in_map</text>
+<text x="190.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">The Monster gap {e₁, e₁₁, e₁₅} in the</text>
+<text x="190.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">Sedenion Point Mapping.</text>
+<rect x="64.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sedenion_point_map</text>
+<text x="190.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Return the full Sedenion Point Mapping</text>
+<text x="190.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">for all 16 basis elemen…</text>
+<rect x="64.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">the_angle</text>
+<text x="190.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">THE ANGLE: the formal geometric</text>
+<text x="190.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">definition of angle.</text>
+<rect x="64.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1144.1" font-size="12.8" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">universal_translator_structure</text>
+<text x="190.0" y="1159.4" font-size="10.8" fill="#16202c" text-anchor="middle">The Zero Lattice as Universal Translator.</text>
+<rect x="64.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify_angle</text>
+<text x="190.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Verify the geometric definition of THE</text>
+<text x="190.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">ANGLE (π/8 = 22.5°).</text>
+<rect x="64.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">view_tree</text>
+<text x="190.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">The proper way to view the Zero Lattice</text>
+<text x="190.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">(Telperion).</text>
+<rect x="64.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1396.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zeta_dirichlet</text>
+<text x="190.0" y="1411.7" font-size="10.8" fill="#16202c" text-anchor="middle">Dirichlet series form of Telperion Zeta.</text>
+<rect x="64.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zeta_geometric</text>
+<text x="190.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Geometric Zeta function on the Zero</text>
+<text x="190.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">Lattice.</text>
+<rect x="64.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">basis_to_cell</text>
+<text x="190.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">Map basis element eₖ to its Sedenion</text>
+<text x="190.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">Point Mapping coordinates.</text>
+<rect x="64.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1648.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">build_tree</text>
+<text x="190.0" y="1663.7" font-size="10.8" fill="#16202c" text-anchor="middle">Build the Zero Lattice tree (Telperion).</text>
+<rect x="64.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1732.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">classify_zd_pairs</text>
+<text x="190.0" y="1747.7" font-size="10.8" fill="#16202c" text-anchor="middle">Classify ZD pairs into::</text>
+<rect x="64.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">find_zd_pairs</text>
+<text x="190.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">Find all 84 directed zero-divisor pairs</text>
+<text x="190.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">on S¹⁵ of the form</text>
+<rect x="64.0" y="1871.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ZLNode</text>
+<text x="190.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">A node in the Zero Lattice</text>
+<text x="190.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">(Telperion).</text>
+<rect x="64.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="1984.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">e_k</text>
+<text x="190.0" y="1999.7" font-size="10.8" fill="#16202c" text-anchor="middle">Return basis vector eₖ.</text>
+<rect x="64.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">multiply</text>
+<text x="190.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">Multiply two sedenion vectors a, b ∈ ℝ¹⁶</text>
+<text x="190.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">using the pre-compute…</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="375.0" y1="191.0" x2="375.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="605.0" y1="191.0" x2="605.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">field</text>
+<text x="490.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">dataclasses</text>
+<text x="40" y="2214" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram =</text>
+<text x="40" y="2229" font-size="11.5" fill="#16202c">input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="2244" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+</svg>

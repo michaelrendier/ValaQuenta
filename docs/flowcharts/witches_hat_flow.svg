@@ -1,0 +1,309 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="2270" viewBox="0 0 1880 2270" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="1880" height="2270" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">witches_hat: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 55 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">action.py</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="646" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">length_time.py</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="946" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="1246" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">semiclassical.py</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="1546" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M364.0,308.0 L336.0,308.0 L336.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L950.0,308.0 L950.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L950.0,308.0 L950.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,392.0 L332.0,392.0 L332.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,392.0 L942.0,392.0 L942.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,476.0 L938.0,476.0 L938.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,560.0 L344.0,560.0 L344.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,560.0 L942.0,560.0 L942.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1232.0 L332.0,1232.0 L332.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L340.0,644.0 L340.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L344.0,1316.0 L344.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L942.0,1736.0 L942.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L938.0,728.0 L938.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1400.0 L942.0,1400.0 L942.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1484.0 L942.0,1484.0 L942.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1484.0 L942.0,1484.0 L942.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,812.0 L344.0,812.0 L344.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,896.0 L332.0,896.0 L332.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,896.0 L344.0,896.0 L344.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,980.0 L332.0,980.0 L332.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1064.0 L340.0,1064.0 L340.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1064.0 L336.0,1064.0 L336.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,476.0 L942.0,476.0 L942.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,560.0 L636.0,560.0 L636.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,644.0 L632.0,644.0 L632.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,644.0 L632.0,644.0 L632.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,644.0 L938.0,644.0 L938.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,812.0 L946.0,812.0 L946.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,308.0 L936.0,308.0 L936.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,308.0 L936.0,308.0 L936.0,1232.0 L964.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,308.0 L940.0,308.0 L940.0,1316.0 L964.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,392.0 L936.0,392.0 L936.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,392.0 L932.0,392.0 L932.0,1904.0 L964.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,476.0 L936.0,476.0 L936.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,476.0 L932.0,476.0 L932.0,1904.0 L964.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1148.0 L944.0,1148.0 L944.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1148.0 L940.0,1148.0 L940.0,1904.0 L964.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1736.0 L932.0,1736.0 L932.0,2072.0 L964.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1820.0 L944.0,1820.0 L944.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,560.0 L944.0,560.0 L944.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,560.0 L944.0,560.0 L944.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,560.0 L936.0,560.0 L936.0,1568.0 L964.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,728.0 L932.0,728.0 L932.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,728.0 L940.0,728.0 L940.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,812.0 L940.0,812.0 L940.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,812.0 L932.0,812.0 L932.0,1484.0 L964.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,812.0 L936.0,812.0 L936.0,1904.0 L964.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,896.0 L932.0,896.0 L932.0,1820.0 L964.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,896.0 L932.0,896.0 L932.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,896.0 L940.0,896.0 L940.0,1568.0 L964.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1568.0 L936.0,1568.0 L936.0,1988.0 L964.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,980.0 L936.0,980.0 L936.0,1736.0 L964.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,980.0 L940.0,980.0 L940.0,1400.0 L964.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,980.0 L932.0,980.0 L932.0,1904.0 L964.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M964.0,1064.0 L944.0,1064.0 L944.0,1652.0 L964.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1516.0,308.0 L1546.0,308.0 L1546.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1264.0,476.0 L1244.0,476.0 L1244.0,1148.0 L1264.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L938.0,224.0 L938.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L938.0,224.0 L938.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,560.0 L964.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,1232.0 L964.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L950.0,224.0 L950.0,1316.0 L964.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,1400.0 L964.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,812.0 L964.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L938.0,224.0 L938.0,980.0 L964.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">WitchesHatModule</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">The Witch's Hat engine.</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">brim_bundle</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">The bundle of paths from every brim point</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">in every launch dire…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">caustic_summary</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Describe what the map produced, without</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">judging it: where the …</text>
+<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">closest_approach_profile</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">For every launch direction, how close the</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">path comes to the hi…</text>
+<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cone_tip_height</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">The action cone of the radial family in a</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">symmetric hat, exact…</text>
+<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euclidean_radial_release</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Release at rest at radius r0 (inside the</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">brim) and move in U =…</text>
+<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">moving_hat_exchange</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">A particle in the hat while the hat moves</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">with constant veloci…</text>
+<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ray_family</text>
+<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">All solutions of the equation of motion</text>
+<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">at energy E leaving so…</text>
+<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stationary_paths</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Every stationary path (delta S = 0)</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">between two fixed events t…</text>
+<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tip_report</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Where the selected paths meet and how</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">high the action cone sta…</text>
+<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trial_variations</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">The cost of neighbouring paths relative</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">to a stationary one: d…</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">barrier_conjugacy</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">The same relation across the swap: in the</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">forbidden region B(E…</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">compactifications</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Penrose (arctan of a time) and Smith-</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">chart (tanh of a length) …</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conjugacy</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Check t = dW/dE for a NON-radial path:</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">the reduced action W an…</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hilltop_clock</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">At the separatrix E = V(0) the hilltop is</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">at infinite transit …</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">radial_worldline</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">The radial path from the brim inward at</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">energy E, integrated a…</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">signature_map</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Signature of the optical metric -v^2 dt^2</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">+ dr^2 + r^2 dphi^2 …</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">two_rulers</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">The path of least action (W = sum |dq| v,</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">the Jacobi / dynamic…</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">wall_transit</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">The turning surface is at FINITE transit</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">time and length: rho …</text>
+<rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_of_the_conversion_field</text>
+<text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Classify a zero of a conversion field</text>
+<text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">v(r) at r_h by how the t…</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">compare</text>
+<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">the two Lagrangians side by side, in</text>
+<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">their own units and in th…</text>
+<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">defocus_curve</text>
+<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">caustic ring radius against the aim</text>
+<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">offset: 0 only at aim = 0 …</text>
+<rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="478.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">energy_regimes</text>
+<rect x="964.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">l_io_action</text>
+<text x="1090.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">L_(I|O) read as the action of the actual</text>
+<text x="1090.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">path against the stat…</text>
+<rect x="964.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pair_correlation</text>
+<text x="1090.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">g(u) for u = k r (k_F r).  kind:</text>
+<text x="1090.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">fermion1d (sine kernel, u in …</text>
+<rect x="964.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shape_table</text>
+<text x="1090.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">every shape: depth, hilltop, focus</text>
+<text x="1090.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">resolution at E = 0, the qu…</text>
+<rect x="964.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">snapshot</text>
+<text x="1090.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">a static snapshot of one hat and its</text>
+<text x="1090.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">bundle.  size = brim radi…</text>
+<rect x="964.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">snapshot_plane</text>
+<text x="1090.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">a static 2-D snapshot for either</text>
+<text x="1090.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">Lagrangian: the surface z = V…</text>
+<rect x="964.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="976.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify</text>
+<text x="1090.0" y="991.6" font-size="10.8" fill="#16202c" text-anchor="middle">quick closure checks used by the tests</text>
+<rect x="964.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zeta_pair_correlation</text>
+<text x="1090.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">empirical R2(u) of the unfolded zeros</text>
+<text x="1090.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">(histogram of all differ…</text>
+<rect x="1264.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">exact_count_2d</text>
+<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">The exact number of 2-D bound states</text>
+<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">below the hilltop (E &lt; 0)…</text>
+<rect x="1264.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">exact_thresholds</text>
+<text x="1390.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">The values of hbar at which a new bound</text>
+<text x="1390.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">state appears AT the h…</text>
+<rect x="1264.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">offset_gamma</text>
+<text x="1390.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">gamma_n = W_total/(pi hbar_n) - n: the</text>
+<text x="1390.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">constant offset in the …</text>
+<rect x="1264.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">weyl_count</text>
+<text x="1390.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">The Weyl-law number of 2-D bound states</text>
+<text x="1390.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">below the hilltop: pha…</text>
+<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">caustic_points</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Where the family's Jacobian D = J x v</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">changes sign: the causti…</text>
+<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">discrete_action</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Action of a candidate path sampled at</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">equal time steps: S = su…</text>
+<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">morse_index</text>
+<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">Second variation of the action at a path</text>
+<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">with fixed endpoints:…</text>
+<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">natural_units</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">The hat's own units for putting energy</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">and action on one verti…</text>
+<rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ray_bundle</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Integrate many paths at once (vectorised</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">RK4) in the hat, whic…</text>
+<rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">speed</text>
+<text x="790.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">v(r) = sqrt(2 (E - V(r))), zero in the</text>
+<text x="790.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">forbidden region (where…</text>
+<rect x="664.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tortoise</text>
+<text x="790.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">The transit ruler rho(r) = integral from</text>
+<text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">r_ref to r of dr' / v…</text>
+<rect x="964.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">focus_resolution</text>
+<text x="1090.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">median closest approach of the bundle psi</text>
+<text x="1090.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">in (0, psi_max], uni…</text>
+<rect x="964.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lagrangian_sm</text>
+<text x="1090.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">STANDARD MODEL hat, ESTABLISHED.  L = |D</text>
+<text x="1090.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">phi|^2 - V,  V(h) = -…</text>
+<rect x="964.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lagrangian_vap</text>
+<text x="1090.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">THE VAPMIP (monad) LAGRANGIAN, the</text>
+<text x="1090.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">author's L_NN (ValaQuenta/m…</text>
+<rect x="964.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sm_hat</text>
+<text x="1090.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">the Higgs hat in physical units: brim</text>
+<text x="1090.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">radius v (GeV), depth la…</text>
+<rect x="964.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trace</text>
+<text x="1090.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">a path as arrays x, y, z=V(r), W</text>
+<text x="1090.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">(cumulative abbreviated actio…</text>
+<rect x="964.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trace_plane</text>
+<text x="1090.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">leapfrog path in the beta-plane from</text>
+<text x="1090.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">start (on the brim) launc…</text>
+<rect x="964.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1654.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unfold</text>
+<rect x="1264.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">separatrix_actions</text>
+<text x="1390.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">The E = 0 actions of the quartic hat in</text>
+<text x="1390.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">closed form, with the …</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">motion_potential</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">Return the potential the motion happens</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">in, for one signature,…</text>
+<rect x="964.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hat_shape</text>
+<text x="1090.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">returns V(x) with V(0) = 0 and brim</text>
+<text x="1090.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">(first minimum) at x = 1, …</text>
+<rect x="964.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hilltop</text>
+<text x="1090.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">the local maximum of V near the origin</text>
+<text x="1090.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">(the point the paths ai…</text>
+<rect x="964.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">turning_radius</text>
+<text x="1090.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">closest approach (units r_b) of a ray</text>
+<text x="1090.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">leaving the brim x0 at a…</text>
+<rect x="964.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">model_plane</text>
+<text x="1090.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">(V2, grad) on the (beta1, beta2) plane</text>
+<text x="1090.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">for either model (the S…</text>
+<rect x="964.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="2074.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quartic_family</text>
+<rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="1575.0" y1="191.0" x2="1575.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1805.0" y1="191.0" x2="1805.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1690.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">eigh_tridiagonal</text>
+<text x="1690.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">scipy.linalg</text>
+<text x="40" y="2244" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+</svg>

@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="2270" viewBox="0 0 980 2270" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="980" height="2270" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">addition_matrix: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 23 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="2132" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="646" y="98" width="288" height="2132" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1400.0 L336.0,1400.0 L336.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,392.0 L344.0,392.0 L344.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L336.0,644.0 L336.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L336.0,644.0 L336.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,728.0 L340.0,728.0 L340.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1568.0 L332.0,1568.0 L332.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,896.0 L336.0,896.0 L336.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1652.0 L340.0,1652.0 L340.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1652.0 L332.0,1652.0 L332.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,980.0 L344.0,980.0 L344.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1148.0 L336.0,1148.0 L336.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1232.0 L336.0,1232.0 L336.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L344.0,1316.0 L344.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">AdditionMatrixModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Addition matrix engine: columns as</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">rotors, the law of the fact…</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">address_profile</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">How the K = 0 address sits among the unit</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">solutions of N mod 1…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">carry_matrix</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Carries of adding the rows one at a time</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">into a running total.</text>
+<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">column_period</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Exact period in num2 of the digit in</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">column c of num1 * num2.</text>
+<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">column_period_measured</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">The least t &gt; 0 with digit_c(num1 * (x +</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">t)) == digit_c(num1 *…</text>
+<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">crt_rule_check</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Whether the cycle type of x -&gt; a x + b on</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">Z/10^m equals the CR…</text>
+<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lift_branching</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Children per unit solution when lifting</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">from 10^k to 10^(k+1),…</text>
+<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">live_state_counts</text>
+<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Live states after each column of the</text>
+<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">digit-by-digit factor sea…</text>
+<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">odometer_first_return</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">First-return map of x -&gt; x + 1 on Z/10^m</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">to the set x = 0 mod …</text>
+<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solenoid_cycles</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Cycle type of x -&gt; a x + b on Z/2^n (a</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">odd): every length is a…</text>
+<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solution_count_brute</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">The same count by enumeration: for each</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">a, the equation a b = …</text>
+<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solution_count_closed</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Closed form for the number of (p, q) mod</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">10^k with p q = N the…</text>
+<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">torsor_orbits</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Number of unit-group orbits in the</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">solution set mod 10^k when …</text>
+<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1312.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unit_group_order</text>
+<text x="490.0" y="1327.7" font-size="10.8" fill="#16202c" text-anchor="middle">Order of (Z/10^k)^x: 4 * 10^(k-1).</text>
+<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">affine_cycle_type</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Cycle type of x -&gt; a x + b on Z/m</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">(requires gcd(a, m) = 1).</text>
+<rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">crt_combine</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Cycle type of a product of two</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">permutations acting on coprime …</text>
+<rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">matrix_rows</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">The addition matrix: one row per digit of</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">num2; None marks a b…</text>
+<rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">prime_power_solutions</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">Number of (a, b) in (Z/p^k)^2 with a b =</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">N modulo p^k.</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unit_solutions</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">Every unit pair (p', q') mod 10^n with p'</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">q' = N there, with i…</text>
+<rect x="364.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cycle_type</text>
+<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">Cycle lengths of a permutation of</text>
+<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">range(size) as {length: coun…</text>
+<rect x="364.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">digits_lsb</text>
+<text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">Decimal digits of n, least significant</text>
+<text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">first, zero padded to w…</text>
+<rect x="364.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1984.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">phi_prime_power</text>
+<text x="490.0" y="1999.7" font-size="10.8" fill="#16202c" text-anchor="middle">Euler's phi of p^k.</text>
+<rect x="364.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">valuation</text>
+<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">The exponent of the prime p in N (cap</text>
+<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">stops the count; N = 0 g…</text>
+<text x="40" y="2229" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="2244" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+</svg>

@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="3782" viewBox="0 0 980 3782" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="980" height="3782" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">ptycho_weak_lensing: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 41 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="3644" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="3644" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="646" y="98" width="288" height="3644" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M364.0,3332.0 L340.0,3332.0 L340.0,3584.0 L364.0,3584.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1904.0 L336.0,1904.0 L336.0,2912.0 L364.0,2912.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1988.0 L340.0,1988.0 L340.0,2828.0 L364.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2072.0 L336.0,2072.0 L336.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2996.0 L340.0,2996.0 L340.0,3332.0 L364.0,3332.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2996.0 L340.0,2996.0 L340.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2996.0 L344.0,2996.0 L344.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2324.0 L336.0,2324.0 L336.0,3080.0 L364.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,3164.0 L340.0,3164.0 L340.0,3332.0 L364.0,3332.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,3164.0 L340.0,3164.0 L340.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,3164.0 L344.0,3164.0 L344.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,476.0 L336.0,476.0 L336.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,476.0 L332.0,476.0 L332.0,3584.0 L364.0,3584.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,476.0 L340.0,476.0 L340.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,560.0 L344.0,560.0 L344.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,560.0 L340.0,560.0 L340.0,2324.0 L364.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,644.0 L336.0,644.0 L336.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,896.0 L340.0,896.0 L340.0,2492.0 L364.0,2492.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2408.0 L336.0,2408.0 L336.0,2828.0 L364.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2408.0 L332.0,2408.0 L332.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2408.0 L344.0,2408.0 L344.0,3248.0 L364.0,3248.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,980.0 L344.0,980.0 L344.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,980.0 L344.0,980.0 L344.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1064.0 L332.0,1064.0 L332.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2576.0 L336.0,2576.0 L336.0,3332.0 L364.0,3332.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2576.0 L336.0,2576.0 L336.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2576.0 L332.0,2576.0 L332.0,3584.0 L364.0,3584.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,2576.0 L340.0,2576.0 L340.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L332.0,1316.0 L332.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L332.0,1316.0 L332.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L336.0,1316.0 L336.0,3080.0 L364.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1316.0 L332.0,1316.0 L332.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1568.0 L344.0,1568.0 L344.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1652.0 L344.0,1652.0 L344.0,2324.0 L364.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1652.0 L344.0,1652.0 L344.0,2408.0 L364.0,2408.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L340.0,1820.0 L340.0,3332.0 L364.0,3332.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L336.0,1820.0 L336.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L336.0,1820.0 L336.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L336.0,1820.0 L336.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L340.0,1820.0 L340.0,2156.0 L364.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L344.0,1820.0 L344.0,2240.0 L364.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L336.0,1820.0 L336.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L332.0,1820.0 L332.0,2576.0 L364.0,2576.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L336.0,1820.0 L336.0,2660.0 L364.0,2660.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1820.0 L340.0,1820.0 L340.0,2744.0 L364.0,2744.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">PtychoWeakLensingModule</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">The Ptycho-Weak-Lensing engine.</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">compare_maps</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Correlation, rms, and peak offset of a</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">recovered map against t…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">field_correlation</text>
+<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">Pearson correlation of two maps.</text>
+<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kappa_to_psi</text>
+<text x="490.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">ψ from ∇²ψ = 2κ (k = 0 dropped).</text>
+<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ks_map</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Kaiser–Squires with the reduced-shear</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">correction  γ = g(1 − κ)…</text>
+<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lensing_efficiency</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">β = D_ls / D_s  (κ and γ of a source at</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">z_s are β/β_∞ times th…</text>
+<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">magnification</text>
+<text x="490.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">μ = 1/((1−κ)² − |γ|²).</text>
+<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="808.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mass_sheet</text>
+<text x="490.0" y="823.6" font-size="10.8" fill="#16202c" text-anchor="middle">κ → λκ + (1 − λ): g is unchanged.</text>
+<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">merging_cluster</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">two NFW halos on the x axis (a bullet-</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">like synthetic merger) —…</text>
+<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">modulus_ptycho</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">INTENSITY-ONLY variant (the genuine</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">phase-retrieval case): onl…</text>
+<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">naive_mosaic</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">stack all pointings (weighted by galaxy</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">counts, rescaled by ef…</text>
+<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">overlap_error</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">pairwise disagreement of overlapping</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">pointings' (efficiency-re…</text>
+<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">polarization_angle</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">EVPA χ = ½ atan2(U, Q) and fractional-</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">independent polarized in…</text>
+<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ptycho_reconstruct</text>
+<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">ePIE-style / Kaczmarz over pointings, κ</text>
+<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">real:  for each pointi…</text>
+<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rotate45</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">every galaxy rotated by 45° (ε → iε): a</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">real lens signal must …</text>
+<rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shuffle_orientation</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Randomly permute the galaxies'</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">ellipticities (null test).</text>
+<rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1564.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sigma_crit</text>
+<text x="490.0" y="1579.7" font-size="10.8" fill="#16202c" text-anchor="middle">Σ_cr = c² D_s/(4πG D_l D_ls) in M☉/Mpc².</text>
+<rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">simulate_pointings</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">one catalogue per pointing (own window,</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">own source efficiency,…</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tile_windows</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">overlapping square pointings: [(y0, x0,</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">W)], W a cosine-tapere…</text>
+<rect x="364.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify</text>
+<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">The honest checks: closed-form and exact</text>
+<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">self-tests of the len…</text>
+<rect x="364.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1900.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">angular_diameter_distance</text>
+<text x="490.0" y="1915.7" font-size="10.8" fill="#16202c" text-anchor="middle">D_A(z1, z2) in Mpc, flat universe.</text>
+<rect x="364.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">calibrate_shear</text>
+<text x="490.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">Inject a constant shear and a known (m,</text>
+<text x="490.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">c) and recover them — …</text>
+<rect x="364.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">eb_decompose</text>
+<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">E and B scalar maps of ANY spin-2 field</text>
+<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">(shear, ellipticity, Q…</text>
+<rect x="364.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gaussian_gamma_t</text>
+<text x="490.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">exact axisymmetric result γ_t(r) = κ̄(&lt;r)</text>
+<text x="490.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">− κ(r),  κ̄ = 2A σ²(…</text>
+<rect x="364.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2236.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gaussian_kappa</text>
+<text x="490.0" y="2251.7" font-size="10.8" fill="#16202c" text-anchor="middle">Gaussian convergence profile.</text>
+<rect x="364.0" y="2291.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2313.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">grid_catalogue</text>
+<text x="490.0" y="2329.2" font-size="10.8" fill="#16202c" text-anchor="middle">(ε map, count map): the smoothed mean</text>
+<text x="490.0" y="2342.2" font-size="10.8" fill="#16202c" text-anchor="middle">ellipticity per pixel an…</text>
+<rect x="364.0" y="2375.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mock_catalogue</text>
+<text x="490.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">Galaxies on the field: N ~</text>
+<text x="490.0" y="2426.2" font-size="10.8" fill="#16202c" text-anchor="middle">Poisson(n_per_pix · pixels · window…</text>
+<rect x="364.0" y="2459.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2481.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">nfw_kappa</text>
+<text x="490.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">projected NFW (Bartelmann 1996):  κ =</text>
+<text x="490.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">2κ_s (1 − F(x))/(x² − 1)…</text>
+<rect x="364.0" y="2543.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">polarization_from_potential</text>
+<text x="490.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">Q + iU = D·(−∇²φ/2) : a polarization</text>
+<text x="490.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">(spin-2) field generated …</text>
+<rect x="364.0" y="2627.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2656.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">radial_profile</text>
+<text x="490.0" y="2671.7" font-size="10.8" fill="#16202c" text-anchor="middle">Mean of a in radial bins.</text>
+<rect x="364.0" y="2711.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2733.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tangential_cross</text>
+<text x="490.0" y="2749.2" font-size="10.8" fill="#16202c" text-anchor="middle">(γ_t, γ_×, r) about centre (x, y in</text>
+<text x="490.0" y="2762.2" font-size="10.8" fill="#16202c" text-anchor="middle">pixels):  γ_t = −Re(γ e^{−…</text>
+<rect x="364.0" y="2795.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2817.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">apply_shear</text>
+<text x="490.0" y="2833.2" font-size="10.8" fill="#16202c" text-anchor="middle">exact: ε = (ε_s + g)/(1 + g* ε_s), |g| &lt;</text>
+<text x="490.0" y="2846.2" font-size="10.8" fill="#16202c" text-anchor="middle">1.</text>
+<rect x="364.0" y="2879.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2901.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">comoving_distance</text>
+<text x="490.0" y="2917.2" font-size="10.8" fill="#16202c" text-anchor="middle">Comoving distance in Mpc (flat ΛCDM,</text>
+<text x="490.0" y="2930.2" font-size="10.8" fill="#16202c" text-anchor="middle">trapezoid).</text>
+<rect x="364.0" y="2963.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2985.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gamma_to_kappa</text>
+<text x="490.0" y="3001.2" font-size="10.8" fill="#16202c" text-anchor="middle">Kaiser–Squires: κ_E + iκ_B = D* γ</text>
+<text x="490.0" y="3014.2" font-size="10.8" fill="#16202c" text-anchor="middle">(returns the complex pair).</text>
+<rect x="364.0" y="3047.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3076.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gauss_smooth</text>
+<text x="490.0" y="3091.7" font-size="10.8" fill="#16202c" text-anchor="middle">Gaussian smoothing in Fourier space.</text>
+<rect x="364.0" y="3131.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3153.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kappa_to_gamma</text>
+<text x="490.0" y="3169.2" font-size="10.8" fill="#16202c" text-anchor="middle">γ = D κ (FFT; zero-padded by pad to</text>
+<text x="490.0" y="3182.2" font-size="10.8" fill="#16202c" text-anchor="middle">suppress periodic wrap). T…</text>
+<rect x="364.0" y="3215.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3244.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">reduced_shear</text>
+<text x="490.0" y="3259.7" font-size="10.8" fill="#16202c" text-anchor="middle">g = γ/(1 − κ).</text>
+<rect x="364.0" y="3299.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3321.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">D_kernel</text>
+<text x="490.0" y="3337.2" font-size="10.8" fill="#16202c" text-anchor="middle">D(k) = (k₁² − k₂² + 2ik₁k₂)/|k|², D(0) =</text>
+<text x="490.0" y="3350.2" font-size="10.8" fill="#16202c" text-anchor="middle">0.</text>
+<rect x="364.0" y="3383.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3412.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">crop</text>
+<text x="490.0" y="3427.7" font-size="10.8" fill="#16202c" text-anchor="middle">Undo pad_to.</text>
+<rect x="364.0" y="3467.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3489.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pad_to</text>
+<text x="490.0" y="3505.2" font-size="10.8" fill="#16202c" text-anchor="middle">Zero-pad a square array to factor times</text>
+<text x="490.0" y="3518.2" font-size="10.8" fill="#16202c" text-anchor="middle">its size, centred.</text>
+<rect x="364.0" y="3551.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="3573.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kgrid</text>
+<text x="490.0" y="3589.2" font-size="10.8" fill="#16202c" text-anchor="middle">Angular wavenumber grids (KX along axis</text>
+<text x="490.0" y="3602.2" font-size="10.8" fill="#16202c" text-anchor="middle">1, KY along axis 0).</text>
+<text x="40" y="3741" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="3756" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+</svg>

@@ -3,9 +3,16 @@ ValaQuenta.modules.constants.tools
 ==================================
 ConstantsModule — registry contract.
 
-Version: 0.100
+Version: 0.130
 """
 
+
+# d* faces (all four are needed to chart ln(10) in Universal Native Space):
+#   d*         = 0.24600          the value the code runs with (Boundary, σ_ζ=½ plane)
+#   d*_taut    = 0.246307201473  A_π/ln10, the Flow (radial unit)
+#   d*_RG      = dimension 8; numeric OPEN, no closed form  the Stability (centre r=0)
+#   d*_ln(10)  = 0.5671432904   d*_taut·ln10 = A_π, the Translator (log bridge)
+# Full story of d*: Ainulindale/wiki/17_alpha_omega_d_star.md; ~/.clauderc_canonical_maths @RCCM_FOUR_DSTAR; FourthAgePapers/DStarRG
 from typing import Dict, List, Any
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
@@ -29,8 +36,8 @@ class ConstantsModule(EquationModule):
     Tier 0 Constants — π φ e √ i derived from H_RB
 
     Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d\*, Λ — all drop out of
-    H_RB algebraic structure. Two ceilings force domain [α_F, A_PI]. d\* has
-    4 values (tower→ln(10) Open Prob 2). Λ: J_neg at cosmological scale;
+    H_RB algebraic structure. Two ceilings bound the domain [α_F, A_PI]. d\* has
+    four named faces (Boundary, Flow, Stability, Translator). Λ: J_neg at cosmological scale;
     Sombrero = Hawking pair; A_PI = de Sitter attractor. Einstein wrote it
     in 1915, removed it 1917, universe re-inserted 1998 at 40σ.
 
@@ -43,20 +50,20 @@ class ConstantsModule(EquationModule):
     def display_name(self): return 'Tier 0 Constants — π φ e √ i derived from H_RB'
 
     @property
-    def version(self): return '0.120'
+    def version(self): return '0.130'
 
     @property
     def description(self):
         return (
             'Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — '
-            'all drop out of H_RB algebraic structure. '
-            'Two ceilings force domain [α_F, A_PI]. d* has 4 values (tower→ln(10) Open Prob 2). '
+            'each read at a σ-facet of Ĥ_RB. '
+            'Two ceilings bound the domain [α_F, A_PI]. d* has four named faces (Boundary, Flow, Stability, Translator). '
             'Λ: J_neg at cosmological scale; Sombrero = Hawking pair; A_PI = de Sitter attractor. '
             'Einstein wrote it in 1915, removed it 1917, universe re-inserted 1998 at 40σ.'
         )
 
     @property
-    def confidence_floor(self): return 'ESTABLISHED'
+    def confidence_floor(self): return 'THEORETICAL'   # lowest tier in the formulary: derive_alpha_fermat
 
     def formulary(self) -> List[Equation]:
         return [
@@ -65,7 +72,7 @@ class ConstantsModule(EquationModule):
                 display='Λ — Einstein cosmological constant: J_neg at cosmological scale',
                 latex=r'G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi GT_{\mu\nu},\;\Lambda=J_{\rm neg},\;\Omega_\Lambda\to\Omega_{\zeta\Sigma}',
                 radian_form='Three-phase balance forces Λ. Sombrero=Hawking waveform. A_PI=de Sitter attractor.',
-                confidence='σ=∞ (existence); σ>40 (Nobel 1998); OPEN (value from f)',
+                confidence='ESTABLISHED (existence; observed at 40 standard deviations, 1998); OPEN (value from f)',
                 code_verified=True,
                 params=[],
                 compute=derive_lambda,
@@ -182,15 +189,15 @@ class ConstantsModule(EquationModule):
             ),
             Equation(
                 name='derive_d_star',
-                display='d* — 4 values: BK spectral floor, gap=0.000707, tower→ln(10) [OPEN]',
-                latex=r'd^*=0.24600,\;\delta=\Omega_{\zeta\Sigma}-d^*\ln10=0.000707',
-                radian_form='BK spectral floor. GAP=onset residual. Full tower d*_R+d*_C+d*_H+d*_O=ln(10) OPEN.',
-                confidence='ESTABLISHED (d*_R); OPEN (full tower)',
+                display='d* — four faces: Boundary 0.24600, Flow A_π/ln10, Stability (dim 8, OPEN), Translator A_π',
+                latex=r'd^*_{\mathrm{taut}}=A_\pi/\ln 10,\;d^*_{\ln 10}=A_\pi',
+                radian_form="Four faces of one point; d*_RG numeric OPEN. A_π − d*·ln10 = 0.000707 is the working value's rounding residual.",
+                confidence='ESTABLISHED (d*_taut, d*_ln(10)); OPEN (d*_RG numeric)',
                 code_verified=True,
                 params=[],
                 compute=derive_d_star,
                 display_options=[],
-                process='Derivation of d* — the four values of the BK spectral coordinate.',
+                process='d* — the four named faces, read from engine.constants.',
             ),
         ]
 

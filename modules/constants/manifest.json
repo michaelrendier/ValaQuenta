@@ -5,9 +5,9 @@
   "type": "engine",
   "name": "constants",
   "display": "Tier 0 Constants — π φ e √ i derived from H_RB",
-  "version": "0.120",
-  "summary": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure.",
-  "confidence_floor": "ESTABLISHED",
+  "version": "0.130",
+  "summary": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — each read at a σ-facet of Ĥ_RB.",
+  "confidence_floor": "THEORETICAL",
   "license": "GPL-3.0-only",
   "entry": {
     "module": "ValaQuenta.modules.constants",
@@ -25,7 +25,7 @@
     "predecessors": [],
     "citations": [],
     "wiki": {
-      "ainulindale": "",
+      "ainulindale": "Ainulindale/wiki/22_constant_facets.md",
       "valaquenta": "ValaQuenta/wiki/constants.md"
     },
     "notebook": "ValaQuenta/notebooks/core/01_constants.ipynb",
@@ -44,7 +44,7 @@
       "label": "Tier 0 Constants — π φ e √ i derived from H_RB",
       "group": "Reference",
       "order": 100,
-      "blurb": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — all drop out of H_RB algebraic structure."
+      "blurb": "Tier 0 Root Constants: π, φ, e, √, i, A_PI, α_F, d*, Λ — each read at a σ-facet of Ĥ_RB."
     },
     "tools": [
       {
@@ -121,7 +121,7 @@
         "name": "derive_d_star",
         "equation": "derive_d_star",
         "label": "Derive D Star",
-        "desc": "d* — 4 values: BK spectral floor, gap=0",
+        "desc": "d* — four faces: Boundary, Flow, Stability (OPEN), Translator",
         "params": []
       }
     ],

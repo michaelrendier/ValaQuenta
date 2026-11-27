@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="3362" viewBox="0 0 1280 3362" font-family="DejaVu Sans, Verdana, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
+<rect width="1280" height="3362" fill="#fbfaf6"/>
+<text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">lagrangian_sm: code flow</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 47 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="3224" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="346" y="98" width="288" height="3224" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">compare.py</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="646" y="98" width="288" height="3224" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<rect x="946" y="98" width="288" height="3224" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M364.0,308.0 L336.0,308.0 L336.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L332.0,308.0 L332.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,308.0 L340.0,308.0 L340.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L646.0,308.0 L646.0,2156.0 L664.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1736.0 L332.0,1736.0 L332.0,2408.0 L364.0,2408.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1736.0 L344.0,1736.0 L344.0,2492.0 L364.0,2492.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1736.0 L344.0,1736.0 L344.0,2576.0 L364.0,2576.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1736.0 L344.0,1736.0 L344.0,2660.0 L364.0,2660.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M364.0,1736.0 L336.0,1736.0 L336.0,2744.0 L364.0,2744.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2576.0 L642.0,2576.0 L642.0,2996.0 L664.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2576.0 L650.0,2576.0 L650.0,3080.0 L664.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1568.0 L644.0,1568.0 L644.0,2492.0 L664.0,2492.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,308.0 L644.0,308.0 L644.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,308.0 L636.0,308.0 L636.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,308.0 L644.0,308.0 L644.0,2240.0 L664.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,392.0 L636.0,392.0 L636.0,2492.0 L664.0,2492.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2408.0 L636.0,2408.0 L636.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2408.0 L640.0,2408.0 L640.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,476.0 L632.0,476.0 L632.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,476.0 L640.0,476.0 L640.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,476.0 L636.0,476.0 L636.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,560.0 L640.0,560.0 L640.0,1820.0 L664.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,560.0 L640.0,560.0 L640.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1820.0 L640.0,1820.0 L640.0,2408.0 L664.0,2408.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1904.0 L636.0,1904.0 L636.0,2996.0 L664.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1904.0 L644.0,1904.0 L644.0,3080.0 L664.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1904.0 L640.0,1904.0 L640.0,2576.0 L664.0,2576.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,644.0 L636.0,644.0 L636.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2072.0 L644.0,2072.0 L644.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2072.0 L632.0,2072.0 L632.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2240.0 L636.0,2240.0 L636.0,2408.0 L664.0,2408.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2240.0 L644.0,2240.0 L644.0,2660.0 L664.0,2660.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2912.0 L644.0,2912.0 L644.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,896.0 L640.0,896.0 L640.0,1652.0 L664.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,980.0 L644.0,980.0 L644.0,1820.0 L664.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,980.0 L644.0,980.0 L644.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1064.0 L644.0,1064.0 L644.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1064.0 L632.0,1064.0 L632.0,1820.0 L664.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1064.0 L636.0,1064.0 L636.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1064.0 L632.0,1064.0 L632.0,3164.0 L664.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L632.0,1316.0 L632.0,1568.0 L664.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L644.0,1316.0 L644.0,1652.0 L664.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L640.0,1316.0 L640.0,1736.0 L664.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L636.0,1316.0 L636.0,1904.0 L664.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L636.0,1316.0 L636.0,1988.0 L664.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L636.0,1316.0 L636.0,2156.0 L664.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,1316.0 L636.0,1316.0 L636.0,2324.0 L664.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2660.0 L644.0,2660.0 L644.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M664.0,2660.0 L632.0,2660.0 L632.0,2912.0 L664.0,2912.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,1568.0 L664.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1652.0 L664.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,1736.0 L664.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,2408.0 L664.0,2408.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,2828.0 L664.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,2492.0 L664.0,2492.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,1904.0 L664.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,1988.0 L664.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,2156.0 L664.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,2324.0 L664.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1400.0 L664.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,2660.0 L664.0,2660.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,1484.0 L664.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">LagrangianSMModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">The Standard Model Lagrangian</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">engine.</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">comparison_table</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">The three/four Lagrangians side by side:</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">what each is, its sta…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">seagull_correspondence</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Compare the coded L_matter with the</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">scalar-gauge 'seagull' ter…</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">coleman_weinberg</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">One-loop (MSbar) correction to the Higgs</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">hat from each particl…</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">degrees_of_freedom</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Count the fields: Weyl fermions, real</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">scalars, gauge bosons, a…</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">finite_temperature_hat</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">The hat at temperature T in the standard</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">high-temperature expa…</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gauge_crossings</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Scales where pairs of one-loop inverse</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">couplings meet.  A sing…</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hat_model</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">The Standard-Model Higgs hat as a model</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">dict that the path-of-…</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hypercharges_from_anomalies</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Solve for the hypercharges: given the</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">multiplets (Q_L, u_R, d_…</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jarlskog</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Rephasing-invariant CP-violation measure</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">J = Im(V_us V_cb V*_u…</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pmns_matrix</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">PMNS matrix, same parametrisation, from</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">the NuFIT angles in IN…</text>
+<rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rge_gauge</text>
+<text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">One-loop running of the three gauge</text>
+<text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">couplings (analytic): 1/al…</text>
+<rect x="664.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rge_top_higgs</text>
+<text x="790.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">One-loop running of (g1, g2, g3, y_t,</text>
+<text x="790.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">lambda) from M_Z, with t…</text>
+<rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">su5_embedding</text>
+<text x="790.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">The source of the anomaly cancellation:</text>
+<text x="790.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">the fifteen Weyl fermi…</text>
+<rect x="664.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">term_inventory</text>
+<text x="790.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">The terms of L_SM as written, each with</text>
+<text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">the parameters it carr…</text>
+<rect x="664.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify</text>
+<text x="790.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">Closure checks: anomalies cancel, group</text>
+<text x="790.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">identities close, the …</text>
+<rect x="664.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">vertex_inventory</text>
+<text x="790.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Count the distinct interaction vertex</text>
+<text x="790.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">types of the broken L_SM…</text>
+<rect x="664.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">z_couplings</text>
+<text x="790.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Z couplings of every Dirac fermion: g_L =</text>
+<text x="790.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">T3 - Q sin^2 theta_W…</text>
+<rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bias_conventions</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">The sign convention of L_bias in the code</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">against the docstrin…</text>
+<rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lio_integrand</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">J_red(sigma) J_blue(sigma) for L_(I|O) =</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">integral J_red J_blue…</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">measured_exponents</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">The degree of each term in the field</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">amplitudes, measured: Sta…</text>
+<rect x="364.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">one_over_phi_on_bias</text>
+<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">Whether polar_lagrangian applies the</text>
+<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">1/phi to L_bias, as the d…</text>
+<rect x="364.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">parameters_NN</text>
+<text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">The adjustable quantities that the coded</text>
+<text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">L_NN actually takes (…</text>
+<rect x="664.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">anomaly_check</text>
+<text x="790.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">Gauge anomaly sums over one generation of</text>
+<text x="790.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">left-handed Weyl fer…</text>
+<rect x="664.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ckm_matrix</text>
+<text x="790.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">CKM matrix in the standard</text>
+<text x="790.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">parametrisation (three angles, one …</text>
+<rect x="664.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ew_mass_matrix_symbolic</text>
+<text x="790.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">Derive the electroweak boson masses from</text>
+<text x="790.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">|D H|^2 with H = (0, …</text>
+<rect x="664.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gauge_initial</text>
+<text x="790.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">Gauge couplings at M_Z in GUT</text>
+<text x="790.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">normalisation: g1 = sqrt(5/3) g'…</text>
+<rect x="664.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">group_checks</text>
+<text x="790.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">Closure, Jacobi identity and Casimir</text>
+<text x="790.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">checks for SU(2) and SU(3…</text>
+<rect x="664.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">higgs_potential_expansion</text>
+<text x="790.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">Expand V(H) in the unitary gauge H = (0,</text>
+<text x="790.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">(v + h)/sqrt 2) with …</text>
+<rect x="664.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">higgs_sector</text>
+<text x="790.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">Numerical Higgs sector from the measured</text>
+<text x="790.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">mass and vev: lambda …</text>
+<rect x="664.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">parameter_count</text>
+<text x="790.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">Count the independent real parameters of</text>
+<text x="790.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">the most general reno…</text>
+<rect x="664.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2229.6" font-size="12.8" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">particle_content_for_potential</text>
+<text x="790.0" y="2244.9" font-size="10.8" fill="#16202c" text-anchor="middle">Field-dependent masses m_i(h) and degrees</text>
+<text x="790.0" y="2257.9" font-size="10.8" fill="#16202c" text-anchor="middle">of freedom n_i (nega…</text>
+<rect x="664.0" y="2291.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2320.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unitarity_residual</text>
+<text x="790.0" y="2335.7" font-size="10.8" fill="#16202c" text-anchor="middle">max |V^dagger V - 1|.</text>
+<rect x="364.0" y="2375.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lnn_terms</text>
+<text x="490.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">Evaluate the four coded L_NN terms</text>
+<text x="490.0" y="2426.2" font-size="10.8" fill="#16202c" text-anchor="middle">(modules/lagrangian/maths.p…</text>
+<rect x="364.0" y="2459.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2481.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sm_fermion_gauge</text>
+<text x="490.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">The fermion-gauge interaction g psibar</text>
+<text x="490.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">gamma^mu T^a psi A^a_mu…</text>
+<rect x="364.0" y="2543.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sm_gauge_static</text>
+<text x="490.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">-1/4 F^a_{mu nu} F^{a mu nu} for a</text>
+<text x="490.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">spatially and temporally co…</text>
+<rect x="364.0" y="2627.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2649.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sm_higgs_potential_term</text>
+<text x="490.0" y="2665.2" font-size="10.8" fill="#16202c" text-anchor="middle">-V(H) for H†H = rho^2/2: 1/2 mu^2 rho^2 -</text>
+<text x="490.0" y="2678.2" font-size="10.8" fill="#16202c" text-anchor="middle">1/4 lambda rho^4.</text>
+<rect x="364.0" y="2711.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="2733.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sm_yukawa</text>
+<text x="490.0" y="2749.2" font-size="10.8" fill="#16202c" text-anchor="middle">-y (psibar_L H psi_R + h.c.) for one</text>
+<text x="490.0" y="2762.2" font-size="10.8" fill="#16202c" text-anchor="middle">fermion pair and a real H…</text>
+<rect x="664.0" y="2375.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ew_tree</text>
+<text x="790.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">Tree-level electroweak relations from</text>
+<text x="790.0" y="2426.2" font-size="10.8" fill="#16202c" text-anchor="middle">alpha(M_Z), sin^2 theta_…</text>
+<rect x="664.0" y="2459.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2481.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">field_content</text>
+<text x="790.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">The fermion and scalar content of the</text>
+<text x="790.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">Standard Model, one gene…</text>
+<rect x="664.0" y="2543.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">su3_generators</text>
+<text x="790.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">SU(3) generators T^A = lambda^A / 2</text>
+<text x="790.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">(Gell-Mann), shape (8, 3, …</text>
+<rect x="664.0" y="2627.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2649.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">yukawas</text>
+<text x="790.0" y="2665.2" font-size="10.8" fill="#16202c" text-anchor="middle">Yukawa couplings of the charged fermions,</text>
+<text x="790.0" y="2678.2" font-size="10.8" fill="#16202c" text-anchor="middle">y = sqrt(2) m / v, f…</text>
+<rect x="664.0" y="2795.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2817.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fermi_vev</text>
+<text x="790.0" y="2833.2" font-size="10.8" fill="#16202c" text-anchor="middle">v = (sqrt(2) G_F)^(-1/2), GeV, from the</text>
+<text x="790.0" y="2846.2" font-size="10.8" fill="#16202c" text-anchor="middle">measured Fermi constan…</text>
+<rect x="664.0" y="2879.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2901.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pdg_masses</text>
+<text x="790.0" y="2917.2" font-size="10.8" fill="#16202c" text-anchor="middle">The nine charged-fermion masses, W, Z and</text>
+<text x="790.0" y="2930.2" font-size="10.8" fill="#16202c" text-anchor="middle">Higgs, GeV, from the…</text>
+<rect x="664.0" y="2963.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2985.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">structure_constants</text>
+<text x="790.0" y="3001.2" font-size="10.8" fill="#16202c" text-anchor="middle">Real structure constants f^{abc} of a Lie</text>
+<text x="790.0" y="3014.2" font-size="10.8" fill="#16202c" text-anchor="middle">algebra from its gen…</text>
+<rect x="664.0" y="3047.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="3069.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">su2_generators</text>
+<text x="790.0" y="3085.2" font-size="10.8" fill="#16202c" text-anchor="middle">SU(2) generators T^a = sigma^a / 2, shape</text>
+<text x="790.0" y="3098.2" font-size="10.8" fill="#16202c" text-anchor="middle">(3, 2, 2).</text>
+<rect x="664.0" y="3131.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="3153.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pdg_mass</text>
+<text x="790.0" y="3169.2" font-size="10.8" fill="#16202c" text-anchor="middle">Mass and symmetric uncertainty in GeV</text>
+<text x="790.0" y="3182.2" font-size="10.8" fill="#16202c" text-anchor="middle">from the installed PDG t…</text>
+<text x="40" y="3321" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="3336" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+</svg>
