@@ -273,7 +273,42 @@ def run(repo_arg, apply):
         print("  pip install -e ValaQuenta:", "ok" if r.returncode == 0 else "FAILED\n" + r.stderr[-600:])
 
 
+def family(dirs, into, apply):
+    """One .venv for a family of papers (Witch's Hat): imports of every directory are merged; the venv, requirements.txt and INSTALL.md live in INTO."""
+    into = repo_path(into)
+    third, uses_vq = {}, False
+    for d in dirs:
+        t, u = imports(repo_path(d))
+        for k, v in t.items():
+            third.setdefault(k, set()).update(v)
+        uses_vq |= u
+    reqs, missing = requirements_text(third, root_dists())
+    print(f"{os.path.basename(into)} (family of {len(dirs)}): third-party={len(third)} uses-ValaQuenta={uses_vq} missing-from-root={missing}")
+    if not apply:
+        return
+    if not os.path.exists(os.path.join(into, ".venv", "bin", "python")):
+        subprocess.run(["python3", "-m", "venv", os.path.join(into, ".venv")], check=True)
+        print("  created .venv")
+    if not os.path.exists(os.path.join(into, "requirements.txt")):
+        open(os.path.join(into, "requirements.txt"), "w").write("# one .venv for the whole family: " + ", ".join(os.path.basename(d.rstrip('/')) for d in dirs) + "\n" + "\n".join(reqs) + "\n")
+    if not os.path.exists(os.path.join(into, "INSTALL.md")):
+        vq = "# the family imports ValaQuenta (the code root):\n.venv/bin/pip install -e ../../ValaQuenta\n" if uses_vq else ""
+        open(os.path.join(into, "INSTALL.md"), "w").write(INSTALL.format(name=os.path.basename(into) + " (one environment for the papers: " + ", ".join(os.path.basename(d.rstrip('/')) for d in dirs) + ")", vq=vq, vqw=""))
+    gi = os.path.join(into, ".gitignore")
+    cur = open(gi).read() if os.path.exists(gi) else ""
+    if ".venv" not in cur:
+        open(gi, "a").write(("\n" if cur and not cur.endswith("\n") else "") + ".venv/\n")
+    pip = os.path.join(into, ".venv", "bin", "pip")
+    r = subprocess.run([pip, "install", "-q", "-r", os.path.join(into, "requirements.txt")], capture_output=True, text=True)
+    print("  pip install -r requirements.txt:", "ok" if r.returncode == 0 else "FAILED\n" + r.stderr[-500:])
+    write_system_block(into)
+
+
 def main(argv):
+    if "--into" in argv:
+        i = argv.index("--into")
+        family([a for a in argv[:i] if not a.startswith("--")], argv[i + 1], "--apply" in argv)
+        return
     apply = "--apply" in argv
     if "--refresh" in argv:
         rs = [d for d in sorted(os.listdir(PLACE)) if os.path.exists(os.path.join(PLACE, d, ".venv", "bin", "pip"))] if "--all" in argv else [a for a in argv if not a.startswith("--")]

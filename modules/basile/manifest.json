@@ -1,0 +1,248 @@
+{
+  "schema": "valaquenta.plugin/1",
+  "format_version": 1,
+  "id": "org.ainulindale.basile",
+  "type": "engine",
+  "name": "basile",
+  "display": "Basile: Invertible Location Maps (Library of Babel / Babelia)",
+  "version": "1.3",
+  "summary": "Invertible location-to-content maps of the Library of Babel family (J. Basile): the recipe, a checked toy library, and the published Babelia engine run on its published constants.",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "entry": {
+    "module": "ValaQuenta.modules.basile",
+    "class": "BasileModule"
+  },
+  "permissions": [],
+  "dependencies": {},
+  "provenance": {
+    "origin": "Written 2026-09-30 for FourthAgePapers/HyperindexingSystem, whose opening takes the algorithm behind libraryofbabel.info as its jump-off. Basile publishes the recipe and C++ for the image library, Babelia (github.com/librarianofbabel/libraryofbabel.info-algo, CC BY-SA-NC, uploaded 2019-01-02); the text library's own algorithm is not published. This engine implements the recipe generically, runs the published engine on its published constants read from a local copy (never vendored: ValaQuenta is GPL-3.0-only), and audits them. Basile's other public repositories were checked: LoB-API holds only a CC0 licence file (no code); LobThis (a fork of rik-degraaff/LobThis, licence not stated) is 5 small JavaScript files whose one request is reproduced as data; newsometimesatdawn and Dezmediah-site are web sites.",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-09-30",
+    "status_label": "ESTABLISHED",
+    "predecessors": [
+      "hyperwebster"
+    ],
+    "citations": [
+      "Basile_libraryofbabel.info_About",
+      "Basile_theory4_Grains_of_Sand",
+      "Basile_2019_libraryofbabel.info-algo",
+      "Borges_1941_The_Library_of_Babel",
+      "Hull_Dobell_1962_Random_number_generators",
+      "Myrvold_Ruskey_2001_ranking_unranking_permutations"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/124_basile_invertible_location_maps.md",
+      "valaquenta": "ValaQuenta/wiki/basile.md"
+    },
+    "notebook": "ValaQuenta/notebooks/basile/01_recipe_and_toy_library.ipynb",
+    "proof_locale": ""
+  },
+  "environment": {
+    "constants": [],
+    "native_space": "none: exact integer arithmetic",
+    "arithmetic": "exact arbitrary-precision integers (3.19-million-bit); float only for reported ratios and timings",
+    "requires_engines": [],
+    "external": [
+      "gmpy2 (optional, speed only)",
+      "librarianofbabel/libraryofbabel.info-algo files, fetched by fetch_published() into a local cache, CC BY-SA-NC, never vendored"
+    ]
+  },
+  "ui": {
+    "menu": {
+      "label": "Basile: Invertible Location Maps (Library of Babel / Babelia)",
+      "group": "Primes · number theory",
+      "order": 110,
+      "blurb": "Invertible location-to-content maps of the Library of Babel family (J. Basile): the recipe, a checked toy library, and the published Babelia engine run on its published constants."
+    },
+    "tools": [
+      {
+        "name": "ordered_address",
+        "equation": "ordered_address",
+        "label": "Ordered Address",
+        "desc": "Given a string and an alphabet, computes its rank among all strings by repeated multiply-and-add over digit va",
+        "params": [
+          "text",
+          "alphabet"
+        ]
+      },
+      {
+        "name": "ordered_text_at",
+        "equation": "ordered_text_at",
+        "label": "Ordered Text At",
+        "desc": "Given a rank and an alphabet, recovers the string by repeated division",
+        "params": [
+          "address",
+          "alphabet"
+        ]
+      },
+      {
+        "name": "scramble",
+        "equation": "scramble",
+        "label": "Scramble",
+        "desc": "Given a range size and a location, applies an LCG and two xorshifts modulo a power of two and repeats until th",
+        "params": [
+          "n",
+          "location"
+        ]
+      },
+      {
+        "name": "toy_library",
+        "equation": "toy_library",
+        "label": "Toy Library",
+        "desc": "Given a location, computes the page at that location in the scrambled library and in the ordered library, and ",
+        "params": [
+          "location",
+          "length"
+        ]
+      },
+      {
+        "name": "scrambler_exhaustive",
+        "equation": "scrambler_exhaustive",
+        "label": "Scrambler Exhaustive",
+        "desc": "Given a range size, checks the scrambler on every location: distinct outputs and exact inverse",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "neighbour_statistics",
+        "equation": "neighbour_statistics",
+        "label": "Neighbour Statistics",
+        "desc": "Given a page length, averages the number of differing characters between the pages at consecutive locations in",
+        "params": [
+          "length"
+        ]
+      },
+      {
+        "name": "hull_dobell_check",
+        "equation": "hull_dobell_check",
+        "label": "Hull Dobell Check",
+        "desc": "Given m, a, c and the prime factors of m, evaluates the three Hull–Dobell conditions",
+        "params": [
+          "m",
+          "a",
+          "c",
+          "prime_factors"
+        ]
+      },
+      {
+        "name": "xorshift_inverse_check",
+        "equation": "xorshift_inverse_check",
+        "label": "Xorshift Inverse Check",
+        "desc": "Given a word width and a shift, applies each xorshift and its inverse to random words and checks equality",
+        "params": [
+          "width",
+          "s",
+          "samples"
+        ]
+      },
+      {
+        "name": "euclid_qarray_limit",
+        "equation": "euclid_qarray_limit",
+        "label": "Euclid Qarray Limit",
+        "desc": "Given an operand size, runs the ported Extended Euclid with its 25-entry array on random operands and counts o",
+        "params": [
+          "bits",
+          "trials"
+        ]
+      },
+      {
+        "name": "address_parse",
+        "equation": "address_parse",
+        "label": "Address Parse",
+        "desc": "Given a site address, splits it into fields and computes the volume index within the hexagon",
+        "params": [
+          "address"
+        ]
+      },
+      {
+        "name": "lobthis_request",
+        "equation": "lobthis_request",
+        "label": "Lobthis Request",
+        "desc": "Given text, returns the POST request that the LobThis extension submits to the site, without sending it",
+        "params": [
+          "page_text"
+        ]
+      },
+      {
+        "name": "library_scale",
+        "equation": "library_scale",
+        "label": "Library Scale",
+        "desc": "Computes the number of pages and books of the text library in orders of magnitude",
+        "params": []
+      },
+      {
+        "name": "published_audit",
+        "equation": "published_audit",
+        "label": "Published Audit",
+        "desc": "Given the directory holding the published files, parses their constants and checks their internal consistency",
+        "params": [
+          "cache_dir"
+        ]
+      },
+      {
+        "name": "published_roundtrip",
+        "equation": "published_roundtrip",
+        "label": "Published Roundtrip",
+        "desc": "Given a seed, applies the published forward transform to a random location and the published inverse to the re",
+        "params": [
+          "seed",
+          "cache_dir"
+        ]
+      },
+      {
+        "name": "published_multiplicity",
+        "equation": "published_multiplicity",
+        "label": "Published Multiplicity",
+        "desc": "Given a seed, flips bits of the transformed value that the image does not draw, inverts, and checks that a dif",
+        "params": [
+          "seed",
+          "cache_dir"
+        ]
+      },
+      {
+        "name": "scrambler_cycles",
+        "equation": "scrambler_cycles",
+        "label": "Scrambler Cycles",
+        "desc": "Given a range size, follows every cycle of the scrambler and of its LCG part and reports the cycle lengths",
+        "params": [
+          "n"
+        ]
+      },
+      {
+        "name": "published_sibling_structure",
+        "equation": "published_sibling_structure",
+        "label": "Published Sibling Structure",
+        "desc": "Given a seed, computes the offsets to sibling locations at two locations and checks that they add within a loc",
+        "params": [
+          "seed",
+          "cache_dir",
+          "pairs"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
+  },
+  "engine": "basile"
+}
