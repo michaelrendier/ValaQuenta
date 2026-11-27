@@ -1,53 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="926" viewBox="0 0 980 926" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="590" viewBox="0 0 980 590" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="926" fill="#fbfaf6"/>
+<rect width="980" height="590" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">noether: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 8 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,224.0 L336.0,224.0 L336.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L340.0,308.0 L340.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L344.0,308.0 L344.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 8 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="452" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="452" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="452" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M316.0,308.0 L634.0,308.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="364.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">NoetherLedger</text>
-<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Blockchain-style ledger for Noether</text>
-<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">violation events.</text>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">NoetherModule</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">Noether Currents  ∂_μJ^μ = 0</text>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">NoetherModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">tools · Noether Currents  ∂_μJ^μ =</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">0</text>
+<rect x="64.0" y="275.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="190.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">NoetherLedger</text>
+<text x="190.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Blockchain-style ledger for</text>
+<text x="190.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Noether violation events.</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conservation_diagnostic</text>
+<text x="490.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Full Noether diagnostic.</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conservation_diagnostic</text>
-<text x="490.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">Full Noether diagnostic.</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">get_ledger</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Return the module-level singleton</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">ledger.</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">get_ledger</text>
-<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">Return the module-level singleton ledger.</text>
-<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">resonance_artifacts</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Identify resonance artifacts —</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">oscillatory patterns in the cur…</text>
-<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">activation_current</text>
-<text x="490.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">J^a = Σ_i g · |Ψ_i|²  (each generator a)</text>
-<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conservation_status</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Classify a violation magnitude against</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">THRESHOLDS.</text>
-<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">noether_violation</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">∂_μJ^μ ≈ mean|J_curr - J_prev| (finite</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">difference, single laye…</text>
-<text x="40" y="885" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="900" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">resonance_artifacts</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Identify resonance artifacts —</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">oscillatory patterns in the cur…</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">activation_current</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · J^a = Σ_i g · |Ψ_i|²  (each</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">generator a)</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conservation_status</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Classify a violation magnitude</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">against THRESHOLDS.</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">noether_violation</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · ∂_μJ^μ ≈ mean|J_curr - J_prev|</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">(finite difference, single laye…</text>
+<text x="40" y="549" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="564" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

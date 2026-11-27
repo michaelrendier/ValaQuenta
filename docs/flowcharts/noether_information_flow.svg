@@ -1,52 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="926" viewBox="0 0 980 926" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="674" viewBox="0 0 980 674" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="926" fill="#fbfaf6"/>
+<rect width="980" height="674" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">noether_information: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 7 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,392.0 L344.0,392.0 L344.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,593.0 L490.0,611.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,560.0 L336.0,560.0 L336.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 7 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="536" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="536" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="536" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M616.0,308.0 L646.0,308.0 L646.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,476.0 L650.0,476.0 L650.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,476.0 L634.0,476.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">NoetherInformationModule</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">J_info  Information Current</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">tools · J_info  Information Current</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">delta_J_info</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Cycle-averaged information</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">current violation::</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">delta_J_info</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Cycle-averaged information current</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">violation::</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">entropic_arrow</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Track information current across</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">layer history.</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">entropic_arrow</text>
-<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Track information current across layer</text>
-<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">history.</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">information_capacity</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Maximum information capacity of a</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">layer at the given algebra s…</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">information_capacity</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Maximum information capacity of a layer</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">at the given algebra s…</text>
-<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">information_current</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">J_info^μ — information current at a given</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">layer.</text>
-<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">phi_flux</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Φ_flux = (dim of algebra) · |Ψ̄·Ψ| /</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">n_neurons</text>
-<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shannon_information</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">I_information = -Σ_i p_i · log₂(p_i)</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">(Shannon entropy in bit…</text>
-<text x="40" y="885" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="900" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">information_current</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · J_info^μ — information current at</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">a given layer.</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">phi_flux</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Φ_flux = (dim of algebra) ·</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">|Ψ̄·Ψ| / n_neurons</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shannon_information</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · I_information = -Σ_i p_i ·</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">log₂(p_i)   (Shannon entropy in bit…</text>
+<text x="40" y="633" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="648" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

@@ -2,18 +2,18 @@
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
 <rect width="680" height="422" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">semantic_word: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 1 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 1 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
 <rect x="46" y="98" width="288" height="284" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">semantic_word.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
 <rect x="346" y="98" width="288" height="284" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
 <text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
 <text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">SemanticWord</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">The word as a point in semantic</text>
-<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">space.</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">semantic_word · The word as a point</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">in semantic space.</text>
 <rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="375.0" y1="191.0" x2="375.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="605.0" y1="191.0" x2="605.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">field</text>
 <text x="490.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">dataclasses</text>

@@ -1,122 +1,129 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1598" viewBox="0 0 980 1598" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1430" viewBox="0 0 1280 1430" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="1598" fill="#fbfaf6"/>
+<rect width="1280" height="1430" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">derivation_chain: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 15 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1460" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1460" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="1460" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M616.0,476.0 L638.0,476.0 L638.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,476.0 L646.0,476.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,341.0 L490.0,359.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L344.0,308.0 L344.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L340.0,308.0 L340.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L340.0,308.0 L340.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L344.0,308.0 L344.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L344.0,308.0 L344.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,812.0 L638.0,812.0 L638.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,812.0 L646.0,812.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,812.0 L642.0,812.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,896.0 L650.0,896.0 L650.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1064.0 L646.0,1064.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1148.0 L638.0,1148.0 L638.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1148.0 L646.0,1148.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1148.0 L642.0,1148.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1316.0 L650.0,1316.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 15 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="1292" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="1292" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="1292" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="1292" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L638.0,224.0 L638.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L638.0,224.0 L638.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,1064.0 L664.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,644.0 L942.0,644.0 L942.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,644.0 L942.0,644.0 L942.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,644.0 L938.0,644.0 L938.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,728.0 L946.0,728.0 L946.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,896.0 L938.0,896.0 L938.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,980.0 L950.0,980.0 L950.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,980.0 L950.0,980.0 L950.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,980.0 L946.0,980.0 L946.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1148.0 L934.0,1148.0 L934.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1064.0 L664.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">DerivationChainModule</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">Derivation Chain — Tiers 1–5</text>
-<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_derivation_chain</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Run all tiers in order. Returns the</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">complete derivation chain.</text>
-<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">berry_keating_dropout</text>
-<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — Berry-Keating Hamiltonian drops</text>
-<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">out.</text>
-<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bsd_dropout</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — Birch and Swinnerton-Dyer drops</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">out.</text>
-<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">d_star_tower_ln10</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 5 — The d* tower: full CD radial</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">measure → ln(10).</text>
-<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometric_observer</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 4 — The Geometric Observer: ∂̂_{∂M}</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">is another Hamiltonia…</text>
-<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometry_definition</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 4 — The correct coordinate system</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">reveals σ=½ as the equa…</text>
-<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">h_rb_emergence</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 3 — The RedBlue Hamiltonian is what</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">remains.</text>
-<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="892.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">langlands_dropout</text>
-<text x="490.0" y="907.6" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — Langlands Programme drops out.</text>
-<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ln_natural_unit</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 5 — ln(x) is the natural unit of the</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">BK flow = Hubble con…</text>
-<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">navier_stokes_dropout</text>
-<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — Navier-Stokes drops out as H_RB</text>
-<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">with Im=0 forced.</text>
-<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1144.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">noether_dropout</text>
-<text x="490.0" y="1159.7" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — Noether current drops out.</text>
-<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">planck_ln_connection</text>
-<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 5 — Planck's constant ↔ ln: quantum</text>
-<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">of action vs quantum …</text>
-<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1312.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">riemann_equals_fermat</text>
-<text x="490.0" y="1327.7" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 1 — Riemann = Fermat.</text>
-<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1396.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">yang_mills_dropout</text>
-<text x="490.0" y="1411.7" font-size="10.8" fill="#16202c" text-anchor="middle">TIER 2 — onset residual drops out.</text>
-<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="675.0" y1="191.0" x2="675.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="905.0" y1="191.0" x2="905.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">blue_energy</text>
-<text x="790.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
-<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="675.0" y1="275.0" x2="675.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/><line x1="905.0" y1="275.0" x2="905.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euler_product</text>
-<text x="790.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
-<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="675.0" y1="359.0" x2="675.0" y2="425.0" stroke="#3a4656" stroke-width="1.6"/><line x1="905.0" y1="359.0" x2="905.0" y2="425.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometric_coupling</text>
-<text x="790.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
-<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="675.0" y1="443.0" x2="675.0" y2="509.0" stroke="#3a4656" stroke-width="1.6"/><line x1="905.0" y1="443.0" x2="905.0" y2="509.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">red_energy</text>
-<text x="790.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
-<text x="40" y="1557" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="1572" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">DerivationChainModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">tools · Derivation Chain — Tiers</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">1–5</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_derivation_chain</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Run all tiers in order. Returns</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">the complete derivation chain.</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">berry_keating_dropout</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — Berry-Keating</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Hamiltonian drops out.</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bsd_dropout</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — Birch and Swinnerton-</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Dyer drops out.</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">d_star_tower_ln10</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 5 — The d* tower: full CD</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">radial measure → ln(10).</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometric_observer</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 4 — The Geometric Observer:</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">∂̂_{∂M} is another Hamiltonia…</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometry_definition</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 4 — The correct coordinate</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">system reveals σ=½ as the equa…</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">h_rb_emergence</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 3 — The RedBlue Hamiltonian</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">is what remains.</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">langlands_dropout</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — Langlands Programme</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">drops out.</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ln_natural_unit</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 5 — ln(x) is the natural</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">unit of the BK flow = Hubble con…</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">navier_stokes_dropout</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — Navier-Stokes drops out</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">as H_RB with Im=0 forced.</text>
+<rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">noether_dropout</text>
+<text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — Noether current drops</text>
+<text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">out.</text>
+<rect x="664.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">planck_ln_connection</text>
+<text x="790.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 5 — Planck's constant ↔ ln:</text>
+<text x="790.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">quantum of action vs quantum …</text>
+<rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1144.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">riemann_equals_fermat</text>
+<text x="790.0" y="1159.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 1 — Riemann = Fermat.</text>
+<rect x="664.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">yang_mills_dropout</text>
+<text x="790.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · TIER 2 — onset residual drops</text>
+<text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">out.</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="191.0" x2="975.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="191.0" x2="1205.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">blue_energy</text>
+<text x="1090.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="275.0" x2="975.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="275.0" x2="1205.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euler_product</text>
+<text x="1090.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
+<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="359.0" x2="975.0" y2="425.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="359.0" x2="1205.0" y2="425.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geometric_coupling</text>
+<text x="1090.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
+<rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="443.0" x2="975.0" y2="509.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="443.0" x2="1205.0" y2="509.0" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">red_energy</text>
+<text x="1090.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.h_rb_hat.maths</text>
+<text x="40" y="1389" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="1404" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
 </svg>

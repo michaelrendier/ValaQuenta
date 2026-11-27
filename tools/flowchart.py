@@ -124,33 +124,26 @@ def build(name, files) -> Chart | None:
 
     for k in nodes:
         d(k)
-    lanes = []
-    for f in sorted(files, key=lambda p: (os.path.basename(p) != "tools.py", os.path.basename(p))):
-        fn = os.path.basename(f)
-        if any(v["file"] == fn for v in nodes.values()):
-            lanes.append((fn, "public names of this file"))
+    maxd = max(depth[k] for k in nodes)
+    names = {0: "entry: registry class" if has_cls else "entry points"}
+    lanes = [(names.get(k, f"level {k}"), "called by the level to its left" if k else "start of every call path") for k in range(maxd + 1)]
     ext_lane = len(lanes)
-    lanes.append(("other engines", "called from this engine"))
+    if external:
+        lanes.append(("other engines", "called from this engine"))
     if data:
         lanes.append(("stored data", "files the code opens"))
-    lane_of = {fn: i for i, (fn, _) in enumerate(lanes)}
-    ch = Chart(f"{name}: code flow", f"derived from the source by ast · {len(nodes)} public names · arrows = calls found in the code · tools/flowchart.py",
+    lane_of = {"stored data": len(lanes) - 1}
+    ch = Chart(f"{name}: code flow", f"derived from the source by ast · {len(nodes)} public names · arrows = calls (or references) found in the code · tools/flowchart.py",
                lanes, lane_w=300, row_h=84, top=104)
-    levels = {}
-    for k, v in nodes.items():
-        levels.setdefault(depth[k], []).append(k)
-    base, row = {}, 0
     ids = {}
-    for lv in sorted(levels):
-        per = {}
-        for k in sorted(levels[lv]):
-            ln = lane_of[nodes[k]["file"]]
-            r = base_row = row + per.get(ln, 0)
-            per[ln] = per.get(ln, 0) + 1
-            shape = "term" if nodes[k]["cls"] else "proc"
-            ids[k] = f"n{len(ids)}"
-            ch.node(ids[k], ln, r + 1, shape, nodes[k]["name"], first_line(nodes[k]["ast"]))
-        row += max(per.values())
+    perlane = {}
+    for k in sorted(nodes, key=lambda k: (depth[k], nodes[k]["file"] != "tools.py", nodes[k]["name"])):
+        ln = depth[k]
+        r = perlane.get(ln, 0); perlane[ln] = r + 1
+        ids[k] = f"n{len(ids)}"
+        stem = nodes[k]["file"][:-3]
+        doc = first_line(nodes[k]["ast"])
+        ch.node(ids[k], ln, r + 1, "term" if nodes[k]["cls"] else "proc", nodes[k]["name"], f"{stem} · {doc}" if doc else stem)
     er = 0
     for ename, mod in sorted(external.items()):
         ids["ext:" + ename] = f"x{er}"
@@ -167,7 +160,7 @@ def build(name, files) -> Chart | None:
         if a in ids and b in ids:
             same = ch.nodes[ids[a]]["lane"] == ch.nodes[ids[b]]["lane"]
             gap = abs(ch.nodes[ids[a]]["row"] - ch.nodes[ids[b]]["row"])
-            bend = (sum(map(ord, a + b)) % 4) * 4
+            bend = (sum(map(ord, a + b)) % 5) * 4
             ch.edge(ids[a], ids[b], "", ("loopl" if gap > 1 else "auto") if same else "sidein", bend=bend)
     return ch
 

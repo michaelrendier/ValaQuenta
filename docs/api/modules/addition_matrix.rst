@@ -1,7 +1,7 @@
 ``addition_matrix``
-==================
+===================
 
-Addition Matrix: columns as rotors, the law of the factor search, the address of the final answer
+Addition Matrix: Columns as Rotors, the Law of the Factor Search
 
 .. automodule:: ValaQuenta.modules.addition_matrix
    :members:

@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "t32_nilpotency",
   "display": "T32 Nilpotency — Hyperwebster Address Primitives",
-  "version": "0.110",
+  "version": "0.120",
   "summary": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",
@@ -63,6 +63,17 @@
         "desc": "GF(2) square law: nilpotent / involutory census, with the Δ(w) = w·𝟏 detector check",
         "params": [
           "dim"
+        ]
+      },
+      {
+        "name": "nilpotency_control",
+        "equation": "nilpotency_control",
+        "label": "Nilpotency Control",
+        "desc": "Nilpotent rate of primes against composites, and the prime-matched chance control",
+        "params": [
+          "lo",
+          "hi",
+          "subset"
         ]
       }
     ],

@@ -31,7 +31,13 @@ Canonical maths added in 0.110 (Ainulindale wiki 78 §5; ~/.clauderc_canonical_m
 * Corrected lemma (2026-08-22, supersedes the UDEO white-paper proof): 𝟏 is NOT a global annihilator;
   e₀·𝟏 = 𝟏 ≠ 0. Only the iff above holds.
 
-Version: 0.110
+Control added in 0.120 (measured 2026-11-26, wiki 78 §6): by the square law a random word is nilpotent half the time (0.4961 in 20,000
+random 32-bit words), and the Hyperwebster words of the integers 2..100000 are nilpotent 49.9 % of the time, primes and composites alike
+from three digits up. The excess seen in the 16 sedenion basis primes (68.8 %) and the 15 Moonshine primes (80 %) lives in the two-digit
+range (21 primes: 81 %; 69 composites: 42 %; the 15 composites ending 1, 3, 7, 9: 27 %), and the baseline for a chance calculation is
+therefore 50 %, or the prime-matched control of :func:`matched_prime_control`, not the 70 % an earlier page used.
+
+Version: 0.120
 """
 
 from typing import List
@@ -206,3 +212,55 @@ def radical_census(dim: int = 8) -> dict:
     one = ones(dim)
     return {'dim': dim, 'words': 1 << dim, **counts, 'detector_agrees': agrees,
             'one_is_annihilator': t32_mul(1, one, dim) == 0}
+
+
+def nilpotency_window(lo: int, hi: int) -> dict:
+    """
+    Nilpotent rate of the Hyperwebster words of the integers in [lo, hi): primes against composites, with a last-digit-matched control.
+
+    The control is the composites whose last decimal digit is 1, 3, 7 or 9 (the last digits primes above 5 can have).
+
+    :param lo: first integer of the window (≥ 2)
+    :param hi: one past the last integer of the window
+    :returns: dict with ``primes``, ``composites`` and ``composites_ending_1379``, each ``{'nilpotent', 'n', 'rate'}``
+    """
+    is_p = set(sieve(hi))
+
+    def tally(ns):
+        ns = list(ns)
+        k = sum(is_nilpotent(hw_to_t32(n)) or hw_to_t32(n) == 0 for n in ns)
+        return {'nilpotent': k, 'n': len(ns), 'rate': k / len(ns) if ns else 0.0}
+
+    pr = [n for n in range(lo, hi) if n in is_p]
+    co = [n for n in range(lo, hi) if n not in is_p]
+    return {'lo': lo, 'hi': hi, 'primes': tally(pr), 'composites': tally(co),
+            'composites_ending_1379': tally(n for n in co if n % 10 in (1, 3, 7, 9))}
+
+
+def matched_prime_control(subset: List[int], trials: int = 20000, seed: int = 1) -> dict:
+    """
+    Prime-matched chance control for a set of primes: how often do random primes of the same count and magnitude do as well?
+
+    Draws ``len(subset)`` primes at random, without replacement, from the primes up to ``max(subset)`` and counts how often at least as many are
+    nilpotent as in ``subset``. This is the magnitude-matched control the factoring use of the mechanism failed; it replaces the
+    70 % baseline an earlier wiki page used. A subset that is every prime up to its maximum (the 16 sedenion basis primes) is its own pool, so the
+    control is vacuous there (``p_at_least`` = 1); it is informative for subsets of a larger prime range.
+
+    :param subset: the primes under test
+    :param trials: number of random draws
+    :param seed: seed of the random generator (fixed, so the result is reproducible)
+    :returns: dict: ``observed``, ``n``, ``pool_size``, ``p_at_least`` (fraction of draws with ≥ observed nilpotent),
+        ``p_all`` (fraction of draws with all n nilpotent), ``random_word_rate`` baseline 0.5
+    """
+    import random
+    rng = random.Random(seed)
+    pool = sieve(max(subset))
+    nil = {p: (is_nilpotent(hw_to_t32(p)) or hw_to_t32(p) == 0) for p in pool}
+    obs = sum(nil[p] for p in subset)
+    ge = al = 0
+    for _ in range(trials):
+        k = sum(nil[p] for p in rng.sample(pool, len(subset)))
+        ge += k >= obs
+        al += k == len(subset)
+    return {'observed': obs, 'n': len(subset), 'pool_size': len(pool), 'p_at_least': ge / trials,
+            'p_all': al / trials, 'random_word_rate': 0.5}

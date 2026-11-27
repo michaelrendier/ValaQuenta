@@ -67,3 +67,28 @@ def test_zero_divisor_pair_counts_and_commutativity_small_dims():
         n = 1 << d
         assert all(T.t32_mul(a, b, d) == T.t32_mul(b, a, d) for a in range(n) for b in range(n))
         assert sum(1 for a in range(1, n) for b in range(1, n) if T.t32_mul(a, b, d) == 0) == pairs
+
+
+def test_random_words_are_half_nilpotent_and_integers_are_half_nilpotent_from_three_digits():
+    rng = random.Random(1)
+    assert abs(sum(T.is_nilpotent(rng.getrandbits(32)) for _ in range(20000)) / 20000 - 0.5) < 0.02
+    w = T.nilpotency_window(100, 3000)
+    assert abs(w["primes"]["rate"] - 0.5) < 0.06 and abs(w["composites"]["rate"] - 0.5) < 0.03
+
+
+def test_two_digit_window_holds_the_whole_prime_excess_recorded_in_wiki_78():
+    w = T.nilpotency_window(10, 100)
+    assert (w["primes"]["nilpotent"], w["primes"]["n"]) == (17, 21)
+    assert (w["composites"]["nilpotent"], w["composites"]["n"]) == (29, 69)
+    assert (w["composites_ending_1379"]["nilpotent"], w["composites_ending_1379"]["n"]) == (4, 15)
+
+
+def test_prime_matched_control_makes_the_gap_set_unremarkable():
+    c = T.matched_prime_control([11, 17, 31, 47, 59], trials=4000)
+    assert c["observed"] == 5 and 0.08 < c["p_all"] < 0.18            # about 1 in 8, not 1 in 32
+    assert T.matched_prime_control([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53], trials=50)["p_at_least"] == 1.0   # vacuous: the subset is its pool
+
+
+def test_registry_control_equation_runs():
+    r = T32NilpotencyModule().run("nilpotency_control", {})["result"]
+    assert r["window"]["primes"]["n"] == 21 and r["control"]["n"] == 5

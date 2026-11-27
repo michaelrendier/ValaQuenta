@@ -1,104 +1,113 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1598" viewBox="0 0 980 1598" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="1094" viewBox="0 0 1880 1094" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="1598" fill="#fbfaf6"/>
+<rect width="1880" height="1094" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">tier6_physics: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 15 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1460" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1460" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="1460" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M490.0,1181.0 L490.0,1199.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1148.0 L344.0,1148.0 L344.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,1349.0 L490.0,1367.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,341.0 L490.0,359.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L344.0,308.0 L344.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L340.0,308.0 L340.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L332.0,308.0 L332.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,308.0 L336.0,308.0 L336.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,560.0 L340.0,560.0 L340.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,560.0 L340.0,560.0 L340.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,728.0 L344.0,728.0 L344.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,728.0 L344.0,728.0 L344.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,980.0 L336.0,980.0 L336.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,980.0 L336.0,980.0 L336.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,980.0 L336.0,980.0 L336.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 15 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1246" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1546" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 5</text>
+<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M1216.0,224.0 L1246.0,224.0 L1246.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,224.0 L1250.0,224.0 L1250.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1516.0,308.0 L1534.0,308.0 L1534.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L646.0,224.0 L646.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,392.0 L1238.0,392.0 L1238.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,392.0 L1242.0,392.0 L1242.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,560.0 L1238.0,560.0 L1238.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,560.0 L1242.0,560.0 L1242.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,812.0 L946.0,812.0 L946.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,812.0 L1234.0,812.0 L1234.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,812.0 L1238.0,812.0 L1238.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Tier6PhysicsModule</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Tier 6 — Full Physics: QM +</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">tools · Tier 6 — Full Physics: QM +</text>
 <text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Standard Model</text>
-<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_physics</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Run all 9 Tier 6 physics engines. Returns</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">the complete physics…</text>
-<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">dirac_equation</text>
-<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">FULL DIRAC EQUATION from the CD tower.</text>
-<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">feynman_path_integral</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">FEYNMAN PATH INTEGRAL from the BK action</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">(Tier 5 ln engine).</text>
-<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gauge_unification</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">GAUGE UNIFICATION: U(1) × SU(2) × SU(3)</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">from ℂ × ℍ × 𝕆  (Dixon…</text>
-<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">higgs_mechanism</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">HIGGS MECHANISM = Spontaneous Symmetry</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">Breaking at the Brim.</text>
-<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hypercomplex_euler</text>
-<text x="490.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">THE HYPERCOMPLEX EULER IDENTITY.</text>
-<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">particle_spectrum</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">ALL 17 STANDARD MODEL PARTICLES from the</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">16 sedenion strata.</text>
-<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quantum_mechanics</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">FULL QUANTUM MECHANICS derived from H_RB</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">at σ=½.</text>
-<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sedenion_arithmetic</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">FOUNDATION CLAIM: Zero Divisors =</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">Addition. CD Tower = Subtrac…</text>
-<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">standard_model</text>
-<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">FULL STANDARD MODEL LAGRANGIAN from SMMIP</text>
-<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">(term-for-term).</text>
-<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">build_multiplication_table</text>
-<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Build the full dim×dim Cayley-Dickson</text>
-<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">multiplication table.</text>
-<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_basis</text>
-<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Return the k-th basis element of the</text>
-<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">given dimension.</text>
-<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_mul</text>
-<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">Cayley-Dickson multiplication for arrays</text>
-<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">of dimension 2^n.</text>
-<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_conj</text>
-<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Return the Cayley-Dickson conjugate:</text>
-<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">negate every component ex…</text>
-<text x="40" y="1557" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="1572" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_physics</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Run all 9 Tier 6 physics engines.</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Returns the complete physics…</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">dirac_equation</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · FULL DIRAC EQUATION from the CD</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">tower.</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">feynman_path_integral</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · FEYNMAN PATH INTEGRAL from the BK</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">action (Tier 5 ln engine).</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gauge_unification</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · GAUGE UNIFICATION: U(1) × SU(2) ×</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">SU(3) from ℂ × ℍ × 𝕆  (Dixon…</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">higgs_mechanism</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · HIGGS MECHANISM = Spontaneous</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">Symmetry Breaking at the Brim.</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hypercomplex_euler</text>
+<text x="790.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE HYPERCOMPLEX EULER IDENTITY.</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">particle_spectrum</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · ALL 17 STANDARD MODEL PARTICLES</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">from the 16 sedenion strata.</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quantum_mechanics</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · FULL QUANTUM MECHANICS derived</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">from H_RB at σ=½.</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sedenion_arithmetic</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · FOUNDATION CLAIM: Zero Divisors =</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">Addition. CD Tower = Subtrac…</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">standard_model</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · FULL STANDARD MODEL LAGRANGIAN</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">from SMMIP (term-for-term).</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">build_multiplication_table</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Build the full dim×dim Cayley-</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Dickson multiplication table.</text>
+<rect x="1264.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_basis</text>
+<text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Return the k-th basis element of</text>
+<text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">the given dimension.</text>
+<rect x="1264.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_mul</text>
+<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Cayley-Dickson multiplication for</text>
+<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">arrays of dimension 2^n.</text>
+<rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1690.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cd_conj</text>
+<text x="1690.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Return the Cayley-Dickson</text>
+<text x="1690.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">conjugate: negate every component ex…</text>
+<text x="40" y="1068" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

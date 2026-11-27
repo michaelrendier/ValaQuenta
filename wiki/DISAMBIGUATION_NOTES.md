@@ -151,3 +151,12 @@ Run by `RiemannHypothesisProof/experiments/image_header_sphere_test.py` (+ `.jso
 | Equator "imaginary axis Re(s) = ½", zeros on it | Correct: |w| = 1 at the first 10 nontrivial zeros (1.0 to machine precision). |
 | Helices running pole to pole | Not a ζ object on the s-sphere: each line σ ≠ ½ is a small circle through w = 1; ζ(½+it) is a path on the VALUE sphere (equator |ζ| = 1, zero = south pole, ∞ = north pole), a rosette leaving the pole at each zero, not pole to pole. |
 Value sphere, t < 400, 19,975 samples: Re ζ > 0 for 81.9% (76% at 25,000 zeros per the live page); mean ζ = 0.9965 (the n = 1 term); |ζ| > 1 for 56.6% and mean ln|ζ| = −0.001 (no north/south lean); the Riemann–Siegel mirror term e^{−2iθ}S̄ has mean 0.009 (it averages out, so the reflection does NOT rectify); Hardy Z has mean 0.0026 and Z > 0 for 47.6% (AC), mean |Z| = 1.57 (the rectified DC). Twist per zero: mean spacing in θ = 1.0000073 π over 25,000 zeros; θ(γ_n)/π − (n−1) has mean −0.49997 and std 0.298 (Selberg 0.342): a snap per π of twist, the primes set where in the cycle. Dropping the π term of θ over-counts zeros by 4,000 at t = 21,942 (16%).
+
+## `nilpotent` and `t32_nilpotency` (engine 3, 2026-11-26)
+| name | meaning | where | note |
+|---|---|---|---|
+| `t32_nilpotency` (ValaQuenta) | a 32-bit WORD w is nilpotent when w·w = 0 under Cayley–Dickson multiplication over GF(2); the Hyperwebster address mod 2³² is read as the word | `ValaQuenta/modules/t32_nilpotency` | square law w² ∈ {0, e₀}; detector Δ(w) = w·𝟏 = 0 ⟺ w² = 0 |
+| `t32_nilpotency` (GenerationalLineage) | an address PATH is nilpotent when its base-97 digit path ends in a zero digit | `GenerationalLineage/engine/toolsets/t32_nilpotency.py` | same name and address, different notion; counts are not comparable; note added to the GL docstring and wiki page (2026-11-26) |
+| `𝟏` | the all-ones word 2^d − 1 | `ones(dim)` | NOT an annihilator (e₀·𝟏 = 𝟏); the "global annihilator" statement is retracted everywhere (TuringStack and FourthAgePapers/CryptoVulnerability `sha1_demonstration.md` corrected 2026-11-26) |
+| "null subalgebra" / "zero-ideal" | the SHA-1 IVs have all mutual products 0; the algebra is non-associative, so "ideal" is not used | `sha1_demonstration.md`, UDEO paper | "zero-ideal" removed from the two `sha1_demonstration.md` copies and the SHA-256 demo comments |
+| baseline | for the nilpotency of primes, 50 % (random word) or the prime-matched control, never the observed 70 % | `matched_prime_control` | wiki 78 §6, ledger X-60 |

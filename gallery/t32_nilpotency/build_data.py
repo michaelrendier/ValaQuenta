@@ -26,6 +26,9 @@ data = {
     "primes": {"sedenion basis (16)": primes_sed, "Moonshine (15)": moon},
     "niemeier_gap_primes": [11, 17, 31, 47, 59],
     "prime_report": {k: T.prime_nilpotency_report(v) for k, v in (("sedenion basis (16)", primes_sed), ("Moonshine (15)", moon))},
+    "control": {"sedenion basis (16)": T.matched_prime_control(primes_sed), "Moonshine (15)": T.matched_prime_control(moon),
+                "Niemeier-gap primes (5)": T.matched_prime_control([11, 17, 31, 47, 59])},
+    "windows": [T.nilpotency_window(lo, hi) for lo, hi in ((10, 100), (100, 1000), (1000, 10000), (10000, 100000))],
     "zd_pairs": {str(d): sum(1 for a in range(1, 1 << d) for b in range(1, 1 << d) if T.t32_mul(a, b, d) == 0) for d in (2, 4, 8)},
 }
 with open(os.path.join(HERE, "t32_data.js"), "w", encoding="utf-8") as f:

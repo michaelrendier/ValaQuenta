@@ -7,13 +7,13 @@ The reusable primitive module -- Hyperwebster address, T32/GF(2)
 multiplication, nilpotency test. Imported by hypergon_constructibility
 and by FourthAgePapers/FermatMonster/engine/fermat_monster_engine.py.
 
-Version: 0.110
+Version: 0.120
 """
 
 from typing import Dict, List, Any
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
-from .maths import hw_address, hw_to_t32, t32_mul, is_nilpotent, prime_nilpotency_report, radical_census
+from .maths import hw_address, hw_to_t32, t32_mul, is_nilpotent, prime_nilpotency_report, radical_census, nilpotency_window, matched_prime_control
 
 _DEFAULT_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
 
@@ -36,7 +36,7 @@ class T32NilpotencyModule(EquationModule):
     def display_name(self): return 'T32 Nilpotency — Hyperwebster Address Primitives'
 
     @property
-    def version(self): return '0.110'
+    def version(self): return '0.120'
 
     @property
     def description(self):
@@ -76,6 +76,19 @@ class T32NilpotencyModule(EquationModule):
                 display_options=['text'],
                 process='Exhaustive square-law census of the T32/GF(2) algebra of a given dimension',
             ),
+            Equation(
+                name='nilpotency_control',
+                display='Nilpotent rate of primes against composites, and the prime-matched chance control',
+                latex=r'P\left[\#\{\text{nilpotent among }n\text{ random primes}\}\ge k\right];\ \text{random-word rate}=\tfrac12',
+                radian_form='window [lo, hi): primes vs composites vs composites ending 1,3,7,9; then random same-size prime subsets',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['lo', 'hi', 'subset'],
+                compute=lambda lo=10, hi=100, subset=None: {'window': nilpotency_window(int(lo), int(hi)),
+                                                            'control': matched_prime_control(list(subset or [11, 17, 31, 47, 59]))},
+                display_options=['text'],
+                process='The magnitude-matched control for the nilpotency of primes (wiki 78 §6)',
+            ),
         ]
 
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
@@ -90,6 +103,11 @@ class T32NilpotencyModule(EquationModule):
                      params: Dict[str, Any], display_mode: str) -> Dict[str, Any]:
         result = self.run(equation_name, params)['result']
         lines = [f'  {equation_name}']
+        if equation_name == 'nilpotency_control':
+            for k, v in result['window'].items():
+                lines.append(f'    {k:24s} {v}' if not isinstance(v, dict) else f"    {k:24s} {v['nilpotent']}/{v['n']} = {v['rate']:.3f}")
+            lines += [f'    control {k:16s} = {v}' for k, v in result['control'].items()]
+            return {'text': '\n'.join(lines)}
         if equation_name == 'radical_census':
             lines += [f'    {k:18s} = {v}' for k, v in result.items()]
             return {'text': '\n'.join(lines)}

@@ -1,64 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1178" viewBox="0 0 980 1178" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="926" viewBox="0 0 980 926" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="1178" fill="#fbfaf6"/>
+<rect width="980" height="926" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">berry_keating: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 10 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1040" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1040" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="1040" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,308.0 L340.0,308.0 L340.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,392.0 L340.0,392.0 L340.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,644.0 L332.0,644.0 L332.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 10 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M616.0,224.0 L634.0,224.0 L634.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L634.0,308.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,560.0 L634.0,560.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L350.0,224.0 L350.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L350.0,224.0 L350.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BerryKeatingModule</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">H_NN  Berry-Keating Operator</text>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BerryKeatingModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">tools · H_NN  Berry-Keating</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Operator</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_map_trajectory</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Generate T map trajectory for</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">viewer rendering.</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_map_trajectory</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Generate T map trajectory for viewer</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">rendering.</text>
+<text x="490.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">d_star_gap_report</text>
+<text x="490.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Complete d* gap workbench.</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">d_star_gap_report</text>
-<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">Complete d* gap workbench.</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gap_candidates</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Generate candidate expressions</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">for d* from elementary constant…</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gap_candidates</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Generate candidate expressions for d*</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">from elementary constant…</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">h_nn_eigenvalues</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · H_NN = -i·ħ_NN·(x·∂_x + ∂_x·x)/2</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">symmetric xp operator.</text>
 <rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">h_nn_eigenvalues</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">H_NN = -i·ħ_NN·(x·∂_x + ∂_x·x)/2</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">symmetric xp operator.</text>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_tsallis_Wq_candidate</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Lambert-Tsallis W_q function</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">candidate for the 0.00070 gap.</text>
 <rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_tsallis_Wq_candidate</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Lambert-Tsallis W_q function candidate</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">for the 0.00070 gap.</text>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">two_loop_mass_gap_candidate</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Lambert W two-loop beta function</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">path for mass gap m.</text>
 <rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">two_loop_mass_gap_candidate</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Lambert W two-loop beta function path for</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">mass gap m.</text>
-<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">xp_spectrum_discrete</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Discrete evaluation of xp = x·p potential</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">landscape.</text>
-<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_map_scaffold</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">T: x → x · e^{i·d*·ln(x)}   (T coordinate</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">scaffold)</text>
-<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_W_approx</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Approximate the Lambert W function W(x),</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">the solution of W·e^W…</text>
-<text x="40" y="1137" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="1152" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">xp_spectrum_discrete</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Discrete evaluation of xp = x·p</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">potential landscape.</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">T_map_scaffold</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · T: x → x · e^{i·d*·ln(x)}   (T</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">coordinate scaffold)</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_W_approx</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Approximate the Lambert W</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">function W(x), the solution of W·e^W…</text>
+<text x="40" y="885" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="900" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

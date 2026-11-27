@@ -3,7 +3,7 @@ Standalone engines
 
 Single files, imported by name: ``from ValaQuenta.noether import NoetherCurrents``.
 
-``bao_mass_gap`` (deprecated)
+``bao_mass_gap``
 ----------------
 
 .. automodule:: ValaQuenta.bao_mass_gap

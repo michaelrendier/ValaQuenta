@@ -24,7 +24,8 @@ CT = ('<div class="ct"><b>Michael Rendier</b> <a href="mailto:the.wandering.god@
       '<a href="https://facebook.com/rendier" target="_blank" rel="noopener">Facebook</a> · <a href="https://orcid.org/0009-0007-7239-6760" target="_blank" rel="noopener">ORCID 0009-0007-7239-6760</a></div>')
 
 
-def page(fname, title, sub, kind, body, script, how=""):
+def page(fname, title, sub, kind, body, script, how="", about=""):
+    about = ABOUT.get(fname, about)
     src = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{html.escape(t)}</a>: {html.escape(d)}</li>' for u, t, d in SOURCES)
     refs = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{html.escape(t)}</a></li>' for t, u in REFS)
     out = f"""<!doctype html>
@@ -34,7 +35,7 @@ def page(fname, title, sub, kind, body, script, how=""):
 </head><body>{CT}
 <header><h1>{html.escape(title)}</h1><div class="sub">{sub} A picture shows a structure; it is not evidence that the structure means anything beyond its definition.</div><p><a href="index.html">← T32 nilpotency gallery</a></p></header>
 <main>{body}
-<div class="card"><span id="selfcheck" class="sub">running self-check…</span></div></main>
+{about}<div class="card"><span id="selfcheck" class="sub">running self-check…</span></div></main>
 <footer><p><b>Code and data.</b>{how}</p><ul>{src}</ul><p><b>Literature.</b></p><ul>{refs}</ul></footer>
 <script src="t32_data.js"></script><script src="t32.js"></script><script>
 {script}
@@ -43,7 +44,42 @@ T32.selfCheck();
     open(os.path.join(HERE, fname), "w", encoding="utf-8").write(out)
 
 
+def about_card(looking, read, shows, not_shows, numbers):
+    """The information panel every visual carries: what it is, how to read it, what it shows, what it does not show, and the numbers to check."""
+    return ('<div class="card"><b>About this visual</b>'
+            f'<p><b>What you are looking at.</b> {looking}</p><p><b>How to read it.</b> {read}</p>'
+            f'<p><b>What it shows.</b> {shows}</p><p><b>What it does not show.</b> {not_shows}</p><p><b>Numbers to check.</b> {numbers}</p></div>')
+
+
 LEGEND = '<span class="sw" style="background:var(--nil)"></span>nilpotent (w² = 0, includes 0)<span class="sw" style="background:var(--inv)"></span>involutory unit (w² = e₀)'
+
+ABOUT = {
+ "canvas2d_radical_split.html": about_card(
+    "Every word of the algebra, one cell each. The algebra is T32/GF(2): words are d-bit integers (d = 2, 4, 8, 16 here; 32 in the engine), multiplied by the Cayley–Dickson doubling rule carried out over GF(2), the field with two elements. This is the construction that gives ℝ → ℂ → ℍ → 𝕆 → 𝕊 over the reals, one doubling further and with XOR for addition.",
+    "A cell is one word w = row·side + column (or its place in the class-grouped order). Blue: w·w = 0, a nilpotent word (the zero word counts, as the ring's radical includes 0). Orange: w·w = e₀, an involutory unit (e₀ is the word 1, the multiplicative identity). Hover or tap a cell for w in hex, decimal and bits, w², and the detector Δ(w) = w·𝟏.",
+    "The square law: for every word, w² is 0 or e₀, and nothing else ever occurs. The algebra therefore splits into two halves, the radical and the involutory units, 2^(d−1) words each: 2 | 2, 8 | 8, 128 | 128 and 32,768 | 32,768 at d = 2, 4, 8, 16. The grouped view puts the two halves side by side.",
+    "That the split is a law of the algebra for all d: it is verified here exhaustively for d ≤ 16 and by sampling at d = 32, not proved. It does not say which words are in which half by any simple rule on the bits (the by-value picture has structure but no closed form here). It says nothing about primes, hashes or anything outside the algebra.",
+    "d = 8: 128 nilpotent, 128 involutory, 0 other, matching the Python <code>radical_census(8)</code>. d = 16: 32,768 and 32,768. The line under the grid compares with the Python census for d = 2, 4, 8."),
+ "canvas2d_square_law_detector.html": about_card(
+    "Two ways of asking whether a word is nilpotent, side by side. Squaring asks directly (w·w = 0?). The detector Δ(w) = w·𝟏 multiplies by the all-ones word 𝟏 instead (every bit set), the trace-Laplacian test of the ring-theory spine.",
+    "The upper card has one cell per word of d = 8. Row 1 is coloured by the class of w² (blue 0, orange e₀). Row 2 is coloured by whether Δ(w) is zero (blue) or not (orange). Row 3 is green where the two rows agree. Hover for the numbers. In the calculator, type a word in decimal, 0x… or 0b…, choose d, and read w², w·𝟏 and the verdict; the last button tests 20,000 random 32-bit words in your browser.",
+    "Δ(w) = 0 if and only if w² = 0: rows 1 and 2 are the same pattern and row 3 is solid green. The same agreement holds for every word at d = 2, 4, 8 (exhaustive) and for 20,000 random words at d = 32 (the Python test found no exception; the button runs a fresh sample).",
+    "That 𝟏 annihilates everything: it does not. e₀·𝟏 = 𝟏 ≠ 0, which the calculator prints for every word and dimension. An earlier lemma (the UDEO white paper) claimed 𝟏 was a global annihilator; it is retracted (2026-08-22). This page demonstrates the corrected statement, and it proves nothing for d = 32 beyond the sample.",
+    "d = 8, w = 0x6B: w² = 0x01 (involutory), Δ(w) = 0xFF (not zero), so 'iff' holds. The 20,000-word test at d = 32 reports class counts near 10,000 and 10,000 and 0 mismatches."),
+ "canvas2d_prime_words.html": about_card(
+    "A bridge from integers to the algebra. A prime p is written in decimal; its digits are read as digits of a bijective base-97 number over a 97-character QWERTY-row table (the Hyperwebster address); the address is cut to its low 32 bits, which is read as a word of T32/GF(2). Each row shows p, its address, the word as 32 bars, and whether the word is nilpotent.",
+    "Bars are bits of the word, high bit on the left, coloured by the class of the word (blue nilpotent, orange not) when the bit is 1 and pale when 0. ◆ marks the five Niemeier-gap primes (11, 17, 31, 47, 59). Click a row to outline its decimal digits in the character table below; the digit characters 1…9, 0 have indices 1…10. The summary gives the nilpotent count, the chance calculation at your baseline, and the control from the Python engine.",
+    "Counts: 11 of 16 sedenion basis primes and 12 of 15 Moonshine primes are nilpotent, and all five gap primes are. The honest comparison is the control: a random word is nilpotent 50% of the time (the default baseline here, not the 70% an earlier wiki page used), and five of five has probability 1 in 32 against random words but about 1 in 8 against random primes of the same size (0.127, from <code>matched_prime_control</code>). The excess lives in the two-digit range; from three digits up primes and composites are both 50%.",
+    "That nilpotency marks primes: over 2…100,000 the Hyperwebster words of primes are 49.1% nilpotent and composites 50.0%. The factoring use of the same mechanism failed its control (Ainulindale wiki 77). This page is a count and a control, not a signal. The 16 sedenion basis primes are every prime up to 53, so their own control is vacuous.",
+    "sedenion basis (16): 11 nilpotent = 68.8%. Moonshine (15): 12 = 80%. Gap primes: 5 of 5; prime-matched P(5 of 5) = 0.127. Addresses are exact (BigInt) and match the Python engine on 12 test values."),
+ "canvas2d_zero_divisor_pairs.html": about_card(
+    "Every ordered pair (a, b) of nonzero words of the algebra whose product is zero. Such a pair is a pair of zero divisors; in ordinary arithmetic there are none, and the Cayley–Dickson algebras acquire them at the sedenions. Row = a, column = b.",
+    "A cell is lit when a·b = 0 (a, b nonzero). Blue: both a·b and b·a are zero. Orange would mean a·b = 0 only, purple b·a = 0 only. Hover for the two products; tap a row to list the partners of that word. Switch d to 2, 4 or 8.",
+    "The count of zero-divisor pairs: 1 at d = 2, 25 at d = 4, 2,689 at d = 8 (the Python engine enumerates the same). Only blue ever appears: over GF(2) the algebra is commutative at these dimensions (checked exhaustively; the engine's test records it), so a·b = 0 exactly when b·a = 0 and the picture is symmetric. The visible lattice is the structure of the annihilators.",
+    "Anything about the 84 sedenion zero-divisors of the box-kite engine (those live in the real sedenions; this algebra is over GF(2) and its pairs are a different set). It also does not say how the pairs are organised beyond the picture (no box-kite or assessor structure is claimed here). At d = 16 the matrix would have 4.3 billion cells and is not drawn.",
+    "d = 2: 1 pair; d = 4: 25; d = 8: 2,689 of 65,025 candidate pairs. The line under the matrix compares with Python."),
+}
+
 
 # ---------------------------------------------------------------- 1. the 128 | 128 split
 page("canvas2d_radical_split.html", "The square law: every word is nilpotent or an involutory unit",
@@ -95,12 +131,12 @@ page("canvas2d_prime_words.html", "Primes as T32 words: the Hyperwebster address
      "Each prime p is written in decimal, read as a bijective base-97 number over a QWERTY-row character table (the Hyperwebster address), and cut to 32 bits: its T32 word. The word is nilpotent or it is not.",
      "canvas2d_prime_words",
      """<div class="card"><div class="row"><label>primes <select id="pre"></select></label><label>or first <input id="nn" type="number" min="1" max="300" value="25" style="width:5em"> primes</label><label>custom list <input id="cu" placeholder="2,3,5,7" size="22"></label>
-<label>baseline rate <input id="base" type="number" min="1" max="99" value="70" style="width:4.5em"> %</label></div>
+<label>baseline rate <input id="base" type="number" min="1" max="99" value="50" style="width:4.5em"> %</label></div>
 <canvas id="cv"></canvas><div class="info mono pre" id="sum"></div></div>
 <div class="card"><b>The Hyperwebster character table</b> (97 characters, QWERTY rows, index 0–96; digits of the selected prime are outlined; click a row above).<canvas id="tab"></canvas></div>""",
      """
 const D=T32.data,cv=document.getElementById('cv'),tab=document.getElementById('tab'),sum=document.getElementById('sum'),pre=document.getElementById('pre');let sel=-1,rows=[];
-Object.keys(D.primes).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;pre.appendChild(o);});
+D.primes['Niemeier-gap primes (5)']=D.niemeier_gap_primes;D.prime_report['Niemeier-gap primes (5)']=null;Object.keys(D.primes).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;pre.appendChild(o);});
 const oc=document.createElement('option');oc.value='_n';oc.textContent='first N primes (below)';pre.appendChild(oc);
 function sieve(n){const a=[];for(let i=2;a.length<n;i++){let p=true;for(let j=2;j*j<=i;j++)if(i%j===0){p=false;break;}if(p)a.push(i);}return a;}
 function list(){if(document.getElementById('cu').value.trim())return document.getElementById('cu').value.split(/[ ,]+/).map(Number).filter(x=>Number.isInteger(x)&&x>=0);
@@ -113,7 +149,8 @@ function draw(){const ps=list();rows=ps.map(p=>({p,a:T32.hwAddress(p),w:T32.hwTo
   g.fillStyle=r.nil?nil:inv;g.fillText(r.nil?'nilpotent':'not nilpotent',bx+32*cw+8,y+RH/2-2);});
  const n=rows.length,k=rows.filter(r=>r.nil).length,gp=rows.filter(r=>gap.has(r.p)),gk=gp.filter(r=>r.nil).length,b=+base.value/100;
  sum.textContent=k+' of '+n+' nilpotent = '+(n?(100*k/n).toFixed(1):0)+'%   (a bar is one bit of the word, high bit left; ◆ marks a Niemeier-gap prime: 11 17 31 47 59)'+
- (gp.length?'\\ngap primes in this list: '+gk+' of '+gp.length+' nilpotent. Chance of all '+gp.length+' at a '+(b*100).toFixed(0)+'% baseline: '+(Math.pow(b,gp.length)).toFixed(3)+' = 1 in '+(1/Math.pow(b,gp.length)).toFixed(1)+'.\\nThis is a count, not a signal: the factoring use of the same mechanism failed its control (Ainulindale wiki 77), and this one has not been given one (wiki 78 §3).':'');
+ (gp.length?'\\ngap primes in this list: '+gk+' of '+gp.length+' nilpotent. Chance of all '+gp.length+' at a baseline of '+(b*100).toFixed(0)+'%: '+(Math.pow(b,gp.length)).toFixed(3)+' = 1 in '+(1/Math.pow(b,gp.length)).toFixed(1)+'.\\nThis is a count, not a signal: the factoring use of the same mechanism failed its control (Ainulindale wiki 77), and this one now has its control (wiki 78 §6: prime-matched, unremarkable).':'');
+ const ct=D.control[pre.value];if(ct&&!document.getElementById('cu').value.trim())sum.textContent+='\\nPrime-matched control (Python, '+ct.n+' primes drawn from a pool of '+ct.pool_size+'): P(at least as many nilpotent) = '+ct.p_at_least.toFixed(3)+'; P(all nilpotent) = '+ct.p_all.toFixed(4)+(ct.pool_size===ct.n?' (vacuous: the list is its own pool)':'');
  const sp=D.prime_report[pre.value];if(sp&&!document.getElementById('cu').value.trim())sum.textContent+='\\nPython engine: '+sp.nilpotent_count+' of '+sp.total+' nilpotent'+(sp.nilpotent_count===k?' — matches.':' — DIFFERS.');
  drawTab();}
 function drawTab(){const cols=16,cw=60,ch=26,g=T32.setup(tab,cols*cw,Math.ceil(97/cols)*ch+6);const fg=T32.cvar('--fg'),mut=T32.cvar('--mut'),line=T32.cvar('--line'),acc=T32.cvar('--acc');g.font='12px ui-monospace,monospace';g.textBaseline='middle';
@@ -158,6 +195,7 @@ open(os.path.join(HERE, "index.html"), "w", encoding="utf-8").write(f"""<!doctyp
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>T32 Nilpotency Gallery</title>
 <link rel="icon" type="image/png" href="favicon.png"><link rel="stylesheet" href="t32.css"><!-- SPDX-License-Identifier: GPL-3.0-only. Generated by build_pages.py. --></head><body>{CT}
 <header><h1>T32 nilpotency: interactive visualizations</h1><div class="sub">ValaQuenta engine 3, <code>modules/t32_nilpotency</code>. Four pages on the engine's core functionality, each checked against the Python engine on load. No libraries, no network. A picture shows a structure; it is not evidence.</div></header>
-<main>{cards_html}<div class="card"><h2 style="font-size:17px;margin:0">Code flow chart</h2><p>The call graph of the engine, derived from the source: <a href="../../docs/flowcharts/t32_nilpotency_flow.svg">t32_nilpotency_flow.svg</a> (a provisional first-pass chart; the final one is drawn after the engine's updates, tests, visuals and docs are done).</p></div></main>
+<main>{cards_html}<div class="card"><h2 style="font-size:17px;margin:0">Code flow chart</h2><span class="tag">svg</span><p>The call graph of the engine, derived from the source by <code>ast</code> and drawn in the ISO 5807 symbol set: <a href="../../docs/flowcharts/t32_nilpotency_flow.svg">t32_nilpotency_flow.svg</a> · <a href="../../docs/flowcharts/t32_nilpotency_flow.png">PNG</a>. Entry (the registry class) on the left, each level calls the level to its right.</p><img alt="Code flow chart of t32_nilpotency" src="../../docs/flowcharts/t32_nilpotency_flow.svg" style="width:100%;border:1px solid var(--line);border-radius:6px;background:#fbfaf6"></div>
+<div class="card"><h2 style="font-size:17px;margin:0">Engineering white paper, section 3.3 (draft 2)</h2><span class="tag">markdown</span><p>The engine written up as a CS engineering paper: the mechanism as numbered subsections, each listing extracted from the source and executed cold, the control, the failure modes. <a href="https://github.com/michaelrendier/ValaQuenta/blob/main/paper/ValaQuenta_Engineering_Whitepaper_DRAFT.md">paper/ValaQuenta_Engineering_Whitepaper_DRAFT.md</a> (generated by <code>paper/make_paper.py</code>; <code>--check</code> fails if it drifts from the code).</p></div></main>
 <footer><p><b>Sources.</b></p><ul>{src}</ul><p>Launch: <code>gallery/t32_nilpotency/serve_gallery.sh</code> (loopback only). Page names say the kind of code inside.</p></footer></body></html>""")
 print("pages written")

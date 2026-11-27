@@ -1,112 +1,126 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="1934" viewBox="0 0 680 1934" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="1094" viewBox="0 0 1880 1094" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="680" height="1934" fill="#fbfaf6"/>
+<rect width="1880" height="1094" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">telperion: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 19 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1796" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">telperion.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1796" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M64.0,476.0 L36.0,476.0 L36.0,1232.0 L64.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,476.0 L44.0,476.0 L44.0,1652.0 L64.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,560.0 L36.0,560.0 L36.0,1568.0 L64.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,1568.0 L44.0,1568.0 L44.0,1736.0 L64.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,644.0 L36.0,644.0 L36.0,1652.0 L64.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,728.0 L44.0,728.0 L44.0,1316.0 L64.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,812.0 L36.0,812.0 L36.0,1400.0 L64.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,896.0 L32.0,896.0 L32.0,1652.0 L64.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L32.0,308.0 L32.0,476.0 L64.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L44.0,308.0 L44.0,560.0 L64.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L40.0,308.0 L40.0,644.0 L64.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L36.0,308.0 L36.0,1064.0 L64.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L44.0,308.0 L44.0,1148.0 L64.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,980.0 L32.0,980.0 L32.0,1484.0 L64.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M190.0,257.0 L190.0,275.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,224.0 L32.0,224.0 L32.0,392.0 L64.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M190.0,425.0 L190.0,443.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L44.0,392.0 L44.0,560.0 L64.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L40.0,392.0 L40.0,644.0 L64.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L44.0,392.0 L44.0,728.0 L64.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L32.0,392.0 L32.0,812.0 L64.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L36.0,392.0 L36.0,896.0 L64.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L44.0,392.0 L44.0,980.0 L64.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L36.0,392.0 L36.0,1064.0 L64.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L44.0,392.0 L44.0,1148.0 L64.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<rect x="64.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">run_all</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Run the swimming engine and score every</text>
-<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">prediction.</text>
-<rect x="64.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">predictions</text>
-<text x="190.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Pre-registered predictions of the</text>
-<text x="190.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Swimming Engine.</text>
-<rect x="64.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">the_swimming_engine</text>
-<text x="190.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Full report: the ZD cascade as the</text>
-<text x="190.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">universe's locomotion engin…</text>
-<rect x="64.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bao_tower_mapping</text>
-<text x="190.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Return the BAO shells as the physical</text>
-<text x="190.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">manifestation of the CD …</text>
-<rect x="64.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_geometry</text>
-<text x="190.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">Full bell geometry report.</text>
-<rect x="64.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">galactic_rotation_lock</text>
-<text x="190.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">The distance 2.648mm locks together: 1</text>
-<text x="190.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">universe lifetime = 60 …</text>
-<rect x="64.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">galaxy_types</text>
-<text x="190.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">The two fundamental galaxy types in the</text>
-<text x="190.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">ZD framework.</text>
-<rect x="64.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lindblad_modes</text>
-<text x="190.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Lindblad resonance conditions for m-armed</text>
-<text x="190.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">spirals, flat rotati…</text>
-<rect x="64.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">m87_axis</text>
-<text x="190.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">The M87* spin axis = e₀ extended into</text>
-<text x="190.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">physical space.</text>
-<rect x="64.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">resonance_coupling</text>
-<text x="190.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">The coupled oscillator: spiral (active</text>
-<text x="190.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">ZD) + elliptical/halo (…</text>
-<rect x="64.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1053.5" font-size="12.4" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stellar_halo_profile_comparison</text>
-<text x="190.0" y="1068.3" font-size="10.8" fill="#16202c" text-anchor="middle">Hernquist (stellar, ellipticals) vs NFW</text>
-<text x="190.0" y="1081.3" font-size="10.8" fill="#16202c" text-anchor="middle">(dark matter) profile …</text>
-<rect x="64.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">the_angle_in_lindblad</text>
-<text x="190.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Key result: THE ANGLE (π/8) in both</text>
-<text x="190.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">critical Lindblad conditio…</text>
-<rect x="64.0" y="1199.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BaoTowerMapping</text>
-<text x="190.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">BAO shells mapped onto the CD</text>
-<text x="190.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">tower.</text>
-<rect x="64.0" y="1283.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1312.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">GalaxyType</text>
-<text x="190.0" y="1327.7" font-size="10.8" fill="#16202c" text-anchor="middle">A galaxy class in the bell picture.</text>
-<rect x="64.0" y="1367.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1396.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">LindbladMode</text>
-<text x="190.0" y="1411.7" font-size="10.8" fill="#16202c" text-anchor="middle">A Lindblad resonance mode.</text>
-<rect x="64.0" y="1451.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ResonanceCoupling</text>
-<text x="190.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">The coupling between the spiral and</text>
-<text x="190.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">the halo.</text>
-<rect x="64.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_phases</text>
-<text x="190.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">Return the two phases of the jellyfish</text>
-<text x="190.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">bell (contracted=Witche…</text>
-<rect x="64.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">m87_compression</text>
-<text x="190.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">Gravitational time dilation factor at eps</text>
-<text x="190.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">metres above M87* ho…</text>
-<rect x="64.0" y="1703.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="1732.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BellPhase</text>
-<text x="190.0" y="1747.7" font-size="10.8" fill="#16202c" text-anchor="middle">One phase of the jellyfish bell.</text>
-<text x="40" y="1878" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram =</text>
-<text x="40" y="1893" font-size="11.5" fill="#16202c">input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
-<text x="40" y="1908" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 19 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1246" y="98" width="288" height="956" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1546" y="98" width="288" height="956" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 5</text>
+<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M1216.0,224.0 L1234.0,224.0 L1234.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,224.0 L1242.0,224.0 L1242.0,644.0 L1264.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,308.0 L1250.0,308.0 L1250.0,560.0 L1264.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1516.0,560.0 L1534.0,560.0 L1534.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,392.0 L1246.0,392.0 L1246.0,644.0 L1264.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,476.0 L1238.0,476.0 L1238.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,560.0 L1250.0,560.0 L1250.0,392.0 L1264.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,644.0 L1234.0,644.0 L1234.0,644.0 L1264.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L938.0,224.0 L938.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L934.0,224.0 L934.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L942.0,224.0 L942.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L938.0,224.0 L938.0,812.0 L964.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L934.0,224.0 L934.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,728.0 L1242.0,728.0 L1242.0,476.0 L1264.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L650.0,224.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L942.0,308.0 L942.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L950.0,308.0 L950.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L942.0,308.0 L942.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L938.0,308.0 L938.0,560.0 L964.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L938.0,308.0 L938.0,644.0 L964.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L934.0,308.0 L934.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,812.0 L964.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L942.0,308.0 L942.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">run_all</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Run the swimming engine and</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">score every prediction.</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">predictions</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Pre-registered predictions of</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">the Swimming Engine.</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">the_swimming_engine</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Full report: the ZD cascade</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">as the universe's locomotion engin…</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bao_tower_mapping</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Return the BAO shells as the</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">physical manifestation of the CD …</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_geometry</text>
+<text x="1090.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Full bell geometry report.</text>
+<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">galactic_rotation_lock</text>
+<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · The distance 2.648mm locks</text>
+<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">together: 1 universe lifetime = 60 …</text>
+<rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">galaxy_types</text>
+<text x="1090.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · The two fundamental galaxy</text>
+<text x="1090.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">types in the ZD framework.</text>
+<rect x="964.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lindblad_modes</text>
+<text x="1090.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Lindblad resonance conditions</text>
+<text x="1090.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">for m-armed spirals, flat rotati…</text>
+<rect x="964.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">m87_axis</text>
+<text x="1090.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · The M87* spin axis = e₀</text>
+<text x="1090.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">extended into physical space.</text>
+<rect x="964.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">resonance_coupling</text>
+<text x="1090.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · The coupled oscillator:</text>
+<text x="1090.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">spiral (active ZD) + elliptical/halo (…</text>
+<rect x="964.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="795.0" font-size="12.4" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stellar_halo_profile_comparison</text>
+<text x="1090.0" y="809.8" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Hernquist (stellar,</text>
+<text x="1090.0" y="822.8" font-size="10.8" fill="#16202c" text-anchor="middle">ellipticals) vs NFW (dark matter) profile</text>
+<text x="1090.0" y="835.8" font-size="10.8" fill="#16202c" text-anchor="middle">…</text>
+<rect x="964.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">the_angle_in_lindblad</text>
+<text x="1090.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Key result: THE ANGLE (π/8)</text>
+<text x="1090.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">in both critical Lindblad conditio…</text>
+<rect x="1264.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BaoTowerMapping</text>
+<text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · BAO shells mapped onto</text>
+<text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">the CD tower.</text>
+<rect x="1264.0" y="275.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">GalaxyType</text>
+<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · A galaxy class in the</text>
+<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">bell picture.</text>
+<rect x="1264.0" y="359.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">LindbladMode</text>
+<text x="1390.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · A Lindblad resonance</text>
+<text x="1390.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">mode.</text>
+<rect x="1264.0" y="443.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ResonanceCoupling</text>
+<text x="1390.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · The coupling between</text>
+<text x="1390.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">the spiral and the halo.</text>
+<rect x="1264.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_phases</text>
+<text x="1390.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Return the two phases of the</text>
+<text x="1390.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">jellyfish bell (contracted=Witche…</text>
+<rect x="1264.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">m87_compression</text>
+<text x="1390.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · Gravitational time dilation</text>
+<text x="1390.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">factor at eps metres above M87* ho…</text>
+<rect x="1564.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1690.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BellPhase</text>
+<text x="1690.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">telperion · One phase of the</text>
+<text x="1690.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">jellyfish bell.</text>
+<text x="40" y="1068" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

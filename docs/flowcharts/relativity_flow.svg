@@ -1,372 +1,362 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="3080" height="2438" viewBox="0 0 3080 2438" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="2522" viewBox="0 0 1580 2522" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="3080" height="2438" fill="#fbfaf6"/>
+<rect width="1580" height="2522" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">relativity: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 60 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="2300" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="2300" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">bridge.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="2300" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">checks.py</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="946" y="98" width="288" height="2300" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">crossings.py</text>
-<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="1246" y="98" width="288" height="2300" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">curved.py</text>
-<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="1546" y="98" width="288" height="2300" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="1846" y="98" width="288" height="2300" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="1990.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">metric.py</text>
-<text x="1990.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="2146" y="98" width="288" height="2300" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="2290.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">minkowski.py</text>
-<text x="2290.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="2446" y="98" width="288" height="2300" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="2590.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tangent.py</text>
-<text x="2590.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="2746" y="98" width="288" height="2300" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="2890.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="2890.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M664.0,308.0 L630.0,308.0 L630.0,896.0 L616.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M664.0,308.0 L630.0,308.0 L630.0,980.0 L616.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1246.0,308.0 L1246.0,896.0 L1264.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1250.0,308.0 L1250.0,980.0 L1264.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1238.0,308.0 L1238.0,1148.0 L1264.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1238.0,308.0 L1238.0,1232.0 L1264.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1246.0,308.0 L1246.0,1316.0 L1264.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1242.0,308.0 L1242.0,1400.0 L1264.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L1546.0,308.0 L1546.0,896.0 L1564.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2138.0,308.0 L2138.0,1652.0 L2164.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2142.0,308.0 L2142.0,896.0 L2164.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2146.0,308.0 L2146.0,980.0 L2164.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2150.0,308.0 L2150.0,1064.0 L2164.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2138.0,308.0 L2138.0,1148.0 L2164.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2146.0,308.0 L2146.0,1232.0 L2164.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2138.0,308.0 L2138.0,1316.0 L2164.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2150.0,308.0 L2150.0,1400.0 L2164.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2138.0,308.0 L2138.0,1484.0 L2164.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L2438.0,308.0 L2438.0,896.0 L2464.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L950.0,392.0 L950.0,980.0 L964.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L946.0,392.0 L946.0,1064.0 L964.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L1242.0,392.0 L1242.0,1064.0 L1264.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L1238.0,392.0 L1238.0,1484.0 L1264.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L1242.0,392.0 L1242.0,1568.0 L1264.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L1850.0,392.0 L1850.0,896.0 L1864.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,392.0 L1850.0,392.0 L1850.0,980.0 L1864.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1216.0,896.0 L1250.0,896.0 L1250.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M964.0,392.0 L936.0,392.0 L936.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1216.0,1064.0 L1250.0,1064.0 L1250.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1736.0 L1232.0,1736.0 L1232.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1064.0 L1240.0,1064.0 L1240.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1988.0 L1232.0,1988.0 L1232.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1232.0 L1232.0,1232.0 L1232.0,2072.0 L1264.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1236.0,1484.0 L1236.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1232.0,1484.0 L1232.0,1652.0 L1264.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1232.0,1484.0 L1232.0,1736.0 L1264.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1244.0,1484.0 L1244.0,1820.0 L1264.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1236.0,1484.0 L1236.0,1904.0 L1264.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1232.0,1484.0 L1232.0,1988.0 L1264.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1484.0 L1236.0,1484.0 L1236.0,2156.0 L1264.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1568.0 L1240.0,1568.0 L1240.0,2240.0 L1264.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1264.0,1568.0 L1240.0,1568.0 L1240.0,2156.0 L1264.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1564.0,896.0 L1544.0,896.0 L1544.0,1652.0 L1564.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M1864.0,980.0 L1542.0,980.0 L1542.0,2240.0 L1516.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,560.0 L2136.0,560.0 L2136.0,1820.0 L2164.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1232.0 L2136.0,1232.0 L2136.0,1652.0 L2164.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1232.0 L2132.0,1232.0 L2132.0,1736.0 L2164.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1400.0 L2144.0,1400.0 L2144.0,1904.0 L2164.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1400.0 L2144.0,1400.0 L2144.0,1988.0 L2164.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1484.0 L2144.0,1484.0 L2144.0,1652.0 L2164.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,1484.0 L2144.0,1484.0 L2144.0,1820.0 L2164.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2164.0,728.0 L2132.0,728.0 L2132.0,1820.0 L2164.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2464.0,896.0 L1542.0,896.0 L1542.0,2240.0 L1516.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2464.0,896.0 L1530.0,896.0 L1530.0,1988.0 L1516.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M2464.0,896.0 L1542.0,896.0 L1542.0,2156.0 L1516.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 60 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2384" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="2384" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="2384" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="2384" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1246" y="98" width="288" height="2384" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L638.0,1652.0 L638.0,1904.0 L664.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L638.0,1652.0 L638.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L642.0,1652.0 L642.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L638.0,1652.0 L638.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L634.0,1652.0 L634.0,1568.0 L664.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,1820.0 L664.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L642.0,1652.0 L642.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L634.0,1652.0 L634.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L934.0,1652.0 L934.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L634.0,1652.0 L634.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,1064.0 L664.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L642.0,1652.0 L642.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L638.0,1652.0 L638.0,1484.0 L664.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,1988.0 L664.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L642.0,1652.0 L642.0,2240.0 L664.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L642.0,1652.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L646.0,1736.0 L646.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L650.0,1736.0 L650.0,1736.0 L664.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L634.0,1736.0 L634.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L638.0,1736.0 L638.0,2156.0 L664.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L646.0,1736.0 L646.0,2324.0 L664.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L638.0,1736.0 L638.0,1400.0 L664.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1736.0 L650.0,1736.0 L650.0,1652.0 L664.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,392.0 L1246.0,392.0 L1246.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L638.0,728.0 L638.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1736.0 L1250.0,1736.0 L1250.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,392.0 L1238.0,392.0 L1238.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,896.0 L1234.0,896.0 L1234.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,896.0 L1242.0,896.0 L1242.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1568.0 L938.0,1568.0 L938.0,980.0 L964.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L1238.0,2156.0 L1238.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L946.0,2156.0 L946.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L938.0,2156.0 L938.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L942.0,2156.0 L942.0,560.0 L964.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L946.0,2156.0 L946.0,644.0 L964.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L942.0,2156.0 L942.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2156.0 L946.0,2156.0 L946.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2324.0 L1246.0,2324.0 L1246.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2324.0 L934.0,2324.0 L934.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1148.0 L950.0,1148.0 L950.0,812.0 L964.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1652.0 L1250.0,1652.0 L1250.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1148.0 L950.0,1148.0 L950.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1316.0 L950.0,1316.0 L950.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1316.0 L946.0,1316.0 L946.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1988.0 L938.0,1988.0 L938.0,1064.0 L964.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1988.0 L946.0,1988.0 L946.0,1232.0 L964.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2240.0 L950.0,2240.0 L950.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,2240.0 L934.0,2240.0 L934.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1484.0 L938.0,1484.0 L938.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,476.0 L1238.0,476.0 L1238.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,476.0 L942.0,476.0 L942.0,896.0 L964.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,476.0 L946.0,476.0 L946.0,1148.0 L964.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L338.0,224.0 L338.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1904.0 L664.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,1736.0 L664.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L650.0,224.0 L650.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L646.0,224.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L946.0,224.0 L946.0,980.0 L964.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L942.0,224.0 L942.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L942.0,224.0 L942.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L942.0,224.0 L942.0,1064.0 L964.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1250.0,224.0 L1250.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1238.0,224.0 L1238.0,896.0 L1264.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1242.0,224.0 L1242.0,980.0 L1264.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1238.0,224.0 L1238.0,1064.0 L1264.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1246.0,224.0 L1246.0,392.0 L1264.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1246.0,224.0 L1246.0,476.0 L1264.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1242.0,224.0 L1242.0,560.0 L1264.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1246.0,224.0 L1246.0,1148.0 L1264.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1246.0,224.0 L1246.0,1232.0 L1264.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1238.0,224.0 L1238.0,1316.0 L1264.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1246.0,224.0 L1246.0,644.0 L1264.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1238.0,224.0 L1238.0,728.0 L1264.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1250.0,224.0 L1250.0,1400.0 L1264.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1250.0,224.0 L1250.0,1484.0 L1264.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1238.0,224.0 L1238.0,1568.0 L1264.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1542.0,224.0 L1542.0,308.0 L1564.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1538.0,224.0 L1538.0,896.0 L1564.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1846.0,224.0 L1846.0,896.0 L1864.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L1846.0,224.0 L1846.0,980.0 L1864.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2146.0,224.0 L2146.0,1652.0 L2164.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2142.0,224.0 L2142.0,308.0 L2164.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2146.0,224.0 L2146.0,392.0 L2164.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2150.0,224.0 L2150.0,896.0 L2164.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2146.0,224.0 L2146.0,1820.0 L2164.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2138.0,224.0 L2138.0,476.0 L2164.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2142.0,224.0 L2142.0,1064.0 L2164.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2138.0,224.0 L2138.0,560.0 L2164.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2138.0,224.0 L2138.0,1232.0 L2164.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2146.0,224.0 L2146.0,1316.0 L2164.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2150.0,224.0 L2150.0,644.0 L2164.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2150.0,224.0 L2150.0,1904.0 L2164.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2142.0,224.0 L2142.0,1400.0 L2164.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2146.0,224.0 L2146.0,1484.0 L2164.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2150.0,224.0 L2150.0,728.0 L2164.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2142.0,224.0 L2142.0,812.0 L2164.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L2446.0,224.0 L2446.0,896.0 L2464.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,1568.0 L664.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,1820.0 L664.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,2072.0 L664.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,2156.0 L664.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,2324.0 L664.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,1400.0 L664.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L642.0,224.0 L642.0,1652.0 L664.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,728.0 L964.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1484.0 L664.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,1064.0 L964.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,1988.0 L664.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,2240.0 L664.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">RelativityModule</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Einstein's relativity as four</text>
-<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">spaces: Minkowski, curved, tange…</text>
+<text x="190.0" y="207.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">RelativityModule</text>
+<text x="190.0" y="222.7" font-size="10.8" fill="#16202c" text-anchor="middle">tools · Einstein's relativity as</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">four spaces: Minkowski, curved,</text>
+<text x="190.0" y="248.7" font-size="10.8" fill="#16202c" text-anchor="middle">tange…</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binary_pulsar_pdot</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Peters (1964): dPb/dt = -(192 pi</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">/ 5) (G^{5/3}/c^5) (Pb/2pi)^{…</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">boost_factorisation</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">A rational Doppler factor k = a/b has a</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">unique factorisation i…</text>
-<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify</text>
-<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Numeric checks, each against a stated</text>
-<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">tolerance.  All must pas…</text>
-<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify_symbolic</text>
-<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Symbolic checks (sympy; a few seconds to</text>
-<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">a minute).</text>
-<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flat_limit_scaling</text>
-<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild M -&gt; 0: the metric tends to</text>
-<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Minkowski and every …</text>
-<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hat_conversion_field</text>
-<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">The Witch's Hat at E = 0 (mu = lambda =</text>
-<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">1): v^2 = 2(E - V) = x…</text>
-<rect x="1264.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binary_pulsar_pdot</text>
-<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Peters (1964): dPb/dt = -(192 pi / 5)</text>
-<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">(G^{5/3}/c^5) (Pb/2pi)^{…</text>
-<rect x="1264.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hawking_temperature</text>
-<text x="1390.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">T = hbar c^3 / (8 pi G M k_B).</text>
-<rect x="1264.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">isco</text>
-<text x="1390.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Innermost stable circular orbit 6GM/c^2</text>
-<text x="1390.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">in metres.</text>
-<rect x="1264.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kerr_horizons</text>
-<text x="1390.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Geometric units: r+- = M +- sqrt(M^2 -</text>
-<text x="1390.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">a^2); ergosphere on the…</text>
-<rect x="1264.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="640.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">photon_sphere</text>
-<text x="1390.0" y="655.6" font-size="10.8" fill="#16202c" text-anchor="middle">Photon-sphere radius 3GM/c^2 in metres.</text>
-<rect x="1264.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schwarzschild_radius</text>
-<text x="1390.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild radius 2GM/c^2 in metres.</text>
-<rect x="1564.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">crossing_table</text>
-<text x="1690.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">For every operation named anywhere: where</text>
-<text x="1690.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">it is legal and wher…</text>
-<rect x="2164.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">em_boost</text>
-<text x="2290.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Fields in a frame moving with velocity</text>
-<text x="2290.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">beta (units of c): E'_p…</text>
-<rect x="2164.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">em_field_invariants</text>
-<text x="2290.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">E^2 - c^2 B^2 and E.B are Lorentz</text>
-<text x="2290.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">invariants of the electromag…</text>
-<rect x="2164.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">interval</text>
-<text x="2290.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">s^2 = -(c dt)^2 + |dx|^2 and its causal</text>
-<text x="2290.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">kind.</text>
-<rect x="2164.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">length_contraction</text>
-<text x="2290.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Length of a rod measured in a frame in</text>
-<text x="2290.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">which it moves at beta:…</text>
-<rect x="2164.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lorentz_derivation</text>
-<text x="2290.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Derive the boost's form from the</text>
-<text x="2290.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">invariance of the interval.  …</text>
-<rect x="2164.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">time_dilation</text>
-<text x="2290.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Coordinate time elapsed for proper time</text>
-<text x="2290.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">tau of a clock moving …</text>
-<rect x="2164.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trip_proper_time</text>
-<text x="2290.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Proper time for a journey of length</text>
-<text x="2290.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">distance at constant prope…</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">bridge · A rational Doppler factor k =</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">a/b has a unique factorisation i…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">crossing_table</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · For every operation named</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">anywhere: where it is legal and wher…</text>
+<rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">em_boost</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Fields in a frame moving with</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">velocity beta (units of c): E'_p…</text>
+<rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">em_field_invariants</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · E^2 - c^2 B^2 and E.B are</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">Lorentz invariants of the electromag…</text>
+<rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flat_limit_scaling</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">crossings · Schwarzschild M -&gt; 0: the</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">metric tends to Minkowski and every …</text>
+<rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hat_conversion_field</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">crossings · The Witch's Hat at E = 0 (mu</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">= lambda = 1): v^2 = 2(E - V) = x…</text>
+<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="808.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hawking_temperature</text>
+<text x="490.0" y="823.6" font-size="10.8" fill="#16202c" text-anchor="middle">curved · T = hbar c^3 / (8 pi G M k_B).</text>
 <rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">compose_prime_boosts</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Composing the boosts with Doppler factors</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">p and q is the boost…</text>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">interval</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · s^2 = -(c dt)^2 + |dx|^2 and</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">its causal kind.</text>
 <rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">prime_boost</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">A boost whose Doppler factor is the</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">integer p.  ESTABLISHED ar…</text>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">isco</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Innermost stable circular orbit</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">6GM/c^2 in metres.</text>
+<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kerr_horizons</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Geometric units: r+- = M +-</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">sqrt(M^2 - a^2); ergosphere on the…</text>
+<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">length_contraction</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Length of a rod measured in a</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">frame in which it moves at beta:…</text>
+<rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lorentz_derivation</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Derive the boost's form from</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">the invariance of the interval.  …</text>
+<rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">photon_sphere</text>
+<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Photon-sphere radius 3GM/c^2 in</text>
+<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">metres.</text>
+<rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schwarzschild_radius</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Schwarzschild radius 2GM/c^2 in</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">metres.</text>
+<rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">time_dilation</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Coordinate time elapsed for</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">proper time tau of a clock moving …</text>
+<rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trip_proper_time</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Proper time for a journey of</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">length distance at constant prope…</text>
+<rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">checks · Numeric checks, each against a</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">stated tolerance.  All must pas…</text>
+<rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify_symbolic</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">checks · Symbolic checks (sympy; a few</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">seconds to a minute).</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">clock_rate_offsets</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Satellite clock against a ground</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">clock at rest on the geoid, m…</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">compose_prime_boosts</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">bridge · Composing the boosts with</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Doppler factors p and q is the boost…</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conversion_field_curvature</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">crossings · Read a conversion field v(x)</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">(Ainulindale wiki 140: length = v…</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">equivalence_principle_report</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">tangent · Schwarzschild at radius r0</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">(geometric units).  1. Gamma(p) is …</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euclidean_horizon_period</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">crossings · Schwarzschild continued to</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">Euclidean time t = -i tau: near r =…</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fixed_target_threshold</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Minimum beam kinetic energy</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">(units of mc^2 of the same unit as…</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">four_momentum</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · (E/c, p) with E = sqrt((pc)^2</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">+ (mc^2)^2).</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geodesic_deviation_numeric</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Radial free fall from rest at r0</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">and at r0 + dr0 (geometric un…</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.5" font-size="12.4" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gravitational_wave_vacuum_check</text>
+<text x="790.0" y="900.3" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Linearised vacuum Einstein</text>
+<text x="790.0" y="913.3" font-size="10.8" fill="#16202c" text-anchor="middle">equations for a plane transverse-tr…</text>
+<rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">invariance_residual</text>
+<text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · max |L^T eta L - eta|: zero</text>
+<text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">iff L is a Lorentz transformation.</text>
+<rect x="664.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">invariant_mass</text>
+<text x="790.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · sqrt(-(sum p)^2 c^2): the</text>
+<text x="790.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">invariant mass of a system, the same…</text>
+<rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_check</text>
+<text x="790.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Is operation legal in space?  The</text>
+<text x="790.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">set-membership test of brack…</text>
+<rect x="664.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">light_deflection_numeric</text>
+<text x="790.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Null geodesic u'' + u = 3 M u^2</text>
+<text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">from infinity with impact para…</text>
+<rect x="664.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lightcone_dilation_check</text>
+<text x="790.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · In u = ct + x, v = ct - x a</text>
+<text x="790.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">boost along x acts as u -&gt; u/k, v …</text>
+<rect x="664.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">linearised_gauge_invariance</text>
+<text x="790.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">metric · Linearised Riemann R_{abcd} =</text>
+<text x="790.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">1/2 (d_b d_c h_{ad} + d_a d_d h_…</text>
+<rect x="664.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lorentz_algebra</text>
+<text x="790.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · The six generators J_i</text>
+<text x="790.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">(rotations) and K_i (boosts) of so(3,1)…</text>
+<rect x="664.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mercury_arcsec_per_century</text>
+<text x="790.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Mercury's relativistic</text>
+<text x="790.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">perihelion advance in arcseconds per ce…</text>
+<rect x="664.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">minisuperspace_friedmann</text>
+<text x="790.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">metric · Restrict the metric to ds^2 =</text>
+<text x="790.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">-N(t)^2 dt^2 + a(t)^2 dx^2 (a tw…</text>
+<rect x="664.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">newtonian_limit</text>
+<text x="790.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">crossings · Weak static field g_00 = -(1</text>
+<text x="790.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">+ 2 eps Phi), g_ij = (1 - 2 eps P…</text>
+<rect x="664.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">orbit_precession_numeric</text>
+<text x="790.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Integrate the Schwarzschild</text>
+<text x="790.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">orbit equation u'' + u = M/L^2 + 3…</text>
+<rect x="664.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">prime_boost</text>
+<text x="790.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">bridge · A boost whose Doppler factor is</text>
+<text x="790.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">the integer p.  ESTABLISHED ar…</text>
+<rect x="664.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rapidity_additivity</text>
+<text x="790.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Velocity addition IS addition</text>
+<text x="790.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">of rapidities: atanh(b1 (+) b2) …</text>
+<rect x="664.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solar_deflection_arcsec</text>
+<text x="790.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Grazing ray at the solar limb: 4</text>
+<text x="790.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">GM / (c^2 R).</text>
+<rect x="664.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solution_checks</text>
+<text x="790.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The field-equation checks:</text>
+<text x="790.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild is vacuum (Ricci = 0)…</text>
+<rect x="664.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2229.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">thomas_wigner</text>
+<text x="790.0" y="2245.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Two perpendicular boosts do</text>
+<text x="790.0" y="2258.2" font-size="10.8" fill="#16202c" text-anchor="middle">not compose to a boost: the produc…</text>
+<rect x="664.0" y="2291.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="2313.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tidal_component_schwarzschild</text>
+<text x="790.0" y="2329.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The static observer's radial</text>
+<text x="790.0" y="2342.2" font-size="10.8" fill="#16202c" text-anchor="middle">tidal component R_{t^ r^ t^ r^} =…</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">boost</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · The 4x4 boost for velocity</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">vector beta_vec (units of c) acting…</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">de_sitter_static</text>
+<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The static-patch de Sitter</text>
+<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">metric with curvature radius L and …</text>
+<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">divergence_of_einstein</text>
+<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The contracted Bianchi identity:</text>
+<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">nabla_m G^{mn} = d_m G^{mn} +…</text>
+<rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">doppler_factor</text>
+<text x="1090.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · k = sqrt((1+beta)/(1-beta)) =</text>
+<text x="1090.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">e^phi: the factor by which a boo…</text>
+<rect x="964.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flrw_curved</text>
+<text x="1090.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The FLRW metric with spatial</text>
+<text x="1090.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">curvature k and scale factor a(t)…</text>
+<rect x="964.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flrw_flat</text>
+<text x="1090.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The flat FLRW metric with scale</text>
+<text x="1090.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">factor a(t) and its coordinate…</text>
+<rect x="964.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gamma</text>
+<text x="1090.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Lorentz factor</text>
+<text x="1090.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">1/sqrt(1-beta^2).</text>
+<rect x="964.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_map</text>
+<text x="1090.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · {space: set of legal operations},</text>
+<text x="1090.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">in the form bracketing_firin…</text>
 <rect x="964.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">conversion_field_curvature</text>
-<text x="1090.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Read a conversion field v(x) (Ainulindale</text>
-<text x="1090.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">wiki 140: length = v…</text>
+<text x="1090.0" y="892.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann</text>
+<text x="1090.0" y="907.6" font-size="10.8" fill="#16202c" text-anchor="middle">curved · K = R_{abcd} R^{abcd}.</text>
 <rect x="964.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euclidean_horizon_period</text>
-<text x="1090.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild continued to Euclidean time</text>
-<text x="1090.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">t = -i tau: near r =…</text>
+<text x="1090.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">perihelion_advance_formula</text>
+<text x="1090.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Radians per orbit: 6 pi GM /</text>
+<text x="1090.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">(c^2 a (1 - e^2)).</text>
 <rect x="964.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">newtonian_limit</text>
-<text x="1090.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">Weak static field g_00 = -(1 + 2 eps</text>
-<text x="1090.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">Phi), g_ij = (1 - 2 eps P…</text>
-<rect x="1264.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">clock_rate_offsets</text>
-<text x="1390.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Satellite clock against a ground clock at</text>
-<text x="1390.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">rest on the geoid, m…</text>
-<rect x="1264.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">geodesic_deviation_numeric</text>
-<text x="1390.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Radial free fall from rest at r0 and at</text>
-<text x="1390.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">r0 + dr0 (geometric un…</text>
-<rect x="1264.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1053.5" font-size="12.4" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gravitational_wave_vacuum_check</text>
-<text x="1390.0" y="1068.3" font-size="10.8" fill="#16202c" text-anchor="middle">Linearised vacuum Einstein equations for</text>
-<text x="1390.0" y="1081.3" font-size="10.8" fill="#16202c" text-anchor="middle">a plane transverse-tr…</text>
-<rect x="1264.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">light_deflection_numeric</text>
-<text x="1390.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Null geodesic u'' + u = 3 M u^2 from</text>
-<text x="1390.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">infinity with impact para…</text>
-<rect x="1264.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mercury_arcsec_per_century</text>
-<text x="1390.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">Mercury's relativistic perihelion advance</text>
-<text x="1390.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">in arcseconds per ce…</text>
-<rect x="1264.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">orbit_precession_numeric</text>
-<text x="1390.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">Integrate the Schwarzschild orbit</text>
-<text x="1390.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">equation u'' + u = M/L^2 + 3…</text>
-<rect x="1264.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solar_deflection_arcsec</text>
-<text x="1390.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Grazing ray at the solar limb: 4 GM /</text>
-<text x="1390.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">(c^2 R).</text>
-<rect x="1264.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">solution_checks</text>
-<text x="1390.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">The field-equation checks: Schwarzschild</text>
-<text x="1390.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">is vacuum (Ricci = 0)…</text>
-<rect x="1264.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tidal_component_schwarzschild</text>
-<text x="1390.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">The static observer's radial tidal</text>
-<text x="1390.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">component R_{t^ r^ t^ r^} =…</text>
-<rect x="1564.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_check</text>
-<text x="1690.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Is operation legal in space?  The set-</text>
-<text x="1690.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">membership test of brack…</text>
-<rect x="1864.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1990.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">linearised_gauge_invariance</text>
-<text x="1990.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Linearised Riemann R_{abcd} = 1/2 (d_b</text>
-<text x="1990.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">d_c h_{ad} + d_a d_d h_…</text>
-<rect x="1864.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1990.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">minisuperspace_friedmann</text>
-<text x="1990.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Restrict the metric to ds^2 = -N(t)^2</text>
-<text x="1990.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">dt^2 + a(t)^2 dx^2 (a tw…</text>
-<rect x="2164.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fixed_target_threshold</text>
-<text x="2290.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Minimum beam kinetic energy (units of</text>
-<text x="2290.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">mc^2 of the same unit as…</text>
-<rect x="2164.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">four_momentum</text>
-<text x="2290.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">(E/c, p) with E = sqrt((pc)^2 +</text>
-<text x="2290.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">(mc^2)^2).</text>
-<rect x="2164.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">invariance_residual</text>
-<text x="2290.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">max |L^T eta L - eta|: zero iff L is a</text>
-<text x="2290.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">Lorentz transformation.</text>
-<rect x="2164.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">invariant_mass</text>
-<text x="2290.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">sqrt(-(sum p)^2 c^2): the invariant mass</text>
-<text x="2290.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">of a system, the same…</text>
-<rect x="2164.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lightcone_dilation_check</text>
-<text x="2290.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">In u = ct + x, v = ct - x a boost along x</text>
-<text x="2290.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">acts as u -&gt; u/k, v …</text>
-<rect x="2164.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lorentz_algebra</text>
-<text x="2290.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">The six generators J_i (rotations) and</text>
-<text x="2290.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">K_i (boosts) of so(3,1)…</text>
-<rect x="2164.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rapidity_additivity</text>
-<text x="2290.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">Velocity addition IS addition of</text>
-<text x="2290.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">rapidities: atanh(b1 (+) b2) …</text>
-<rect x="2164.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">thomas_wigner</text>
-<text x="2290.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">Two perpendicular boosts do not compose</text>
-<text x="2290.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">to a boost: the produc…</text>
-<rect x="2464.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2590.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">equivalence_principle_report</text>
-<text x="2590.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Schwarzschild at radius r0 (geometric</text>
-<text x="2590.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">units).  1. Gamma(p) is …</text>
-<rect x="1264.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">de_sitter_static</text>
-<text x="1390.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">The static-patch de Sitter metric with</text>
-<text x="1390.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">curvature radius L and …</text>
-<rect x="1264.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">divergence_of_einstein</text>
-<text x="1390.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">The contracted Bianchi identity: nabla_m</text>
-<text x="1390.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">G^{mn} = d_m G^{mn} +…</text>
-<rect x="1264.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flrw_curved</text>
-<text x="1390.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">The FLRW metric with spatial curvature k</text>
-<text x="1390.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">and scale factor a(t)…</text>
-<rect x="1264.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">flrw_flat</text>
-<text x="1390.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">The flat FLRW metric with scale factor</text>
-<text x="1390.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">a(t) and its coordinate…</text>
-<rect x="1264.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="1984.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kretschmann</text>
-<text x="1390.0" y="1999.7" font-size="10.8" fill="#16202c" text-anchor="middle">K = R_{abcd} R^{abcd}.</text>
-<rect x="1264.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">perihelion_advance_formula</text>
-<text x="1390.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">Radians per orbit: 6 pi GM / (c^2 a (1 -</text>
-<text x="1390.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">e^2)).</text>
-<rect x="1264.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schwarzschild</text>
-<text x="1390.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">The Schwarzschild metric (geometric</text>
-<text x="1390.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">units) and its coordinates…</text>
-<rect x="1564.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_map</text>
-<text x="1690.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">{space: set of legal operations}, in the</text>
-<text x="1690.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">form bracketing_firin…</text>
-<rect x="2164.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">boost</text>
-<text x="2290.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">The 4x4 boost for velocity vector</text>
-<text x="2290.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">beta_vec (units of c) acting…</text>
-<rect x="2164.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">doppler_factor</text>
-<text x="2290.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">k = sqrt((1+beta)/(1-beta)) = e^phi: the</text>
-<text x="2290.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">factor by which a boo…</text>
-<rect x="2164.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1816.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gamma</text>
-<text x="2290.0" y="1831.7" font-size="10.8" fill="#16202c" text-anchor="middle">Lorentz factor 1/sqrt(1-beta^2).</text>
-<rect x="2164.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rapidity</text>
-<text x="2290.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">phi = atanh(beta): the additive parameter</text>
-<text x="2290.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">of boosts along one …</text>
-<rect x="2164.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="2290.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">velocity_addition</text>
-<text x="2290.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">Collinear composition (b1 + b2)/(1 + b1</text>
-<text x="2290.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">b2).</text>
-<rect x="1264.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="2229.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">curvature</text>
-<text x="1390.0" y="2245.2" font-size="10.8" fill="#16202c" text-anchor="middle">Christoffel Gamma^a_{bc}, Riemann</text>
-<text x="1390.0" y="2258.2" font-size="10.8" fill="#16202c" text-anchor="middle">R^a_{bcd}, Ricci R_{bd}, sca…</text>
-<text x="40" y="2412" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="1090.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rapidity</text>
+<text x="1090.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · phi = atanh(beta): the</text>
+<text x="1090.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">additive parameter of boosts along one …</text>
+<rect x="964.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schwarzschild</text>
+<text x="1090.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · The Schwarzschild metric</text>
+<text x="1090.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">(geometric units) and its coordinates…</text>
+<rect x="964.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">velocity_addition</text>
+<text x="1090.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">minkowski · Collinear composition (b1 +</text>
+<text x="1090.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">b2)/(1 + b1 b2).</text>
+<rect x="1264.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">curvature</text>
+<text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">curved · Christoffel Gamma^a_{bc},</text>
+<text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">Riemann R^a_{bcd}, Ricci R_{bd}, sca…</text>
+<text x="40" y="2481" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the</text>
+<text x="40" y="2496" font-size="11.5" fill="#16202c">code</text>
 </svg>

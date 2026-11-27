@@ -1,54 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="1010" viewBox="0 0 680 1010" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="590" viewBox="0 0 1580 590" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="680" height="1010" fill="#fbfaf6"/>
+<rect width="1580" height="590" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">spherical: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 8 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="872" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="872" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M190.0,761.0 L190.0,779.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,308.0 L40.0,308.0 L40.0,644.0 L64.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M190.0,257.0 L190.0,275.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,224.0 L44.0,224.0 L44.0,392.0 L64.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,224.0 L36.0,224.0 L36.0,476.0 L64.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L40.0,392.0 L40.0,560.0 L64.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M64.0,392.0 L44.0,392.0 L44.0,644.0 L64.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M190.0,677.0 L190.0,695.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 8 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="452" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry points</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="452" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="452" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="452" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1246" y="98" width="288" height="452" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M1216.0,224.0 L1242.0,224.0 L1242.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,224.0 L642.0,224.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L646.0,308.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,308.0 L642.0,308.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L934.0,308.0 L934.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">full_chain_report</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">Complete standing-wave → RH derivation</text>
-<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">chain.</text>
-<rect x="64.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">courant_check</text>
-<text x="190.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Courant nodal domain theorem (Courant-</text>
-<text x="190.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">Hilbert 1953, §VI.6)::</text>
-<rect x="64.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">j_n_mode_identification</text>
-<text x="190.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Full chain: J_N period → l=1 mode → Y₁⁰ →</text>
-<text x="190.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">equatorial node → Re…</text>
-<rect x="64.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schumann_frequencies</text>
-<text x="190.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Schumann resonance eigenfrequencies for</text>
-<text x="190.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">an ideal spherical cav…</text>
-<rect x="64.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Y_10</text>
-<text x="190.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">Y₁⁰(θ,φ) = √(3/4π) · cos(θ).</text>
-<rect x="64.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">node_latitudes</text>
-<text x="190.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Locate θ values where Y_l^m(θ, 0) = 0 via</text>
-<text x="190.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">bisection on the uni…</text>
-<rect x="64.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Y_lm</text>
-<text x="190.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Real spherical harmonic Y_l^m(θ, φ).</text>
-<text x="190.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">Orthonormal on S².</text>
-<rect x="64.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">assoc_legendre</text>
-<text x="190.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">Associated Legendre polynomial P_l^m(x),</text>
-<text x="190.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">m ≥ 0, x ∈ [-1, 1].</text>
-<text x="40" y="954" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram =</text>
-<text x="40" y="969" font-size="11.5" fill="#16202c">input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
-<text x="40" y="984" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Complete standing-wave → RH</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">derivation chain.</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">courant_check</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Courant nodal domain theorem</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">(Courant-Hilbert 1953, §VI.6)::</text>
+<rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">j_n_mode_identification</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Full chain: J_N period → l=1 mode</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">→ Y₁⁰ → equatorial node → Re…</text>
+<rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="375.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">schumann_frequencies</text>
+<text x="490.0" y="390.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Schumann resonance</text>
+<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">eigenfrequencies for an ideal spherical</text>
+<text x="490.0" y="416.6" font-size="10.8" fill="#16202c" text-anchor="middle">cav…</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Y_10</text>
+<text x="790.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Y₁⁰(θ,φ) = √(3/4π) · cos(θ).</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">node_latitudes</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Locate θ values where Y_l^m(θ, 0)</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">= 0 via bisection on the uni…</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Y_lm</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Real spherical harmonic Y_l^m(θ,</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">φ). Orthonormal on S².</text>
+<rect x="1264.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">assoc_legendre</text>
+<text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Associated Legendre polynomial</text>
+<text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">P_l^m(x), m ≥ 0, x ∈ [-1, 1].</text>
+<text x="40" y="549" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the</text>
+<text x="40" y="564" font-size="11.5" fill="#16202c">code</text>
 </svg>

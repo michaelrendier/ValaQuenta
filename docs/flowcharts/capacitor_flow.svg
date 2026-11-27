@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="422" viewBox="0 0 680 422" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="422" viewBox="0 0 380 422" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="680" height="422" fill="#fbfaf6"/>
+<rect width="380" height="422" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">capacitor: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 1 public names · arrows = calls found in the code · tools/flowchart.py</text>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 1 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
 <rect x="46" y="98" width="288" height="284" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">capacitor.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="284" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Capacitor</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">RC semantic integrator.</text>
-<text x="40" y="366" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram =</text>
-<text x="40" y="381" font-size="11.5" fill="#16202c">input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
-<text x="40" y="396" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">capacitor · RC semantic integrator.</text>
+<text x="40" y="321" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end ·</text>
+<text x="40" y="336" font-size="11.5" fill="#16202c">rectangle = step · diamond = decision ·</text>
+<text x="40" y="351" font-size="11.5" fill="#16202c">parallelogram = input/output · double-barred</text>
+<text x="40" y="366" font-size="11.5" fill="#16202c">rectangle = sub-process (another lane, or the</text>
+<text x="40" y="381" font-size="11.5" fill="#16202c">other chart) · cylinder = stored data · every</text>
+<text x="40" y="396" font-size="11.5" fill="#16202c">title is a name in the code</text>
 </svg>

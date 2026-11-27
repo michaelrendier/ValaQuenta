@@ -1,79 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1346" viewBox="0 0 980 1346" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="926" viewBox="0 0 1280 926" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="1346" fill="#fbfaf6"/>
+<rect width="1280" height="926" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">bracketing_firing_order: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 12 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1208" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1208" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="1208" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,476.0 L344.0,476.0 L344.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,476.0 L340.0,476.0 L340.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,560.0 L336.0,560.0 L336.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,896.0 L332.0,896.0 L332.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,980.0 L336.0,980.0 L336.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,812.0 L340.0,812.0 L340.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 12 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M616.0,392.0 L938.0,392.0 L938.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,392.0 L642.0,392.0 L642.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,476.0 L638.0,476.0 L638.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,224.0 L938.0,224.0 L938.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L938.0,728.0 L938.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L942.0,224.0 L942.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L350.0,224.0 L350.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="190.0" y="213.5" font-size="12.3" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BracketingFiringOrderModule</text>
-<text x="190.0" y="228.3" font-size="10.8" fill="#16202c" text-anchor="middle">The arena (bracketing), the</text>
+<text x="190.0" y="228.3" font-size="10.8" fill="#16202c" text-anchor="middle">tools · The arena (bracketing), the</text>
 <text x="190.0" y="241.3" font-size="10.8" fill="#16202c" text-anchor="middle">sequencing (firing order), and the</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">all_firing_orders</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Every possible sequencing of</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">items -- exhaustive. Caller's</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">all_firing_orders</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Every possible sequencing of items --</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">exhaustive. Caller's</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">apply_firing_order</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Resequence written (1-indexed</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">positions) by firing_order --</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">apply_firing_order</text>
-<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Resequence written (1-indexed positions)</text>
-<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">by firing_order --</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bracketing_report</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The arena, characterized for a</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">specific set of things: the exa…</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bracketing_report</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">The arena, characterized for a specific</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">set of things: the exa…</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">collisions</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Every (earlier_index,</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">later_index, position) where the traject…</text>
 <rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">collisions</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">Every (earlier_index, later_index,</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">position) where the traject…</text>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">firing_order_count</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Exact count of ways to sequence n</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">distinct things: n! .</text>
 <rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">firing_order_count</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Exact count of ways to sequence n</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">distinct things: n! .</text>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_violation</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Is requested_operation a member</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">of the set of operations legal</text>
 <rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jurisdiction_violation</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">Is requested_operation a member of the</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">set of operations legal</text>
-<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">would_collide</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">The operator-level flip test: would</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">firing candidate_next land…</text>
-<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">set_partitions</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Every unordered partition of items into</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">non-empty groups --</text>
-<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">visited_positions</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">Which trajectory positions repeat, and at</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">which step indices.</text>
-<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_number</text>
-<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">Exact count of unordered partitions of n</text>
-<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">distinct things -- the</text>
-<rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trajectory</text>
-<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">x0, then the position after each</text>
-<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">successive step fires, in ord…</text>
-<text x="40" y="1305" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="1320" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">would_collide</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The operator-level flip test:</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">would firing candidate_next land…</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">set_partitions</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Every unordered partition of</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">items into non-empty groups --</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">visited_positions</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Which trajectory positions</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">repeat, and at which step indices.</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bell_number</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Exact count of unordered</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">partitions of n distinct things -- the</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trajectory</text>
+<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · x0, then the position after each</text>
+<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">successive step fires, in ord…</text>
+<text x="40" y="885" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="900" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
 </svg>

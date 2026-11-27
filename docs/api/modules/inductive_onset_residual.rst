@@ -1,5 +1,5 @@
 ``inductive_onset_residual``
-===========================
+============================
 
 Inductive onset residual
 

@@ -1,300 +1,311 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="4790" viewBox="0 0 980 4790" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="2858" viewBox="0 0 1880 2858" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="4790" fill="#fbfaf6"/>
+<rect width="1880" height="2858" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">archimedes_screw: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 53 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="4652" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="4652" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="4652" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,2912.0 L332.0,2912.0 L332.0,4004.0 L364.0,4004.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2912.0 L340.0,2912.0 L340.0,4256.0 L364.0,4256.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,476.0 L336.0,476.0 L336.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,728.0 L344.0,728.0 L344.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,812.0 L332.0,812.0 L332.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,812.0 L344.0,812.0 L344.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,896.0 L336.0,896.0 L336.0,3920.0 L364.0,3920.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,980.0 L336.0,980.0 L336.0,3752.0 L364.0,3752.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1064.0 L340.0,1064.0 L340.0,4088.0 L364.0,4088.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1148.0 L344.0,1148.0 L344.0,4592.0 L364.0,4592.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1232.0 L340.0,1232.0 L340.0,4004.0 L364.0,4004.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1232.0 L332.0,1232.0 L332.0,4256.0 L364.0,4256.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1316.0 L340.0,1316.0 L340.0,4508.0 L364.0,4508.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,3752.0 L340.0,3752.0 L340.0,4088.0 L364.0,4088.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1652.0 L332.0,1652.0 L332.0,3080.0 L364.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1652.0 L344.0,1652.0 L344.0,3248.0 L364.0,3248.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L336.0,1736.0 L336.0,2996.0 L364.0,2996.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L332.0,1736.0 L332.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L332.0,1736.0 L332.0,3668.0 L364.0,3668.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L332.0,1736.0 L332.0,4508.0 L364.0,4508.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L332.0,1736.0 L332.0,3836.0 L364.0,3836.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1736.0 L336.0,1736.0 L336.0,3920.0 L364.0,3920.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1988.0 L332.0,1988.0 L332.0,2828.0 L364.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1988.0 L344.0,1988.0 L344.0,2912.0 L364.0,2912.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,1988.0 L336.0,1988.0 L336.0,3332.0 L364.0,3332.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2072.0 L340.0,2072.0 L340.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2072.0 L336.0,2072.0 L336.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2072.0 L332.0,2072.0 L332.0,3584.0 L364.0,3584.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2156.0 L344.0,2156.0 L344.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2240.0 L336.0,2240.0 L336.0,3080.0 L364.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2240.0 L332.0,2240.0 L332.0,3248.0 L364.0,3248.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2324.0 L332.0,2324.0 L332.0,3080.0 L364.0,3080.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2324.0 L344.0,2324.0 L344.0,3248.0 L364.0,3248.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,4424.0 L344.0,4424.0 L344.0,4592.0 L364.0,4592.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2408.0 L332.0,2408.0 L332.0,3416.0 L364.0,3416.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,3920.0 L336.0,3920.0 L336.0,4172.0 L364.0,4172.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,4172.0 L332.0,4172.0 L332.0,4340.0 L364.0,4340.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2660.0 L344.0,2660.0 L344.0,3836.0 L364.0,3836.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,4256.0 L336.0,4256.0 L336.0,4424.0 L364.0,4424.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,4256.0 L340.0,4256.0 L340.0,4508.0 L364.0,4508.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,2744.0 L336.0,2744.0 L336.0,3920.0 L364.0,3920.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,2828.0 L364.0,2828.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,2912.0 L364.0,2912.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,4004.0 L364.0,4004.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,812.0 L364.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,3164.0 L364.0,3164.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,1232.0 L364.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,4340.0 L364.0,4340.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,3500.0 L364.0,3500.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 53 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="2720" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="2720" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="2720" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="2720" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1246" y="98" width="288" height="2720" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
+<text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="1546" y="98" width="288" height="2720" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 5</text>
+<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M916.0,308.0 L950.0,308.0 L950.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L934.0,308.0 L934.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,392.0 L650.0,392.0 L650.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,644.0 L646.0,644.0 L646.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L634.0,728.0 L634.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L634.0,728.0 L634.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,812.0 L650.0,812.0 L650.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,896.0 L634.0,896.0 L634.0,1148.0 L664.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,980.0 L942.0,980.0 L942.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1064.0 L1546.0,1064.0 L1546.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1148.0 L950.0,1148.0 L950.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1148.0 L934.0,1148.0 L934.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1232.0 L1234.0,1232.0 L1234.0,392.0 L1264.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1148.0 L946.0,1148.0 L946.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1568.0 L642.0,1568.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1568.0 L634.0,1568.0 L634.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L650.0,1652.0 L650.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L646.0,1652.0 L646.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L634.0,1652.0 L634.0,1064.0 L664.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L1242.0,1652.0 L1242.0,392.0 L1264.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L650.0,1652.0 L650.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1652.0 L634.0,1652.0 L634.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1904.0 L646.0,1904.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1904.0 L634.0,1904.0 L634.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1904.0 L650.0,1904.0 L650.0,728.0 L664.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1988.0 L646.0,1988.0 L646.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1988.0 L646.0,1988.0 L646.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,1988.0 L634.0,1988.0 L634.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2072.0 L642.0,2072.0 L642.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2156.0 L638.0,2156.0 L638.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2156.0 L650.0,2156.0 L650.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2240.0 L642.0,2240.0 L642.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2240.0 L634.0,2240.0 L634.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1516.0,308.0 L1538.0,308.0 L1538.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2324.0 L646.0,2324.0 L646.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,1316.0 L946.0,1316.0 L946.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,392.0 L1242.0,392.0 L1242.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2576.0 L642.0,2576.0 L642.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,476.0 L1234.0,476.0 L1234.0,308.0 L1264.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M1216.0,476.0 L1234.0,476.0 L1234.0,392.0 L1264.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,2660.0 L646.0,2660.0 L646.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L638.0,224.0 L638.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L934.0,224.0 L934.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1148.0 L364.0,1148.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L1246.0,224.0 L1246.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1316.0 L364.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L342.0,224.0 L342.0,1400.0 L364.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L634.0,224.0 L634.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,1484.0 L364.0,1484.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,3584.0 L364.0,3584.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1568.0 L364.0,1568.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L346.0,224.0 L346.0,1652.0 L364.0,1652.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1736.0 L364.0,1736.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,1820.0 L364.0,1820.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,1904.0 L364.0,1904.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,1988.0 L364.0,1988.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L338.0,224.0 L338.0,2072.0 L364.0,2072.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L342.0,224.0 L342.0,2156.0 L364.0,2156.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,2324.0 L364.0,2324.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,3836.0 L364.0,3836.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,3920.0 L364.0,3920.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,4172.0 L364.0,4172.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,4256.0 L364.0,4256.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,2744.0 L364.0,2744.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,2240.0 L364.0,2240.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L646.0,224.0 L646.0,1232.0 L664.0,1232.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L650.0,224.0 L650.0,1316.0 L664.0,1316.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L938.0,224.0 L938.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L938.0,224.0 L938.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,2660.0 L364.0,2660.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ArchimedesScrewModule</text>
-<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">The Archimedes Screw -- prime</text>
-<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">coordinate engine on the axis u …</text>
+<text x="190.0" y="207.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ArchimedesScrewModule</text>
+<text x="190.0" y="222.7" font-size="10.8" fill="#16202c" text-anchor="middle">tools · The Archimedes Screw --</text>
+<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">prime coordinate engine on the axis</text>
+<text x="190.0" y="248.7" font-size="10.8" fill="#16202c" text-anchor="middle">u …</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">amplitude_envelope</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Envelope of a tone from a zero</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">with real part sigma: 2 * x^sig…</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">amplitude_envelope</text>
-<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">Envelope of a tone from a zero with real</text>
-<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">part sigma: 2 * x^sig…</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">dickman_rho</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Dickman's function rho(u) -- THE</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">FALL-TIME DISTRIBUTION.</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">dickman_rho</text>
-<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">Dickman's function rho(u) -- THE FALL-</text>
-<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">TIME DISTRIBUTION.</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">discovery_height</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Where the first strike lands, on</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">the screw axis: ln(lpf n).</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">discovery_height</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Where the first strike lands, on the</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">screw axis: ln(lpf n).</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">domain_ladder</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE PROJECTION LEDGER, baseline</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">row.</text>
 <rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">domain_ladder</text>
-<text x="490.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">THE PROJECTION LEDGER, baseline row.</text>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">envelope_ratio</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · How far a hypothetical off-line</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">zero at sigma_off would drown …</text>
 <rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">envelope_ratio</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">How far a hypothetical off-line zero at</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">sigma_off would drown …</text>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fall_height</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · WHEN THE LEAF FALLS, on the screw</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">axis: u_fall = ln(gpf n).</text>
 <rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fall_height</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">WHEN THE LEAF FALLS, on the screw axis:</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">u_fall = ln(gpf n).</text>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fall_split</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The full birth record of a</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">semiprime, in screw coordinates.</text>
 <rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fall_split</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">The full birth record of a semiprime, in</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">screw coordinates.</text>
+<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gap_at_zero_scale</text>
+<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Mean zero spacing at the n-th</text>
+<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">zero: 2 pi / ln(gamma_n / 2 pi).</text>
 <rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gap_at_zero_scale</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">Mean zero spacing at the n-th zero: 2 pi</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">/ ln(gamma_n / 2 pi).</text>
+<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">harvest</text>
+<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE HARVEST: how many leaves fall</text>
+<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">at sieve step p.</text>
 <rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">harvest</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">THE HARVEST: how many leaves fall at</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">sieve step p.</text>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">harvest_curve</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The whole harvest in one sweep:</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">{p: number of leaves falling a…</text>
 <rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">harvest_curve</text>
-<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">The whole harvest in one sweep: {p:</text>
-<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">number of leaves falling a…</text>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">interference_profile</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Per-zero contribution at x:</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">[(gamma_k, tone_k)].</text>
 <rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">interference_profile</text>
-<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">Per-zero contribution at x: [(gamma_k,</text>
-<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">tone_k)].</text>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">l_io_decomposition</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The explicit formula, split into</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">its L_(I|O) slots.</text>
 <rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">l_io_decomposition</text>
-<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">The explicit formula, split into its</text>
-<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">L_(I|O) slots.</text>
+<text x="490.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mean_gap</text>
+<text x="490.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Mean spacing between consecutive</text>
+<text x="490.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">primes near x is ln x = u.</text>
 <rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mean_gap</text>
-<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">Mean spacing between consecutive primes</text>
-<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">near x is ln x = u.</text>
+<text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mertens</text>
+<text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · M(x) = SUM_{n &lt;= x} mu(n) -- THE</text>
+<text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">NEGATIVE-SPACE STAIRCASE.</text>
 <rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mertens</text>
-<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">M(x) = SUM_{n &lt;= x} mu(n) -- THE</text>
-<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">NEGATIVE-SPACE STAIRCASE.</text>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mertens_envelope</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The RH bound on the exclusion</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">side: x^(1/2 + eps).</text>
 <rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mertens_envelope</text>
-<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">The RH bound on the exclusion side:</text>
-<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">x^(1/2 + eps).</text>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">prime_count_log10</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · log10 of pi(10^digits), for</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">magnitudes far beyond float range.</text>
 <rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">prime_count_log10</text>
-<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">log10 of pi(10^digits), for magnitudes</text>
-<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">far beyond float range.</text>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ramified_primes</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Primes up to limit that ramify in</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">Q(sqrt N) -- i.e. that divid…</text>
 <rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ramified_primes</text>
-<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">Primes up to limit that ramify in Q(sqrt</text>
-<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">N) -- i.e. that divid…</text>
+<text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">screw_coordinates</text>
+<text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE SEARCH-TERM INPUT Cody asked</text>
+<text x="490.0" y="1670.2" font-size="10.8" fill="#16202c" text-anchor="middle">for.</text>
 <rect x="364.0" y="1703.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1732.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">screw_coordinates</text>
-<text x="490.0" y="1747.7" font-size="10.8" fill="#16202c" text-anchor="middle">THE SEARCH-TERM INPUT Cody asked for.</text>
+<text x="490.0" y="1725.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">screw_pitch</text>
+<text x="490.0" y="1741.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · One turn of the screw = one prime</text>
+<text x="490.0" y="1754.2" font-size="10.8" fill="#16202c" text-anchor="middle">= a lift of ln p.</text>
 <rect x="364.0" y="1787.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">screw_pitch</text>
-<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">One turn of the screw = one prime = a</text>
-<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">lift of ln p.</text>
+<text x="490.0" y="1809.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">semiprime_harvest</text>
+<text x="490.0" y="1825.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Leaves with exactly two parents</text>
+<text x="490.0" y="1838.2" font-size="10.8" fill="#16202c" text-anchor="middle">falling at step p:</text>
 <rect x="364.0" y="1871.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">semiprime_harvest</text>
-<text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">Leaves with exactly two parents falling</text>
-<text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">at step p:</text>
+<text x="490.0" y="1893.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shake_order</text>
+<text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE SHAKE ORDER: the sequence in</text>
+<text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">which leaves come off the tre…</text>
 <rect x="364.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">shake_order</text>
-<text x="490.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">THE SHAKE ORDER: the sequence in which</text>
-<text x="490.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">leaves come off the tre…</text>
+<text x="490.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sieve_extinction</text>
+<text x="490.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE THREE-MOTION RECORD for a</text>
+<text x="490.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">composite N.</text>
 <rect x="364.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sieve_extinction</text>
-<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">THE THREE-MOTION RECORD for a composite</text>
-<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">N.</text>
+<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">smoothness_u</text>
+<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The Dickman coordinate u = ln n /</text>
+<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">ln(gpf n).</text>
 <rect x="364.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">smoothness_u</text>
-<text x="490.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">The Dickman coordinate u = ln n / ln(gpf</text>
-<text x="490.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">n).</text>
+<text x="490.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">splitting_type</text>
+<text x="490.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Behaviour of the rational prime p</text>
+<text x="490.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">in Q(sqrt N):</text>
 <rect x="364.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2229.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">splitting_type</text>
-<text x="490.0" y="2245.2" font-size="10.8" fill="#16202c" text-anchor="middle">Behaviour of the rational prime p in</text>
-<text x="490.0" y="2258.2" font-size="10.8" fill="#16202c" text-anchor="middle">Q(sqrt N):</text>
+<text x="490.0" y="2229.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">splitting_vector</text>
+<text x="490.0" y="2245.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The chi_N readout over all primes</text>
+<text x="490.0" y="2258.2" font-size="10.8" fill="#16202c" text-anchor="middle">up to limit: [(p, chi_N(p))].</text>
 <rect x="364.0" y="2291.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2313.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">splitting_vector</text>
-<text x="490.0" y="2329.2" font-size="10.8" fill="#16202c" text-anchor="middle">The chi_N readout over all primes up to</text>
-<text x="490.0" y="2342.2" font-size="10.8" fill="#16202c" text-anchor="middle">limit: [(p, chi_N(p))].</text>
+<text x="490.0" y="2313.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">total_spaces</text>
+<text x="490.0" y="2329.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Total count of non-primes</text>
+<text x="490.0" y="2342.2" font-size="10.8" fill="#16202c" text-anchor="middle">('spaces between') up to x: x - pi(x…</text>
 <rect x="364.0" y="2375.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">total_spaces</text>
-<text x="490.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">Total count of non-primes ('spaces</text>
-<text x="490.0" y="2426.2" font-size="10.8" fill="#16202c" text-anchor="middle">between') up to x: x - pi(x…</text>
+<text x="490.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">u_from_digits</text>
+<text x="490.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Lower edge of the d-digit band on</text>
+<text x="490.0" y="2426.2" font-size="10.8" fill="#16202c" text-anchor="middle">the screw axis: u = (d-1) ln…</text>
 <rect x="364.0" y="2459.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2481.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">u_from_digits</text>
-<text x="490.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">Lower edge of the d-digit band on the</text>
-<text x="490.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">screw axis: u = (d-1) ln…</text>
+<text x="490.0" y="2481.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">von_mangoldt</text>
+<text x="490.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Lambda(n) = ln p if n = p^m for a</text>
+<text x="490.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">prime p, else 0.</text>
 <rect x="364.0" y="2543.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">von_mangoldt</text>
-<text x="490.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">Lambda(n) = ln p if n = p^m for a prime</text>
-<text x="490.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">p, else 0.</text>
+<text x="490.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_index</text>
+<text x="490.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Zeta index value at height gamma</text>
+<text x="490.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">-- the smooth count N(gamma).</text>
 <rect x="364.0" y="2627.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2649.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_index</text>
-<text x="490.0" y="2665.2" font-size="10.8" fill="#16202c" text-anchor="middle">Zeta index value at height gamma -- the</text>
-<text x="490.0" y="2678.2" font-size="10.8" fill="#16202c" text-anchor="middle">smooth count N(gamma).</text>
-<rect x="364.0" y="2711.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2733.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zeros_upto</text>
-<text x="490.0" y="2749.2" font-size="10.8" fill="#16202c" text-anchor="middle">First count zero heights, tabulated then</text>
-<text x="490.0" y="2762.2" font-size="10.8" fill="#16202c" text-anchor="middle">asymptotic.</text>
-<rect x="364.0" y="2795.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2817.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chebyshev_psi_exact</text>
-<text x="490.0" y="2833.2" font-size="10.8" fill="#16202c" text-anchor="middle">psi(x) = SUM_{p^m &lt;= x} ln p, computed</text>
-<text x="490.0" y="2846.2" font-size="10.8" fill="#16202c" text-anchor="middle">directly by sieve.</text>
-<rect x="364.0" y="2879.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2908.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chebyshev_psi_explicit</text>
-<text x="490.0" y="2923.7" font-size="10.8" fill="#16202c" text-anchor="middle">The explicit formula, evaluated:</text>
-<rect x="364.0" y="2963.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2985.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">digits_of</text>
-<text x="490.0" y="3001.2" font-size="10.8" fill="#16202c" text-anchor="middle">Number of decimal digits: d = floor(log10</text>
-<text x="490.0" y="3014.2" font-size="10.8" fill="#16202c" text-anchor="middle">x) + 1.</text>
-<rect x="364.0" y="3047.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3069.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fundamental_discriminant</text>
-<text x="490.0" y="3085.2" font-size="10.8" fill="#16202c" text-anchor="middle">Discriminant of Q(sqrt N) for squarefree</text>
-<text x="490.0" y="3098.2" font-size="10.8" fill="#16202c" text-anchor="middle">N:  D = N if N = 1 mo…</text>
-<rect x="364.0" y="3131.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3153.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gpf</text>
-<text x="490.0" y="3169.2" font-size="10.8" fill="#16202c" text-anchor="middle">Greatest prime factor -- THE LEAF FALL.</text>
-<text x="490.0" y="3182.2" font-size="10.8" fill="#16202c" text-anchor="middle">14 -&gt; 7.</text>
-<rect x="364.0" y="3215.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3237.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kronecker</text>
-<text x="490.0" y="3253.2" font-size="10.8" fill="#16202c" text-anchor="middle">Kronecker symbol (a/n). Cheap, exact,</text>
-<text x="490.0" y="3266.2" font-size="10.8" fill="#16202c" text-anchor="middle">integer arithmetic only.</text>
-<rect x="364.0" y="3299.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3321.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">leaf_drops</text>
-<text x="490.0" y="3337.2" font-size="10.8" fill="#16202c" text-anchor="middle">Every leaf-drop event up to x: (n, jump</text>
-<text x="490.0" y="3350.2" font-size="10.8" fill="#16202c" text-anchor="middle">height) at each prime …</text>
-<rect x="364.0" y="3383.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3405.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">li</text>
-<text x="490.0" y="3421.2" font-size="10.8" fill="#16202c" text-anchor="middle">Logarithmic integral Li(x) = Ei(ln x),</text>
-<text x="490.0" y="3434.2" font-size="10.8" fill="#16202c" text-anchor="middle">the principal estimate …</text>
-<rect x="364.0" y="3467.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3489.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lpf</text>
-<text x="490.0" y="3505.2" font-size="10.8" fill="#16202c" text-anchor="middle">Least prime factor -- the DISCOVERY</text>
-<text x="490.0" y="3518.2" font-size="10.8" fill="#16202c" text-anchor="middle">event. 14 -&gt; 2.</text>
-<rect x="364.0" y="3551.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3573.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mobius</text>
-<text x="490.0" y="3589.2" font-size="10.8" fill="#16202c" text-anchor="middle">THE NEGATIVE-SPACE OPERATOR. mu(n) = 1 if</text>
-<text x="490.0" y="3602.2" font-size="10.8" fill="#16202c" text-anchor="middle">n is a squarefree pr…</text>
-<rect x="364.0" y="3635.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3657.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">nth_prime_estimate</text>
-<text x="490.0" y="3673.2" font-size="10.8" fill="#16202c" text-anchor="middle">Inverse of pi: the n-th prime, by the</text>
-<text x="490.0" y="3686.2" font-size="10.8" fill="#16202c" text-anchor="middle">standard asymptotic</text>
-<rect x="364.0" y="3719.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3741.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">psi_smooth</text>
-<text x="490.0" y="3757.2" font-size="10.8" fill="#16202c" text-anchor="middle">Psi(x, y) = #{n &lt;= x : gpf(n) &lt;= y}  --</text>
-<text x="490.0" y="3770.2" font-size="10.8" fill="#16202c" text-anchor="middle">the count of y-smooth …</text>
-<rect x="364.0" y="3803.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3825.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_count_smooth</text>
-<text x="490.0" y="3841.2" font-size="10.8" fill="#16202c" text-anchor="middle">Riemann-von Mangoldt smooth zero count up</text>
-<text x="490.0" y="3854.2" font-size="10.8" fill="#16202c" text-anchor="middle">to height T:</text>
-<rect x="364.0" y="3887.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3909.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_height</text>
-<text x="490.0" y="3925.2" font-size="10.8" fill="#16202c" text-anchor="middle">Height of the n-th non-trivial zero:</text>
-<text x="490.0" y="3938.2" font-size="10.8" fill="#16202c" text-anchor="middle">tabulated where known</text>
-<rect x="364.0" y="3971.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="3993.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">clean_path_L</text>
-<text x="490.0" y="4009.2" font-size="10.8" fill="#16202c" text-anchor="middle">L -- THE CLEAN PATH. The main term of the</text>
-<text x="490.0" y="4022.2" font-size="10.8" fill="#16202c" text-anchor="middle">explicit formula: x.</text>
-<rect x="364.0" y="4055.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4077.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gpf_table</text>
-<text x="490.0" y="4093.2" font-size="10.8" fill="#16202c" text-anchor="middle">gpf for every n &lt;= X, by one ascending</text>
-<text x="490.0" y="4106.1" font-size="10.8" fill="#16202c" text-anchor="middle">sieve pass.</text>
-<rect x="364.0" y="4139.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4161.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_height_lambert</text>
-<text x="490.0" y="4177.1" font-size="10.8" fill="#16202c" text-anchor="middle">THE LAMBERT INVERSE. Height of the n-th</text>
-<text x="490.0" y="4190.1" font-size="10.8" fill="#16202c" text-anchor="middle">zero in closed form:</text>
-<rect x="364.0" y="4223.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4252.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_sum</text>
-<text x="490.0" y="4267.6" font-size="10.8" fill="#16202c" text-anchor="middle">THE PRIME-SIDE FERMAT POTENTIAL.</text>
-<rect x="364.0" y="4307.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4329.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_w</text>
-<text x="490.0" y="4345.1" font-size="10.8" fill="#16202c" text-anchor="middle">Principal branch W_0(x), W(x) * exp(W(x))</text>
-<text x="490.0" y="4358.1" font-size="10.8" fill="#16202c" text-anchor="middle">= x, defined for x &gt;…</text>
-<rect x="364.0" y="4391.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4413.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tone_sum</text>
-<text x="490.0" y="4429.1" font-size="10.8" fill="#16202c" text-anchor="middle">Sum of tones over the supplied zeros --</text>
-<text x="490.0" y="4442.1" font-size="10.8" fill="#16202c" text-anchor="middle">the oscillating term.</text>
-<rect x="364.0" y="4475.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4497.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">u_axis</text>
-<text x="490.0" y="4513.1" font-size="10.8" fill="#16202c" text-anchor="middle">u = ln x. The screw's lift coordinate;</text>
-<text x="490.0" y="4526.1" font-size="10.8" fill="#16202c" text-anchor="middle">every other term maps h…</text>
-<rect x="364.0" y="4559.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="4581.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tone</text>
-<text x="490.0" y="4597.1" font-size="10.8" fill="#16202c" text-anchor="middle">A single tone of the explicit formula, at</text>
-<text x="490.0" y="4610.1" font-size="10.8" fill="#16202c" text-anchor="middle">screw height u, from…</text>
-<text x="40" y="4749" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="4764" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="2649.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zeros_upto</text>
+<text x="490.0" y="2665.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · First count zero heights,</text>
+<text x="490.0" y="2678.2" font-size="10.8" fill="#16202c" text-anchor="middle">tabulated then asymptotic.</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chebyshev_psi_exact</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · psi(x) = SUM_{p^m &lt;= x} ln p,</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">computed directly by sieve.</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chebyshev_psi_explicit</text>
+<text x="790.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The explicit formula, evaluated:</text>
+<rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">digits_of</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Number of decimal digits: d =</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">floor(log10 x) + 1.</text>
+<rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fundamental_discriminant</text>
+<text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Discriminant of Q(sqrt N) for</text>
+<text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">squarefree N:  D = N if N = 1 mo…</text>
+<rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gpf</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Greatest prime factor -- THE LEAF</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">FALL. 14 -&gt; 7.</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kronecker</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Kronecker symbol (a/n). Cheap,</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">exact, integer arithmetic only.</text>
+<rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">leaf_drops</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Every leaf-drop event up to x:</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">(n, jump height) at each prime …</text>
+<rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">li</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Logarithmic integral Li(x) =</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">Ei(ln x), the principal estimate …</text>
+<rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lpf</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Least prime factor -- the</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">DISCOVERY event. 14 -&gt; 2.</text>
+<rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mobius</text>
+<text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE NEGATIVE-SPACE OPERATOR.</text>
+<text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">mu(n) = 1 if n is a squarefree pr…</text>
+<rect x="664.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">nth_prime_estimate</text>
+<text x="790.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Inverse of pi: the n-th prime, by</text>
+<text x="790.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">the standard asymptotic</text>
+<rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">psi_smooth</text>
+<text x="790.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Psi(x, y) = #{n &lt;= x : gpf(n) &lt;=</text>
+<text x="790.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">y}  -- the count of y-smooth …</text>
+<rect x="664.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1221.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_count_smooth</text>
+<text x="790.0" y="1237.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Riemann-von Mangoldt smooth zero</text>
+<text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">count up to height T:</text>
+<rect x="664.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_height</text>
+<text x="790.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Height of the n-th non-trivial</text>
+<text x="790.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">zero: tabulated where known</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">clean_path_L</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · L -- THE CLEAN PATH. The main</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">term of the explicit formula: x.</text>
+<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">gpf_table</text>
+<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · gpf for every n &lt;= X, by one</text>
+<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">ascending sieve pass.</text>
+<rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_height_lambert</text>
+<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE LAMBERT INVERSE. Height of</text>
+<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">the n-th zero in closed form:</text>
+<rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zero_sum</text>
+<text x="1090.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · THE PRIME-SIDE FERMAT POTENTIAL.</text>
+<rect x="1264.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lambert_w</text>
+<text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Principal branch W_0(x), W(x) *</text>
+<text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">exp(W(x)) = x, defined for x &gt;…</text>
+<rect x="1264.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tone_sum</text>
+<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Sum of tones over the supplied</text>
+<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">zeros -- the oscillating term.</text>
+<rect x="1264.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1390.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">u_axis</text>
+<text x="1390.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · u = ln x. The screw's lift</text>
+<text x="1390.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">coordinate; every other term maps h…</text>
+<rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1690.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">tone</text>
+<text x="1690.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · A single tone of the explicit</text>
+<text x="1690.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">formula, at screw height u, from…</text>
+<text x="40" y="2832" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

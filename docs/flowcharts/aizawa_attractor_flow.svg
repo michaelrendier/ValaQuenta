@@ -1,70 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1262" viewBox="0 0 980 1262" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="926" viewBox="0 0 1280 926" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="980" height="1262" fill="#fbfaf6"/>
+<rect width="1280" height="926" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">aizawa_attractor: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 11 public names · arrows = calls found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="1124" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">tools.py</text>
-<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="346" y="98" width="288" height="1124" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">maths.py</text>
-<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">public names of this file</text>
-<rect x="646" y="98" width="288" height="1124" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
-<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M364.0,392.0 L340.0,392.0 L340.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,644.0 L332.0,644.0 L332.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M364.0,728.0 L344.0,728.0 L344.0,980.0 L364.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,845.0 L490.0,863.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M490.0,1013.0 L490.0,1031.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 11 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
+<text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
+<rect x="346" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
+<text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="646" y="98" width="288" height="788" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
+<text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<rect x="946" y="98" width="288" height="788" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
+<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
+<path d="M616.0,308.0 L938.0,308.0 L938.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,560.0 L638.0,560.0 L638.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,644.0 L642.0,644.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,728.0 L646.0,728.0 L646.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M916.0,308.0 L946.0,308.0 L946.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,224.0 L364.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,308.0 L364.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L346.0,224.0 L346.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L350.0,224.0 L350.0,392.0 L364.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L334.0,224.0 L334.0,476.0 L364.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L338.0,224.0 L338.0,560.0 L364.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L342.0,224.0 L342.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L338.0,224.0 L338.0,728.0 L364.0,728.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M316.0,224.0 L350.0,224.0 L350.0,1064.0 L364.0,1064.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M316.0,224.0 L946.0,224.0 L946.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <rect x="64.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">AizawaAttractorModule</text>
-<text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">THE AIZAWA ATTRACTOR ENGINE.</text>
+<text x="190.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">AizawaAttractorModule</text>
+<text x="190.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">tools · THE AIZAWA ATTRACTOR</text>
+<text x="190.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">ENGINE.</text>
+<rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="490.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bounds</text>
+<text x="490.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Axis-aligned extent of an orbit.</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bounds</text>
-<text x="490.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">Axis-aligned extent of an orbit.</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cylindrical_rates</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · (dr/dt, dphi/dt) computed from</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">the vector field, and the close…</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cylindrical_rates</text>
-<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">(dr/dt, dphi/dt) computed from the vector</text>
-<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">field, and the close…</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fixed_points</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Fixed points sit on the axis (x =</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">y = 0 because (z-b)^2 + d^2 …</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fixed_points</text>
-<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">Fixed points sit on the axis (x = y = 0</text>
-<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">because (z-b)^2 + d^2 …</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">js_layout</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The animation page's buffer</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">layout: positions[3i] = x, [3i+1] …</text>
 <rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">js_layout</text>
-<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">The animation page's buffer layout:</text>
-<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">positions[3i] = x, [3i+1] …</text>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lyapunov_max</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Largest Lyapunov exponent by</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">Benettin's two-orbit method.</text>
 <rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">lyapunov_max</text>
-<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">Largest Lyapunov exponent by Benettin's</text>
-<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">two-orbit method.</text>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">orbit</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The orbit after the burn-in:</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">array (points, 3) of (x, y, z).</text>
 <rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">orbit</text>
-<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">The orbit after the burn-in: array</text>
-<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">(points, 3) of (x, y, z).</text>
-<rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">reduced_orbit</text>
-<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">The 2-D (r, z) orbit of the axisymmetric</text>
-<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">system (f = 0).</text>
-<rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">axisymmetric_rhs</text>
-<text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">With f = 0 the dynamics reduce to (r, z):</text>
-<text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">dr/dt = (z - b) r, …</text>
-<rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rk4_step</text>
-<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">One classical Runge-Kutta step (local</text>
-<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">error O(h^5)).</text>
-<rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1060.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rhs</text>
-<text x="490.0" y="1075.7" font-size="10.8" fill="#16202c" text-anchor="middle">The vector field at s = (x, y, z).</text>
-<text x="40" y="1221" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
-<text x="40" y="1236" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">reduced_orbit</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The 2-D (r, z) orbit of the</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">axisymmetric system (f = 0).</text>
+<rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">axisymmetric_rhs</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · With f = 0 the dynamics reduce to</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">(r, z):  dr/dt = (z - b) r, …</text>
+<rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rk4_step</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · One classical Runge-Kutta step</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">(local error O(h^5)).</text>
+<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rhs</text>
+<text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The vector field at s = (x, y,</text>
+<text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">z).</text>
+<text x="40" y="885" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="900" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
 </svg>

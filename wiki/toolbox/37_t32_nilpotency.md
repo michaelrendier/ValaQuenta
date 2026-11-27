@@ -6,7 +6,7 @@
 
 ---
 
-`t32_nilpotency` · v0.110 · confidence floor **ESTABLISHED**
+`t32_nilpotency` · v0.120 · confidence floor **ESTABLISHED**
 
 Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency test. Meant to be imported by other engines (hypergon_constructibility, fermat_monster_engine.py) rather than each maintaining its own copy.
 
@@ -26,6 +26,13 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 ```python
 >>> module.run('radical_census', {})['result']
 {'dim': 8, 'words': 256, 'nilpotent': 128, 'involutory': 128, 'other': 0, 'detector_agrees': True, 'one_is_annihilator': False}
+```
+
+**`nilpotency_control`** — Nilpotent rate of primes against composites, and the prime-matched chance control
+  params: `lo`, `hi`, `subset`  ·  confidence: `ESTABLISHED`  ·  signature: `(lo=10, hi=100, subset=None)`
+```python
+>>> module.run('nilpotency_control', {})['result']
+{'window': {'lo': 10, 'hi': 100, 'primes': {'nilpotent': 17, 'n': 21, 'rate': 0.8095238095238095}, 'composites': {'nilpotent': 29, 'n': 69, 'rate': 0.42028985507246375},  ...
 ```
 
 

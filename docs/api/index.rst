@@ -16,14 +16,16 @@ Each module has ``maths.py`` (the mathematics as plain functions) and, when regi
    :maxdepth: 1
 
    modules/add_scale_sign
+   modules/addition_matrix
+   modules/aizawa_attractor
    modules/angular_rank
    modules/archimedes_screw
-   modules/inductive_onset_residual
    modules/basile
-   modules/addition_matrix
+   modules/bell_curve
    modules/berry_keating
    modules/box_kite
    modules/bracketing_firing_order
+   modules/circle_atlas
    modules/clay_millennium
    modules/constants
    modules/derivation_chain
@@ -32,14 +34,19 @@ Each module has ``maths.py`` (the mathematics as plain functions) and, when regi
    modules/h_rb_hat
    modules/hypergon_constructibility
    modules/hyperwebster
+   modules/inductive_onset_residual
    modules/inversion
    modules/jwst
    modules/l_io_photon_path
    modules/lagrangian
+   modules/lagrangian_sm
    modules/noether
    modules/noether_information
    modules/oblique_gear
+   modules/pi_derivations
    modules/prime_gauge_field
+   modules/ptycho_weak_lensing
+   modules/relativity
    modules/scale
    modules/sigma_cavitation
    modules/sigma_expansion
@@ -58,3 +65,5 @@ Each module has ``maths.py`` (the mathematics as plain functions) and, when regi
    modules/turing_diagonal
    modules/udeo_crypto
    modules/units
+   modules/witches_hat
+   modules/zeta_uns_path

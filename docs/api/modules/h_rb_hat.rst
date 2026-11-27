@@ -24,3 +24,19 @@ tools
    :undoc-members:
    :show-inheritance:
 
+oblique_sigma_rb
+----------------
+
+.. automodule:: ValaQuenta.modules.h_rb_hat.oblique_sigma_rb
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sigma16
+-------
+
+.. automodule:: ValaQuenta.modules.h_rb_hat.sigma16
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
