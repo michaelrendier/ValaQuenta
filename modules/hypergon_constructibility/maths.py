@@ -42,10 +42,17 @@ and factoring-relevant nilpotency bias are not the same thing, and
 neither survives as "the" mechanism that explains factoring via this
 route -- that remains genuinely open.
 
-Version: 0.100
+PART 4 -- The Niemeier gap (the elementary theorem under the "N-shape" claim): an ADE root system of rank 24 whose components all share one
+Coxeter number h has h mod 16 outside {1, 11, 15}. PROVEN here in four lines (an odd h forces every component to be A_(h-1), so h-1 divides 24)
+and CHECKED by enumerating every such root system (there are exactly 23, Niemeier 1973). The 15 Moonshine primes then cover all eight odd residues
+mod 16, the three gap residues included; a control (moonshine_fill_control) says how surprising that is. What is NOT a theorem here: the reading
+of a residue k as "the Fermat forbidden zone at sedenion index e_k" and "generalized Fermat IS the 71 holomorphic VOAs" -- those are OURS/THEORETICAL.
+
+Version: 0.200
 """
 
 import math
+from itertools import combinations
 from typing import Dict, List, Any, Tuple
 
 PRIMES16 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
@@ -198,10 +205,19 @@ def verify_nilpotent_split_conjecture(seed: int = 20260711) -> Dict[str, Any]:
     # If not, the "signal" is a magnitude artifact, not a factoring signal.
     survives_control = far['q_pct'] > control['q_pct'] and far['p_pct'] > control['p_pct']
 
+    # Where the close-pair "elevation" comes from: the 110 close pairs are built from a handful of primes, each counted many times
+    # (a prime p appears with each of the next 19 primes), so the pairs are not independent draws.  Count the primes once.
+    distinct = sorted({x for pq in close_pairs for x in pq})
+    d_nil = sum(is_nilpotent(hw_to_t32(x)) or hw_to_t32(x) == 0 for x in distinct)
+    d_n = len(distinct)
+    tail = sum(math.comb(d_n, k) for k in range(d_nil, d_n + 1)) / 2 ** d_n   # exact P(at least d_nil of d_n | each nilpotent with probability 1/2)
+
     return {
         'close_prime_pairs': close,
         'far_apart_prime_pairs': far,
         'random_pair_control': control,
+        'close_pairs_distinct_primes': {'n': d_n, 'smallest': distinct[0], 'largest': distinct[-1], 'nilpotent': d_nil,
+                                        'rate_pct': 100 * d_nil / d_n, 'p_at_least_by_chance': tail},
         'survives_magnitude_matched_control': survives_control,
         'verdict': (
             'REAL SIGNAL' if survives_control else
@@ -251,3 +267,150 @@ def prime_definition_report() -> Dict[str, Any]:
         ),
         'hypergon_sweep': hypergon,
     }
+
+
+# ── Part 4: the Niemeier gap and the Moonshine fill ─────────────────────────
+#
+# The "N-shape" claim of FourthAgePapers/FermatMonster rests on one finite fact about the number 24 and the number 16.  It is a theorem,
+# and short enough to prove and to check exhaustively; the reading of it as a statement about Fermat's equation is a separate matter.
+
+MOONSHINE_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 41, 47, 59, 71]   # the primes dividing |Monster| (Ogg 1975)
+
+
+def _components(h: int, max_rank: int) -> List[Tuple[str, int]]:
+    """The A/D/E irreducible root systems of rank at most ``max_rank`` whose Coxeter number is ``h``: A_n (h = n+1), D_n (n ≥ 4, h = 2n-2), E6/E7/E8 (h = 12, 18, 30)."""
+    out = []
+    if 1 <= h - 1 <= max_rank:
+        out.append((f'A{h - 1}', h - 1))
+    if h % 2 == 0 and 4 <= (h + 2) // 2 <= max_rank:
+        out.append((f'D{(h + 2) // 2}', (h + 2) // 2))
+    for name, rank, coxeter in (('E6', 6, 12), ('E7', 7, 18), ('E8', 8, 30)):
+        if coxeter == h and rank <= max_rank:
+            out.append((name, rank))
+    return out
+
+
+def niemeier_root_systems(rank: int = 24) -> List[Dict[str, Any]]:
+    """
+    Every ADE root system of the given rank whose components all have the same Coxeter number: the root systems of the Niemeier lattices.
+
+    Generated from the defining condition, not typed in: for each Coxeter number h, choose how many components of each type with that h
+    sum to the rank (a coin-change enumeration). For rank 24 the answer is exactly 23 root systems (Niemeier 1973); the Leech lattice has none.
+
+    :param rank: total rank (24 for the Niemeier lattices)
+    :returns: list of dicts ``h``, ``label`` (for example ``'A5^4 D4'``) and ``multiplicities`` ({component: count})
+    """
+    found = []
+    for h in range(2, 2 * rank):
+        comps = _components(h, rank)
+
+        def split(i, left, chosen):
+            if left == 0:
+                if chosen:
+                    found.append((h, dict(chosen)))
+                return
+            if i == len(comps):
+                return
+            name, r = comps[i]
+            for k in range(left // r, -1, -1):
+                split(i + 1, left - k * r, chosen + ([(name, k)] if k else []))
+
+        split(0, rank, [])
+    return [{'h': h, 'multiplicities': m,
+             'label': ' '.join(f'{n}^{k}' if k > 1 else n for n, k in m.items())} for h, m in sorted(found, key=lambda t: (t[0], str(t[1])))]
+
+
+def niemeier_gap_theorem(rank: int = 24, modulus: int = 16) -> Dict[str, Any]:
+    """
+    The Niemeier gap: the residues of the Coxeter number h modulo 16 that no Niemeier root system reaches.
+
+    THEOREM (elementary). If an ADE root system of rank 24 has all components with one Coxeter number h, then h mod 16 is not 1, 11 or 15.
+    Proof. D_n and E_n have even Coxeter number (2n-2; 12, 18, 30), so an odd h forces every component to be A_(h-1), and k copies of A_(h-1) have
+    rank k(h-1) = 24, so (h-1) divides 24. The divisors of 24 are 1, 2, 3, 4, 6, 8, 12, 24, so the odd h are 3, 5, 7, 9, 13, 25, which are
+    3, 5, 7, 9, 13, 9 modulo 16. An even h is never congruent to an odd residue. Hence the odd residues 1, 11, 15 are never reached. ∎
+    The function checks the proof's steps and, independently, the enumeration of all 23 root systems.
+
+    :param rank: total rank (24)
+    :param modulus: the modulus (16, the number of sedenion basis elements)
+    :returns: dict with the 23 ``root_systems``, ``h_values``, ``residues_reached``, ``gap``, the ``proof`` steps as data, and ``theorem_holds``
+    """
+    systems = niemeier_root_systems(rank)
+    hs = sorted({s['h'] for s in systems})
+    reached = sorted({h % modulus for h in hs})
+    gap = sorted(set(range(modulus)) - set(reached))
+    odd_h = sorted(h for h in hs if h % 2)
+    divisors = [d for d in range(1, rank + 1) if rank % d == 0]
+    odd_from_divisors = sorted(d + 1 for d in divisors if (d + 1) % 2)
+    only_a = all(len(s['multiplicities']) == 1 and next(iter(s['multiplicities'])).startswith('A') for s in systems if s['h'] % 2)
+    # beyond the largest possible Coxeter number nothing exists: a component of rank <= 24 has h <= 46
+    max_h = max(2 * rank - 2, rank + 1, 30)      # D_rank, A_rank, E8: the largest Coxeter number of any component of rank <= 24
+    return {'root_systems': systems, 'count': len(systems), 'h_values': hs, 'max_h_possible': max_h,
+            'residues_reached': reached, 'gap': gap,
+            'proof': {'odd_h_means_every_component_is_A': only_a, 'divisors_of_rank': divisors,
+                      'odd_h_from_divisors': odd_from_divisors, 'odd_h_found': odd_h,
+                      'odd_h_residues': sorted({h % modulus for h in odd_h})},
+            'theorem_holds': (len(systems) == 23 and odd_h == odd_from_divisors and only_a and gap == [1, 11, 15])}
+
+
+def moonshine_gap_fill(modulus: int = 16) -> Dict[str, Any]:
+    """
+    Which Moonshine primes land in which residue class modulo 16, and whether they cover the Niemeier gap.
+
+    :param modulus: the modulus (16)
+    :returns: dict ``by_residue`` ({residue: [primes]}), ``gap`` (from niemeier_gap_theorem), ``gap_filled`` (the gap residues the primes reach),
+        ``odd_residues_all_covered``
+    """
+    by = {}
+    for p in MOONSHINE_PRIMES:
+        by.setdefault(p % modulus, []).append(p)
+    gap = niemeier_gap_theorem(modulus=modulus)['gap']
+    odd = [r for r in range(modulus) if r % 2]
+    return {'by_residue': dict(sorted(by.items())), 'gap': gap, 'gap_filled': [r for r in gap if r in by],
+            'odd_residues_all_covered': all(r in by for r in odd)}
+
+
+def moonshine_fill_control(modulus: int = 16) -> Dict[str, Any]:
+    """
+    How surprising is the Moonshine fill? Exact count, no sampling.
+
+    The 14 odd Moonshine primes are 14 of the 19 odd primes up to 71. Enumerate every 14-subset of those 19 and count how many reach the gap residues,
+    and how many reach all eight odd residues. If most subsets do too, the fill is what a prime set that size does anyway and says little.
+
+    :param modulus: the modulus (16)
+    :returns: dict ``subsets``, ``cover_gap``, ``cover_all_odd``, and the two fractions ``p_cover_gap``, ``p_cover_all_odd``
+    """
+    pool = [p for p in range(3, 72) if all(p % q for q in range(2, int(p ** 0.5) + 1))]
+    gap = set(niemeier_gap_theorem(modulus=modulus)['gap'])
+    odd = {r for r in range(modulus) if r % 2}
+    n = gap_n = odd_n = 0
+    for sub in combinations(pool, len([p for p in MOONSHINE_PRIMES if p % 2])):
+        res = {p % modulus for p in sub}
+        n += 1
+        gap_n += gap <= res
+        odd_n += odd <= res
+    return {'pool_size': len(pool), 'subsets': n, 'cover_gap': gap_n, 'cover_all_odd': odd_n,
+            'p_cover_gap': gap_n / n, 'p_cover_all_odd': odd_n / n}
+
+
+def totient_constructibility_check(limit: int = 70000) -> Dict[str, Any]:
+    """
+    Gauss-Wantzel the other way, with no list of Fermat primes: a regular n-gon is constructible iff Euler's phi(n) is a power of 2.
+
+    Compares that test with is_constructible for every n up to ``limit``. A disagreement would mean a Fermat prime missing from KNOWN_FERMAT_PRIMES;
+    agreement shows the list of five is complete up to ``limit`` (the next candidate, 2^32 + 1 = 641 × 6700417, is composite).
+
+    :param limit: largest n tested
+    :returns: dict ``limit``, ``constructible`` (how many n ≥ 3), ``mismatches`` (list, expected empty)
+    """
+    phi = list(range(limit + 1))
+    for i in range(2, limit + 1):
+        if phi[i] == i:
+            for j in range(i, limit + 1, i):
+                phi[j] -= phi[j] // i
+    bad, count = [], 0
+    for n in range(3, limit + 1):
+        by_phi = is_power_of_two(phi[n])
+        count += by_phi
+        if by_phi != is_constructible(n):
+            bad.append(n)
+    return {'limit': limit, 'constructible': count, 'mismatches': bad}

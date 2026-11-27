@@ -5,8 +5,8 @@
   "type": "engine",
   "name": "hypergon_constructibility",
   "display": "Hypergon Constructibility — Gauss-Wantzel + Factorization Test",
-  "version": "0.100",
-  "summary": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (REAL result: 4/16 constructible, 12/16 holes).",
+  "version": "0.200",
+  "summary": "All 16 sedenion hyper-N-gons tested for Gauss-Wantzel constructibility (4/16 constructible, 12/16 holes); the Niemeier gap {1, 11, 15} of Coxeter numbers mod 16 proved and enumerated; the factoring test explained.",
   "confidence_floor": "OPEN",
   "license": "GPL-3.0-only",
   "entry": {
