@@ -31,3 +31,7 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - Gamma / n-ball pointer added to the wiki pages of the ValaQuenta engines that use Gamma: `circle_atlas`, `prime_gauge_field`, `add_scale_sign`, `pi_derivations`, `singularity_null`, `tier7_cosmos`, `relativity`, `zeta_uns_path` (and the full section in `bell_curve`).
 - Galleries: `gallery/hypergon_constructibility/` in the central index (`ContextPlease/claude/galleries/build_index.py`) and in `.github/workflows/docs.yml`.
 - Not yet touched, by design: the `RiemannHypothesisProof` TODO "N-shape peak vs n* = 5.257" (now answered as a computed value; the algebraic connection is still to be derived), `FourthAgePapers/NBallTransformer` (no text to update; notebooks only), `GenerationalLineage` and the other repositories that call Gamma in their own code (the pointer is the engine in ValaQuenta).
+
+## 2026-11-27 · `box_kite` 0.3 (the labelled group)
+- `Ainulindale`: wiki 84 (the group sentence), ledger X-68.
+- Checked, no change needed: every other mention of PSL(2,7) in the active repositories uses it as Aut(Fano) = GL(3,2), which remains correct (it is the quotient). Not edited, by design: the verbatim engine snapshots under `FourthAgePapers/ScalarContextPropagation/repo_appendix/box_kite_engine/` and `VAPMIP/FourthAgePaper/...` (appendix copies), and Tuning-the-Engine 25 (never edited); they still carry the earlier sentence.

@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "box_kite",
   "display": "The Box-Kite Debugger (ZD Geometry)",
-  "version": "0.2",
+  "version": "0.3",
   "summary": "Makes the sedenion zero-divisor geometry visible and exactly enumerable.",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",

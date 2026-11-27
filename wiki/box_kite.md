@@ -6,7 +6,7 @@
 **Class:** `BoxKiteModule`
 **Notebook:** `notebooks/engines/15_box_kite.ipynb`
 **Ainulindale wiki:** `Ainulindale/wiki/84_the_box_kite_debugger.md`
-**Claim:** The sedenion zero-divisor geometry is exactly enumerable, and its object is **PSL(2,7)** (order 168, Aut(Fano) = GL(3,2)) — **not G₂**. Seven box-kites, each an **octahedron**, six Assessors apiece, 42 in all. Chart-level dispersion relation {0,4,4,4,6,6}. The associator is the curvature.
+**Claim:** The sedenion zero-divisor geometry is exactly enumerable, and its object is finite: the labelled octonion group of order 1344 = 8 · 168 whose quotient is **PSL(2,7)** (order 168, Aut(Fano) = GL(3,2)) — **not G₂**. Seven box-kites, each an **octahedron**, six Assessors apiece, 42 in all. Chart-level dispersion relation {0,4,4,4,6,6}. The associator is the curvature.
 
 
 **Reference:** every equation with its parameters — [toolbox](toolbox/28_box_kite.md) · API — [box_kite](https://michaelrendier.github.io/ValaQuenta/api/modules/box_kite.html). This page is the record; it holds no API.
@@ -19,7 +19,13 @@ Moreno (1997): the sedenions' norm-one zero divisors are homeomorphic to **G₂*
 
 > *"Moreno discovered a homomorphism — a 'blow-up' of an exact correspondence — and the 'blow-ups' in the history of number theory have all entailed the loss of something."*
 
-G₂ is the **continuous shadow**; it forgets which Fano line is which. The exact object is finite: **PSL(2,7) is the finite subgroup of G₂ that preserves the labelling.**
+G₂ is the **continuous shadow**; it forgets which Fano line is which. The exact object is finite: **the finite group that preserves the labelling has order 1344 = 8 · 168, with PSL(2,7) as its quotient** (below).
+
+## The group, enumerated (version 0.3, 2026-11-27)  `:CALCULATED`
+
+The earlier text said PSL(2,7) *is* the finite subgroup of G₂ that preserves the labelling, and `psl27_order()` returned the number 168. Both are now computed. `labelled_automorphisms()` tries every permutation of the seven imaginary units (5040), keeps those that preserve the 7 Fano lines (**168** = |PSL(2,7)|, counted by `psl27_order()`), tries all 2⁷ sign patterns on each, and keeps the signed permutations that preserve the octonion table: **1344 = 8 · 168**. The sign changes that fix the permutation are a group of order 8; the quotient is PSL(2,7). All 1344 extend to the sedenions (acting alike on e_i and e_(i+8)) and every extension was checked against the sedenion table. The group acts on the 168 unit zero-divisor points (±e_a ± e_(b+8))/√2 **transitively**, with a point stabiliser of order **8**.
+
+So the exact finite object is of order 1344, and 168 = |PSL(2,7)| is not a regular action of PSL(2,7) on the points: it is 1344 / 8. Whether the extension 2³·PSL(2,7) is split is not computed here (the literature says it is not, inside G₂). Test: `tests/test_box_kite.py`; the multiplication is also checked against an independent recursive Cayley–Dickson product; the associator census is 1848 of 4096, and 168 of the 210 ordered triples of distinct imaginary octonion units are non-associative.
 
 ## Everything derives — nothing is asserted
 

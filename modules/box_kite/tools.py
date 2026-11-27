@@ -7,10 +7,11 @@ Implements the EquationModule registry contract.
 Provides: formulary, run(), viewer_data(), shell_commands()
 
 The zero-divisor geometry, made visible and exactly enumerable. The
-object is PSL(2,7) (order 168, Aut(Fano)), NOT G2 -- Moreno's G2 is the
+object is finite: the labelled octonion group of order 1344 = 8 x 168, with
+PSL(2,7) (order 168, Aut(Fano)) as its quotient, NOT G2 -- Moreno's G2 is the
 continuous blow-up that forgets the labelling. See maths.py.
 
-Version: 0.2
+Version: 0.3
 """
 
 from typing import Dict, List, Any
@@ -24,7 +25,7 @@ from .maths import (
     assessors_adjacent, box_kite_graph, chart_spectrum,
     glued_graph, glued_spectrum, associator_field,
     eigenvalues_symmetric,
-    pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts,
+    pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts, labelled_automorphisms,
     e0_is_outside, SEDENION_DIM,
     index_chart_membership, skeleton_overlap, fixed_point_gluing,
     norm, fixed_point_weight, energy_split, diagonal_amplitudes,
@@ -46,7 +47,7 @@ class BoxKiteModule(EquationModule):
 
     @property
     def version(self):
-        return "0.2"
+        return "0.3"
 
     @property
     def description(self):
@@ -264,6 +265,18 @@ class BoxKiteModule(EquationModule):
                 compute=lambda: skeleton_counts(),
                 display_options=['text'],
                 process='15 points, 35 lines, 15 Fano planes (NOT 32)',
+            ),
+            Equation(
+                name='labelled_automorphisms',
+                display='The labelled octonion group: order 1344 = 8 x 168, transitive on the 168 unit zero-divisor points',
+                latex=r'|\{\text{signed permutations of } e_1..e_7 \text{ preserving the table}\}| = 1344 = 2^3\cdot|PSL(2,7)|',
+                radian_form='enumerate Fano-line-preserving permutations (168) and sign patterns (128), check on the sedenions, count orbits on the 168 points',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=[],
+                compute=lambda: labelled_automorphisms(),
+                display_options=['text'],
+                process='Enumerated and checked against the sedenion table; one orbit of size 168, point stabiliser of order 8.',
             ),
             Equation(
                 name='e0_is_outside',

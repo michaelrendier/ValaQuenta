@@ -40,6 +40,8 @@ def main(name, nn):
             out.append(f"```python\n>>> module.run('{e.name}', {{}})['result']\n{short(r)}\n```\n")
         except FileNotFoundError as ex:
             out.append(f"```python\n>>> module.run('{e.name}', {{}})['result']      # needs a local file: {ex}\n```\n")
+        except TypeError as ex:      # an equation whose arguments have no defaults: say so, do not fake a call
+            out.append(f"```python\n>>> module.run('{e.name}', {{...}})['result']      # needs its arguments: {ex}\n```\n")
     sc = mod.shell_commands()
     if sc:
         out.append("### Shell commands\n\n" + " · ".join(f"`{k}`" for k in sc) + "\n")

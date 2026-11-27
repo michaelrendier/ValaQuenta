@@ -22,8 +22,12 @@ exact object is finite:
 
     PSL(2,7),  order 168,  = Aut(Fano plane) = GL(3,2)
 
-PSL(2,7) is the finite subgroup of G2 that PRESERVES THE LABELLING. All
-of this module's structure is exactly enumerable -- no sampling, no
+PSL(2,7) is the quotient of the group that PRESERVES THE LABELLING: the
+signed permutations of the seven imaginary units that preserve the octonion
+table form a group of order 1344 = 8 x 168 (labelled_automorphisms(),
+enumerated), with the sign changes as its kernel of order 8 and PSL(2,7) as
+the quotient; it acts transitively on the 168 unit zero-divisor points with
+stabiliser of order 8. All of this module's structure is exactly enumerable -- no sampling, no
 fitting, no approximation. That exactness is the whole point of a
 debugger.
 
@@ -102,7 +106,7 @@ assemble the naive 42-vertex union, which is a first model of the global
 medium and NOT a derivation of one -- the transition maps are not yet
 written. Stated here rather than implied.
 
-Version: 0.2
+Version: 0.3
 """
 
 import math
@@ -408,7 +412,7 @@ def verify_counts() -> Dict[str, object]:
         'diagonals_expect_84':   n_diag == 84,
         'unit_points':           n_points,
         'points_expect_168':     n_points == 168,
-        'psl27_order':           168,
+        'psl27_order':           psl27_order(),
         'ordered_zd_pairs':      len(zdp),
         'pairs_expect_336':      len(zdp) == 336,
         'kills_per_diagonal':    len(zdp) // n_diag if n_diag else 0,
@@ -648,9 +652,92 @@ def fano_planes() -> List[Tuple[int, ...]]:
     return out
 
 
+def _octonion_lines() -> List[Tuple[int, int, int]]:
+    """The 7 lines of the Fano plane of the octonions: the triples {i, j, k} with e_i e_j = ±e_k, read from the Cayley-Dickson table."""
+    tab, _ = cd_multiplication_table(3)
+    return sorted({tuple(sorted((i, j, tab[(i, j)][1]))) for i in range(1, 8) for j in range(i + 1, 8)})
+
+
+def labelled_automorphisms() -> Dict[str, object]:
+    """
+    The group of the LABELLED octonions, enumerated, and its action on the 168 unit zero-divisor points.
+
+    A labelled automorphism is a signed permutation of the seven imaginary units that preserves the octonion multiplication table. Every
+    permutation of the 7 points that preserves the 7 Fano lines is tried (5040 permutations; 168 survive: |PSL(2,7)| = |GL(3,2)|), then every one
+    of the 2^7 sign patterns (128 each). The surviving signed permutations are extended to the sedenions by acting alike on e_i and e_(i+8), every
+    one is checked against the sedenion table, and the group is let act on the 168 unit points (±e_a ± e_(b+8))/sqrt 2.
+
+    Result (``:CALCULATED``): 1344 = 8 · 168 signed automorphisms. The group of order 8 is the sign changes that fix the permutation; the quotient is
+    the Fano automorphism group PSL(2,7). So the exact finite object that preserves the labelling is of order 1344, with PSL(2,7) as its
+    quotient, and it acts TRANSITIVELY on the 168 unit zero-divisor points, with a point stabiliser of order 8. 168 = |PSL(2,7)| is therefore not
+    a regular action of PSL(2,7) on the points; it is 1344 / 8.
+
+    :returns: dict ``fano_permutations``, ``signed_automorphisms``, ``sign_kernel``, ``quotient_order``, ``extend_to_sedenions`` (all checked),
+        ``unit_points``, ``orbits_on_unit_points`` (sizes), ``point_stabiliser``
+    """
+    from itertools import permutations, product
+    tab, _ = cd_multiplication_table(3)
+    lines = _octonion_lines()
+    perms = []
+    for p in permutations(range(1, 8)):
+        f = {0: 0, **{i + 1: p[i] for i in range(7)}}
+        if all(tuple(sorted((f[a], f[b], f[c]))) in lines for a, b, c in lines):
+            perms.append(f)
+    auts = []
+    for f in perms:
+        for signs in product((1, -1), repeat=7):
+            g = {0: 1, **{i + 1: signs[i] for i in range(7)}}
+            ok = True
+            for i in range(1, 8):
+                for j in range(1, 8):
+                    s, k = tab[(i, j)]
+                    s2, k2 = tab[(f[i], f[j])]
+                    if f[k] != k2 or g[i] * g[j] * s2 != s * g[k]:
+                        ok = False
+                        break
+                if not ok:
+                    break
+            if ok:
+                auts.append((f, g))
+    stab = _SED_TABLE
+
+    def ext_ok(f, g):
+        F = {**{i: f[i] for i in range(8)}, **{i + 8: f[i] + 8 for i in range(8)}}
+        G = {**{i: g[i] for i in range(8)}, **{i + 8: g[i] for i in range(8)}}
+        for i in range(16):
+            for j in range(16):
+                s, k = stab[(i, j)]
+                s2, k2 = stab[(F[i], F[j])]
+                if F[k] != k2 or G[i] * G[j] * s2 != s * G[k]:
+                    return False
+        return True
+    extends = all(ext_ok(f, g) for f, g in auts)
+    pts = [(a, sa, b, sb) for a in range(1, 8) for b in range(1, 8) if a != b for sa in (1, -1) for sb in (1, -1)]
+    act = lambda f, g, p: (f[p[0]], p[1] * g[p[0]], f[p[2]], p[3] * g[p[2]])
+    seen, orbits = set(), []
+    for p in pts:
+        if p not in seen:
+            orb = {act(f, g, p) for f, g in auts}
+            seen |= orb
+            orbits.append(len(orb))
+    return {'fano_permutations': len(perms), 'signed_automorphisms': len(auts), 'sign_kernel': len(auts) // len(perms),
+            'quotient_order': len(perms), 'extend_to_sedenions': extends, 'unit_points': len(pts), 'orbits_on_unit_points': orbits,
+            'point_stabiliser': sum(1 for f, g in auts if act(f, g, pts[0]) == pts[0])}
+
+
 def psl27_order() -> int:
-    r"""\|PSL(2,7)\| = \|GL(3,2)\| = 168 = the primitive unit zero-divisor count."""
-    return 168
+    r"""
+    \|PSL(2,7)\| = \|GL(3,2)\| = the number of permutations of the 7 octonion units that preserve the 7 Fano lines, counted (168), not quoted.
+
+    :returns: the count, 168
+    """
+    from itertools import permutations
+    lines = _octonion_lines()
+    n = 0
+    for p in permutations(range(1, 8)):
+        f = {i + 1: p[i] for i in range(7)}
+        n += all(tuple(sorted((f[a], f[b], f[c]))) in lines for a, b, c in lines)
+    return n
 
 
 def skeleton_counts() -> Dict[str, object]:
