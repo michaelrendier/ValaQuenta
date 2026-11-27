@@ -42,11 +42,11 @@ class ZetaUNSPathModule(EquationModule):
             _eq('driver', 'THE RADIAL DRIVER Z\'/Z as a sum over the zero poles (first 60 zeros)', r"Z'/Z=\sum_n \frac{2t}{t^2-\gamma_n^2}+\text{smooth}",
                 'the analogue of Aizawa\'s z - b = (dr/dt)/r', ['t'], lambda t=40.3: {'Z_prime_over_Z': float(M.driver(t)[0]), 'zero_sum_60': float(M.driver_from_zeros(t, M.zeros_mp(60))[0])}, 'what drives the radius'),
             _eq('prime_resonance', 'PRIME RESONANCE HEIGHTS', r't_k=2\pi k/\ln p', 'where prime p\'s phasor is back at angle 0', ['p', 'T'],
-                lambda p=2, T=60.0: {'t': M.prime_resonance_times(p, T).round(4).tolist()}, 'ticks on the spring for a prime', 'CALCULATED'),
+                lambda p=2, T=60.0: {'t': M.prime_resonance_times(p, T).round(4).tolist()}, 'ticks on the spring for a prime', 'COMPUTATIONAL'),
             _eq('euler_path', 'THE PRIME SPRING (Euler path) at height t', r'\sum_p -\ln(1-p^{-1/2-it})', 'one step per prime, length ~ p^(-1/2), turned by -t ln p', ['t', 'n'],
-                lambda t=14.1347, n=12: (lambda P: {'primes': P.tolist(), 'steps': [_cx(x) for x in M.euler_path(t, P)[1]], 'path_end': _cx(M.euler_path(t, P)[0][-1])})(M.primes_upto(60)[:n]), 'where the primes are on the path', 'CALCULATED'),
+                lambda t=14.1347, n=12: (lambda P: {'primes': P.tolist(), 'steps': [_cx(x) for x in M.euler_path(t, P)[1]], 'path_end': _cx(M.euler_path(t, P)[0][-1])})(M.primes_upto(60)[:n]), 'where the primes are on the path', 'COMPUTATIONAL'),
             _eq('spectrum_ticks', 'WHERE THE ZERO SPECTRUM SPIKES: x = ln p^k, weight ln p / p^(k/2)', r'\sum_\gamma\cos(\gamma x)\ \text{spikes at}\ x=\ln p^k', 'explicit formula, dual side', ['xmax'],
-                lambda xmax=2.5: [dict(x=round(a, 4), p=b, k=c, weight=round(d, 4)) for a, b, c, d in M.prime_power_ticks(xmax)], 'the primes read off the zeros', 'CALCULATED'),
+                lambda xmax=2.5: [dict(x=round(a, 4), p=b, k=c, weight=round(d, 4)) for a, b, c, d in M.prime_power_ticks(xmax)], 'the primes read off the zeros', 'COMPUTATIONAL'),
         ]
 
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:

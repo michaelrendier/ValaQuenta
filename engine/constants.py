@@ -80,7 +80,12 @@ def dstar_faces():
 
 
 def dstar_comment_block(prefix="# "):
-    """The standard comment placed in every file that uses d* in any form (the full list of values and where the full story is)."""
+    """
+    The standard comment placed in every file that uses d* in any form (the full list of values and where the full story is).
+
+    :param prefix: text put at the start of every line (``"# "`` for Python, ``"> "`` for a Markdown quotation)
+    :returns: the comment block as one string
+    """
     lines = [
         "d* faces (all four are needed to chart ln(10) in Universal Native Space):",
         f"  d*         = {D_STAR:.5f}          the value the code runs with (Boundary, σ_ζ=½ plane)",

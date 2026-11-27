@@ -1,131 +1,133 @@
 {
- "schema": "valaquenta.engine-manifest/1",
- "engine": "zeta_uns_path",
- "display": "The Zeta Pathway in Universal Native Space (rotation, spring, primes)",
- "version": "1.0",
- "summary": "The critical-line path zeta(1/2 + it) = exp(-i theta) Z as a rotation at rate -theta'(t) with a signed radius Z(t): fast Riemann-Siegel eval",
- "confidence_floor": "ESTABLISHED",
- "provenance": {
-  "origin": "Cody, 2026-11-24: \"it's not flattening artifact...it's a top down view from a pole. it's missing the spring model. ... build me something for the Universal Native Space Riemann Zeta pathway and ensure that there is enough detail to see where the primes are ... let the Riemann Zeta function describe its own path to compare to the aizawa attractor.\"",
-  "authors": [
-   "Cody Michael Allison"
-  ],
-  "created": "2026-11-24",
-  "status_label": "ESTABLISHED / CALCULATED",
-  "predecessors": [],
-  "citations": [
-   "Hardy 1914 (Z)",
-   "Riemann 1859 (explicit formula)",
-   "Siegel 1932 (Riemann-Siegel formula)",
-   "Edwards 1974 (Riemann's Zeta Function)",
-   "Gram 1903"
-  ],
-  "wiki": {
-   "ainulindale": "Ainulindale/wiki/146_zeta_uns_path.md",
-   "valaquenta": "ValaQuenta/wiki/zeta_uns_path.md"
+  "schema": "valaquenta.engine-manifest/1",
+  "engine": "zeta_uns_path",
+  "name": "zeta_uns_path",
+  "display": "The Zeta Pathway in Universal Native Space (rotation, spring, primes)",
+  "version": "1.0",
+  "summary": "The critical-line path zeta(1/2 + it) = exp(-i theta) Z as a rotation at rate -theta'(t) with a signed radius Z(t): fast Riemann-Siegel eval",
+  "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
+  "provenance": {
+    "origin": "Cody, 2026-11-24: \"it's not flattening artifact...it's a top down view from a pole. it's missing the spring model. ... build me something for the Universal Native Space Riemann Zeta pathway and ensure that there is enough detail to see where the primes are ... let the Riemann Zeta function describe its own path to compare to the aizawa attractor.\"",
+    "authors": [
+      "Cody Michael Allison"
+    ],
+    "created": "2026-11-24",
+    "status_label": "ESTABLISHED / CALCULATED",
+    "predecessors": [],
+    "citations": [
+      "Hardy 1914 (Z)",
+      "Riemann 1859 (explicit formula)",
+      "Siegel 1932 (Riemann-Siegel formula)",
+      "Edwards 1974 (Riemann's Zeta Function)",
+      "Gram 1903"
+    ],
+    "wiki": {
+      "ainulindale": "Ainulindale/wiki/146_zeta_uns_path.md",
+      "valaquenta": "ValaQuenta/wiki/zeta_uns_path.md"
+    },
+    "notebook": "ValaQuenta/notebooks/engines/29_zeta_uns_path.ipynb",
+    "proof_locale": "ValaQuenta/engine/proof_locale/zeta_uns_path.json"
   },
-  "notebook": "ValaQuenta/notebooks/engines/29_zeta_uns_path.ipynb",
-  "proof_locale": "ValaQuenta/engine/proof_locale/zeta_uns_path.json"
- },
- "environment": {
-  "constants": [],
-  "native_space": "spherical complex radial polar",
-  "arithmetic": "fractions.Fraction exact; float only at output boundary",
-  "requires_engines": [],
-  "external": []
- },
- "ui": {
-  "menu": {
-   "label": "The Zeta Pathway in Universal Native Space (rotation, spring, primes)",
-   "group": "Engines",
-   "order": 100,
-   "blurb": "The critical-line path zeta(1/2 + it) = exp(-i theta) Z as a rotation at rate -theta'(t) with a signed radius Z(t): fast Riemann-Siegel evaluation, the UNS cylinder and sphere charts, the radial drive"
+  "environment": {
+    "constants": [],
+    "native_space": "spherical complex radial polar",
+    "arithmetic": "fractions.Fraction exact; float only at output boundary",
+    "requires_engines": [],
+    "external": []
   },
-  "tools": [
-   {
-    "name": "theta",
-    "equation": "theta",
-    "label": "Theta",
-    "desc": "how fast the path turns",
-    "params": [
-     "t"
-    ]
-   },
-   {
-    "name": "hardy_z",
-    "equation": "hardy_z",
-    "label": "Hardy Z",
-    "desc": "the real radius of the path",
-    "params": [
-     "t"
-    ]
-   },
-   {
-    "name": "pathway",
-    "equation": "pathway",
-    "label": "Pathway",
-    "desc": "where the path is",
-    "params": [
-     "t"
-    ]
-   },
-   {
-    "name": "driver",
-    "equation": "driver",
-    "label": "Driver",
-    "desc": "what drives the radius",
-    "params": [
-     "t"
-    ]
-   },
-   {
-    "name": "prime_resonance",
-    "equation": "prime_resonance",
-    "label": "Prime Resonance",
-    "desc": "ticks on the spring for a prime",
-    "params": [
-     "p",
-     "T"
-    ]
-   },
-   {
-    "name": "euler_path",
-    "equation": "euler_path",
-    "label": "Euler Path",
-    "desc": "where the primes are on the path",
-    "params": [
-     "t",
-     "n"
-    ]
-   },
-   {
-    "name": "spectrum_ticks",
-    "equation": "spectrum_ticks",
-    "label": "Spectrum Ticks",
-    "desc": "the primes read off the zeros",
-    "params": [
-     "xmax"
-    ]
-   }
-  ],
-  "display_modes": [
-   "text"
-  ],
-  "analysis_lenses": [
-   "emerge",
-   "spectral",
-   "lineage",
-   "calibrate"
-  ],
-  "proof": {
-   "guided": false,
-   "academic": false
-  },
-  "desktop": {
-   "window": "PDesktopWindow",
-   "surface": "svg",
-   "opengl": true,
-   "pgui_widgets": []
+  "ui": {
+    "menu": {
+      "label": "The Zeta Pathway in Universal Native Space (rotation, spring, primes)",
+      "group": "Engines",
+      "order": 100,
+      "blurb": "The critical-line path zeta(1/2 + it) = exp(-i theta) Z as a rotation at rate -theta'(t) with a signed radius Z(t): fast Riemann-Siegel evaluation, the UNS cylinder and sphere charts, the radial drive"
+    },
+    "tools": [
+      {
+        "name": "theta",
+        "equation": "theta",
+        "label": "Theta",
+        "desc": "how fast the path turns",
+        "params": [
+          "t"
+        ]
+      },
+      {
+        "name": "hardy_z",
+        "equation": "hardy_z",
+        "label": "Hardy Z",
+        "desc": "the real radius of the path",
+        "params": [
+          "t"
+        ]
+      },
+      {
+        "name": "pathway",
+        "equation": "pathway",
+        "label": "Pathway",
+        "desc": "where the path is",
+        "params": [
+          "t"
+        ]
+      },
+      {
+        "name": "driver",
+        "equation": "driver",
+        "label": "Driver",
+        "desc": "what drives the radius",
+        "params": [
+          "t"
+        ]
+      },
+      {
+        "name": "prime_resonance",
+        "equation": "prime_resonance",
+        "label": "Prime Resonance",
+        "desc": "ticks on the spring for a prime",
+        "params": [
+          "p",
+          "T"
+        ]
+      },
+      {
+        "name": "euler_path",
+        "equation": "euler_path",
+        "label": "Euler Path",
+        "desc": "where the primes are on the path",
+        "params": [
+          "t",
+          "n"
+        ]
+      },
+      {
+        "name": "spectrum_ticks",
+        "equation": "spectrum_ticks",
+        "label": "Spectrum Ticks",
+        "desc": "the primes read off the zeros",
+        "params": [
+          "xmax"
+        ]
+      }
+    ],
+    "display_modes": [
+      "text"
+    ],
+    "analysis_lenses": [
+      "emerge",
+      "spectral",
+      "lineage",
+      "calibrate"
+    ],
+    "proof": {
+      "guided": false,
+      "academic": false
+    },
+    "desktop": {
+      "window": "PDesktopWindow",
+      "surface": "svg",
+      "opengl": true,
+      "pgui_widgets": []
+    }
   }
- }
 }

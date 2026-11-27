@@ -24,7 +24,7 @@ dependencies = ["numpy", "sympy", "mpmath", "scipy", "jsonschema", "particle", "
 plots = ["matplotlib"]
 gui = ["PyQt5", "vispy", "sounddevice"]
 docs = ["sphinx"]
-dev = ["pytest", "matplotlib", "nbformat", "nbconvert", "ipykernel"]
+dev = ["pytest", "matplotlib", "nbformat", "nbconvert", "ipykernel", "scikit-learn"]
 
 [project.urls]
 Repository = "https://github.com/michaelrendier/ValaQuenta"

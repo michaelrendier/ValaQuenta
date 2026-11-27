@@ -1,10 +1,12 @@
 {
   "schema": "valaquenta.engine-manifest/1",
   "engine": "bell_curve",
+  "name": "bell_curve",
   "display": "The Bell Curve (Statistics, Probability, Statistical Mechanics)",
   "version": "1.1",
   "summary": "One statistics machinery for everywhere a probability, a spread or a gradient shows up: streaming mergeable moments, the normal/t/chi-square",
   "confidence_floor": "ESTABLISHED",
+  "license": "GPL-3.0-only",
   "provenance": {
     "origin": "Requested by Cody, 2026-11-22: \"i need a full statistics and probability and statistical mechanics...i need one engine that becomes the statistics machinery used anywhere probabilities show up...or gradients etc. Mathematical, Academic standard issue statistics engine...give me The Bell Curve engine.\" Built first so the user-emotional-state battery (VAPMIP) has one verified statistics implementation to score against.",
     "authors": [
