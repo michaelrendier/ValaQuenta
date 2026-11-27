@@ -9,6 +9,8 @@ uses it to import or install anything: it only calls `python3 -m venv`, then the
     python3 tools/repo_venv.py REPO [REPO ...]         # dry run: list what each repository imports and what it has
     python3 tools/repo_venv.py REPO --apply            # create .venv if missing, write requirements.txt / INSTALL.md if missing, pip install
     python3 tools/repo_venv.py --survey                # one line per repository under ThePlace
+    python3 tools/repo_venv.py REPO --refresh          # an existing .venv catches up with the root: new imports installed, ValaQuenta editable, INSTALL.md system block
+    python3 tools/repo_venv.py --refresh --all         # every repository that has a .venv (run automatically after an addition to the root, tools/vq_venv_sync.py)
 
 REPO is a directory name under ThePlace (or a path). What it does, in order:
   1. no .venv: `python3 -m venv .venv`; .venv is added to .gitignore.
@@ -52,6 +54,88 @@ def sibling_names():
                     names.update(f[:-3] for f in fn if f.endswith('.py'))
         _SIBLINGS.append(names)
     return _SIBLINGS[0]
+
+
+SYSTEM_TOOLS = {   # binary -> (regex found in the repository's source, what it is, apt package)
+    "blender": (r"\bblender\b|\bbpy\b", "Blender (renders, headless `blender -b -P`)", "blender"),
+    "ffmpeg": (r"\bffmpeg\b", "FFmpeg (audio/video)", "ffmpeg"),
+    "convert": (r"\bconvert\b.*(png|jpg|svg|-resize|-crop)|ImageMagick|\bmagick\b", "ImageMagick (`convert`, `montage`)", "imagemagick"),
+    "rsvg-convert": (r"rsvg-convert", "librsvg (`rsvg-convert`, SVG to PNG)", "librsvg2-bin"),
+    "firefox": (r"\bfirefox\b", "Firefox (headless screenshots, viewing the galleries)", "firefox"),
+    "espeak": (r"\bespeak\b", "eSpeak (speech)", "espeak"),
+    "sox": (r"\bsox\b", "SoX (audio)", "sox"),
+    "openscad": (r"\bopenscad\b", "OpenSCAD (3D models)", "openscad"),
+    "pdftotext": (r"pdftotext|pdftoppm", "poppler-utils (PDF text and images)", "poppler-utils"),
+    "pdflatex": (r"pdflatex|xelatex|latexmk", "TeX Live (papers)", "texlive-latex-extra"),
+    "pandoc": (r"\bpandoc\b", "Pandoc", "pandoc"),
+    "gcc": (r"\bgcc\b|\bmake\b", "a C compiler (gcc, make) for the C code", "build-essential"),
+    "git": (r"\bgit\b", "git", "git"),
+    "gh": (r"\bgh (api|run|pr|repo)\b", "GitHub CLI (`gh`)", "gh"),
+    "curl": (r"\bcurl\b", "curl", "curl"),
+    "jupyter": (r"nbconvert|jupyter|ipykernel", "Jupyter (installed in the .venv by pip; notebooks are executed with nbconvert)", None),
+}
+SYS_BEGIN, SYS_END = "<!-- system-software:begin -->", "<!-- system-software:end -->"
+
+
+def system_block(repo):
+    """The 'System software' section of INSTALL.md: every non-Python program the repository's own files call, with whether it is installed here."""
+    import re
+    import shutil
+    text = []
+    for dp, dn, fn in os.walk(repo):
+        dn[:] = [d for d in dn if d not in SKIP and not d.startswith(".venv")]
+        for f in fn:
+            if f.endswith((".py", ".sh", ".md", ".c", ".h", ".toml", ".yml", ".yaml")) and f not in ("INSTALL.md",):
+                try:
+                    text.append(open(os.path.join(dp, f), encoding="utf-8", errors="replace").read(200000))
+                except OSError:
+                    pass
+    blob = "\n".join(text)
+    rows = []
+    for b, (rx, what, apt) in SYSTEM_TOOLS.items():
+        if re.search(rx, blob):
+            have = shutil.which(b) is not None or b == "jupyter"
+            rows.append(f"| {what} | `{b}` | {'installed' if have else '**not installed on the author machine**'} | {('`sudo apt install ' + apt + '`') if apt else 'pip (in the .venv)'} |")
+    body = ("| software | command | here | install |\n|---|---|---|---|\n" + "\n".join(rows)) if rows else "None detected."
+    return f"{SYS_BEGIN}\n## System software (not Python)\n\nPrograms this repository's own files call, found by scanning its source (`ValaQuenta/tools/repo_venv.py`). Install them with the system package manager; they are not pip packages.\n\n{body}\n{SYS_END}\n"
+
+
+def write_system_block(repo):
+    p = os.path.join(repo, "INSTALL.md")
+    block = system_block(repo)
+    cur = open(p).read() if os.path.exists(p) else f"# Installing {os.path.basename(os.path.abspath(repo))}\n\nSee the repository README. Use the `.venv`, never the system Python.\n\n"
+    if SYS_BEGIN in cur:
+        pre, rest = cur.split(SYS_BEGIN, 1)
+        post = rest.split(SYS_END, 1)[1] if SYS_END in rest else ""
+        new = pre + block + post.lstrip("\n")
+    else:
+        new = cur.rstrip("\n") + "\n\n" + block
+    if new != cur:
+        open(p, "w").write(new)
+        return True
+    return False
+
+
+def refresh(repo_arg):
+    """An existing .venv catches up with the root environment."""
+    repo = repo_path(repo_arg)
+    name = os.path.basename(os.path.abspath(repo))
+    pip = os.path.join(repo, ".venv", "bin", "pip")
+    if not os.path.exists(pip):
+        return
+    third, uses_vq = imports(repo)
+    reqs, missing = requirements_text(third, root_dists())
+    rp = os.path.join(repo, "requirements.txt")
+    cur = open(rp).read() if os.path.exists(rp) else ""
+    have = {l.split(">=")[0].split("==")[0].strip().lower() for l in cur.splitlines() if l.strip() and not l.startswith("#")}
+    add = [l for l in reqs if l.split(">=")[0].strip().lower() not in have]
+    if add:
+        open(rp, "a").write(("" if cur.endswith("\n") or not cur else "\n") + "\n".join(add) + "\n")
+        subprocess.run([pip, "install", "-q", "-r", rp], capture_output=True)
+    if uses_vq:
+        subprocess.run([pip, "install", "-q", "-e", os.path.join(PLACE, "ValaQuenta")], capture_output=True)
+    changed = write_system_block(repo)
+    print(f"{name}: refreshed ({len(add)} requirements added, ValaQuenta editable={uses_vq}, INSTALL.md system block {'updated' if changed else 'current'}; not in root: {missing})")
 
 
 def repo_path(r):
@@ -102,7 +186,9 @@ def root_dists():
     if _RD:
         return _RD[0]
     """import name -> (distribution, version) in the root environment."""
-    code = "import importlib.metadata as m,json;pd=m.packages_distributions();print(json.dumps({k:[v[0],m.version(v[0])] for k,v in pd.items()}))"
+    code = ("import importlib.metadata as m,json;pd=m.packages_distributions()\n"
+            "pick=lambda k,v:next((d for d in v if d.lower().replace('-','_')==k.lower().replace('-','_')),v[0])\n"
+            "print(json.dumps({k:[pick(k,v),m.version(pick(k,v))] for k,v in pd.items()}))")
     out = subprocess.run([ROOTPY, "-c", code], capture_output=True, text=True)
     import json
     _RD.append(json.loads(out.stdout) if out.returncode == 0 else {})
@@ -176,6 +262,7 @@ def run(repo_arg, apply):
         vqw = "# this repository imports ValaQuenta (the code root):\n.venv\\Scripts\\pip install -e ..\\ValaQuenta\n" if uses_vq else ""
         open(os.path.join(repo, "INSTALL.md"), "w").write(INSTALL.format(name=name, vq=vq, vqw=vqw))
         print("  wrote INSTALL.md")
+    write_system_block(repo) if apply else None
     pip = os.path.join(repo, ".venv", "bin", "pip")
     if not has_venv or not has_req:
         subprocess.run([pip, "install", "-q", "--upgrade", "pip"], check=False)
@@ -188,6 +275,11 @@ def run(repo_arg, apply):
 
 def main(argv):
     apply = "--apply" in argv
+    if "--refresh" in argv:
+        rs = [d for d in sorted(os.listdir(PLACE)) if os.path.exists(os.path.join(PLACE, d, ".venv", "bin", "pip"))] if "--all" in argv else [a for a in argv if not a.startswith("--")]
+        for r in rs:
+            refresh(r)
+        return
     repos = [a for a in argv if not a.startswith("--")]
     if "--survey" in argv:
         repos = sorted(d for d in os.listdir(PLACE) if os.path.isdir(os.path.join(PLACE, d, ".git")))

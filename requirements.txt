@@ -100,3 +100,11 @@ sounddevice>=0.4       # tested 0.5.5    needs system PortAudio (libportaudio2)
 #
 # System packages the above imply:
 #   sudo apt install poppler-utils tesseract-ocr libmagic1 libportaudio2
+PyQt5>=5.15  # tested 5.15.11
+jsonschema>=4.26  # tested 4.26.0
+vispy>=0.16  # tested 0.16.2
+tensorflow>=2.21  # tested 2.21.0
+openai-whisper>=20250625  # tested 20250625
+pyrtlsdr>=0.5  # tested 0.5.1
+gmpy2>=2.3  # tested 2.3.2
+ok>=0.1  # tested 0.1.1

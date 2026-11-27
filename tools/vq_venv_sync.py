@@ -219,9 +219,15 @@ def main():
     if not pkgs:
         return
 
-    for r in sync(pkgs, dry_run=args.dry_run):
+    results = sync(pkgs, dry_run=args.dry_run)
+    for r in results:
         extra = r.get("version") or r.get("reason", "")
         print(f"[vq-sync] {r['action']:<15} {r['package']:<24} {extra}")
+    # Downstream (author, 2026-11-26): an addition to the root environment triggers the downstream environments to refresh themselves.
+    if not args.dry_run and any(r["action"] == "installed" for r in results):
+        subprocess.Popen([sys.executable if sys.executable else "python3", str(VQ_ROOT / "tools" / "repo_venv.py"), "--refresh", "--all"],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        print("[vq-sync] downstream refresh started (tools/repo_venv.py --refresh --all)")
 
 
 if __name__ == "__main__":
