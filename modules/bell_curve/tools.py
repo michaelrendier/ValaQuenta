@@ -6,7 +6,7 @@ THE BELL CURVE ENGINE -- Module Tools
 Implements the EquationModule registry contract: formulary, run(), viewer_data(), shell_commands().
 Statistics, probability and statistical mechanics, one implementation. See maths.py.
 
-Version: 1.1
+Version: 1.2
 """
 from typing import Any, Dict, List
 
@@ -38,7 +38,7 @@ class BellCurveModule(EquationModule):
 
     @property
     def version(self):
-        return "1.1"
+        return "1.2"
 
     @property
     def description(self):
