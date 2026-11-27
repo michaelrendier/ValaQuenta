@@ -7,13 +7,13 @@ The reusable primitive module -- Hyperwebster address, T32/GF(2)
 multiplication, nilpotency test. Imported by hypergon_constructibility
 and by FourthAgePapers/FermatMonster/engine/fermat_monster_engine.py.
 
-Version: 0.100
+Version: 0.110
 """
 
 from typing import Dict, List, Any
 
 from ...engine.registry import EquationModule, Equation, CONFIDENCE
-from .maths import hw_address, hw_to_t32, t32_mul, is_nilpotent, prime_nilpotency_report
+from .maths import hw_address, hw_to_t32, t32_mul, is_nilpotent, prime_nilpotency_report, radical_census
 
 _DEFAULT_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
 
@@ -36,7 +36,7 @@ class T32NilpotencyModule(EquationModule):
     def display_name(self): return 'T32 Nilpotency — Hyperwebster Address Primitives'
 
     @property
-    def version(self): return '0.100'
+    def version(self): return '0.110'
 
     @property
     def description(self):
@@ -64,6 +64,18 @@ class T32NilpotencyModule(EquationModule):
                 display_options=['text'],
                 process='Nilpotency status of a set of primes in T32/GF(2)',
             ),
+            Equation(
+                name='radical_census',
+                display='GF(2) square law: nilpotent / involutory census, with the Δ(w) = w·𝟏 detector check',
+                latex=r'x^2\in\{0,e_0\};\quad \Delta(w)=w\cdot\mathbf 1=0\iff w^2=0',
+                radian_form='for every word: classify w² as 0 or e0; check the detector; 𝟏 is not an annihilator',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=['dim'],
+                compute=lambda dim=8: radical_census(int(dim)),
+                display_options=['text'],
+                process='Exhaustive square-law census of the T32/GF(2) algebra of a given dimension',
+            ),
         ]
 
     def run(self, equation_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
@@ -78,6 +90,9 @@ class T32NilpotencyModule(EquationModule):
                      params: Dict[str, Any], display_mode: str) -> Dict[str, Any]:
         result = self.run(equation_name, params)['result']
         lines = [f'  {equation_name}']
+        if equation_name == 'radical_census':
+            lines += [f'    {k:18s} = {v}' for k, v in result.items()]
+            return {'text': '\n'.join(lines)}
         for row in result.get('rows', []):
             lines.append(f"    p={row['prime']:6d}  t32=0x{row['t32_word']:08X}  nilpotent={row['nilpotent']}")
         lines.append(f"  nilpotent: {result['nilpotent_count']}/{result['total']} = {result['nilpotent_pct']:.1f}%")

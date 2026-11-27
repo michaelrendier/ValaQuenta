@@ -23,7 +23,15 @@ before this module was trusted. If this file is ever copied again rather
 than imported, that verification needs to be redone -- don't assume a
 retyped copy is correct.
 
-Version: 0.100
+Canonical maths added in 0.110 (Ainulindale wiki 78 §5; ~/.clauderc_canonical_maths @RCCM_RING_THEORY_SPINE):
+
+* GF(2) square law: x² ∈ {0, e₀} for every x, so every element is either nilpotent (x² = 0, the radical)
+  or an involutory unit (x² = e₀); at dim 8 the algebra splits 128 / 128 (exhaustive).
+* One detector: Δ(w) = w·𝟏 (𝟏 = all ones). Δ(w) = 0 ⟺ w² = 0 (exhaustive at dim 2, 4, 8; 20000 random words at dim 32).
+* Corrected lemma (2026-08-22, supersedes the UDEO white-paper proof): 𝟏 is NOT a global annihilator;
+  e₀·𝟏 = 𝟏 ≠ 0. Only the iff above holds.
+
+Version: 0.110
 """
 
 from typing import List
@@ -142,3 +150,59 @@ def prime_nilpotency_report(primes: List[int]) -> dict:
         'total': len(primes),
         'nilpotent_pct': 100 * nilpotent_count / len(primes) if primes else 0.0,
     }
+
+
+def ones(dim: int = 32) -> int:
+    """
+    The all-ones word of the algebra, 𝟏 = 2^dim − 1.
+
+    :param dim: algebra dimension; a power of 2
+    :returns: the word with every bit set
+    """
+    return (1 << dim) - 1
+
+
+def trace_laplacian(w: int, dim: int = 32) -> int:
+    """
+    The trace-Laplacian detector Δ(w) = w·𝟏 over GF(2).
+
+    Δ(w) = 0 exactly when w² = 0 (the corrected lemma); 𝟏 itself is not an annihilator.
+
+    :param w: T32 word
+    :param dim: algebra dimension; a power of 2
+    :returns: the product w·𝟏 as a word
+    """
+    return t32_mul(w, ones(dim), dim)
+
+
+def square_class(w: int, dim: int = 32) -> str:
+    """
+    Classify w by the GF(2) square law x² ∈ {0, e₀}.
+
+    :param w: T32 word
+    :param dim: algebra dimension; a power of 2
+    :returns: ``'nilpotent'`` if w² = 0 (this includes w = 0), ``'involutory'`` if w² = e₀, else ``'other'``
+        (the square law says ``'other'`` never occurs)
+    """
+    sq = t32_mul(w, w, dim)
+    return 'nilpotent' if sq == 0 else 'involutory' if sq == 1 else 'other'
+
+
+def radical_census(dim: int = 8) -> dict:
+    """
+    Exhaustive census of the algebra by the square law, with the detector check.
+
+    :param dim: algebra dimension, a power of 2 up to 16 (2^dim words are enumerated)
+    :returns: dict: ``words``, ``nilpotent`` (counting 0), ``involutory``, ``other``,
+        ``detector_agrees`` (Δ(w) = 0 ⟺ w² = 0 for every word), ``one_is_annihilator`` (False)
+    """
+    if dim > 16:
+        raise ValueError('radical_census enumerates 2**dim words; dim must be <= 16')
+    counts = {'nilpotent': 0, 'involutory': 0, 'other': 0}
+    agrees = True
+    for w in range(1 << dim):
+        counts[square_class(w, dim)] += 1
+        agrees &= (trace_laplacian(w, dim) == 0) == (t32_mul(w, w, dim) == 0)
+    one = ones(dim)
+    return {'dim': dim, 'words': 1 << dim, **counts, 'detector_agrees': agrees,
+            'one_is_annihilator': t32_mul(1, one, dim) == 0}

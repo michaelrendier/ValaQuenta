@@ -1,7 +1,8 @@
 # Engine: T32 Nilpotency — Shared Hyperwebster/T32/GF(2) Primitives
 
 **File:** `modules/t32_nilpotency/maths.py`
-**Class:** `T32NilpotencyModule`
+**Class:** `T32NilpotencyModule`  
+**Version:** 0.110
 **Claim:** one verified-correct implementation of Hyperwebster address encoding + T32/GF(2) multiplication + nilpotency test, imported by `hypergon_constructibility` (ValaQuenta) and `fermat_monster_engine.py` (FourthAgePapers/FermatMonster, cross-repo), instead of being duplicated across both.
 
 
@@ -48,9 +49,13 @@ non_gap_primes_nilpotent_pct (n=10)     = 70.0%
 
 **Read this carefully, not eagerly.** n=5 is small — at a 70% baseline rate, getting 5/5 nilpotent by pure chance happens about 1 time in 6. Real correlation, not yet evidence. It has NOT been run through the same magnitude-matched-control discipline that caught the factoring use of this same mechanism as an artifact (see `hypergon_constructibility`) — don't treat this number as more settled than that until it has been.
 
+## The GF(2) square law and the detector (0.110)
+
+`radical_census(dim)` enumerates every word: x² is always 0 or e₀, so the algebra splits into the nilpotents (the radical) and the involutory units, 128 / 128 at dim 8. `trace_laplacian(w)` = w·𝟏 vanishes exactly on the nilpotents (exhaustive at dim 2, 4, 8; 2,000 random words at dim 32 in `tests/test_t32_nilpotency.py`). Corrected lemma: 𝟏 is not a global annihilator (`e₀·𝟏 = 𝟏`); the earlier UDEO white-paper proof is superseded. Narrative: Ainulindale wiki 78 §5.
+
 ## What's Established vs. What Isn't
 
-**ESTABLISHED:** the primitives themselves — Hyperwebster encoding, T32/GF(2) multiplication, nilpotency test — verified byte-for-byte and numerically against the original source.
+**ESTABLISHED:** the primitives themselves, the square law and the detector iff (exhaustive / sampled, above), — Hyperwebster encoding, T32/GF(2) multiplication, nilpotency test — verified byte-for-byte and numerically against the original source. The prime-split results are `MEASURED` counts (11 of 16 sedenion basis primes, 12 of 15 Moonshine primes), not a signal.
 
 **NOT validated:** any specific use of these primitives as a signal for anything (factoring, Niemeier-gap membership, or otherwise). Two uses exist now (`hypergon_constructibility`, `fermat_monster_engine.t32_nilpotency_check`); one has already failed a proper control, the other hasn't been tested that way yet.
 

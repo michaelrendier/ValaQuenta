@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "t32_nilpotency",
   "display": "T32 Nilpotency — Hyperwebster Address Primitives",
-  "version": "0.100",
+  "version": "0.110",
   "summary": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",
@@ -54,6 +54,15 @@
         "desc": "Nilpotency status of a set of primes in T32/GF(2)  [process= not set]",
         "params": [
           "primes"
+        ]
+      },
+      {
+        "name": "radical_census",
+        "equation": "radical_census",
+        "label": "Radical Census",
+        "desc": "GF(2) square law: nilpotent / involutory census, with the Δ(w) = w·𝟏 detector check",
+        "params": [
+          "dim"
         ]
       }
     ],
