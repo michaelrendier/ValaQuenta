@@ -44,6 +44,7 @@ jobs:
         run: |
           mkdir -p docs/_build/html/gallery docs/_build/html/docs
           cp -r gallery/t32_nilpotency docs/_build/html/gallery/
+          cp -r gallery/hypergon_constructibility docs/_build/html/gallery/
           cp -r docs/flowcharts docs/_build/html/docs/
       - uses: actions/upload-pages-artifact@v3
         with:

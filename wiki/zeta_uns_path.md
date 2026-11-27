@@ -45,3 +45,9 @@ The critical-line path t -> zeta(1/2 + it) = exp(-i theta(t)) Z(t) (Hardy). A ro
 - `Z_rs` has one correction term; use `Z_exact` (mpmath) for t < 50 when digits matter.
 - The analogy with Aizawa is structural. Nothing here is evidence about the Riemann Hypothesis; RH is the statement that every zero lies on the line this path samples.
 - Open (asked, not done): the phase-offset reading of the diagonal prime-generating quadratics in UNS space, and whether an orthogonal wave (a Dirichlet L-function character) belongs beside zeta.
+
+---
+
+## Gamma function: the n-ball (added 2026-11-27)
+
+Gamma appears in this engine (see the code for where). It is also the bookkeeping of a hypersphere: the Gaussian integral of e^(−|x|²) over n dimensions is (√π)^n = (S/2)·Γ(n/2), so the unit ball has volume V(n) = π^(n/2)/Γ(n/2 + 1) and the unit sphere area S(n) = 2π^(n/2)/Γ(n/2) = n·V(n) for every real n. At n = 2 these are π and 2π, the circle. V peaks at n = 5.2569464 and S at n = 7.2569464 (`bell_curve.nball_peak`, which is the `n* ≈ 5.257` of the Ainulindale texts; its identification with the BAO freeze point is THEORETICAL, not computed). Machinery: `ValaQuenta/modules/bell_curve/maths.py` (`nball_volume`, `nsphere_area`, `nball_peak`); pictures: `gallery/hypergon_constructibility/canvas2d_nball.html` (the curves, the poles of Γ at 0, −1, −2, …) and `canvas2d_frame3d.html` (the curve in the frame n, V, S). In this engine's own use, the Riemann–Siegel theta is Im ln Γ(1/4 + it/2) − (t/2) ln π, and `theta` evaluates its Stirling series.

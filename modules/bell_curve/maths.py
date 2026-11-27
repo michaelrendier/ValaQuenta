@@ -4,7 +4,7 @@ ValaQuenta.modules.bell_curve.maths
 THE BELL CURVE ENGINE -- one statistics, probability and statistical-mechanics
 machinery, for everywhere a probability, a spread or a gradient shows up.
 
-Version: 1.1   (2026-11-22; 1.1: ols handles n = 2)
+Version: 1.2   (2026-11-27; 1.2: nball_volume, nsphere_area, nball_peak; 1.1: ols handles n = 2)
 
 STATUS: ESTABLISHED. Every function here is textbook mathematics (references at
 each section). The engine's own claim is only that it is ONE implementation,
@@ -15,7 +15,7 @@ the Monad's pipelines included, can import it with no dependency.
 SECTIONS
   1  Moments          Welford/Pebay streaming mean, variance, skew, kurtosis; exact merge
   2  Descriptive      quantiles (type 7), MAD, IQR, z-scores, histogram, KDE, covariance
-  3  Special functions  regularised incomplete gamma and beta, log-binomial
+  3  Special functions  regularised incomplete gamma and beta, log-binomial, n-ball volume and sphere area (Gamma at half-integers)
   4  Distributions    normal, Student t, chi-square, F, binomial, Poisson, exponential,
                       uniform, gamma, beta: pdf/pmf, cdf, ppf
   5  Sigma            n-sigma <-> p-value, Six-Sigma DPMO, Cp/Cpk
@@ -411,6 +411,54 @@ def log_comb(n: int, k: int) -> float:
     :returns: ln C(n, k), float
     """
     return math.lgamma(n + 1) - math.lgamma(k + 1) - math.lgamma(n - k + 1)
+
+
+def nball_volume(n: float) -> float:
+    """
+    Volume of the unit ball in n dimensions, pi^(n/2) / Gamma(n/2 + 1), for any real n >= 0.
+
+    The Gamma function is what lets n be non-integer: the n-dimensional Gaussian integral gives (sqrt(pi))^n = (S/2) Gamma(n/2), where S is the
+    area of the unit sphere, so Gamma(n/2) is the radial bookkeeping of a sphere. n = 1 gives 2 (a segment), n = 2 gives pi (the circle's disc),
+    n = 3 gives 4 pi/3. The volume peaks near n = 5.2569 and then falls towards 0 (nball_peak).
+
+    :param n: dimension, a real number >= 0
+    :returns: the volume of the unit ball, float
+    """
+    return math.exp(0.5 * n * math.log(math.pi) - math.lgamma(0.5 * n + 1.0))
+
+
+def nsphere_area(n: float) -> float:
+    """
+    Area of the unit sphere in R^n (the (n-1)-sphere), 2 pi^(n/2) / Gamma(n/2); equal to n times the ball volume.
+
+    n = 2 gives 2 pi, the circumference of the unit circle. The area peaks near n = 7.2569, two dimensions after the volume.
+
+    :param n: dimension, a real number > 0
+    :returns: the area of the unit sphere, float
+    """
+    return 2.0 * math.exp(0.5 * n * math.log(math.pi) - math.lgamma(0.5 * n))
+
+
+def nball_peak(which: str = 'volume') -> float:
+    """
+    The real dimension at which the unit-ball volume (or sphere area) is largest: where d/dn ln V = (1/2) ln pi - (1/2) digamma(n/2 + 1) = 0.
+
+    Found by bisection on a central difference of the log, so the engine stays stdlib-only. The volume peaks at n = 5.2569464..., the area at
+    n = 7.2569464... (the volume's peak plus 2).
+
+    :param which: 'volume' or 'area'
+    :returns: the dimension of the maximum, float
+    """
+    f = nball_volume if which == 'volume' else nsphere_area
+    lo, hi, h = (1.0, 12.0, 1e-5)
+    g = lambda n: math.log(f(n + h)) - math.log(f(n - h))
+    for _ in range(100):
+        mid = 0.5 * (lo + hi)
+        if g(mid) > 0:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
 
 
 def _invert(cdf: Callable[[float], float], p: float, lo: float, hi: float, tol: float = 1e-14) -> float:

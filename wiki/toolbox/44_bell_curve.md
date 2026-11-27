@@ -6,7 +6,7 @@
 
 ---
 
-`bell_curve` · v1.0 · confidence floor **ESTABLISHED**
+`bell_curve` · v1.1 · confidence floor **ESTABLISHED**
 
 One statistics machinery for everywhere a probability, a spread or a gradient shows up: streaming mergeable moments, the normal/t/chi-square/F/binomial/Poisson/beta distributions, n-sigma and Six-Sigma, hypothesis tests, effect sizes, resampling, information measures, Bayes, the canonical ensemble and circular statistics. Verified against scipy.
 
@@ -33,6 +33,13 @@ Call any of these via `module.run('<name>', {params})`, or `module.viewer_data('
 ```python
 >>> module.run('sigma_levels', {})['result']
 {'p_two_sided': 0.0026997960632601913, 'p_one_sided': 0.0013498980316300957, 'dpmo': 66807.20126885809}
+```
+
+**`nball`** — N-BALL: volume and sphere area at any real dimension, and where they peak
+  params: `n`  ·  confidence: `ESTABLISHED`  ·  signature: `(n=16.0)`
+```python
+>>> module.run('nball', {})['result']
+{'volume': 0.23533063035889346, 'sphere_area': 3.7652900857422895, 'volume_peak_n': 5.256946404470526, 'area_peak_n': 7.256946404529922}
 ```
 
 **`welch_t`** — WELCH t-TEST: two means, unequal variances

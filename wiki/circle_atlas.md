@@ -75,3 +75,9 @@ No π route yet: `apollonian`, `inversion`, `bao_ring`, `retraction`. Named gaps
 
 ## Added 2026-11-17: `v_photon_sphere` (25th viewport)
 The circular null orbit of Schwarzschild at r = 3M (G = c = 1). Integrating u'' + u = 3u² from u = 1/3 over a full turn leaves the orbit on r = 3M to 9e-16; the critical impact parameter is 3√3 M = 5.196. It is **unstable**: a perturbation of 1e-8 grows by 267.75 per turn, cosh 2π = 267.747 by the linearisation. It is the circle where "in" turns into "out": rays with b < 3√3 M fall in, b > 3√3 M escape. In the gravastar picture (interior de Sitter, thin shell near r = 2M, Schwarzschild outside) the photon sphere sits outside the shell at 1.5 × its radius (1.4985 for a shell at 2.002 M), and the de Sitter interior's own horizon radius 1/H (2.003 M, from H² = 2M/a³) meets the shell. That the interior de Sitter space of a gravastar is our universe is the author's reading, `INTERPRETATION`; the photon sphere has no π route yet (listed in `gaps()`).
+
+---
+
+## Gamma function: the n-ball (added 2026-11-27)
+
+Gamma appears in this engine (see the code for where). It is also the bookkeeping of a hypersphere: the Gaussian integral of e^(−|x|²) over n dimensions is (√π)^n = (S/2)·Γ(n/2), so the unit ball has volume V(n) = π^(n/2)/Γ(n/2 + 1) and the unit sphere area S(n) = 2π^(n/2)/Γ(n/2) = n·V(n) for every real n. At n = 2 these are π and 2π, the circle. V peaks at n = 5.2569464 and S at n = 7.2569464 (`bell_curve.nball_peak`, which is the `n* ≈ 5.257` of the Ainulindale texts; its identification with the BAO freeze point is THEORETICAL, not computed). Machinery: `ValaQuenta/modules/bell_curve/maths.py` (`nball_volume`, `nsphere_area`, `nball_peak`); pictures: `gallery/hypergon_constructibility/canvas2d_nball.html` (the curves, the poles of Γ at 0, −1, −2, …) and `canvas2d_frame3d.html` (the curve in the frame n, V, S).
