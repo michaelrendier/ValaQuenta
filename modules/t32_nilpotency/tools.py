@@ -7,7 +7,7 @@ The reusable primitive module -- Hyperwebster address, T32/GF(2)
 multiplication, nilpotency test. Imported by hypergon_constructibility
 and by FourthAgePapers/FermatMonster/engine/fermat_monster_engine.py.
 
-Version: 0.120
+Version: 0.130
 """
 
 from typing import Dict, List, Any
@@ -36,7 +36,7 @@ class T32NilpotencyModule(EquationModule):
     def display_name(self): return 'T32 Nilpotency — Hyperwebster Address Primitives'
 
     @property
-    def version(self): return '0.120'
+    def version(self): return '0.130'
 
     @property
     def description(self):

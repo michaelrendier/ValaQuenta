@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "t32_nilpotency",
   "display": "T32 Nilpotency — Hyperwebster Address Primitives",
-  "version": "0.120",
+  "version": "0.130",
   "summary": "Standalone, minimal, verified-correct primitives: Hyperwebster base-97 address encoding, T32/GF(2) Cayley-Dickson multiplication, nilpotency",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",

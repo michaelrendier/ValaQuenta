@@ -92,3 +92,29 @@ def test_prime_matched_control_makes_the_gap_set_unremarkable():
 def test_registry_control_equation_runs():
     r = T32NilpotencyModule().run("nilpotency_control", {})["result"]
     assert r["window"]["primes"]["n"] == 21 and r["control"]["n"] == 5
+
+
+def test_square_is_the_parity_of_the_weight_and_parity_is_a_ring_homomorphism():
+    """Found by chasing the two-digit anomaly (wiki 78 §7): w*w = (popcount(w) mod 2) * e0; the nilpotents are the even-weight words."""
+    for d in (2, 4, 8):
+        c = T.radical_census(d)
+        assert c["square_is_weight_parity"] and c["parity_is_homomorphism"]
+    assert T.radical_census(16)["square_is_weight_parity"]
+    rng = random.Random(7)
+    for _ in range(2000):
+        w = rng.getrandbits(32)
+        assert T.t32_mul(w, w) == T.weight_parity(w)
+        assert T.trace_laplacian(w) == (T.ones(32) if T.weight_parity(w) else 0)
+    nil = [w for w in range(256) if not T.weight_parity(w)]
+    assert len(nil) == 128 and all(not T.weight_parity(a ^ b) for a in nil[:40] for b in nil[:40])   # the radical is closed under XOR
+
+
+def test_two_digit_excess_is_one_table_with_a_small_hypergeometric_p_and_absent_at_three_digits():
+    from math import comb
+    nums = list(range(10, 100)); P = set(T.sieve(100))
+    nil = {n: T.weight_parity(T.hw_to_t32(n)) == 0 for n in nums}
+    K, N, pr = sum(nil.values()), 90, [n for n in nums if n in P]
+    kp = sum(nil[n] for n in pr)
+    p = sum(comb(K, x) * comb(N - K, len(pr) - x) for x in range(kp, min(K, len(pr)) + 1)) / comb(N, len(pr))
+    assert (K, len(pr), kp) == (46, 21, 17) and 0.001 < p < 0.003
+    assert abs(T.nilpotency_window(100, 1000)["primes"]["rate"] - 0.5) < 0.06

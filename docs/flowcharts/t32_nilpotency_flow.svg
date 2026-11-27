@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="758" viewBox="0 0 1280 758" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="842" viewBox="0 0 1280 842" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="1280" height="758" fill="#fbfaf6"/>
+<rect width="1280" height="842" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">t32_nilpotency: code flow</text>
-<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 14 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
-<rect x="46" y="98" width="288" height="620" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 15 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
+<rect x="46" y="98" width="288" height="704" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
 <text x="190.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">entry: registry class</text>
 <text x="190.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">start of every call path</text>
-<rect x="346" y="98" width="288" height="620" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<rect x="346" y="98" width="288" height="704" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
 <text x="490.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 1</text>
 <text x="490.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
-<rect x="646" y="98" width="288" height="620" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
+<rect x="646" y="98" width="288" height="704" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
 <text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
 <text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
-<rect x="946" y="98" width="288" height="620" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
+<rect x="946" y="98" width="288" height="704" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
 <text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 3</text>
 <text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
 <path d="M916.0,224.0 L938.0,224.0 L938.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -30,6 +30,7 @@
 <path d="M616.0,560.0 L634.0,560.0 L634.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,560.0 L934.0,560.0 L934.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,560.0 L638.0,560.0 L638.0,560.0 L664.0,560.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
+<path d="M616.0,560.0 L646.0,560.0 L646.0,644.0 L664.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M916.0,476.0 L938.0,476.0 L938.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M916.0,560.0 L938.0,560.0 L938.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M916.0,560.0 L942.0,560.0 L942.0,392.0 L964.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -81,6 +82,10 @@
 <text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">trace_laplacian</text>
 <text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The trace-Laplacian detector Δ(w)</text>
 <text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">= w·𝟏 over GF(2).</text>
+<rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">weight_parity</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The parity of the number of 1</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">bits of w: the closed form of th…</text>
 <rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hw_address</text>
 <text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Hyperwebster address of str(n):</text>
@@ -93,6 +98,6 @@
 <text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t32_mul</text>
 <text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Recursive Cayley-Dickson</text>
 <text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">multiplication over GF(2), dim a powe…</text>
-<text x="40" y="717" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
-<text x="40" y="732" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+<text x="40" y="801" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
+<text x="40" y="816" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
 </svg>

@@ -15,6 +15,7 @@
   T.mul = mul;
   T.ones = dim => (dim === 32 ? 0xFFFFFFFF : ((1 << dim) - 1)) >>> 0;
   T.sq = (w, dim) => mul(w, w, dim);
+  T.parity = w => { let c = 0; w >>>= 0; while (w) { c ^= 1; w &= w - 1; } return c; };            // popcount mod 2: the closed form of w.w
   T.delta = (w, dim) => mul(w, T.ones(dim), dim);                       // the detector  w . 1
   T.cls = (w, dim) => { const s = mul(w, w, dim); return s === 0 ? 'n' : s === 1 ? 'i' : 'o'; };   // n nilpotent (incl. 0), i involutory, o other
   const IDX = {}; Array.from(D.hw_chars).forEach((c, i) => { IDX[c] = i; });
@@ -40,12 +41,12 @@
   T.selfCheck = function () {
     let m = 0, s = 0, h = 0, c = 0, e = 0;
     D.mul_vectors.forEach(v => { if (mul(v[0], v[1], 32) === v[2]) m++; });
-    D.square_vectors.forEach(v => { if (mul(v[0], v[0], 32) === v[1]) s++; });
+    D.square_vectors.forEach(v => { if (mul(v[0], v[0], 32) === v[1] && v[1] === T.parity(v[0])) s++; });
     D.hw_vectors.forEach(v => { if (T.hwAddress(v[0]) === BigInt(v[1]) && T.hwToT32(v[0]) === v[2]) h++; });
     Object.keys(D.census).forEach(k => { const d = +k, py = D.census[k]; let n = 0, i = 0, o = 0; for (let w = 0; w < (1 << d); w++) { const x = T.cls(w, d); if (x === 'n') n++; else if (x === 'i') i++; else o++; } if (n === py.nilpotent && i === py.involutory && o === py.other) c++; });
     const ok = m === D.mul_vectors.length && s === D.square_vectors.length && h === D.hw_vectors.length && c === Object.keys(D.census).length;
     const el = document.getElementById('selfcheck');
-    if (el) el.innerHTML = '<span class="' + (ok ? 'ok' : 'bad') + '">self-check ' + (ok ? 'passed' : 'FAILED') + '</span>: this page\'s JavaScript port matches the Python engine on ' + m + '/' + D.mul_vectors.length + ' products, ' + s + '/' + D.square_vectors.length + ' squares, ' + h + '/' + D.hw_vectors.length + ' Hyperwebster addresses, ' + c + '/' + Object.keys(D.census).length + ' exhaustive censuses.';
+    if (el) el.innerHTML = '<span class="' + (ok ? 'ok' : 'bad') + '">self-check ' + (ok ? 'passed' : 'FAILED') + '</span>: this page\'s JavaScript port matches the Python engine on ' + m + '/' + D.mul_vectors.length + ' products, ' + s + '/' + D.square_vectors.length + ' squares (each equal to the weight parity), ' + h + '/' + D.hw_vectors.length + ' Hyperwebster addresses, ' + c + '/' + Object.keys(D.census).length + ' exhaustive censuses.';
     return ok;
   };
   window.T32 = T;

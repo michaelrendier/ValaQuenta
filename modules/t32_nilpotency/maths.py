@@ -37,7 +37,15 @@ from three digits up. The excess seen in the 16 sedenion basis primes (68.8 %) a
 range (21 primes: 81 %; 69 composites: 42 %; the 15 composites ending 1, 3, 7, 9: 27 %), and the baseline for a chance calculation is
 therefore 50 %, or the prime-matched control of :func:`matched_prime_control`, not the 70 % an earlier page used.
 
-Version: 0.120
+Closed form found by chasing the two-digit anomaly (0.130, 2026-11-26, wiki 78 §7): w·w = (popcount(w) mod 2)·e₀. The square of a word is
+the parity of its number of 1 bits (exhaustive for d ≤ 16, 20,000 random words at d = 32), so nilpotent means an EVEN number of 1 bits and
+involutory means ODD. Parity is a ring homomorphism to GF(2): parity(a·b) = parity(a)·parity(b) (every pair at d ≤ 8), and Δ(w) = w·𝟏 =
+parity(w)·𝟏. The radical is its kernel, the even-weight words: closed under XOR, dimension d − 1, and an ideal. The nilpotency indicator of the
+Hyperwebster word of n is the Thue-Morse sequence of the address, which is why it is ½ for primes and composites alike (cf. Mauduit and Rivat
+2010 for the binary digit sum of primes, Post-Hoc). The 17-of-21 excess of two-digit primes is one 90-number table (hypergeometric P = 0.0016,
+chosen after looking; it is absent at three digits).
+
+Version: 0.130
 """
 
 from typing import List
@@ -200,7 +208,8 @@ def radical_census(dim: int = 8) -> dict:
 
     :param dim: algebra dimension, a power of 2 up to 16 (2^dim words are enumerated)
     :returns: dict: ``words``, ``nilpotent`` (counting 0), ``involutory``, ``other``,
-        ``detector_agrees`` (Δ(w) = 0 ⟺ w² = 0 for every word), ``one_is_annihilator`` (False)
+        ``detector_agrees`` (Δ(w) = 0 ⟺ w² = 0 for every word), ``one_is_annihilator`` (False),
+        ``square_is_weight_parity`` (w·w = weight_parity(w) for every word), ``parity_is_homomorphism`` (every pair; None above d = 8)
     """
     if dim > 16:
         raise ValueError('radical_census enumerates 2**dim words; dim must be <= 16')
@@ -210,8 +219,12 @@ def radical_census(dim: int = 8) -> dict:
         counts[square_class(w, dim)] += 1
         agrees &= (trace_laplacian(w, dim) == 0) == (t32_mul(w, w, dim) == 0)
     one = ones(dim)
+    parity_law = all(t32_mul(w, w, dim) == weight_parity(w) for w in range(1 << dim))
+    homomorphism = (all(weight_parity(t32_mul(a, b, dim)) == (weight_parity(a) & weight_parity(b))
+                        for a in range(1 << dim) for b in range(1 << dim)) if dim <= 8 else None)
     return {'dim': dim, 'words': 1 << dim, **counts, 'detector_agrees': agrees,
-            'one_is_annihilator': t32_mul(1, one, dim) == 0}
+            'one_is_annihilator': t32_mul(1, one, dim) == 0,
+            'square_is_weight_parity': parity_law, 'parity_is_homomorphism': homomorphism}
 
 
 def nilpotency_window(lo: int, hi: int) -> dict:
@@ -264,3 +277,16 @@ def matched_prime_control(subset: List[int], trials: int = 20000, seed: int = 1)
         al += k == len(subset)
     return {'observed': obs, 'n': len(subset), 'pool_size': len(pool), 'p_at_least': ge / trials,
             'p_all': al / trials, 'random_word_rate': 0.5}
+
+
+def weight_parity(w: int) -> int:
+    """
+    The parity of the number of 1 bits of w: the closed form of the square law.
+
+    w·w = weight_parity(w)·e₀, so w is nilpotent exactly when this is 0 (including w = 0) and an involutory unit when it is 1. The map
+    is a ring homomorphism to GF(2): weight_parity(a·b) = weight_parity(a)·weight_parity(b).
+
+    :param w: T32 word
+    :returns: 0 if w has an even number of 1 bits, 1 if odd
+    """
+    return bin(w).count('1') & 1

@@ -2,7 +2,7 @@
 
 **File:** `modules/t32_nilpotency/maths.py`
 **Class:** `T32NilpotencyModule`  
-**Version:** 0.120
+**Version:** 0.130
 **Claim:** one verified-correct implementation of Hyperwebster address encoding + T32/GF(2) multiplication + nilpotency test, imported by `hypergon_constructibility` (ValaQuenta) and `fermat_monster_engine.py` (FourthAgePapers/FermatMonster, cross-repo), instead of being duplicated across both.
 
 
@@ -53,13 +53,17 @@ non_gap_primes_nilpotent_pct (n=10)     = 70.0%
 
 `radical_census(dim)` enumerates every word: x² is always 0 or e₀, so the algebra splits into the nilpotents (the radical) and the involutory units, 128 / 128 at dim 8. `trace_laplacian(w)` = w·𝟏 vanishes exactly on the nilpotents (exhaustive at dim 2, 4, 8; 2,000 random words at dim 32 in `tests/test_t32_nilpotency.py`). Corrected lemma: 𝟏 is not a global annihilator (`e₀·𝟏 = 𝟏`); the earlier UDEO white-paper proof is superseded. Narrative: Ainulindale wiki 78 §5.
 
+## The closed form (0.130)
+
+Chasing the two-digit anomaly to its source gave the rule behind the square law: **w·w = (number of 1 bits of w, mod 2)·e₀** (`weight_parity`). A word is nilpotent exactly when it has an even number of 1 bits and an involutory unit when odd; Δ(w) = w·𝟏 = parity(w)·𝟏; parity(a·b) = parity(a)·parity(b), a ring homomorphism to GF(2) whose kernel is the radical (the even-weight words: closed under XOR, dimension d − 1, an ideal). Checked: every word at d ≤ 16, every pair at d ≤ 8, 20,000 random words at d = 32. The nilpotency indicator of the Hyperwebster word of n is therefore the Thue-Morse sequence of the address, ½ for primes and composites alike; the earlier statement on this page that no closed form was known is withdrawn. The 17-of-21 two-digit prime excess is one 90-number table (hypergeometric P = 0.0016, a window chosen after looking) and is absent at three digits; why three digits wash it out is open (the author's reading: three digits carry the three-part structure, inclination, declination, distance; untested).
+
 ## The control (0.120)
 
 `nilpotency_window(lo, hi)` returns the nilpotent rate of primes, composites and composites ending 1, 3, 7, 9; `matched_prime_control(subset)` returns the chance of as many nilpotent among random primes of the same count and maximum. Measured: 10–99 primes 17/21, composites 29/69, composites ending 1,3,7,9 4/15; 100–999 70/143 vs 377/757; 1,000–9,999 523/1,061 vs 3,974/7,939; 10,000–99,999 4,232/8,363 vs 40,752/81,637.
 
 ## Gallery
 
-`gallery/t32_nilpotency/` (index and four `canvas2d_*` pages: the 128 | 128 square-law grid, the detector Δ(w) = w·𝟏, primes as T32 words with the control, the zero-divisor pair matrix). Every page checks its JavaScript port against this engine on load. Launch with `gallery/t32_nilpotency/serve_gallery.sh`.
+`gallery/t32_nilpotency/` (index and five `canvas2d_*` pages: the 128 | 128 square-law grid, the detector Δ(w) = w·𝟏, primes as T32 words with the control, primes against composites by decimal length, the zero-divisor pair matrix). Every page checks its JavaScript port against this engine on load. Launch with `gallery/t32_nilpotency/serve_gallery.sh`.
 
 ## What's Established vs. What Isn't
 
