@@ -11,7 +11,7 @@ object is finite: the labelled octonion group of order 1344 = 8 x 168, with
 PSL(2,7) (order 168, Aut(Fano)) as its quotient, NOT G2 -- Moreno's G2 is the
 continuous blow-up that forgets the labelling. See maths.py.
 
-Version: 0.3
+Version: 0.4
 """
 
 from typing import Dict, List, Any
@@ -25,7 +25,7 @@ from .maths import (
     assessors_adjacent, box_kite_graph, chart_spectrum,
     glued_graph, glued_spectrum, associator_field,
     eigenvalues_symmetric,
-    pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts, labelled_automorphisms,
+    pg32_points, pg32_lines, fano_planes, psl27_order, skeleton_counts, labelled_automorphisms, labelled_group_is_split,
     e0_is_outside, SEDENION_DIM,
     index_chart_membership, skeleton_overlap, fixed_point_gluing,
     norm, fixed_point_weight, energy_split, diagonal_amplitudes,
@@ -47,7 +47,7 @@ class BoxKiteModule(EquationModule):
 
     @property
     def version(self):
-        return "0.3"
+        return "0.4"
 
     @property
     def description(self):
@@ -277,6 +277,18 @@ class BoxKiteModule(EquationModule):
                 compute=lambda: labelled_automorphisms(),
                 display_options=['text'],
                 process='Enumerated and checked against the sedenion table; one orbit of size 168, point stabiliser of order 8.',
+            ),
+            Equation(
+                name='labelled_group_is_split',
+                display='The group 2^3.PSL(2,7) of order 1344 does not split: every lift of a generating pair spans all 1344 elements',
+                latex=r'1 \to 2^3 \to G_{1344} \to PSL(2,7) \to 1\ \text{is non-split}',
+                radian_form='lift a generating pair (order 7, order 2) of the 168 permutations in all 8 x 8 ways; generate each subgroup; a complement would have order 168',
+                confidence='ESTABLISHED',
+                code_verified=True,
+                params=[],
+                compute=lambda: labelled_group_is_split(),
+                display_options=['text'],
+                process='64 lift pairs tried; every one spans order 1344; split is False.',
             ),
             Equation(
                 name='e0_is_outside',

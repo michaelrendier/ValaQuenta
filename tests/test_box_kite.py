@@ -71,6 +71,11 @@ def test_the_labelled_group_is_8_times_168_and_acts_transitively_on_the_168_poin
     assert out["orbits_on_unit_points"] == [168] and out["point_stabiliser"] == 8
 
 
+def test_the_labelled_group_does_not_split():
+    out = bk.labelled_group_is_split()
+    assert out["lift_pairs_tried"] == 64 and out["subgroup_orders"] == [1344] and out["split"] is False
+
+
 def test_e0_is_not_part_of_the_geometry():
     out = bk.e0_is_outside()
     assert out['e0_is_outside_the_geometry'] and out['e0_associator_always_vanishes']

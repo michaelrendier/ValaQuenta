@@ -35,3 +35,8 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 ## 2026-11-27 · `box_kite` 0.3 (the labelled group)
 - `Ainulindale`: wiki 84 (the group sentence), ledger X-68.
 - Checked, no change needed: every other mention of PSL(2,7) in the active repositories uses it as Aut(Fano) = GL(3,2), which remains correct (it is the quotient). Not edited, by design: the verbatim engine snapshots under `FourthAgePapers/ScalarContextPropagation/repo_appendix/box_kite_engine/` and `VAPMIP/FourthAgePaper/...` (appendix copies), and Tuning-the-Engine 25 (never edited); they still carry the earlier sentence.
+
+## 2026-11-27 · `box_kite` 0.4 (visuals, the split result)
+- `Ainulindale`: ledger X-69 (non-split; associator octonion block not flat); wiki 84 gains a pointer to the gallery.
+- Galleries: `gallery/box_kite/` in the central index (`ContextPlease/claude/galleries/build_index.py`, port 8793) and in `.github/workflows/docs.yml`.
+- Still not edited, by design: the verbatim engine snapshots (`ScalarContextPropagation/repo_appendix/box_kite_engine/`, VAPMIP appendix copy) and Tuning-the-Engine; the 0.3 sentence in them stands as a dated snapshot.
