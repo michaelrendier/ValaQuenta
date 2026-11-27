@@ -1,5 +1,8 @@
 """inductive_onset_residual: each test compares independently computed quantities."""
 import math
+import os
+
+import pytest
 
 from ValaQuenta.engine import constants as C
 from ValaQuenta.modules.inductive_onset_residual import maths as m
@@ -27,6 +30,8 @@ def test_explicit_formula_is_close_to_exact_psi():
     assert abs(m.explicit_formula(10.5, 20)['error']) < 0.5
 
 
+@pytest.mark.skipif(not os.path.isdir(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "Ainulindale")),
+                    reason="the census counts files in the sibling repositories (the ThePlace workspace); a clean clone of ValaQuenta alone has none")
 def test_census_finds_the_running_value():
     c = m.census()
     assert c['totals']['running 0.246(0)'] > 100
