@@ -59,3 +59,11 @@ def test_registry_equation_runs():
     mod = T32NilpotencyModule()
     assert mod.run("radical_census", {"dim": 4})["result"]["words"] == 16
     assert mod.run("prime_nilpotency_report", {})["result"]["total"] == 16
+
+
+def test_zero_divisor_pair_counts_and_commutativity_small_dims():
+    """The gallery's matrix page states these: 1 / 25 / 2689 ordered pairs, and the algebra is commutative at d = 2, 4, 8."""
+    for d, pairs in ((2, 1), (4, 25), (8, 2689)):
+        n = 1 << d
+        assert all(T.t32_mul(a, b, d) == T.t32_mul(b, a, d) for a in range(n) for b in range(n))
+        assert sum(1 for a in range(1, n) for b in range(1, n) if T.t32_mul(a, b, d) == 0) == pairs

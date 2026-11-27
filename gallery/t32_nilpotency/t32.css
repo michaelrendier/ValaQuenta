@@ -1,0 +1,16 @@
+/* SPDX-License-Identifier: GPL-3.0-only. Shared styles of the t32_nilpotency gallery. Colour tokens on :root, dark block under prefers-color-scheme. */
+:root{--bg:#f4f6fb;--fg:#1b2033;--mut:#4d5775;--card:#fff;--line:#d9deee;--acc:#2f4fc4;--nil:#2b6cb0;--inv:#c2600f;--zero:#111827;--ok:#237a3b;--bad:#b42318;--badge-fg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1020;--fg:#e6e9f5;--mut:#a9b3d4;--card:#161b33;--line:#2a3257;--acc:#9fb3ff;--nil:#63a4ee;--inv:#f09a4d;--zero:#e6e9f5;--ok:#6fd08c;--bad:#ff8f84;--badge-fg:#000}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+header,main,footer{max-width:1000px;margin:0 auto;padding:12px 16px}h1{font-size:21px;margin:6px 0 2px}.sub{color:var(--mut)}a{color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0}
+.row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:8px 0}label{color:var(--mut)}
+select,input,button{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px}button{cursor:pointer}
+canvas{display:block;max-width:100%;border:1px solid var(--line);border-radius:6px;background:var(--card);touch-action:none;image-rendering:pixelated}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin:0 4px 0 10px;border:1px solid var(--line)}
+code,.mono{font-family:ui-monospace,DejaVu Sans Mono,monospace;font-size:.93em}.pre{white-space:pre-wrap}
+.info{min-height:5.6em}.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.tag{display:inline-block;font:12px monospace;border:1px solid var(--line);border-radius:5px;padding:0 6px;margin-right:6px}
+table{border-collapse:collapse}td,th{padding:2px 8px;text-align:left;border-bottom:1px solid var(--line)}
+.ct{background:#151a33;color:#c9d1ff;font-size:13px;text-align:center;padding:6px 16px}.ct a{color:#9fb3ff;text-decoration:none;margin:0 8px}
+footer{color:var(--mut);font-size:13px}footer li{margin:2px 0}
+@media (max-width:700px){header,main,footer{padding:10px 16px}}
