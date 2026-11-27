@@ -9,15 +9,14 @@ rendering is chosen.
 
 Layers, each labelled where it is used
 --------------------------------------
+
 ESTABLISHED  Standard-Model Higgs sector: V(h) = -mu^2 h^2/2 + lam h^4/4, m_h = 125.25 GeV, v = 246.22 GeV.
-ESTABLISHED  Classical paths of fixed energy E in a central potential V(r): r-dot^2 = 2(E - V) - L^2/r^2, abbreviated action
-             W = integral sqrt(2(E - V)) ds (Maupertuis / Jacobi metric).
-ESTABLISHED  Pair correlation of free fermions g_F(r) = 1 - |<psi*psi>|^2 (exchange hole) and of bosons g_B(r) = 1 + |<psi*psi>|^2
-             (bunching); the 1-D fermion case g_F(u) = 1 - (sin pi u / pi u)^2 is the sine kernel, which is also the
-             Montgomery-Odlyzko pair correlation of the Riemann zeros (Montgomery 1973; Dyson).
-THEORETICAL  (the author's reading) the hat potential is the fermion exchange-hole waveform and the bundle of paths from the
-             brim to the hilltop is the cone of dynamic action L_dynamic = L_(I|O); the focal point is the one aim at which
-             the cone closes on a point.
+
+ESTABLISHED  Classical paths of fixed energy E in a central potential V(r): r-dot^2 = 2(E - V) - L^2/r^2, abbreviated action W = integral sqrt(2(E - V)) ds (Maupertuis / Jacobi metric).
+
+ESTABLISHED  Pair correlation of free fermions g_F(r) = 1 - |<psi*psi>|^2 (exchange hole) and of bosons g_B(r) = 1 + |<psi*psi>|^2 (bunching); the 1-D fermion case g_F(u) = 1 - (sin pi u / pi u)^2 is the sine kernel, which is also the Montgomery-Odlyzko pair correlation of the Riemann zeros (Montgomery 1973; Dyson).
+
+THEORETICAL  (the author's reading) the hat potential is the fermion exchange-hole waveform and the bundle of paths from the brim to the hilltop is the cone of dynamic action L_dynamic = L_(I|O); the focal point is the one aim at which the cone closes on a point.
 
 Units: radius in units of the brim radius r_b, energy in units of the depth V_0 (so V(0) = 0, V(brim) = -1) unless a function
 takes ``size`` (r_b) and ``depth`` (V_0) and says so.  Nothing here uses a framework constant.
@@ -308,8 +307,10 @@ def lagrangian_sm(mu2: float = None, lam: float = None, vev: float = None) -> di
 
 def lagrangian_vap(mu_sq: float = -1.0, lam: float = 0.5, g: float = 0.01, psi=(1.0, 0.0), convention: str = "ssb") -> dict:
     """THE VAPMIP (monad) LAGRANGIAN, the author's L_NN (ValaQuenta/modules/lagrangian):
+
         L = (2/pi) oint [ L_kin + L_mat + (1/phi) L_bias + L_coup ],
         L_bias = (1/2) mu^2 beta^2 - (1/4) lam beta^4   (as coded),  L_coup = -(1/phi) g psi.beta  (Yukawa, 1/phi scaled).
+
     Only L_bias and L_coup depend on the bias field beta, so the potential on the beta-plane is  V_vap = -( (1/phi) L_bias + L_coup ).
     convention 'as_coded':  V = -(1/phi)(mu^2 b^2/2 - lam b^4/4) + (g/phi) psi.b : with the code's default mu^2 = -1 this is a plain bowl (no hat).
     convention 'ssb' (the docstring's intent, 'mu^2 < 0 breaks the symmetry'): V = (1/phi)(mu^2 b^2/2 + lam b^4/4) + (g/phi) psi.b : a hat, brim at sqrt(-mu^2/lam).

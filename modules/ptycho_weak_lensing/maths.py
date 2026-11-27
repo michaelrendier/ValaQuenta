@@ -14,6 +14,7 @@ ESTABLISHED (Kaiser & Squires 1993; Bartelmann & Schneider 2001; Seitz & Schneid
     γ̂(k) = D(k) κ̂(k),   D = (k₁² − k₂² + 2 i k₁k₂)/|k|²   (|D| = 1 for k ≠ 0; D(0) := 0)   κ̂ = D* γ̂
     g = γ/(1 − κ)       μ = 1/((1−κ)² − |γ|²)       ε = (ε_s + g)/(1 + g* ε_s)  for |g| < 1
     mass-sheet degeneracy:  κ → λκ + (1−λ) leaves g unchanged (k = 0 is not measured by shear)
+
 PTYCHOGRAPHY (this engine's reading, THEORETICAL): a *pointing* is a probe window W_j placed at a position in the field;
 the object is the one real field κ; the overlap redundancy is that every pointing constrains the same κ, and the object
 constraint is "B-mode = 0, κ real".  The iteration is an ePIE / Kaczmarz update over pointings.
@@ -460,7 +461,9 @@ def naive_mosaic(data, dx=1.0, iterations=3, pad=2):
 
 def ptycho_reconstruct(data, n_iter=60, alpha=0.9, dx=1.0, pad=2, seed=0, smooth_final=1.0, track=None):
     """ePIE-style / Kaczmarz over pointings, κ real:  for each pointing j (random order)
+
       model = η_j · D κ ;  R = M_j (ε_j − model(1−η_jκ)) ;  κ ← κ + α · Re[D* R]/η_j,   M_j = count-weight · window
+
     where M_j is normalised by the field's total weight (the ePIE |P|² denominator).  The real part is the object constraint
     (B = 0); the pointings' overlap is the redundancy.  Returns (κ, history of the data-consistency χ², final B-mode leak).
 

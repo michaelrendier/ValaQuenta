@@ -12,7 +12,8 @@ verified against scipy 1.18 where scipy has the function (Testing/test_bell_curv
 exact where a closed form exists, and stdlib-only (math, random) so any module,
 the Monad's pipelines included, can import it with no dependency.
 
-SECTIONS
+SECTIONS::
+
   1  Moments          Welford/Pebay streaming mean, variance, skew, kurtosis; exact merge
   2  Descriptive      quantiles (type 7), MAD, IQR, z-scores, histogram, KDE, covariance
   3  Special functions  regularised incomplete gamma and beta, log-binomial, n-ball volume and sphere area (Gamma at half-integers)

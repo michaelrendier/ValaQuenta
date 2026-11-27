@@ -20,9 +20,11 @@ time.  Then
 
 Layers
 ------
+
 ESTABLISHED  Hamilton-Jacobi (t = dW/dE), Fermat's and Maupertuis' principles, the optical / analogue metric, the tortoise coordinate, the Wick rotation, the Gudermannian function.
-INTERPRETATION  that "length and time are the same thing" is the null condition in the space's own conversion field, and that the Penrose swap and the Smith-chart compactification are one map
-             under rho -> i t (Ainulindale wiki 140).
+
+INTERPRETATION  that "length and time are the same thing" is the null condition in the space's own conversion field, and that the Penrose swap and the Smith-chart compactification are one map under rho -> i t (Ainulindale wiki 140).
+
 Units: those of the model (unit mass).
 """
 from __future__ import annotations

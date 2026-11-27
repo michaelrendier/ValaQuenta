@@ -21,3 +21,19 @@ nitpicky   = False
 exclude_patterns = ['_build', 'gen_api.py', 'gen_listings.py']
 autodoc_mock_imports = ['PyQt5', 'vispy', 'sounddevice', 'qtermwidget']
 release = version = '0.159'
+
+
+# The docstrings are written for a reader at a terminal, where |x| is an absolute value or a norm. In reST a bare pair of vertical bars is a
+# substitution reference, so each bar outside an inline literal is escaped here, at build time, and the source stays readable as plain text.
+import re as _re
+
+
+def _escape_bars(app, what, name, obj, options, lines):
+    """autodoc-process-docstring: escape ``|`` (outside ``double-backtick`` literals) so it is not read as a substitution reference."""
+    for i, line in enumerate(lines):
+        parts = _re.split(r'(``[^`]*``)', line)
+        lines[i] = ''.join(p if p.startswith('``') and p.endswith('``') and len(p) > 3 else p.replace('\\|', '|').replace('|', '\\|') for p in parts)
+
+
+def setup(app):
+    app.connect('autodoc-process-docstring', _escape_bars)

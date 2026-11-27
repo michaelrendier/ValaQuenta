@@ -23,6 +23,7 @@ ESTABLISHED  everything in this file that is a theorem of group theory or algebr
              (Machacek-Vaughn), and the measured inputs, which carry their source in ``INPUTS``.
 INTERPRETATION  where the file says what is derived and what is measured: the FORM of L_SM follows from the gauge group, the field
              content and renormalisability; the NUMBERS (the 19 parameters) and the choice of group and content are measured.
+
 Nothing here is THEORETICAL in the author's sense: this engine is the control against which the other Lagrangians are compared.
 
 Units: GeV, natural units (hbar = c = 1), couplings dimensionless, V in GeV^4.
