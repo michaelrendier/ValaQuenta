@@ -111,58 +111,71 @@
 <text x="190.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">BellCurveModule</text>
 <text x="190.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">tools · THE BELL CURVE ENGINE.</text>
 <rect x="364.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">benjamini_hochberg</text>
-<text x="490.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">benjamini_hochberg</text>
+<text x="490.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Benjamini-Hochberg false-</text>
+<text x="490.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">discovery-rate adjustment (1995).</text>
 <rect x="364.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bessel_i0</text>
-<text x="490.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bessel_i0</text>
+<text x="490.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Modified Bessel function of the</text>
+<text x="490.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">first kind, order 0, by its po…</text>
 <rect x="364.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_binomial</text>
-<text x="490.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_binomial</text>
+<text x="490.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Beta-binomial posterior for a</text>
+<text x="490.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">proportion, with an equal-tailed…</text>
 <rect x="364.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_cdf</text>
-<text x="490.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_cdf</text>
+<text x="490.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Beta cumulative distribution, the</text>
+<text x="490.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">regularised incomplete beta.</text>
 <rect x="364.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binom_cdf</text>
-<text x="490.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binom_cdf</text>
+<text x="490.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Binomial cumulative distribution,</text>
+<text x="490.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">through the incomplete beta.</text>
 <rect x="364.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="640.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binom_pmf</text>
-<text x="490.0" y="655.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">binom_pmf</text>
+<text x="490.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Binomial probability mass,</text>
+<text x="490.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">computed in logs.</text>
 <rect x="364.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bonferroni</text>
-<text x="490.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bonferroni</text>
+<text x="490.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Bonferroni adjustment: each p</text>
+<text x="490.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">multiplied by the number of test…</text>
 <rect x="364.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="808.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bootstrap_ci</text>
-<text x="490.0" y="823.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">bootstrap_ci</text>
+<text x="490.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Percentile bootstrap confidence</text>
+<text x="490.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">interval for any statistic, wi…</text>
 <rect x="364.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">canonical</text>
 <text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Canonical ensemble of a finite</text>
 <text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">level system: Z, U, S, F, Cv (G…</text>
 <rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="976.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_gof</text>
-<text x="490.0" y="991.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="991.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chi-square goodness of fit.</text>
 <rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1060.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_independence</text>
-<text x="490.0" y="1075.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_independence</text>
+<text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chi-square test of independence</text>
+<text x="490.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">on a contingency table, with C…</text>
 <rect x="364.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1144.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_std</text>
-<text x="490.0" y="1159.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_std</text>
+<text x="490.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Circular standard deviation</text>
+<text x="490.0" y="1166.2" font-size="10.8" fill="#16202c" text-anchor="middle">sqrt(-2 ln R); infinite when R = 0.</text>
 <rect x="364.0" y="1199.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="1228.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_var</text>
-<text x="490.0" y="1243.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1243.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Circular variance, 1 - R.</text>
 <rect x="364.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="1305.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cohens_kappa</text>
 <text x="490.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chance-corrected agreement</text>
 <text x="490.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">between two raters (Cohen 1960) wit…</text>
 <rect x="364.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1396.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">f_cdf</text>
-<text x="490.0" y="1411.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">f_cdf</text>
+<text x="490.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · F-distribution cumulative</text>
+<text x="490.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">distribution, through the incomplete…</text>
 <rect x="364.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1480.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jarque_bera</text>
-<text x="490.0" y="1495.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">jarque_bera</text>
+<text x="490.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Jarque-Bera test of normality</text>
+<text x="490.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">from skewness and excess kurtosi…</text>
 <rect x="364.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1564.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">js_divergence</text>
-<text x="490.0" y="1579.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">js_divergence</text>
+<text x="490.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Jensen-Shannon divergence (Lin</text>
+<text x="490.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">1991): the symmetric, bounded r…</text>
 <rect x="364.0" y="1619.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="1641.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kde</text>
 <text x="490.0" y="1657.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Gaussian kernel density estimate</text>
@@ -180,21 +193,25 @@
 <text x="490.0" y="1909.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The n-sigma a p-value corresponds</text>
 <text x="490.0" y="1922.2" font-size="10.8" fill="#16202c" text-anchor="middle">to (two-sided: 3 sigma &lt;-&gt; p…</text>
 <rect x="364.0" y="1955.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="1984.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pearson</text>
-<text x="490.0" y="1999.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="1977.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pearson</text>
+<text x="490.0" y="1993.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Pearson correlation with a t-test</text>
+<text x="490.0" y="2006.2" font-size="10.8" fill="#16202c" text-anchor="middle">p-value and a Fisher-z confi…</text>
 <rect x="364.0" y="2039.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2068.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">perplexity</text>
-<text x="490.0" y="2083.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="2061.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">perplexity</text>
+<text x="490.0" y="2077.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Perplexity 2^H of a distribution:</text>
+<text x="490.0" y="2090.2" font-size="10.8" fill="#16202c" text-anchor="middle">the effective number of equa…</text>
 <rect x="364.0" y="2123.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="2145.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">rayleigh_test</text>
 <text x="490.0" y="2161.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Rayleigh test of uniformity on</text>
 <text x="490.0" y="2174.2" font-size="10.8" fill="#16202c" text-anchor="middle">the circle (Zar 1999 approximat…</text>
 <rect x="364.0" y="2207.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2236.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_test_one</text>
-<text x="490.0" y="2251.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="2229.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_test_one</text>
+<text x="490.0" y="2245.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · One-sample t test of the mean</text>
+<text x="490.0" y="2258.2" font-size="10.8" fill="#16202c" text-anchor="middle">against mu0.</text>
 <rect x="364.0" y="2291.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2320.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_test_welch</text>
-<text x="490.0" y="2335.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="2313.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_test_welch</text>
+<text x="490.0" y="2329.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Welch's two-sample t test,</text>
+<text x="490.0" y="2342.2" font-size="10.8" fill="#16202c" text-anchor="middle">unequal variances (Welch 1947).</text>
 <rect x="364.0" y="2375.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="2397.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">verify_known_values</text>
 <text x="490.0" y="2413.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Spot-checks against exact or</text>
@@ -204,43 +221,53 @@
 <text x="490.0" y="2497.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Wilson score interval for a</text>
 <text x="490.0" y="2510.2" font-size="10.8" fill="#16202c" text-anchor="middle">binomial proportion (Wilson 1927);…</text>
 <rect x="364.0" y="2543.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="2572.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zscores</text>
-<text x="490.0" y="2587.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="2565.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">zscores</text>
+<text x="490.0" y="2581.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Standardise a sample to (x -</text>
+<text x="490.0" y="2594.2" font-size="10.8" fill="#16202c" text-anchor="middle">centre) / spread; a zero spread g…</text>
 <rect x="664.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_ppf</text>
-<text x="790.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">beta_ppf</text>
+<text x="790.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Beta quantile, by inverting the</text>
+<text x="790.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">cdf.</text>
 <rect x="664.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_ppf</text>
-<text x="790.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_ppf</text>
+<text x="790.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chi-square quantile, by inverting</text>
+<text x="790.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">the cdf.</text>
 <rect x="664.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_sf</text>
-<text x="790.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_sf</text>
+<text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chi-square survival function, 1 -</text>
+<text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">cdf.</text>
 <rect x="664.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="790.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_R</text>
 <text x="790.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Mean resultant length in [0,1]: 1</text>
 <text x="790.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">= all one direction, 0 = uni…</text>
 <rect x="664.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="556.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_mean</text>
-<text x="790.0" y="571.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">circ_mean</text>
+<text x="790.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Mean direction of angles on a</text>
+<text x="790.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">circle.</text>
 <rect x="664.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="640.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cohens_d</text>
-<text x="790.0" y="655.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="633.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">cohens_d</text>
+<text x="790.0" y="649.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Cohen's d: the difference of</text>
+<text x="790.0" y="662.1" font-size="10.8" fill="#16202c" text-anchor="middle">means over the pooled standard de…</text>
 <rect x="664.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">covariance</text>
-<text x="790.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">covariance</text>
+<text x="790.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Covariance of two equal-length</text>
+<text x="790.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">samples.</text>
 <rect x="664.0" y="779.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="808.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">entropy</text>
-<text x="790.0" y="823.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="801.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">entropy</text>
+<text x="790.0" y="817.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Shannon entropy of a distribution</text>
+<text x="790.0" y="830.1" font-size="10.8" fill="#16202c" text-anchor="middle">(Shannon 1948); the input is…</text>
 <rect x="664.0" y="863.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="892.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">iqr</text>
-<text x="790.0" y="907.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="885.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">iqr</text>
+<text x="790.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Interquartile range, the 0.75</text>
+<text x="790.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">quantile minus the 0.25 quantile.</text>
 <rect x="664.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="790.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">ising_1d</text>
 <text x="790.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · 1-D Ising ring, exact by transfer</text>
 <text x="790.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">matrix (Kramers-Wannier 1941…</text>
 <rect x="664.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="1060.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kl_divergence</text>
-<text x="790.0" y="1075.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">kl_divergence</text>
+<text x="790.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Kullback-Leibler divergence D(p</text>
+<text x="790.0" y="1082.2" font-size="10.8" fill="#16202c" text-anchor="middle">|| q) (1951); raises ZeroDivis…</text>
 <rect x="664.0" y="1115.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="790.0" y="1137.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mad</text>
 <text x="790.0" y="1153.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Median absolute deviation;</text>
@@ -251,27 +278,31 @@
 <text x="790.0" y="1250.2" font-size="10.8" fill="#16202c" text-anchor="middle">million opportunities at a s…</text>
 <rect x="664.0" y="1283.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="790.0" y="1312.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">sigma_to_p</text>
-<text x="790.0" y="1327.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="1327.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The p-value of an n-sigma result.</text>
 <rect x="664.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="790.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">softmax</text>
 <text x="790.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · softmax IS the canonical ensemble</text>
 <text x="790.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">with E = -x, kT = temperatur…</text>
 <rect x="664.0" y="1451.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="1480.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stdev</text>
-<text x="790.0" y="1495.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="1473.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">stdev</text>
+<text x="790.0" y="1489.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Standard deviation, the square</text>
+<text x="790.0" y="1502.2" font-size="10.8" fill="#16202c" text-anchor="middle">root of variance.</text>
 <rect x="664.0" y="1535.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="1564.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_ppf</text>
-<text x="790.0" y="1579.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="1557.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_ppf</text>
+<text x="790.0" y="1573.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Student t quantile, by inverting</text>
+<text x="790.0" y="1586.2" font-size="10.8" fill="#16202c" text-anchor="middle">the cdf.</text>
 <rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">boltzmann_probs</text>
 <text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · p_i = g_i exp(-beta E_i) / Z,</text>
 <text x="1090.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">computed with the minimum subtra…</text>
 <rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_cdf</text>
-<text x="1090.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1090.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">chi2_cdf</text>
+<text x="1090.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Chi-square cumulative</text>
+<text x="1090.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">distribution, through the incomplete gam…</text>
 <rect x="964.0" y="359.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="388.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">median</text>
-<text x="1090.0" y="403.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1090.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">median</text>
+<text x="1090.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Median, the 0.5 quantile (type</text>
+<text x="1090.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">7).</text>
 <rect x="964.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1090.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">norm_ppf</text>
 <text x="1090.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Normal quantile: Abramowitz-</text>
@@ -281,11 +312,14 @@
 <text x="1090.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Survival function 1 - cdf,</text>
 <text x="1090.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">accurate far into the tail.</text>
 <rect x="964.0" y="611.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="640.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_cdf</text>
-<text x="1090.0" y="655.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1090.0" y="627.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">t_cdf</text>
+<text x="1090.0" y="642.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Student t cumulative</text>
+<text x="1090.0" y="655.6" font-size="10.8" fill="#16202c" text-anchor="middle">distribution, through the incomplete</text>
+<text x="1090.0" y="668.6" font-size="10.8" fill="#16202c" text-anchor="middle">beta…</text>
 <rect x="964.0" y="695.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="724.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">variance</text>
-<text x="1090.0" y="739.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1090.0" y="717.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">variance</text>
+<text x="1090.0" y="733.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Variance by the streaming</text>
+<text x="1090.0" y="746.1" font-size="10.8" fill="#16202c" text-anchor="middle">accumulator.</text>
 <rect x="1264.0" y="191.0" width="252" height="66" rx="33.0" fill="#cdebd6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1390.0" y="207.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Moments</text>
 <text x="1390.0" y="222.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Streaming central moments</text>
@@ -300,14 +334,16 @@
 <text x="1390.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Regularised lower incomplete</text>
 <text x="1390.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">gamma P(a, x) (series for x &lt; a+1…</text>
 <rect x="1264.0" y="443.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="472.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">norm_cdf</text>
-<text x="1390.0" y="487.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1390.0" y="465.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">norm_cdf</text>
+<text x="1390.0" y="481.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Normal cumulative distribution,</text>
+<text x="1390.0" y="494.1" font-size="10.8" fill="#16202c" text-anchor="middle">by the complementary error fun…</text>
 <rect x="1264.0" y="527.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1390.0" y="549.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quantile</text>
 <text x="1390.0" y="565.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Hyndman-Fan type 7 (the numpy / R</text>
 <text x="1390.0" y="578.1" font-size="10.8" fill="#16202c" text-anchor="middle">default): linear interpolati…</text>
 <rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mean</text>
-<text x="1690.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="1690.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">mean</text>
+<text x="1690.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Arithmetic mean, summed with</text>
+<text x="1690.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">math.fsum so rounding does not ac…</text>
 <text x="40" y="2748" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

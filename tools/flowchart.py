@@ -62,7 +62,7 @@ def parse(name, files):
         tree = ast.parse(open(f, encoding="utf-8").read())
         fn = os.path.basename(f)
         for n in tree.body:
-            if isinstance(n, ast.ImportFrom) and n.module is not None or isinstance(n, ast.ImportFrom):
+            if isinstance(n, ast.ImportFrom) and (n.level > 0 or (n.module or '').split('.')[0] in ('ValaQuenta', 'engine')):   # another engine, not the standard library
                 mod = ("." * n.level) + (n.module or "")
                 for a in n.names:
                     imports[a.asname or a.name] = mod

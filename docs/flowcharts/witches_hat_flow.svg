@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1880" height="3110" viewBox="0 0 1880 3110" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="3110" viewBox="0 0 1580 3110" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="1880" height="3110" fill="#fbfaf6"/>
+<rect width="1580" height="3110" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">witches_hat: code flow</text>
 <text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 55 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
 <rect x="46" y="98" width="288" height="2972" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
@@ -18,9 +18,6 @@
 <rect x="1246" y="98" width="288" height="2972" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
 <text x="1390.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 4</text>
 <text x="1390.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
-<rect x="1546" y="98" width="288" height="2972" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
 <path d="M616.0,308.0 L646.0,308.0 L646.0,812.0 L664.0,812.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,308.0 L942.0,308.0 L942.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,308.0 L1250.0,308.0 L1250.0,224.0 L1264.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -76,7 +73,6 @@
 <path d="M616.0,2576.0 L638.0,2576.0 L638.0,980.0 L664.0,980.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,2576.0 L950.0,2576.0 L950.0,476.0 L964.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,2912.0 L634.0,2912.0 L634.0,1400.0 L664.0,1400.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,1148.0 L1550.0,1148.0 L1550.0,224.0 L1564.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,1568.0 L646.0,1568.0 L646.0,896.0 L664.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L350.0,224.0 L350.0,644.0 L364.0,644.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M316.0,224.0 L346.0,224.0 L346.0,896.0 L364.0,896.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -130,8 +126,9 @@
 <text x="490.0" y="901.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · caustic ring radius against the</text>
 <text x="490.0" y="914.1" font-size="10.8" fill="#16202c" text-anchor="middle">aim offset: 0 only at aim = 0 …</text>
 <rect x="364.0" y="947.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="490.0" y="976.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">energy_regimes</text>
-<text x="490.0" y="991.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="490.0" y="969.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">energy_regimes</text>
+<text x="490.0" y="985.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Closest approach and regime of a</text>
+<text x="490.0" y="998.1" font-size="10.8" fill="#16202c" text-anchor="middle">near-radial ray at each energ…</text>
 <rect x="364.0" y="1031.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="490.0" y="1053.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">euclidean_radial_release</text>
 <text x="490.0" y="1069.2" font-size="10.8" fill="#16202c" text-anchor="middle">action · Release at rest at radius r0</text>
@@ -282,8 +279,9 @@
 <text x="790.0" y="1321.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · leapfrog path in the beta-plane</text>
 <text x="790.0" y="1334.2" font-size="10.8" fill="#16202c" text-anchor="middle">from start (on the brim) launc…</text>
 <rect x="664.0" y="1367.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="790.0" y="1396.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unfold</text>
-<text x="790.0" y="1411.7" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
+<text x="790.0" y="1389.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">unfold</text>
+<text x="790.0" y="1405.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · Unfold zero heights to unit mean</text>
+<text x="790.0" y="1418.2" font-size="10.8" fill="#16202c" text-anchor="middle">spacing: N(gamma) = (gamma/2p…</text>
 <rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1090.0" y="213.7" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">hat_shape</text>
 <text x="1090.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · returns V(x) with V(0) = 0 and</text>
@@ -305,10 +303,9 @@
 <text x="1390.0" y="229.2" font-size="10.8" fill="#16202c" text-anchor="middle">maths · (V2, grad) on the (beta1, beta2)</text>
 <text x="1390.0" y="242.2" font-size="10.8" fill="#16202c" text-anchor="middle">plane for either model (the S…</text>
 <rect x="1264.0" y="275.0" width="252" height="66" rx="4" fill="#dbe7f6" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1390.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quartic_family</text>
-<text x="1390.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">maths</text>
-<rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="1575.0" y1="191.0" x2="1575.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1805.0" y1="191.0" x2="1805.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">eigh_tridiagonal</text>
-<text x="1690.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">scipy.linalg</text>
-<text x="40" y="3084" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
+<text x="1390.0" y="297.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">quartic_family</text>
+<text x="1390.0" y="313.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The quartic hat family V(x) = (2</text>
+<text x="1390.0" y="326.1" font-size="10.8" fill="#16202c" text-anchor="middle">x^n - n x^2)/(n - 2): V(0) = …</text>
+<text x="40" y="3069" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the</text>
+<text x="40" y="3084" font-size="11.5" fill="#16202c">code</text>
 </svg>

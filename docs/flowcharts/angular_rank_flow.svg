@@ -21,7 +21,6 @@
 <rect x="1546" y="98" width="288" height="872" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
 <text x="1690.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
 <text x="1690.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
-<path d="M1216.0,224.0 L1534.0,224.0 L1534.0,308.0 L1564.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,224.0 L638.0,224.0 L638.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,224.0 L646.0,224.0 L646.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,224.0 L638.0,224.0 L638.0,476.0 L664.0,476.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -151,8 +150,5 @@
 <rect x="1564.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="1575.0" y1="191.0" x2="1575.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1805.0" y1="191.0" x2="1805.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
 <text x="1690.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">basis_mul</text>
 <text x="1690.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">ValaQuenta.modules.box_kite.maths</text>
-<rect x="1564.0" y="275.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="1575.0" y1="275.0" x2="1575.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1805.0" y1="275.0" x2="1805.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1690.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">dataclass</text>
-<text x="1690.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">dataclasses</text>
 <text x="40" y="984" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>

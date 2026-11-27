@@ -24,3 +24,10 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - `Ainulindale/wiki/78_t32_nilpotency.md` (§5, §6), `01_overview.md` (version), `135_engine_findings_ledger.md` (X-60, X-61, X-62).
 - Checked, no change needed: `SedenionSpectralRelativity` (no use), `RiemannHypothesisProof` (names only), `PtolemyDesktop` (no use of the engine), `VAPMIP` Tuning-the-Engine 19 (never edited; X-60 is its correction), `ContextPlease` hist_wiki (archives).
 - Galleries: `gallery/t32_nilpotency/` registered in the central index (`ContextPlease/claude/galleries/build_index.py`, `michaelrendier.github.io/index.html`); `.github/workflows/docs.yml` now copies the gallery and the flow charts into the published site.
+
+## 2026-11-27 · `hypergon_constructibility` 0.200 and `bell_curve` 1.2 (n-ball / Gamma)
+- `Ainulindale`: wiki 77 (§3 note, new §6 Niemeier gap), ledger X-64 to X-67, `TODO.md` and wiki 138 (n* computed; BAO reading stays THEORETICAL).
+- `FourthAgePapers/FermatMonster/engine/fermat_monster_engine.py`: the proof text in `fermat_n_shape_map` replaced by the four-line proof; status of the N-shape reading stated.
+- Gamma / n-ball pointer added to the wiki pages of the ValaQuenta engines that use Gamma: `circle_atlas`, `prime_gauge_field`, `add_scale_sign`, `pi_derivations`, `singularity_null`, `tier7_cosmos`, `relativity`, `zeta_uns_path` (and the full section in `bell_curve`).
+- Galleries: `gallery/hypergon_constructibility/` in the central index (`ContextPlease/claude/galleries/build_index.py`) and in `.github/workflows/docs.yml`.
+- Not yet touched, by design: the `RiemannHypothesisProof` TODO "N-shape peak vs n* = 5.257" (now answered as a computed value; the algebraic connection is still to be derived), `FourthAgePapers/NBallTransformer` (no text to update; notebooks only), `GenerationalLineage` and the other repositories that call Gamma in their own code (the pointer is the engine in ValaQuenta).

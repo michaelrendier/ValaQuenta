@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="3026" viewBox="0 0 1280 3026" font-family="DejaVu Sans, Verdana, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="3026" viewBox="0 0 980 3026" font-family="DejaVu Sans, Verdana, sans-serif">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a4656"/></marker></defs>
-<rect width="1280" height="3026" fill="#fbfaf6"/>
+<rect width="980" height="3026" fill="#fbfaf6"/>
 <text x="40" y="46" font-size="26" font-weight="700" fill="#16202c">pi_derivations: code flow</text>
 <text x="40" y="74" font-size="14" fill="#16202c">derived from the source by ast · 36 public names · arrows = calls (or references) found in the code · tools/flowchart.py</text>
 <rect x="46" y="98" width="288" height="2888" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
@@ -12,14 +12,8 @@
 <rect x="646" y="98" width="288" height="2888" rx="10" fill="#f3f1ea" stroke="#d6d1c3"/>
 <text x="790.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">level 2</text>
 <text x="790.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called by the level to its left</text>
-<rect x="946" y="98" width="288" height="2888" rx="10" fill="#f8f6f0" stroke="#d6d1c3"/>
-<text x="1090.0" y="118" font-size="14.5" font-weight="700" fill="#16202c" text-anchor="middle">other engines</text>
-<text x="1090.0" y="134" font-size="11" fill="#16202c" text-anchor="middle">called from this engine</text>
 <path d="M616.0,224.0 L642.0,224.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,644.0 L634.0,644.0 L634.0,224.0 L664.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,728.0 L942.0,728.0 L942.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M616.0,728.0 L938.0,728.0 L938.0,308.0 L964.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
-<path d="M916.0,308.0 L934.0,308.0 L934.0,224.0 L964.0,224.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,980.0 L642.0,980.0 L642.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,2660.0 L646.0,2660.0 L646.0,308.0 L664.0,308.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
 <path d="M616.0,2660.0 L650.0,2660.0 L650.0,392.0 L664.0,392.0" fill="none" stroke="#3a4656" stroke-width="1.6" marker-end="url(#ah)"/>
@@ -168,12 +162,6 @@
 <text x="790.0" y="381.6" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">heegner_error</text>
 <text x="790.0" y="397.1" font-size="10.8" fill="#16202c" text-anchor="middle">maths · The error of heegner_163 at full</text>
 <text x="790.0" y="410.1" font-size="10.8" fill="#16202c" text-anchor="middle">precision, compared with mpma…</text>
-<rect x="964.0" y="191.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="191.0" x2="975.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="191.0" x2="1205.0" y2="257.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="220.2" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">Decimal</text>
-<text x="1090.0" y="235.7" font-size="10.8" fill="#16202c" text-anchor="middle">decimal</text>
-<rect x="964.0" y="275.0" width="252" height="66" rx="4" fill="#f6d5d5" stroke="#3a4656" stroke-width="1.6"/><line x1="975.0" y1="275.0" x2="975.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/><line x1="1205.0" y1="275.0" x2="1205.0" y2="341.0" stroke="#3a4656" stroke-width="1.6"/>
-<text x="1090.0" y="304.1" font-size="13.0" font-weight="700" fill="#16202c" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">getcontext</text>
-<text x="1090.0" y="319.6" font-size="10.8" fill="#16202c" text-anchor="middle">decimal</text>
-<text x="40" y="2985" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-process (another lane, or the other chart) ·</text>
-<text x="40" y="3000" font-size="11.5" fill="#16202c">cylinder = stored data · every title is a name in the code</text>
+<text x="40" y="2985" font-size="11.5" fill="#16202c">symbols (ISO 5807): oval = start/end · rectangle = step · diamond = decision · parallelogram = input/output · double-barred rectangle = sub-</text>
+<text x="40" y="3000" font-size="11.5" fill="#16202c">process (another lane, or the other chart) · cylinder = stored data · every title is a name in the code</text>
 </svg>
