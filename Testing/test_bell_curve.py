@@ -216,7 +216,7 @@ def test_circular_statistics():
 def test_registered_module_contract():
     from ValaQuenta.modules.bell_curve import BellCurveModule
     m = BellCurveModule()
-    assert m.name == 'bell_curve' and m.version == '1.1' and len(m.formulary()) >= 14
+    assert m.name == 'bell_curve' and m.version == '1.2' and len(m.formulary()) >= 14
     for e in m.formulary():
         assert e.confidence == 'ESTABLISHED' and e.process
     out = m.run('sigma_levels', {'sigma': 3.0})['result']
