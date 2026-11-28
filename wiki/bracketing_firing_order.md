@@ -152,6 +152,20 @@ D is every ordered binary product of the n items, `(2n−2)!/(n−1)!` of them, 
 | "the Emerger's five named brackets are a tiny curated subset of Bell(16)" | HOLDS-WITH-CHANGE: they are compositions (2¹⁵ of them), so the right arena is 32,768, not 10.5 billion | `test_three_kinds_of_bracketing…` |
 | "this module is not yet updated to carry plans" | RESOLVED: ported at 0.2; `GenerationalLineage/engine/bracketing_firing_order.py` gains the same A–D functions | `GenerationalLineage/tests/test_firing_plans.py` |
 
+### Interactive pages (version 0.2)
+
+`gallery/bracketing_firing_order/` (raw Canvas 2D, no libraries, no network; `serve_gallery.sh`, port 8795). Each page recomputes its numbers in the browser and compares them with `bf_data.js`, baked from the Python engine by `build_data.py`; the self-check (8 lines: the product, 217 plans with their outputs, the counts to n = 16 in BigInt, the reachable orders, the evolving vector, the Ĥ_RB leaf, Recamán, set membership) is printed on the page.
+
+| page | shows | does not show |
+|---|---|---|
+| `canvas2d_evolve.html` | a 16-component input on e₀…e₁₅ and the vector after every step of a plan, tabs A to D, both readings; items from the library (the input, a basis unit, a₁…a₄, Ĥ_RB's coupling C); input and output side by side with the change | a physical evolution; the element reading has no separate input unless an item takes source `x` |
+| `canvas2d_allplans.html` | every plan of one kind over 3 or 4 items, each with its output; frames mark plans that agree; item sets where plans collapse (one sedenion repeated, real scalars) | a ranking of plans |
+| `canvas2d_tree.html` | one plan as a tree with the numbered firing order; click a bracket to change its order; the kind (A, B, C, D) is named | a geometry of the sedenion |
+| `canvas2d_counts.html` | A, B, C, D, Bell(n) and 2ⁿ⁻¹ to n = 16 on a log scale, exact values | which plans matter |
+| `canvas2d_membership.html` | Recamán's flip as a membership test, words of callables with collisions and the flip test, the jurisdiction check | why Recamán's sequence behaves as it does (open) |
+
+**Recamán's sequence does revisit numbers** (the rule tests only the down-step against the visited set; an up-step may land on a visited value): among its first 40 terms the page rings three repeats. An expectation of "no revisits" written while building the page was wrong and is corrected there.
+
 ---
 
 ## Propagation

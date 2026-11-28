@@ -47,6 +47,7 @@ jobs:
           cp -r gallery/hypergon_constructibility docs/_build/html/gallery/
           cp -r gallery/box_kite docs/_build/html/gallery/
           cp -r gallery/add_scale_sign docs/_build/html/gallery/
+          cp -r gallery/bracketing_firing_order docs/_build/html/gallery/
           cp -r docs/flowcharts docs/_build/html/docs/
       - uses: actions/upload-pages-artifact@v3
         with:
