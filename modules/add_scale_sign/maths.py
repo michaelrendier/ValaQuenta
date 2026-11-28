@@ -46,7 +46,7 @@ generalized-equation word  u = Σ_k [ g_k·ln s_k + a_k ] ,  Γ = tanh(u/2)):
 
     ground state  a=0, s=1, g=+1  ⇒  u=0  ⇒  Γ=0   (the identity / the "now")
 
-Version: 0.1
+Version: 0.2
 """
 from __future__ import annotations
 
@@ -80,7 +80,9 @@ class ASS:
     """One element of Aff(1,ℝ):  x ↦ sign·scale·x + add.
 
     Immutable. Compose with `@` (or `.then`), invert with `~`, apply by
-    calling. `.steps` records the atomic generators that built it, in
+    calling. The group operations use only +, ×, ÷, so an element built from
+    `fractions.Fraction` stays exact through `@`, `~` and `__call__`; the
+    readouts `u`, `gamma` and `to_smith` use ln and tanh and are floats. `.steps` records the atomic generators that built it, in
     APPLICATION order (first-applied first) — the record / Long Path.
     """
     add: float = 0.0
@@ -160,8 +162,10 @@ class ASS:
         return len(self.steps) == 1 and self.steps[0] is self
 
     def __invert__(self) -> "ASS":
-        a = -self.sign * self.add / self.scale + 0.0        # normalise −0.0
-        s, g = 1.0 / self.scale, self.sign
+        a = -self.sign * self.add / self.scale
+        if not a:
+            a = a * 0                                       # normalise −0.0, keep the type
+        s, g = 1 / self.scale, self.sign                    # Fraction in, Fraction out
         if self._is_atomic():
             return ASS(a, s, g)                         # steps ← (itself,) in __post_init__
         inv = ASS(a, s, g)
@@ -564,3 +568,35 @@ def ground() -> ASS:
     :returns: ASS.GROUND
     """
     return ASS.GROUND
+
+
+def group_laws_exact() -> Dict[str, Any]:
+    """
+    Check the Aff(1,ℝ) laws and the bracket on a small exact grid, in Fraction arithmetic, with no float anywhere.
+
+    The grid is add ∈ {−2, 0, 3/2}, scale ∈ {1/2, 1, 3}, sign ∈ {−1, +1}: 18 elements.
+    Checked on all of them: associativity (18³ triples), identity, a two-sided inverse, the
+    SIGN–SCALE commutation, and the group commutators of ADD(a) with SCALE(s) and SIGN(−1),
+    which are pure translations.
+
+    :returns: dict with the counts and the booleans 'associative', 'identity', 'inverse', 'sign_scale_commute', 'commutator_add_scale_is_translation', 'commutator_add_sign_is_translation' and 'exact' (every field a Fraction or int)
+    """
+    from fractions import Fraction as Fr
+    els = [ASS(Fr(a), Fr(s), g) for a in (-2, 0, Fr(3, 2)) for s in (Fr(1, 2), 1, 3) for g in (-1, 1)]
+    one = ASS(Fr(0), Fr(1), 1)
+    key = lambda e: (e.add, e.scale, e.sign)
+    assoc = all(key((x @ y) @ z) == key(x @ (y @ z)) for x in els for y in els for z in els)
+    ident = all(key(one @ x) == key(x) == key(x @ one) for x in els)
+    inv = all(key(x @ ~x) == key(one) == key(~x @ x) for x in els)
+    sgn = all(key(ASS(Fr(0), Fr(1), -1) @ ASS(Fr(0), s, 1)) == key(ASS(Fr(0), s, 1) @ ASS(Fr(0), Fr(1), -1))
+              for s in (Fr(1, 2), 1, 3))
+    # group commutator [x, y] = x⁻¹ y⁻¹ x y
+    cm = lambda x, y: ~x @ ~y @ x @ y
+    t_scale = all(cm(ASS(Fr(a), Fr(1), 1), ASS(Fr(0), Fr(s), 1)).scale == 1 and cm(ASS(Fr(a), Fr(1), 1), ASS(Fr(0), Fr(s), 1)).sign == 1
+                  for a in (-2, 3, Fr(3, 2)) for s in (Fr(1, 2), 3))
+    t_sign = all(cm(ASS(Fr(a), Fr(1), 1), ASS(Fr(0), Fr(1), -1)).scale == 1 and cm(ASS(Fr(a), Fr(1), 1), ASS(Fr(0), Fr(1), -1)).sign == 1
+                 for a in (-2, 3, Fr(3, 2)))
+    exact = all(isinstance(v, (Fr, int)) for x in els for v in (x.add, x.scale, (~x).add, (~x).scale))
+    return {"elements": len(els), "triples": len(els) ** 3, "associative": assoc, "identity": ident, "inverse": inv,
+            "sign_scale_commute": sgn, "commutator_add_scale_is_translation": t_scale,
+            "commutator_add_sign_is_translation": t_sign, "exact": exact}

@@ -4,7 +4,7 @@
 roll-down) · **`ValaQuenta/modules/add_scale_sign/` (the DATATYPE — `ASS`,
 `ASSWord`, `AddScaleSignModule`)** · `SedenionFactoralRelativity/engine/lineage.py`
 (`root_irreducible`, `ROOT_OF`, `AFF1`) · `VAPMIP/engines/e10_generational_lineage.py`
-(`r_add_scale_sign_floor`, `decompose_operation`) · v0.1 · Status:
+(`r_add_scale_sign_floor`, `decompose_operation`) · v0.2 · Status:
 **ESTABLISHED** (the group structure is elementary; the {0, 1, √2} spectrum
 and the one-bit sign structure are measured at run time, not asserted)
 
@@ -360,6 +360,21 @@ is zero). SIGN only matters where SCALE is non-trivial.
    `|J_red|² + |J_blue|²` has a minimum at ½. The `F`, `B` above are
    `forced_sigma`'s model, **not** `sigma_expansion`'s Dirichlet-projected
    currents — the two were not compared numerically.
+
+## Clean-house pass, engine 6 (version 0.2, 2026-11-27)
+
+Rerun against the code (`tests/test_add_scale_sign.py`, 16 tests; before this pass the module had none).
+
+| claim | outcome | evidence |
+|---|---|---|
+| Aff(1,ℝ) laws: associative, identity, two-sided inverse | **HOLDS**, in exact `Fraction` arithmetic (18 elements, 5832 triples) | `group_laws_exact()` |
+| manifest: "`fractions.Fraction` exact; float only at the output boundary" | **HOLDS-WITH-CHANGE.** It did not hold at 0.1: `~` added `0.0` and divided by `1.0`, so a Fraction element came back as floats. Fixed in `__invert__`; the `-0.0` normalisation is kept for floats. Same fix in `GenerationalLineage/engine/add_scale_sign.py` | `test_inverse_of_a_fraction_element_is_a_fraction_element` |
+| `[SCALE, ADD] = ADD` is the one non-trivial bracket; SIGN and SCALE commute | **HOLDS.** Group commutator `x⁻¹y⁻¹xy`: `[ADD(3), SIGN(−1)] = (−6,1,+1)`, `[ADD(3), SCALE(2)] = (−1.5,1,+1)`, `[SCALE(2), SIGN(−1)] = identity` (the wiki §3 values) | `test_the_bracket_table_of_the_wiki` |
+| `ln F − ln B = ASS(0, 2E, −1)(σ − ½)` | **HOLDS** over E ∈ {0.5, 2, 10} × σ ∈ {0, ¼, ½, ¾, 1}, max difference below 1e-12 | `test_the_noether_identity…` |
+| firing defect `= (g−1)·ln s`; flipping SIGN shifts `u` by `−2 ln s` | **HOLDS** | two tests |
+| `u = Σₖ[gₖ ln sₖ + aₖ]` | **HOLDS-WITH-CHANGE (wording).** The Σ runs over the *recorded steps* (`u_sum_of_steps`). The `u` of a composed element is **not** the sum of the factors' `u`: for `a = ASS(1.5, 2, +1)`, `b = ASS(0.5, 3, −1)`, `u(a@b) = 0.708` and `u(a) + u(b) = 1.595`. So `u` is a readout of one element, not a homomorphism | `test_u_is_a_readout_not_a_homomorphism` |
+
+The fast-inverse-square-root worked example and the SFR-side wording are unchanged and untested here (they live in `SedenionFactoralRelativity`).
 
 ## See also
 

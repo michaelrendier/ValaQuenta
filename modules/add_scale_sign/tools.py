@@ -7,12 +7,12 @@ Surfaces the datatype's equation parts, the generalized-equation word, the
 fold, the orthogonal Smith-chart read-out and the firing-order (camshaft)
 defect. See maths.py for the datatype itself.
 
-Version: 0.1
+Version: 0.2
 """
 from typing import Any, Dict, List
 
 from ...engine.registry import EquationModule, Equation
-from .maths import ASS, ASSWord, CAMSHAFT, compose
+from .maths import ASS, ASSWord, CAMSHAFT, compose, group_laws_exact
 
 
 def _round_trip(add=3.0, scale=2.5, sign=-1) -> Dict[str, Any]:
@@ -54,7 +54,7 @@ class AddScaleSignModule(EquationModule):
 
     @property
     def version(self):
-        return "0.1"
+        return "0.2"
 
     @property
     def description(self):
@@ -77,6 +77,15 @@ class AddScaleSignModule(EquationModule):
 
     def formulary(self) -> List[Equation]:
         return [
+            Equation(
+                name="group_laws_exact",
+                display="THE GROUP LAWS, EXACT:  associativity, identity, inverse, [SCALE, SIGN] = 1, [ADD, ·] a translation",
+                latex=r"(xy)z = x(yz),\quad [\mathrm{ADD},\mathrm{SCALE}]\ \text{and}\ [\mathrm{ADD},\mathrm{SIGN}]\ \text{are translations}",
+                radian_form="18 elements, 5832 triples, fractions.Fraction throughout: no float rounding anywhere",
+                confidence="ESTABLISHED:CALCULATED", code_verified=True, params=[],
+                compute=group_laws_exact, display_options=["text"],
+                process='group laws in exact arithmetic',
+            ),
             Equation(
                 name="round_trip",
                 display="THE RETURN PATH: (~T ∘ T)(x) = x, exactly",

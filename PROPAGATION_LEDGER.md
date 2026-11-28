@@ -40,3 +40,8 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - `Ainulindale`: ledger X-69 (non-split; associator octonion block not flat); wiki 84 gains a pointer to the gallery.
 - Galleries: `gallery/box_kite/` in the central index (`ContextPlease/claude/galleries/build_index.py`, port 8793) and in `.github/workflows/docs.yml`.
 - Still not edited, by design: the verbatim engine snapshots (`ScalarContextPropagation/repo_appendix/box_kite_engine/`, VAPMIP appendix copy) and Tuning-the-Engine; the 0.3 sentence in them stands as a dated snapshot.
+
+## 2026-11-27 · `add_scale_sign` 0.2 (exact inverse)
+- `GenerationalLineage/engine/add_scale_sign.py`: same `__invert__` fix (Fractions stay Fractions); its 179 tests pass.
+- `Ainulindale`: ledger X-70.
+- Checked by `tools/propagate.py`: the other downstream mentions (wiki 107, 95, SFR wiki, VAPMIP Ring-Circle-Operators) describe the datatype and do not quote the manifest's exactness claim; not edited. Verbatim snapshots and Tuning-the-Engine are not edited, by design.

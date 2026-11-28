@@ -14,18 +14,18 @@ recorded (the three-phase camshaft; `[SCALE, ADD] = ADD`).
 Canonical decomposition maths (four-question test, roll-down, AFF1
 metadata): VAPMIP/add_scale_sign.py — NOT duplicated here.
 
-Version: 0.1
+Version: 0.2
 """
 from .maths import (
     ASS, ASSWord,
     IDENTITIES, BRACKET, CAMSHAFT,
-    compose, from_map, word, ground,
+    compose, from_map, word, ground, group_laws_exact,
 )
 from .tools import AddScaleSignModule
 
 __all__ = [
     "ASS", "ASSWord",
     "IDENTITIES", "BRACKET", "CAMSHAFT",
-    "compose", "from_map", "word", "ground",
+    "compose", "from_map", "word", "ground", "group_laws_exact",
     "AddScaleSignModule",
 ]
