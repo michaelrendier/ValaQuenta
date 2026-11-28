@@ -24,3 +24,11 @@ tools
    :undoc-members:
    :show-inheritance:
 
+shapes
+------
+
+.. automodule:: ValaQuenta.modules.ptycho_weak_lensing.shapes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

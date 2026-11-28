@@ -9,13 +9,14 @@ overlapping pointings (probe windows) that jointly constrain one real field κ, 
 variant where the orientation of the shear is lost.  Polarization (Q+iU) is a second, separate spin-2 field
 that goes through the same E/B machinery.
 
-Version: 0.1
+Version: 0.2 (adds the pixel pipeline: PSF from stars, PSF-corrected shapes, simulation and calibration; see shapes.py)
 """
 from typing import Dict, List, Any
 import numpy as np
 
 from ...engine.registry import EquationModule, Equation
 from . import maths as M
+from . import shapes as SH
 
 
 def _s(x):
@@ -42,6 +43,22 @@ def _null_tests(n_per_pix=12.0, smooth=2.0, seed=1):
     return {"signal corr": M.compare_maps(kt, kE)["corr"], "rot45: corr of κ_E with truth": M.compare_maps(kt, kE45)["corr"],
             "rot45: κ_B recovers the lens": M.compare_maps(kt, kB45)["corr"], "shuffled orientation: corr": M.compare_maps(kt, kEs)["corr"],
             "B-mode rms (should be at the noise floor)": float(np.sqrt(np.mean(kB ** 2))), "noise floor rms": float(np.sqrt(np.mean(kEs ** 2)))}
+
+
+def _pixel_shapes(seed=3):
+    return SH.verify_shapes(seed)
+
+
+def _pixel_field(n=192, density=0.02, min_sep=20.0, seed=5):
+    rng = np.random.default_rng(seed); kt = M.merging_cluster(n)
+    cat = SH.isolated_subset(M.mock_catalogue(kt, density, sigma_e=0.26, rng=rng), min_sep)
+    psf = SH.psf_gaussian(25, 1.8, 0.08, 0.03); img, nz = SH.render_field(cat, psf, 30.0, rng=rng)
+    m = SH.measure_image(img, np.c_[cat["x"], cat["y"]], psf, nz, size=25)
+    from scipy.spatial import cKDTree
+    d, j = cKDTree(np.c_[cat["x"], cat["y"]]).query(np.c_[m["x"], m["y"]]); et = cat["e"][j]
+    return {"isolated galaxies": len(cat["e"]), "fits accepted": m["ok"],
+            "corr(ε₁ measured, true)": float(np.corrcoef(et.real, m["e"].real)[0, 1]), "slope ε₁ (Gaussian model, exponential truth)": float(np.polyfit(et.real, m["e"].real, 1)[0]),
+            "rms difference per component": float(np.sqrt(np.mean(np.abs(et - m["e"]) ** 2) / 2))}
 
 
 def _ptycho(n_per_pix=12.0, gaps=(1, 4, 6), n_iter=60, tile=48, step=40, seed=2):
@@ -81,7 +98,7 @@ class PtychoWeakLensingModule(EquationModule):
     def display_name(self): return "Ptycho-Weak-Lensing (shear, mass map, pointings, polarization)"
 
     @property
-    def version(self): return "0.1"
+    def version(self): return "0.2"
 
     @property
     def description(self):
@@ -122,6 +139,15 @@ class PtychoWeakLensingModule(EquationModule):
             eq("calibrate", "CALIBRATION: inject constant shear and (m, c), recover",
                r"\epsilon_{meas}=(1+m)\epsilon+c", "statistical error sets the smallest detectable m", "ESTABLISHED", [],
                lambda: M.calibrate_shear(), "Recovers a known multiplicative shear bias from a catalogue of random galaxies."),
+            eq("pixel_shapes", "FROM PIXELS: PSF from stars, PSF forward-modelled, shear calibration (exponential truth, Gaussian model)",
+               r"\epsilon_{meas}=(1+m)\,g+c;\ \text{PSF}\otimes\text{Gaussian}(\epsilon)\ \text{fitted}", "ignoring an anisotropic PSF fakes a shear; the model-bias m is measured by simulation, not assumed",
+               "THEORETICAL", ["seed"], lambda seed=3: _pixel_shapes(seed),
+               "Fits a polynomial PSF to simulated stars, measures zero-shear galaxies with and without the PSF, and calibrates the estimator with rotated-pair simulations."),
+            eq("pixel_field", "FROM PIXELS: render a lensed field, measure every shape with the PSF, compare with the truth",
+               r"\hat\epsilon\to\text{catalogue}\to\mathrm{KS}", "the output catalogue is the dict ks_map takes; crowded fields must be thinned or deblended first",
+               "THEORETICAL", ["n", "density", "min_sep", "seed"],
+               lambda n=192, density=0.02, min_sep=20.0, seed=5: _pixel_field(n, density, min_sep, seed),
+               "Renders isolated galaxies of a synthetic cluster through an anisotropic PSF with noise, measures them, and compares with the input ellipticities."),
             eq("ptycho", "PTYCHOGRAPHY: overlapping pointings (with gaps) -> kappa, vs the naive mosaic",
                r"\kappa\leftarrow\kappa+\alpha\,\mathrm{Re}[D^*M_j(\epsilon_j-\eta_jD\kappa)]/\eta_j",
                "full coverage: same fixed point as KS; with gaps the B=0 object constraint fills the holes", "THEORETICAL",

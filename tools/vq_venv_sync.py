@@ -98,32 +98,58 @@ def installed_version(pkg: str):
     return None
 
 
+_PKG_SPEC = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*(\[[A-Za-z0-9,._-]+\])?([<>=!~]=?[A-Za-z0-9.*+!_-]+(,[<>=!~]=?[A-Za-z0-9.*+!_-]+)*)?$")
+_PIP_HEAD = re.compile(r"^(?:[\w./-]*/)?(?:pip3?|python3?(?:\.\d+)?\s+-m\s+pip)$")
+
+
+def _segments(command: str):
+    """Shell segments of a command that can be a pip invocation: a heredoc body (everything after `<<`) and anything after a line that opens a quote
+    it never closes is never a command, so it is dropped; the rest is split on newlines, `;`, `&&`, `||` and `|`."""
+    command = command.split("<<", 1)[0]
+    return [s.strip() for s in re.split(r"\n|;|&&|\|\||\|", command) if s.strip()]
+
+
 def parse_packages(command: str):
-    """Package names from a pip install command. Requirements files ignored."""
-    try:
-        parts = shlex.split(command)
-    except ValueError:
-        return []
-    pkgs, seen_install = [], False
-    skip_next = False
-    for p in parts:
-        if skip_next:
-            skip_next = False
+    """Package names from the pip install invocations in a shell command. Requirements files are ignored.
+
+    Only a segment that STARTS with pip, pip3, a path to pip or ``python -m pip`` followed by ``install`` counts, the argument list ends at a ``#``
+    comment or the end of the segment, and every argument must look like a package requirement (a name with an optional extra and version
+    specifier). Text that merely mentions the two words, such as a document written to a file by a heredoc, yields nothing. (A bug of this
+    kind once installed 58 stray PyPI packages named after the words of a primer, 2026-11-27; see the changelog.)
+
+    :param command: the shell command the hook passes
+    :returns: the list of requirement strings (possibly empty)
+    """
+    pkgs = []
+    for seg in _segments(command):
+        try:
+            parts = shlex.split(seg, comments=True)
+        except ValueError:
             continue
-        if p == "install":
-            seen_install = True
+        if len(parts) < 2:
             continue
-        if not seen_install:
+        head, rest = parts[0], parts[1:]
+        if head.startswith("python") and rest[:2] == ["-m", "pip"]:
+            head, rest = "pip", rest[2:]
+        elif not _PIP_HEAD.match(head):
             continue
-        if p in ("-r", "--requirement", "-c", "--constraint", "-t", "--target",
-                 "--index-url", "-i", "--extra-index-url", "--find-links", "-f"):
-            skip_next = True
+        if not rest or rest[0] != "install":
             continue
-        if p.startswith("-"):
-            continue
-        if p.endswith((".txt", ".whl", ".tar.gz")) or "/" in p:
-            continue
-        pkgs.append(p)
+        skip_next = False
+        for p in rest[1:]:
+            if skip_next:
+                skip_next = False
+                continue
+            if p in ("-r", "--requirement", "-c", "--constraint", "-t", "--target",
+                     "--index-url", "-i", "--extra-index-url", "--find-links", "-f"):
+                skip_next = True
+                continue
+            if p.startswith("-"):
+                continue
+            if p.endswith((".txt", ".whl", ".tar.gz")) or "/" in p:
+                continue
+            if _PKG_SPEC.match(p):
+                pkgs.append(p)
     return pkgs
 
 

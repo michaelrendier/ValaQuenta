@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "ptycho_weak_lensing",
   "display": "Ptycho-Weak-Lensing (shear, mass map, pointings, polarization)",
-  "version": "0.1",
+  "version": "0.2",
   "summary": "Weak lensing as a spin-2 inverse problem (Kaiser-Squires, E/B, nulls, calibration) plus a ptychographic reconstruction of kappa from overlapping pointings, an intensity-only variant, and polarization Q+iU through the same E/B machinery.",
   "confidence_floor": "THEORETICAL",
   "license": "GPL-3.0-only",

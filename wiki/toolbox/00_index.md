@@ -87,6 +87,7 @@ in the order found.
 | [44_bell_curve.md](44_bell_curve.md) | The Bell Curve (Statistics, Probability, Statistical Mechanics) | 2026-11-22 | `modules/bell_curve/` |
 | [45_aizawa_attractor.md](45_aizawa_attractor.md) | The Aizawa Attractor (rotation with a radial driver) | 2026-11-24 | `modules/aizawa_attractor/` |
 | [46_zeta_uns_path.md](46_zeta_uns_path.md) | The Zeta Pathway in Universal Native Space (rotation, spring, primes) | 2026-11-24 | `modules/zeta_uns_path/` |
+| [47_ptycho_weak_lensing.md](47_ptycho_weak_lensing.md) | Ptycho-Weak-Lensing (shear, mass map, pointings, polarization) | 2026-11-28 | `modules/ptycho_weak_lensing/` |
 
 **Not carried here** (no `tools.py`, so no tool-level API to document —
 see each one's own theory page for the maths): `hamiltonian.py`,

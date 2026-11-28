@@ -6,7 +6,7 @@ The Ptycho-Weak-Lensing engine: weak lensing forward (κ → ψ → γ → g →
 reconstruction of κ from overlapping pointings, an intensity-only (modulus) variant, and the same spin-2
 machinery for a polarization field (Q+iU).
 
-Version: 0.1
+Version: 0.2 (the pixel pipeline in ``shapes``: PSF from stars, PSF-corrected galaxy shapes, simulation and calibration)
 """
 from .tools import PtychoWeakLensingModule
 from .maths import (
@@ -18,6 +18,11 @@ from .maths import (
     calibrate_shear, compare_maps,
     tile_windows, simulate_pointings, naive_mosaic, ptycho_reconstruct, overlap_error, modulus_ptycho,
     polarization_from_potential, polarization_angle, field_correlation, verify,
+)
+from .shapes import (
+    shape_matrix, stamp_grid, gaussian_profile, exponential_profile, psf_gaussian, convolve, psf_fit_polynomial, psf_at,
+    fit_shape, measure_image, shear_estimate, psf_leakage, simulate_stamp, rotated_pair_shear, calibrate_shear_from_pixels,
+    render_field, isolated_subset, verify_shapes,
 )
 
 __all__ = ["PtychoWeakLensingModule"]

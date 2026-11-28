@@ -55,3 +55,6 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - `GenerationalLineage/engine/bracketing_firing_order.py` (+ `tests/test_firing_plans.py`, `wiki/Firing-Plans.md`): A–D, `mode_counts`, `evolve_operator`, `evolve_value`.
 - `SedenionSpectralRelativity/firing_plan.py` is the origin and is not edited; the engine of record is now `ValaQuenta/modules/bracketing_firing_order`.
 - Galleries (bracketing_firing_order 0.2): `gallery/bracketing_firing_order/` in the central index (`ContextPlease/claude/galleries/build_index.py`, port 8795) and in `.github/workflows/docs.yml`.
+
+## 2026-11-28 · `ptycho_weak_lensing` 0.2 (pixels to shear)
+- Downstream users of the engine: `BulletCluster` (shear_measure.py still uses second moments without a PSF: the correction route is this module; not wired in, by design, until a real PSF is in hand). `Ainulindale/wiki/132_ptycho_weak_lensing.md` gains a pointer. The repository's own engine notebook 21 is unchanged (the new part is documented in the wiki and the tests).
