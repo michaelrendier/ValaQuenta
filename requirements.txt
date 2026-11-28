@@ -107,4 +107,3 @@ tensorflow>=2.21  # tested 2.21.0
 openai-whisper>=20250625  # tested 20250625
 pyrtlsdr>=0.5  # tested 0.5.1
 gmpy2>=2.3  # tested 2.3.2
-ok>=0.1  # tested 0.1.1
