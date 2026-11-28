@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "add_scale_sign",
   "display": "ADD:SCALE:SIGN (the tier-0 datatype)",
-  "version": "0.2",
+  "version": "0.3",
   "summary": "A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add.",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",

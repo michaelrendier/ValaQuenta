@@ -7,7 +7,7 @@ Surfaces the datatype's equation parts, the generalized-equation word, the
 fold, the orthogonal Smith-chart read-out and the firing-order (camshaft)
 defect. See maths.py for the datatype itself.
 
-Version: 0.2
+Version: 0.3
 """
 from typing import Any, Dict, List
 
@@ -54,7 +54,7 @@ class AddScaleSignModule(EquationModule):
 
     @property
     def version(self):
-        return "0.2"
+        return "0.3"
 
     @property
     def description(self):

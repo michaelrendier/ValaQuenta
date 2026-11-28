@@ -14,7 +14,7 @@ recorded (the three-phase camshaft; `[SCALE, ADD] = ADD`).
 Canonical decomposition maths (four-question test, roll-down, AFF1
 metadata): VAPMIP/add_scale_sign.py — NOT duplicated here.
 
-Version: 0.2
+Version: 0.3
 """
 from .maths import (
     ASS, ASSWord,

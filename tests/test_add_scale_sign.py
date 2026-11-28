@@ -121,3 +121,10 @@ def test_the_constructors_reject_what_is_not_in_the_group():
         ASS(0.0, 2.0, 1).residual("NOPE")
     with pytest.raises(ValueError):
         ASS(0.0, 2.0, 1).lineage("alphabetical")
+
+
+def test_smith_quadrant_follows_the_documented_rings():
+    """ADD is the N–S ring (add ≥ 0 north) and SCALE the E–W ring (scale ≥ 1 east); SIGN = −1 adds a prime. At 0.1 the two letters were swapped."""
+    q = lambda a, s, g=1: ASS(a, s, g).to_smith()["quadrant"]
+    assert (q(1.0, 2.0), q(1.0, 0.5), q(-1.0, 2.0), q(-1.0, 0.5)) == ("NE", "NW", "SE", "SW")
+    assert q(1.0, 2.0, -1) == "NE′"

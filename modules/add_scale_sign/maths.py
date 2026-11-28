@@ -46,7 +46,7 @@ generalized-equation word  u = Σ_k [ g_k·ln s_k + a_k ] ,  Γ = tanh(u/2)):
 
     ground state  a=0, s=1, g=+1  ⇒  u=0  ⇒  Γ=0   (the identity / the "now")
 
-Version: 0.2
+Version: 0.3
 """
 from __future__ import annotations
 
@@ -281,8 +281,9 @@ class ASS:
         """
         g_scale = _gamma(_LOG(self.scale))
         g_add = _gamma(self.add)
-        quad = {(True, True): "NE", (True, False): "SE",
-                (False, True): "NW", (False, False): "SW"}[(g_add >= 0, g_scale >= 0)]
+        # ADD is the N–S ring and SCALE the E–W ring (as documented above): add ≥ 0 is north, scale ≥ 1 is east.
+        quad = {(True, True): "NE", (True, False): "NW",
+                (False, True): "SE", (False, False): "SW"}[(g_add >= 0, g_scale >= 0)]
         if self.sign < 0:
             quad = quad + "′"           # the SIGN-flipped sheet
         return {

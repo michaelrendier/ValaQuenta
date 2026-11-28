@@ -45,3 +45,8 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - `GenerationalLineage/engine/add_scale_sign.py`: same `__invert__` fix (Fractions stay Fractions); its 179 tests pass.
 - `Ainulindale`: ledger X-70.
 - Checked by `tools/propagate.py`: the other downstream mentions (wiki 107, 95, SFR wiki, VAPMIP Ring-Circle-Operators) describe the datatype and do not quote the manifest's exactness claim; not edited. Verbatim snapshots and Tuning-the-Engine are not edited, by design.
+
+## 2026-11-27 · `add_scale_sign` 0.3 (visuals, quadrant labels)
+- `Ainulindale`: ledger X-71; wiki 107 gains a pointer to the gallery.
+- Galleries: `gallery/add_scale_sign/` in the central index (`ContextPlease/claude/galleries/build_index.py`, port 8794) and in `.github/workflows/docs.yml`.
+- `GenerationalLineage/engine/add_scale_sign.py` has no `to_smith`, so the quadrant fix does not apply there (checked by grep).

@@ -6,7 +6,7 @@
 
 ---
 
-`add_scale_sign` · v0.2 · confidence floor **ESTABLISHED**
+`add_scale_sign` · v0.3 · confidence floor **ESTABLISHED**
 
 A value type for elements of Aff(1,ℝ) = ADD ⋊ (SCALE × SIGN), x ↦ sign·scale·x + add. Compose with @, invert with ~, take residuals (strip one generator, keep the rest), decompose into an ASSWord. Each generator carries its equation part: ADD → a, SCALE → ln s, SIGN → g; the word is u = g·ln s + a and the fold is Γ = tanh(u/2). Read-out on the orthogonal Smith charts (Γ_SCALE, Γ_ADD, parity). Firing order is recorded — the three-phase camshaft SIGN→SCALE→ADD — and its defect (u_total − Σ u_parts) is non-zero exactly when [SCALE, ADD] = ADD bites. No sedenion here; order matters at THIS tier.
 
