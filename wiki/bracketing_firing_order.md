@@ -1,7 +1,7 @@
 # Engine: Bracketing, Firing Order, and Set Membership
 
 **Module:** `modules/bracketing_firing_order/`
-**Version:** 0.1
+**Version:** 0.2
 **Confidence floor:** ESTABLISHED
 
 
@@ -115,6 +115,45 @@ jurisdiction map; this engine stays reusable for any caller's own map.
 
 ---
 
+## The four orderings of brackets, on a 16-component vector (version 0.2, 2026-11-27)
+
+The input is a sedenion (16 components, exact `Fraction`) and so is the output; every step in between is a sedenion too. Ĥ_RB works the same way: one 16-component σ_RB in, one 16-component sedenion out (`h_rb_hat/sigma16.py`, lift B is the one-leaf plan x ↦ L_C x). What this engine adds is the structure *between* the input and the output: which operations fire, in which order, grouped how.
+
+| kind | what is chosen | plans over n items | example, n = 3 |
+|---|---|---|---|
+| **A** bracketing | a grouping of the written sequence | Catalan(n−1) | `((A B) C)`, `(A (B C))` |
+| **B** firing order | one flat bracket, any order | n! | `(A B C \| 3 1 2)` |
+| **C** firing order of brackets | the written grouping, an order at every bracket | Catalan(n−1)·2ⁿ⁻¹ | `((A B \| 2 1) C \| 2 1)` fires C, B, A |
+| **D** bracketing of firing orders | a firing order first, then a grouping of the **fired** sequence | n!·Catalan(n−1) | `((A C) B)`: groups A with C although B sits between them |
+
+D is every ordered binary product of the n items, `(2n−2)!/(n−1)!` of them, so A, B and C are contained in D (tested by value on random 16-vectors). C reaches only the separable permutations as firing orders (6 of 6, **22 of 24**, **90 of 120** for n = 3, 4, 5); D and B reach all n!; A reaches one.
+
+**Two readings of every plan**, kept apart:
+
+| reading | what a bracket is | associative? | what changes the output |
+|---|---|---|---|
+| operator | the fired children composed as left-multiplication matrices, first fired applied first (`plan_operator`, `apply_plan`) | yes | the firing order only: bracketing at written order gives one output (measured: A → 1 distinct output; B → 24 of 24 for n = 4; C → 22; D → 24) |
+| element | the sedenion product of the fired children, folded left to right (`plan_value`) | **no** (252 of the 455 basis triples do not associate) | the bracketing as well: for generic sedenions every plan gives a different output (n = 3: 2, 6, 8, 12 distinct of 2, 6, 8, 12; n = 4: 5, 24, 40, 120 of 5, 24, 40, 120) |
+
+`evolve_operator(plan, x)` returns the input and the vector after every leaf fires; `evolve_value(plan)` returns every product in the order it is computed, labelled by its factors (`(B A)`, `(C (B A))`). The last state is the output; the first is the input.
+
+**Three kinds of "bracketing" at sixteen components, three different counts:** set partitions of the 16 positions, Bell(16) = 10,480,142,147 (tool 1); contiguous blocks (compositions), 2¹⁵ = 32,768, which is what the Emerger's `{4:8:4}` is; and trees, Catalan(15) = 9,694,845 binary groupings (A), up to `(2·16−2)!/15!` = 202,843,204,931,727,360,000 ordered products (D). The Emerger's five named brackets are compositions, a subset of Bell's arena and of the trees' alike.
+
+### Claim table of the clean-house pass (engine 7, `tests/test_bracketing_firing_order.py`, 17 tests; the engine had none)
+
+| claim | outcome | evidence |
+|---|---|---|
+| Bell(3) = 5, Bell(16) = 10,480,142,147; Bell(12) ≈ 4.2 million (the enumeration ceiling's comment) | HOLDS (Bell(12) = 4,213,597) | `test_bell_and_firing_counts` |
+| firing order (3,1,2) on [Scale, Sign, Add] is [Add, Scale, Sign] | HOLDS | same |
+| collisions and the flip test; jurisdiction violation | HOLDS | `test_set_membership_and_jurisdiction` |
+| `(R I)` and `(R I \| 2 1)` differ in 72 of 256 matrix entries; `L_a = R + I` | HOLDS | two tests |
+| written-order binary plans reach 6, 22, 90 orders | HOLDS | `test_firing_orders_reached_by_each_kind` |
+| the exact product is the sedenion product | HOLDS, checked against `sigma16`'s independent table | `test_the_exact_product_agrees…` |
+| "the Emerger's five named brackets are a tiny curated subset of Bell(16)" | HOLDS-WITH-CHANGE: they are compositions (2¹⁵ of them), so the right arena is 32,768, not 10.5 billion | `test_three_kinds_of_bracketing…` |
+| "this module is not yet updated to carry plans" | RESOLVED: ported at 0.2; `GenerationalLineage/engine/bracketing_firing_order.py` gains the same A–D functions | `GenerationalLineage/tests/test_firing_plans.py` |
+
+---
+
 ## Propagation
 
 Module-independence convention (no cross-repo import): the set-membership
@@ -149,4 +188,4 @@ Moved from the module docstring: a docstring instructs the caller and holds no h
 > `add_scale_sign` (3 generators) and the sedenion bracket (16 components)
 > are both CONSUMERS of it, not separate implementations.
 
-**Update 2026-10-21 — firing plans.** Brackets now carry firing orders: `(R I | 2 1)` fires the second child (the imaginary octonion of the two-octonion sedenion) first, the real octonion second, and a bracket runs as one operation inside its parent in its own order (`((A B | 2 1) C | 2 1)` fires `C B A`). Operator reading (matrix composition) is associative, so only the order changes the result; element reading (the sedenion product) is not, so the bracketing changes it too. Written-order binary plans reach 6, 22, 90 of 3!, 4!, 5! orders. Source and checks: `SedenionSpectralRelativity/firing_plan.py` (15 exact checks), `wiki/Bracketing-and-Firing-Plans.md`, notebook 02 there; standalone port `GenerationalLineage/engine/bracketing_firing_order.py` tool 4 (`wiki/Firing-Plans.md`). This module (`ValaQuenta/modules/bracketing_firing_order`) is not yet updated to carry plans.
+**Update 2026-10-21 — firing plans.** Brackets now carry firing orders: `(R I | 2 1)` fires the second child (the imaginary octonion of the two-octonion sedenion) first, the real octonion second, and a bracket runs as one operation inside its parent in its own order (`((A B | 2 1) C | 2 1)` fires `C B A`). Operator reading (matrix composition) is associative, so only the order changes the result; element reading (the sedenion product) is not, so the bracketing changes it too. Written-order binary plans reach 6, 22, 90 of 3!, 4!, 5! orders. Source and checks: `SedenionSpectralRelativity/firing_plan.py` (15 exact checks), `wiki/Bracketing-and-Firing-Plans.md`, notebook 02 there; standalone port `GenerationalLineage/engine/bracketing_firing_order.py` tool 4 (`wiki/Firing-Plans.md`). This module carries the plans since version 0.2 (below).

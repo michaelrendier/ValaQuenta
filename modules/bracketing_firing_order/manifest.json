@@ -5,7 +5,7 @@
   "type": "engine",
   "name": "bracketing_firing_order",
   "display": "Bracketing, Firing Order, and Set Membership",
-  "version": "0.1",
+  "version": "0.2",
   "summary": "Three general-purpose tools -- unordered groupings, sequenced orderings, and set-membership memory -- consumed by add_scale_sign and the sedenion Emerger bracket alike.",
   "confidence_floor": "ESTABLISHED",
   "license": "GPL-3.0-only",
@@ -36,7 +36,7 @@
   "environment": {
     "constants": [],
     "native_space": "n/a -- domain-independent combinatorics",
-    "arithmetic": "Python int (exact, arbitrary precision) for counts; float for trajectories",
+    "arithmetic": "Python int (exact, arbitrary precision) for counts; fractions.Fraction exact for the 16-component plans; float for trajectories",
     "requires_engines": [],
     "external": []
   },

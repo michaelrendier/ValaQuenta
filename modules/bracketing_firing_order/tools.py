@@ -11,7 +11,7 @@ Three general-purpose, domain-independent tools -- consumed by
 `add_scale_sign` (3 generators) and the sedenion Emerger bracket (16
 components) alike, not tied to either. See maths.py for the full account.
 
-Version: 0.1
+Version: 0.2
 """
 
 from typing import Dict, List, Any
@@ -22,7 +22,37 @@ from .maths import (
     firing_order_count, apply_firing_order, all_firing_orders,
     trajectory, collisions, would_collide, jurisdiction_violation,
     ENUMERATION_CEILING_N,
+    Leaf, parse_plan, plan_value, apply_plan, evolve_operator, evolve_value, notation,
+    mode_counts, reachable_orders, compare_modes,
 )
+
+# a fixed worked example: three sedenions with small integer components (no random draw, so the transcript is reproducible)
+_A = (1, 2, 0, 1, 0, 0, 3, 0, 0, 1, 0, 0, 2, 0, 0, 1)
+_B = (0, 1, 1, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0, -1, 0)
+_C = (2, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+_X = (1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0)
+
+
+def _four_orderings() -> Dict[str, Any]:
+    out: Dict[str, Any] = {"counts_n3": mode_counts(3), "counts_n4": mode_counts(4), "counts_n5": mode_counts(5)}
+    leaves4 = [Leaf(c) for c in "ABCD"]
+    out["fire_sequences_reached_n4"] = {m: reachable_orders(leaves4, m) for m in "ABCD"}
+    el = compare_modes([_A, _B, _C])
+    op = compare_modes([_A, _B, _C], "operator", _X)
+    out["distinct_outputs_element"] = {m: el[m]["distinct_outputs"] for m in "ABCD"}
+    out["distinct_outputs_operator"] = {m: op[m]["distinct_outputs"] for m in "ABCD"}
+    return out
+
+
+def _evolve() -> Dict[str, Any]:
+    leaves = {"A": Leaf.of("A", _A), "B": Leaf.of("B", _B), "C": Leaf.of("C", _C)}
+    plan = parse_plan("((A B | 2 1) C | 2 1)", leaves)
+    states = evolve_operator(plan, _X)
+    return {"plan": notation(plan), "input": [int(v) for v in _X],
+            "fired": [s[0] for s in states[1:]], "output": [str(v) for v in apply_plan(plan, _X)],
+            "element_value": [str(v) for v in plan_value(plan)],
+            "element_steps": [s[0] for s in evolve_value(plan)]}
+
 
 
 class BracketingFiringOrderModule(EquationModule):
@@ -39,7 +69,7 @@ class BracketingFiringOrderModule(EquationModule):
 
     @property
     def version(self):
-        return "0.1"
+        return "0.2"
 
     @property
     def description(self):
@@ -118,6 +148,30 @@ class BracketingFiringOrderModule(EquationModule):
                 compute=lambda written, firing_order: apply_firing_order(written, firing_order),
                 display_options=['text'],
                 process='resequence a written order by a chosen permutation',
+            ),
+            Equation(
+                name='four_orderings',
+                display='PLANS: bracketing, firing order, firing order of brackets, bracketing of firing orders: how many, and how many different outputs',
+                latex=r'A=C_{n-1},\ B=n!,\ C=C_{n-1}2^{n-1},\ D=n!\,C_{n-1}=(2n-2)!/(n-1)!',
+                radian_form='n = 3: 2, 6, 8, 12 plans; written-order plans reach 6, 22, 90 of 3!, 4!, 5! orders',
+                confidence='ESTABLISHED:CALCULATED',
+                code_verified=True,
+                params=[],
+                compute=_four_orderings,
+                display_options=['text'],
+                process='the four orderings of brackets, counted and run on 16-component vectors',
+            ),
+            Equation(
+                name='evolve',
+                display='PLANS: watch a 16-component input evolve under a plan, step by step',
+                latex=r'x \mapsto M_k\cdots M_1 x \ (\text{operator}),\quad ((f_1 f_2) f_3)\ (\text{element})',
+                radian_form='((A B | 2 1) C | 2 1) fires C, B, A; the operator reading is associative, the element reading is not',
+                confidence='ESTABLISHED:CALCULATED',
+                code_verified=True,
+                params=[],
+                compute=_evolve,
+                display_options=['text'],
+                process='the input vector after every leaf fires',
             ),
             Equation(
                 name='collisions',
@@ -200,4 +254,6 @@ class BracketingFiringOrderModule(EquationModule):
             'fire_apply':    lambda written, order: apply_firing_order(written, order),
             'collisions':    lambda steps, x0=1.0: collisions(steps, x0),
             'jurisdiction':  lambda obj, op, jmap: jurisdiction_violation(obj, op, jmap),
+            'orderings':     _four_orderings,
+            'evolve':        _evolve,
         }

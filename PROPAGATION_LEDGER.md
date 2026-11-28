@@ -50,3 +50,7 @@ Every downstream file ValaQuenta's tools changed or skipped. Working tree only; 
 - `Ainulindale`: ledger X-71; wiki 107 gains a pointer to the gallery.
 - Galleries: `gallery/add_scale_sign/` in the central index (`ContextPlease/claude/galleries/build_index.py`, port 8794) and in `.github/workflows/docs.yml`.
 - `GenerationalLineage/engine/add_scale_sign.py` has no `to_smith`, so the quadrant fix does not apply there (checked by grep).
+
+## 2026-11-27 · `bracketing_firing_order` 0.2 (the four orderings)
+- `GenerationalLineage/engine/bracketing_firing_order.py` (+ `tests/test_firing_plans.py`, `wiki/Firing-Plans.md`): A–D, `mode_counts`, `evolve_operator`, `evolve_value`.
+- `SedenionSpectralRelativity/firing_plan.py` is the origin and is not edited; the engine of record is now `ValaQuenta/modules/bracketing_firing_order`.
